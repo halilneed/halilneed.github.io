@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>hailneed — evidence-first tools for coding agents</title>
+<meta name="description" content="hailneed builds open-source instrumentation for coding agents: agent-blackbox, painradar and devpersona. Timeline, risk audit and undo map read from logs already on your disk. Local-first, MIT.">
+<meta name="author" content="hailneed">
+<meta name="theme-color" content="#08090b">
+<link rel="canonical" href="https://hailneed.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="hailneed">
+<meta property="og:title" content="hailneed — evidence-first tools for coding agents">
+<meta property="og:description" content="Your agent tells you what it did. agent-blackbox, painradar and devpersona show you — from logs already on your disk, with nothing sent anywhere.">
+<meta property="og:url" content="https://hailneed.github.io/">
+<meta property="og:image" content="https://hailneed.github.io/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="hailneed — evidence-first tools for coding agents">
+<meta name="twitter:description" content="Your agent tells you what it did. These tools show you — from logs already on your disk.">
+<meta name="twitter:image" content="https://hailneed.github.io/assets/img/og.png">
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/assets/img/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/css/main.css">
+<script>document.documentElement.classList.add('js');</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "hailneed",
+  "alternateName": "hailneed",
+  "url": "https://hailneed.github.io/",
+  "jobTitle": "Software engineer",
+  "address": { "@type": "PostalAddress", "addressLocality": "Istanbul", "addressCountry": "TR" },
+  "knowsAbout": ["ASP.NET Core", "Entity Framework Core", "PostgreSQL", "Claude Code plugins", "Model Context Protocol", "data loss prevention"],
+  "sameAs": ["https://github.com/hailneed"]
+}
+</script>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="grain" aria-hidden="true"></div>
+<canvas id="instrument" aria-hidden="true"></canvas>
+<div class="scrim" aria-hidden="true"></div>
+<div class="rules" aria-hidden="true"></div>
+
+<header class="topbar" id="topbar">
+  <a class="brand" href="/"><span class="dot" aria-hidden="true"></span> hailneed</a>
+  <nav class="topnav" id="topnav" aria-label="Sections">
+    <a href="#fieldkit">Field kit</a>
+    <a href="#install">Install</a>
+    <a href="#method">Method</a>
+    <a href="#writing">Dispatches</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <span class="topmeta">MIT &middot; local-first</span>
+</header>
+
+<nav class="rail" id="rail" aria-label="Page progress"></nav>
+
+<main id="main" class="flow">
+
+  <!-- ================================================== 00 index ========= -->
+  <section id="index" data-scene="grid">
+    <div class="hero-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">00</span> hailneed &middot; Istanbul</p>
+
+      <h1 class="h-display hero-title" data-split>Tools that show<br>what your agent<br><em>actually</em> did.</h1>
+
+      <p class="lede">
+        Claude Code, Codex CLI and Gemini CLI already write a complete record of every
+        session to your disk. These plugins read it — the timeline, the risk, what can
+        still be undone — and none of them send a byte anywhere.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn--solid" href="#install">Install the marketplace</a>
+        <a class="btn" href="https://github.com/hailneed" rel="noopener">GitHub <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div>
+
+    <ul class="metrics" data-reveal style="--d:.15s">
+      <li class="metric">
+        <div class="val" data-count="3">3</div>
+        <div class="lbl">Plugins</div>
+        <div class="note">in the marketplace</div>
+      </li>
+      <li class="metric">
+        <div class="val" data-count="9">9</div>
+        <div class="lbl">Skills</div>
+        <div class="note">slash commands</div>
+      </li>
+      <li class="metric">
+        <div class="val" data-count="26">26</div>
+        <div class="lbl">Audit rules</div>
+        <div class="note">readable patterns</div>
+      </li>
+      <li class="metric">
+        <div class="val" data-count="0">0</div>
+        <div class="lbl">Network calls</div>
+        <div class="note">made by the scanner</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ================================================== 01 field kit ===== -->
+  <section id="fieldkit">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">01</span> Field kit</p>
+      <h2 class="h-section" data-split>Three plugins for Claude Code.<br>One idea: <em>show, do not tell.</em></h2>
+      <p class="lede">
+        Each one reads something that already exists on your machine — a session log, a
+        public complaint thread, your own history — and returns a report that cites
+        where every claim came from.
+      </p>
+    </div>
+
+    <div class="kit">
+
+      <!-- ---------------------------------------------- agent-blackbox --- -->
+      <article class="entry" id="agent-blackbox" data-scene="stream">
+        <div class="entry-top" data-reveal>
+          <span class="entry-idx">01</span>
+          <h3 class="entry-name">agent-blackbox</h3>
+          <span class="entry-kicker">Flight recorder</span>
+        </div>
+
+        <div data-reveal style="--d:.08s">
+          <p class="entry-body">
+            Reads the session logs Claude Code, Codex CLI and Gemini CLI already write to
+            your disk, normalises them into a single event schema and returns three
+            things: a turn-by-turn timeline, a transparent risk audit of what the agent
+            was allowed to run, and an undo map of what can still be reverted.
+          </p>
+
+          <p class="pull">
+            Every finding names the rule and the text it matched. The undo map proposes;
+            it never restores on its own.
+          </p>
+
+          <ul class="cmds">
+            <li><code>/agent-blackbox:timeline</code> <span class="desc">turn-by-turn flight record</span></li>
+            <li><code>/agent-blackbox:risk</code> <span class="desc">transparent risk audit</span></li>
+            <li><code>/agent-blackbox:undo</code> <span class="desc">recovery map, no auto-restore</span></li>
+          </ul>
+
+          <ul class="facts">
+            <li class="fact"><div class="n">26</div><div class="k">transparent rules</div></li>
+            <li class="fact"><div class="n">3</div><div class="k">agents supported</div></li>
+            <li class="fact"><div class="n">0</div><div class="k">network calls</div></li>
+            <li class="fact"><div class="n">MIT</div><div class="k">licence</div></li>
+          </ul>
+
+          <div class="entry-foot">
+            <a class="link" href="https://github.com/hailneed/agent-blackbox" rel="noopener">
+              Read the source <span class="arw" aria-hidden="true">&#8599;</span>
+            </a>
+            <ul class="tags">
+              <li class="tag">agent-observability</li>
+              <li class="tag">audit</li>
+              <li class="tag">security</li>
+              <li class="tag">local-first</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- ------------------------------------------------ painradar --- -->
+      <article class="entry" id="painradar" data-scene="radar">
+        <div class="entry-top" data-reveal>
+          <span class="entry-idx">02</span>
+          <h3 class="entry-name">painradar</h3>
+          <span class="entry-kicker">Opportunity radar</span>
+        </div>
+
+        <div data-reveal style="--d:.08s">
+          <p class="entry-body">
+            Public complaints — Hacker News, GitHub Issues, App Store reviews and
+            optionally Reddit — combined with verified-revenue proof from TrustMRR,
+            turned into evidence-backed themes, a founder-opportunity fit ranking and a
+            launch plan. Only public data is fetched.
+          </p>
+
+          <p class="pull">
+            A theme needs at least two linked sources before it makes the report.
+            Unverified revenue is printed as unverified, never rounded up.
+          </p>
+
+          <ul class="cmds">
+            <li><code>/painradar:scan</code> <span class="desc">3&ndash;7 themes, cited, scored 1&ndash;5</span></li>
+            <li><code>/painradar:fit</code> <span class="desc">pain &times; money &times; gap &times; you</span></li>
+            <li><code>/painradar:launch</code> <span class="desc">one channel, 30-day calendar</span></li>
+          </ul>
+
+          <ul class="facts">
+            <li class="fact"><div class="n">4</div><div class="k">evidence sources</div></li>
+            <li class="fact"><div class="n">2+</div><div class="k">links per theme</div></li>
+            <li class="fact"><div class="n">0</div><div class="k">usernames in output</div></li>
+            <li class="fact"><div class="n">MIT</div><div class="k">licence</div></li>
+          </ul>
+
+          <div class="entry-foot">
+            <a class="link" href="https://github.com/hailneed/painradar" rel="noopener">
+              Read the source <span class="arw" aria-hidden="true">&#8599;</span>
+            </a>
+            <ul class="tags">
+              <li class="tag">market-research</li>
+              <li class="tag">evidence</li>
+              <li class="tag">launch</li>
+              <li class="tag">indie-hacker</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------------------------------------------- devpersona --- -->
+      <article class="entry" id="devpersona" data-scene="graph">
+        <div class="entry-top" data-reveal>
+          <span class="entry-idx">03</span>
+          <h3 class="entry-name">devpersona</h3>
+          <span class="entry-kicker">Developer profile</span>
+        </div>
+
+        <div data-reveal style="--d:.08s">
+          <p class="entry-body">
+            Reads your local Claude Code history and builds a character card — your
+            stack, your working rhythm, your communication style, your risk patterns —
+            with every claim cited to a transcript. Then turns that into skills worth
+            writing, habits worth fixing and architecture advice.
+          </p>
+
+          <p class="pull">
+            The scanner puts no raw chat text in its default output. Raw prompt samples
+            are opt-in and printed to the screen only.
+          </p>
+
+          <ul class="cmds">
+            <li><code>/devpersona:stats</code> <span class="desc">numbers only, no reading</span></li>
+            <li><code>/devpersona:analyze</code> <span class="desc">the character card</span></li>
+            <li><code>/devpersona:advise</code> <span class="desc">skills, code, architecture</span></li>
+          </ul>
+
+          <ul class="facts">
+            <li class="fact"><div class="n">3</div><div class="k">report modes</div></li>
+            <li class="fact"><div class="n">0</div><div class="k">bytes uploaded</div></li>
+            <li class="fact"><div class="n">TR/EN</div><div class="k">output</div></li>
+            <li class="fact"><div class="n">MIT</div><div class="k">licence</div></li>
+          </ul>
+
+          <div class="entry-foot">
+            <a class="link" href="https://github.com/hailneed/devpersona" rel="noopener">
+              Read the source <span class="arw" aria-hidden="true">&#8599;</span>
+            </a>
+            <ul class="tags">
+              <li class="tag">persona</li>
+              <li class="tag">analytics</li>
+              <li class="tag">self-analysis</li>
+              <li class="tag">local-first</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================================================== 02 install ======= -->
+  <section id="install" data-scene="registry">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">02</span> Install</p>
+      <h2 class="h-section" data-split>Add the marketplace once.<br>Install any of them.</h2>
+    </div>
+
+    <div class="install-grid">
+      <div class="terminal" data-reveal>
+        <div class="terminal-bar">
+          <span class="lamp" aria-hidden="true"></span>
+          <span class="lamp" aria-hidden="true"></span>
+          <span class="lamp" aria-hidden="true"></span>
+          <span class="ttl">claude code</span>
+          <button class="copy" type="button" data-copy="#install-src">Copy</button>
+        </div>
+        <pre id="install-src"><span class="c"># once</span>
+<span class="p">&gt;</span> /plugin marketplace add hailneed/plugins
+
+<span class="c"># then whichever you want</span>
+<span class="p">&gt;</span> /plugin install agent-blackbox@hailneed
+<span class="p">&gt;</span> /plugin install painradar@hailneed
+<span class="p">&gt;</span> /plugin install devpersona@hailneed
+
+<span class="c"># and try it</span>
+<span class="p">&gt;</span> /agent-blackbox:risk</pre>
+      </div>
+
+      <div data-reveal style="--d:.1s">
+        <p class="body">
+          Claude Code keys marketplaces by name, so a manifest shipped inside every
+          product repo would overwrite the last one and the plugins could not coexist.
+          A single manifest repository removes the clash — that is all
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/plugins" rel="noopener">hailneed/plugins</a>
+          is.
+        </p>
+
+        <ul class="req">
+          <li><b>Claude Code</b> and Node.js 18 or newer.</li>
+          <li><b>No dependencies</b>, no build step, no API key.</li>
+          <li><b>Standalone works too</b> — <code>node scripts/blackbox.mjs --scan --days 30 --md</code></li>
+          <li><b>Optional</b> — <code>GITHUB_TOKEN</code>, <code>TRUSTMRR_API_KEY</code> raise radar limits.</li>
+        </ul>
+
+        <div class="entry-foot">
+          <a class="link" href="https://github.com/hailneed/plugins" rel="noopener">
+            Marketplace manifest <span class="arw" aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== 03 also shipped == -->
+  <section id="shipped" data-scene="stack">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">03</span> Also shipped</p>
+      <h2 class="h-section" data-split>Everything else that is public.</h2>
+    </div>
+
+    <div class="cards" data-reveal style="--d:.08s">
+      <a class="card" href="https://github.com/hailneed/plugins" rel="noopener">
+        <div class="card-top">
+          <span class="card-name">plugins</span>
+          <span class="card-kicker">Marketplace</span>
+        </div>
+        <p>
+          The manifest that makes the three plugins installable side by side. One repo,
+          one <code>marketplace.json</code>, added once.
+        </p>
+        <div class="card-foot"><span>JSON &middot; MIT</span><span class="go" aria-hidden="true">&#8599;</span></div>
+      </a>
+
+      <a class="card" href="https://github.com/hailneed/solostacks" rel="noopener">
+        <div class="card-top">
+          <span class="card-name">solostack-mcp</span>
+          <span class="card-kicker">MCP server</span>
+        </div>
+        <p>
+          Pulls live data from Reddit, GitHub Trending and Hacker News, then surfaces the
+          tools that matter to solo developers from inside your assistant. Generic mode
+          works out of the box; role-based mode tunes the sources to your job.
+        </p>
+        <div class="card-foot"><span>TypeScript &middot; MCP</span><span class="go" aria-hidden="true">&#8599;</span></div>
+      </a>
+
+      <a class="card" href="https://github.com/hailneed/hyperframes-agent-skill" rel="noopener">
+        <div class="card-top">
+          <span class="card-name">hyperframes-agent-skill</span>
+          <span class="card-kicker">Agent skill</span>
+        </div>
+        <p>
+          Teaches coding agents the HyperFrames composition contract so a render is
+          correct on the first attempt: 19 rule files covering timing attributes, GSAP
+          timelines, transitions, Lottie, 3D and the render pipeline.
+        </p>
+        <div class="card-foot"><span>19 rule files</span><span class="go" aria-hidden="true">&#8599;</span></div>
+      </a>
+
+      <a class="card" href="https://github.com/hailneed/promptrank" rel="noopener">
+        <div class="card-top">
+          <span class="card-name">promptrank</span>
+          <span class="card-kicker">Static app</span>
+        </div>
+        <p>
+          A terminal-style prompt quiz. Five scenarios scored on clarity, creativity,
+          technical depth and strategy, ending in a shareable Prompt IQ card. Turkish,
+          English and Spanish.
+        </p>
+        <div class="card-foot"><span>Vanilla JS &middot; 3 languages</span><span class="go" aria-hidden="true">&#8599;</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================================================== 04 method ======== -->
+  <section id="method" data-scene="dial">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">04</span> Method</p>
+      <h2 class="h-section" data-split>Four rules the tools are built on.</h2>
+    </div>
+
+    <div class="principles" data-reveal style="--d:.08s">
+      <article class="principle">
+        <div class="n">01</div>
+        <h3>Evidence over assertion.</h3>
+        <p>
+          A finding that cannot point at the line it came from does not ship. Reports
+          cite the transcript, the rule and the matched text, so you can disagree with
+          the specific thing rather than with the tool.
+        </p>
+      </article>
+      <article class="principle">
+        <div class="n">02</div>
+        <h3>Local by default.</h3>
+        <p>
+          The data is already on your disk. Reading it should not require sending it
+          anywhere. The blackbox scanner makes no network calls at all, and anything
+          shaped like a credential is masked before a report is written.
+        </p>
+      </article>
+      <article class="principle">
+        <div class="n">03</div>
+        <h3>Rules you can read.</h3>
+        <p>
+          Risk classification is a list of patterns in a file you can open, not a model
+          judgement you have to trust. Disagree with one and switch it off with a flag.
+        </p>
+      </article>
+      <article class="principle">
+        <div class="n">04</div>
+        <h3>Failure stays visible.</h3>
+        <p>
+          When a source is unreachable or a log will not parse, the report says so in its
+          source note. Missing data never quietly becomes a confident number.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================================================== 05 dispatches ==== -->
+  <section id="writing" data-scene="ink">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">05</span> Dispatches</p>
+      <h2 class="h-section" data-split>Notes from building this.</h2>
+      <p class="lede">
+        Long-form on Medium, indexed here. What the logs actually show, what the rules
+        catch, and what the agent ecosystem still gets wrong.
+      </p>
+    </div>
+
+    <div class="posts" id="posts" data-limit="3" data-reveal style="--d:.08s"></div>
+    <noscript>
+      <p class="small" style="padding:28px 0">
+        The dispatch index needs JavaScript.
+        <a href="https://medium.com/@hailneed" rel="noopener">Read them on Medium instead &#8599;</a>
+      </p>
+    </noscript>
+
+    <div class="writing-foot" data-reveal>
+      <a class="link" href="/writing/">All dispatches <span class="arw" aria-hidden="true">&rarr;</span></a>
+      <a class="link" id="medium-link" href="https://medium.com/@hailneed" rel="noopener">
+        Follow on Medium <span class="arw" aria-hidden="true">&#8599;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================================================== 06 contact ======= -->
+  <section id="contact" data-scene="signoff">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">06</span> Contact</p>
+      <h2 class="h-section" data-split>Open to interesting problems.</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div data-reveal>
+        <p class="lede">
+          Software engineer in Istanbul. ASP.NET Core and EF Core by day; agent tooling,
+          data-loss-prevention research and Node CLIs the rest of the time. Currently
+          building evidence-first instrumentation for coding agents.
+        </p>
+        <p class="body" style="margin-top:20px">
+          If you are working on agent observability, developer tooling, or anything where
+          a system has to prove what it did rather than claim it — I want to hear about it.
+        </p>
+      </div>
+
+      <div class="contact-links" data-reveal style="--d:.1s">
+        <a href="https://github.com/hailneed" rel="noopener">
+          <span class="k">GitHub</span><span class="v">github.com/hailneed</span><span class="go" aria-hidden="true">&#8599;</span>
+        </a>
+        <a href="https://medium.com/@hailneed" rel="noopener">
+          <span class="k">Medium</span><span class="v">medium.com/@hailneed</span><span class="go" aria-hidden="true">&#8599;</span>
+        </a>
+        <a href="mailto:hqclox43@gmail.com">
+          <span class="k">Email</span><span class="v">hqclox43@gmail.com</span><span class="go" aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <ul id="ticker-track">
+        <li>ASP.NET Core 8</li><li>EF Core 8</li><li>PostgreSQL</li><li>MSSQL</li>
+        <li>Hangfire</li><li>Serilog</li><li>xUnit</li><li>Node.js 22</li>
+        <li>Model Context Protocol</li><li>Claude Code</li><li>Python</li>
+        <li>ASP.NET Core 8</li><li>EF Core 8</li><li>PostgreSQL</li><li>MSSQL</li>
+        <li>Hangfire</li><li>Serilog</li><li>xUnit</li><li>Node.js 22</li>
+        <li>Model Context Protocol</li><li>Claude Code</li><li>Python</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <span>&copy; <span id="year">2026</span> hailneed</span>
+  <span class="colophon">
+    Static page. No framework, no build step, no analytics. The instrument on the right
+    is a 2D canvas driven by scroll position. Type: Inter Tight, Instrument Serif,
+    JetBrains Mono. <a href="https://github.com/hailneed/hailneed.github.io" rel="noopener">Source</a>.
+  </span>
+  <a class="to-top" href="#index">Back to top &uarr;</a>
+</footer>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/instrument.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hailneed.github.io/sitemap.xml
