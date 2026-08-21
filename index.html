@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>hailneed — evidence-first tools for coding agents</title>
-<meta name="description" content="hailneed builds open-source instrumentation for coding agents: agent-blackbox, skillbench, scar, painradar and devpersona. Timeline, risk audit and undo map read from logs already on your disk. Local-first, MIT.">
+<meta name="description" content="hailneed builds open-source instrumentation for coding agents: agent-blackbox, skillbench, scar, gardener, painradar and devpersona. Timeline, risk audit and undo map read from logs already on your disk. Local-first, MIT.">
 <meta name="author" content="hailneed">
 <meta name="theme-color" content="#08090b">
 <link rel="canonical" href="https://hailneed.github.io/">
@@ -73,6 +73,7 @@
   <symbol id="i-nonet" viewBox="0 0 24 24"><path d="M5 9.5a11 11 0 0 1 14 0"/><path d="M8 13a7 7 0 0 1 8 0"/><circle cx="12" cy="17.5" r="1.2"/><path d="M3.5 3.5l17 17"/></symbol>
   <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M6 20h12"/><path d="M4 9h16"/><path d="M4 9l-2.5 5.5h5zM20 9l-2.5 5.5h5z"/></symbol>
   <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 10l3 2.5-3 2.5M12.5 15.5H17"/></symbol>
+  <symbol id="i-gardener" viewBox="0 0 24 24"><path d="M12 21v-7"/><path d="M12 14c0-3.3 2.4-6 5.5-6.4C17.2 10.9 15 14 12 14z"/><path d="M12 14C12 10.7 9.6 8 6.5 7.6 6.8 10.9 9 14 12 14z"/><path d="M8 21h8"/></symbol>
   <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l8.5 4.5L12 12 3.5 7.5z"/><path d="M3.5 12.5L12 17l8.5-4.5"/></symbol>
 </defs></svg>
 
@@ -113,22 +114,22 @@
     <ul class="metrics" data-reveal style="--d:.15s">
       <li class="metric">
         <svg class="ico ico--m" aria-hidden="true"><use href="#i-layers"/></svg>
-        <div class="val" data-count="5">5</div>
+        <div class="val" data-count="6">6</div>
         <div class="lbl">Plugins</div>
       </li>
       <li class="metric">
         <svg class="ico ico--m" aria-hidden="true"><use href="#i-terminal"/></svg>
-        <div class="val" data-count="15">15</div>
+        <div class="val" data-count="18">18</div>
         <div class="lbl">Skills</div>
       </li>
       <li class="metric">
         <svg class="ico ico--m" aria-hidden="true"><use href="#i-check"/></svg>
-        <div class="val" data-count="68">68</div>
+        <div class="val" data-count="78">78</div>
         <div class="lbl">Readable rules</div>
       </li>
       <li class="metric">
         <svg class="ico ico--m" aria-hidden="true"><use href="#i-nonet"/></svg>
-        <div class="val" data-count="4">4</div>
+        <div class="val" data-count="5">5</div>
         <div class="lbl">Read only your disk</div>
       </li>
     </ul>
@@ -138,7 +139,7 @@
   <section id="fieldkit">
     <div class="section-head reveal--soft" data-reveal>
       <p class="eyebrow"><span class="num">01</span> Field kit</p>
-      <h2 class="h-section" data-split>Five plugins.<br>One idea: <em>show, do not tell.</em></h2>
+      <h2 class="h-section" data-split>Six plugins.<br>One idea: <em>show, do not tell.</em></h2>
       <p class="lede">
         Each reads something that already exists — and cites where every claim came from.
       </p>
@@ -230,15 +231,44 @@
         </div>
       </article>
 
+
+      <!-- ---------------------------------------------- gardener --------- -->
+      <article class="unit" id="gardener" data-scene="grid" data-reveal style="--d:.15s">
+        <div class="unit-head">
+          <span class="unit-icon"><svg class="ico"><use href="#i-gardener"/></svg></span>
+          <div>
+            <h3 class="unit-name">gardener</h3>
+            <p class="unit-kicker">Context hygiene</p>
+          </div>
+          <span class="unit-idx">04</span>
+        </div>
+
+        <p class="unit-line">What CLAUDE.md costs you on every single request.</p>
+
+        <ul class="cmds">
+          <li><svg class="ico ico--sm"><use href="#i-scale"/></svg><code>audit</code><span class="desc">what loads</span></li>
+          <li><svg class="ico ico--sm"><use href="#i-check"/></svg><code>compliance</code><span class="desc">followed?</span></li>
+          <li><svg class="ico ico--sm"><use href="#i-pen"/></svg><code>prune</code><span class="desc">what to cut</span></li>
+        </ul>
+
+        <div class="unit-foot">
+          <ul class="chips">
+            <li class="chip"><svg class="ico ico--xs"><use href="#i-nonet"/></svg>no network</li>
+            <li class="chip"><svg class="ico ico--xs"><use href="#i-shield"/></svg>never edits</li>
+          </ul>
+          <a class="link" href="https://github.com/hailneed/gardener" rel="noopener">Source <span class="arw" aria-hidden="true">&#8599;</span></a>
+        </div>
+      </article>
+
       <!-- ---------------------------------------------- painradar -------- -->
-      <article class="unit" id="painradar" data-scene="radar" data-reveal style="--d:.15s">
+      <article class="unit" id="painradar" data-scene="radar" data-reveal style="--d:.2s">
         <div class="unit-head">
           <span class="unit-icon"><svg class="ico"><use href="#i-radar"/></svg></span>
           <div>
             <h3 class="unit-name">painradar</h3>
             <p class="unit-kicker">Demand signal</p>
           </div>
-          <span class="unit-idx">04</span>
+          <span class="unit-idx">05</span>
         </div>
 
         <p class="unit-line">Public complaints plus verified revenue — themes with links.</p>
@@ -259,14 +289,14 @@
       </article>
 
       <!-- ---------------------------------------------- devpersona ------- -->
-      <article class="unit" id="devpersona" data-scene="graph" data-reveal style="--d:.2s">
+      <article class="unit" id="devpersona" data-scene="graph" data-reveal style="--d:.25s">
         <div class="unit-head">
           <span class="unit-icon"><svg class="ico"><use href="#i-persona"/></svg></span>
           <div>
             <h3 class="unit-name">devpersona</h3>
             <p class="unit-kicker">Developer profile</p>
           </div>
-          <span class="unit-idx">05</span>
+          <span class="unit-idx">06</span>
         </div>
 
         <p class="unit-line">Who you are as a developer, read from your own history.</p>
@@ -312,6 +342,7 @@
 <span class="p">&gt;</span> /plugin install agent-blackbox@hailneed
 <span class="p">&gt;</span> /plugin install skillbench@hailneed
 <span class="p">&gt;</span> /plugin install scar@hailneed
+<span class="p">&gt;</span> /plugin install gardener@hailneed
 <span class="p">&gt;</span> /plugin install painradar@hailneed
 <span class="p">&gt;</span> /plugin install devpersona@hailneed
 
@@ -358,7 +389,7 @@
           <span class="card-kicker">Marketplace</span>
         </div>
         <p>
-          The manifest that makes the five plugins installable side by side. One repo,
+          The manifest that makes the six plugins installable side by side. One repo,
           one <code>marketplace.json</code>, added once.
         </p>
         <div class="card-foot"><span>JSON &middot; MIT</span><span class="go" aria-hidden="true">&#8599;</span></div>
