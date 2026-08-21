@@ -44,6 +44,18 @@ window.HN = (function () {
      ======================================================================= */
   var writing = [
     {
+      title: "My CLAUDE.md is seven lines long. It loads 137.",
+      dek:
+        "Instruction files are read before every question you ask, and nobody " +
+        "measures them. Twelve projects, a median of ~6,000 tokens per request, " +
+        "and the rule that turned out to be working precisely because it never fired.",
+      status: "planned",
+      tags: ["claude-code", "agents", "context"],
+      date: null,
+      readingTime: null,
+      url: null
+    },
+    {
       title: 'I read my Claude Code history: 300 prompts, 10,594 tool calls.',
       dek:
         'Claude Code writes every session to your disk as JSONL. Reading mine: ' +
