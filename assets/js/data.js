@@ -44,6 +44,17 @@ window.HN = (function () {
      ======================================================================= */
   var writing = [
     {
+      title: 'I read my Claude Code history: 300 prompts, 10,594 tool calls.',
+      dek:
+        'Claude Code writes every session to your disk as JSONL. Reading mine: ' +
+        '35 tool calls per prompt, 49 denials, and the parts that did not flatter me.',
+      status: 'planned',
+      tags: ['claude-code', 'agents'],
+      date: null,
+      readingTime: null,
+      url: null
+    },
+    {
       title: 'Your agent says it fixed it. Here is how to check.',
       dek:
         'Coding agents narrate their own work. The session log on your disk ' +

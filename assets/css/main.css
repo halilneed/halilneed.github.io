@@ -929,3 +929,121 @@ body.page-writing .foot { margin-inline: auto; }
   .entry-kicker { margin-left: 0; }
   .tags { margin-left: 0; }
 }
+
+/* ============================================================ 07b icons ==== */
+/* Inline sprite: no request, no font, works from the filesystem. Every symbol
+   is stroke-only so one rule controls weight and colour everywhere. */
+
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.ico {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: middle;
+}
+.ico--xs { width: 13px; height: 13px; stroke-width: 1.8; }
+.ico--sm { width: 15px; height: 15px; stroke-width: 1.7; }
+.ico--m  { width: 22px; height: 22px; stroke-width: 1.5; }
+
+/* ------------------------------------------------------------ unit cards -- */
+.kit {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+@media (min-width: 700px)  { .kit { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1180px) { .kit { grid-template-columns: repeat(3, 1fr); } }
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 26px 24px 22px;
+  background: var(--ink);
+  transition: background 0.5s var(--ease);
+}
+.unit:hover { background: var(--ink-1); }
+
+.unit-head { display: flex; align-items: flex-start; gap: 13px; }
+
+.unit-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border: 1px solid var(--line-2);
+  border-radius: 3px;
+  color: var(--signal);
+  background: var(--signal-dim);
+  transition: border-color 0.5s var(--ease), transform 0.5s var(--ease);
+}
+.unit:hover .unit-icon { border-color: var(--signal); transform: translateY(-2px); }
+
+.unit-name {
+  font: 500 17px/1.2 var(--mono);
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+.unit-kicker {
+  margin-top: 5px;
+  font: 400 10px/1.2 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+.unit-idx {
+  margin-left: auto;
+  font: 400 11px/1 var(--mono);
+  color: var(--fg-4);
+}
+
+.unit-line {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--fg-2);
+  text-wrap: balance;
+}
+
+.unit .cmds { margin-top: 0; }
+.unit .cmds li { gap: 10px; padding: 10px 0; align-items: center; }
+.unit .cmds .ico { color: var(--fg-4); transition: color 0.4s var(--ease); }
+.unit .cmds li:hover .ico { color: var(--signal); }
+.unit .cmds .desc { font-size: 12px; }
+
+.unit-foot {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 4px;
+}
+.unit-foot .link { margin-left: auto; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  font: 400 10px/1 var(--mono);
+  letter-spacing: 0.06em;
+  color: var(--fg-3);
+}
+.chip .ico { color: var(--fg-4); }
+
+/* ------------------------------------------------- metrics with an icon --- */
+.metric { display: flex; flex-direction: column; gap: 10px; }
+.metric .ico { color: var(--signal); opacity: 0.75; }
+.metric .lbl { margin-top: 0; }

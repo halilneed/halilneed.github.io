@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>hailneed — evidence-first tools for coding agents</title>
-<meta name="description" content="hailneed builds open-source instrumentation for coding agents: agent-blackbox, painradar and devpersona. Timeline, risk audit and undo map read from logs already on your disk. Local-first, MIT.">
+<meta name="description" content="hailneed builds open-source instrumentation for coding agents: agent-blackbox, skillbench, scar, painradar and devpersona. Timeline, risk audit and undo map read from logs already on your disk. Local-first, MIT.">
 <meta name="author" content="hailneed">
 <meta name="theme-color" content="#08090b">
 <link rel="canonical" href="https://hailneed.github.io/">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="hailneed">
 <meta property="og:title" content="hailneed — evidence-first tools for coding agents">
-<meta property="og:description" content="Your agent tells you what it did. agent-blackbox, painradar and devpersona show you — from logs already on your disk, with nothing sent anywhere.">
+<meta property="og:description" content="Your agent tells you what it did. These five plugins show you — from logs already on your disk, with nothing sent anywhere.">
 <meta property="og:url" content="https://hailneed.github.io/">
 <meta property="og:image" content="https://hailneed.github.io/assets/img/og.png">
 <meta property="og:image:width" content="1200">
@@ -53,6 +53,29 @@
 <div class="scrim" aria-hidden="true"></div>
 <div class="rules" aria-hidden="true"></div>
 
+<!-- icon sprite — inline so the page stays self-contained and offline-safe -->
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs>
+  <symbol id="i-blackbox" viewBox="0 0 24 24"><path d="M3 12h3l2-5 3 10 3-8 2 3h5"/></symbol>
+  <symbol id="i-skillbench" viewBox="0 0 24 24"><path d="M4 7h9M4 12h9M4 17h5"/><path d="M16 15.5l2 2 4-4.5"/></symbol>
+  <symbol id="i-scar" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3-6.2"/><path d="M20 4v4.5h-4.5"/><path d="M9.5 11.5l2.5 2.5 4-4.5"/></symbol>
+  <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M12 12l6-4.5"/></symbol>
+  <symbol id="i-persona" viewBox="0 0 24 24"><path d="M12 3a5.5 5.5 0 0 0-5.5 5.5c0 3 .8 4.6.8 7.5"/><path d="M12 3a5.5 5.5 0 0 1 5.5 5.5c0 4-1.4 6-1.4 9"/><path d="M9.7 9a2.4 2.4 0 0 1 4.7.6c0 3-.6 5-.6 8.4"/><path d="M12 12v6"/></symbol>
+
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 9.5-4.1-1.9-7-5.3-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 24 24"><path d="M4 10h9a5 5 0 0 1 0 10H8"/><path d="M4 10l4-4M4 10l4 4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 4 12 2.5-6h5"/></symbol>
+  <symbol id="i-split" viewBox="0 0 24 24"><path d="M12 20V9"/><path d="M12 9L6.5 4M12 9l5.5-5"/><circle cx="6" cy="3.5" r="1.6"/><circle cx="18" cy="3.5" r="1.6"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19z"/><path d="M14.5 6.5l3 3"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5"/><path d="M6 8h12v3a6 6 0 0 1-12 0z"/><path d="M12 17v4"/></symbol>
+  <symbol id="i-nonet" viewBox="0 0 24 24"><path d="M5 9.5a11 11 0 0 1 14 0"/><path d="M8 13a7 7 0 0 1 8 0"/><circle cx="12" cy="17.5" r="1.2"/><path d="M3.5 3.5l17 17"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M6 20h12"/><path d="M4 9h16"/><path d="M4 9l-2.5 5.5h5zM20 9l-2.5 5.5h5z"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 10l3 2.5-3 2.5M12.5 15.5H17"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l8.5 4.5L12 12 3.5 7.5z"/><path d="M3.5 12.5L12 17l8.5-4.5"/></symbol>
+</defs></svg>
+
 <header class="topbar" id="topbar">
   <a class="brand" href="/"><span class="dot" aria-hidden="true"></span> hailneed</a>
   <nav class="topnav" id="topnav" aria-label="Sections">
@@ -77,9 +100,8 @@
       <h1 class="h-display hero-title" data-split>Tools that show<br>what your agent<br><em>actually</em> did.</h1>
 
       <p class="lede">
-        Claude Code, Codex CLI and Gemini CLI already write a complete record of every
-        session to your disk. These plugins read it — the timeline, the risk, what can
-        still be undone — and none of them send a byte anywhere.
+        Claude Code, Codex CLI and Gemini CLI already write every session to your disk.
+        These plugins read it — and send nothing anywhere.
       </p>
 
       <div class="hero-actions">
@@ -90,24 +112,24 @@
 
     <ul class="metrics" data-reveal style="--d:.15s">
       <li class="metric">
-        <div class="val" data-count="3">3</div>
+        <svg class="ico ico--m" aria-hidden="true"><use href="#i-layers"/></svg>
+        <div class="val" data-count="5">5</div>
         <div class="lbl">Plugins</div>
-        <div class="note">in the marketplace</div>
       </li>
       <li class="metric">
-        <div class="val" data-count="9">9</div>
+        <svg class="ico ico--m" aria-hidden="true"><use href="#i-terminal"/></svg>
+        <div class="val" data-count="15">15</div>
         <div class="lbl">Skills</div>
-        <div class="note">slash commands</div>
       </li>
       <li class="metric">
-        <div class="val" data-count="26">26</div>
-        <div class="lbl">Audit rules</div>
-        <div class="note">readable patterns</div>
+        <svg class="ico ico--m" aria-hidden="true"><use href="#i-check"/></svg>
+        <div class="val" data-count="68">68</div>
+        <div class="lbl">Readable rules</div>
       </li>
       <li class="metric">
-        <div class="val" data-count="0">0</div>
-        <div class="lbl">Network calls</div>
-        <div class="note">made by the scanner</div>
+        <svg class="ico ico--m" aria-hidden="true"><use href="#i-nonet"/></svg>
+        <div class="val" data-count="4">4</div>
+        <div class="lbl">Read only your disk</div>
       </li>
     </ul>
   </section>
@@ -116,157 +138,151 @@
   <section id="fieldkit">
     <div class="section-head reveal--soft" data-reveal>
       <p class="eyebrow"><span class="num">01</span> Field kit</p>
-      <h2 class="h-section" data-split>Three plugins for Claude Code.<br>One idea: <em>show, do not tell.</em></h2>
+      <h2 class="h-section" data-split>Five plugins.<br>One idea: <em>show, do not tell.</em></h2>
       <p class="lede">
-        Each one reads something that already exists on your machine — a session log, a
-        public complaint thread, your own history — and returns a report that cites
-        where every claim came from.
+        Each reads something that already exists — and cites where every claim came from.
       </p>
     </div>
 
     <div class="kit">
 
       <!-- ---------------------------------------------- agent-blackbox --- -->
-      <article class="entry" id="agent-blackbox" data-scene="stream">
-        <div class="entry-top" data-reveal>
-          <span class="entry-idx">01</span>
-          <h3 class="entry-name">agent-blackbox</h3>
-          <span class="entry-kicker">Flight recorder</span>
+      <article class="unit" id="agent-blackbox" data-scene="stream" data-reveal>
+        <div class="unit-head">
+          <span class="unit-icon"><svg class="ico"><use href="#i-blackbox"/></svg></span>
+          <div>
+            <h3 class="unit-name">agent-blackbox</h3>
+            <p class="unit-kicker">Flight recorder</p>
+          </div>
+          <span class="unit-idx">01</span>
         </div>
 
-        <div data-reveal style="--d:.08s">
-          <p class="entry-body">
-            Reads the session logs Claude Code, Codex CLI and Gemini CLI already write to
-            your disk, normalises them into a single event schema and returns three
-            things: a turn-by-turn timeline, a transparent risk audit of what the agent
-            was allowed to run, and an undo map of what can still be reverted.
-          </p>
+        <p class="unit-line">What your agent actually did — and what can still be undone.</p>
 
-          <p class="pull">
-            Every finding names the rule and the text it matched. The undo map proposes;
-            it never restores on its own.
-          </p>
+        <ul class="cmds">
+          <li><svg class="ico ico--sm"><use href="#i-clock"/></svg><code>timeline</code><span class="desc">turn by turn</span></li>
+          <li><svg class="ico ico--sm"><use href="#i-shield"/></svg><code>risk</code><span class="desc">26 rules</span></li>
+          <li><svg class="ico ico--sm"><use href="#i-undo"/></svg><code>undo</code><span class="desc">recovery map</span></li>
+        </ul>
 
-          <ul class="cmds">
-            <li><code>/agent-blackbox:timeline</code> <span class="desc">turn-by-turn flight record</span></li>
-            <li><code>/agent-blackbox:risk</code> <span class="desc">transparent risk audit</span></li>
-            <li><code>/agent-blackbox:undo</code> <span class="desc">recovery map, no auto-restore</span></li>
+        <div class="unit-foot">
+          <ul class="chips">
+            <li class="chip"><svg class="ico ico--xs"><use href="#i-nonet"/></svg>no network</li>
+            <li class="chip"><svg class="ico ico--xs"><use href="#i-layers"/></svg>3 agents</li>
           </ul>
-
-          <ul class="facts">
-            <li class="fact"><div class="n">26</div><div class="k">transparent rules</div></li>
-            <li class="fact"><div class="n">3</div><div class="k">agents supported</div></li>
-            <li class="fact"><div class="n">0</div><div class="k">network calls</div></li>
-            <li class="fact"><div class="n">MIT</div><div class="k">licence</div></li>
-          </ul>
-
-          <div class="entry-foot">
-            <a class="link" href="https://github.com/hailneed/agent-blackbox" rel="noopener">
-              Read the source <span class="arw" aria-hidden="true">&#8599;</span>
-            </a>
-            <ul class="tags">
-              <li class="tag">agent-observability</li>
-              <li class="tag">audit</li>
-              <li class="tag">security</li>
-              <li class="tag">local-first</li>
-            </ul>
-          </div>
+          <a class="link" href="https://github.com/hailneed/agent-blackbox" rel="noopener">Source <span class="arw" aria-hidden="true">&#8599;</span></a>
         </div>
       </article>
 
-      <!-- ------------------------------------------------ painradar --- -->
-      <article class="entry" id="painradar" data-scene="radar">
-        <div class="entry-top" data-reveal>
-          <span class="entry-idx">02</span>
-          <h3 class="entry-name">painradar</h3>
-          <span class="entry-kicker">Opportunity radar</span>
+      <!-- ---------------------------------------------- skillbench ------- -->
+      <article class="unit" id="skillbench" data-scene="grid" data-reveal style="--d:.05s">
+        <div class="unit-head">
+          <span class="unit-icon"><svg class="ico"><use href="#i-skillbench"/></svg></span>
+          <div>
+            <h3 class="unit-name">skillbench</h3>
+            <p class="unit-kicker">Skill lint &amp; usage</p>
+          </div>
+          <span class="unit-idx">02</span>
         </div>
 
-        <div data-reveal style="--d:.08s">
-          <p class="entry-body">
-            Public complaints — Hacker News, GitHub Issues, App Store reviews and
-            optionally Reddit — combined with verified-revenue proof from TrustMRR,
-            turned into evidence-backed themes, a founder-opportunity fit ranking and a
-            launch plan. Only public data is fetched.
-          </p>
+        <p class="unit-line">Is the skill written right — and does it ever actually fire?</p>
 
-          <p class="pull">
-            A theme needs at least two linked sources before it makes the report.
-            Unverified revenue is printed as unverified, never rounded up.
-          </p>
+        <ul class="cmds">
+          <li><svg class="ico ico--sm"><use href="#i-check"/></svg><code>lint</code><span class="desc">26 checks</span></li>
+          <li><svg class="ico ico--sm"><use href="#i-pulse"/></svg><code>coverage</code><span class="desc">real activations</span></li>
+          <li><svg class="ico ico--sm"><use href="#i-split"/></svg><code>collide</code><span class="desc">overlap &amp; drift</span></li>
+        </ul>
 
-          <ul class="cmds">
-            <li><code>/painradar:scan</code> <span class="desc">3&ndash;7 themes, cited, scored 1&ndash;5</span></li>
-            <li><code>/painradar:fit</code> <span class="desc">pain &times; money &times; gap &times; you</span></li>
-            <li><code>/painradar:launch</code> <span class="desc">one channel, 30-day calendar</span></li>
+        <div class="unit-foot">
+          <ul class="chips">
+            <li class="chip"><svg class="ico ico--xs"><use href="#i-nonet"/></svg>no network</li>
+            <li class="chip"><svg class="ico ico--xs"><use href="#i-target"/></svg>measured</li>
           </ul>
-
-          <ul class="facts">
-            <li class="fact"><div class="n">4</div><div class="k">evidence sources</div></li>
-            <li class="fact"><div class="n">2+</div><div class="k">links per theme</div></li>
-            <li class="fact"><div class="n">0</div><div class="k">usernames in output</div></li>
-            <li class="fact"><div class="n">MIT</div><div class="k">licence</div></li>
-          </ul>
-
-          <div class="entry-foot">
-            <a class="link" href="https://github.com/hailneed/painradar" rel="noopener">
-              Read the source <span class="arw" aria-hidden="true">&#8599;</span>
-            </a>
-            <ul class="tags">
-              <li class="tag">market-research</li>
-              <li class="tag">evidence</li>
-              <li class="tag">launch</li>
-              <li class="tag">indie-hacker</li>
-            </ul>
-          </div>
+          <a class="link" href="https://github.com/hailneed/skillbench" rel="noopener">Source <span class="arw" aria-hidden="true">&#8599;</span></a>
         </div>
       </article>
 
-      <!-- ---------------------------------------------- devpersona --- -->
-      <article class="entry" id="devpersona" data-scene="graph">
-        <div class="entry-top" data-reveal>
-          <span class="entry-idx">03</span>
-          <h3 class="entry-name">devpersona</h3>
-          <span class="entry-kicker">Developer profile</span>
+      <!-- ---------------------------------------------- scar ------------- -->
+      <article class="unit" id="scar" data-scene="stream" data-reveal style="--d:.1s">
+        <div class="unit-head">
+          <span class="unit-icon"><svg class="ico"><use href="#i-scar"/></svg></span>
+          <div>
+            <h3 class="unit-name">scar</h3>
+            <p class="unit-kicker">Closed loop</p>
+          </div>
+          <span class="unit-idx">03</span>
         </div>
 
-        <div data-reveal style="--d:.08s">
-          <p class="entry-body">
-            Reads your local Claude Code history and builds a character card — your
-            stack, your working rhythm, your communication style, your risk patterns —
-            with every claim cited to a transcript. Then turns that into skills worth
-            writing, habits worth fixing and architecture advice.
-          </p>
+        <p class="unit-line">Failures that keep repeating, written down — then measured.</p>
 
-          <p class="pull">
-            The scanner puts no raw chat text in its default output. Raw prompt samples
-            are opt-in and printed to the screen only.
-          </p>
+        <ul class="cmds">
+          <li><svg class="ico ico--sm"><use href="#i-target"/></svg><code>mine</code><span class="desc">what recurs</span></li>
+          <li><svg class="ico ico--sm"><use href="#i-pen"/></svg><code>write</code><span class="desc">rule or test</span></li>
+          <li><svg class="ico ico--sm"><use href="#i-check"/></svg><code>verify</code><span class="desc">did it hold?</span></li>
+        </ul>
 
-          <ul class="cmds">
-            <li><code>/devpersona:stats</code> <span class="desc">numbers only, no reading</span></li>
-            <li><code>/devpersona:analyze</code> <span class="desc">the character card</span></li>
-            <li><code>/devpersona:advise</code> <span class="desc">skills, code, architecture</span></li>
+        <div class="unit-foot">
+          <ul class="chips">
+            <li class="chip"><svg class="ico ico--xs"><use href="#i-nonet"/></svg>no network</li>
+            <li class="chip"><svg class="ico ico--xs"><use href="#i-shield"/></svg>never writes</li>
           </ul>
+          <a class="link" href="https://github.com/hailneed/scar" rel="noopener">Source <span class="arw" aria-hidden="true">&#8599;</span></a>
+        </div>
+      </article>
 
-          <ul class="facts">
-            <li class="fact"><div class="n">3</div><div class="k">report modes</div></li>
-            <li class="fact"><div class="n">0</div><div class="k">bytes uploaded</div></li>
-            <li class="fact"><div class="n">TR/EN</div><div class="k">output</div></li>
-            <li class="fact"><div class="n">MIT</div><div class="k">licence</div></li>
-          </ul>
-
-          <div class="entry-foot">
-            <a class="link" href="https://github.com/hailneed/devpersona" rel="noopener">
-              Read the source <span class="arw" aria-hidden="true">&#8599;</span>
-            </a>
-            <ul class="tags">
-              <li class="tag">persona</li>
-              <li class="tag">analytics</li>
-              <li class="tag">self-analysis</li>
-              <li class="tag">local-first</li>
-            </ul>
+      <!-- ---------------------------------------------- painradar -------- -->
+      <article class="unit" id="painradar" data-scene="radar" data-reveal style="--d:.15s">
+        <div class="unit-head">
+          <span class="unit-icon"><svg class="ico"><use href="#i-radar"/></svg></span>
+          <div>
+            <h3 class="unit-name">painradar</h3>
+            <p class="unit-kicker">Demand signal</p>
           </div>
+          <span class="unit-idx">04</span>
+        </div>
+
+        <p class="unit-line">Public complaints plus verified revenue — themes with links.</p>
+
+        <ul class="cmds">
+          <li><svg class="ico ico--sm"><use href="#i-radar"/></svg><code>scan</code><span class="desc">ranked themes</span></li>
+          <li><svg class="ico ico--sm"><use href="#i-target"/></svg><code>fit</code><span class="desc">worth building?</span></li>
+          <li><svg class="ico ico--sm"><use href="#i-pulse"/></svg><code>launch</code><span class="desc">one channel</span></li>
+        </ul>
+
+        <div class="unit-foot">
+          <ul class="chips">
+            <li class="chip"><svg class="ico ico--xs"><use href="#i-plug"/></svg>public sources</li>
+            <li class="chip"><svg class="ico ico--xs"><use href="#i-shield"/></svg>no usernames</li>
+          </ul>
+          <a class="link" href="https://github.com/hailneed/painradar" rel="noopener">Source <span class="arw" aria-hidden="true">&#8599;</span></a>
+        </div>
+      </article>
+
+      <!-- ---------------------------------------------- devpersona ------- -->
+      <article class="unit" id="devpersona" data-scene="graph" data-reveal style="--d:.2s">
+        <div class="unit-head">
+          <span class="unit-icon"><svg class="ico"><use href="#i-persona"/></svg></span>
+          <div>
+            <h3 class="unit-name">devpersona</h3>
+            <p class="unit-kicker">Developer profile</p>
+          </div>
+          <span class="unit-idx">05</span>
+        </div>
+
+        <p class="unit-line">Who you are as a developer, read from your own history.</p>
+
+        <ul class="cmds">
+          <li><svg class="ico ico--sm"><use href="#i-pulse"/></svg><code>stats</code><span class="desc">numbers only</span></li>
+          <li><svg class="ico ico--sm"><use href="#i-persona"/></svg><code>analyze</code><span class="desc">character card</span></li>
+          <li><svg class="ico ico--sm"><use href="#i-pen"/></svg><code>advise</code><span class="desc">what to build</span></li>
+        </ul>
+
+        <div class="unit-foot">
+          <ul class="chips">
+            <li class="chip"><svg class="ico ico--xs"><use href="#i-nonet"/></svg>no network</li>
+            <li class="chip"><svg class="ico ico--xs"><use href="#i-layers"/></svg>3 agents</li>
+          </ul>
+          <a class="link" href="https://github.com/hailneed/devpersona" rel="noopener">Source <span class="arw" aria-hidden="true">&#8599;</span></a>
         </div>
       </article>
 
@@ -294,6 +310,8 @@
 
 <span class="c"># then whichever you want</span>
 <span class="p">&gt;</span> /plugin install agent-blackbox@hailneed
+<span class="p">&gt;</span> /plugin install skillbench@hailneed
+<span class="p">&gt;</span> /plugin install scar@hailneed
 <span class="p">&gt;</span> /plugin install painradar@hailneed
 <span class="p">&gt;</span> /plugin install devpersona@hailneed
 
@@ -340,7 +358,7 @@
           <span class="card-kicker">Marketplace</span>
         </div>
         <p>
-          The manifest that makes the three plugins installable side by side. One repo,
+          The manifest that makes the five plugins installable side by side. One repo,
           one <code>marketplace.json</code>, added once.
         </p>
         <div class="card-foot"><span>JSON &middot; MIT</span><span class="go" aria-hidden="true">&#8599;</span></div>
