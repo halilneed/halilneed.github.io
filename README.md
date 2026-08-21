@@ -11,10 +11,10 @@
 
 | Yol | Ne |
 |---|---|
-| `index.html` | Tek sayfa portfolyo — hero, field kit (3 plugin), kurulum, diğer repolar, yöntem, dispatches, iletişim |
+| `index.html` | Tek sayfa portfolyo — hero, field kit (6 modül), kurulum, **destek katmanları**, diğer repolar, yöntem, dispatches + bülten formu, **SSS**, iletişim |
 | `writing/index.html` | Yazı indeksi + etiket filtresi |
 | `404.html` | Bulunamadı sayfası |
-| `assets/css/main.css` | Tek stil dosyası, 15 numaralı bölüme kadar yorumlu |
+| `assets/css/main.css` | Tek stil dosyası, 18 numaralı bölüme kadar yorumlu (17 destek katmanları, 18 SSS) |
 | `assets/js/data.js` | **Değişen tek içerik**: Medium yazıları, profil linkleri, scroll rayı bölümleri |
 | `assets/js/instrument.js` | Scroll'a bağlı canvas — 9 sahne, bağımlılıksız 2D |
 | `assets/js/main.js` | Scroll orkestrasyonu, reveal, satır bölme, sayaçlar, kopyala, imleç |
@@ -86,5 +86,15 @@ branch → `main` / `(root)`**. `.nojekyll` dosyası Jekyll işlemesini kapatır
 
 ## Yığın
 
-Framework yok, build yok, paket yok, analytics yok. Yalnızca Google Fonts
-(Inter Tight, Instrument Serif, JetBrains Mono) dışarıdan yükleniyor.
+Framework yok, build yok, paket yok, çerez yok. Dışarıdan yüklenenler: Google Fonts
+(Inter Tight, Instrument Serif, JetBrains Mono) ve GoatCounter (`gc.zgo.at/count.js`) —
+çerezsiz, toplu sayfa sayacı; kimseyi tekil olarak tanımlamaz.
+
+## Huni parçaları
+
+- **Bülten + Cloud waitlist formları** Buttondown'a düz `POST` eder (`.signup`,
+  `main.css` bölüm 16). JS gerekmez; gizli `tag` alanı kaynağı ayırır
+  (`newsletter`, `waitlist-<ürün>`).
+- **CTA tıklama sayımı** `data-goatcounter-click` nitelikleriyle — `count.js`
+  otomatik bağlar, özel JS yok.
+- Ürün sayfaları `/<repo-adı>/index.html` altında statik HTML'dir → [PRODUCTS.md](PRODUCTS.md).

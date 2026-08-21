@@ -106,10 +106,12 @@ window.HN = (function () {
     { id: 'index',    label: 'Index',        n: '00' },
     { id: 'fieldkit', label: 'Field kit',    n: '01' },
     { id: 'install',  label: 'Install',      n: '02' },
-    { id: 'shipped',  label: 'Also shipped', n: '03' },
-    { id: 'method',   label: 'Method',       n: '04' },
-    { id: 'writing',  label: 'Dispatches',   n: '05' },
-    { id: 'contact',  label: 'Contact',      n: '06' }
+    { id: 'support',  label: 'Support',      n: '03' },
+    { id: 'shipped',  label: 'Also shipped', n: '04' },
+    { id: 'method',   label: 'Method',       n: '05' },
+    { id: 'writing',  label: 'Dispatches',   n: '06' },
+    { id: 'faq',      label: 'FAQ',          n: '07' },
+    { id: 'contact',  label: 'Contact',      n: '08' }
   ];
 
   return { profile: profile, writing: writing, sections: sections };

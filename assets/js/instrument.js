@@ -36,16 +36,16 @@ window.HNInstrument = (function () {
 
   /* -- palette ----------------------------------------------------------- */
   var C = {
-    line:   'rgba(233,236,241,0.10)',
-    line2:  'rgba(233,236,241,0.20)',
-    line3:  'rgba(233,236,241,0.34)',
-    dim:    'rgba(233,236,241,0.42)',
-    fg:     'rgba(233,236,241,0.88)',
-    sig:    'rgba(255,180,84,1)',
-    sigDim: 'rgba(255,180,84,0.34)',
-    sigGlow:'rgba(255,180,84,0.10)',
-    bad:    'rgba(255,107,94,0.9)',
-    ok:     'rgba(140,220,180,0.7)'
+    line:   'rgba(18,20,25,0.10)',
+    line2:  'rgba(18,20,25,0.20)',
+    line3:  'rgba(18,20,25,0.34)',
+    dim:    'rgba(18,20,25,0.42)',
+    fg:     'rgba(18,20,25,0.88)',
+    sig:    'rgba(194,80,12,1)',
+    sigDim: 'rgba(194,80,12,0.34)',
+    sigGlow:'rgba(194,80,12,0.10)',
+    bad:    'rgba(179,38,30,0.9)',
+    ok:     'rgba(26,122,88,0.7)'
   };
 
   var MONO = "500 10px 'JetBrains Mono', ui-monospace, Menlo, monospace";
@@ -249,7 +249,7 @@ window.HNInstrument = (function () {
       var sx = r.x + rand() * r.w;
       var sy = r.y + rand() * (hz - r.y) * 0.94;
       var tw = 0.25 + 0.75 * Math.abs(Math.sin(t * 0.6 + i));
-      ctx.fillStyle = 'rgba(233,236,241,' + (0.06 + tw * 0.13).toFixed(3) + ')';
+      ctx.fillStyle = 'rgba(18,20,25,' + (0.06 + tw * 0.13).toFixed(3) + ')';
       ctx.fillRect(Math.round(sx), Math.round(sy), 1, 1);
     }
   };
@@ -347,7 +347,7 @@ window.HNInstrument = (function () {
       var v = rand2();
       var h = 2 + Math.pow(v, 2.2) * 42 * (0.5 + 0.5 * Math.sin(t * 0.8 + j * 0.25));
       var hot = v > 0.93;
-      ctx.fillStyle = hot ? C.sigDim : 'rgba(233,236,241,0.11)';
+      ctx.fillStyle = hot ? C.sigDim : 'rgba(18,20,25,0.11)';
       ctx.fillRect(r.x + 4 + j * 5, wy - h, 2, h);
     }
   };
@@ -384,8 +384,8 @@ window.HNInstrument = (function () {
     /* sweep */
     var ang = (t * 0.62 + s * 2.2) % (Math.PI * 2);
     var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, R);
-    g.addColorStop(0, 'rgba(255,180,84,0.00)');
-    g.addColorStop(1, 'rgba(255,180,84,0.16)');
+    g.addColorStop(0, 'rgba(194,80,12,0.00)');
+    g.addColorStop(1, 'rgba(194,80,12,0.16)');
     ctx.fillStyle = g;
     ctx.beginPath();
     ctx.moveTo(cx, cy);
@@ -413,7 +413,7 @@ window.HNInstrument = (function () {
       var by = cy + Math.sin(ba) * br;
       var strong = rand() > 0.72;
       ctx.globalAlpha = life;
-      ctx.fillStyle = strong ? C.sig : 'rgba(233,236,241,0.75)';
+      ctx.fillStyle = strong ? C.sig : 'rgba(18,20,25,0.75)';
       var sz = strong ? 3 : 2;
       ctx.fillRect(bx - sz / 2, by - sz / 2, sz, sz);
       if (strong && life > 0.55) {
@@ -473,7 +473,7 @@ window.HNInstrument = (function () {
         var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
         var d = Math.sqrt(dx * dx + dy * dy);
         if (d > R * 0.42) continue;
-        ctx.strokeStyle = 'rgba(233,236,241,' + (0.16 * (1 - d / (R * 0.42))).toFixed(3) + ')';
+        ctx.strokeStyle = 'rgba(18,20,25,' + (0.16 * (1 - d / (R * 0.42))).toFixed(3) + ')';
         ctx.beginPath();
         ctx.moveTo(pts[i].x, pts[i].y);
         ctx.lineTo(pts[j].x, pts[j].y);
@@ -484,7 +484,7 @@ window.HNInstrument = (function () {
     /* nodes */
     for (i = 0; i < n; i++) {
       var big = pts[i].w > 0.86;
-      ctx.fillStyle = big ? C.sig : 'rgba(233,236,241,' + (0.3 + pts[i].w * 0.5).toFixed(2) + ')';
+      ctx.fillStyle = big ? C.sig : 'rgba(18,20,25,' + (0.3 + pts[i].w * 0.5).toFixed(2) + ')';
       var sz = big ? 3.5 : 1.6 + pts[i].w * 1.6;
       ctx.beginPath();
       ctx.arc(pts[i].x, pts[i].y, sz, 0, Math.PI * 2);
@@ -535,10 +535,10 @@ window.HNInstrument = (function () {
         var y = oy + j * cell;
         var d = Math.abs(j - scan);
         var lit = clamp(1 - d / 2.4, 0, 1);
-        ctx.strokeStyle = 'rgba(233,236,241,' + (0.055 + lit * 0.22).toFixed(3) + ')';
+        ctx.strokeStyle = 'rgba(18,20,25,' + (0.055 + lit * 0.22).toFixed(3) + ')';
         ctx.strokeRect(Math.round(x) + 0.5, Math.round(y) + 0.5, Math.round(cell) - 1, Math.round(cell) - 1);
         if (lit > 0.55 && (i + j * 3) % 5 === 0) {
-          ctx.fillStyle = 'rgba(233,236,241,' + (lit * 0.10).toFixed(3) + ')';
+          ctx.fillStyle = 'rgba(18,20,25,' + (lit * 0.10).toFixed(3) + ')';
           ctx.fillRect(x + 2, y + 2, cell - 4, cell - 4);
         }
       }
@@ -551,7 +551,7 @@ window.HNInstrument = (function () {
       var sx = ox + slots[i][0] * cell;
       var sy = oy + slots[i][1] * cell;
       var on = 0.55 + 0.45 * Math.sin(t * 1.1 + i * 2.1);
-      ctx.fillStyle = 'rgba(255,180,84,' + (0.10 + on * 0.16).toFixed(3) + ')';
+      ctx.fillStyle = 'rgba(194,80,12,' + (0.10 + on * 0.16).toFixed(3) + ')';
       ctx.fillRect(sx + 2, sy + 2, cell - 4, cell - 4);
       ctx.strokeStyle = C.sig;
       ctx.strokeRect(Math.round(sx) + 0.5, Math.round(sy) + 0.5, Math.round(cell) - 1, Math.round(cell) - 1);
@@ -590,7 +590,7 @@ window.HNInstrument = (function () {
       var skew = (i - (n - 1) / 2) * (bw * 0.045);
       var x = cx - bw / 2 + skew;
 
-      ctx.fillStyle = 'rgba(16,19,25,0.86)';
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
       ctx.fillRect(x, y - bh / 2, bw, bh);
       ctx.strokeStyle = i === 2 ? C.sigDim : C.line;
       ctx.strokeRect(Math.round(x) + 0.5, Math.round(y - bh / 2) + 0.5, bw - 1, bh - 1);
@@ -598,9 +598,9 @@ window.HNInstrument = (function () {
       /* travelling light band */
       var band = ((t * 0.32 + i * 0.17) % 1) * (bw + 90) - 45;
       var lg = ctx.createLinearGradient(x + band - 45, 0, x + band + 45, 0);
-      lg.addColorStop(0, 'rgba(255,180,84,0)');
-      lg.addColorStop(0.5, 'rgba(255,180,84,0.13)');
-      lg.addColorStop(1, 'rgba(255,180,84,0)');
+      lg.addColorStop(0, 'rgba(194,80,12,0)');
+      lg.addColorStop(0.5, 'rgba(194,80,12,0.13)');
+      lg.addColorStop(1, 'rgba(194,80,12,0)');
       ctx.save();
       ctx.beginPath();
       ctx.rect(x, y - bh / 2, bw, bh);
@@ -709,8 +709,8 @@ window.HNInstrument = (function () {
 
       var hot = block === hotBlock;
       ctx.fillStyle = hot
-        ? 'rgba(255,180,84,' + (0.30 * appear).toFixed(3) + ')'
-        : 'rgba(233,236,241,' + (0.13 * appear).toFixed(3) + ')';
+        ? 'rgba(194,80,12,' + (0.30 * appear).toFixed(3) + ')'
+        : 'rgba(18,20,25,' + (0.13 * appear).toFixed(3) + ')';
       ctx.fillRect(x, y, lw * appear, 2);
 
       /* the drawing head */
@@ -774,7 +774,7 @@ window.HNInstrument = (function () {
     /* expanding rings */
     for (i = 0; i < 3; i++) {
       var ph = ((t * 0.34) + i / 3) % 1;
-      ctx.strokeStyle = 'rgba(255,180,84,' + (0.30 * (1 - ph)).toFixed(3) + ')';
+      ctx.strokeStyle = 'rgba(194,80,12,' + (0.30 * (1 - ph)).toFixed(3) + ')';
       ctx.beginPath();
       ctx.arc(cx, cy, 8 + ph * Math.min(r.w, r.h) * 0.42, 0, Math.PI * 2);
       ctx.stroke();

@@ -6,13 +6,13 @@
 <title>hailneed — evidence-first tools for coding agents</title>
 <meta name="description" content="hailneed builds open-source instrumentation for coding agents: agent-blackbox, skillbench, scar, gardener, painradar and devpersona. Timeline, risk audit and undo map read from logs already on your disk. Local-first, MIT.">
 <meta name="author" content="hailneed">
-<meta name="theme-color" content="#08090b">
+<meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://hailneed.github.io/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="hailneed">
 <meta property="og:title" content="hailneed — evidence-first tools for coding agents">
-<meta property="og:description" content="Your agent tells you what it did. These five plugins show you — from logs already on your disk, with nothing sent anywhere.">
+<meta property="og:description" content="Your agent tells you what it did. The hailneed suite shows you — six modules reading evidence already on your disk, with nothing of yours sent anywhere.">
 <meta property="og:url" content="https://hailneed.github.io/">
 <meta property="og:image" content="https://hailneed.github.io/assets/img/og.png">
 <meta property="og:image:width" content="1200">
@@ -41,6 +41,47 @@
   "address": { "@type": "PostalAddress", "addressLocality": "Istanbul", "addressCountry": "TR" },
   "knowsAbout": ["ASP.NET Core", "Entity Framework Core", "PostgreSQL", "Claude Code plugins", "Model Context Protocol", "data loss prevention"],
   "sameAs": ["https://github.com/hailneed"]
+}
+</script>
+
+<!-- FAQ yapısal verisi — sayfadaki 07 bölümüyle birebir aynı metin.
+     Metin değişirse burası da değişir; iki yerde farklı cevap tutulmaz. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is the hailneed suite actually free, or free for now?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Free, and not revocably so. Every repo is published under MIT, which cannot be taken back from a release that already exists. If a paid tier ever appears it will be Cloud, a separate hosted thing, and the local plugins will keep working without it." }
+    },
+    {
+      "@type": "Question",
+      "name": "What does sponsoring hailneed actually buy?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Not a feature. It buys attention: your issue read first, your use case weighted when the next rule file gets written, and enough maintenance time that the suite still installs cleanly a year from now." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is hailneed Cloud, and will it be paid?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Cloud is the hosted half currently in design: session history that survives a machine swap, risk reports across a whole team, and trend lines that need more than one week of logs. It will be paid, in single digits a month. Each product page has a waitlist form." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do the hailneed plugins send anything off my machine?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Five of the six make no network calls at all — they read logs your agent already wrote to your disk, and anything shaped like a credential is masked before a report is written. The sixth, painradar, reaches the public web to do its job and says which sources it hits. There is no telemetry in any of them." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the hailneed plugins commercially?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. MIT, including inside closed-source products and paid consulting work. Keep the licence file; there is nothing else to ask for." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which coding agents can the hailneed plugins read?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Claude Code, Codex CLI and Gemini CLI, since all three write their sessions to disk in a readable format. Claude Code is what the plugin packaging targets; the scanners also run standalone against the other two." }
+    }
+  ]
 }
 </script>
 </head>
@@ -75,6 +116,8 @@
   <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 10l3 2.5-3 2.5M12.5 15.5H17"/></symbol>
   <symbol id="i-gardener" viewBox="0 0 24 24"><path d="M12 21v-7"/><path d="M12 14c0-3.3 2.4-6 5.5-6.4C17.2 10.9 15 14 12 14z"/><path d="M12 14C12 10.7 9.6 8 6.5 7.6 6.8 10.9 9 14 12 14z"/><path d="M8 21h8"/></symbol>
   <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l8.5 4.5L12 12 3.5 7.5z"/><path d="M3.5 12.5L12 17l8.5-4.5"/></symbol>
+  <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M4 9.5h13v5a4.5 4.5 0 0 1-4.5 4.5h-4A4.5 4.5 0 0 1 4 14.5z"/><path d="M17 11h1.6a2.3 2.3 0 0 1 0 4.6H17"/><path d="M8 3.5V6M12.5 3.5V6"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/></symbol>
 </defs></svg>
 
 <header class="topbar" id="topbar">
@@ -82,6 +125,7 @@
   <nav class="topnav" id="topnav" aria-label="Sections">
     <a href="#fieldkit">Field kit</a>
     <a href="#install">Install</a>
+    <a href="#support">Support</a>
     <a href="#method">Method</a>
     <a href="#writing">Dispatches</a>
     <a href="#contact">Contact</a>
@@ -106,8 +150,8 @@
       </p>
 
       <div class="hero-actions">
-        <a class="btn btn--solid" href="#install">Install the marketplace</a>
-        <a class="btn" href="https://github.com/hailneed" rel="noopener">GitHub <span aria-hidden="true">&#8599;</span></a>
+        <a class="btn btn--solid" href="#install" data-goatcounter-click="cta-install">Install the marketplace</a>
+        <a class="btn" href="https://github.com/hailneed" rel="noopener" data-goatcounter-click="cta-github">GitHub <span aria-hidden="true">&#8599;</span></a>
       </div>
     </div>
 
@@ -139,9 +183,10 @@
   <section id="fieldkit">
     <div class="section-head reveal--soft" data-reveal>
       <p class="eyebrow"><span class="num">01</span> Field kit</p>
-      <h2 class="h-section" data-split>Six plugins.<br>One idea: <em>show, do not tell.</em></h2>
+      <h2 class="h-section" data-split>Six modules.<br>One suite: <em>show, do not tell.</em></h2>
       <p class="lede">
-        Each reads something that already exists — and cites where every claim came from.
+        The hailneed suite. Each module reads something that already exists — and cites
+        where every claim came from.
       </p>
     </div>
 
@@ -171,6 +216,7 @@
             <li class="chip"><svg class="ico ico--xs"><use href="#i-nonet"/></svg>no network</li>
             <li class="chip"><svg class="ico ico--xs"><use href="#i-layers"/></svg>3 agents</li>
           </ul>
+          <a class="link" href="/agent-blackbox/">Details <span class="arw" aria-hidden="true">&rarr;</span></a>
           <a class="link" href="https://github.com/hailneed/agent-blackbox" rel="noopener">Source <span class="arw" aria-hidden="true">&#8599;</span></a>
         </div>
       </article>
@@ -199,6 +245,7 @@
             <li class="chip"><svg class="ico ico--xs"><use href="#i-nonet"/></svg>no network</li>
             <li class="chip"><svg class="ico ico--xs"><use href="#i-target"/></svg>measured</li>
           </ul>
+          <a class="link" href="/skillbench/">Details <span class="arw" aria-hidden="true">&rarr;</span></a>
           <a class="link" href="https://github.com/hailneed/skillbench" rel="noopener">Source <span class="arw" aria-hidden="true">&#8599;</span></a>
         </div>
       </article>
@@ -227,6 +274,7 @@
             <li class="chip"><svg class="ico ico--xs"><use href="#i-nonet"/></svg>no network</li>
             <li class="chip"><svg class="ico ico--xs"><use href="#i-shield"/></svg>never writes</li>
           </ul>
+          <a class="link" href="/scar/">Details <span class="arw" aria-hidden="true">&rarr;</span></a>
           <a class="link" href="https://github.com/hailneed/scar" rel="noopener">Source <span class="arw" aria-hidden="true">&#8599;</span></a>
         </div>
       </article>
@@ -256,6 +304,7 @@
             <li class="chip"><svg class="ico ico--xs"><use href="#i-nonet"/></svg>no network</li>
             <li class="chip"><svg class="ico ico--xs"><use href="#i-shield"/></svg>never edits</li>
           </ul>
+          <a class="link" href="/gardener/">Details <span class="arw" aria-hidden="true">&rarr;</span></a>
           <a class="link" href="https://github.com/hailneed/gardener" rel="noopener">Source <span class="arw" aria-hidden="true">&#8599;</span></a>
         </div>
       </article>
@@ -284,6 +333,7 @@
             <li class="chip"><svg class="ico ico--xs"><use href="#i-plug"/></svg>public sources</li>
             <li class="chip"><svg class="ico ico--xs"><use href="#i-shield"/></svg>no usernames</li>
           </ul>
+          <a class="link" href="/painradar/">Details <span class="arw" aria-hidden="true">&rarr;</span></a>
           <a class="link" href="https://github.com/hailneed/painradar" rel="noopener">Source <span class="arw" aria-hidden="true">&#8599;</span></a>
         </div>
       </article>
@@ -312,6 +362,7 @@
             <li class="chip"><svg class="ico ico--xs"><use href="#i-nonet"/></svg>no network</li>
             <li class="chip"><svg class="ico ico--xs"><use href="#i-layers"/></svg>3 agents</li>
           </ul>
+          <a class="link" href="/devpersona/">Details <span class="arw" aria-hidden="true">&rarr;</span></a>
           <a class="link" href="https://github.com/hailneed/devpersona" rel="noopener">Source <span class="arw" aria-hidden="true">&#8599;</span></a>
         </div>
       </article>
@@ -375,10 +426,107 @@
     </div>
   </section>
 
-  <!-- ================================================== 03 also shipped == -->
+  <!-- ================================================== 03 support ======= -->
+  <section id="support" data-scene="radar">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">03</span> Support</p>
+      <h2 class="h-section" data-split>Free, and <em>staying</em> free.<br>Pay only if it saved you a day.</h2>
+      <p class="lede">
+        Nothing on this page is gated. There is no tier that unlocks a command, no
+        account to make, no key to paste. What the tiers below buy is maintenance
+        time &mdash; that is the whole product being sold.
+      </p>
+    </div>
+
+    <div class="tiers" data-reveal style="--d:.08s">
+
+      <!-- ------------------------------------------------------ free ----- -->
+      <article class="tier">
+        <div class="tier-side">
+          <span class="tier-name">Free</span>
+          <span class="tier-tag">the whole suite</span>
+          <p class="tier-price">$0 <span class="per">forever</span></p>
+          <a class="btn" href="#install" data-goatcounter-click="tier-free">Install it</a>
+        </div>
+        <div class="tier-main">
+          <p class="tier-line">
+            Every plugin, every command, every rule file &mdash; today, and after the
+            next release. There is no second version of this page behind a login.
+          </p>
+          <ul class="tier-list">
+            <li><svg class="ico ico--sm"><use href="#i-check"/></svg>Six plugins, 18 skills</li>
+            <li><svg class="ico ico--sm"><use href="#i-check"/></svg>MIT &mdash; fork it, ship it, sell it</li>
+            <li><svg class="ico ico--sm"><use href="#i-check"/></svg>No account, no API key</li>
+            <li><svg class="ico ico--sm"><use href="#i-check"/></svg>Five of six run with the network off</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- ------------------------------------------------------ coffee --- -->
+      <!-- Buy Me a Coffee hesabi acildiginda href https://buymeacoffee.com/<handle>
+           olur; baska hicbir sey degismez. -->
+      <article class="tier tier--pick">
+        <div class="tier-side">
+          <span class="tier-name">Coffee</span>
+          <span class="tier-tag">one-off</span>
+          <p class="tier-price">$5 <span class="per">once</span></p>
+          <a class="btn btn--solid" href="https://github.com/sponsors/hailneed?frequency=one-time"
+             rel="noopener" data-goatcounter-click="tier-coffee">
+            <svg class="ico ico--sm"><use href="#i-coffee"/></svg> Buy me a coffee
+          </a>
+        </div>
+        <div class="tier-main">
+          <p class="tier-line">
+            The version of a GitHub star that pays for the Saturday morning someone
+            spends on your bug report.
+          </p>
+          <ul class="tier-list">
+            <li><svg class="ico ico--sm"><use href="#i-check"/></svg>Everything in Free &mdash; already everything</li>
+            <li><svg class="ico ico--sm"><use href="#i-check"/></svg>One payment, nothing recurring</li>
+            <li><svg class="ico ico--sm"><use href="#i-check"/></svg>Your issue read before the queue</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- ------------------------------------------------------ sponsor -- -->
+      <article class="tier">
+        <div class="tier-side">
+          <span class="tier-name">Sponsor</span>
+          <span class="tier-tag">monthly</span>
+          <p class="tier-price">$5 <span class="per">/ mo</span></p>
+          <a class="btn" href="https://github.com/sponsors/hailneed" rel="noopener"
+             data-goatcounter-click="tier-sponsor">
+            <svg class="ico ico--sm"><use href="#i-spark"/></svg> Sponsor
+          </a>
+        </div>
+        <div class="tier-main">
+          <p class="tier-line">
+            For teams running these in CI who would rather they still work next quarter,
+            and want a say in which rule gets written next.
+          </p>
+          <ul class="tier-list">
+            <li><svg class="ico ico--sm"><use href="#i-check"/></svg>Everything in Coffee</li>
+            <li><svg class="ico ico--sm"><use href="#i-check"/></svg>Name and link in the repo README</li>
+            <li><svg class="ico ico--sm"><use href="#i-check"/></svg>Early access to the Cloud betas</li>
+            <li><svg class="ico ico--sm"><use href="#i-check"/></svg>A direct line for bug reports</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="tier-note" data-reveal style="--d:.14s">
+      <b>The plugins are not the paid product and never will be.</b> The only thing that
+      will ever carry a price is Cloud &mdash; the hosted half that keeps history across
+      machines and reports across a team &mdash; and when it ships it will cost single
+      digits a month, with everything local still working without it.
+    </p>
+  </section>
+
+  <!-- ================================================== 04 also shipped == -->
   <section id="shipped" data-scene="stack">
     <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">03</span> Also shipped</p>
+      <p class="eyebrow"><span class="num">04</span> Also shipped</p>
       <h2 class="h-section" data-split>Everything else that is public.</h2>
     </div>
 
@@ -436,10 +584,10 @@
     </div>
   </section>
 
-  <!-- ================================================== 04 method ======== -->
+  <!-- ================================================== 05 method ======== -->
   <section id="method" data-scene="dial">
     <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">04</span> Method</p>
+      <p class="eyebrow"><span class="num">05</span> Method</p>
       <h2 class="h-section" data-split>Four rules the tools are built on.</h2>
     </div>
 
@@ -481,10 +629,10 @@
     </div>
   </section>
 
-  <!-- ================================================== 05 dispatches ==== -->
+  <!-- ================================================== 06 dispatches ==== -->
   <section id="writing" data-scene="ink">
     <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">05</span> Dispatches</p>
+      <p class="eyebrow"><span class="num">06</span> Dispatches</p>
       <h2 class="h-section" data-split>Notes from building this.</h2>
       <p class="lede">
         Long-form on Medium, indexed here. What the logs actually show, what the rules
@@ -506,12 +654,92 @@
         Follow on Medium <span class="arw" aria-hidden="true">&#8599;</span>
       </a>
     </div>
+
+    <!-- Bülten kaydı — düz POST, JS kapalıyken de çalışır. Endpoint: Buttondown. -->
+    <form class="signup" data-reveal action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post">
+      <label class="signup-label" for="nl-email">Dispatches by email — no more than one a month, unsubscribe any time.</label>
+      <div class="signup-row">
+        <input id="nl-email" type="email" name="email" required
+               placeholder="you@example.com" autocomplete="email">
+        <input type="hidden" name="tag" value="newsletter">
+        <button class="btn btn--solid" type="submit" data-goatcounter-click="signup-newsletter">Subscribe</button>
+      </div>
+    </form>
   </section>
 
-  <!-- ================================================== 06 contact ======= -->
+  <!-- ================================================== 07 faq =========== -->
+  <section id="faq" data-scene="graph">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">07</span> FAQ</p>
+      <h2 class="h-section" data-split>The questions that decide it.</h2>
+    </div>
+
+    <div class="faq" data-reveal style="--d:.06s">
+      <details>
+        <summary><span class="q-n">01</span> Is it actually free, or free for now?</summary>
+        <p>
+          Free, and not revocably so. Every repo is published under MIT, which cannot be
+          taken back from a release that already exists &mdash; the worst case for you is
+          a fork of the last good commit. If a paid tier ever appears it will be Cloud, a
+          separate hosted thing, and the local plugins will keep working without it.
+        </p>
+      </details>
+
+      <details>
+        <summary><span class="q-n">02</span> So what does sponsoring actually buy?</summary>
+        <p>
+          Not a feature. It buys attention: your issue read first, your use case weighted
+          when the next rule file gets written, and enough maintenance time that the suite
+          still installs cleanly a year from now. If that is not worth $5 to you, install
+          it free &mdash; that is a completely normal outcome and the licence says so.
+        </p>
+      </details>
+
+      <details>
+        <summary><span class="q-n">03</span> What is Cloud, and will it be paid?</summary>
+        <p>
+          Cloud is the hosted half currently in design: session history that survives a
+          machine swap, risk reports across a whole team instead of one laptop, and trend
+          lines that need more than one week of logs. Yes, it will be paid, in single
+          digits a month. Each product page has a waitlist form for its own Cloud.
+        </p>
+      </details>
+
+      <details>
+        <summary><span class="q-n">04</span> Does anything leave my machine?</summary>
+        <p>
+          Five of the six make no network calls at all &mdash; they read logs your agent
+          already wrote to your disk, and anything shaped like a credential is masked
+          before a report is written. The sixth, <a href="/painradar/">painradar</a>, has
+          to reach the public web to do its job, and its page says exactly which sources
+          it hits. There is no telemetry in any of them.
+        </p>
+      </details>
+
+      <details>
+        <summary><span class="q-n">05</span> Can I use these at work, commercially?</summary>
+        <p>
+          Yes. MIT, including inside closed-source products and paid consulting work.
+          Keep the licence file; there is nothing else to ask for and nobody to email.
+        </p>
+      </details>
+
+      <details>
+        <summary><span class="q-n">06</span> Which agents can they read?</summary>
+        <p>
+          Claude Code, Codex CLI and Gemini CLI, since all three write their sessions to
+          disk in a readable format. Claude Code is the one the plugin packaging targets;
+          the scanners also run standalone with
+          <code>node scripts/blackbox.mjs</code> against the other two.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================================================== 08 contact ======= -->
   <section id="contact" data-scene="signoff">
     <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">06</span> Contact</p>
+      <p class="eyebrow"><span class="num">08</span> Contact</p>
       <h2 class="h-section" data-split>Open to interesting problems.</h2>
     </div>
 
@@ -558,7 +786,8 @@
 <footer class="foot">
   <span>&copy; <span id="year">2026</span> hailneed</span>
   <span class="colophon">
-    Static page. No framework, no build step, no analytics. The instrument on the right
+    Static page. No framework, no build step, no cookies. Visits are counted in
+    aggregate by GoatCounter — nothing identifies you. The instrument on the right
     is a 2D canvas driven by scroll position. Type: Inter Tight, Instrument Serif,
     JetBrains Mono. <a href="https://github.com/hailneed/hailneed.github.io" rel="noopener">Source</a>.
   </span>
@@ -570,5 +799,8 @@
 <script src="/assets/js/data.js"></script>
 <script src="/assets/js/instrument.js"></script>
 <script src="/assets/js/main.js"></script>
+<!-- Çerezsiz toplu sayaç — localhost'u varsayılan olarak saymaz. -->
+<script data-goatcounter="https://hailneed.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

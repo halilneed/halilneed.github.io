@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>devpersona — developer profile from your agent history</title>
+<meta name="description" content="devpersona reads the session history Claude Code, Codex CLI and Gemini CLI keep on your disk and builds a developer profile: usage numbers, an evidence-cited character card, and concrete skill, habit and architecture suggestions. No network calls, no telemetry, MIT.">
+<meta name="author" content="hailneed">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://hailneed.github.io/devpersona/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="hailneed">
+<meta property="og:title" content="devpersona — developer profile from your agent history">
+<meta property="og:description" content="Who you are as a developer, read from your own history — usage numbers, an evidence-cited persona card and concrete suggestions. Everything stays on your machine.">
+<meta property="og:url" content="https://hailneed.github.io/devpersona/">
+<meta property="og:image" content="https://hailneed.github.io/assets/img/og-devpersona.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="devpersona — developer profile from your agent history">
+<meta name="twitter:description" content="Stats, persona card and suggestions from local coding-agent history — nothing leaves your machine.">
+<meta name="twitter:image" content="https://hailneed.github.io/assets/img/og-devpersona.png">
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/assets/img/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/css/main.css">
+<script>document.documentElement.classList.add('js');</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "devpersona",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Windows, macOS, Linux",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "license": "https://github.com/hailneed/devpersona/blob/main/LICENSE",
+  "url": "https://hailneed.github.io/devpersona/",
+  "sameAs": ["https://github.com/hailneed/devpersona"],
+  "author": { "@type": "Person", "name": "hailneed", "url": "https://hailneed.github.io/" }
+}
+</script>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="grain" aria-hidden="true"></div>
+<canvas id="instrument" aria-hidden="true"></canvas>
+<div class="scrim" aria-hidden="true"></div>
+<div class="rules" aria-hidden="true"></div>
+
+<!-- icon sprite — yalnızca bu sayfanın kullandığı semboller + ürün ikonu -->
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs>
+  <symbol id="i-persona" viewBox="0 0 24 24"><path d="M12 3a5.5 5.5 0 0 0-5.5 5.5c0 3 .8 4.6.8 7.5"/><path d="M12 3a5.5 5.5 0 0 1 5.5 5.5c0 4-1.4 6-1.4 9"/><path d="M9.7 9a2.4 2.4 0 0 1 4.7.6c0 3-.6 5-.6 8.4"/><path d="M12 12v6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 9.5-4.1-1.9-7-5.3-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-nonet" viewBox="0 0 24 24"><path d="M5 9.5a11 11 0 0 1 14 0"/><path d="M8 13a7 7 0 0 1 8 0"/><circle cx="12" cy="17.5" r="1.2"/><path d="M3.5 3.5l17 17"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l8.5 4.5L12 12 3.5 7.5z"/><path d="M3.5 12.5L12 17l8.5-4.5"/></symbol>
+</defs></svg>
+
+<header class="topbar" id="topbar">
+  <a class="brand" href="/"><span class="dot" aria-hidden="true"></span> hailneed</a>
+  <!-- devpersona'da Cloud yok — nav dört maddedir. -->
+  <nav class="topnav" id="topnav" aria-label="Sections">
+    <a href="/#fieldkit">Suite</a>
+    <a href="#install">Install</a>
+    <a href="/#support">Support</a>
+    <a href="/writing/">Dispatches</a>
+    <a href="#family">Family</a>
+  </nav>
+  <span class="topmeta">MIT &middot; local-first</span>
+</header>
+
+<main id="main" class="flow">
+
+  <!-- ================================================== 00 hero ========== -->
+  <section id="hero" data-scene="graph">
+    <div class="hero-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">00</span> hailneed suite &middot; module 06 &middot; developer profile</p>
+
+      <h1 class="h-display hero-title" data-split>Who you are<br>as a developer —<br><em>read from the record.</em></h1>
+
+      <p class="lede">
+        Claude Code, Codex CLI and Gemini CLI keep a record of every session on your disk.
+        devpersona reads that record through one shared adapter and builds a profile in
+        three layers — numbers first, then an evidence-cited character card, then concrete
+        suggestions. Nothing leaves your machine.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn--solid" href="#install" data-goatcounter-click="dp-cta-install">Install</a>
+        <a class="btn" href="https://github.com/hailneed/devpersona" rel="noopener" data-goatcounter-click="dp-cta-source">Source <span aria-hidden="true">&#8599;</span></a>
+        <a class="btn" href="#local" data-goatcounter-click="dp-cta-local">Why local <span aria-hidden="true">&darr;</span></a>
+      </div>
+    </div>
+
+    <ul class="metrics" data-reveal style="--d:.15s">
+      <li class="metric">
+        <svg class="ico ico--m" aria-hidden="true"><use href="#i-layers"/></svg>
+        <div class="val" data-count="3">3</div>
+        <div class="lbl">Agents read</div>
+      </li>
+      <li class="metric">
+        <svg class="ico ico--m" aria-hidden="true"><use href="#i-check"/></svg>
+        <div class="val" data-count="15">15</div>
+        <div class="lbl">Selftest fixtures</div>
+      </li>
+      <li class="metric">
+        <svg class="ico ico--m" aria-hidden="true"><use href="#i-nonet"/></svg>
+        <div class="val" data-count="0">0</div>
+        <div class="lbl">Network calls</div>
+      </li>
+      <li class="metric">
+        <svg class="ico ico--m" aria-hidden="true"><use href="#i-shield"/></svg>
+        <div class="val" data-count="0">0</div>
+        <div class="lbl">Dependencies</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ================================================== 01 evidence ====== -->
+  <section id="evidence" data-scene="ink">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">01</span> Evidence</p>
+      <h2 class="h-section" data-split>This is a real profile.<br><em>Show, do not tell.</em></h2>
+      <p class="lede">
+        Abridged from an actual run of <code>node scripts/scan.mjs --md</code> on the
+        machine this site was built on. Project names generalized; every number is what
+        the scanner printed. Nothing in it ever left that machine.
+      </p>
+    </div>
+
+    <div class="terminal" data-reveal>
+      <div class="terminal-bar">
+        <span class="lamp" aria-hidden="true"></span>
+        <span class="lamp" aria-hidden="true"></span>
+        <span class="lamp" aria-hidden="true"></span>
+        <span class="ttl">usage profile — markdown out</span>
+      </div>
+      <pre><span class="c"># Coding agent usage profile</span>
+
+<span class="c">Source: Claude Code, Codex CLI · 187 sessions scanned</span>
+
+<span class="c">## Totals</span>
+
+| Projects            | 53    |
+| Sessions            | 187   |
+| Human prompts       | 644   |
+| Tool calls          | 15072 |
+| Tool errors         | 609   |
+| Permission denials  | 55    |
+
+<span class="c">## Work rhythm</span>
+
+- Peak hours: 11:00 (95), 16:00 (82), 15:00 (80)
+- Peak days: Monday (184), Friday (151), Tuesday (106)
+
+<span class="c">## Projects (by prompt count)</span>
+
+| Project        | Agents             | Prompts | Languages             |
+|----------------|--------------------|---------|-----------------------|
+| aspnet-lob-app | claude-code        | 85      | C#, JavaScript, Razor |
+| media-pipeline | claude-code, codex | 78      | Markdown, Python      |
+| client-site    | codex              | 57      | HTML, CSS, JavaScript |
+
+<span class="c">&gt; This report was generated entirely locally; no data left this machine.</span></pre>
+    </div>
+
+    <p class="body" data-reveal style="margin-top:22px; max-width:var(--measure)">
+      Projects are grouped by working directory, so one worked on in two agents — like
+      the pipeline above — appears once, with the agents named, never double-counted.
+      The adapter layer is
+      <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/devpersona/blob/main/scripts/lib/adapters.mjs" rel="noopener">one file you can open</a>,
+      and <code>--selftest</code> proves the classifier against 15 fixtures without
+      reading your data at all.
+    </p>
+  </section>
+
+  <!-- ================================================== 02 install ======= -->
+  <section id="install" data-scene="registry">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">02</span> Install</p>
+      <h2 class="h-section" data-split>One marketplace.<br>Then one command.</h2>
+    </div>
+
+    <div class="install-grid">
+      <div class="terminal" data-reveal>
+        <div class="terminal-bar">
+          <span class="lamp" aria-hidden="true"></span>
+          <span class="lamp" aria-hidden="true"></span>
+          <span class="lamp" aria-hidden="true"></span>
+          <span class="ttl">claude code</span>
+          <button class="copy" type="button" data-copy="#install-src">Copy</button>
+        </div>
+        <pre id="install-src"><span class="c"># once</span>
+<span class="p">&gt;</span> /plugin marketplace add hailneed/plugins
+
+<span class="c"># the profiler</span>
+<span class="p">&gt;</span> /plugin install devpersona@hailneed
+
+<span class="c"># and try it</span>
+<span class="p">&gt;</span> /devpersona:analyze</pre>
+      </div>
+
+      <div data-reveal style="--d:.1s">
+        <ul class="req">
+          <li><b>Claude Code</b> and Node.js 18 or newer.</li>
+          <li><b>No dependencies</b>, no build step, no API key, no account.</li>
+          <li><b>Standalone works too</b> — <code>node scripts/scan.mjs --md</code> gives you the numbers without the plugin.</li>
+          <li><b>Scopeable</b> — <code>--agent codex</code> limits to one agent, <code>--days 90</code> narrows the window, <code>--lang tr</code> switches the report to Turkish.</li>
+        </ul>
+
+        <div class="entry-foot">
+          <a class="link" href="https://github.com/hailneed/plugins" rel="noopener">
+            Marketplace manifest <span class="arw" aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== 03 commands ====== -->
+  <section id="commands" data-scene="stack">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">03</span> Commands</p>
+      <h2 class="h-section" data-split>Numbers, character,<br>then advice.</h2>
+    </div>
+
+    <div class="principles" data-reveal style="--d:.08s">
+      <article class="principle">
+        <div class="n">01</div>
+        <h3><code>/devpersona:stats</code></h3>
+        <p>
+          The numeric usage profile: projects, sessions, prompts, tool calls, errors,
+          permission denials and your peak hours. Numbers only — no interpretation.
+        </p>
+      </article>
+      <article class="principle">
+        <div class="n">02</div>
+        <h3><code>/devpersona:analyze</code></h3>
+        <p>
+          A persona card — your stack, working style, communication style, strengths and
+          risk patterns — written to <code>~/.claude/persona/persona.md</code>. Every
+          observation cites the evidence it came from: the numbers, the project memory
+          files, a small prompt sample.
+        </p>
+      </article>
+      <article class="principle">
+        <div class="n">03</div>
+        <h3><code>/devpersona:advise</code></h3>
+        <p>
+          Turns the card into concrete suggestions: agent skills worth authoring — drafts
+          included — coding-habit fixes and architecture recommendations. Focus with
+          <code>skills</code>, <code>code</code> or <code>architecture</code>. A
+          suggestion without evidence does not make the report.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================================================== 04 trust ========= -->
+  <section id="trust" data-scene="dial">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">04</span> Trust</p>
+      <h2 class="h-section" data-split>Claims you can<br>check in the source.</h2>
+    </div>
+
+    <div data-reveal style="--d:.08s">
+      <ul class="req" style="max-width:var(--measure)">
+        <li><b>No network calls.</b> The scanner only reads files already on your disk —
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/devpersona/blob/main/scripts/scan.mjs" rel="noopener">scan.mjs</a> contains no fetch, no sockets.</li>
+        <li><b>No raw chat text in the default output</b> — only numbers, file names and session titles. Session titles are short AI-generated summaries of chat content, so glance over a report before you share it.</li>
+        <li><b>Prompt samples only on request.</b> <code>--prompts &lt;project&gt;</code> prints them to your terminal and nowhere else.</li>
+        <li><b>Interpretation stays in your session.</b> The persona card is written by the Claude Code session you already run — no second model, no service in between.</li>
+        <li><b>Classifier you can prove</b> — <code>--selftest</code> runs 15 fixtures without touching your history or the network, and prints the score.</li>
+        <li><b>MIT.</b>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/devpersona/blob/main/LICENSE" rel="noopener">LICENSE</a> — no account, no signup, no telemetry.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================ 05 local (cloud yok) === -->
+  <section id="local" data-scene="signoff">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">05</span> Local</p>
+      <h2 class="h-section" data-split>It stays local —<br><em>that is the product.</em></h2>
+      <p class="lede">
+        There is no devpersona Cloud, and none is planned. A profile built from your own
+        chat history is exactly the kind of thing that should never sit in someone
+        else's dashboard.
+      </p>
+    </div>
+
+    <div data-reveal style="--d:.08s">
+      <ul class="req" style="max-width:var(--measure)">
+        <li><b>Zero network calls</b> — there is no code path that could phone home.</li>
+        <li><b>No telemetry, no account</b> — nobody learns you ran it, including us.</li>
+        <li><b>The card is a file on your disk</b> — <code>~/.claude/persona/persona.md</code>. Edit it, share it, delete it; it answers to you.</li>
+      </ul>
+
+      <!-- Bülten — düz POST. devpersona'da bekleme listesi yok; gizlilik ürünün vaadi olduğundan burada yalnızca bülten formu var. -->
+      <form class="signup" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post">
+        <label class="signup-label" for="nl-email">If you want the dispatches — new modules and honest build notes, by email, occasionally — leave an address. That is the only thing this form does.</label>
+        <div class="signup-row">
+          <input id="nl-email" type="email" name="email" required
+                 placeholder="you@example.com" autocomplete="email">
+          <input type="hidden" name="tag" value="newsletter">
+          <button class="btn btn--solid" type="submit" data-goatcounter-click="dp-subscribe">Get the dispatches</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================================================== 06 family ======== -->
+  <section id="family" data-scene="grid">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">06</span> Family</p>
+      <h2 class="h-section" data-split>One suite.<br>Five more modules.</h2>
+    </div>
+
+    <div class="cards" data-reveal style="--d:.08s">
+      <a class="card" href="/agent-blackbox/">
+        <div class="card-top">
+          <span class="card-name">agent-blackbox</span>
+          <span class="card-kicker">Flight recorder</span>
+        </div>
+        <p>What your agent actually did — and what can still be undone.</p>
+        <div class="card-foot"><span>timeline &middot; risk &middot; undo</span><span class="go" aria-hidden="true">&rarr;</span></div>
+      </a>
+      <a class="card" href="/skillbench/">
+        <div class="card-top">
+          <span class="card-name">skillbench</span>
+          <span class="card-kicker">Skill lint &amp; usage</span>
+        </div>
+        <p>Is the skill written right — and does it ever actually fire?</p>
+        <div class="card-foot"><span>26 checks &middot; real activations</span><span class="go" aria-hidden="true">&rarr;</span></div>
+      </a>
+      <a class="card" href="/scar/">
+        <div class="card-top">
+          <span class="card-name">scar</span>
+          <span class="card-kicker">Closed loop</span>
+        </div>
+        <p>Failures that keep repeating, written down — then measured.</p>
+        <div class="card-foot"><span>mine &middot; write &middot; verify</span><span class="go" aria-hidden="true">&rarr;</span></div>
+      </a>
+      <a class="card" href="/gardener/">
+        <div class="card-top">
+          <span class="card-name">gardener</span>
+          <span class="card-kicker">Context hygiene</span>
+        </div>
+        <p>What CLAUDE.md costs you on every single request.</p>
+        <div class="card-foot"><span>audit &middot; compliance &middot; prune</span><span class="go" aria-hidden="true">&rarr;</span></div>
+      </a>
+      <a class="card" href="/painradar/">
+        <div class="card-top">
+          <span class="card-name">painradar</span>
+          <span class="card-kicker">Demand signal</span>
+        </div>
+        <p>Public complaints plus verified revenue — themes with links.</p>
+        <div class="card-foot"><span>scan &middot; fit &middot; launch</span><span class="go" aria-hidden="true">&rarr;</span></div>
+      </a>
+    </div>
+
+    <div class="writing-foot" data-reveal style="margin-top:26px">
+      <a class="link" href="/">Part of the hailneed suite <span class="arw" aria-hidden="true">&larr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <span>&copy; <span id="year">2026</span> hailneed</span>
+  <span class="colophon">
+    Static page. No framework, no build step, no cookies. Visits are counted in
+    aggregate by GoatCounter — nothing identifies you.
+    <a href="https://github.com/hailneed/hailneed.github.io" rel="noopener">Source</a>.
+  </span>
+  <a class="to-top" href="#hero">Back to top &uarr;</a>
+</footer>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/instrument.js"></script>
+<script src="/assets/js/main.js"></script>
+<!-- Çerezsiz toplu sayaç — localhost'u varsayılan olarak saymaz. -->
+<script data-goatcounter="https://hailneed.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
