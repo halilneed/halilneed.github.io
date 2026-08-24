@@ -60,11 +60,11 @@ window.HN = (function () {
       dek:
         'Claude Code writes every session to your disk as JSONL. Reading mine: ' +
         '35 tool calls per prompt, 49 denials, and the parts that did not flatter me.',
-      status: 'planned',
+      status: 'published',
       tags: ['claude-code', 'agents'],
-      date: null,
-      readingTime: null,
-      url: null
+      date: '2026-08-21',
+      readingTime: 7,
+      url: 'https://medium.com/@hailneed/i-read-my-claude-code-history-300-prompts-10-594-tool-calls-a1524399d5a9'
     },
     {
       title: 'Your agent says it fixed it. Here is how to check.',
