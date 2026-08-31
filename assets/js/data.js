@@ -44,6 +44,18 @@ window.HN = (function () {
      ======================================================================= */
   var writing = [
     {
+      title: "I have 38 agent skills. Ten of them have never fired.",
+      dek:
+        "Claude Code writes down which skill was active on every tool call. " +
+        "128 sessions, 376 activations, six skills doing all the work — and " +
+        "1,447 lines of instructions no agent has ever opened.",
+      status: "planned",
+      tags: ["claude-code", "agents", "developer-tools"],
+      date: null,
+      readingTime: null,
+      url: null
+    },
+    {
       title: "My CLAUDE.md is seven lines long. It loads 137.",
       dek:
         "Instruction files are read before every question you ask, and nobody " +
