@@ -49,23 +49,23 @@ window.HN = (function () {
         "Claude Code writes down which skill was active on every tool call. " +
         "128 sessions, 376 activations, six skills doing all the work — and " +
         "1,447 lines of instructions no agent has ever opened.",
-      status: "planned",
+      status: "published",
       tags: ["claude-code", "agents", "developer-tools"],
-      date: null,
+      date: "2026-08-26",
       readingTime: null,
-      url: null
+      url: "https://hailneed.medium.com/i-have-38-agent-skills-ten-of-them-have-never-fired-6e908ee56a35"
     },
     {
-      title: "My CLAUDE.md is seven lines long. It loads 137.",
+      title: "Instruction files are read before every question you ask, and nobody measures them.",
       dek:
-        "Instruction files are read before every question you ask, and nobody " +
-        "measures them. Twelve projects, a median of ~6,000 tokens per request, " +
-        "and the rule that turned out to be working precisely because it never fired.",
-      status: "planned",
+        "My CLAUDE.md is seven lines long. It loads 137. Twelve projects, " +
+        "a median of ~6,000 tokens per request, and the rule that turned out " +
+        "to be working precisely because it never fired.",
+      status: "published",
       tags: ["claude-code", "agents", "context"],
-      date: null,
+      date: "2026-08-26",
       readingTime: null,
-      url: null
+      url: "https://hailneed.medium.com/instruction-files-are-read-before-every-question-you-ask-and-nobody-measures-them-c56b7989d12b"
     },
     {
       title: 'I read my Claude Code history: 300 prompts, 10,594 tool calls.',
