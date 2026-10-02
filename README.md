@@ -1,9 +1,9 @@
-# hailneed.github.io
+# halilneed.github.io
 
 > Kişisel portfolyo ve yazı indeksi. Statik HTML, sıfır bağımlılık, derleme adımı yok.
 > GitHub Pages doğrudan `main` dalından servis eder.
 
-**Yayın:** https://hailneed.github.io/
+**Yayın:** https://halilneed.github.io/
 
 ---
 

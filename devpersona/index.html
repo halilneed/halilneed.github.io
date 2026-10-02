@@ -7,20 +7,20 @@
 <meta name="description" content="devpersona reads the session history Claude Code, Codex CLI and Gemini CLI keep on your disk and builds a developer profile: usage numbers, an evidence-cited character card, and concrete skill, habit and architecture suggestions. No network calls, no telemetry, MIT.">
 <meta name="author" content="hailneed">
 <meta name="theme-color" content="#ffffff">
-<link rel="canonical" href="https://hailneed.github.io/devpersona/">
+<link rel="canonical" href="https://halilneed.github.io/devpersona/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="hailneed">
 <meta property="og:title" content="devpersona — developer profile from your agent history">
 <meta property="og:description" content="Who you are as a developer, read from your own history — usage numbers, an evidence-cited persona card and concrete suggestions. Everything stays on your machine.">
-<meta property="og:url" content="https://hailneed.github.io/devpersona/">
-<meta property="og:image" content="https://hailneed.github.io/assets/img/og-devpersona.png">
+<meta property="og:url" content="https://halilneed.github.io/devpersona/">
+<meta property="og:image" content="https://halilneed.github.io/assets/img/og-devpersona.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="devpersona — developer profile from your agent history">
 <meta name="twitter:description" content="Stats, persona card and suggestions from local coding-agent history — nothing leaves your machine.">
-<meta name="twitter:image" content="https://hailneed.github.io/assets/img/og-devpersona.png">
+<meta name="twitter:image" content="https://halilneed.github.io/assets/img/og-devpersona.png">
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/assets/img/favicon.svg">
@@ -39,10 +39,10 @@
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Windows, macOS, Linux",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "license": "https://github.com/hailneed/devpersona/blob/main/LICENSE",
-  "url": "https://hailneed.github.io/devpersona/",
-  "sameAs": ["https://github.com/hailneed/devpersona"],
-  "author": { "@type": "Person", "name": "hailneed", "url": "https://hailneed.github.io/" }
+  "license": "https://github.com/halilneed/devpersona/blob/main/LICENSE",
+  "url": "https://halilneed.github.io/devpersona/",
+  "sameAs": ["https://github.com/halilneed/devpersona"],
+  "author": { "@type": "Person", "name": "hailneed", "url": "https://halilneed.github.io/" }
 }
 </script>
 </head>
@@ -95,7 +95,7 @@
 
       <div class="hero-actions">
         <a class="btn btn--solid" href="#install" data-goatcounter-click="dp-cta-install">Install</a>
-        <a class="btn" href="https://github.com/hailneed/devpersona" rel="noopener" data-goatcounter-click="dp-cta-source">Source <span aria-hidden="true">&#8599;</span></a>
+        <a class="btn" href="https://github.com/halilneed/devpersona" rel="noopener" data-goatcounter-click="dp-cta-source">Source <span aria-hidden="true">&#8599;</span></a>
         <a class="btn" href="#local" data-goatcounter-click="dp-cta-local">Why local <span aria-hidden="true">&darr;</span></a>
       </div>
     </div>
@@ -176,7 +176,7 @@
       Projects are grouped by working directory, so one worked on in two agents — like
       the pipeline above — appears once, with the agents named, never double-counted.
       The adapter layer is
-      <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/devpersona/blob/main/scripts/lib/adapters.mjs" rel="noopener">one file you can open</a>,
+      <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/devpersona/blob/main/scripts/lib/adapters.mjs" rel="noopener">one file you can open</a>,
       and <code>--selftest</code> proves the classifier against 15 fixtures without
       reading your data at all.
     </p>
@@ -199,7 +199,7 @@
           <button class="copy" type="button" data-copy="#install-src">Copy</button>
         </div>
         <pre id="install-src"><span class="c"># once</span>
-<span class="p">&gt;</span> /plugin marketplace add hailneed/plugins
+<span class="p">&gt;</span> /plugin marketplace add halilneed/plugins
 
 <span class="c"># the profiler</span>
 <span class="p">&gt;</span> /plugin install devpersona@hailneed
@@ -217,7 +217,7 @@
         </ul>
 
         <div class="entry-foot">
-          <a class="link" href="https://github.com/hailneed/plugins" rel="noopener">
+          <a class="link" href="https://github.com/halilneed/plugins" rel="noopener">
             Marketplace manifest <span class="arw" aria-hidden="true">&#8599;</span>
           </a>
         </div>
@@ -274,13 +274,13 @@
     <div data-reveal style="--d:.08s">
       <ul class="req" style="max-width:var(--measure)">
         <li><b>No network calls.</b> The scanner only reads files already on your disk —
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/devpersona/blob/main/scripts/scan.mjs" rel="noopener">scan.mjs</a> contains no fetch, no sockets.</li>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/devpersona/blob/main/scripts/scan.mjs" rel="noopener">scan.mjs</a> contains no fetch, no sockets.</li>
         <li><b>No raw chat text in the default output</b> — only numbers, file names and session titles. Session titles are short AI-generated summaries of chat content, so glance over a report before you share it.</li>
         <li><b>Prompt samples only on request.</b> <code>--prompts &lt;project&gt;</code> prints them to your terminal and nowhere else.</li>
         <li><b>Interpretation stays in your session.</b> The persona card is written by the Claude Code session you already run — no second model, no service in between.</li>
         <li><b>Classifier you can prove</b> — <code>--selftest</code> runs 15 fixtures without touching your history or the network, and prints the score.</li>
         <li><b>MIT.</b>
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/devpersona/blob/main/LICENSE" rel="noopener">LICENSE</a> — no account, no signup, no telemetry.</li>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/devpersona/blob/main/LICENSE" rel="noopener">LICENSE</a> — no account, no signup, no telemetry.</li>
       </ul>
     </div>
   </section>
@@ -380,7 +380,7 @@
   <span class="colophon">
     Static page. No framework, no build step, no cookies. Visits are counted in
     aggregate by GoatCounter — nothing identifies you.
-    <a href="https://github.com/hailneed/hailneed.github.io" rel="noopener">Source</a>.
+    <a href="https://github.com/halilneed/halilneed.github.io" rel="noopener">Source</a>.
   </span>
   <a class="to-top" href="#hero">Back to top &uarr;</a>
 </footer>

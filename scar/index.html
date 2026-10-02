@@ -7,20 +7,20 @@
 <meta name="description" content="scar mines the session logs Claude Code, Codex CLI and Gemini CLI already write for failures that recur across separate sessions, drafts the rule, regression-test brief or environment fix — then measures whether the lesson held. 16 error families, 4 verdicts, no network calls, MIT.">
 <meta name="author" content="hailneed">
 <meta name="theme-color" content="#ffffff">
-<link rel="canonical" href="https://hailneed.github.io/scar/">
+<link rel="canonical" href="https://halilneed.github.io/scar/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="hailneed">
 <meta property="og:title" content="scar — recurring agent failures, written down and measured">
 <meta property="og:description" content="A failure that recurs across eight sessions was forgotten eight times. scar writes the lesson — rule, test brief, env fix or decision record — then measures whether it held.">
-<meta property="og:url" content="https://hailneed.github.io/scar/">
-<meta property="og:image" content="https://hailneed.github.io/assets/img/og-scar.png">
+<meta property="og:url" content="https://halilneed.github.io/scar/">
+<meta property="og:image" content="https://halilneed.github.io/assets/img/og-scar.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="scar — recurring agent failures, written down and measured">
 <meta name="twitter:description" content="Recurring failures mined from local session logs, turned into rules and tests — then measured: held, recurred, too recent, no evidence.">
-<meta name="twitter:image" content="https://hailneed.github.io/assets/img/og-scar.png">
+<meta name="twitter:image" content="https://halilneed.github.io/assets/img/og-scar.png">
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/assets/img/favicon.svg">
@@ -39,10 +39,10 @@
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Windows, macOS, Linux",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "license": "https://github.com/hailneed/scar/blob/main/LICENSE",
-  "url": "https://hailneed.github.io/scar/",
-  "sameAs": ["https://github.com/hailneed/scar"],
-  "author": { "@type": "Person", "name": "hailneed", "url": "https://hailneed.github.io/" }
+  "license": "https://github.com/halilneed/scar/blob/main/LICENSE",
+  "url": "https://halilneed.github.io/scar/",
+  "sameAs": ["https://github.com/halilneed/scar"],
+  "author": { "@type": "Person", "name": "hailneed", "url": "https://halilneed.github.io/" }
 }
 </script>
 </head>
@@ -101,7 +101,7 @@
 
       <div class="hero-actions">
         <a class="btn btn--solid" href="#install" data-goatcounter-click="sc-cta-install">Install</a>
-        <a class="btn" href="https://github.com/hailneed/scar" rel="noopener" data-goatcounter-click="sc-cta-source">Source <span aria-hidden="true">&#8599;</span></a>
+        <a class="btn" href="https://github.com/halilneed/scar" rel="noopener" data-goatcounter-click="sc-cta-source">Source <span aria-hidden="true">&#8599;</span></a>
         <a class="btn" href="#cloud" data-goatcounter-click="sc-cta-cloud">Cloud waitlist <span aria-hidden="true">&darr;</span></a>
       </div>
     </div>
@@ -173,7 +173,7 @@
       touched &times; 2, repeats capped, +4 when more than one agent hit the same wall.
       One bad afternoon of retries counts as a single episode. The 16 families that
       classify each scar are
-      <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/scar/blob/main/scripts/lib/scars.mjs" rel="noopener">a pattern list you can open</a>,
+      <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/scar/blob/main/scripts/lib/scars.mjs" rel="noopener">a pattern list you can open</a>,
       and the next step is printed under the table.
     </p>
   </section>
@@ -195,7 +195,7 @@
           <button class="copy" type="button" data-copy="#install-src">Copy</button>
         </div>
         <pre id="install-src"><span class="c"># once</span>
-<span class="p">&gt;</span> /plugin marketplace add hailneed/plugins
+<span class="p">&gt;</span> /plugin marketplace add halilneed/plugins
 
 <span class="c"># the closed loop</span>
 <span class="p">&gt;</span> /plugin install scar@hailneed
@@ -213,7 +213,7 @@
         </ul>
 
         <div class="entry-foot">
-          <a class="link" href="https://github.com/hailneed/plugins" rel="noopener">
+          <a class="link" href="https://github.com/halilneed/plugins" rel="noopener">
             Marketplace manifest <span class="arw" aria-hidden="true">&#8599;</span>
           </a>
         </div>
@@ -271,14 +271,14 @@
     <div data-reveal style="--d:.08s">
       <ul class="req" style="max-width:var(--measure)">
         <li><b>No network calls, no repo writes.</b> Drafts go to stdout —
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/scar/blob/main/scripts/scar.mjs" rel="noopener">scar.mjs</a> contains no fetch, no sockets, and you decide what lands in the repo.</li>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/scar/blob/main/scripts/scar.mjs" rel="noopener">scar.mjs</a> contains no fetch, no sockets, and you decide what lands in the repo.</li>
         <li><b>16 families, no model judgement</b> —
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/scar/blob/main/scripts/lib/scars.mjs" rel="noopener">scars.mjs</a> is a pattern list you can read, and <code>--selftest</code> proves it without touching your data.</li>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/scar/blob/main/scripts/lib/scars.mjs" rel="noopener">scars.mjs</a> is a pattern list you can read, and <code>--selftest</code> proves it without touching your data.</li>
         <li><b>Retry loops do not inflate the ranking.</b> An episode is one run of consecutive failures plus the first success after — twenty attempts in one session is one lesson.</li>
         <li><b>The loop only closes with evidence.</b> <code>verify</code> counts recurrences before and after the marker's date; without a marker, whether a rule works stays a matter of opinion.</li>
         <li><b>Failure stays visible.</b> Unreadable sessions and dropped low-confidence signatures are counted in the source note, never silently hidden.</li>
         <li><b>MIT.</b>
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/scar/blob/main/LICENSE" rel="noopener">LICENSE</a> — no account, no signup, no telemetry.</li>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/scar/blob/main/LICENSE" rel="noopener">LICENSE</a> — no account, no signup, no telemetry.</li>
       </ul>
     </div>
   </section>
@@ -377,7 +377,7 @@
   <span class="colophon">
     Static page. No framework, no build step, no cookies. Visits are counted in
     aggregate by GoatCounter — nothing identifies you.
-    <a href="https://github.com/hailneed/hailneed.github.io" rel="noopener">Source</a>.
+    <a href="https://github.com/halilneed/halilneed.github.io" rel="noopener">Source</a>.
   </span>
   <a class="to-top" href="#hero">Back to top &uarr;</a>
 </footer>

@@ -1,5 +1,5 @@
 /* ============================================================================
-   hailneed.github.io — the parts that change often
+   halilneed.github.io — the parts that change often
    ----------------------------------------------------------------------------
    Projects live in index.html as static markup: they change rarely, and the
    page must read correctly with JavaScript switched off.
@@ -19,7 +19,7 @@ window.HN = (function () {
   var profile = {
     name: 'hailneed',
     handle: 'hailneed',
-    github: 'https://github.com/hailneed',
+    github: 'https://github.com/halilneed',
     /* TODO: swap for the real Medium profile once the first piece is live. */
     medium: 'https://medium.com/@hailneed',
     email: 'hqclox43@gmail.com'

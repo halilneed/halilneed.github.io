@@ -7,20 +7,20 @@
 <meta name="description" content="skillbench lints coding-agent skills against 26 transparent checks and reads real activation counts from the session history Claude Code already keeps. Codex CLI and Gemini CLI skills are linted too. No network calls, no dependencies, MIT.">
 <meta name="author" content="hailneed">
 <meta name="theme-color" content="#ffffff">
-<link rel="canonical" href="https://hailneed.github.io/skillbench/">
+<link rel="canonical" href="https://halilneed.github.io/skillbench/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="hailneed">
 <meta property="og:title" content="skillbench — skill lint &amp; usage evidence for coding agents">
 <meta property="og:description" content="Is the skill written right — and does it ever actually fire? 26 transparent checks plus real activation counts, read from history already on your disk.">
-<meta property="og:url" content="https://hailneed.github.io/skillbench/">
-<meta property="og:image" content="https://hailneed.github.io/assets/img/og-skillbench.png">
+<meta property="og:url" content="https://halilneed.github.io/skillbench/">
+<meta property="og:image" content="https://halilneed.github.io/assets/img/og-skillbench.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="skillbench — skill lint &amp; usage evidence for coding agents">
 <meta name="twitter:description" content="26 transparent checks plus real activation counts for coding-agent skills — from files already on your disk.">
-<meta name="twitter:image" content="https://hailneed.github.io/assets/img/og-skillbench.png">
+<meta name="twitter:image" content="https://halilneed.github.io/assets/img/og-skillbench.png">
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/assets/img/favicon.svg">
@@ -39,10 +39,10 @@
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Windows, macOS, Linux",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "license": "https://github.com/hailneed/skillbench/blob/main/LICENSE",
-  "url": "https://hailneed.github.io/skillbench/",
-  "sameAs": ["https://github.com/hailneed/skillbench"],
-  "author": { "@type": "Person", "name": "hailneed", "url": "https://hailneed.github.io/" }
+  "license": "https://github.com/halilneed/skillbench/blob/main/LICENSE",
+  "url": "https://halilneed.github.io/skillbench/",
+  "sameAs": ["https://github.com/halilneed/skillbench"],
+  "author": { "@type": "Person", "name": "hailneed", "url": "https://halilneed.github.io/" }
 }
 </script>
 </head>
@@ -95,7 +95,7 @@
 
       <div class="hero-actions">
         <a class="btn btn--solid" href="#install" data-goatcounter-click="sb-cta-install">Install</a>
-        <a class="btn" href="https://github.com/hailneed/skillbench" rel="noopener" data-goatcounter-click="sb-cta-source">Source <span aria-hidden="true">&#8599;</span></a>
+        <a class="btn" href="https://github.com/halilneed/skillbench" rel="noopener" data-goatcounter-click="sb-cta-source">Source <span aria-hidden="true">&#8599;</span></a>
         <a class="btn" href="#cloud" data-goatcounter-click="sb-cta-cloud">Cloud waitlist <span aria-hidden="true">&darr;</span></a>
       </div>
     </div>
@@ -177,7 +177,7 @@
       it reports what it finds. Every finding names the check, the skill and the severity,
       and every check carries a &ldquo;why it matters&rdquo; and a &ldquo;how to fix&rdquo;
       line. The checks live in
-      <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/skillbench/blob/main/scripts/lib/checks.mjs" rel="noopener">one file you can open</a>,
+      <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/skillbench/blob/main/scripts/lib/checks.mjs" rel="noopener">one file you can open</a>,
       and any check you disagree with switches off with <code>--ignore</code>.
     </p>
   </section>
@@ -199,7 +199,7 @@
           <button class="copy" type="button" data-copy="#install-src">Copy</button>
         </div>
         <pre id="install-src"><span class="c"># once</span>
-<span class="p">&gt;</span> /plugin marketplace add hailneed/plugins
+<span class="p">&gt;</span> /plugin marketplace add halilneed/plugins
 
 <span class="c"># lint + usage evidence</span>
 <span class="p">&gt;</span> /plugin install skillbench@hailneed
@@ -217,7 +217,7 @@
         </ul>
 
         <div class="entry-foot">
-          <a class="link" href="https://github.com/hailneed/plugins" rel="noopener">
+          <a class="link" href="https://github.com/halilneed/plugins" rel="noopener">
             Marketplace manifest <span class="arw" aria-hidden="true">&#8599;</span>
           </a>
         </div>
@@ -277,14 +277,14 @@
     <div data-reveal style="--d:.08s">
       <ul class="req" style="max-width:var(--measure)">
         <li><b>No network calls.</b> The scanner only reads skill files and session logs already on your disk —
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/skillbench/blob/main/scripts/skillbench.mjs" rel="noopener">skillbench.mjs</a> contains no fetch, no sockets.</li>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/skillbench/blob/main/scripts/skillbench.mjs" rel="noopener">skillbench.mjs</a> contains no fetch, no sockets.</li>
         <li><b>Unmeasured is not unused.</b> Only Claude Code stores skill attribution; skills on Codex CLI and Gemini CLI are reported as unmeasured. Where there is no number, no number is shown.</li>
         <li><b>No quota spent.</b> Everything is read from disk. Live trigger testing — actually running <code>should_trigger</code> prompts — is deliberately deferred to v0.2 because it costs quota.</li>
         <li><b>26 checks, no model judgement</b> —
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/skillbench/blob/main/scripts/lib/checks.mjs" rel="noopener">checks.mjs</a> is a list you can read, and <code>--selftest</code> proves the engine against 20 fixtures without touching your data.</li>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/skillbench/blob/main/scripts/lib/checks.mjs" rel="noopener">checks.mjs</a> is a list you can read, and <code>--selftest</code> proves the engine against 20 fixtures without touching your data.</li>
         <li><b>Symlinks are followed.</b> Skills linked from a development repo are found and linted — a naive scanner silently misses every one of them.</li>
         <li><b>MIT.</b>
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/skillbench/blob/main/LICENSE" rel="noopener">LICENSE</a> — no account, no signup, no telemetry.</li>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/skillbench/blob/main/LICENSE" rel="noopener">LICENSE</a> — no account, no signup, no telemetry.</li>
       </ul>
     </div>
   </section>
@@ -383,7 +383,7 @@
   <span class="colophon">
     Static page. No framework, no build step, no cookies. Visits are counted in
     aggregate by GoatCounter — nothing identifies you.
-    <a href="https://github.com/hailneed/hailneed.github.io" rel="noopener">Source</a>.
+    <a href="https://github.com/halilneed/halilneed.github.io" rel="noopener">Source</a>.
   </span>
   <a class="to-top" href="#hero">Back to top &uarr;</a>
 </footer>

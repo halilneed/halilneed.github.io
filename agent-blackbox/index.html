@@ -7,20 +7,20 @@
 <meta name="description" content="agent-blackbox reads the session logs Claude Code, Codex CLI and Gemini CLI already write to your disk and produces a turn-by-turn timeline, a transparent 26-rule risk audit and an undo map. No network calls, secrets masked, MIT.">
 <meta name="author" content="hailneed">
 <meta name="theme-color" content="#ffffff">
-<link rel="canonical" href="https://hailneed.github.io/agent-blackbox/">
+<link rel="canonical" href="https://halilneed.github.io/agent-blackbox/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="hailneed">
 <meta property="og:title" content="agent-blackbox — flight recorder for coding agents">
 <meta property="og:description" content="Your agent tells you what it did. agent-blackbox shows you: timeline, risk audit and undo map, read from logs already on your disk.">
-<meta property="og:url" content="https://hailneed.github.io/agent-blackbox/">
-<meta property="og:image" content="https://hailneed.github.io/assets/img/og-agent-blackbox.png">
+<meta property="og:url" content="https://halilneed.github.io/agent-blackbox/">
+<meta property="og:image" content="https://halilneed.github.io/assets/img/og-agent-blackbox.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="agent-blackbox — flight recorder for coding agents">
 <meta name="twitter:description" content="Timeline, risk audit and undo map for coding agents — from logs already on your disk.">
-<meta name="twitter:image" content="https://hailneed.github.io/assets/img/og-agent-blackbox.png">
+<meta name="twitter:image" content="https://halilneed.github.io/assets/img/og-agent-blackbox.png">
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/assets/img/favicon.svg">
@@ -39,10 +39,10 @@
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Windows, macOS, Linux",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "license": "https://github.com/hailneed/agent-blackbox/blob/main/LICENSE",
-  "url": "https://hailneed.github.io/agent-blackbox/",
-  "sameAs": ["https://github.com/hailneed/agent-blackbox"],
-  "author": { "@type": "Person", "name": "hailneed", "url": "https://hailneed.github.io/" }
+  "license": "https://github.com/halilneed/agent-blackbox/blob/main/LICENSE",
+  "url": "https://halilneed.github.io/agent-blackbox/",
+  "sameAs": ["https://github.com/halilneed/agent-blackbox"],
+  "author": { "@type": "Person", "name": "hailneed", "url": "https://halilneed.github.io/" }
 }
 </script>
 </head>
@@ -101,7 +101,7 @@
 
       <div class="hero-actions">
         <a class="btn btn--solid" href="#install" data-goatcounter-click="ab-cta-install">Install</a>
-        <a class="btn" href="https://github.com/hailneed/agent-blackbox" rel="noopener" data-goatcounter-click="ab-cta-source">Source <span aria-hidden="true">&#8599;</span></a>
+        <a class="btn" href="https://github.com/halilneed/agent-blackbox" rel="noopener" data-goatcounter-click="ab-cta-source">Source <span aria-hidden="true">&#8599;</span></a>
         <a class="btn" href="#cloud" data-goatcounter-click="ab-cta-cloud">Cloud waitlist <span aria-hidden="true">&darr;</span></a>
       </div>
     </div>
@@ -176,7 +176,7 @@
     <p class="body" data-reveal style="margin-top:22px; max-width:var(--measure)">
       Every finding names the rule that fired, the session it fired in and the matched
       text — so you can disagree with the specific thing, not with the tool. Rules live in
-      <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/agent-blackbox/blob/main/scripts/lib/rules.mjs" rel="noopener">one file you can open</a>,
+      <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/agent-blackbox/blob/main/scripts/lib/rules.mjs" rel="noopener">one file you can open</a>,
       and any rule you disagree with switches off with <code>--ignore</code>.
     </p>
   </section>
@@ -198,7 +198,7 @@
           <button class="copy" type="button" data-copy="#install-src">Copy</button>
         </div>
         <pre id="install-src"><span class="c"># once</span>
-<span class="p">&gt;</span> /plugin marketplace add hailneed/plugins
+<span class="p">&gt;</span> /plugin marketplace add halilneed/plugins
 
 <span class="c"># the flight recorder</span>
 <span class="p">&gt;</span> /plugin install agent-blackbox@hailneed
@@ -216,7 +216,7 @@
         </ul>
 
         <div class="entry-foot">
-          <a class="link" href="https://github.com/hailneed/plugins" rel="noopener">
+          <a class="link" href="https://github.com/halilneed/plugins" rel="noopener">
             Marketplace manifest <span class="arw" aria-hidden="true">&#8599;</span>
           </a>
         </div>
@@ -272,14 +272,14 @@
     <div data-reveal style="--d:.08s">
       <ul class="req" style="max-width:var(--measure)">
         <li><b>No network calls.</b> The scanner only reads files already on your disk —
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/agent-blackbox/blob/main/scripts/blackbox.mjs" rel="noopener">blackbox.mjs</a> contains no fetch, no sockets.</li>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/agent-blackbox/blob/main/scripts/blackbox.mjs" rel="noopener">blackbox.mjs</a> contains no fetch, no sockets.</li>
         <li><b>Secrets are masked</b> before any report is written — API keys, JWTs, private-key headers, credentialed connection strings. Default on; <code>--no-redact</code> exists and is your call.</li>
         <li><b>Thinking text never leaves the log.</b> Only its count is reported.</li>
         <li><b>26 rules, no model judgement</b> —
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/agent-blackbox/blob/main/scripts/lib/rules.mjs" rel="noopener">rules.mjs</a> is a pattern list you can read, and <code>--selftest</code> proves it against 33 fixtures without touching your data.</li>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/agent-blackbox/blob/main/scripts/lib/rules.mjs" rel="noopener">rules.mjs</a> is a pattern list you can read, and <code>--selftest</code> proves it against 33 fixtures without touching your data.</li>
         <li><b>Failure stays visible.</b> Unreadable sessions are counted in the source note, never silently dropped.</li>
         <li><b>MIT.</b>
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/agent-blackbox/blob/main/LICENSE" rel="noopener">LICENSE</a> — no account, no signup, no telemetry.</li>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/agent-blackbox/blob/main/LICENSE" rel="noopener">LICENSE</a> — no account, no signup, no telemetry.</li>
       </ul>
     </div>
   </section>
@@ -378,7 +378,7 @@
   <span class="colophon">
     Static page. No framework, no build step, no cookies. Visits are counted in
     aggregate by GoatCounter — nothing identifies you.
-    <a href="https://github.com/hailneed/hailneed.github.io" rel="noopener">Source</a>.
+    <a href="https://github.com/halilneed/halilneed.github.io" rel="noopener">Source</a>.
   </span>
   <a class="to-top" href="#hero">Back to top &uarr;</a>
 </footer>

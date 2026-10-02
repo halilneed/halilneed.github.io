@@ -7,20 +7,20 @@
 <meta name="description" content="gardener resolves CLAUDE.md, AGENTS.md and GEMINI.md imports transitively, prices what loads on every request in lines and estimated tokens, and flags broken imports, stale paths and duplicated rules. No network calls, nothing edited, MIT.">
 <meta name="author" content="hailneed">
 <meta name="theme-color" content="#ffffff">
-<link rel="canonical" href="https://hailneed.github.io/gardener/">
+<link rel="canonical" href="https://halilneed.github.io/gardener/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="hailneed">
 <meta property="og:title" content="gardener — context hygiene for agent instruction files">
 <meta property="og:description" content="Every line of CLAUDE.md is paid for again on every request. gardener resolves the import chain, prices it, and plans the pruning — without editing a single file.">
-<meta property="og:url" content="https://hailneed.github.io/gardener/">
-<meta property="og:image" content="https://hailneed.github.io/assets/img/og-gardener.png">
+<meta property="og:url" content="https://halilneed.github.io/gardener/">
+<meta property="og:image" content="https://halilneed.github.io/assets/img/og-gardener.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="gardener — context hygiene for agent instruction files">
 <meta name="twitter:description" content="Import chain resolved, hot context priced in lines and estimated tokens, broken imports and duplicated rules flagged. Local, MIT.">
-<meta name="twitter:image" content="https://hailneed.github.io/assets/img/og-gardener.png">
+<meta name="twitter:image" content="https://halilneed.github.io/assets/img/og-gardener.png">
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/assets/img/favicon.svg">
@@ -39,10 +39,10 @@
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Windows, macOS, Linux",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "license": "https://github.com/hailneed/gardener/blob/main/LICENSE",
-  "url": "https://hailneed.github.io/gardener/",
-  "sameAs": ["https://github.com/hailneed/gardener"],
-  "author": { "@type": "Person", "name": "hailneed", "url": "https://hailneed.github.io/" }
+  "license": "https://github.com/halilneed/gardener/blob/main/LICENSE",
+  "url": "https://halilneed.github.io/gardener/",
+  "sameAs": ["https://github.com/halilneed/gardener"],
+  "author": { "@type": "Person", "name": "hailneed", "url": "https://halilneed.github.io/" }
 }
 </script>
 </head>
@@ -94,7 +94,7 @@
 
       <div class="hero-actions">
         <a class="btn btn--solid" href="#install" data-goatcounter-click="gd-cta-install">Install</a>
-        <a class="btn" href="https://github.com/hailneed/gardener" rel="noopener" data-goatcounter-click="gd-cta-source">Source <span aria-hidden="true">&#8599;</span></a>
+        <a class="btn" href="https://github.com/halilneed/gardener" rel="noopener" data-goatcounter-click="gd-cta-source">Source <span aria-hidden="true">&#8599;</span></a>
         <a class="btn" href="#cloud" data-goatcounter-click="gd-cta-cloud">Cloud waitlist <span aria-hidden="true">&darr;</span></a>
       </div>
     </div>
@@ -175,7 +175,7 @@ Token counts are a bytes/4 estimate, not a real tokenizer.</span>
       Every finding names the check that fired, the file and line, and — for duplicates —
       both overlapping texts, so you can disagree with the specific thing, not with the
       tool. The checks are documented in
-      <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/gardener/blob/main/skills/audit/references/checks.md" rel="noopener">one file you can open</a>,
+      <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/gardener/blob/main/skills/audit/references/checks.md" rel="noopener">one file you can open</a>,
       and any check you disagree with switches off with <code>--ignore</code>.
     </p>
   </section>
@@ -197,7 +197,7 @@ Token counts are a bytes/4 estimate, not a real tokenizer.</span>
           <button class="copy" type="button" data-copy="#install-src">Copy</button>
         </div>
         <pre id="install-src"><span class="c"># once</span>
-<span class="p">&gt;</span> /plugin marketplace add hailneed/plugins
+<span class="p">&gt;</span> /plugin marketplace add halilneed/plugins
 
 <span class="c"># the gardener</span>
 <span class="p">&gt;</span> /plugin install gardener@hailneed
@@ -215,7 +215,7 @@ Token counts are a bytes/4 estimate, not a real tokenizer.</span>
         </ul>
 
         <div class="entry-foot">
-          <a class="link" href="https://github.com/hailneed/plugins" rel="noopener">
+          <a class="link" href="https://github.com/halilneed/plugins" rel="noopener">
             Marketplace manifest <span class="arw" aria-hidden="true">&#8599;</span>
           </a>
         </div>
@@ -275,17 +275,17 @@ Token counts are a bytes/4 estimate, not a real tokenizer.</span>
     <div data-reveal style="--d:.08s">
       <ul class="req" style="max-width:var(--measure)">
         <li><b>No network calls, nothing edited.</b>
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/gardener/blob/main/scripts/gardener.mjs" rel="noopener">gardener.mjs</a>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/gardener/blob/main/scripts/gardener.mjs" rel="noopener">gardener.mjs</a>
           reads instruction files and session logs already on your disk and produces a plan. Your CLAUDE.md is never touched.</li>
         <li><b>Honest counting.</b> Token numbers come from a bytes/4 estimate, not a tokenizer — enough to compare files and track change over time, and every report says so.</li>
         <li><b>Candidates, not verdicts.</b> A compliance match may miss context the rule cares about; the skill opens each candidate, verifies it against the transcript and reports how many it discarded.</li>
         <li><b>A zero is not dead weight.</b> A prohibition with zero occurrences is reported as a possible success — deleting a safety rule because it worked is the fastest way to bring the bug back.</li>
         <li><b>10 checks, no model judgement</b> —
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/gardener/blob/main/skills/audit/references/checks.md" rel="noopener">checks.md</a>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/gardener/blob/main/skills/audit/references/checks.md" rel="noopener">checks.md</a>
           documents every one with its severity and triage note, and <code>--selftest</code> proves them against 19 fixtures without touching your data.</li>
         <li><b>Failure stays visible.</b> Unreadable sessions are counted in the source note, never silently dropped.</li>
         <li><b>MIT.</b>
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/hailneed/gardener/blob/main/LICENSE" rel="noopener">LICENSE</a> — no account, no signup, no telemetry.</li>
+          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/gardener/blob/main/LICENSE" rel="noopener">LICENSE</a> — no account, no signup, no telemetry.</li>
       </ul>
     </div>
   </section>
@@ -384,7 +384,7 @@ Token counts are a bytes/4 estimate, not a real tokenizer.</span>
   <span class="colophon">
     Static page. No framework, no build step, no cookies. Visits are counted in
     aggregate by GoatCounter — nothing identifies you.
-    <a href="https://github.com/hailneed/hailneed.github.io" rel="noopener">Source</a>.
+    <a href="https://github.com/halilneed/halilneed.github.io" rel="noopener">Source</a>.
   </span>
   <a class="to-top" href="#hero">Back to top &uarr;</a>
 </footer>
