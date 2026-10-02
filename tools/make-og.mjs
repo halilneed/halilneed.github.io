@@ -123,11 +123,11 @@ if (process.argv.includes('--proof')) {
 const CARDS = {
   /* ana kart — site geneli og.png */
   default: {
-    kicker: 'EVIDENCE-FIRST TOOLS FOR CODING AGENTS',
-    lines: ['TOOLS THAT SHOW', 'WHAT YOUR AGENT', 'ACTUALLY DID.'],
+    kicker: 'TURKISH PRIVACY MODELS AND TOOLS FOR CODING AGENTS',
+    lines: ['I MEASURE THINGS', 'AND PUBLISH', 'THE NUMBERS.'],
     accent: 2,
-    roster: 'AGENT-BLACKBOX / SKILLBENCH / SCAR / GARDENER / PAINRADAR / DEVPERSONA',
-    stats: [['6', 'MODULES'], ['26', 'AUDIT RULES'], ['0', 'NETWORK CALLS'], ['MIT', 'LICENCE']]
+    roster: 'TURKISH-PII-DETECTION / KVKK-CLASSIFIER / AGENT-BLACKBOX / SKILLBENCH / GARDENER',
+    stats: [['2', 'MODELS'], ['1', 'OPEN BENCHMARK'], ['6', 'AGENT PLUGINS'], ['5', 'DISPATCHES']]
   },
 
   /* ürün kartları — manşetin ilk satırı ürün adı (SIGNAL), kalanı rolü */
@@ -273,7 +273,7 @@ function drawCard(slug, card) {
 
   /* brand + sağ üstte kickerı bas */
   rect(M, M, 12, 12, SIGNAL);
-  text('HAILNEED', M + 26, M + 1, 3, FG, 1, 2);
+  text('HALILNEED', M + 26, M + 1, 3, FG, 1, 2);
   text(card.kicker, W - M - textWidth(card.kicker, 2, 1), M + 4, 2, FG_DIM);
 
   /* manşet — accent indeksli satır SIGNAL, kalanı FG */
@@ -299,7 +299,7 @@ function drawCard(slug, card) {
   }
 
   /* url, bottom right */
-  const url = 'HAILNEED.GITHUB.IO';
+  const url = 'HALILNEED.GITHUB.IO';
   text(url, W - M - textWidth(url, 2, 1), 540, 2, FG);
 
   /* a signal trace along the very bottom, because the card should look alive */

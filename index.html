@@ -3,23 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>hailneed — evidence-first tools for coding agents</title>
-<meta name="description" content="hailneed builds open-source instrumentation for coding agents: agent-blackbox, skillbench, scar, gardener, painradar and devpersona. Timeline, risk audit and undo map read from logs already on your disk. Local-first, MIT.">
-<meta name="author" content="hailneed">
+<title>halilneed — Turkish privacy models and evidence-first tools for coding agents</title>
+<meta name="description" content="halilneed builds small Turkish privacy models on Hugging Face (PII masking, KVKK data classification) and open-source instrumentation for coding agents: agent-blackbox, skillbench, scar, gardener, painradar and devpersona. Measured, local-first, open.">
+<meta name="author" content="halilneed">
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://halilneed.github.io/">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="hailneed">
-<meta property="og:title" content="hailneed — evidence-first tools for coding agents">
-<meta property="og:description" content="Your agent tells you what it did. The hailneed suite shows you — six modules reading evidence already on your disk, with nothing of yours sent anywhere.">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:title" content="halilneed — Turkish privacy models and evidence-first tools for coding agents">
+<meta property="og:description" content="I measure things and publish the numbers: small Turkish privacy models on Hugging Face, and tools that show what a coding agent actually did.">
 <meta property="og:url" content="https://halilneed.github.io/">
 <meta property="og:image" content="https://halilneed.github.io/assets/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="hailneed — evidence-first tools for coding agents">
-<meta name="twitter:description" content="Your agent tells you what it did. These tools show you — from logs already on your disk.">
+<meta name="twitter:title" content="halilneed — Turkish privacy models and tools for coding agents">
+<meta name="twitter:description" content="Small Turkish privacy models on Hugging Face, and tools that show what a coding agent actually did. Measured, local-first.">
 <meta name="twitter:image" content="https://halilneed.github.io/assets/img/og.png">
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -35,16 +35,16 @@
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "hailneed",
+  "name": "halilneed",
   "url": "https://halilneed.github.io/",
   "jobTitle": "Software engineer",
   "address": { "@type": "PostalAddress", "addressLocality": "Istanbul", "addressCountry": "TR" },
-  "knowsAbout": ["ASP.NET Core", "Entity Framework Core", "PostgreSQL", "Claude Code plugins", "Model Context Protocol", "data loss prevention"],
-  "sameAs": ["https://github.com/halilneed"]
+  "knowsAbout": ["Turkish NLP", "PII masking", "KVKK data classification", "ASP.NET Core", "Entity Framework Core", "PostgreSQL", "Claude Code plugins", "Model Context Protocol", "data loss prevention"],
+  "sameAs": ["https://github.com/halilneed", "https://huggingface.co/halilneed", "https://hailneed.medium.com"]
 }
 </script>
 
-<!-- FAQ yapısal verisi — sayfadaki 07 bölümüyle birebir aynı metin.
+<!-- FAQ yapısal verisi — sayfadaki 08 bölümüyle birebir aynı metin.
      Metin değişirse burası da değişir; iki yerde farklı cevap tutulmaz. -->
 <script type="application/ld+json">
 {
@@ -121,8 +121,9 @@
 </defs></svg>
 
 <header class="topbar" id="topbar">
-  <a class="brand" href="/"><span class="dot" aria-hidden="true"></span> hailneed</a>
+  <a class="brand" href="/"><span class="dot" aria-hidden="true"></span> halilneed</a>
   <nav class="topnav" id="topnav" aria-label="Sections">
+    <a href="#models">Models</a>
     <a href="#fieldkit">Field kit</a>
     <a href="#install">Install</a>
     <a href="#support">Support</a>
@@ -130,7 +131,7 @@
     <a href="#writing">Dispatches</a>
     <a href="#contact">Contact</a>
   </nav>
-  <span class="topmeta">MIT &middot; local-first</span>
+  <span class="topmeta">measured &middot; local-first</span>
 </header>
 
 <nav class="rail" id="rail" aria-label="Page progress"></nav>
@@ -140,17 +141,19 @@
   <!-- ================================================== 00 index ========= -->
   <section id="index" data-scene="grid">
     <div class="hero-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">00</span> hailneed &middot; Istanbul</p>
+      <p class="eyebrow"><span class="num">00</span> halilneed &middot; Istanbul</p>
 
-      <h1 class="h-display hero-title" data-split>Tools that show<br>what your agent<br><em>actually</em> did.</h1>
+      <h1 class="h-display hero-title" data-split>I measure things<br>and publish<br>the <em>numbers.</em></h1>
 
       <p class="lede">
-        Claude Code, Codex CLI and Gemini CLI already write every session to your disk.
-        These plugins read it — and send nothing anywhere.
+        Small Turkish privacy models on Hugging Face, and open-source tools that show
+        what a coding agent actually did. Local-first: the models run on a CPU, the
+        tools read logs already on your disk.
       </p>
 
       <div class="hero-actions">
-        <a class="btn btn--solid" href="#install" data-goatcounter-click="cta-install">Install the marketplace</a>
+        <a class="btn btn--solid" href="#models" data-goatcounter-click="cta-models">See the models</a>
+        <a class="btn" href="#fieldkit" data-goatcounter-click="cta-tools">Agent tools</a>
         <a class="btn" href="https://github.com/halilneed" rel="noopener" data-goatcounter-click="cta-github">GitHub <span aria-hidden="true">&#8599;</span></a>
       </div>
     </div>
@@ -158,31 +161,107 @@
     <ul class="metrics" data-reveal style="--d:.15s">
       <li class="metric">
         <svg class="ico ico--m" aria-hidden="true"><use href="#i-layers"/></svg>
+        <div class="val" data-count="2">2</div>
+        <div class="lbl">Models on Hugging Face</div>
+      </li>
+      <li class="metric">
+        <svg class="ico ico--m" aria-hidden="true"><use href="#i-target"/></svg>
+        <div class="val" data-count="1">1</div>
+        <div class="lbl">Open benchmark</div>
+      </li>
+      <li class="metric">
+        <svg class="ico ico--m" aria-hidden="true"><use href="#i-plug"/></svg>
         <div class="val" data-count="6">6</div>
-        <div class="lbl">Plugins</div>
+        <div class="lbl">Agent plugins</div>
       </li>
       <li class="metric">
-        <svg class="ico ico--m" aria-hidden="true"><use href="#i-terminal"/></svg>
-        <div class="val" data-count="18">18</div>
-        <div class="lbl">Skills</div>
-      </li>
-      <li class="metric">
-        <svg class="ico ico--m" aria-hidden="true"><use href="#i-check"/></svg>
-        <div class="val" data-count="78">78</div>
-        <div class="lbl">Readable rules</div>
-      </li>
-      <li class="metric">
-        <svg class="ico ico--m" aria-hidden="true"><use href="#i-nonet"/></svg>
+        <svg class="ico ico--m" aria-hidden="true"><use href="#i-pen"/></svg>
         <div class="val" data-count="5">5</div>
-        <div class="lbl">Read only your disk</div>
+        <div class="lbl">Dispatches</div>
       </li>
     </ul>
   </section>
 
-  <!-- ================================================== 01 field kit ===== -->
+  <!-- ================================================== 01 models ======== -->
+  <section id="models" data-scene="graph">
+    <div class="section-head reveal--soft" data-reveal>
+      <p class="eyebrow"><span class="num">01</span> Models</p>
+      <h2 class="h-section" data-split>Small Turkish models<br>for <em>personal data.</em></h2>
+      <p class="lede">
+        Published on Hugging Face. Each one runs on a CPU, so the text never has to
+        leave the machine — and each card says where the model still fails.
+      </p>
+    </div>
+
+    <div class="cards" data-reveal style="--d:.08s">
+      <a class="card" href="https://huggingface.co/halilneed/turkish-pii-detection" rel="noopener" data-goatcounter-click="model-pii">
+        <div class="card-top">
+          <span class="card-name">turkish-pii-detection</span>
+          <span class="card-kicker">PII masking</span>
+        </div>
+        <p>
+          Replaces names, national IDs, IBANs and phone numbers in Turkish text with
+          tags before it reaches an LLM, a log store or a vendor. The masking policy is
+          a sentence: mask everything, only these fields, or everything except those.
+          v02 went from 0.885 to 0.945 exact match on the half of the benchmark never
+          used for model selection. Weakest slice: text with several people in it, 0.750.
+        </p>
+        <div class="card-foot"><span>270M &middot; ~600 ms / sentence on CPU</span><span class="go" aria-hidden="true">&#8599;</span></div>
+      </a>
+
+      <a class="card" href="https://huggingface.co/halilneed/turkish-kvkk-classifier" rel="noopener" data-goatcounter-click="model-kvkk">
+        <div class="card-top">
+          <span class="card-name">turkish-kvkk-classifier</span>
+          <span class="card-kicker">Data classification</span>
+        </div>
+        <p>
+          Says which personal-data categories a Turkish text contains: 14 VERB&#304;S
+          categories plus the 10 special categories of KVKK Art. 6. It sits in front of
+          the masker — classify, pick a policy, mask. 0.874 micro-F1 on 987 held-out
+          texts; &ldquo;special category present?&rdquo; gets 0.960 precision and 0.884
+          recall, so about one in nine still slips through.
+        </p>
+        <div class="card-foot"><span>110M &middot; 22 ms / text on CPU &middot; MIT</span><span class="go" aria-hidden="true">&#8599;</span></div>
+      </a>
+
+      <a class="card" href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark" rel="noopener" data-goatcounter-click="dataset-kvkk">
+        <div class="card-top">
+          <span class="card-name">turkish-kvkk-classification-benchmark</span>
+          <span class="card-kicker">Evaluation set</span>
+        </div>
+        <p>
+          The evaluation set behind the classifier, published so other models can be
+          measured on it: 987 gold texts, 24 labels. Texts and both blind label passes
+          are LLM-generated; gold is the 87.7% where the two passes agreed exactly. It
+          was not verified line by line by a human.
+        </p>
+        <div class="card-foot"><span>Dataset &middot; CC0</span><span class="go" aria-hidden="true">&#8599;</span></div>
+      </a>
+
+      <a class="card" href="https://github.com/halilneed/turkish-pii-detection" rel="noopener">
+        <div class="card-top">
+          <span class="card-name">turkish-pii-detection</span>
+          <span class="card-kicker">Companion repo</span>
+        </div>
+        <p>
+          A local inference example and a dependency-free evaluator for the masking
+          model, with notes on how it was trained and where its evaluation is limited.
+        </p>
+        <div class="card-foot"><span>Python &middot; usage + eval</span><span class="go" aria-hidden="true">&#8599;</span></div>
+      </a>
+    </div>
+
+    <div class="writing-foot" data-reveal>
+      <a class="link" href="https://huggingface.co/halilneed" rel="noopener" data-goatcounter-click="hf-profile">
+        All models on Hugging Face <span class="arw" aria-hidden="true">&#8599;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================================================== 02 field kit ===== -->
   <section id="fieldkit">
     <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">01</span> Field kit</p>
+      <p class="eyebrow"><span class="num">02</span> Field kit</p>
       <h2 class="h-section" data-split>Six modules.<br>One suite: <em>show, do not tell.</em></h2>
       <p class="lede">
         The hailneed suite. Each module reads something that already exists — and cites
@@ -370,10 +449,10 @@
     </div>
   </section>
 
-  <!-- ================================================== 02 install ======= -->
+  <!-- ================================================== 03 install ======= -->
   <section id="install" data-scene="registry">
     <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">02</span> Install</p>
+      <p class="eyebrow"><span class="num">03</span> Install</p>
       <h2 class="h-section" data-split>Add the marketplace once.<br>Install any of them.</h2>
     </div>
 
@@ -426,10 +505,10 @@
     </div>
   </section>
 
-  <!-- ================================================== 03 support ======= -->
+  <!-- ================================================== 04 support ======= -->
   <section id="support" data-scene="radar">
     <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">03</span> Support</p>
+      <p class="eyebrow"><span class="num">04</span> Support</p>
       <h2 class="h-section" data-split>Free, and <em>staying</em> free.<br>Pay only if it saved you a day.</h2>
       <p class="lede">
         Nothing on this page is gated. There is no tier that unlocks a command, no
@@ -523,14 +602,28 @@
     </p>
   </section>
 
-  <!-- ================================================== 04 also shipped == -->
+  <!-- ================================================== 05 also shipped == -->
   <section id="shipped" data-scene="stack">
     <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">04</span> Also shipped</p>
+      <p class="eyebrow"><span class="num">05</span> Also shipped</p>
       <h2 class="h-section" data-split>Everything else that is public.</h2>
     </div>
 
     <div class="cards" data-reveal style="--d:.08s">
+      <a class="card" href="https://github.com/halilneed/agentmemora" rel="noopener">
+        <div class="card-top">
+          <span class="card-name">agentmemora</span>
+          <span class="card-kicker">Agent memory</span>
+        </div>
+        <p>
+          A local-first memory intelligence layer for coding agents. It reads what your
+          tools already write — session transcripts, auto-memory, project instructions —
+          to surface context risks and conflicts, and to move context between sessions,
+          machines and agents.
+        </p>
+        <div class="card-foot"><span>Node.js &middot; npm</span><span class="go" aria-hidden="true">&#8599;</span></div>
+      </a>
+
       <a class="card" href="https://github.com/halilneed/plugins" rel="noopener">
         <div class="card-top">
           <span class="card-name">plugins</span>
@@ -584,10 +677,10 @@
     </div>
   </section>
 
-  <!-- ================================================== 05 method ======== -->
+  <!-- ================================================== 06 method ======== -->
   <section id="method" data-scene="dial">
     <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">05</span> Method</p>
+      <p class="eyebrow"><span class="num">06</span> Method</p>
       <h2 class="h-section" data-split>Four rules the tools are built on.</h2>
     </div>
 
@@ -629,10 +722,10 @@
     </div>
   </section>
 
-  <!-- ================================================== 06 dispatches ==== -->
+  <!-- ================================================== 07 dispatches ==== -->
   <section id="writing" data-scene="ink">
     <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">06</span> Dispatches</p>
+      <p class="eyebrow"><span class="num">07</span> Dispatches</p>
       <h2 class="h-section" data-split>Notes from building this.</h2>
       <p class="lede">
         Long-form on Medium, indexed here. What the logs actually show, what the rules
@@ -668,10 +761,10 @@
     </form>
   </section>
 
-  <!-- ================================================== 07 faq =========== -->
+  <!-- ================================================== 08 faq =========== -->
   <section id="faq" data-scene="graph">
     <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">07</span> FAQ</p>
+      <p class="eyebrow"><span class="num">08</span> FAQ</p>
       <h2 class="h-section" data-split>The questions that decide it.</h2>
     </div>
 
@@ -737,10 +830,10 @@
     </div>
   </section>
 
-  <!-- ================================================== 08 contact ======= -->
+  <!-- ================================================== 09 contact ======= -->
   <section id="contact" data-scene="signoff">
     <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">08</span> Contact</p>
+      <p class="eyebrow"><span class="num">09</span> Contact</p>
       <h2 class="h-section" data-split>Open to interesting problems.</h2>
     </div>
 
@@ -749,15 +842,20 @@
         <p class="lede">
           Software engineer in Istanbul. ASP.NET Core and EF Core by day; agent tooling,
           data-loss-prevention research and Node CLIs the rest of the time. Currently
-          building evidence-first instrumentation for coding agents.
+          building evidence-first instrumentation for coding agents and small Turkish
+          models for personal-data protection.
         </p>
         <p class="body" style="margin-top:20px">
-          If you are working on agent observability, developer tooling, or anything where
-          a system has to prove what it did rather than claim it — I want to hear about it.
+          If you are working on agent observability, developer tooling, Turkish-language
+          privacy tooling, or anything where a system has to prove what it did rather than
+          claim it — I want to hear about it.
         </p>
       </div>
 
       <div class="contact-links" data-reveal style="--d:.1s">
+        <a href="https://huggingface.co/halilneed" rel="noopener">
+          <span class="k">Hugging Face</span><span class="v">huggingface.co/halilneed</span><span class="go" aria-hidden="true">&#8599;</span>
+        </a>
         <a href="https://github.com/halilneed" rel="noopener">
           <span class="k">GitHub</span><span class="v">github.com/halilneed</span><span class="go" aria-hidden="true">&#8599;</span>
         </a>
@@ -785,7 +883,7 @@
 </main>
 
 <footer class="foot">
-  <span>&copy; <span id="year">2026</span> hailneed</span>
+  <span>&copy; <span id="year">2026</span> halilneed</span>
   <span class="colophon">
     Static page. No framework, no build step, no cookies. Visits are counted in
     aggregate by GoatCounter — nothing identifies you. The instrument on the right

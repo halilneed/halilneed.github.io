@@ -17,9 +17,10 @@ window.HN = (function () {
 
   /* -- links used in more than one place ---------------------------------- */
   var profile = {
-    name: 'hailneed',
-    handle: 'hailneed',
+    name: 'halilneed',
+    handle: 'halilneed',
     github: 'https://github.com/halilneed',
+    huggingface: 'https://huggingface.co/halilneed',
     /* TODO: swap for the real Medium profile once the first piece is live. */
     medium: 'https://medium.com/@hailneed',
     email: 'hqclox43@gmail.com'
@@ -44,6 +45,30 @@ window.HN = (function () {
      ======================================================================= */
   var writing = [
     {
+      title: 'Daha büyük model eğitmedim, zayıf dilimleri eğittim',
+      dek:
+        'In Turkish. How a 270M Turkish PII masking model went from 0.740 to ' +
+        '0.882 on a public 1,000-row benchmark with 24,000 targeted examples — ' +
+        'and the two slices where it got worse.',
+      status: 'published',
+      tags: ['turkish-nlp', 'privacy', 'models'],
+      date: '2026-09-28',
+      readingTime: null,
+      url: 'https://hailneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d'
+    },
+    {
+      title: 'From first prompt to team workflows: an AI productivity roadmap for corporate teams',
+      dek:
+        'A crawl-walk-run guide for every team in a large company, not just the ' +
+        'technical ones. One team cut its daily incoming requests from 100 to 35 ' +
+        'without buying a single AI tool — by charting its own data first.',
+      status: 'published',
+      tags: ['ai-adoption', 'productivity'],
+      date: '2026-09-13',
+      readingTime: null,
+      url: 'https://hailneed.medium.com/from-first-prompt-to-team-workflows-an-ai-productivity-roadmap-for-corporate-teams-761839e2c265'
+    },
+    {
       title: "I have 38 agent skills. Ten of them have never fired.",
       dek:
         "Claude Code writes down which skill was active on every tool call. " +
@@ -56,14 +81,14 @@ window.HN = (function () {
       url: "https://hailneed.medium.com/i-have-38-agent-skills-ten-of-them-have-never-fired-6e908ee56a35"
     },
     {
-      title: "Instruction files are read before every question you ask, and nobody measures them.",
+      title: "My CLAUDE.md is seven lines long. It loads 137.",
       dek:
-        "My CLAUDE.md is seven lines long. It loads 137. Twelve projects, " +
-        "a median of ~6,000 tokens per request, and the rule that turned out " +
-        "to be working precisely because it never fired.",
+        "Instruction files are read before every question you ask, and nobody " +
+        "measures them. Twelve projects, a median of ~6,000 tokens per request, " +
+        "and the rule that turned out to be working precisely because it never fired.",
       status: "published",
       tags: ["claude-code", "agents", "context"],
-      date: "2026-08-26",
+      date: "2026-08-21",
       readingTime: null,
       url: "https://hailneed.medium.com/instruction-files-are-read-before-every-question-you-ask-and-nobody-measures-them-c56b7989d12b"
     },
@@ -74,7 +99,7 @@ window.HN = (function () {
         '35 tool calls per prompt, 49 denials, and the parts that did not flatter me.',
       status: 'published',
       tags: ['claude-code', 'agents'],
-      date: '2026-08-21',
+      date: '2026-08-20',
       readingTime: 7,
       url: 'https://medium.com/@hailneed/i-read-my-claude-code-history-300-prompts-10-594-tool-calls-a1524399d5a9'
     },
@@ -116,14 +141,15 @@ window.HN = (function () {
   /* -- the scroll rail on the home page ----------------------------------- */
   var sections = [
     { id: 'index',    label: 'Index',        n: '00' },
-    { id: 'fieldkit', label: 'Field kit',    n: '01' },
-    { id: 'install',  label: 'Install',      n: '02' },
-    { id: 'support',  label: 'Support',      n: '03' },
-    { id: 'shipped',  label: 'Also shipped', n: '04' },
-    { id: 'method',   label: 'Method',       n: '05' },
-    { id: 'writing',  label: 'Dispatches',   n: '06' },
-    { id: 'faq',      label: 'FAQ',          n: '07' },
-    { id: 'contact',  label: 'Contact',      n: '08' }
+    { id: 'models',   label: 'Models',       n: '01' },
+    { id: 'fieldkit', label: 'Field kit',    n: '02' },
+    { id: 'install',  label: 'Install',      n: '03' },
+    { id: 'support',  label: 'Support',      n: '04' },
+    { id: 'shipped',  label: 'Also shipped', n: '05' },
+    { id: 'method',   label: 'Method',       n: '06' },
+    { id: 'writing',  label: 'Dispatches',   n: '07' },
+    { id: 'faq',      label: 'FAQ',          n: '08' },
+    { id: 'contact',  label: 'Contact',      n: '09' }
   ];
 
   return { profile: profile, writing: writing, sections: sections };
