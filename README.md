@@ -11,7 +11,8 @@
 
 | Yol | Ne |
 |---|---|
-| `index.html` | Tek sayfa portfolyo — hero, field kit (6 modül), kurulum, **destek katmanları**, diğer repolar, yöntem, dispatches + bülten formu, **SSS**, iletişim |
+| `index.html` | **Kişisel portföy** — hero (kim), iş listesi (modeller · repolar · yazılar), Hugging Face modelleri, GitHub repoları, dispatches + bülten formu, hakkında (Boğaziçi), iletişim |
+| `repos/index.html` | **Ajan araçları sayfası** — eski ana sayfa akışı: field kit (6 modül), kurulum, **destek katmanları**, yöntem, **SSS**. Kendi rail listesi `data.js` → `repoSections`, `<body data-page="repos">` ile seçilir |
 | `writing/index.html` | Yazı indeksi + etiket filtresi |
 | `404.html` | Bulunamadı sayfası |
 | `assets/css/main.css` | Tek stil dosyası, 18 numaralı bölüme kadar yorumlu (17 destek katmanları, 18 SSS) |
@@ -24,7 +25,7 @@
 
 İki kural:
 
-- **Projeler `index.html` içinde statik HTML.** Nadiren değişir, JavaScript kapalıyken de
+- **Projeler statik HTML** (portföy `index.html`, ajan araçları `repos/index.html`). Nadiren değişir, JavaScript kapalıyken de
   okunması gerekir, arama motorunun ilk taramada görmesi gerekir.
 - **Yazılar `assets/js/data.js` içinde veri.** Her yayında değişir. → [WRITING.md](WRITING.md)
 

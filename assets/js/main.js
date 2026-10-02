@@ -135,9 +135,14 @@
   /* =======================================================================
      scroll rail
      ===================================================================== */
+  /* each page with a rail declares its own list: <body data-page="repos"> */
+  var pageSections = (document.body.getAttribute('data-page') === 'repos' && HN.repoSections)
+    ? HN.repoSections
+    : HN.sections;
+
   var rail = $('#rail');
-  if (rail && HN.sections.length) {
-    rail.innerHTML = HN.sections.map(function (s) {
+  if (rail && pageSections.length) {
+    rail.innerHTML = pageSections.map(function (s) {
       return '<a href="#' + s.id + '" data-rail="' + s.id + '">' +
                '<span class="name">' + esc(s.label) + '</span>' +
                '<span class="tick" aria-hidden="true"></span>' +
@@ -308,7 +313,7 @@
   var railLinks = $$('[data-rail]');
   var navLinks = $$('#topnav a');
   var topbar = $('#topbar');
-  var sectionEls = HN.sections
+  var sectionEls = pageSections
     .map(function (s) { return document.getElementById(s.id); })
     .filter(Boolean);
 

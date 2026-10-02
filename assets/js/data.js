@@ -1,8 +1,9 @@
 /* ============================================================================
    halilneed.github.io — the parts that change often
    ----------------------------------------------------------------------------
-   Projects live in index.html as static markup: they change rarely, and the
-   page must read correctly with JavaScript switched off.
+   Projects live as static markup — the portfolio in index.html, the agent
+   tools in repos/index.html: they change rarely, and the pages must read
+   correctly with JavaScript switched off.
 
    Dispatches live HERE, because they change every time something is published.
    Adding a Medium article is one object in HN.writing — nothing else. Both the
@@ -141,16 +142,23 @@ window.HN = (function () {
   /* -- the scroll rail on the home page ----------------------------------- */
   var sections = [
     { id: 'index',    label: 'Index',        n: '00' },
-    { id: 'models',   label: 'Models',       n: '01' },
-    { id: 'fieldkit', label: 'Field kit',    n: '02' },
-    { id: 'install',  label: 'Install',      n: '03' },
-    { id: 'support',  label: 'Support',      n: '04' },
-    { id: 'shipped',  label: 'Also shipped', n: '05' },
-    { id: 'method',   label: 'Method',       n: '06' },
-    { id: 'writing',  label: 'Dispatches',   n: '07' },
-    { id: 'faq',      label: 'FAQ',          n: '08' },
-    { id: 'contact',  label: 'Contact',      n: '09' }
+    { id: 'work',     label: 'Work',         n: '01' },
+    { id: 'models',   label: 'Models',       n: '02' },
+    { id: 'repos',    label: 'Repositories', n: '03' },
+    { id: 'writing',  label: 'Dispatches',   n: '04' },
+    { id: 'about',    label: 'About',        n: '05' },
+    { id: 'contact',  label: 'Contact',      n: '06' }
   ];
 
-  return { profile: profile, writing: writing, sections: sections };
+  /* -- the scroll rail on /repos/ (the agent tools page) ------------------- */
+  var repoSections = [
+    { id: 'index',    label: 'Index',        n: '00' },
+    { id: 'fieldkit', label: 'Field kit',    n: '01' },
+    { id: 'install',  label: 'Install',      n: '02' },
+    { id: 'support',  label: 'Support',      n: '03' },
+    { id: 'method',   label: 'Method',       n: '04' },
+    { id: 'faq',      label: 'FAQ',          n: '05' }
+  ];
+
+  return { profile: profile, writing: writing, sections: sections, repoSections: repoSections };
 })();

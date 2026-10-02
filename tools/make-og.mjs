@@ -130,6 +130,15 @@ const CARDS = {
     stats: [['2', 'MODELS'], ['1', 'OPEN BENCHMARK'], ['6', 'AGENT PLUGINS'], ['5', 'DISPATCHES']]
   },
 
+  /* /repos/ — ajan araçları sayfası (eski ana kart) */
+  repos: {
+    kicker: 'EVIDENCE-FIRST TOOLS FOR CODING AGENTS',
+    lines: ['TOOLS THAT SHOW', 'WHAT YOUR AGENT', 'ACTUALLY DID.'],
+    accent: 2,
+    roster: 'AGENT-BLACKBOX / SKILLBENCH / SCAR / GARDENER / PAINRADAR / DEVPERSONA',
+    stats: [['6', 'MODULES'], ['26', 'AUDIT RULES'], ['0', 'NETWORK CALLS'], ['MIT', 'LICENCE']]
+  },
+
   /* ürün kartları — manşetin ilk satırı ürün adı (SIGNAL), kalanı rolü */
   'agent-blackbox': {
     kicker: 'FLIGHT RECORDER',

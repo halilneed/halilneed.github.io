@@ -12,13 +12,13 @@
 1. **`<head>`** — title/description/canonical/OG URL'lerini ürüne çevir.
    OG görseli `/assets/img/og-<repo>.png` (üretimi: `node tools/make-og.mjs <repo>`).
    JSON-LD `SoftwareApplication` bloğundaki `name`, `license`, `url`, `sameAs` güncellenir.
-2. **Sprite** — yalnızca sayfanın kullandığı semboller kalır; ürün ikonu `index.html`'deki
-   (kök) sprite'tan kopyalanır.
-3. **Topbar** — nav sabittir: Suite (`/#fieldkit`) · Install (`#install`) · Cloud (`#cloud`)
-   · Support (`/#support`) · Dispatches (`/writing/`) · Family (`#family`). devpersona’da
+2. **Sprite** — yalnızca sayfanın kullandığı semboller kalır; ürün ikonu `repos/index.html`'deki
+   sprite'tan kopyalanır.
+3. **Topbar** — nav sabittir: Suite (`/repos/#fieldkit`) · Install (`#install`) · Cloud (`#cloud`)
+   · Support (`/repos/#support`) · Dispatches (`/writing/`) · Family (`#family`). devpersona’da
    Cloud yoktur, Support vardır. `#rail` ürün sayfalarında yoktur.
-4. **00 Hero** — eyebrow: `hailneed suite · module NN · <kicker>`. Modül numarası kök
-   sayfadaki kart sırasıdır. `data-scene` kartla aynı sahnedir (blackbox=`stream`,
+4. **00 Hero** — eyebrow: `hailneed suite · module NN · <kicker>`. Modül numarası
+   `repos/index.html`'deki kart sırasıdır. `data-scene` kartla aynı sahnedir (blackbox=`stream`,
    skillbench=`grid`, scar=`stream`, gardener=`grid`, painradar=`radar`, devpersona=`graph`).
    Metrikler **README'den doğrulanabilir gerçek sayılardır** — pazarlama sayısı uydurulmaz.
 5. **01 Evidence** — `.terminal` içinde aracın **gerçek çıktısından** kısaltılmış alıntı.
@@ -36,7 +36,7 @@
 10. **06 Family** — diğer beş ürüne `.cards` grid + köke dönüş.
 11. **Kuyruk** — footer kolofonu kökle aynı; scriptler: `data.js`, `instrument.js`,
     `main.js`, GoatCounter. Form action'ı ve GoatCounter kodu kökle aynı kalır.
-12. **Kayıt** — `sitemap.xml`'e URL eklenir; kök `index.html`'deki ürün kartına
+12. **Kayıt** — `sitemap.xml`'e URL eklenir; `repos/index.html`'deki ürün kartına
     "Details →" linki eklenir (yalnızca sayfa gerçekten var olduktan sonra).
 
 ## Ölçüm adlandırması
