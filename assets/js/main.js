@@ -93,6 +93,22 @@
     renderPosts(postsHost, limit > 0 ? all.slice(0, limit) : all);
   }
 
+  /* hero: the newest published pieces as one-line rows (home page only) */
+  var heroPosts = $('#hero-posts');
+  if (heroPosts) {
+    var heroLimit = parseInt(heroPosts.getAttribute('data-limit') || '3', 10);
+    var newest = orderedWriting()
+      .filter(function (p) { return p.status === 'published' && p.url; })
+      .slice(0, heroLimit);
+    heroPosts.innerHTML = newest.map(function (p) {
+      return '<a class="hero-post" href="' + esc(p.url) + '" rel="noopener" data-goatcounter-click="hero-post">' +
+        '<span class="when">' + esc(formatDate(p.date)) + '</span>' +
+        '<span class="ttl">' + esc(p.title) + '</span>' +
+        '<span class="go" aria-hidden="true">&#8599;</span>' +
+      '</a>';
+    }).join('');
+  }
+
   /* keep every Medium link pointing at whatever data.js says */
   if (HN.profile && HN.profile.medium) {
     $$('a[href*="medium.com"]').forEach(function (a) {

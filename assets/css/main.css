@@ -504,6 +504,42 @@ em, .serif {
   transition: color 0.3s var(--ease);
 }
 .now-list a:hover .t { color: var(--signal); }
+
+/* girişteki son yazılar: tarih · başlık · ok, tek satırlık sıralar */
+.hero-posts { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.hero-posts:empty { display: none; }
+.hero-post {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr) auto;
+  gap: 4px 14px;
+  align-items: baseline;
+  padding: 13px 18px 14px;
+  background: var(--ink);
+  transition: background 0.3s var(--ease);
+}
+.hero-post:hover { background: var(--ink-2); }
+.hero-post .when {
+  font: 400 11px/1.5 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-4);
+}
+.hero-post .ttl {
+  font-weight: 500;
+  font-size: 15.5px;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+  transition: color 0.3s var(--ease);
+}
+.hero-post:hover .ttl { color: var(--signal); }
+.hero-post .go { color: var(--fg-4); transition: transform 0.4s var(--ease), color 0.3s; }
+.hero-post:hover .go { transform: translateX(3px); color: var(--signal); }
+@media (max-width: 560px) {
+  .hero-post { grid-template-columns: minmax(0, 1fr) auto; }
+  .hero-post .when { grid-column: 1 / -1; }
+}
+.hero-posts-foot { margin-top: 12px; }
 .now-list .d { display: block; margin-top: 6px; font-size: 13.5px; line-height: 1.55; color: var(--fg-3); }
 
 .metrics {
