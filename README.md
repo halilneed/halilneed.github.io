@@ -14,6 +14,7 @@
 | `index.html` | **Kişisel portföy** — hero (kim), iş listesi (modeller · repolar · yazılar), Hugging Face modelleri, GitHub repoları, dispatches + bülten formu, hakkında (Boğaziçi), iletişim |
 | `repos/index.html` | **Ajan araçları sayfası** — eski ana sayfa akışı: field kit (6 modül), kurulum, **destek katmanları**, yöntem, **SSS**. Kendi rail listesi `data.js` → `repoSections`, `<body data-page="repos">` ile seçilir |
 | `writing/index.html` | Yazı indeksi + etiket filtresi |
+| `models/turkish-pii-detection/index.html` | Türkçe PII modeli — İngilizce rehber, Türkçe özet, kullanım, sürüm ve değerlendirme sınırları; statik HTML |
 | `404.html` | Bulunamadı sayfası |
 | `assets/css/main.css` | Tek stil dosyası, 18 numaralı bölüme kadar yorumlu (17 destek katmanları, 18 SSS) |
 | `assets/js/data.js` | **Değişen tek içerik**: Medium yazıları, profil linkleri, scroll rayı bölümleri |

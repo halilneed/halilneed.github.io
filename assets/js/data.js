@@ -22,8 +22,7 @@ window.HN = (function () {
     handle: 'halilneed',
     github: 'https://github.com/halilneed',
     huggingface: 'https://huggingface.co/halilneed',
-    /* TODO: swap for the real Medium profile once the first piece is live. */
-    medium: 'https://medium.com/@hailneed',
+    medium: 'https://halilneed.medium.com',
     email: 'hqclox43@gmail.com'
   };
 
@@ -55,7 +54,7 @@ window.HN = (function () {
       tags: ['turkish-nlp', 'privacy', 'models'],
       date: '2026-09-28',
       readingTime: null,
-      url: 'https://hailneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d'
+      url: 'https://halilneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d'
     },
     {
       title: 'From first prompt to team workflows: an AI productivity roadmap for corporate teams',
@@ -67,7 +66,7 @@ window.HN = (function () {
       tags: ['ai-adoption', 'productivity'],
       date: '2026-09-13',
       readingTime: null,
-      url: 'https://hailneed.medium.com/from-first-prompt-to-team-workflows-an-ai-productivity-roadmap-for-corporate-teams-761839e2c265'
+      url: 'https://halilneed.medium.com/from-first-prompt-to-team-workflows-an-ai-productivity-roadmap-for-corporate-teams-761839e2c265'
     },
     {
       title: "I have 38 agent skills. Ten of them have never fired.",
@@ -79,7 +78,7 @@ window.HN = (function () {
       tags: ["claude-code", "agents", "developer-tools"],
       date: "2026-08-26",
       readingTime: null,
-      url: "https://hailneed.medium.com/i-have-38-agent-skills-ten-of-them-have-never-fired-6e908ee56a35"
+      url: "https://halilneed.medium.com/i-have-38-agent-skills-ten-of-them-have-never-fired-6e908ee56a35"
     },
     {
       title: "My CLAUDE.md is seven lines long. It loads 137.",
@@ -91,7 +90,7 @@ window.HN = (function () {
       tags: ["claude-code", "agents", "context"],
       date: "2026-08-21",
       readingTime: null,
-      url: "https://hailneed.medium.com/instruction-files-are-read-before-every-question-you-ask-and-nobody-measures-them-c56b7989d12b"
+      url: "https://halilneed.medium.com/instruction-files-are-read-before-every-question-you-ask-and-nobody-measures-them-c56b7989d12b"
     },
     {
       title: 'I read my Claude Code history: 300 prompts, 10,594 tool calls.',
@@ -102,7 +101,7 @@ window.HN = (function () {
       tags: ['claude-code', 'agents'],
       date: '2026-08-20',
       readingTime: 7,
-      url: 'https://medium.com/@hailneed/i-read-my-claude-code-history-300-prompts-10-594-tool-calls-a1524399d5a9'
+      url: 'https://halilneed.medium.com/i-read-my-claude-code-history-300-prompts-10-594-tool-calls-a1524399d5a9'
     },
     {
       title: 'Your agent says it fixed it. Here is how to check.',

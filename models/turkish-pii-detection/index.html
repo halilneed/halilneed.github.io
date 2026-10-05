@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turkish PII Detection and Masking Model (270M) — halilneed</title>
+<meta name="description" content="A 270M model for instruction-conditioned Turkish PII detection and masking. Explore Python usage, v02 benchmark results, limitations and Hugging Face weights. Türkçe kişisel veri maskeleme.">
+<meta name="author" content="halilneed">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://halilneed.github.io/models/turkish-pii-detection/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:title" content="Turkish PII Detection and Masking — halilneed">
+<meta property="og:description" content="A small Turkish personal-data masking model. Usage, measured release results and limitations; weights on Hugging Face.">
+<meta property="og:url" content="https://halilneed.github.io/models/turkish-pii-detection/">
+<meta property="og:image" content="https://halilneed.github.io/assets/img/og-turkish-pii-detection.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://halilneed.github.io/assets/img/og-turkish-pii-detection.png">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/model.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://halilneed.github.io/models/turkish-pii-detection/#page",
+      "url": "https://halilneed.github.io/models/turkish-pii-detection/",
+      "name": "Turkish PII Detection and Masking Model — halilneed",
+      "description": "A 270M model for instruction-conditioned Turkish personal-data masking, with usage examples, reported benchmark results and limitations.",
+      "inLanguage": ["en", "tr"],
+      "author": {"@type": "Person", "name": "Halil", "alternateName": "halilneed", "url": "https://halilneed.github.io/"},
+      "mainEntity": {"@id": "https://halilneed.github.io/models/turkish-pii-detection/#model"}
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://halilneed.github.io/models/turkish-pii-detection/#model",
+      "name": "turkish-pii-detection",
+      "description": "Instruction-conditioned Turkish PII masking model and companion Python usage examples. Generates masked text; does not return entity offsets.",
+      "url": "https://huggingface.co/halilneed/turkish-pii-detection",
+      "codeRepository": "https://github.com/halilneed/turkish-pii-detection",
+      "programmingLanguage": "Python",
+      "softwareVersion": "v02",
+      "license": "https://ai.google.dev/gemma/terms",
+      "author": {"@type": "Person", "name": "Halil", "alternateName": "halilneed", "url": "https://halilneed.github.io/"}
+    }
+  ]
+}
+</script>
+</head>
+<body class="model-page">
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<header class="topbar">
+  <a class="brand" href="/"><span class="dot" aria-hidden="true"></span> halilneed</a>
+  <nav class="topnav" aria-label="Main navigation">
+    <a href="/#models">Models</a>
+    <a href="/repos/">Repositories</a>
+    <a href="/writing/">Writing</a>
+    <a href="#turkce" lang="tr">Türkçe özet</a>
+  </nav>
+  <a class="topmeta" href="https://huggingface.co/halilneed/turkish-pii-detection" data-goatcounter-click="pii-header-hf">Hugging Face &#8599;</a>
+</header>
+<main id="main" class="model-flow">
+  <nav class="model-breadcrumb" aria-label="Breadcrumb"><a href="/">halilneed</a><span aria-hidden="true"> / </span><a href="/#models">Models</a><span aria-hidden="true"> / </span><span>Turkish PII</span></nav>
+  <header class="model-hero">
+    <p class="eyebrow">Turkish NLP · v02 · 270M parameters</p>
+    <h1>Turkish PII detection<br>and <em>masking.</em></h1>
+    <p class="lede">A small model by halilneed that transforms Turkish text according to a masking instruction. Use it to redact personal-data expressions before text reaches an LLM, log store or third party.</p>
+    <p class="model-intro">It generates masked text, rather than NER spans or entity offsets. The policy can request full masking, selected fields or everything except named fields. Local inference is possible; outputs still need validation.</p>
+    <div class="hero-actions">
+      <a class="btn btn--solid" href="https://huggingface.co/halilneed/turkish-pii-detection" data-goatcounter-click="pii-download">Model &amp; weights &#8599;</a>
+      <a class="btn" href="https://github.com/halilneed/turkish-pii-detection" data-goatcounter-click="pii-github">Python examples &#8599;</a>
+      <a class="btn" href="#usage">Quick start &darr;</a>
+    </div>
+    <dl class="model-facts">
+      <div><dt>Size</dt><dd>270M</dd></div>
+      <div><dt>Label schema</dt><dd>53 labels</dd></div>
+      <div><dt>Reported v02 exact match</dt><dd>0.944 <small>/ 1,000 synthetic rows</small></dd></div>
+      <div><dt>Model terms</dt><dd>Gemma</dd></div>
+    </dl>
+  </header>
+  <nav class="model-toc" aria-label="On this page"><a href="#example">Example</a><a href="#usage">Usage</a><a href="#evaluation">Evaluation</a><a href="#limitations">Limitations</a><a href="#faq">FAQ</a><a href="#turkce" lang="tr">Türkçe</a></nav>
+
+  <section id="example" class="model-section">
+    <p class="eyebrow">01 / Task</p>
+    <h2>Choose what to mask.</h2>
+    <p>The model reads a Turkish instruction and an input text, then generates a transformed version. This fictional example illustrates the task contract; it is not a newly recorded prediction.</p>
+    <div class="terminal"><div class="terminal-bar">Illustrative example · fictional data</div><pre><code>Instruction: Metindeki e-posta adreslerini maskele;
+             diğer içeriği koru.
+Input:       E-posta demo@example.com; durum açık.
+Target:      E-posta [EMAIL]; durum açık.</code></pre></div>
+    <p>Names, national identifiers and contact information are among the personal-data expressions described by the model. Consult the current model card for the masking policy and known failures before designing strict output checks.</p>
+  </section>
+
+  <section id="usage" class="model-section">
+    <p class="eyebrow">02 / Usage</p>
+    <h2>Run the Python example locally.</h2>
+    <p>The companion repository provides a command-line example with the model's prompt format and deterministic decoding. The following command selects the v02 snapshot recorded on 5 October 2026.</p>
+    <div class="terminal"><div class="terminal-bar">Python · recorded v02 revision</div><pre><code>git clone https://github.com/halilneed/turkish-pii-detection.git
+cd turkish-pii-detection
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install torch transformers accelerate
+python examples/mask.py \
+  --revision 28644718923ae38b0105c9f3d2be57312ad0ced3 \
+  --text 'E-posta demo@example.com; durum açık.' \
+  --instruction 'Metindeki e-posta adreslerini maskele; diğer içeriği koru.'</code></pre></div>
+    <p>Without <code>--revision</code>, the companion script retains its historical pinned v01 default. The Hugging Face model's unpinned <code>main</code> revision serves v02. The commands above use macOS/Linux shell syntax and were not executed as an inference benchmark for this page.</p>
+    <p>The published card reports about 600 ms per short sentence and 1.6 GB RAM on an Intel i5-12400F using fp32, eight CPU threads and batch size one. These are publisher-reported conditions, not measurements performed here; speed depends on input and hardware.</p>
+  </section>
+
+  <section id="evaluation" class="model-section">
+    <p class="eyebrow">03 / Evidence</p>
+    <h2>Read the score with its boundary.</h2>
+    <p>The current <a href="https://huggingface.co/halilneed/turkish-pii-detection#sonuçlar">model card</a> reports whole-row exact match on a synthetic <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark">Turkish PII Masking Benchmark</a>. The results below were not independently rerun while preparing this page.</p>
+    <div class="model-table-wrap" tabindex="0" role="region" aria-label="Reported benchmark results">
+      <table><caption>Reported results · current card read 5 October 2026</caption><thead><tr><th scope="col">Metric / slice</th><th scope="col">v01 rerun</th><th scope="col">v02</th></tr></thead><tbody>
+        <tr><th scope="row">Exact match · 1,000 rows</th><td>0.880</td><td>0.944</td></tr>
+        <tr><th scope="row">Schema-neutral · 903 rows</th><td>0.900</td><td>0.951</td></tr>
+        <tr><th scope="row">B partition · 531 rows</th><td>0.885</td><td>0.945</td></tr>
+        <tr><th scope="row">Long text</th><td>0.656</td><td>0.844</td></tr>
+        <tr><th scope="row">Multiple people</th><td>0.600</td><td>0.750</td></tr>
+        <tr><th scope="row">Suffixed personal data</th><td>0.758</td><td>0.803</td></tr>
+      </tbody></table>
+    </div>
+    <p>The card says aggregate benchmark feedback influenced development. The interpolation ratio was selected using the A partition (469 rows), a development set and internal probes; the B partition (531 rows) was not used for selection. Benchmark row contents were not used for training or templates, according to the publisher. This is a reported boundary, not an independent contamination audit.</p>
+    <p>The historical v01 card reported 0.882 / 0.902; the current card attributes its slightly lower rerun to bf16 batched inference differences. Exact match measures the complete output string. It does not measure entity recall or establish that 94.4% of real documents are safe to share.</p>
+    <a class="link" href="https://github.com/halilneed/turkish-pii-detection/blob/main/docs/v02-release.md">Release and evaluation notes &#8599;</a>
+  </section>
+
+  <section id="limitations" class="model-section">
+    <p class="eyebrow">04 / Limits</p>
+    <h2>Validate the transformed text.</h2>
+    <ul class="model-list">
+      <li>Evaluation is synthetic. Measure the model on your own representative documents before relying on it.</li>
+      <li>Known weaker slices include several people in one text, Turkish suffixes and uppercase inputs.</li>
+      <li>Very short, context-free fields may remain unmasked. Supply the relevant context and inspect the output.</li>
+      <li>Generation can miss personal data, change unrelated content or produce unexpected labels. Empty or truncated output is also a failure.</li>
+      <li>Restricted instructions intentionally leave some fields visible. Masking alone does not establish anonymization or KVKK/GDPR compliance.</li>
+    </ul>
+    <p>Model weights are subject to <a href="https://ai.google.dev/gemma/terms">Gemma Terms of Use</a>. The companion repository's MIT license covers its original code and documentation; it does not relicense model weights.</p>
+  </section>
+
+  <section id="faq" class="model-section">
+    <p class="eyebrow">05 / Questions</p>
+    <h2>Before integrating the model.</h2>
+    <div class="faq">
+      <details><summary>Is this a Turkish NER model?</summary><p>Its output is generated, masked text. It does not return token labels or entity offsets. Use a span-based detector if your application needs structured positions.</p></details>
+      <details><summary>Can it run without sending text to an API?</summary><p>Yes, local inference is supported. Model files and Python dependencies must be downloaded first. The card includes CPU settings; this page has not independently verified inference speed.</p></details>
+      <details><summary>How is masking different from KVKK classification?</summary><p>Masking transforms the text. The separate <a href="https://huggingface.co/halilneed/turkish-kvkk-classifier">Turkish KVKK classifier</a> predicts data categories, which can inform a masking policy. Category labels do not determine legal permission to process data.</p></details>
+      <details><summary>Which version will I download?</summary><p>The canonical Hugging Face repository serves v02 on main. Use <code>revision="v01"</code> for the older release, or a recorded commit SHA for reproducibility. The companion script's default remains pinned to v01; pass the v02 revision in the quick start.</p></details>
+    </div>
+  </section>
+
+  <section id="turkce" class="model-section" lang="tr">
+    <p class="eyebrow">06 / Türkçe</p>
+    <h2>Türkçe kişisel veri maskeleme modeli.</h2>
+    <p><strong>turkish-pii-detection</strong>, halilneed tarafından geliştirilen, verilen talimata göre Türkçe metindeki kişisel verileri maskeleyen 270M parametreli bir modeldir. Tüm kişisel verileri, yalnızca seçilen alanları veya belirtilen alanlar dışındakileri maskelemek için kullanılabilir.</p>
+    <p>Çıktısı maskelenmiş metindir; NER konumları veya KVKK sınıflandırma etiketleri üretmez. Güncel v02 kartında 1.000 sentetik örnekte 0.944 tam eşleşme raporlanır. Model seçiminde kullanılmadığı belirtilen 531 örneklik B bölümündeki skor 0.945'tir. Bu sayfa için yeniden ölçüm yapılmadı.</p>
+    <p>Yerel kullanım örnekleri GitHub'da, model ağırlıkları ve teknik açıklamalar Hugging Face'tedir. Gerçek belgelerde kullanmadan önce kendi veriniz üzerinde ölçün; özellikle çok kişili, ek almış ve bağlamsız kısa metinlerde çıktıyı doğrulayın.</p>
+    <div class="hero-actions"><a class="btn btn--solid" href="https://huggingface.co/halilneed/turkish-pii-detection" data-goatcounter-click="pii-tr-hf">Hugging Face modeli &#8599;</a><a class="btn" href="https://github.com/halilneed/turkish-pii-detection">Python kullanım örnekleri &#8599;</a></div>
+  </section>
+
+  <section class="model-section model-resources">
+    <h2>Code, weights and the write-up.</h2>
+    <ul class="model-list"><li><a href="https://huggingface.co/halilneed/turkish-pii-detection">Current model card and weights</a></li><li><a href="https://github.com/halilneed/turkish-pii-detection">Companion repository and evaluation utilities</a></li><li><a href="https://halilneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d">Medium: Daha büyük model eğitmedim, zayıf dilimleri eğittim</a></li><li><a href="/#models">Other Turkish privacy models by halilneed</a></li></ul>
+    <p class="small">Technical source: current model card, revision <code>28644718923ae38b0105c9f3d2be57312ad0ced3</code>, read 5 October 2026.</p>
+  </section>
+</main>
+<footer class="model-footer"><span>&copy; 2026 halilneed</span><a href="/">Back to the portfolio &larr;</a><a href="#main">Back to top &uarr;</a></footer>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

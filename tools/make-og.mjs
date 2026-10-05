@@ -147,6 +147,13 @@ const CARDS = {
     roster: 'TIMELINE / RISK / UNDO',
     stats: [['26', 'AUDIT RULES'], ['3', 'AGENT CLIS'], ['0', 'NETWORK CALLS'], ['MIT', 'LICENCE']]
   },
+  'turkish-pii-detection': {
+    kicker: 'TURKISH PERSONAL-DATA MASKING',
+    lines: ['TURKISH PII', 'DETECTION AND', 'MASKING.'],
+    accent: 0,
+    roster: 'INSTRUCTIONS / LOCAL INFERENCE / EVALUATION',
+    stats: [['270M', 'PARAMETERS'], ['53', 'LABELS'], ['V02', 'RELEASE']]
+  },
   skillbench: {
     kicker: 'SKILL LINT AND USAGE',
     lines: ['SKILLBENCH', 'SKILL LINT AND', 'USAGE COVERAGE.'],
