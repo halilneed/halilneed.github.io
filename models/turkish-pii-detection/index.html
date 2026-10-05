@@ -76,6 +76,7 @@
     <p class="model-intro">It generates masked text, rather than NER spans or entity offsets. The policy can request full masking, selected fields or everything except named fields. Local inference is possible; outputs still need validation.</p>
     <div class="hero-actions">
       <a class="btn btn--solid" href="https://huggingface.co/halilneed/turkish-pii-detection" data-goatcounter-click="pii-download">Model &amp; weights &#8599;</a>
+      <a class="btn" href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="pii-demo">Compare masking policies &#8599;</a>
       <a class="btn" href="https://github.com/halilneed/turkish-pii-detection" data-goatcounter-click="pii-github">Python examples &#8599;</a>
       <a class="btn" href="#usage">Quick start &darr;</a>
     </div>
@@ -103,6 +104,7 @@ Target:      E-posta [EMAIL]; durum açık.</code></pre></div>
     <p class="eyebrow">02 / Usage</p>
     <h2>Run the Python example locally.</h2>
     <p>The companion repository provides a command-line example with the model's prompt format and deterministic decoding. The following command selects the v02 snapshot recorded on 5 October 2026.</p>
+    <p><a href="https://github.com/halilneed/turkish-pii-detection/blob/main/docs/python-turkish-pii-masking.md">Read the Python tutorial with recorded model outputs</a>, or <a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">compare three recorded masking outputs</a>. Run the local Python demo to process your own text. Download the <a href="https://huggingface.co/halilneed/turkish-pii-detection">Turkish PII detection model on Hugging Face</a> for your own application.</p>
     <div class="terminal"><div class="terminal-bar">Python · recorded v02 revision</div><pre><code>git clone https://github.com/halilneed/turkish-pii-detection.git
 cd turkish-pii-detection
 python -m venv .venv
@@ -166,6 +168,7 @@ python examples/mask.py \
     <p>Çıktısı maskelenmiş metindir; NER konumları veya KVKK sınıflandırma etiketleri üretmez. Güncel v02 kartında 1.000 sentetik örnekte 0.944 tam eşleşme raporlanır. Model seçiminde kullanılmadığı belirtilen 531 örneklik B bölümündeki skor 0.945'tir. Bu sayfa için yeniden ölçüm yapılmadı.</p>
     <p>Yerel kullanım örnekleri GitHub'da, model ağırlıkları ve teknik açıklamalar Hugging Face'tedir. Gerçek belgelerde kullanmadan önce kendi veriniz üzerinde ölçün; özellikle çok kişili, ek almış ve bağlamsız kısa metinlerde çıktıyı doğrulayın.</p>
     <div class="hero-actions"><a class="btn btn--solid" href="https://huggingface.co/halilneed/turkish-pii-detection" data-goatcounter-click="pii-tr-hf">Hugging Face modeli &#8599;</a><a class="btn" href="https://github.com/halilneed/turkish-pii-detection">Python kullanım örnekleri &#8599;</a></div>
+    <p><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Kaydedilmiş Türkçe maskeleme örneklerini karşılaştırın</a>: tümünü maskele, yalnızca telefonu maskele veya isim hariç tümünü maskele. Kendi metninizi işlemek için yerel Python demosunu çalıştırın.</p>
   </section>
 
   <section class="model-section model-resources">
