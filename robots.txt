@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://halilneed.github.io/sitemap.xml
+Sitemap: https://halilneed.agency/sitemap.xml
