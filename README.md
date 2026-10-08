@@ -3,7 +3,7 @@
 > Kişisel portfolyo ve yazı indeksi. Statik HTML, sıfır bağımlılık, derleme adımı yok.
 > GitHub Pages doğrudan `main` dalından servis eder.
 
-**Yayın:** https://halilneed.github.io/
+**Yayın:** https://halilneed.agency/
 
 ---
 
