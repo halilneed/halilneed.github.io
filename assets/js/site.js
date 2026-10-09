@@ -1,5 +1,6 @@
 /* site.js — small enhancements. The pages are complete without it.
-   1. reveal on scroll   2. the masking demo   3. live numbers from the Hugging Face API */
+   1. reveal on scroll   2. the masking demo   3. live numbers from the Hugging Face API
+   4. the request form on /guides/ */
 (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -7,7 +8,7 @@
 
   /* 1. Reveal. Only elements that start below the fold are hidden, so nothing flashes. */
   if (!reduce && 'IntersectionObserver' in window) {
-    var targets = $$('.block > h2, .block > .block-lead, .collection, .repo, .card, .bars, .story-text, .about > *, main .section, .prose > section');
+    var targets = $$('.block > h2, .block > .block-lead, .collection, .repo, .card, .guide, .bars, .story-text, .about > *, main .section, .prose > section');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
@@ -102,4 +103,12 @@
         .catch(function () {});
     });
   }
+
+  /* 4. "Request this guide" ticks only that guide in the form. Without this, all three stay ticked. */
+  $$('[data-guide]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var want = 'guide-' + link.getAttribute('data-guide');
+      $$('.request input[type="checkbox"]').forEach(function (box) { box.checked = box.value === want; });
+    });
+  });
 })();

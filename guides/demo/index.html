@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rules or a model? An interactive demo | halilneed</title>
+<meta name="description" content="A keyword rule and a small model read the same twelve messages. Change either one and see which answers change. One part of three guides for business units.">
+<link rel="canonical" href="https://halilneed.agency/guides/demo/">
+<link rel="alternate" hreflang="en" href="https://halilneed.agency/guides/demo/">
+<link rel="alternate" hreflang="tr" href="https://halilneed.agency/guides/demo/tr/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<meta name="author" content="Halil">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:title" content="Rules or a model? An interactive demo">
+<meta property="og:description" content="A keyword rule and a small model read the same twelve messages. Change either one and see which answers change. One part of three guides for business units.">
+<meta property="og:url" content="https://halilneed.agency/guides/demo/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-guides.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+/* guide.css: one stylesheet for the interactive guides and for their PDFs.
+   Screen: the site's tokens, light and dark. Print: A4, light, a cover page.
+   build.mjs inlines this file into every guide. */
+
+:root {
+  color-scheme: light;
+  --bg: #fafafb; --card: #fff; --text: #111; --muted: #62626b; --line: #e4e4ea; --surface: #f1f1f4;
+  --accent: #a01f5c; --accent-soft: #f9eef4; --accent-line: #e3bfd1;
+  --ok: #17794a; --bad: #b3261e;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --shadow: 0 1px 2px rgb(0 0 0 / .04), 0 6px 20px rgb(0 0 0 / .05);
+}
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #2b2e36; --card: #343741; --text: #f1f1f4; --muted: #b8bbc5; --line: #4a4e5a; --surface: #3d414c;
+    --accent: #ffa6d1; --accent-soft: #473a47; --accent-line: #80596e;
+    --ok: #7ddba6; --bad: #ffa199;
+    --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .25);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 400 1rem/1.6 var(--sans); -webkit-font-smoothing: antialiased; overflow-wrap: break-word; }
+h1, h2, h3, p, ul, ol, dl, dd, figure, table { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+strong, b, th { font-weight: 600; }
+a { color: inherit; text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: .2em; }
+button, input, textarea, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+[id] { scroll-margin-top: 4.5rem; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.ico { flex: none; width: 1.5rem; height: 1.5rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.wrap { max-width: 64rem; margin-inline: auto; padding-inline: 1.25rem; }
+.small { font-size: .875rem; line-height: 1.5; color: var(--muted); }
+.mono { font-family: var(--mono); font-size: .9em; }
+.only-print { display: none; }
+
+/* Top bar */
+.top { position: sticky; top: 0; z-index: 5; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 86%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.top .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .25rem 1rem; min-height: 3.25rem; }
+.top a { text-decoration: none; }
+.top-name { font-weight: 600; }
+.top nav { display: flex; align-items: center; gap: .25rem; font-size: .875rem; }
+.top nav a { padding: .35rem .65rem; border-radius: .55rem; color: var(--muted); }
+.top nav a:hover { color: var(--text); }
+.top nav a[aria-current] { background: var(--text); color: var(--bg); }
+.top nav .sep { width: 1px; height: 1.1rem; margin-inline: .35rem; background: var(--line); }
+
+/* Cover: a hero on screen, a full page in print */
+.cover { padding-block: clamp(2.5rem, 7vw, 4.5rem) 1rem; }
+.cover-kicker { font-size: .9375rem; font-weight: 600; color: var(--accent); }
+.cover h1 { margin-top: .6rem; max-width: 46rem; font-size: clamp(2.25rem, 1.5rem + 3.6vw, 3.75rem); line-height: 1.03; letter-spacing: -.035em; font-weight: 700; text-wrap: balance; }
+.cover-sub { margin-top: 1rem; max-width: 38rem; font-size: clamp(1.125rem, 1rem + .5vw, 1.3125rem); line-height: 1.45; color: var(--muted); }
+.cover-figure { margin-top: 2.25rem; }
+.cover-foot { display: none; }
+
+/* The flow: numbered steps on a rail */
+.flow { margin-top: 2.5rem; }
+.step { position: relative; display: grid; grid-template-columns: 3rem minmax(0, 1fr); column-gap: 1.25rem; padding-bottom: 3rem; }
+.step::before { content: ""; position: absolute; left: calc(1.5rem - 1px); top: 3.25rem; bottom: .25rem; width: 2px; border-radius: 2px; background: var(--line); }
+.step:last-child::before { display: none; }
+.step-ico { display: grid; place-items: center; width: 3rem; height: 3rem; border: 1px solid var(--accent-line); border-radius: .9rem; background: var(--card); color: var(--accent); box-shadow: var(--shadow); }
+.step-n { font-size: .8125rem; font-weight: 600; color: var(--accent); }
+.step h2 { margin: .1rem 0 .5rem; font-size: clamp(1.375rem, 1.2rem + .8vw, 1.75rem); line-height: 1.18; letter-spacing: -.022em; text-wrap: balance; }
+.step h3 { margin: 1.5rem 0 .5rem; font-size: 1.0625rem; letter-spacing: -.008em; }
+.step-main > p { max-width: 40rem; }
+.step-main > * + * { margin-top: .75rem; }
+.step-main > h2 + p { margin-top: 0; }
+.lead { font-size: 1.125rem; line-height: 1.5; }
+
+/* Tiles, chips, small horizontal flows */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr)); gap: .625rem; }
+.tiles--3 { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+.tiles--x3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tile { padding: .875rem 1rem; border: 1px solid var(--line); border-radius: .9rem; background: var(--card); transition: opacity .3s, border-color .3s, background .3s; }
+.tile > .ico { color: var(--accent); }
+.tile b { display: block; margin-top: .3rem; line-height: 1.3; }
+.tile span { display: block; margin-top: .2rem; font-size: .875rem; line-height: 1.45; color: var(--muted); }
+.tile.on { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent); }
+.tile.off { opacity: .42; }
+.chips { display: flex; flex-wrap: wrap; align-items: center; gap: .375rem; }
+.chip { display: inline-flex; align-items: center; gap: .35rem; padding: .2rem .65rem; border-radius: 999px; background: var(--surface); font-size: .8125rem; font-weight: 600; line-height: 1.5; }
+.chip .ico { width: 1rem; height: 1rem; stroke-width: 1.9; }
+.chip--ok { color: var(--ok); }
+.chip--no { color: var(--bad); }
+.chip--a { background: var(--accent-soft); color: var(--accent); }
+.join { font-size: .8125rem; color: var(--muted); }
+.hflow { display: flex; align-items: stretch; gap: 1.5rem; }
+.hflow > div { position: relative; flex: 1; min-width: 0; padding: .75rem .875rem; border: 1px solid var(--line); border-radius: .75rem; background: var(--card); font-size: .875rem; line-height: 1.4; color: var(--muted); transition: opacity .3s, border-color .3s, background .3s; }
+.hflow > div + div::before { content: "\2192"; position: absolute; left: -1.2rem; top: 50%; transform: translateY(-50%); font-size: 1.05rem; color: var(--accent); }
+.hflow b { display: flex; align-items: center; gap: .4rem; margin-bottom: .15rem; color: var(--text); font-size: .9375rem; }
+.hflow .ico { width: 1.15rem; height: 1.15rem; color: var(--accent); }
+.hflow .on { border-color: var(--accent); background: var(--accent-soft); }
+.hflow .off { opacity: .4; }
+.hflow-log { display: flex; gap: .5rem; align-items: center; margin-top: .5rem; padding: .55rem .875rem; border-radius: .75rem; background: var(--surface); font-size: .875rem; }
+.hflow-log .ico { width: 1.15rem; height: 1.15rem; color: var(--accent); }
+.stairs { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; align-items: end; }
+.stairs > div { padding: .75rem .8rem; border: 1px solid var(--line); border-radius: .75rem; background: var(--card); font-size: .8125rem; line-height: 1.4; color: var(--muted); transition: opacity .3s, border-color .3s, background .3s; }
+.stairs > div:nth-child(1) { min-height: 5rem; }
+.stairs > div:nth-child(2) { min-height: 7rem; }
+.stairs > div:nth-child(3) { min-height: 9rem; }
+.stairs > div:nth-child(4) { min-height: 11rem; }
+.stairs span { display: block; font-size: .75rem; font-weight: 600; color: var(--accent); }
+.stairs b { display: block; margin-bottom: .2rem; font-size: 1rem; color: var(--text); }
+.stairs .on { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent); }
+.stairs .off { opacity: .42; }
+.ticks li { position: relative; padding-left: 1.6rem; margin-top: .4rem; max-width: 40rem; }
+.ticks li::before { content: ""; position: absolute; left: 0; top: .28rem; width: 1rem; height: 1rem; border: 1.5px solid var(--text); border-radius: .25rem; }
+.dots li { position: relative; padding-left: 1.1rem; margin-top: .35rem; max-width: 40rem; }
+.dots li::before { content: ""; position: absolute; left: .1rem; top: .62em; width: .4rem; height: .4rem; border-radius: 50%; background: var(--accent); }
+.note { padding: .875rem 1rem; border-radius: .9rem; background: var(--surface); font-size: .9375rem; line-height: 1.55; }
+.note--own { background: var(--accent-soft); }
+.note > b:first-child { color: var(--accent); }
+
+/* Widgets: what changes on the left, what you change on the right */
+.w { border: 1px solid var(--accent-line); border-radius: 1.1rem; background: var(--card); box-shadow: var(--shadow); overflow: hidden; }
+.w-head { display: flex; justify-content: space-between; gap: 1rem; padding: .55rem 1.1rem; background: var(--accent-soft); font-size: .8125rem; font-weight: 600; color: var(--accent); }
+.w-body { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
+.w-out { padding: 1.1rem 1.2rem; border-right: 1px solid var(--line); }
+.w-ctl { padding: 1.1rem 1.2rem; background: color-mix(in srgb, var(--surface) 55%, var(--card)); }
+.w-out > * + *, .w-ctl > * + * { margin-top: .875rem; }
+.w-wide { padding: 1rem 1.2rem; border-top: 1px solid var(--line); }
+.w-wide > * + * { margin-top: .6rem; }
+.w-cap { font-size: .75rem; font-weight: 600; color: var(--muted); }
+.w-foot { padding: .7rem 1.1rem; border-top: 1px solid var(--line); font-size: .8125rem; line-height: 1.5; color: var(--muted); }
+.q { display: block; margin-bottom: .35rem; font-size: .875rem; font-weight: 600; line-height: 1.35; }
+.seg { display: flex; flex-wrap: wrap; gap: .3rem; }
+.seg button { display: inline-flex; align-items: center; gap: .35rem; padding: .4rem .7rem; border: 1px solid var(--line); border-radius: .6rem; background: var(--card); font-size: .8125rem; line-height: 1.3; cursor: pointer; }
+.seg button:hover { border-color: var(--accent-line); }
+.seg button[aria-pressed="true"] { border-color: var(--text); background: var(--text); color: var(--bg); }
+.seg .ico { width: 1rem; height: 1rem; }
+.w input[type="text"], .w textarea { width: 100%; padding: .5rem .65rem; border: 1px solid var(--line); border-radius: .6rem; background: var(--card); font-size: .875rem; }
+.w textarea { min-height: 6.5rem; resize: vertical; font-family: var(--mono); line-height: 1.6; }
+.w input[type="range"] { width: 100%; accent-color: var(--accent); }
+.btn { padding: .4rem .8rem; border: 1px solid var(--text); border-radius: .6rem; background: var(--text); color: var(--bg); font-size: .8125rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.btn--quiet { border-color: var(--line); background: var(--card); color: var(--text); }
+.row { display: flex; gap: .4rem; align-items: center; }
+.row > input { flex: 1; min-width: 0; }
+.kv > div { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: .75rem; padding: .5rem .35rem; border-bottom: 1px solid var(--line); font-size: .9375rem; line-height: 1.45; }
+.kv > div:last-child { border-bottom: 0; }
+.kv dt { font-size: .8125rem; font-weight: 600; color: var(--muted); }
+.big { font-size: 2.75rem; font-weight: 700; line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.big small { font-size: 1rem; font-weight: 600; letter-spacing: 0; color: var(--muted); }
+.bars > div { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr) 3rem; align-items: center; gap: .6rem; margin-top: .5rem; font-size: .8125rem; }
+.bars i { display: block; height: .6rem; border-radius: 999px; background: var(--surface); overflow: hidden; }
+.bars i b { display: block; height: 100%; border-radius: inherit; background: var(--muted); transition: width .35s; }
+.bars .me i b { background: var(--accent); }
+.bars span:last-child { font-family: var(--mono); text-align: right; }
+.verdict { padding: .75rem .9rem; border-radius: .75rem; background: var(--accent-soft); font-size: .9375rem; line-height: 1.5; }
+.verdict b { color: var(--accent); }
+.warn { padding: .6rem .9rem; border-radius: .75rem; border: 1px solid var(--bad); color: var(--bad); font-size: .875rem; font-weight: 600; }
+.chg { animation: chg 1.5s ease-out; }
+@keyframes chg { 0% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 55%, transparent); background-color: color-mix(in srgb, var(--accent) 14%, transparent); } 100% { box-shadow: 0 0 0 3px transparent; } }
+
+/* Tables: the rules-or-model board, the map */
+table { width: 100%; border-collapse: collapse; font-size: .875rem; line-height: 1.45; }
+th, td { padding: .5rem .75rem .5rem 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+th:last-child, td:last-child { padding-right: 0; }
+thead th { border-bottom: 1.5px solid var(--text); font-size: .8125rem; vertical-align: bottom; }
+.board td.c, .board th.c { width: 3.6rem; text-align: center; }
+.board .ico { width: 1.15rem; height: 1.15rem; stroke-width: 2.2; }
+.board .y { color: var(--ok); }
+.board .n { color: var(--bad); }
+.scores { display: grid; grid-template-columns: 1fr 1fr; gap: .625rem; }
+.scores > div { padding: .7rem .9rem; border: 1px solid var(--line); border-radius: .75rem; }
+.scores .big { font-size: 2rem; }
+.kw { display: flex; flex-wrap: wrap; gap: .3rem; }
+.kw button { display: inline-flex; align-items: center; gap: .3rem; padding: .2rem .55rem; border: 1px solid var(--line); border-radius: 999px; background: var(--card); font: 600 .8125rem/1.5 var(--mono); cursor: pointer; }
+.kw button::after { content: "\00d7"; color: var(--muted); }
+.ex { max-height: 15rem; overflow: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--card); }
+.ex label { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .5rem; align-items: start; padding: .4rem .6rem; border-bottom: 1px solid var(--line); font-size: .8125rem; font-weight: 400; line-height: 1.4; cursor: pointer; }
+.ex label:last-child { border-bottom: 0; }
+.ex input { margin-top: .2rem; accent-color: var(--accent); }
+.map-group { margin-top: 1.25rem; }
+.map-group h3 { display: flex; align-items: center; gap: .5rem; margin: 0 0 .25rem; }
+.map-group h3 .ico { color: var(--accent); }
+.map td:first-child { width: 34%; font-weight: 600; }
+.map td:nth-child(2) { width: 33%; }
+.map td:first-child .ico { width: 1.05rem; height: 1.05rem; margin-right: .4rem; vertical-align: -.18em; color: var(--accent); }
+
+/* Masking playground */
+.sample { padding: .75rem .9rem; border-radius: .75rem; background: var(--surface); font: .9375rem/1.9 var(--mono); overflow-wrap: anywhere; white-space: pre-wrap; }
+.sample mark { padding: .1em .35em; border-radius: .3em; background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+.sample .raw { padding: .1em .35em; border-radius: .3em; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); }
+.sample .miss { padding: .1em .35em; border-radius: .3em; box-shadow: inset 0 0 0 1.5px var(--bad); }
+.checks label { display: flex; align-items: center; gap: .45rem; font-size: .875rem; font-weight: 400; margin-top: .3rem; cursor: pointer; }
+.checks input { accent-color: var(--accent); }
+.found li { display: flex; align-items: flex-start; gap: .45rem; margin-top: .3rem; font-size: .875rem; line-height: 1.45; }
+.found .ico { width: 1.05rem; height: 1.05rem; margin-top: .15rem; }
+
+/* Fill-in card */
+.sheet { border: 1.5px solid var(--text); border-radius: .9rem; background: var(--card); padding: .25rem 1rem; }
+.sheet > div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: .75rem; align-items: center; padding: .45rem 0; border-bottom: 1px solid var(--line); }
+.sheet > div:last-child { border-bottom: 0; }
+.sheet dt { font-size: .875rem; font-weight: 600; }
+.sheet input { width: 100%; padding: .35rem .5rem; border: 0; border-radius: .4rem; background: transparent; font-size: .9375rem; }
+.sheet input::placeholder { color: var(--muted); opacity: .75; }
+.sheet input:focus { background: var(--surface); outline: none; }
+
+/* End of the guide */
+.end { margin-top: 1rem; padding-block: 2rem 4rem; border-top: 1px solid var(--line); }
+.end-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.5rem 3rem; }
+.end h3 { margin-bottom: .4rem; font-size: 1rem; }
+.end li { margin-top: .35rem; }
+
+@media (max-width: 46rem) {
+  .w-body { grid-template-columns: 1fr; }
+  .w-out { border-right: 0; border-bottom: 1px solid var(--line); }
+  .step { grid-template-columns: 2.25rem minmax(0, 1fr); column-gap: .75rem; }
+  .step-ico { width: 2.25rem; height: 2.25rem; border-radius: .7rem; }
+  .step-ico .ico { width: 1.2rem; height: 1.2rem; }
+  .step::before { left: calc(1.125rem - 1px); top: 2.5rem; }
+  .hflow { flex-direction: column; gap: 1.25rem; }
+  .hflow > div + div::before { content: "\2193"; left: 50%; top: -1.3rem; transform: translateX(-50%); }
+  .stairs { grid-template-columns: 1fr 1fr; }
+  .stairs > div { min-height: 0 !important; }
+  .tiles--x3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bars > div { grid-template-columns: 6.5rem minmax(0, 1fr) 2.75rem; }
+  .map thead { display: none; }
+  .map tr { display: block; padding: .6rem 0; border-bottom: 1px solid var(--line); }
+  .map td { display: block; width: auto !important; padding: .15rem 0; border: 0; }
+  .sheet > div { grid-template-columns: 1fr; gap: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .chg { animation: none; } html { scroll-behavior: auto; } }
+
+/* Print: A4. Each guide adds its own running footer (@bottom-left) in a <style> block. */
+@page {
+  size: A4;
+  margin: 16mm 17mm 19mm;
+  @bottom-right { content: counter(page); font: 8pt "Helvetica Neue", Helvetica, Arial, sans-serif; color: #62626b; }
+}
+@page cover { margin: 0; @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root { --sans: "Helvetica Neue", Helvetica, Arial, sans-serif; --mono: Menlo, Consolas, monospace; --bg: #fff; --shadow: none; }
+  html { font-size: 9.4pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .top, .no-print { display: none !important; }
+  .only-print { display: revert; }
+  .wrap { max-width: none; padding: 0; }
+  .cover { page: cover; position: relative; display: flex; flex-direction: column; height: 297mm; padding: 30mm 22mm 18mm; break-after: page; overflow: hidden; }
+  .cover::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 8mm; background: var(--accent); }
+  .cover-kicker { font-size: 11pt; }
+  .cover h1 { margin-top: 9mm; max-width: 155mm; font-size: 42pt; }
+  .cover-sub { margin-top: 8mm; max-width: 135mm; font-size: 15pt; }
+  .cover-figure { margin-top: auto; }
+  .cover-foot { display: flex; justify-content: space-between; margin-top: 12mm; padding-top: 5mm; border-top: .45mm solid var(--text); font-size: 9.5pt; color: var(--muted); }
+  .cover-foot b { color: var(--text); }
+  .flow { margin-top: 0; }
+  .step { grid-template-columns: 10mm minmax(0, 1fr); column-gap: 5mm; padding-bottom: 6.5mm; }
+  .step::before { left: calc(5mm - 1px); top: 11.5mm; }
+  .step-ico { width: 10mm; height: 10mm; border-radius: 3mm; }
+  .step-ico .ico { width: 5.2mm; height: 5.2mm; }
+  .step h2 { font-size: 16pt; break-after: avoid; }
+  .step h3, .step-n { break-after: avoid; }
+  .w, .tile, .hflow, .stairs, .note, .sheet, tr, .scores, .verdict, .keep { break-inside: avoid; }
+  .tiles--x3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  /* a widget prints as its result on top and its settings, as they were left, below */
+  .w-body { grid-template-columns: minmax(0, 1fr); }
+  .w-out { border-right: 0; border-bottom: 1px solid var(--line); }
+  .w-ctl { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 7mm; align-items: start; }
+  .w-ctl > * + * { margin-top: 0; }
+  .w form { display: none; }
+  .w textarea { min-height: 0; field-sizing: content; resize: none; }
+  .ex { display: none; }
+  .step.newpage { break-before: page; }
+  .hflow { flex-direction: row; gap: 5mm; }
+  .hflow > div + div::before { content: "\2192"; left: -4.2mm; top: 50%; transform: translateY(-50%); }
+  .stairs { grid-template-columns: repeat(4, 1fr); }
+  .map-group[hidden] { display: block !important; }
+  .chg { animation: none; }
+  .end { margin-top: 0; padding-block: 5mm 0; break-inside: avoid; }
+  .sheet > div { padding: .1rem 0; }
+  .sheet input { padding: .22rem .5rem; }
+  .newpage { break-before: page; }
+  a { text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".6"/></symbol>
+  <symbol id="i-io" viewBox="0 0 24 24"><rect x="2.5" y="6" width="6.5" height="12" rx="1.6"/><rect x="15" y="6" width="6.5" height="12" rx="1.6"/><path d="M10.5 12h3M12.2 10.3l1.7 1.7-1.7 1.7"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M3.5 6l1.5 1.5L7.5 5M3.5 12l1.5 1.5L7.5 11M3.5 18l1.5 1.5L7.5 17M11 6h9.5M11 12h9.5M11 18h9.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 9.5-4.1-1.9-7-5.3-7-9.5V6z"/><path d="M9.3 12l1.9 1.9 3.5-3.7"/></symbol>
+  <symbol id="i-stairs" viewBox="0 0 24 24"><path d="M3 20h5v-4.5h5V11h5V6.5h3"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.6 3.5-5.6 7-5.6s6.2 2 7 5.6"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 16a8 8 0 1 1 16 0M12 16l4-5M4 20h16"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 4h8l10 10-7 7L3 11z"/><circle cx="7.5" cy="8.5" r="1.3"/></symbol>
+  <symbol id="i-form" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h5M8 16h3"/></symbol>
+  <symbol id="i-lines" viewBox="0 0 24 24"><path d="M4 6h16M4 10.5h16M4 15h10M4 19.5h6"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4.2L16.2 4.6l3.2 3.2L8.2 19zM13.8 7l3.2 3.2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.2"/><path d="M20 20l-4.4-4.4"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-rules" viewBox="0 0 24 24"><path d="M8.5 4H7a2 2 0 0 0-2 2v3.5L3 12l2 2.5V18a2 2 0 0 0 2 2h1.5M15.5 4H17a2 2 0 0 1 2 2v3.5l2 2.5-2 2.5V18a2 2 0 0 1-2 2h-1.5"/></symbol>
+  <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M3 14.5h18M9.5 5v14"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3.5V7M14 3.5V7M10 17v3.5M14 17v3.5M3.5 10H7M3.5 14H7M17 10h3.5M17 14h3.5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l2.1 6.2L20.5 12l-6.4 2.8L12 21l-2.1-6.2L3.5 12l6.4-2.8z"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M8 7.5h.01M8 16.5h.01"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18.5a4.2 4.2 0 0 1-.7-8.3 6 6 0 0 1 11.6-1 4.7 4.7 0 0 1-.4 9.3z"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h6"/></symbol>
+  <symbol id="i-mask" viewBox="0 0 24 24"><path d="M8 5H5v14h3M16 5h3v14h-3M9.5 12h5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M7 12h10"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-no" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4h11l-2 4 2 4H5"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9.5L4 20z"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15.5 7H21v5.5"/></symbol>
+  <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9M14.6 9.6c-.5-.8-1.4-1.2-2.6-1.2-1.6 0-2.7.8-2.7 1.9 0 2.6 5.5 1 5.5 3.6 0 1.100-1.200 1.900-2.800 1.900-1.300 0-2.300-.5-2.800-1.400"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7h14M5 7l-2.500 6a2.700 2.700 0 0 0 5 0zM19 7l-2.500 6a2.700 2.700 0 0 0 5 0z"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M3.5 8L12 3.500 20.500 8v8L12 20.500 3.500 16zM3.500 8L12 12.500 20.500 8M12 12.500v8"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.500 5l-3 14"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="4" y="13.500" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="13.500" width="6.500" height="6.500" rx="1.500"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8.500 3v4M15.500 3v4"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3zM12 10v4.500M12 17.300h.010"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8M10 5H5v14h14v-5"/></symbol>
+</svg>
+
+<header class="top"><div class="wrap">
+  <a class="top-name" href="/guides/">halilneed · Guides</a>
+  <nav aria-label="Guides"><a href="/guides/">All guides</a><span class="sep"></span><a href="/guides/demo/tr/" lang="tr" hreflang="tr">Türkçe</a></nav>
+</div></header>
+<div class="wrap">
+
+<header class="cover">
+  <p class="cover-kicker">From Guide 2 · Which model for which process</p>
+  <h1>Rules or a model?</h1>
+  <p class="cover-sub">One part of the guides, to try here. A keyword rule and a small model read the same twelve messages. Change either and see which answers change.</p>
+</header>
+
+<main class="flow">
+<section class="step">
+  <div class="step-ico"><svg class="ico"><use href="#i-rules"/></svg></div>
+  <div class="step-main">
+    <p class="step-n">Start here</p>
+    <h2>Rules or a model?</h2>
+    <p>With rules, you write the pattern. With a model, you give examples. Try both on the same twelve messages.</p>
+    <div class="w" data-w="rvm">
+      <div class="w-head"><span>Task: is this message a refund request?</span><span class="no-print">Change a keyword or an example</span></div>
+      <div class="w-body">
+        <div class="w-out">
+          <div class="scores">
+            <div><p class="w-cap">Rules: correct</p><p class="big" data-o="rs"></p></div>
+            <div><p class="w-cap">Model: correct</p><p class="big" data-o="ms"></p></div>
+          </div>
+          <table class="board">
+            <thead><tr><th>Message</th><th class="c">Rules</th><th class="c">Model</th></tr></thead>
+            <tbody data-o="rows"></tbody>
+          </table>
+        </div>
+        <div class="w-ctl">
+          <div>
+            <span class="q">Rule: flag the message if it contains</span>
+            <div class="kw" data-o="kws"></div>
+            <form class="row" data-f="kw" style="margin-top:.5rem"><input type="text" aria-label="Keyword" placeholder="add a keyword"><button class="btn" type="submit">Add</button></form>
+          </div>
+          <div>
+            <span class="q">Model: learns from these examples (<span data-o="n"></span> on)</span>
+            <div class="ex" data-o="ex"></div>
+            <form data-f="ex" style="margin-top:.5rem"><input type="text" aria-label="New example" placeholder="write an example of your own"><span class="row" style="margin-top:.4rem"><button class="btn" type="submit" value="1">+ refund request</button><button class="btn btn--quiet" type="submit" value="0">+ other</button></span></form>
+          </div>
+        </div>
+      </div>
+      <p class="w-foot">The model is real and very small: a naive Bayes classifier that is trained again in your browser each time you change an example. Nothing leaves this page. Production classifiers learn from thousands of examples.</p>
+    </div>
+    <ul class="dots no-print">
+      <li>Add “back” as a keyword and watch which rows change. The rule still cannot tell a question about refunds from a request.</li>
+      <li>Switch off the examples about the refund policy and the thank-you note. The model starts making the same mistakes as the rule.</li>
+      <li>The model misses the last message. Write an example that teaches it.</li>
+    </ul>
+    <div class="tiles tiles--3">
+      <div class="tile"><svg class="ico"><use href="#i-rules"/></svg><b>Rules</b><span>Exact, instant, explainable. They miss every wording you did not foresee.</span></div>
+      <div class="tile"><svg class="ico"><use href="#i-chip"/></svg><b>Models</b><span>Cope with new wording. They are sometimes wrong, and need examples and a test set.</span></div>
+      <div class="tile"><svg class="ico"><use href="#i-ok"/></svg><b>Together</b><span>Rules for fixed formats, a model for the rest. Most real systems work this way.</span></div>
+    </div>
+  </div>
+</section>
+<section class="step">
+  <div class="step-ico"><svg class="ico"><use href="#i-doc"/></svg></div>
+  <div class="step-main">
+    <p class="step-n">The guides</p>
+    <h2>Three guides, each with boxes like this one</h2>
+    <p>Each guide comes as a PDF and as an interactive page, in English and in Turkish. I send them by email.</p>
+    <div class="tiles tiles--3">
+      <div class="tile"><svg class="ico"><use href="#i-stairs"/></svg><b>A business unit’s first AI model</b><span>From one process to a pilot you can measure, in seven steps.</span></div>
+      <div class="tile"><svg class="ico"><use href="#i-grid"/></svg><b>Which model for which process</b><span>Six kinds of model, four questions, and 37 steps by department.</span></div>
+      <div class="tile"><svg class="ico"><use href="#i-shield"/></svg><b>Personal data and AI</b><span>What to classify, mask and keep in-house before text reaches a model.</span></div>
+    </div>
+    <p><a class="btn" href="/guides/#request" style="display:inline-block;text-decoration:none" data-goatcounter-click="guide-demo-request">Request the guides by email</a></p>
+  </div>
+</section>
+</main>
+</div>
+
+<footer class="end wrap"><p class="small">© 2026 Halil, Istanbul · <a href="/">halilneed.agency</a> · No cookies. Nothing you type on this page is sent anywhere.</p></footer>
+<script>
+/* rvm.js: the engine behind "Rules or a model?". No DOM in this file.
+   Rule: flag a message if it contains one of the keywords.
+   Model: a naive Bayes classifier over words, 4-letter stems and stem pairs,
+   trained in the browser on the examples the reader switches on. It is a real
+   model and a very small one. a pairs are resolved by build.mjs. */
+var RVM = (function () {
+  var LOCALE = 'en';
+  var low = function (s) { return s.toLocaleLowerCase(LOCALE); };
+
+  /* y: 1 = a refund request, 0 = anything else */
+  var TRAIN = [
+    { t: 'I would like a refund please.', y: 1 },
+    { t: 'Please give me my money back.', y: 1 },
+    { t: 'I was charged twice, please pay one of them back.', y: 1 },
+    { t: 'The product was broken, send my money back.', y: 1 },
+    { t: 'Can you reimburse me for this order?', y: 1 },
+    { t: 'I sent the item back, when will I be paid back?', y: 1 },
+    { t: 'The order was cancelled, refund my payment.', y: 1 },
+    { t: 'What is your refund policy?', y: 0 },
+    { t: 'Thank you, I received my refund.', y: 0 },
+    { t: 'Where is my order?', y: 0 },
+    { t: 'I need to change my address.', y: 0 },
+    { t: 'How can I update my password?', y: 0 },
+    { t: 'When will my parcel be delivered?', y: 0 },
+    { t: 'Do you offer refunds on sale items?', y: 0 }
+  ];
+  var TEST = [
+    { t: 'I want a refund for order 4471.', y: 1 },
+    { t: 'Please send my money back, the item never arrived.', y: 1 },
+    { t: 'Can I get reimbursed for the double charge?', y: 1 },
+    { t: 'What is your refund policy for gift cards?', y: 0 },
+    { t: 'I sent the shoes back last week and still have not been paid back.', y: 1 },
+    { t: 'Where is my parcel? Tracking has not moved for five days.', y: 0 },
+    { t: 'I would like to change the delivery address.', y: 0 },
+    { t: 'Thanks, the refund arrived yesterday.', y: 0 },
+    { t: 'You charged me twice, I want one payment back.', y: 1 },
+    { t: 'How do I reset my password?', y: 0 },
+    { t: 'I do not want a refund, just send a replacement.', y: 0 },
+    { t: 'Kindly reverse the transaction on my card.', y: 1 }
+  ];
+  var KEYWORDS = ['refund'];
+
+  function features(text) {
+    var words = low(text).match(/[\p{L}\p{N}]+/gu) || [];
+    var stems = words.map(function (w) { return w.length > 4 ? w.slice(0, 4) : w; });
+    var out = [];
+    words.forEach(function (w, i) {
+      out.push('w:' + w);
+      if (stems[i] !== w) out.push('s:' + stems[i]);
+      if (i) out.push('b:' + stems[i - 1] + ' ' + stems[i]);
+    });
+    return out;
+  }
+
+  /* Multinomial naive Bayes with add-one smoothing. Returns null if a class has no examples. */
+  function train(examples) {
+    var n = [0, 0], total = [0, 0], count = [{}, {}], vocab = {};
+    examples.forEach(function (e) {
+      n[e.y]++;
+      features(e.t).forEach(function (f) {
+        count[e.y][f] = (count[e.y][f] || 0) + 1; total[e.y]++; vocab[f] = 1;
+      });
+    });
+    if (!n[0] || !n[1]) return null;
+    return { n: n, total: total, count: count, v: Object.keys(vocab).length };
+  }
+  function score(m, text) {
+    var s = [Math.log(m.n[0]), Math.log(m.n[1])];
+    features(text).forEach(function (f) {
+      for (var c = 0; c < 2; c++) s[c] += Math.log(((m.count[c][f] || 0) + 1) / (m.total[c] + m.v));
+    });
+    return s[1] - s[0];
+  }
+  function predictModel(m, text) { return m ? (score(m, text) > 0 ? 1 : 0) : null; }
+  function predictRule(keywords, text) {
+    var t = low(text);
+    return keywords.some(function (k) { k = low(k).trim(); return k && t.indexOf(k) !== -1; }) ? 1 : 0;
+  }
+  return { TRAIN: TRAIN, TEST: TEST, KEYWORDS: KEYWORDS, train: train, predictModel: predictModel, predictRule: predictRule, score: score };
+})();
+
+/* guide.js: the interactive parts of the guides. Each block starts only if its
+   markup is on the page. The pattern is always the same: controls on the right,
+   result on the left, and whatever changed on the left flashes once.
+   a pairs are English||Turkish and are resolved by build.mjs. */
+(function () {
+  'use strict';
+  document.documentElement.classList.add('js');
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var ready = false;
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var ico = function (id, cls) { return '<svg class="ico' + (cls ? ' ' + cls : '') + '" aria-hidden="true"><use href="#i-' + id + '"/></svg>'; };
+  var num = function (n, d) { return n.toLocaleString('en', { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 }); };
+
+  function flash(el) { if (!ready) return; el.classList.remove('chg'); void el.offsetWidth; el.classList.add('chg'); }
+  /* set innerHTML only when it differs from what this script last wrote, and flash */
+  function put(el, html) { if (!el || el._h === html) return; el._h = html; el.innerHTML = html; flash(el); }
+  function cls(el, name, on) { if (el.classList.contains(name) === on) return; el.classList.toggle(name, on); if (on) flash(el); }
+  function seg(root, fn) {
+    $$('.seg', root).forEach(function (g) {
+      g.addEventListener('click', function (e) {
+        var b = e.target.closest('button'); if (!b || !g.contains(b)) return;
+        $$('button', g).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+        fn();
+      });
+    });
+  }
+  function val(root, name) { var b = $('.seg[data-name="' + name + '"] button[aria-pressed="true"]', root); return b ? b.getAttribute('data-v') : null; }
+  function each(sel, fn) { $$(sel).forEach(fn); }
+
+  /* Kinds of model, shared by the chooser and the map */
+  var KIND = {
+    R: ['rules', 'Rules'], T: ['table', 'Table model'],
+    C: ['chip', 'Small classifier'], G: ['spark', 'Small generative model'],
+    M: ['server', 'In-house mid-size model'], H: ['cloud', 'Large hosted model'],
+    Rt: ['search', 'Retrieval'], Sp: ['mic', 'Speech-to-text'],
+    Dr: ['scan', 'Document reading'], Em: ['grid', 'Embeddings'], Mk: ['mask', 'Mask first']
+  };
+  var JOIN = { '>': 'then', '+': '+', '/': 'or' };
+  function chips(list) {
+    return '<span class="chips">' + list.map(function (k) {
+      return JOIN[k] ? '<span class="join">' + JOIN[k] + '</span>' : '<span class="chip">' + ico(KIND[k][0]) + KIND[k][1] + '</span>';
+    }).join('') + '</span>';
+  }
+
+  /* 1. Kind of task -> task card */
+  each('[data-w="task"]', function (w) {
+    var T = {
+      classify: ['One complaint email', 'One of 12 queue names', 'Share of cases with the right choice, for each category', ['H', '>', 'C']],
+      extract: ['One scanned invoice', 'Tax number, date, total, currency', 'Share of documents with every field right', ['R', '+', 'G']],
+      summarise: ['A case with 14 messages', 'Five lines for the colleague who takes over', 'A reviewer’s checklist: usable as is, after edits, not usable', ['M', '/', 'H']],
+      draft: ['A classified request and the policy paragraph', 'A reply that a person edits and sends', 'The same checklist, filled in by the person who sends it', ['H']],
+      answer: ['A question from a branch employee', 'The paragraph of the procedure and the document name', 'Correct, and pointing to the right source', ['Rt', '+', 'M', '/', 'H']],
+      predict: ['Three years of monthly sales rows', 'Next month’s demand', 'Average error on months it has not seen, next to today’s method', ['T']]
+    };
+    function draw() {
+      var t = T[val(w, 'kind')];
+      put($('[data-o="in"]', w), esc(t[0])); put($('[data-o="out"]', w), esc(t[1]));
+      put($('[data-o="score"]', w), esc(t[2])); put($('[data-o="start"]', w), chips(t[3]));
+    }
+    seg(w, draw); draw();
+  });
+
+  /* 2. One score hides the weak kind of case. 0.944 and 0.750 are from the model card. */
+  each('[data-w="slices"]', function (w) {
+    var r = $('input[type="range"]', w);
+    function draw() {
+      var p = +r.value / 100, s = p * 0.750 + (1 - p) * 0.944;
+      put($('[data-o="p"]', w), num(p * 100) + '%');
+      put($('[data-o="score"]', w), num(s, 3));
+      put($('[data-o="wrong"]', w), num(Math.round((1 - s) * 1000)));
+      $('[data-o="bar"]', w).style.width = (s * 100) + '%';
+    }
+    r.addEventListener('input', draw); draw();
+  });
+
+  /* 3. Which level to start at */
+  each('[data-w="level"]', function (w) {
+    var L = [
+      ['A list of the patterns and rules you already apply', 'The business unit, with a spreadsheet or a short script'],
+      ['An approved model, the task card, 5 to 10 examples that are not in the evaluation set', 'The business unit on its own'],
+      ['Your documents, current and searchable. Getting them there is most of the work', 'The business unit owns the documents, IT builds the search'],
+      ['Thousands of reviewed cases, a starting model that knows the language, a few days of training', 'The business unit supplies the cases, a data team trains']
+    ];
+    function draw() {
+      var fixed = val(w, 'fixed') === 'y', docs = val(w, 'docs') === 'y', press = val(w, 'press') === 'y', cases = val(w, 'cases') === 'y';
+      var lvl, why;
+      if (fixed) { lvl = 0; why = 'The input has a fixed format, so a rule decides it. Whatever the rules cannot settle goes to Level 1.'; }
+      else if (press && cases) { lvl = 3; why = 'A general model is not practical here and you have the cases to train a small one.'; }
+      else if (docs) { lvl = 2; why = 'The answer is written only in your own documents, so the model has to read them first.'; }
+      else { lvl = 1; why = 'A written instruction and a few examples are enough to start.'; }
+      if (!fixed && press && !cases) why = 'You need Level 3 and do not have the cases yet. Start at Level 1 or 2 with a log. The reviewed outputs become the training data.';
+      $$('.stairs > div', w).forEach(function (d, i) { cls(d, 'on', i === lvl); cls(d, 'off', i !== lvl); });
+      put($('[data-o="why"]', w), '<b>Start at Level ' + lvl + '.</b> ' + why);
+      put($('[data-o="need"]', w), esc(L[lvl][0])); put($('[data-o="who"]', w), esc(L[lvl][1]));
+    }
+    seg(w, draw); draw();
+  });
+
+  /* 4. Shadow or assist */
+  each('[data-w="mode"]', function (w) {
+    function draw() {
+      var shadow = val(w, 'mode') === 'shadow';
+      put($('[data-o="model"]', w), shadow ? 'Runs on live cases. Nobody sees its output.' : 'Its output is shown as a suggestion.');
+      put($('[data-o="review"]', w), shadow ? 'Decides as before, without the model.' : 'Accepts the suggestion or corrects it.');
+      put($('[data-o="log"]', w), shadow ? 'the input, the model’s output, the person’s own decision. At the end you compare the two.' : 'the input, the suggestion, accepted or corrected, by whom and when. Corrections become training data.');
+      put($('[data-o="risk"]', w), shadow ? 'A wrong model costs nothing.' : 'The person is still responsible for the decision.');
+    }
+    seg(w, draw); draw();
+  });
+
+  /* 5. Rules or a model: a keyword rule against a naive Bayes model trained here */
+  each('[data-w="rvm"]', function (w) {
+    var kws = RVM.KEYWORDS.slice(), ex = RVM.TRAIN.map(function (e) { return { t: e.t, y: e.y, on: true }; });
+    var YES = 'refund request', NO = 'other';
+    var rows = $('[data-o="rows"]', w);
+    rows.innerHTML = RVM.TEST.map(function (e) {
+      return '<tr><td>' + esc(e.t) + '</td><td class="c" data-c="r"></td><td class="c" data-c="m"></td></tr>';
+    }).join('');
+    var mark = function (ok) { return ok === null ? '–' : '<span class="' + (ok ? 'y' : 'n') + '">' + ico(ok ? 'ok' : 'no') + '</span>'; };
+    function drawKw() {
+      $('[data-o="kws"]', w).innerHTML = kws.map(function (k, i) { return '<button type="button" data-i="' + i + '" title="Remove">' + esc(k) + '</button>'; }).join('') || '<span class="small">No keywords. The rule flags nothing.</span>';
+    }
+    function drawEx() {
+      $('[data-o="ex"]', w).innerHTML = ex.map(function (e, i) {
+        return '<label><input type="checkbox" data-i="' + i + '"' + (e.on ? ' checked' : '') + '><span>' + esc(e.t) + '</span><span class="chip' + (e.y ? ' chip--a' : '') + '">' + (e.y ? YES : NO) + '</span></label>';
+      }).join('');
+    }
+    function draw() {
+      var m = RVM.train(ex.filter(function (e) { return e.on; })), rs = 0, ms = 0;
+      $$('tr', rows).forEach(function (tr, i) {
+        var e = RVM.TEST[i], r = RVM.predictRule(kws, e.t) === e.y, p = RVM.predictModel(m, e.t), mm = p === null ? null : p === e.y;
+        rs += r; ms += mm ? 1 : 0;
+        put($('[data-c="r"]', tr), mark(r)); put($('[data-c="m"]', tr), mark(mm));
+      });
+      put($('[data-o="rs"]', w), rs + '<small> / ' + RVM.TEST.length + '</small>');
+      put($('[data-o="ms"]', w), (m ? ms : '–') + '<small> / ' + RVM.TEST.length + '</small>');
+      put($('[data-o="n"]', w), String(ex.filter(function (e) { return e.on; }).length));
+    }
+    $('[data-o="kws"]', w).addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; kws.splice(+b.getAttribute('data-i'), 1); drawKw(); draw(); });
+    $('[data-f="kw"]', w).addEventListener('submit', function (e) {
+      e.preventDefault(); var i = $('input', e.target), v = i.value.trim(); if (!v) return;
+      kws.push(v); i.value = ''; drawKw(); draw();
+    });
+    $('[data-o="ex"]', w).addEventListener('change', function (e) { var i = e.target.getAttribute('data-i'); if (i === null) return; ex[+i].on = e.target.checked; draw(); });
+    $('[data-f="ex"]', w).addEventListener('submit', function (e) {
+      e.preventDefault(); var i = $('input', e.target), v = i.value.trim(); if (!v) return;
+      ex.push({ t: v, y: e.submitter && e.submitter.value === '0' ? 0 : 1, on: true }); i.value = ''; drawEx(); draw();
+      var box = $('[data-o="ex"]', w); box.scrollTop = box.scrollHeight;
+    });
+    drawKw(); drawEx(); draw();
+  });
+
+  /* 6. Four questions -> a kind of model */
+  each('[data-w="choose"]', function (w) {
+    function decide(out, leave, vol) {
+      var mask = leave === 'mask' ? ['Mk', '>'] : [];
+      if (out === 'number') return [['T'], ['T'], 'A number from rows of a table is a job for a table model. A language model is the wrong tool.'];
+      if (out === 'fixed') return [['R'], ['R'], 'Fixed formats are decided by rules: patterns and checksums. No model is needed.'];
+      if (out === 'label') {
+        if (leave === 'no') return vol === 'high' ? [['C'], ['C'], 'High volume and the text stays inside: a small classifier trained on your routed cases.'] : [['M'], ['M', '>', 'C'], 'The text stays inside and volume is low: an in-house model with an instruction. Collect cases for a small classifier.'];
+        return vol === 'high' ? [['C', 'H'], mask.concat(['H', '>', 'C']), 'Start with a large hosted model and an instruction. At this volume, move to a small classifier once you have a few thousand cases.'] : [['H'], mask.concat(['H']), 'Low volume: a large hosted model with an instruction is enough.'];
+      }
+      if (out === 'varied') {
+        if (leave === 'no') return vol === 'high' ? [['G', 'R'], ['R', '+', 'G'], 'A small generative model trained for your layouts, in-house, with rules checking every field.'] : [['M', 'R'], ['M', '+', 'R'], 'An in-house mid-size model extracts, rules check every field.'];
+        return vol === 'high' ? [['G', 'R'], mask.concat(['H', '>', 'G', '+', 'R']), 'Prove it with a large hosted model, then train a small generative model for your layouts. Rules check every field.'] : [['H', 'R'], mask.concat(['H', '+', 'R']), 'A large hosted model extracts, rules check every field.'];
+      }
+      return leave === 'no' ? [['M'], ['M'], 'Free text that may not leave: a mid-size open model run by your own IT.'] : [['H'], mask.concat(['H']), 'Free text for a reader: a large hosted model writes, a person edits.'];
+    }
+    function draw() {
+      var out = val(w, 'out'), d = decide(out, val(w, 'leave'), val(w, 'vol')), nobody = val(w, 'rev') === 'n';
+      $$('.tile[data-k]', w).forEach(function (t) { var on = d[0].indexOf(t.getAttribute('data-k')) !== -1; cls(t, 'on', on); cls(t, 'off', !on); });
+      put($('[data-o="path"]', w), chips(d[1])); put($('[data-o="why"]', w), d[2]);
+      var warn = $('[data-o="warn"]', w), show = nobody && out !== 'fixed';
+      if (warn.hidden === show) { warn.hidden = !show; if (show) flash(warn); }
+    }
+    seg(w, draw); draw();
+  });
+
+  /* 7. The map: steps by department */
+  each('[data-w="map"]', function (w) {
+    var TASK = { c: 'tag', e: 'form', s: 'lines', d: 'pen', a: 'search', p: 'chart', g: 'grid', v: 'mic', m: 'mask' };
+    var D = [
+      ['chat', 'Customer service', [
+        ['c', 'Route a request to a queue', ['Mk', '>', 'H', '>', 'C'], 'Every message holds personal data'],
+        ['c', 'Mark urgency or a legal deadline', ['R', '+', 'C'], 'A missed urgent case costs more than a false alarm'],
+        ['s', 'Summarise a case for handover', ['M', '/', 'Mk', '>', 'H'], 'Amounts and dates are copied, not rephrased'],
+        ['d', 'Draft a reply', ['Rt', '+', 'H', '/', 'M'], 'A person sends it. The draft shows the policy it used'],
+        ['g', 'Find why customers contact you again', ['Em'], 'Analysis, not automation. Do it first'],
+        ['v', 'Turn call recordings into text', ['Sp'], 'A recording is personal data. Keep it in-house']]],
+      ['trend', 'Sales and marketing', [
+        ['d', 'Campaign text and product descriptions', ['H'], 'No personal data needed. List the claims you may not make'],
+        ['p', 'Score leads or the risk of losing a customer', ['T'], 'Ask which columns drive the score'],
+        ['g', 'Sort survey answers and reviews by theme', ['Em', '>', 'C'], 'Free text can hold special categories'],
+        ['a', 'Answer a tender from past proposals', ['Rt', '+', 'H', '/', 'M'], 'Old proposals hold prices and customer names']]],
+      ['coin', 'Finance and accounting', [
+        ['e', 'Read invoices and receipts', ['Dr', '+', 'R', '+', 'G'], 'Rules check: lines add up, tax number passes its checksum'],
+        ['c', 'Match payments to invoices', ['R', '>', 'T'], 'Exceptions go to a person'],
+        ['p', 'Forecast cash or demand', ['T'], 'Compare with the simple method you use today'],
+        ['d', 'Draft commentary on variances', ['H', '/', 'M'], 'Calculate the numbers elsewhere. The model does not do arithmetic'],
+        ['p', 'Flag unusual transactions', ['T'], 'Too many false alarms and nobody reads them']]],
+      ['user', 'Human resources', [
+        ['a', 'Answer employees’ policy questions', ['Rt', '+', 'M', '/', 'H'], 'The policy is not personal data. The question may be'],
+        ['d', 'Job adverts and announcements', ['H'], 'Review for wording that shuts people out'],
+        ['e', 'Put incoming CVs into fields', ['Dr', '+', 'M'], 'Fill fields, never rank or reject. A person decides'],
+        ['g', 'Sort free-text survey answers', ['Em', '>', 'C'], 'In-house. Health, union and belief turn up']]],
+      ['scale', 'Legal, compliance and risk', [
+        ['e', 'Find and compare contract clauses', ['H', '/', 'M'], 'A lawyer reads it. Ask for clause text and page'],
+        ['c', 'Label documents by data class', ['C'], 'High volume, sensitive by definition: in-house'],
+        ['m', 'Mask personal data before text leaves', ['R', '+', 'G'], 'Masking is not anonymisation. Measure what leaks'],
+        ['c', 'Check outgoing text for secrets', ['R', '+', 'C'], 'Milliseconds, inside the network'],
+        ['s', 'Summarise a new regulation', ['H', '+', 'Rt'], 'The regulation is public. Your gaps are not'],
+        ['p', 'Score transactions for fraud risk', ['T'], 'Changes go through your risk sign-off']]],
+      ['box', 'Operations and supply chain', [
+        ['p', 'Forecast demand and stock', ['T'], 'Promotions and holidays need their own columns'],
+        ['c', 'Triage incidents and tickets', ['H', '>', 'C'], 'Categories drift. Review them every quarter'],
+        ['s', 'Write the shift or incident handover', ['M', '/', 'H'], 'Count the open actions against the source'],
+        ['e', 'Read delivery notes and customs documents', ['Dr', '+', 'R', '+', 'G'], 'Stamps and handwriting. Unsure fields go to a person'],
+        ['g', 'Find recurring faults in maintenance notes', ['Em'], 'A person names the groups']]],
+      ['code', 'IT and security', [
+        ['d', 'Write and review code', ['H'], 'A shared rules file and a record of what the agent ran'],
+        ['a', 'Answer internal help-desk questions', ['Rt', '+', 'M', '/', 'H'], 'Out-of-date pages give confident wrong answers'],
+        ['c', 'Triage alerts and logs', ['R', '+', 'T', '+', 'C'], 'Logs hold usernames, IPs and sometimes passwords'],
+        ['c', 'Find credentials in code and text', ['R', '+', 'C'], 'Fixed formats: rules beat the model']]],
+      ['grid', 'Every department', [
+        ['v', 'Write up a meeting and its actions', ['Sp', '+', 'M', '/', 'H'], 'Say it is recorded. Someone checks the actions'],
+        ['d', 'Translate documents', ['H', '/', 'M'], 'Give the model your glossary'],
+        ['p', 'Chart your own workload', ['H'], 'Begin here, without the personal columns']]]
+    ];
+    var tabs = $('[data-o="tabs"]', w), body = $('[data-o="groups"]', w);
+    tabs.innerHTML = D.map(function (d, i) { return '<button type="button" data-v="' + i + '" aria-pressed="' + (i === 0) + '">' + ico(d[0]) + d[1] + '</button>'; }).join('');
+    body.innerHTML = D.map(function (d, i) {
+      return '<div class="map-group" data-g="' + i + '"><h3 class="only-print">' + ico(d[0]) + d[1] + '</h3><table class="map"><thead><tr><th>Step</th><th>Start with</th><th>Watch for</th></tr></thead><tbody>' +
+        d[2].map(function (r) { return '<tr><td>' + ico(TASK[r[0]]) + r[1] + '</td><td>' + chips(r[2]) + '</td><td>' + r[3] + '</td></tr>'; }).join('') + '</tbody></table></div>';
+    }).join('');
+    function draw() { var v = val(w, 'dept'); $$('.map-group', w).forEach(function (g) { var hide = g.getAttribute('data-g') !== v; if (g.hidden !== hide) { g.hidden = hide; if (!hide) flash(g); } }); }
+    seg(w, draw); draw();
+  });
+
+  /* 8. Masking: rules run live on the text, the name comes from a recorded model output */
+  each('[data-w="mask"]', function (w) {
+    var ta = $('textarea', w), START = ta.value, NAMES = ['Ayşe Yılmaz'];
+    var LABEL = { AD: 'Name', TCKN: 'National ID number', TEL: 'Phone', EMAIL: 'Email', IBAN: 'IBAN' };
+    function tckn(s) {
+      var d = s.split('').map(Number), odd = d[0] + d[2] + d[4] + d[6] + d[8], even = d[1] + d[3] + d[5] + d[7];
+      return ((odd * 7 - even) % 10 + 10) % 10 === d[9] && d.slice(0, 10).reduce(function (a, b) { return a + b; }, 0) % 10 === d[10];
+    }
+    function iban(s) {
+      s = s.replace(/\s/g, '').toUpperCase(); s = s.slice(4) + s.slice(0, 4);
+      var r = 0; for (var i = 0; i < s.length; i++) { var c = s.charCodeAt(i), n = c >= 65 ? String(c - 55) : s[i]; for (var j = 0; j < n.length; j++) r = (r * 10 + +n[j]) % 97; }
+      return r === 1;
+    }
+    var RULES = [
+      ['IBAN', /\bTR\d{2}(?:\s?\d{4}){5}\s?\d{2}\b/gi, iban],
+      ['EMAIL', /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g, null],
+      ['TEL', /(?:\+90\s?|0)5\d{2}[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}\b/g, null],
+      ['TCKN', /\b[1-9]\d{10}\b/g, tckn]
+    ];
+    function find(text, withModel) {
+      var hits = [], taken = function (a, b) { return hits.some(function (h) { return a < h.b && b > h.a; }); };
+      RULES.forEach(function (r) {
+        var m; r[1].lastIndex = 0;
+        while ((m = r[1].exec(text))) { var a = m.index, b = a + m[0].length; if (!taken(a, b)) hits.push({ a: a, b: b, k: r[0], by: 'rule', ok: r[2] ? r[2](m[0]) : true }); }
+      });
+      NAMES.forEach(function (n) { var a = text.indexOf(n); if (a !== -1 && !taken(a, a + n.length)) hits.push({ a: a, b: a + n.length, k: 'AD', by: withModel ? 'model' : 'none', ok: true }); });
+      return hits.sort(function (x, y) { return x.a - y.a; });
+    }
+    function draw() {
+      var text = ta.value, withModel = val(w, 'layer') === 'both', policy = val(w, 'policy');
+      var picked = $$('.checks input', w).filter(function (c) { return c.checked; }).map(function (c) { return c.value; });
+      var hits = find(text, withModel), html = '', pos = 0, masked = 0, kept = 0;
+      hits.forEach(function (h) {
+        html += esc(text.slice(pos, h.a)); pos = h.b;
+        var v = esc(text.slice(h.a, h.b)), seen = h.by !== 'none' && h.ok;
+        var want = policy === 'all' || (policy === 'only' ? picked.indexOf(h.k) !== -1 : picked.indexOf(h.k) === -1);
+        if (!seen) html += '<span class="miss">' + v + '</span>';
+        else if (want) { html += '<mark>[' + h.k + ']</mark>'; masked++; }
+        else { html += '<span class="raw">' + v + '</span>'; kept++; }
+      });
+      html += esc(text.slice(pos));
+      put($('[data-o="text"]', w), html || '&nbsp;');
+      put($('[data-o="found"]', w), hits.map(function (h) {
+        var v = '<span class="mono">' + esc(text.slice(h.a, h.b)) + '</span>';
+        if (h.by === 'none') return '<li>' + ico('no', 'n') + '<span><b>' + LABEL.AD + ':</b> ' + v + '. No rule can find a name. It leaves as it is.</span></li>';
+        if (!h.ok) return '<li>' + ico('alert', 'n') + '<span><b>' + LABEL[h.k] + ':</b> ' + v + '. The checksum fails, so the rule lets it through.</span></li>';
+        return '<li>' + ico('ok', 'y') + '<span><b>' + LABEL[h.k] + ':</b> ' + v + ' · ' + (h.by === 'model' ? 'found by the model (recorded output)' : 'found by a rule') + '</span></li>';
+      }).join('') || '<li class="small">Nothing found. Rules only know fixed formats.</li>');
+      put($('[data-o="count"]', w), '<b>' + masked + '</b> masked · <b>' + kept + '</b> kept on purpose · <b>' + hits.filter(function (h) { return h.by === 'none' || !h.ok; }).length + '</b> got through');
+      $('.checks', w).style.opacity = policy === 'all' ? '.45' : '';
+    }
+    seg(w, draw); ta.addEventListener('input', draw);
+    $$('.checks input', w).forEach(function (c) { c.addEventListener('change', draw); });
+    var reset = $('[data-a="reset"]', w); if (reset) reset.addEventListener('click', function () { ta.value = START; draw(); });
+    draw();
+  });
+
+  /* 9. Three questions -> a route */
+  each('[data-w="route"]', function (w) {
+    function draw() {
+      var pd = val(w, 'pd') === 'y', sp = val(w, 'sp') === 'y', need = val(w, 'need') === 'y';
+      var r = sp ? 2 : !pd ? 0 : need ? 2 : 1;
+      var why = [
+        'No personal data and no secrets. Any tool your organisation has approved.',
+        'The task works without the real values. Mask inside your network, then send the masked text.',
+        sp ? 'Special categories, authentication data and secrets do not leave. A model on your own machines, or no model.' : 'The task needs the real values, so masking would break it. Keep it in-house.'
+      ][r];
+      $$('.tile[data-r]', w).forEach(function (t) { var on = +t.getAttribute('data-r') === r; cls(t, 'on', on); cls(t, 'off', !on); });
+      put($('[data-o="why"]', w), why);
+      $$('.hflow > div', w).forEach(function (d) {
+        var s = d.getAttribute('data-s'), on = r === 1 || s === 'classify' || s === 'model';
+        cls(d, 'off', !on);
+      });
+      put($('[data-o="where"]', w), ['Model step: an approved hosted model.', 'Model step: an approved hosted model, which sees only masked text.', 'Model step: a model on your own machines.'][r]);
+    }
+    seg(w, draw); draw();
+  });
+
+  /* 10. What a recall figure means per day. The default, 0.884, is the KVKK classifier's measured recall. */
+  each('[data-w="leak"]', function (w) {
+    var n = $('[data-i="n"]', w), r = $('[data-i="r"]', w);
+    function draw() {
+      var miss = +n.value * (1 - +r.value / 1000);
+      put($('[data-o="n"]', w), num(+n.value)); put($('[data-o="r"]', w), num(+r.value / 1000, 3));
+      put($('[data-o="day"]', w), num(miss, miss < 10 ? 1 : 0)); put($('[data-o="month"]', w), num(Math.round(miss * 22)));
+    }
+    n.addEventListener('input', draw); r.addEventListener('input', draw); draw();
+  });
+
+  each('[data-a="print"]', function (b) { b.addEventListener('click', function () { window.print(); }); });
+  setTimeout(function () { ready = true; }, 50);
+})();
+
+</script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

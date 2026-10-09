@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://halilneed.agency/</loc><lastmod>2026-10-09</lastmod></url>
+  <url><loc>https://halilneed.agency/</loc><lastmod>2026-10-10</lastmod></url>
   <url><loc>https://halilneed.agency/models/</loc><lastmod>2026-10-09</lastmod></url>
   <url><loc>https://halilneed.agency/models/turkish-pii-detection/</loc><lastmod>2026-10-09</lastmod></url>
   <url><loc>https://halilneed.agency/models/turkish-kvkk-classifier/</loc><lastmod>2026-10-09</lastmod></url>
@@ -12,5 +12,8 @@
   <url><loc>https://halilneed.agency/gardener/</loc><lastmod>2026-10-09</lastmod></url>
   <url><loc>https://halilneed.agency/painradar/</loc><lastmod>2026-10-09</lastmod></url>
   <url><loc>https://halilneed.agency/devpersona/</loc><lastmod>2026-10-09</lastmod></url>
+  <url><loc>https://halilneed.agency/guides/</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://halilneed.agency/guides/demo/</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://halilneed.agency/guides/demo/tr/</loc><lastmod>2026-10-10</lastmod></url>
   <url><loc>https://halilneed.agency/writing/</loc><lastmod>2026-10-09</lastmod></url>
 </urlset>
