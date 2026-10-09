@@ -51,7 +51,7 @@ etiketler, süs amaçlı canvas ve imleç efektleri, uydurma sayaçlar, slogan, 
   PII modelinin ana rakamı her yerde aynıdır: 1.000 satırda 0.944 tam eşleşme; ikincil
   rakam, seçimde kullanılmayan 531 satırda 0.945.
 - Metin birinci tekil şahıs, düz cümleler. Uzun tire, slogan ve süslü başlık yok.
-- Sitede soyad ve kişisel e-posta geçmez. Herkese açık adres `hqclox43@gmail.com`.
+- Sitede soyad ve kişisel e-posta geçmez. Herkese açık adres `halil@halilneed.agency`.
 - Her sayfada `canonical`, OG/Twitter etiketleri ve JSON-LD bulunur. Yeni sayfa
   `sitemap.xml`'e `lastmod` ile eklenir.
 

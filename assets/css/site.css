@@ -25,24 +25,24 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --bg: #1f2126;
-    --text: #ededf0;   /* 13.6:1 */
-    --muted: #a9acb6;  /* 7.0:1 on bg, 6.0:1 on surface */
-    --line: #363942;
-    --rule: #7b7e89;   /* 3.9:1 */
-    --surface: #2a2c33;
-    --mark: #3f424c;
+    --bg: #2b2e36;
+    --text: #f1f1f4;   /* 11.9:1 */
+    --muted: #b8bbc5;  /* 7.0:1 on bg, 5.9:1 on surface */
+    --line: #454954;
+    --rule: #8c909c;   /* 4.1:1 */
+    --surface: #353944;
+    --mark: #4b4f5b;
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #1f2126;
-  --text: #ededf0;
-  --muted: #a9acb6;
-  --line: #363942;
-  --rule: #7b7e89;
-  --surface: #2a2c33;
-  --mark: #3f424c;
+  --bg: #2b2e36;
+  --text: #f1f1f4;
+  --muted: #b8bbc5;
+  --line: #454954;
+  --rule: #8c909c;
+  --surface: #353944;
+  --mark: #4b4f5b;
 }
 
 /* 2. Base */
@@ -333,15 +333,15 @@ details > :not(summary) { padding-bottom: 1.125rem; }
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --accent: #ff9ccb;               /* 8.6:1 on the slate */
-    --card: #282a31;
+    --accent: #ffa6d1;               /* 7.6:1 on the slate */
+    --card: #343741;
     --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .25);
     --shadow-up: 0 2px 6px rgb(0 0 0 / .5), 0 16px 40px rgb(0 0 0 / .45);
   }
 }
 :root[data-theme="dark"] {
-  --accent: #ff9ccb;
-  --card: #282a31;
+  --accent: #ffa6d1;
+  --card: #343741;
   --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .25);
   --shadow-up: 0 2px 6px rgb(0 0 0 / .5), 0 16px 40px rgb(0 0 0 / .45);
 }
