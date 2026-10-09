@@ -323,7 +323,7 @@ details > :not(summary) { padding-bottom: 1.125rem; }
    and nothing is hidden unless site.js is running.
    ========================================================================== */
 :root {
-  --accent: #a01f5c;                 /* 7.4:1 on white */
+  --accent: #1b49b8;                 /* 7.8:1 on white */
   --accent-soft: color-mix(in srgb, var(--accent) 7%, var(--bg));
   --accent-line: color-mix(in srgb, var(--accent) 32%, var(--line));
   --card: #fff;
@@ -333,14 +333,14 @@ details > :not(summary) { padding-bottom: 1.125rem; }
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --accent: #ffa6d1;               /* 7.6:1 on the slate */
+    --accent: #a8c7ff;               /* 7.9:1 on the slate */
     --card: #343741;
     --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .25);
     --shadow-up: 0 2px 6px rgb(0 0 0 / .5), 0 16px 40px rgb(0 0 0 / .45);
   }
 }
 :root[data-theme="dark"] {
-  --accent: #ffa6d1;
+  --accent: #a8c7ff;
   --card: #343741;
   --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .25);
   --shadow-up: 0 2px 6px rgb(0 0 0 / .5), 0 16px 40px rgb(0 0 0 / .45);
@@ -574,3 +574,20 @@ a.card:hover, .card:has(> .card-title a:hover) { transform: translateY(-3px); bo
   .node, .node span, .orbit-flow, .core::before, .core::after { animation: none; }
   .orbit-dot, .orbit-glow { display: none; }
 }
+
+/* 20. Guides: a cover beside its description */
+.guide {
+  display: grid; gap: 1.25rem 1.75rem; align-items: start; padding: 1.25rem;
+  border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--shadow);
+}
+.guide + .guide { margin-top: .875rem; }
+.guide-cover { display: block; width: 100%; max-width: 10.5rem; height: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: var(--shadow); }
+.guide-body > * + * { margin-top: .625rem; }
+.guide-title { font-size: clamp(1.25rem, 1.1rem + .8vw, 1.5rem); line-height: 1.2; letter-spacing: -.022em; }
+.guide-text { max-width: 36rem; color: var(--muted); }
+.guide-list { display: flex; flex-wrap: wrap; gap: .375rem; list-style: none; }
+.guide-list li { padding: .15rem .65rem; border-radius: 999px; background: var(--surface); font-size: var(--tiny); font-weight: 600; }
+.guide-body .btn { margin-top: .375rem; }
+.plain { list-style: none; }
+.plain li + li { margin-top: .5rem; }
+@media (min-width: 40rem) { .guide { grid-template-columns: 10.5rem minmax(0, 1fr); padding: 1.5rem; } }

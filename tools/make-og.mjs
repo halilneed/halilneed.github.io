@@ -56,6 +56,11 @@ const CARDS = {
     title: 'Tools for coding agents',
     line: 'Six Claude Code plugins. Five read the session logs already on your disk.',
   },
+  guides: {
+    kicker: 'Guides · PDF and interactive · English and Turkish',
+    title: 'AI models for business units',
+    line: 'A first model in seven steps, which model for which process, and personal data. Sent by email.',
+  },
   'agent-blackbox': {
     kicker: 'Claude Code plugin · MIT',
     title: 'agent-blackbox',

@@ -7,7 +7,7 @@
 
   /* 1. Reveal. Only elements that start below the fold are hidden, so nothing flashes. */
   if (!reduce && 'IntersectionObserver' in window) {
-    var targets = $$('.block > h2, .block > .block-lead, .collection, .repo, .card, .bars, .story-text, .about > *, main .section, .prose > section');
+    var targets = $$('.block > h2, .block > .block-lead, .collection, .repo, .card, .guide, .bars, .story-text, .about > *, main .section, .prose > section');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
