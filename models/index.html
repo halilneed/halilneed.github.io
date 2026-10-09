@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turkish NLP models for personal data | halilneed</title>
+<meta name="description" content="Three open Turkish models by halilneed: PII detection and masking, a KVKK personal-data classifier and a BSEBY banking-data classifier, with their benchmarks.">
+<link rel="canonical" href="https://halilneed.agency/models/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:title" content="Turkish NLP models for personal data | halilneed">
+<meta property="og:description" content="Three open Turkish models by halilneed: PII detection and masking, a KVKK personal-data classifier and a BSEBY banking-data classifier, with their benchmarks.">
+<meta property="og:url" content="https://halilneed.agency/models/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Turkish NLP models for personal data | halilneed">
+<meta name="twitter:description" content="Three open Turkish models by halilneed: PII detection and masking, a KVKK personal-data classifier and a BSEBY banking-data classifier, with their benchmarks.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Models",
+          "item": "https://halilneed.agency/models/"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://halilneed.agency/models/#page",
+      "url": "https://halilneed.agency/models/",
+      "name": "Models",
+      "description": "Three small, open models for personal data in Turkish text, and the evaluation sets used to measure them.",
+      "inLanguage": "en",
+      "dateModified": "2026-10-09",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://halilneed.agency/#website",
+        "name": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": 3,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Turkish PII detection and masking",
+            "url": "https://halilneed.agency/models/turkish-pii-detection/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Turkish KVKK classifier",
+            "url": "https://halilneed.agency/models/turkish-kvkk-classifier/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Turkish BSEBY classifier",
+            "url": "https://halilneed.agency/models/turkish-bseby-classifier/"
+          }
+        ]
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="site-name" href="/">halilneed</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/models/" aria-current="true">Models</a></li>
+      <li><a href="/repos/">Tools</a></li>
+      <li><a href="/writing/">Writing</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">halilneed</a></li>
+    <li aria-current="page">Models</li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <div class="page-head">
+    <h1>Models</h1>
+    <p class="lead">Three small, open models for personal data in Turkish text, and the evaluation sets I use to measure them. All of them run on a CPU.</p>
+
+    <div class="table-scroll" role="region" aria-labelledby="models-caption" tabindex="0">
+      <table class="stack" role="table">
+        <caption id="models-caption">The three models</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col">Model</th>
+            <th role="columnheader" scope="col">What it does</th>
+            <th role="columnheader" scope="col">Size</th>
+            <th role="columnheader" scope="col">Result</th>
+            <th role="columnheader" scope="col">CPU speed</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th role="rowheader" scope="row"><a href="/models/turkish-pii-detection/">Turkish PII detection and masking</a></th>
+            <td role="cell" data-label="What it does">Rewrites text with personal data replaced by labels, following an instruction</td>
+            <td role="cell" data-label="Size">270M</td>
+            <td role="cell" data-label="Result">0.944 exact match on 1,000 rows</td>
+            <td role="cell" data-label="CPU speed">about 600 ms per short sentence</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><a href="/models/turkish-kvkk-classifier/">Turkish KVKK classifier</a></th>
+            <td role="cell" data-label="What it does">Says which of 24 personal-data categories a text contains</td>
+            <td role="cell" data-label="Size">110M</td>
+            <td role="cell" data-label="Result">0.874 micro-F1 on 987 texts</td>
+            <td role="cell" data-label="CPU speed">about 22 ms per text</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><a href="/models/turkish-bseby-classifier/">Turkish BSEBY classifier</a></th>
+            <td role="cell" data-label="What it does">Flags personal data, special-category data, authentication data, customer secrets and bank secrets</td>
+            <td role="cell" data-label="Size">110M</td>
+            <td role="cell" data-label="Result">0.944 micro-F1 on 747 texts</td>
+            <td role="cell" data-label="CPU speed">about 32 ms per text</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small">Speeds were measured on an Intel i5-12400F with eight threads and batch size one.</p>
+  </div>
+
+  <section class="section" id="together" aria-labelledby="together-title">
+    <h2 id="together-title">How they fit together</h2>
+    <p>The two classifiers answer what is in a text. The masking model changes the text. A typical pipeline classifies first, picks a masking policy from the result, then masks.</p>
+  </section>
+
+  <section class="section" id="evaluation" aria-labelledby="evaluation-title">
+    <h2 id="evaluation-title">Evaluation sets</h2>
+
+    <div class="entries-compact">
+      <article class="entry">
+        <h3 class="entry-title"><a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">turkish-kvkk-classification-benchmark</a></h3>
+        <p class="entry-meta"><span>987 gold texts</span> <span>24 labels</span> <span>CC0</span></p>
+        <div class="entry-body">
+          <p>1,125 fictional texts were written from the label definitions alone and labelled twice. The gold set is the 987 where both label sets agree exactly. The texts and both label passes were produced with a language model and were not checked line by line by a person.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <h3 class="entry-title"><a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">turkish-bseby-classification-benchmark</a></h3>
+        <p class="entry-meta"><span>747 gold texts</span> <span>5 labels</span> <span>CC0</span></p>
+        <div class="entry-body">
+          <p>Same method: 750 fictional texts, 747 with exact agreement. Both passes used the same language model and guideline, so the 99.6% agreement shows the guideline can be applied consistently. It is not agreement between two independent people.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="note">
+      <p>The PII model is evaluated on a third-party set, <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark"><code>cagrigungor/turkish-pii-masking-benchmark</code></a>, 1,000 synthetic rows.</p>
+    </div>
+  </section>
+
+  <section class="section" id="elsewhere" aria-labelledby="elsewhere-title">
+    <h2 id="elsewhere-title">Elsewhere</h2>
+    <div>
+      <ul class="links">
+        <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Browser demo for the PII model</a></li>
+        <li><a href="https://huggingface.co/collections/halilneed/turkish-privacy-stack">Turkish Privacy Stack on Hugging Face</a></li>
+        <li><a href="https://huggingface.co/halilneed">Hugging Face profile</a></li>
+        <li><a href="https://github.com/halilneed/turkish-pii-detection">PII model code and examples on GitHub</a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, Istanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/">Turkish PII detection model</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Source</a></li>
+    </ul>
+    <p class="small">No cookies. Visits are counted in aggregate with GoatCounter.</p>
+  </div>
+</footer>
+
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

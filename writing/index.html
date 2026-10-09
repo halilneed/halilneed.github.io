@@ -2,100 +2,193 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dispatches — halilneed</title>
-<meta name="description" content="Writing by halilneed on Turkish PII masking, small privacy models, AI adoption and open-source coding-agent tools, with measured results and limitations.">
-<meta name="theme-color" content="#ffffff">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing | halilneed</title>
+<meta name="description" content="Articles by Halil (halilneed) on Turkish PII masking, small privacy models, coding-agent session logs and AI adoption in teams.">
 <link rel="canonical" href="https://halilneed.agency/writing/">
-
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
-<meta property="og:title" content="Dispatches — halilneed">
-<meta property="og:description" content="Long-form notes from building agent tooling. Published on Medium, indexed here.">
+<meta property="og:title" content="Writing | halilneed">
+<meta property="og:description" content="Articles by Halil (halilneed) on Turkish PII masking, small privacy models, coding-agent session logs and AI adoption in teams.">
 <meta property="og:url" content="https://halilneed.agency/writing/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Writing | halilneed">
+<meta name="twitter:description" content="Articles by Halil (halilneed) on Turkish PII masking, small privacy models, coding-agent session logs and AI adoption in teams.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og.png">
-
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/assets/css/main.css">
-<script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Writing",
+          "item": "https://halilneed.agency/writing/"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://halilneed.agency/writing/#page",
+      "url": "https://halilneed.agency/writing/",
+      "name": "Writing",
+      "description": "Articles by Halil (halilneed) on Turkish PII masking, small privacy models, coding-agent session logs and AI adoption in teams.",
+      "inLanguage": "en",
+      "dateModified": "2026-10-09",
+      "image": "https://halilneed.agency/assets/img/og.png",
+      "isPartOf": {
+        "@id": "https://halilneed.agency/#website"
+      },
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": 5,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Daha büyük model eğitmedim, zayıf dilimleri eğittim",
+            "url": "https://halilneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "From first prompt to team workflows: an AI productivity roadmap for corporate teams",
+            "url": "https://halilneed.medium.com/from-first-prompt-to-team-workflows-an-ai-productivity-roadmap-for-corporate-teams-761839e2c265"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "I have 38 agent skills. Ten of them have never fired.",
+            "url": "https://halilneed.medium.com/i-have-38-agent-skills-ten-of-them-have-never-fired-6e908ee56a35"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "My CLAUDE.md is seven lines long. It loads 137.",
+            "url": "https://halilneed.medium.com/instruction-files-are-read-before-every-question-you-ask-and-nobody-measures-them-c56b7989d12b"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "I read my Claude Code history: 300 prompts, 10,594 tool calls.",
+            "url": "https://halilneed.medium.com/i-read-my-claude-code-history-300-prompts-10-594-tool-calls-a1524399d5a9"
+          }
+        ]
+      }
+    }
+  ]
+}
+</script>
 </head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<body class="page-writing">
-<a class="skip" href="#main">Skip to content</a>
-
-<div class="grain" aria-hidden="true"></div>
-<canvas id="instrument" aria-hidden="true"></canvas>
-<div class="scrim" aria-hidden="true"></div>
-<div class="rules" aria-hidden="true"></div>
-
-<header class="topbar" id="topbar">
-  <a class="brand" href="/"><span class="dot" aria-hidden="true"></span> halilneed</a>
-  <nav class="topnav" id="topnav" aria-label="Sections">
-    <a href="/#work">Work</a>
-    <a href="/#models">Models</a>
-    <a href="/repos/">Repositories</a>
-    <a href="/writing/" aria-current="true">Writing</a>
-    <a href="/#about">About</a>
-    <a href="/#contact">Contact</a>
+<header class="site-header">
+  <a class="site-name" href="/">halilneed</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/models/">Models</a></li>
+      <li><a href="/repos/">Tools</a></li>
+      <li><a href="/writing/" aria-current="true">Writing</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
   </nav>
-  <span class="topmeta">Bo&#287;azi&ccedil;i &middot; Istanbul</span>
 </header>
 
-<main id="main" class="flow" data-scene="ink">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">halilneed</a></li>
+    <li aria-current="page">Writing</li>
+  </ol>
+</nav>
 
-  <div class="page-head reveal--soft" data-reveal>
-    <p class="eyebrow"><span class="num">04</span> Dispatches</p>
-    <h1 class="h-display" style="font-size:clamp(34px,5.4vw,58px)" data-split>Notes from building these.</h1>
-    <p class="lede" style="margin-top:22px">
-      Long-form on Medium, indexed here. What the session logs actually show, how the
-      models were trained and where they got worse, and what the coding-agent ecosystem
-      still gets wrong.
-      Nothing is listed as published until it is.
-    </p>
+<main id="main">
+
+  <div class="page-head">
+    <h1>Writing</h1>
+    <p class="lead">I write on Medium about what the logs and benchmarks show. Newest first.</p>
   </div>
 
-  <div class="filters" id="filters" role="group" aria-label="Filter dispatches by tag"></div>
+  <section class="section" id="y2026" aria-labelledby="y2026-title">
+    <h2 id="y2026-title">2026</h2>
 
-  <div class="posts" id="posts" data-limit="0"></div>
-  <noscript>
-    <p class="empty">
-      The dispatch index needs JavaScript.
-      <a href="https://halilneed.medium.com" rel="noopener">Read them on Medium instead &#8599;</a>
-    </p>
-  </noscript>
+    <article class="post">
+      <time datetime="2026-09-28">2026-09-28</time>
+      <h3><a href="https://halilneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d" lang="tr" hreflang="tr">Daha büyük model eğitmedim, zayıf dilimleri eğittim</a></h3>
+      <p>In Turkish. How a 270M Turkish PII masking model went from 0.740 to 0.882 on a public 1,000-row benchmark with 24,000 targeted examples, and the two slices where it got worse. Related: <a href="/models/turkish-pii-detection/">the model page</a>.</p>
+    </article>
+    <article class="post">
+      <time datetime="2026-09-13">2026-09-13</time>
+      <h3><a href="https://halilneed.medium.com/from-first-prompt-to-team-workflows-an-ai-productivity-roadmap-for-corporate-teams-761839e2c265">From first prompt to team workflows: an AI productivity roadmap for corporate teams</a></h3>
+      <p>A crawl, walk, run guide for every team in a large company, not only the technical ones. One team cut its daily incoming requests from 100 to 35 without buying an AI tool, by charting its own data first.</p>
+    </article>
+    <article class="post">
+      <time datetime="2026-08-26">2026-08-26</time>
+      <h3><a href="https://halilneed.medium.com/i-have-38-agent-skills-ten-of-them-have-never-fired-6e908ee56a35">I have 38 agent skills. Ten of them have never fired.</a></h3>
+      <p>Claude Code writes down which skill was active on every tool call. Across 128 sessions there were 376 activations. Six skills did all the work, and 1,447 lines of instructions were never opened by any agent. Related: <a href="/skillbench/">skillbench</a>.</p>
+    </article>
+    <article class="post">
+      <time datetime="2026-08-21">2026-08-21</time>
+      <h3><a href="https://halilneed.medium.com/instruction-files-are-read-before-every-question-you-ask-and-nobody-measures-them-c56b7989d12b">My CLAUDE.md is seven lines long. It loads 137.</a></h3>
+      <p>Instruction files are read before every question you ask, and nobody measures them. In twelve projects the median was about 6,000 tokens per request, and one rule turned out to be working because it never fired. Related: <a href="/gardener/">gardener</a>.</p>
+    </article>
+    <article class="post">
+      <time datetime="2026-08-20">2026-08-20</time>
+      <h3><a href="https://halilneed.medium.com/i-read-my-claude-code-history-300-prompts-10-594-tool-calls-a1524399d5a9">I read my Claude Code history: 300 prompts, 10,594 tool calls.</a></h3>
+      <p>Claude Code writes every session to your disk as JSONL. Mine showed 35 tool calls per prompt, 49 denials and other things that did not flatter me. Related: <a href="/devpersona/">devpersona</a>.</p>
+    </article>
+  </section>
 
-  <div class="writing-foot" style="margin-bottom:80px">
-    <a class="link" href="/">Back to the portfolio <span class="arw" aria-hidden="true">&larr;</span></a>
-    <a class="link" href="https://halilneed.medium.com" rel="noopener">
-      Follow on Medium <span class="arw" aria-hidden="true">&#8599;</span>
-    </a>
-  </div>
+  <section class="section" id="subscribe" aria-labelledby="subscribe-title">
+    <h2 id="subscribe-title">By email</h2>
+    <p>New articles, new plugins and news about the hosted version, by email. At most one message a month, and you can unsubscribe at any time.</p>
+    <form class="inline-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post">
+      <label class="visually-hidden" for="subscribe-email">Email address</label>
+      <input id="subscribe-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      <input type="hidden" name="tag" value="newsletter">
+      <input type="hidden" name="embed" value="1">
+      <button type="submit" data-goatcounter-click="signup-newsletter">Subscribe</button>
+    </form>
+    <p>Or follow on <a href="https://halilneed.medium.com">Medium</a>.</p>
+  </section>
 
 </main>
 
-<footer class="foot">
-  <span>&copy; <span id="year">2026</span> halilneed</span>
-  <span class="colophon">
-    Dispatches are written on Medium and indexed here from a single list in
-    <code>assets/js/data.js</code>.
-  </span>
-  <a class="to-top" href="#main">Back to top &uarr;</a>
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, Istanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/">Turkish PII detection model</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Source</a></li>
+    </ul>
+    <p class="small">No cookies. Visits are counted in aggregate with GoatCounter.</p>
+  </div>
 </footer>
 
-<div class="cursor" id="cursor" aria-hidden="true"></div>
-
-<script src="/assets/js/data.js"></script>
-<script src="/assets/js/instrument.js"></script>
-<script src="/assets/js/main.js"></script>
-<!-- Çerezsiz toplu sayaç — localhost'u varsayılan olarak saymaz. -->
-<script data-goatcounter="https://hailneed.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

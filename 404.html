@@ -2,53 +2,57 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Signal lost — halilneed</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | halilneed</title>
+<meta name="description" content="There is nothing at this address. The page may have moved when the site was reorganised.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/assets/css/main.css">
-<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 </head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<body class="page-writing">
-<div class="grain" aria-hidden="true"></div>
-<canvas id="instrument" aria-hidden="true"></canvas>
-<div class="scrim" aria-hidden="true"></div>
-<div class="rules" aria-hidden="true"></div>
-
-<header class="topbar is-stuck">
-  <a class="brand" href="/"><span class="dot" aria-hidden="true"></span> halilneed</a>
-  <span class="topmeta">404</span>
+<header class="site-header">
+  <a class="site-name" href="/">halilneed</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/models/">Models</a></li>
+      <li><a href="/repos/">Tools</a></li>
+      <li><a href="/writing/">Writing</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+  </nav>
 </header>
 
-<main id="main" class="flow" data-scene="grid">
-  <div class="page-head" style="min-height:56vh;display:flex;flex-direction:column;justify-content:center">
-    <p class="eyebrow"><span class="num">404</span> Signal lost</p>
-    <h1 class="h-display" style="font-size:clamp(34px,6vw,58px);margin-top:20px">Nothing at this address.</h1>
-    <p class="lede" style="margin-top:20px">
-      The page you asked for is not on the recorder. Everything that exists is one level up.
-    </p>
-    <div class="hero-actions" style="margin-top:30px">
-      <a class="btn btn--solid" href="/">Back to the index</a>
-      <a class="btn" href="/writing/">Dispatches</a>
-    </div>
+<main id="main">
+
+  <div class="page-head">
+    <h1>Page not found</h1>
+    <p class="lead">There is nothing at this address. The page may have moved when the site was reorganised.</p>
+    <ul class="links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/models/">Models</a></li>
+      <li><a href="/repos/">Tools</a></li>
+      <li><a href="/writing/">Writing</a></li>
+    </ul>
   </div>
+
 </main>
 
-<footer class="foot">
-  <span>&copy; <span id="year">2026</span> halilneed</span>
-  <a class="to-top" href="/">halilneed.agency</a>
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, Istanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/">Turkish PII detection model</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Source</a></li>
+    </ul>
+    <p class="small">No cookies. Visits are counted in aggregate with GoatCounter.</p>
+  </div>
 </footer>
 
-<script src="/assets/js/data.js"></script>
-<script src="/assets/js/instrument.js"></script>
-<script src="/assets/js/main.js"></script>
-<!-- Çerezsiz toplu sayaç — localhost'u varsayılan olarak saymaz. -->
-<script data-goatcounter="https://hailneed.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
