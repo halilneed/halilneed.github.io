@@ -5,13 +5,13 @@
 /* 1. Tokens */
 :root {
   color-scheme: light;
-  --bg: #fff;
-  --text: #111;      /* 18.9:1 on bg */
+  --bg: #fafafb;
+  --text: #111;      /* 18.1:1 on bg */
   --muted: #666;     /* 5.7:1 on bg, 5.3:1 on surface */
-  --line: #e5e5e5;   /* hairlines */
+  --line: #e6e6ea;   /* hairlines */
   --rule: #8c8c8c;   /* link underlines, input borders: 3.4:1 */
-  --surface: #f6f6f6;
-  --mark: #e4e4e4;    /* highlighted personal data and labels */
+  --surface: #f1f1f4;
+  --mark: #e3e3e8;    /* highlighted personal data and labels */
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   --page: 44rem;
@@ -25,24 +25,24 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --bg: #111;
-    --text: #e8e8e8;   /* 15.4:1 */
-    --muted: #9a9a9a;  /* 6.7:1 on bg, 6.2:1 on surface */
-    --line: #2a2a2a;
-    --rule: #6b6b6b;   /* 3.5:1 */
-    --surface: #1a1a1a;
-    --mark: #333;
+    --bg: #1f2126;
+    --text: #ededf0;   /* 13.6:1 */
+    --muted: #a9acb6;  /* 7.0:1 on bg, 6.0:1 on surface */
+    --line: #363942;
+    --rule: #7b7e89;   /* 3.9:1 */
+    --surface: #2a2c33;
+    --mark: #3f424c;
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #111;
-  --text: #e8e8e8;
-  --muted: #9a9a9a;
-  --line: #2a2a2a;
-  --rule: #6b6b6b;
-  --surface: #1a1a1a;
-  --mark: #333;
+  --bg: #1f2126;
+  --text: #ededf0;
+  --muted: #a9acb6;
+  --line: #363942;
+  --rule: #7b7e89;
+  --surface: #2a2c33;
+  --mark: #3f424c;
 }
 
 /* 2. Base */
@@ -333,15 +333,15 @@ details > :not(summary) { padding-bottom: 1.125rem; }
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --accent: #ff8cc2;               /* 9.6:1 on #111 */
-    --card: #181818;
+    --accent: #ff9ccb;               /* 8.6:1 on the slate */
+    --card: #282a31;
     --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .25);
     --shadow-up: 0 2px 6px rgb(0 0 0 / .5), 0 16px 40px rgb(0 0 0 / .45);
   }
 }
 :root[data-theme="dark"] {
-  --accent: #ff8cc2;
-  --card: #181818;
+  --accent: #ff9ccb;
+  --card: #282a31;
   --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .25);
   --shadow-up: 0 2px 6px rgb(0 0 0 / .5), 0 16px 40px rgb(0 0 0 / .45);
 }
@@ -368,7 +368,8 @@ a:hover { text-decoration-color: var(--accent); }
 
 /* wide pages: home, models, writing */
 .wide { --page: 62rem; }
-.wide .page-head h1, .hero h1 { font-size: clamp(2.5rem, 1.6rem + 4.4vw, 4.25rem); line-height: 1.02; letter-spacing: -.04em; font-weight: 650; }
+.wide .page-head h1 { font-size: clamp(2.5rem, 1.6rem + 4.4vw, 4.25rem); line-height: 1.02; letter-spacing: -.04em; font-weight: 650; }
+.hero h1 { font-size: clamp(2.25rem, 1.5rem + 3.4vw, 3.5rem); line-height: 1.02; letter-spacing: -.04em; font-weight: 650; }
 .block { margin-top: clamp(4.5rem, 11vw, 7.5rem); }
 .block > h2 { font-size: clamp(1.625rem, 1.3rem + 1.6vw, 2.25rem); line-height: 1.12; letter-spacing: -.03em; }
 .block > .block-lead { margin-top: .875rem; max-width: 40rem; font-size: 1.125rem; line-height: 1.55; color: var(--muted); }
@@ -520,3 +521,33 @@ a.card:hover, .card:has(> .card-title a:hover) { transform: translateY(-3px); bo
   .btn, .repo, .card, .demo-text mark, .site-header nav a::after, .card-foot::after { transition: none; animation: none; }
   .btn:hover, .repo:hover, a.card:hover, .card:has(> .card-title a:hover) { transform: none; }
 }
+
+/* 19. The adoption card in the hero, the services row, the showcase row.
+   The four steps light up in turn: one 16 s cycle, each step offset by a negative delay. */
+.plan { border: 1px solid var(--line); border-radius: 20px; background: var(--card); box-shadow: var(--shadow-up); overflow: hidden; }
+.plan-title { padding: 1rem 1.375rem; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, var(--accent-soft), var(--card)); font-weight: 650; letter-spacing: -.015em; }
+.steps { list-style: none; counter-reset: step; padding: .5rem 0; }
+.steps li { position: relative; display: grid; gap: .125rem; padding: .875rem 1.375rem .875rem 3.75rem; counter-increment: step; }
+.steps li::before {
+  content: counter(step); position: absolute; left: 1.375rem; top: .9rem; display: grid; place-items: center;
+  width: 1.625rem; height: 1.625rem; border: 1px solid var(--line); border-radius: 50%; background: var(--card);
+  font: 600 var(--tiny)/1 var(--mono); color: var(--muted); animation: step-dot 16s infinite both;
+}
+.steps li::after { content: ""; position: absolute; left: calc(1.375rem + .8125rem); top: 2.75rem; bottom: -.75rem; width: 1px; background: var(--line); }
+.steps li:last-child::after { content: none; }
+.steps b { font-weight: 600; letter-spacing: -.012em; animation: step-text 16s infinite both; }
+.steps span { font-size: var(--small); line-height: 1.5; color: var(--muted); }
+.steps li:nth-child(2)::before, .steps li:nth-child(2) b { animation-delay: -12s; }
+.steps li:nth-child(3)::before, .steps li:nth-child(3) b { animation-delay: -8s; }
+.steps li:nth-child(4)::before, .steps li:nth-child(4) b { animation-delay: -4s; }
+@keyframes step-dot { 0%, 22% { border-color: var(--accent); background: var(--accent); color: var(--card); box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 14%, transparent); } 27%, 100% { border-color: var(--line); background: var(--card); color: var(--muted); box-shadow: none; } }
+@keyframes step-text { 0%, 22% { color: var(--accent); } 27%, 100% { color: inherit; } }
+.plan-foot { padding: .875rem 1.375rem; border-top: 1px solid var(--line); font-size: var(--tiny); line-height: 1.5; color: var(--muted); }
+.card-title--plain { font-size: 1.1875rem; }
+.showcase { display: grid; gap: 2rem 3rem; margin-top: 3rem; align-items: center; }
+.showcase h3 { font-size: 1.25rem; letter-spacing: -.02em; }
+.showcase-text > * + * { margin-top: 1rem; }
+.cta { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; margin-top: 1.75rem; }
+.cta p { color: var(--muted); }
+@media (min-width: 60rem) { .showcase { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); } }
+@media (prefers-reduced-motion: reduce) { .steps li::before, .steps b { animation: none; } }

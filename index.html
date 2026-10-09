@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Halil (halilneed) | Turkish NLP models and open-source tools</title>
-<meta name="description" content="Portfolio of Halil (halilneed), Istanbul. Small Turkish-language models for PII masking and data classification, open-source tools for coding agents, and writing.">
+<title>Halil (halilneed) | Practical AI for teams, Turkish NLP models</title>
+<meta name="description" content="Halil (halilneed), Istanbul. I help organisations adopt AI with their own data and keep personal data in-house. Turkish privacy models, open-source tools, writing.">
 <link rel="canonical" href="https://halilneed.agency/">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/css/site.css">
@@ -13,15 +13,15 @@
 <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
-<meta property="og:title" content="Halil (halilneed) | Turkish NLP models and open-source tools">
-<meta property="og:description" content="Small Turkish-language models for PII masking and data classification, open-source tools for coding agents, and writing.">
+<meta property="og:title" content="Halil (halilneed) | Practical AI for teams, Turkish NLP models">
+<meta property="og:description" content="Halil (halilneed), Istanbul. I help organisations adopt AI with their own data and keep personal data in-house. Turkish privacy models, open-source tools, writing.">
 <meta property="og:url" content="https://halilneed.agency/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Halil (halilneed) | Turkish NLP models and open-source tools">
-<meta name="twitter:description" content="Small Turkish-language models for PII masking and data classification, open-source tools for coding agents, and writing.">
+<meta name="twitter:title" content="Halil (halilneed) | Practical AI for teams, Turkish NLP models">
+<meta name="twitter:description" content="Halil (halilneed), Istanbul. I help organisations adopt AI with their own data and keep personal data in-house. Turkish privacy models, open-source tools, writing.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og.png">
 <script type="application/ld+json">
 {
@@ -106,34 +106,59 @@
 
   <div class="hero">
     <div class="hero-copy">
-      <h1>Hi, I’m Halil.</h1>
-      <p class="lead">I train small Turkish-language models that find and mask personal data, and I build open-source tools that show what a coding agent did.</p>
-      <p>I studied at Boğaziçi University and live in Istanbul, where I work in data analysis and product management. This site collects the models, code and writing I’ve published.</p>
+      <h1>Hi, I’m Halil. I help organisations put AI to work.</h1>
+      <p class="lead">I start from a team’s own data, keep personal data inside the company, and agree on a number that shows whether it worked.</p>
+      <p>I work in data analysis and product management in Istanbul. The models, tools and articles on this site come out of that work, and all of them are public.</p>
       <ul class="btns">
-        <li><a class="btn btn--solid" href="/models/turkish-pii-detection/" data-goatcounter-click="work-pii">Turkish PII model</a></li>
-        <li><a class="btn" href="https://huggingface.co/halilneed" data-goatcounter-click="cta-hf">Hugging Face</a></li>
-        <li><a class="btn" href="https://github.com/halilneed" data-goatcounter-click="cta-github">GitHub</a></li>
+        <li><a class="btn btn--solid" href="mailto:hqclox43@gmail.com" data-goatcounter-click="cta-contact">Get in touch</a></li>
+        <li><a class="btn" href="#consulting">What I help with</a></li>
+        <li><a class="btn" href="#models">Models</a></li>
         <li><a class="btn" href="https://halilneed.medium.com" data-goatcounter-click="cta-medium">Medium</a></li>
-        <li><a class="btn" href="mailto:hqclox43@gmail.com">Email</a></li>
       </ul>
     </div>
 
-    <figure class="demo" data-demo aria-label="Masking example: one input, three instructions">
-      <div class="demo-tabs" role="group" aria-label="Masking policy">
-        <button type="button" data-policy aria-pressed="true">Mask everything</button>
-        <button type="button" data-policy aria-pressed="false">Only phone numbers</button>
-        <button type="button" data-policy aria-pressed="false">Everything except names</button>
-      </div>
-      <div class="demo-body">
-        <div class="demo-label">Instruction</div>
-        <p class="demo-instruction" lang="tr" data-demo-instruction>Metindeki tüm kişisel verileri uygun etiketlerle maskele.</p>
-        <div class="demo-label"><span class="demo-status" data-demo-status>Input</span></div>
-        <p class="demo-text" lang="tr" aria-live="off">müşteri <mark data-k="AD">Ayşe Yılmaz</mark> tc <mark data-k="TCKN">12345678901</mark> tel <mark data-k="TEL">0532 111 22 33</mark> <span class="nowrap">e-posta</span> <mark data-k="EMAIL">demo@example.com</mark>.</p>
-        <p class="demo-text" lang="tr" data-demo-static>müşteri <mark>[AD]</mark> tc <mark>[TCKN]</mark> tel <mark>[TEL]</mark> <span class="nowrap">e-posta</span> <mark>[EMAIL]</mark>.</p>
-      </div>
-      <figcaption class="demo-foot">Recorded outputs of <a href="/models/turkish-pii-detection/">turkish-pii-detection</a> v02 on CPU. The person and the numbers are made up.</figcaption>
-    </figure>
+    <aside class="plan" aria-labelledby="plan-title">
+      <p class="plan-title" id="plan-title">How AI gets adopted in an organisation</p>
+      <ol class="steps">
+        <li><b>Start from the team’s own data</b><span>Chart what the team already receives and does before buying a tool. One team cut its daily incoming requests from 100 to 35 this way.</span></li>
+        <li><b>Keep personal data inside</b><span>Classify and mask personal data before text reaches an LLM, a log store or a vendor. Small models do this on your own machines.</span></li>
+        <li><b>Move from prompts to team workflows</b><span>Turn what works for one person into a shared routine, for every team and not only the technical ones.</span></li>
+        <li><b>Measure, and look at the misses</b><span>Agree on one number before you start, and study where it fails as closely as where it works.</span></li>
+      </ol>
+      <p class="plan-foot">The longer version: <a href="https://halilneed.medium.com/from-first-prompt-to-team-workflows-an-ai-productivity-roadmap-for-corporate-teams-761839e2c265">From first prompt to team workflows</a>, on Medium.</p>
+    </aside>
   </div>
+
+  <section class="block" id="consulting" aria-labelledby="consulting-title">
+    <h2 id="consulting-title">What I help with</h2>
+    <p class="block-lead">Three areas where I have public work to show.</p>
+
+    <div class="block-body cards">
+      <article class="card">
+        <p class="card-kicker"><span>Teams</span></p>
+        <h3 class="card-title card-title--plain"><a href="https://halilneed.medium.com/from-first-prompt-to-team-workflows-an-ai-productivity-roadmap-for-corporate-teams-761839e2c265">AI adoption for teams</a></h3>
+        <p class="card-text">Where to start, which work to hand to AI and how to tell whether it helped. For every team in a company, not only the technical ones.</p>
+        <p class="card-foot">Read the roadmap</p>
+      </article>
+      <article class="card">
+        <p class="card-kicker"><span>KVKK</span><span>BSEBY</span></p>
+        <h3 class="card-title card-title--plain"><a href="/models/">Personal data and compliance</a></h3>
+        <p class="card-text">Masking and classifying personal data in Turkish text, including the data classes banks have to track, with small models that run on your own machines.</p>
+        <p class="card-foot">See the models</p>
+      </article>
+      <article class="card">
+        <p class="card-kicker"><span>Engineering</span></p>
+        <h3 class="card-title card-title--plain"><a href="/repos/">Coding agents in engineering teams</a></h3>
+        <p class="card-text">What an agent did in a session, what it was allowed to run and what your instruction files cost on every request, read from logs already on disk.</p>
+        <p class="card-foot">See the tools</p>
+      </article>
+    </div>
+
+    <div class="cta">
+      <a class="btn btn--solid" href="mailto:hqclox43@gmail.com" data-goatcounter-click="cta-contact-2">hqclox43@gmail.com</a>
+      <p>Tell me what your team does today and where it gets stuck.</p>
+    </div>
+  </section>
 
   <section class="block" id="models" aria-labelledby="models-title">
     <h2 id="models-title">Models</h2>
@@ -180,6 +205,32 @@
         <span class="repo-id">halilneed/turkish-pii-detection-demo</span>
         <span class="repo-meta"><span>Space</span><span>Mask your own text in the browser</span><span>runs on your device</span></span>
       </a>
+    </div>
+
+    <div class="showcase">
+      <div class="showcase-text">
+        <h3>One input, three instructions</h3>
+        <p>The PII model reads an instruction and a text, and writes the text back with the requested fields replaced by labels. The same weights mask everything, only the fields you name, or everything except them.</p>
+        <ul class="links">
+          <li><a href="/models/turkish-pii-detection/" data-goatcounter-click="work-pii">About the model</a></li>
+          <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Try it in the browser</a></li>
+        </ul>
+      </div>
+      <figure class="demo" data-demo aria-label="Masking example: one input, three instructions">
+      <div class="demo-tabs" role="group" aria-label="Masking policy">
+        <button type="button" data-policy aria-pressed="true">Mask everything</button>
+        <button type="button" data-policy aria-pressed="false">Only phone numbers</button>
+        <button type="button" data-policy aria-pressed="false">Everything except names</button>
+      </div>
+      <div class="demo-body">
+        <div class="demo-label">Instruction</div>
+        <p class="demo-instruction" lang="tr" data-demo-instruction>Metindeki tüm kişisel verileri uygun etiketlerle maskele.</p>
+        <div class="demo-label"><span class="demo-status" data-demo-status>Input</span></div>
+        <p class="demo-text" lang="tr" aria-live="off">müşteri <mark data-k="AD">Ayşe Yılmaz</mark> tc <mark data-k="TCKN">12345678901</mark> tel <mark data-k="TEL">0532 111 22 33</mark> <span class="nowrap">e-posta</span> <mark data-k="EMAIL">demo@example.com</mark>.</p>
+        <p class="demo-text" lang="tr" data-demo-static>müşteri <mark>[AD]</mark> tc <mark>[TCKN]</mark> tel <mark>[TEL]</mark> <span class="nowrap">e-posta</span> <mark>[EMAIL]</mark>.</p>
+      </div>
+      <figcaption class="demo-foot">Recorded outputs of <a href="/models/turkish-pii-detection/">turkish-pii-detection</a> v02 on CPU. The person and the numbers are made up.</figcaption>
+    </figure>
     </div>
 
     <div class="story">
@@ -292,7 +343,7 @@
       <div class="about-text">
         <p>I work in data analysis, product management and software. In my own time I train Turkish-language privacy models, build tools for coding agents and look into data loss prevention.</p>
         <p>I prefer work that can be checked. The model cards say where the models fail, the tools point to the log line behind each finding, and the articles include the numbers that went against me.</p>
-        <p>If you’re working on Turkish-language privacy tooling, developer tools or agent observability, I’d like to hear from you.</p>
+        <p>If your team is starting with AI, needs to keep personal data out of it, or wants to know what its coding agents are doing, I’d like to hear from you.</p>
       </div>
       <dl class="kv">
         <div><dt>Email</dt><dd><a href="mailto:hqclox43@gmail.com">hqclox43@gmail.com</a></dd></div>
