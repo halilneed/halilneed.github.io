@@ -87,7 +87,7 @@
 }
 </script>
 </head>
-<body>
+<body class="wide">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -104,162 +104,203 @@
 
 <main id="main">
 
-  <div class="page-head">
-    <h1>Hi, I’m Halil.</h1>
-    <p class="lead">I train small Turkish-language models that find and mask personal data, and I build open-source tools that show what a coding agent did.</p>
-    <p>I studied at Boğaziçi University and live in Istanbul, where I work in data analysis and product management. This site collects the models, code and writing I’ve published.</p>
-    <ul class="links">
-      <li><a href="mailto:hqclox43@gmail.com">Email</a></li>
-      <li><a href="https://github.com/halilneed" data-goatcounter-click="cta-github">GitHub</a></li>
-      <li><a href="https://huggingface.co/halilneed" data-goatcounter-click="cta-hf">Hugging Face</a></li>
-      <li><a href="https://halilneed.medium.com" data-goatcounter-click="cta-medium">Medium</a></li>
-    </ul>
+  <div class="hero">
+    <div class="hero-copy">
+      <h1>Hi, I’m Halil.</h1>
+      <p class="lead">I train small Turkish-language models that find and mask personal data, and I build open-source tools that show what a coding agent did.</p>
+      <p>I studied at Boğaziçi University and live in Istanbul, where I work in data analysis and product management. This site collects the models, code and writing I’ve published.</p>
+      <ul class="btns">
+        <li><a class="btn btn--solid" href="/models/turkish-pii-detection/" data-goatcounter-click="work-pii">Turkish PII model</a></li>
+        <li><a class="btn" href="https://huggingface.co/halilneed" data-goatcounter-click="cta-hf">Hugging Face</a></li>
+        <li><a class="btn" href="https://github.com/halilneed" data-goatcounter-click="cta-github">GitHub</a></li>
+        <li><a class="btn" href="https://halilneed.medium.com" data-goatcounter-click="cta-medium">Medium</a></li>
+        <li><a class="btn" href="mailto:hqclox43@gmail.com">Email</a></li>
+      </ul>
+    </div>
+
+    <figure class="demo" data-demo aria-label="Masking example: one input, three instructions">
+      <div class="demo-tabs" role="group" aria-label="Masking policy">
+        <button type="button" data-policy aria-pressed="true">Mask everything</button>
+        <button type="button" data-policy aria-pressed="false">Only phone numbers</button>
+        <button type="button" data-policy aria-pressed="false">Everything except names</button>
+      </div>
+      <div class="demo-body">
+        <div class="demo-label">Instruction</div>
+        <p class="demo-instruction" lang="tr" data-demo-instruction>Metindeki tüm kişisel verileri uygun etiketlerle maskele.</p>
+        <div class="demo-label"><span class="demo-status" data-demo-status>Input</span></div>
+        <p class="demo-text" lang="tr" aria-live="off">müşteri <mark data-k="AD">Ayşe Yılmaz</mark> tc <mark data-k="TCKN">12345678901</mark> tel <mark data-k="TEL">0532 111 22 33</mark> <span class="nowrap">e-posta</span> <mark data-k="EMAIL">demo@example.com</mark>.</p>
+        <p class="demo-text" lang="tr" data-demo-static>müşteri <mark>[AD]</mark> tc <mark>[TCKN]</mark> tel <mark>[TEL]</mark> <span class="nowrap">e-posta</span> <mark>[EMAIL]</mark>.</p>
+      </div>
+      <figcaption class="demo-foot">Recorded outputs of <a href="/models/turkish-pii-detection/">turkish-pii-detection</a> v02 on CPU. The person and the numbers are made up.</figcaption>
+    </figure>
   </div>
 
-  <section class="section" id="models" aria-labelledby="models-title">
+  <section class="block" id="models" aria-labelledby="models-title">
     <h2 id="models-title">Models</h2>
-    <p>Three small models for personal data in Turkish text. They run on a CPU, so the text can stay on your own machine. Weights, evaluation sets and known failure cases are public on Hugging Face.</p>
+    <p class="block-lead">Three small models for personal data in Turkish text. They run on a CPU, so the text can stay on your own machine. Weights, evaluation sets and known failure cases are public on Hugging Face.</p>
 
-    <article class="entry entry--lead">
-      <h3 class="entry-title"><a href="/models/turkish-pii-detection/">Turkish PII detection and masking</a></h3>
-      <p class="entry-meta"><span>270M parameters</span> <span>v02</span> <span><time datetime="2026-09">September 2026</time></span></p>
-      <div class="entry-body">
-        <p>Rewrites Turkish text with the personal data replaced by labels: names, national ID numbers, IBANs, phone numbers, email addresses. You tell it what to mask in a short Turkish instruction. It can mask everything, only the fields you name, or everything except them.</p>
-        <figure>
-          <dl class="example">
-            <div><dt>Instruction</dt><dd lang="tr">Metindeki tüm kişisel verileri uygun etiketlerle maskele.</dd></div>
-            <div><dt>Input</dt><dd lang="tr">müşteri <mark>Ayşe Yılmaz</mark> tc <mark>12345678901</mark> tel <mark>0532 111 22 33</mark> <span class="nowrap">e-posta</span> <mark>demo@example.com</mark>.</dd></div>
-            <div><dt>Output</dt><dd lang="tr">müşteri <mark>[AD]</mark> tc <mark>[TCKN]</mark> tel <mark>[TEL]</mark> <span class="nowrap">e-posta</span> <mark>[EMAIL]</mark>.</dd></div>
-          </dl>
-          <figcaption>Recorded output, v02 weights on CPU. The person and numbers are made up.</figcaption>
-        </figure>
-        <p><strong>0.944 exact match</strong> on a public 1,000-row benchmark. On the 531 rows I kept out of model selection it scores 0.945. The weakest slice is text that mentions several people, at 0.750.</p>
+    <div class="block-body collection">
+      <div class="collection-head">
+        <div>
+          <a class="collection-title" href="https://huggingface.co/collections/halilneed/turkish-privacy-stack">Turkish Privacy Stack</a>
+          <p class="collection-desc">Masking, classification and the benchmarks behind them.</p>
+        </div>
+        <a class="collection-more" href="/models/">All models</a>
+      </div>
+
+      <a class="repo" href="/models/turkish-pii-detection/" data-hf="models/halilneed/turkish-pii-detection">
+        <span class="repo-id">halilneed/turkish-pii-detection</span>
+        <span class="repo-desc">Rewrites Turkish text with names, national ID numbers, IBANs, phone numbers and email addresses replaced by labels. You tell it what to mask in a short Turkish instruction.</span>
+        <span class="repo-meta"><span>Text generation</span><span>270M parameters</span><span data-hf-updated>Updated 5 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>2.3k</span><span class="visually-hidden"> downloads</span></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span data-hf-likes>1</span><span class="visually-hidden"> likes</span></span></span>
+        <span class="repo-stat"><b>0.944</b><span>exact match, 1,000 rows</span></span>
+      </a>
+      <a class="repo" href="/models/turkish-kvkk-classifier/" data-hf="models/halilneed/turkish-kvkk-classifier">
+        <span class="repo-id">halilneed/turkish-kvkk-classifier</span>
+        <span class="repo-desc">Tells you which of 24 kinds of personal data a Turkish text contains: the 14 VERBİS categories and the 10 special categories of KVKK, the Turkish data protection law.</span>
+        <span class="repo-meta"><span>Text classification</span><span>110M parameters</span><span>about 22 ms per text</span><span data-hf-updated>Updated 2 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>22</span><span class="visually-hidden"> downloads</span></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span data-hf-likes>1</span><span class="visually-hidden"> likes</span></span></span>
+        <span class="repo-stat"><b>0.874</b><span>micro-F1, 987 held-out texts</span></span>
+      </a>
+      <a class="repo" href="/models/turkish-bseby-classifier/" data-hf="models/halilneed/turkish-bseby-classifier">
+        <span class="repo-id">halilneed/turkish-bseby-classifier</span>
+        <span class="repo-desc">Built for bank data inventories and data loss prevention (DLP) pipelines. Flags personal data, special-category data, authentication data, customer secrets and bank secrets.</span>
+        <span class="repo-meta"><span>Text classification</span><span>110M parameters</span><span>about 32 ms per text</span><span data-hf-updated>Updated 2 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>13</span><span class="visually-hidden"> downloads</span></span></span>
+        <span class="repo-stat"><b>0.944</b><span>micro-F1, 747 held-out texts</span></span>
+      </a>
+
+      <p class="collection-sub">Evaluation sets and demo</p>
+      <a class="repo" href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark" data-hf="datasets/halilneed/turkish-kvkk-classification-benchmark">
+        <span class="repo-id">halilneed/turkish-kvkk-classification-benchmark</span>
+        <span class="repo-meta"><span>Dataset</span><span>987 gold texts</span><span>24 labels</span><span>CC0</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>84</span><span class="visually-hidden"> downloads</span></span></span>
+      </a>
+      <a class="repo" href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark" data-hf="datasets/halilneed/turkish-bseby-classification-benchmark">
+        <span class="repo-id">halilneed/turkish-bseby-classification-benchmark</span>
+        <span class="repo-meta"><span>Dataset</span><span>747 gold texts</span><span>5 labels</span><span>CC0</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>39</span><span class="visually-hidden"> downloads</span></span></span>
+      </a>
+      <a class="repo" href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">
+        <span class="repo-id">halilneed/turkish-pii-detection-demo</span>
+        <span class="repo-meta"><span>Space</span><span>Mask your own text in the browser</span><span>runs on your device</span></span>
+      </a>
+    </div>
+
+    <div class="story">
+      <div class="story-text">
+        <h3>How the PII model got to 0.944</h3>
+        <p>I started from <code>cagrigungor/pii-guard-turkish-270m</code>, a Gemma 3 270M fine-tune that scored 0.740 on the benchmark. Rather than move to a bigger model, I generated 24,000 synthetic examples aimed at the cases it got wrong (uppercase text, long records, numbers written out as words, several people in one text) and kept training. v01 reached 0.882.</p>
+        <p>For v02 I rebuilt the generator: 53 labels, about 1,500 hand-written templates and 40,000 examples, of which 32,864 were kept after aligning them with v01. The model fine-tuned on those scored 0.844 on its own, below v01, so the released weights are a 50/50 average of the new and old models, which scored 0.944.</p>
         <ul class="links">
-          <li><a href="/models/turkish-pii-detection/" data-goatcounter-click="work-pii">About the model</a></li>
-          <li><a href="https://huggingface.co/halilneed/turkish-pii-detection">Weights</a></li>
-          <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Browser demo</a></li>
-          <li><a href="https://github.com/halilneed/turkish-pii-detection">Code</a></li>
+          <li><a href="/models/turkish-pii-detection/#training">Training notes</a></li>
+          <li><a href="/models/turkish-pii-detection/#results">Results by slice</a></li>
+          <li><a href="https://halilneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d" hreflang="tr">The v01 write-up, in Turkish</a></li>
         </ul>
       </div>
-    </article>
-
-    <article class="entry">
-      <h3 class="entry-title"><a href="/models/turkish-kvkk-classifier/">Turkish KVKK classifier</a></h3>
-      <p class="entry-meta"><span>110M parameters</span> <span>MIT</span></p>
-      <div class="entry-body">
-        <p>Tells you which kinds of personal data a Turkish text contains. It covers 24 categories: the 14 used in <span lang="tr">VERBİS</span>, Turkey’s data controller registry, and the 10 special categories in Article 6 of KVKK, the Turkish data protection law.</p>
-        <p><strong>0.874 micro-F1</strong> on 987 held-out texts, at about 22 ms per text on a desktop CPU. For the question “is there special-category data here?” recall is 0.884, so roughly one in nine of the texts that contain such data is missed.</p>
-        <p class="small">Evaluation set: <a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark"><code>turkish-kvkk-classification-benchmark</code></a>,<br>987 texts, CC0.</p>
-      </div>
-    </article>
-
-    <article class="entry">
-      <h3 class="entry-title"><a href="/models/turkish-bseby-classifier/">Turkish BSEBY classifier</a></h3>
-      <p class="entry-meta"><span>110M parameters</span> <span>MIT</span></p>
-      <div class="entry-body">
-        <p>Built for bank data inventories and data loss prevention (DLP) pipelines. It flags whether a Turkish text contains personal data, special-category data, authentication data such as passwords and card numbers, customer secrets or bank secrets. The classes follow BSEBY, the Turkish regulation on banks’ information systems.</p>
-        <p><strong>0.944 micro-F1</strong> on 747 held-out texts, at about 32 ms per text on a desktop CPU. The weakest label is authentication data, at 0.873 F1.</p>
-        <p class="small">Evaluation set: <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark"><code>turkish-bseby-classification-benchmark</code></a>,<br>747 texts, CC0.</p>
-      </div>
-    </article>
-
-    <article class="entry">
-      <h3 class="entry-title">How the PII model got to 0.944</h3>
-      <div class="entry-body">
-      <p>I started from <code>cagrigungor/pii-guard-turkish-270m</code>, a Gemma 3 270M fine-tune that scored 0.740 on the benchmark. Rather than move to a bigger model, I generated 24,000 synthetic examples aimed at the cases it got wrong (uppercase text, long records, numbers written out as words, several people in one text) and kept training. v01 reached 0.882.</p>
-      <p>For v02 I rebuilt the generator: 53 labels, about 1,500 hand-written templates and 40,000 examples, of which 32,864 were kept after aligning them with v01. The model fine-tuned on those scored 0.844 on its own, below v01, so the released weights are a 50/50 average of the new and old models, which scored 0.944.</p>
-      <ul class="links">
-        <li><a href="/models/turkish-pii-detection/#training">Training notes</a></li>
-        <li><a href="https://halilneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d" hreflang="tr">The v01 write-up, in Turkish</a></li>
-        <li><a href="/models/">All models</a></li>
-      </ul>
-      </div>
-    </article>
+      <figure class="bars">
+        <figcaption>Exact match on the public 1,000-row benchmark</figcaption>
+        <ol>
+          <li style="--v:.740"><span>Starting model</span><span class="track"><span class="fill"></span></span><b>0.740</b></li>
+          <li style="--v:.882"><span>v01</span><span class="track"><span class="fill"></span></span><b>0.882</b></li>
+          <li style="--v:.944"><span>v02</span><span class="track"><span class="fill"></span></span><b>0.944</b></li>
+        </ol>
+        <small>On the 531 rows I kept out of model selection, v02 scores 0.945. The weakest slice is text that mentions several people, at 0.750.</small>
+      </figure>
+    </div>
   </section>
 
-  <section class="section" id="tools" aria-labelledby="tools-title">
+  <section class="block" id="tools" aria-labelledby="tools-title">
     <h2 id="tools-title">Tools</h2>
-    <p>Open-source tools, mostly for people who work with coding agents.</p>
+    <p class="block-lead">Open-source tools, mostly for people who work with coding agents.</p>
 
-    <div class="entries-compact">
-      <article class="entry">
-        <h3 class="entry-title"><a href="/repos/">Agent tools</a></h3>
-        <div class="entry-body">
-          <p>Six Claude Code plugins: agent-blackbox, skillbench, scar, gardener, painradar and devpersona. Five of them read the session logs already on your disk and report what the agent did, with no network calls. painradar reads public complaints on the web.</p>
-        </div>
+    <div class="block-body cards cards--2">
+      <article class="card card--wide card--feature">
+        <p class="card-kicker"><span>6 Claude Code plugins</span><span>MIT</span></p>
+        <h3 class="card-title"><a href="/repos/">Tools for coding agents</a></h3>
+        <p class="card-text"><a href="/agent-blackbox/">agent-blackbox</a>, <a href="/skillbench/">skillbench</a>, <a href="/scar/">scar</a>, <a href="/gardener/">gardener</a>, <a href="/painradar/">painradar</a> and <a href="/devpersona/">devpersona</a>. Five of them read the session logs already on your disk and report what the agent did, with no network calls. painradar reads public complaints on the web.</p>
+        <p class="card-foot">All six plugins</p>
       </article>
-      <article class="entry">
-        <h3 class="entry-title"><a href="https://github.com/halilneed/agentmemora">agentmemora</a></h3>
-        <div class="entry-body">
-          <p>A local dashboard that reads session transcripts, auto-memory and instruction files to show what your agents know, flag context at risk, and move context between sessions, machines and agents. On npm.</p>
-        </div>
+      <article class="card card--mono">
+        <p class="card-kicker"><span>Node.js</span><span>on npm</span></p>
+        <h3 class="card-title"><a href="https://github.com/halilneed/agentmemora">agentmemora</a></h3>
+        <p class="card-text">A local dashboard that reads session transcripts, auto-memory and instruction files to show what your agents know, flag context at risk, and move context between sessions, machines and agents.</p>
+        <p class="card-foot">GitHub</p>
       </article>
-      <article class="entry">
-        <h3 class="entry-title"><a href="https://github.com/halilneed/solostacks">solostacks</a></h3>
-        <div class="entry-body">
-          <p>An MCP server that pulls live data from Reddit, GitHub Trending and Hacker News and recommends tools for solo developers.</p>
-        </div>
+      <article class="card card--mono">
+        <p class="card-kicker"><span>MCP server</span></p>
+        <h3 class="card-title"><a href="https://github.com/halilneed/solostacks">solostacks</a></h3>
+        <p class="card-text">Pulls live data from Reddit, GitHub Trending and Hacker News and recommends tools for solo developers.</p>
+        <p class="card-foot">GitHub</p>
       </article>
-      <article class="entry">
-        <h3 class="entry-title"><a href="https://github.com/halilneed/hyperframes-agent-skill">hyperframes-agent-skill</a></h3>
-        <div class="entry-body">
-          <p>19 rule files that teach a coding agent to write correct HyperFrames (HTML-to-video) compositions.</p>
-        </div>
+      <article class="card card--mono">
+        <p class="card-kicker"><span>Agent skill</span><span>19 rule files</span></p>
+        <h3 class="card-title"><a href="https://github.com/halilneed/hyperframes-agent-skill">hyperframes-agent-skill</a></h3>
+        <p class="card-text">Teaches a coding agent to write correct HyperFrames (HTML-to-video) compositions.</p>
+        <p class="card-foot">GitHub</p>
       </article>
-      <article class="entry">
-        <h3 class="entry-title"><a href="https://github.com/halilneed/promptrank">promptrank</a></h3>
-        <div class="entry-body">
-          <p>A small browser quiz with five prompt scenarios, scored on clarity, creativity, technical depth and strategy. In Turkish, English and Spanish.</p>
-        </div>
+      <article class="card card--mono">
+        <p class="card-kicker"><span>Browser quiz</span><span>3 languages</span></p>
+        <h3 class="card-title"><a href="https://github.com/halilneed/promptrank">promptrank</a></h3>
+        <p class="card-text">Five prompt scenarios, scored on clarity, creativity, technical depth and strategy. In Turkish, English and Spanish.</p>
+        <p class="card-foot">GitHub</p>
       </article>
     </div>
   </section>
 
-  <section class="section" id="writing" aria-labelledby="writing-title">
+  <section class="block" id="writing" aria-labelledby="writing-title">
     <h2 id="writing-title">Writing</h2>
-    <p>I write on Medium about what the logs and benchmarks show.</p>
+    <p class="block-lead">I write on Medium about what the logs and benchmarks show.</p>
 
-    <ul class="dated">
-      <li>
-        <time datetime="2026-09-28">2026-09-28</time>
-        <div><a href="https://halilneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d" lang="tr" hreflang="tr">Daha büyük model eğitmedim, zayıf dilimleri eğittim</a> <span class="small">in Turkish</span></div>
-      </li>
-      <li>
-        <time datetime="2026-09-13">2026-09-13</time>
-        <div><a href="https://halilneed.medium.com/from-first-prompt-to-team-workflows-an-ai-productivity-roadmap-for-corporate-teams-761839e2c265">From first prompt to team workflows: an AI productivity roadmap for corporate teams</a></div>
-      </li>
-      <li>
-        <time datetime="2026-08-26">2026-08-26</time>
-        <div><a href="https://halilneed.medium.com/i-have-38-agent-skills-ten-of-them-have-never-fired-6e908ee56a35">I have 38 agent skills. Ten of them have never fired.</a></div>
-      </li>
-      <li>
-        <time datetime="2026-08-21">2026-08-21</time>
-        <div><a href="https://halilneed.medium.com/instruction-files-are-read-before-every-question-you-ask-and-nobody-measures-them-c56b7989d12b">My CLAUDE.md is seven lines long. It loads 137.</a></div>
-      </li>
-      <li>
-        <time datetime="2026-08-20">2026-08-20</time>
-        <div><a href="https://halilneed.medium.com/i-read-my-claude-code-history-300-prompts-10-594-tool-calls-a1524399d5a9">I read my Claude Code history: 300 prompts, 10,594 tool calls.</a></div>
-      </li>
-    </ul>
+    <div class="block-body cards cards--2">
+      <article class="card card--wide card--feature">
+        <p class="card-kicker"><time datetime="2026-09-28">28 Sep 2026</time><span>in Turkish</span></p>
+        <h3 class="card-title"><a href="https://halilneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d" lang="tr" hreflang="tr">Daha büyük model eğitmedim, zayıf dilimleri eğittim</a></h3>
+        <p class="card-text">How a 270M Turkish PII masking model went from 0.740 to 0.882 on a public 1,000-row benchmark with 24,000 targeted examples, and the two slices where it got worse.</p>
+        <p class="card-foot">Read on Medium</p>
+      </article>
+      <article class="card">
+        <p class="card-kicker"><time datetime="2026-09-13">13 Sep 2026</time></p>
+        <h3 class="card-title"><a href="https://halilneed.medium.com/from-first-prompt-to-team-workflows-an-ai-productivity-roadmap-for-corporate-teams-761839e2c265">From first prompt to team workflows: an AI productivity roadmap for corporate teams</a></h3>
+        <p class="card-text">One team cut its daily incoming requests from 100 to 35 without buying an AI tool, by charting its own data first.</p>
+        <p class="card-foot">Read on Medium</p>
+      </article>
+      <article class="card">
+        <p class="card-kicker"><time datetime="2026-08-26">26 Aug 2026</time></p>
+        <h3 class="card-title"><a href="https://halilneed.medium.com/i-have-38-agent-skills-ten-of-them-have-never-fired-6e908ee56a35">I have 38 agent skills. Ten of them have never fired.</a></h3>
+        <p class="card-text">Across 128 sessions there were 376 activations. Six skills did all the work, and 1,447 lines of instructions were never opened by any agent.</p>
+        <p class="card-foot">Read on Medium</p>
+      </article>
+      <article class="card">
+        <p class="card-kicker"><time datetime="2026-08-21">21 Aug 2026</time></p>
+        <h3 class="card-title"><a href="https://halilneed.medium.com/instruction-files-are-read-before-every-question-you-ask-and-nobody-measures-them-c56b7989d12b">My CLAUDE.md is seven lines long. It loads 137.</a></h3>
+        <p class="card-text">In twelve projects the median was about 6,000 tokens per request, and one rule turned out to be working because it never fired.</p>
+        <p class="card-foot">Read on Medium</p>
+      </article>
+      <article class="card">
+        <p class="card-kicker"><time datetime="2026-08-20">20 Aug 2026</time></p>
+        <h3 class="card-title"><a href="https://halilneed.medium.com/i-read-my-claude-code-history-300-prompts-10-594-tool-calls-a1524399d5a9">I read my Claude Code history: 300 prompts, 10,594 tool calls.</a></h3>
+        <p class="card-text">Claude Code writes every session to your disk as JSONL. Mine showed 35 tool calls per prompt, 49 denials and other things that did not flatter me.</p>
+        <p class="card-foot">Read on Medium</p>
+      </article>
+    </div>
 
     <ul class="links">
       <li><a href="/writing/">All writing</a></li>
-      <li><a href="https://halilneed.medium.com">Medium</a></li>
+      <li><a href="/writing/#subscribe">New articles by email</a></li>
     </ul>
   </section>
 
-  <section class="section" id="about" aria-labelledby="about-title">
+  <section class="block" id="about" aria-labelledby="about-title">
     <h2 id="about-title">About</h2>
-    <p>I work in data analysis, product management and software. In my own time I train Turkish-language privacy models, build tools for coding agents and look into data loss prevention.</p>
-    <p>I prefer work that can be checked. The model cards say where the models fail, the tools point to the log line behind each finding, and the articles include the numbers that went against me.</p>
-    <p>If you’re working on Turkish-language privacy tooling, developer tools or agent observability, I’d like to hear from you.</p>
-
-    <dl class="kv">
-      <div><dt>Email</dt><dd><a href="mailto:hqclox43@gmail.com">hqclox43@gmail.com</a></dd></div>
-      <div><dt>GitHub</dt><dd><a href="https://github.com/halilneed">github.com/halilneed</a></dd></div>
-      <div><dt>Hugging Face</dt><dd><a href="https://huggingface.co/halilneed">huggingface.co/halilneed</a></dd></div>
-      <div><dt>Medium</dt><dd><a href="https://halilneed.medium.com">halilneed.medium.com</a></dd></div>
-    </dl>
+    <div class="block-body about">
+      <div class="about-text">
+        <p>I work in data analysis, product management and software. In my own time I train Turkish-language privacy models, build tools for coding agents and look into data loss prevention.</p>
+        <p>I prefer work that can be checked. The model cards say where the models fail, the tools point to the log line behind each finding, and the articles include the numbers that went against me.</p>
+        <p>If you’re working on Turkish-language privacy tooling, developer tools or agent observability, I’d like to hear from you.</p>
+      </div>
+      <dl class="kv">
+        <div><dt>Email</dt><dd><a href="mailto:hqclox43@gmail.com">hqclox43@gmail.com</a></dd></div>
+        <div><dt>GitHub</dt><dd><a href="https://github.com/halilneed">github.com/halilneed</a></dd></div>
+        <div><dt>Hugging Face</dt><dd><a href="https://huggingface.co/halilneed">huggingface.co/halilneed</a></dd></div>
+        <div><dt>Medium</dt><dd><a href="https://halilneed.medium.com">halilneed.medium.com</a></dd></div>
+      </dl>
+    </div>
   </section>
 
 </main>
@@ -275,6 +316,7 @@
   </div>
 </footer>
 
+<script src="/assets/js/site.js" defer></script>
 <script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 # halilneed.github.io
 
-> Kişisel portfolyo. Statik HTML, tek stil dosyası, JavaScript yok, derleme adımı yok.
+> Kişisel portfolyo. Statik HTML, tek stil dosyası, küçük bir `site.js`, derleme adımı yok.
 > GitHub Pages doğrudan `main` dalından servis eder.
 
 **Yayın:** https://halilneed.agency/
@@ -18,6 +18,7 @@
 | `writing/index.html` | Yazı listesi ve e-posta kaydı → [WRITING.md](WRITING.md) |
 | `404.html` | Bulunamadı sayfası |
 | `assets/css/site.css` | Tek stil dosyası |
+| `assets/js/site.js` | Kaydırınca belirme, ana sayfadaki maskeleme animasyonu, HF'den canlı indirme/beğeni sayıları. Sayfalar onsuz da eksiksiz okunur |
 | `assets/img/` | Favicon ve OG kartları |
 | `tools/make-og.mjs` | OG kartlarını üretir |
 
@@ -25,13 +26,14 @@
 
 Her sayfa aynı üst menüyü, aynı alt bilgiyi ve aynı 44rem'lik çerçeveyi kullanır.
 
-- **Yazı tipi:** sistem fontları. Web fontu yok; dışarıdan yüklenen tek şey GoatCounter.
-- **Renk:** nötr gri tonları, vurgu rengi yok. Bağlantılar metin rengindedir ve altı çizilidir.
+- **Yazı tipi:** sistem fontları, web fontu yok. Dışarıya giden istekler: GoatCounter ve model kartlarındaki canlı sayılar için Hugging Face API.
+- **Renk:** nötr gri tonları ve tek bir vurgu rengi (`--accent`): koleksiyon başlığı, kart kenarlığı, hover ve odak. Bağlantılar metin rengindedir ve altı çizilidir.
   Açık ve koyu tema `prefers-color-scheme` ile gelir.
 - **Yerleşim:** ana sayfa tipindeki bölümlerde solda 13rem'lik bir sütun (bölüm adı, başlık,
   tarih), sağda metin. Makale tipindeki sayfalar tek sütun; düz yazı 35rem'de durur, tablo
   ve kod çerçevenin tamamını kullanır. Tek kırılma noktası 48rem.
-- **Hareket:** bağlantılarda 120 ms'lik renk geçişi dışında yok.
+- **Kartlar:** modeller Hub koleksiyonu görünümünde (`.collection`, `.repo`), yazılar ve araçlar `.card` ızgarasında. Ana sayfa, `/models/` ve `/writing/` geniş çerçeveyi kullanır (`<body class="wide">`).
+- **Hareket:** kartlar hover'da yükselir, bölümler kaydırınca belirir, ana sayfadaki örnek üç politikayı sırayla maskeler, benchmark çubukları dolar. Hepsi `prefers-reduced-motion` altında kapanır; JavaScript yoksa hiçbir içerik gizlenmez.
 
 Bileşenler `site.css` içinde numaralı yorumlarla ayrılmıştır: başlık ve menü, breadcrumb,
 alt bilgi, `.page-head`, `.section`, `.entry`, `.dated`, `.kv`, `.example`, tablo
@@ -40,7 +42,7 @@ Yeni bir sayfa yazarken önce mevcut bir sayfayı kopyala: ana sayfa tipi için 
 makale tipi için `models/turkish-pii-detection/index.html`.
 
 Sitede bilinçli olarak **olmayan** şeyler: numaralı bölüm etiketleri, büyük harfli mono
-etiketler, rozet ve kartlar, ikon, gradyan, gölge, animasyon, sayaç, slogan.
+etiketler, süs amaçlı canvas ve imleç efektleri, uydurma sayaçlar, slogan, web fontu.
 
 ## İçerik kuralları
 
