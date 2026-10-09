@@ -94,7 +94,7 @@
 }
 </script>
 </head>
-<body>
+<body class="wide">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -121,46 +121,37 @@
   <div class="page-head">
     <h1>Models</h1>
     <p class="lead">Three small, open models for personal data in Turkish text, and the evaluation sets I use to measure them. All of them run on a CPU.</p>
-
-    <div class="table-scroll" role="region" aria-labelledby="models-caption" tabindex="0">
-      <table class="stack" role="table">
-        <caption id="models-caption">The three models</caption>
-        <thead role="rowgroup">
-          <tr role="row">
-            <th role="columnheader" scope="col">Model</th>
-            <th role="columnheader" scope="col">What it does</th>
-            <th role="columnheader" scope="col">Size</th>
-            <th role="columnheader" scope="col">Result</th>
-            <th role="columnheader" scope="col">CPU speed</th>
-          </tr>
-        </thead>
-        <tbody role="rowgroup">
-          <tr role="row">
-            <th role="rowheader" scope="row"><a href="/models/turkish-pii-detection/">Turkish PII detection and masking</a></th>
-            <td role="cell" data-label="What it does">Rewrites text with personal data replaced by labels, following an instruction</td>
-            <td role="cell" data-label="Size">270M</td>
-            <td role="cell" data-label="Result">0.944 exact match on 1,000 rows</td>
-            <td role="cell" data-label="CPU speed">about 600 ms per short sentence</td>
-          </tr>
-          <tr role="row">
-            <th role="rowheader" scope="row"><a href="/models/turkish-kvkk-classifier/">Turkish KVKK classifier</a></th>
-            <td role="cell" data-label="What it does">Says which of 24 personal-data categories a text contains</td>
-            <td role="cell" data-label="Size">110M</td>
-            <td role="cell" data-label="Result">0.874 micro-F1 on 987 texts</td>
-            <td role="cell" data-label="CPU speed">about 22 ms per text</td>
-          </tr>
-          <tr role="row">
-            <th role="rowheader" scope="row"><a href="/models/turkish-bseby-classifier/">Turkish BSEBY classifier</a></th>
-            <td role="cell" data-label="What it does">Flags personal data, special-category data, authentication data, customer secrets and bank secrets</td>
-            <td role="cell" data-label="Size">110M</td>
-            <td role="cell" data-label="Result">0.944 micro-F1 on 747 texts</td>
-            <td role="cell" data-label="CPU speed">about 32 ms per text</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="small">Speeds were measured on an Intel i5-12400F with eight threads and batch size one.</p>
   </div>
+
+  <div class="collection">
+    <div class="collection-head">
+      <div>
+        <a class="collection-title" href="https://huggingface.co/collections/halilneed/turkish-privacy-stack">Turkish Privacy Stack</a>
+        <p class="collection-desc">Masking, classification and the benchmarks behind them.</p>
+      </div>
+      <a class="collection-more" href="https://huggingface.co/halilneed">Hugging Face profile</a>
+    </div>
+
+    <a class="repo" href="/models/turkish-pii-detection/" data-hf="models/halilneed/turkish-pii-detection">
+      <span class="repo-id">halilneed/turkish-pii-detection</span>
+      <span class="repo-desc">Rewrites Turkish text with names, national ID numbers, IBANs, phone numbers and email addresses replaced by labels. You tell it what to mask in a short Turkish instruction.</span>
+      <span class="repo-meta"><span>Text generation</span><span>270M parameters</span><span data-hf-updated>Updated 5 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>2.3k</span><span class="visually-hidden"> downloads</span></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span data-hf-likes>1</span><span class="visually-hidden"> likes</span></span></span>
+      <span class="repo-stat"><b>0.944</b><span>exact match, 1,000 rows</span></span>
+    </a>
+    <a class="repo" href="/models/turkish-kvkk-classifier/" data-hf="models/halilneed/turkish-kvkk-classifier">
+      <span class="repo-id">halilneed/turkish-kvkk-classifier</span>
+      <span class="repo-desc">Tells you which of 24 kinds of personal data a Turkish text contains: the 14 VERBİS categories and the 10 special categories of KVKK, the Turkish data protection law.</span>
+      <span class="repo-meta"><span>Text classification</span><span>110M parameters</span><span>about 22 ms per text</span><span data-hf-updated>Updated 2 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>22</span><span class="visually-hidden"> downloads</span></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span data-hf-likes>1</span><span class="visually-hidden"> likes</span></span></span>
+      <span class="repo-stat"><b>0.874</b><span>micro-F1, 987 held-out texts</span></span>
+    </a>
+    <a class="repo" href="/models/turkish-bseby-classifier/" data-hf="models/halilneed/turkish-bseby-classifier">
+      <span class="repo-id">halilneed/turkish-bseby-classifier</span>
+      <span class="repo-desc">Built for bank data inventories and data loss prevention (DLP) pipelines. Flags personal data, special-category data, authentication data, customer secrets and bank secrets.</span>
+      <span class="repo-meta"><span>Text classification</span><span>110M parameters</span><span>about 32 ms per text</span><span data-hf-updated>Updated 2 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>13</span><span class="visually-hidden"> downloads</span></span></span>
+      <span class="repo-stat"><b>0.944</b><span>micro-F1, 747 held-out texts</span></span>
+    </a>
+  </div>
+  <p class="small">Speeds were measured on an Intel i5-12400F with eight threads and batch size one.</p>
 
   <section class="section" id="together" aria-labelledby="together-title">
     <h2 id="together-title">How they fit together</h2>
@@ -217,6 +208,7 @@
   </div>
 </footer>
 
+<script src="/assets/js/site.js" defer></script>
 <script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
