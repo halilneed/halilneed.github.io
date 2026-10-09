@@ -323,7 +323,7 @@ details > :not(summary) { padding-bottom: 1.125rem; }
    and nothing is hidden unless site.js is running.
    ========================================================================== */
 :root {
-  --accent: #a01f5c;                 /* 7.4:1 on white */
+  --accent: #1b49b8;                 /* 7.8:1 on white */
   --accent-soft: color-mix(in srgb, var(--accent) 7%, var(--bg));
   --accent-line: color-mix(in srgb, var(--accent) 32%, var(--line));
   --card: #fff;
@@ -333,14 +333,14 @@ details > :not(summary) { padding-bottom: 1.125rem; }
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --accent: #ffa6d1;               /* 7.6:1 on the slate */
+    --accent: #a8c7ff;               /* 7.9:1 on the slate */
     --card: #343741;
     --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .25);
     --shadow-up: 0 2px 6px rgb(0 0 0 / .5), 0 16px 40px rgb(0 0 0 / .45);
   }
 }
 :root[data-theme="dark"] {
-  --accent: #ffa6d1;
+  --accent: #a8c7ff;
   --card: #343741;
   --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .25);
   --shadow-up: 0 2px 6px rgb(0 0 0 / .5), 0 16px 40px rgb(0 0 0 / .45);
