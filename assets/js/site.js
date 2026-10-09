@@ -1,6 +1,5 @@
 /* site.js — small enhancements. The pages are complete without it.
-   1. reveal on scroll   2. the masking demo   3. live numbers from the Hugging Face API
-   4. the request form on /guides/ */
+   1. reveal on scroll   2. the masking demo   3. live numbers from the Hugging Face API */
 (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -103,12 +102,4 @@
         .catch(function () {});
     });
   }
-
-  /* 4. "Request this guide" ticks only that guide in the form. Without this, all three stay ticked. */
-  $$('[data-guide]').forEach(function (link) {
-    link.addEventListener('click', function () {
-      var want = 'guide-' + link.getAttribute('data-guide');
-      $$('.request input[type="checkbox"]').forEach(function (box) { box.checked = box.value === want; });
-    });
-  });
 })();

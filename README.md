@@ -16,7 +16,7 @@
 | `repos/index.html` | Ajan araçları (altı eklenti). Menüde adı "Tools" |
 | `agent-blackbox/`, `skillbench/`, `scar/`, `gardener/`, `painradar/`, `devpersona/` | Eklenti sayfaları → [PRODUCTS.md](PRODUCTS.md) |
 | `writing/index.html` | Yazı listesi ve e-posta kaydı → [WRITING.md](WRITING.md) |
-| `guides/index.html` | Üç rehberin tanıtımı ve e-postayla istek formu. Menüde adı "Guides" |
+| `guides/index.html` | Üç rehberin tanıtımı; istek `mailto:` ile gelir. Menüde adı "Guides" |
 | `guides/demo/`, `guides/demo/tr/` | Rehber 2'den herkese açık tek bölüm: "Rules or a model?" (İngilizce ve Türkçe). Tek dosyalık, kendi stilini ve betiğini taşır |
 | `404.html` | Bulunamadı sayfası |
 | `assets/css/site.css` | Tek stil dosyası |
@@ -93,9 +93,9 @@ node tools/make-og.mjs turkish-pii-detection    # tek kart
 
 - **GoatCounter** (`hailneed.goatcounter.com`): çerezsiz, toplu sayfa sayacı. Bağlantılardaki
   `data-goatcounter-click` nitelikleri tıklamaları adlandırır; ek JavaScript yok.
-- **E-posta formu** iki sayfadadır ve ikisi de Buttondown'a düz `POST` eder
-  (`embed-subscribe/hailneed`): `/writing/` bülten kaydı (`tag=newsletter`), `/guides/` rehber
-  isteği (`tag=guides` ve seçilen her rehber için `guide-first-model`, `guide-model-map`,
-  `guide-personal-data`).
+- **E-posta kaydı** yalnızca `/writing/` sayfasındadır ve Buttondown'a düz `POST` eder
+  (`embed-subscribe/hailneed`).
+- **Rehber isteği** form değildir: `/guides/` sayfasındaki düğmeler konusu ve metni hazır bir
+  `mailto:` bağlantısıdır; istek doğrudan `halil@halilneed.agency` adresine gelir.
 
 Buradaki `hailneed` yazımı hata değil: sayaç, bülten ve eklenti marketinin kimliği hâlâ bu adla duruyor.
