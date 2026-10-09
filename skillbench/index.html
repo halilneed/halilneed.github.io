@@ -2,156 +2,137 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>skillbench — skill lint &amp; usage evidence for coding agents</title>
-<meta name="description" content="skillbench lints coding-agent skills against 26 transparent checks and reads real activation counts from the session history Claude Code already keeps. Codex CLI and Gemini CLI skills are linted too. No network calls, no dependencies, MIT.">
-<meta name="author" content="halilneed">
-<meta name="theme-color" content="#ffffff">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>skillbench: skill lint and usage evidence for coding agents</title>
+<meta name="description" content="skillbench lints coding-agent skills against 26 checks and reads real activation counts from the session history Claude Code keeps. No network calls. MIT.">
 <link rel="canonical" href="https://halilneed.agency/skillbench/">
-
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
-<meta property="og:title" content="skillbench — skill lint &amp; usage evidence for coding agents">
-<meta property="og:description" content="Is the skill written right — and does it ever actually fire? 26 transparent checks plus real activation counts, read from history already on your disk.">
+<meta property="og:title" content="skillbench: skill lint and usage evidence for coding agents">
+<meta property="og:description" content="skillbench lints coding-agent skills against 26 checks and reads real activation counts from the session history Claude Code keeps. No network calls. MIT.">
 <meta property="og:url" content="https://halilneed.agency/skillbench/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-skillbench.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="skillbench — skill lint &amp; usage evidence for coding agents">
-<meta name="twitter:description" content="26 transparent checks plus real activation counts for coding-agent skills — from files already on your disk.">
+<meta name="twitter:title" content="skillbench: skill lint and usage evidence for coding agents">
+<meta name="twitter:description" content="skillbench lints coding-agent skills against 26 checks and reads real activation counts from the session history Claude Code keeps. No network calls. MIT.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-skillbench.png">
-
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="alternate icon" href="/assets/img/favicon.svg">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/assets/css/main.css">
-<script>document.documentElement.classList.add('js');</script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "skillbench",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Windows, macOS, Linux",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "license": "https://github.com/halilneed/skillbench/blob/main/LICENSE",
-  "url": "https://halilneed.agency/skillbench/",
-  "sameAs": ["https://github.com/halilneed/skillbench"],
-  "author": { "@type": "Person", "name": "halilneed", "url": "https://halilneed.agency/" }
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://halilneed.agency/repos/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "skillbench",
+          "item": "https://halilneed.agency/skillbench/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "skillbench",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "license": "https://github.com/halilneed/skillbench/blob/main/LICENSE",
+      "url": "https://halilneed.agency/skillbench/",
+      "sameAs": [
+        "https://github.com/halilneed/skillbench"
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
+    }
+  ]
 }
 </script>
 </head>
-
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="grain" aria-hidden="true"></div>
-<canvas id="instrument" aria-hidden="true"></canvas>
-<div class="scrim" aria-hidden="true"></div>
-<div class="rules" aria-hidden="true"></div>
-
-<!-- icon sprite — yalnızca bu sayfanın kullandığı semboller + ürün ikonu -->
-<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs>
-  <symbol id="i-skillbench" viewBox="0 0 24 24"><path d="M4 7h9M4 12h9M4 17h5"/><path d="M16 15.5l2 2 4-4.5"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
-  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l8.5 4.5L12 12 3.5 7.5z"/><path d="M3.5 12.5L12 17l8.5-4.5"/></symbol>
-  <symbol id="i-nonet" viewBox="0 0 24 24"><path d="M5 9.5a11 11 0 0 1 14 0"/><path d="M8 13a7 7 0 0 1 8 0"/><circle cx="12" cy="17.5" r="1.2"/><path d="M3.5 3.5l17 17"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 9.5-4.1-1.9-7-5.3-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></symbol>
-</defs></svg>
-
-<header class="topbar" id="topbar">
-  <a class="brand" href="/"><span class="dot" aria-hidden="true"></span> halilneed</a>
-  <nav class="topnav" id="topnav" aria-label="Sections">
-    <a href="/repos/#fieldkit">Suite</a>
-    <a href="#install">Install</a>
-    <a href="#cloud">Cloud</a>
-    <a href="/repos/#support">Support</a>
-    <a href="/writing/">Dispatches</a>
-    <a href="#family">Family</a>
+<header class="site-header">
+  <a class="site-name" href="/">halilneed</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/models/">Models</a></li>
+      <li><a href="/repos/" aria-current="true">Tools</a></li>
+      <li><a href="/writing/">Writing</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
   </nav>
-  <span class="topmeta">MIT &middot; local-first</span>
 </header>
 
-<main id="main" class="flow">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">halilneed</a></li>
+    <li><a href="/repos/">Tools</a></li>
+    <li aria-current="page">skillbench</li>
+  </ol>
+</nav>
 
-  <!-- ================================================== 00 hero ========== -->
-  <section id="hero" data-scene="grid">
-    <div class="hero-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">00</span> hailneed suite &middot; module 02 &middot; Skill lint &amp; usage</p>
+<main id="main">
+<article class="prose">
 
-      <h1 class="h-display hero-title" data-split>The skill reads fine. <br>Does it <em>ever</em> <br>actually fire?</h1>
-
-      <p class="lede">
-        A skill that never triggers looks exactly like one that works. skillbench lints
-        skill files against 26 transparent checks, then reads real activation counts from
-        the session history your agent already keeps — and where nothing is recorded, it
-        says <em>unmeasured</em>, not <em>unused</em>.
-      </p>
-
-      <div class="hero-actions">
-        <a class="btn btn--solid" href="#install" data-goatcounter-click="sb-cta-install">Install</a>
-        <a class="btn" href="https://github.com/halilneed/skillbench" rel="noopener" data-goatcounter-click="sb-cta-source">Source <span aria-hidden="true">&#8599;</span></a>
-        <a class="btn" href="#cloud" data-goatcounter-click="sb-cta-cloud">Cloud waitlist <span aria-hidden="true">&darr;</span></a>
-      </div>
-    </div>
-
-    <ul class="metrics" data-reveal style="--d:.15s">
-      <li class="metric">
-        <svg class="ico ico--m" aria-hidden="true"><use href="#i-check"/></svg>
-        <div class="val" data-count="26">26</div>
-        <div class="lbl">Transparent checks</div>
-      </li>
-      <li class="metric">
-        <svg class="ico ico--m" aria-hidden="true"><use href="#i-layers"/></svg>
-        <div class="val" data-count="3">3</div>
-        <div class="lbl">Agents read</div>
-      </li>
-      <li class="metric">
-        <svg class="ico ico--m" aria-hidden="true"><use href="#i-nonet"/></svg>
-        <div class="val" data-count="0">0</div>
-        <div class="lbl">Network calls</div>
-      </li>
-      <li class="metric">
-        <svg class="ico ico--m" aria-hidden="true"><use href="#i-shield"/></svg>
-        <div class="val" data-count="0">0</div>
-        <div class="lbl">Dependencies</div>
-      </li>
+  <header class="page-head">
+    <h1>skillbench</h1>
+    <p class="lead">skillbench checks agent skills, the instruction files a coding agent loads when a request matches them. It lints each skill file against 26 checks, then reads activation counts from the session history your agent already keeps. Codex CLI and Gemini CLI do not record which skill was active, so their skills are reported as “unmeasured”.</p>
+    <ul class="links">
+      <li><a href="https://github.com/halilneed/skillbench" data-goatcounter-click="sb-cta-source">Source on GitHub</a></li>
+      <li><a href="#install" data-goatcounter-click="sb-cta-install">Install</a></li>
     </ul>
-  </section>
 
-  <!-- ================================================== 01 evidence ====== -->
-  <section id="evidence" data-scene="ink">
-    <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">01</span> Evidence</p>
-      <h2 class="h-section" data-split>This is a real report. <br><em>Show, do not tell.</em></h2>
-      <p class="lede">
-        Abridged from an actual run of <code>--lint</code> across every skill installed on
-        the machine this site was built on. Skill names generalized; every count and score
-        is what the linter printed. Nothing in it ever left that machine.
-      </p>
-    </div>
+    <dl class="kv">
+      <div><dt>Checks</dt><dd>26</dd></div>
+      <div><dt>Agents read</dt><dd>Claude Code, Codex CLI, Gemini CLI</dd></div>
+      <div><dt>Network calls</dt><dd>none</dd></div>
+      <div><dt>Dependencies</dt><dd>none</dd></div>
+      <div><dt>Licence</dt><dd>MIT</dd></div>
+    </dl>
+  </header>
 
-    <div class="terminal" data-reveal>
-      <div class="terminal-bar">
-        <span class="lamp" aria-hidden="true"></span>
-        <span class="lamp" aria-hidden="true"></span>
-        <span class="lamp" aria-hidden="true"></span>
-        <span class="ttl">lint report — markdown out</span>
-      </div>
-      <pre><span class="c"># skillbench — lint</span>
+  <section id="example" aria-labelledby="example-title">
+    <h2 id="example-title">Example output</h2>
+    <p>This is abridged from a real run of <code class="nowrap">--lint</code> across every skill installed on the machine this site was built on. The skill names are generalised. Every count and score is what the linter printed. The scan made no network calls.</p>
 
-<span class="c">Source note: 38 skill · installed agent roots · claude-code/installed: 3
+<pre tabindex="0" aria-label="Lint report, Markdown output"><code># skillbench — lint
+
+Source note: 38 skill · installed agent roots · claude-code/installed: 3
 · claude-code/user: 13 · gemini-cli/user: 8 · codex/user: 8
-· codex/system: 6 · score: 223 (poor)</span>
+· codex/system: 6 · score: 223 (poor)
 
 1 error &middot; 42 warn &middot; 45 info
 
-<span class="c">## By check</span>
+## By check
 
 | Sev   | Check               | n  | example skills                |
 |-------|---------------------|----|-------------------------------|
@@ -161,7 +142,7 @@
 | warn  | path-absolute       |  1 | agent-notes:intake            |
 | info  | fm-desc-no-boundary | 30 | persona:stats, agent-notes:w… |
 
-<span class="c">## Skills needing most work</span>
+## Skills needing most work
 
 | Skill              | agent       | error | warn | info | score |
 |--------------------|-------------|-------|------|------|-------|
@@ -169,232 +150,87 @@
 | `skill-creator`    | codex       |     1 |    3 |    0 |    22 |
 | `media-assets`     | claude-code |     0 |    3 |    9 |    21 |
 | `video-suite-cli`  | claude-code |     0 |    3 |    6 |    18 |
-| `agent-notes:intake` | claude-code |   0 |    2 |    1 |     9 |</pre>
-    </div>
+| `agent-notes:intake` | claude-code |   0 |    2 |    1 |     9 |</code></pre>
 
-    <p class="body" data-reveal style="margin-top:22px; max-width:var(--measure)">
-      Yes — the machine this linter was written on scores <em>poor</em>. That is the point:
-      it reports what it finds. Every finding names the check, the skill and the severity,
-      and every check carries a &ldquo;why it matters&rdquo; and a &ldquo;how to fix&rdquo;
-      line. The checks live in
-      <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/skillbench/blob/main/scripts/lib/checks.mjs" rel="noopener">one file you can open</a>,
-      and any check you disagree with switches off with <code>--ignore</code>.
-    </p>
+    <p>The machine I wrote this linter on scores “poor”. Every finding names the check, the skill and the severity, and every check carries a “why it matters” line and a “how to fix” line. The checks live in <a href="https://github.com/halilneed/skillbench/blob/main/scripts/lib/checks.mjs">one file you can open</a>, and any check you disagree with can be switched off with <code class="nowrap">--ignore</code>.</p>
   </section>
 
-  <!-- ================================================== 02 install ======= -->
-  <section id="install" data-scene="registry">
-    <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">02</span> Install</p>
-      <h2 class="h-section" data-split>One marketplace. <br>Then one command.</h2>
-    </div>
+  <section id="install" aria-labelledby="install-title">
+    <h2 id="install-title">Install</h2>
 
-    <div class="install-grid">
-      <div class="terminal" data-reveal>
-        <div class="terminal-bar">
-          <span class="lamp" aria-hidden="true"></span>
-          <span class="lamp" aria-hidden="true"></span>
-          <span class="lamp" aria-hidden="true"></span>
-          <span class="ttl">claude code</span>
-          <button class="copy" type="button" data-copy="#install-src">Copy</button>
-        </div>
-        <pre id="install-src"><span class="c"># once</span>
-<span class="p">&gt;</span> /plugin marketplace add halilneed/plugins
+<pre tabindex="0" aria-label="Install commands"><code># once
+&gt; /plugin marketplace add halilneed/plugins
 
-<span class="c"># lint + usage evidence</span>
-<span class="p">&gt;</span> /plugin install skillbench@hailneed
+# the plugin
+&gt; /plugin install skillbench@hailneed
 
-<span class="c"># and try it</span>
-<span class="p">&gt;</span> /skillbench:coverage</pre>
-      </div>
+# and try it
+&gt; /skillbench:coverage</code></pre>
 
-      <div data-reveal style="--d:.1s">
-        <ul class="req">
-          <li><b>Claude Code</b> and Node.js 18 or newer.</li>
-          <li><b>No dependencies</b>, no build step, no API key, no account.</li>
-          <li><b>Standalone works too</b> — <code>node scripts/skillbench.mjs --coverage --md --lang en</code></li>
-          <li><b>CI-ready</b> — <code>--lint --path . --out lint.json</code> has a stable output format; bind <code>score.raw</code> to a threshold.</li>
-        </ul>
-
-        <div class="entry-foot">
-          <a class="link" href="https://github.com/halilneed/plugins" rel="noopener">
-            Marketplace manifest <span class="arw" aria-hidden="true">&#8599;</span>
-          </a>
-        </div>
-      </div>
-    </div>
+    <p>The <a href="https://github.com/halilneed/plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
+    <ul>
+      <li>Claude Code and Node.js 18 or newer.</li>
+      <li>No dependencies, no build step, no API key, no account.</li>
+      <li>It also runs standalone: <code>node scripts/skillbench.mjs <span class="nowrap">--coverage</span> <span class="nowrap">--md</span> <span class="nowrap">--lang en</span></code></li>
+      <li>For CI, <code><span class="nowrap">--lint</span> <span class="nowrap">--path .</span> <span class="nowrap">--out lint.json</span></code> has a stable output format. Fail the build when <code>score.raw</code> goes above a threshold you set.</li>
+    </ul>
   </section>
 
-  <!-- ================================================== 03 commands ====== -->
-  <section id="commands" data-scene="stack">
-    <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">03</span> Commands</p>
-      <h2 class="h-section" data-split>Three questions <br>about every skill.</h2>
-    </div>
+  <section id="commands" aria-labelledby="commands-title">
+    <h2 id="commands-title">Commands</h2>
 
-    <div class="principles" data-reveal style="--d:.08s">
-      <article class="principle">
-        <div class="n">01</div>
-        <h3><code>/skillbench:lint</code></h3>
-        <p>
-          Is it written right? 26 transparent checks across frontmatter, activation quality
-          — trigger phrases, negative boundary — body size, broken references, portability,
-          tool permissions and eval coverage. Runs on the repo you are developing
-          (<code>--path</code>) or on every skill installed across Claude Code, Codex CLI
-          and Gemini CLI.
-        </p>
-      </article>
-      <article class="principle">
-        <div class="n">02</div>
-        <h3><code>/skillbench:coverage</code></h3>
-        <p>
-          Does it actually fire? Claude Code records which skill was active for each tool
-          call; coverage turns that into real activations per skill — calls, distinct
-          sessions, projects, recency — and lists the ones that never fired, with the
-          likeliest reason. Codex CLI and Gemini CLI do not record attribution; their
-          skills report as <em>unmeasured</em>, never as <em>unused</em>.
-        </p>
-      </article>
-      <article class="principle">
-        <div class="n">03</div>
-        <h3><code>/skillbench:collide</code></h3>
-        <p>
-          Do two skills compete for the same request? An idf-weighted overlap score naming
-          the shared terms that blur the boundary, plus drift detection for skills mirrored
-          into several agent homes — are the copies still identical?
-        </p>
-      </article>
-    </div>
+    <h3><code>/skillbench:lint</code></h3>
+    <p>Checks whether a skill is written correctly. The 26 checks cover frontmatter, activation quality (trigger phrases, negative boundary), body size, broken references, portability, tool permissions and eval coverage. It runs on the repo you are developing (<code class="nowrap">--path</code>) or on every skill installed across Claude Code, Codex CLI and Gemini CLI.</p>
+
+    <h3><code>/skillbench:coverage</code></h3>
+    <p>Shows whether a skill ever fires. Claude Code records which skill was active for each tool call. Coverage turns that into real activations per skill (calls, distinct sessions, projects, recency) and lists the skills that never fired, with the likeliest reason. Codex CLI and Gemini CLI do not record attribution, so their skills are reported as unmeasured.</p>
+
+    <h3><code>/skillbench:collide</code></h3>
+    <p>Shows whether two skills compete for the same request. It gives an idf-weighted overlap score that names the shared terms blurring the boundary. It also detects drift in skills mirrored into several agent homes, by checking whether the copies are still identical.</p>
   </section>
 
-  <!-- ================================================== 04 trust ========= -->
-  <section id="trust" data-scene="dial">
-    <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">04</span> Trust</p>
-      <h2 class="h-section" data-split>Claims you can <br>check in the source.</h2>
-    </div>
-
-    <div data-reveal style="--d:.08s">
-      <ul class="req" style="max-width:var(--measure)">
-        <li><b>No network calls.</b> The scanner only reads skill files and session logs already on your disk —
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/skillbench/blob/main/scripts/skillbench.mjs" rel="noopener">skillbench.mjs</a> contains no fetch, no sockets.</li>
-        <li><b>Unmeasured is not unused.</b> Only Claude Code stores skill attribution; skills on Codex CLI and Gemini CLI are reported as unmeasured. Where there is no number, no number is shown.</li>
-        <li><b>No quota spent.</b> Everything is read from disk. Live trigger testing — actually running <code>should_trigger</code> prompts — is deliberately deferred to v0.2 because it costs quota.</li>
-        <li><b>26 checks, no model judgement</b> —
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/skillbench/blob/main/scripts/lib/checks.mjs" rel="noopener">checks.mjs</a> is a list you can read, and <code>--selftest</code> proves the engine against 20 fixtures without touching your data.</li>
-        <li><b>Symlinks are followed.</b> Skills linked from a development repo are found and linted — a naive scanner silently misses every one of them.</li>
-        <li><b>MIT.</b>
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/skillbench/blob/main/LICENSE" rel="noopener">LICENSE</a> — no account, no signup, no telemetry.</li>
-      </ul>
-    </div>
+  <section id="guarantees" aria-labelledby="guarantees-title">
+    <h2 id="guarantees-title">What it does and does not do</h2>
+    <ul>
+      <li>It makes no network calls. The scanner only reads skill files and session logs already on your disk, and <a href="https://github.com/halilneed/skillbench/blob/main/scripts/skillbench.mjs"><code>skillbench.mjs</code></a> contains no fetch and no sockets.</li>
+      <li>Only Claude Code stores skill attribution, so skills on Codex CLI and Gemini CLI are reported as unmeasured and get no count.</li>
+      <li>No quota is spent. Everything is read from disk. Live trigger testing, which means running <code>should_trigger</code> prompts, is deliberately deferred to v0.2 because it costs quota.</li>
+      <li>There are 26 checks and no model judgement. <a href="https://github.com/halilneed/skillbench/blob/main/scripts/lib/checks.mjs"><code>checks.mjs</code></a> is a list you can read, and <code class="nowrap">--selftest</code> runs the engine against 20 fixtures without touching your data.</li>
+      <li>Symlinks are followed. Skills linked from a development repo are found and linted. A naive scanner silently misses every one of them.</li>
+      <li>MIT-licensed (<a href="https://github.com/halilneed/skillbench/blob/main/LICENSE"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
+    </ul>
   </section>
 
-  <!-- ================================================== 05 cloud ========= -->
-  <section id="cloud" data-scene="signoff">
-    <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">05</span> Cloud</p>
-      <h2 class="h-section" data-split>skillbench Cloud <br>is <em>in design.</em></h2>
-      <p class="lede">
-        The plugin stays free and local — that is a promise, not a phase. Cloud is the
-        optional layer for teams whose skills outnumber the people maintaining them:
-      </p>
-    </div>
-
-    <div data-reveal style="--d:.08s">
-      <ul class="req" style="max-width:var(--measure)">
-        <li><b>Continuous measurement</b> for a team skill library — lint and coverage tracked over time, not run by hand.</li>
-        <li><b>Regression history</b> — how a description change affected trigger rate, before and after.</li>
-        <li><b>Pre-publish gate</b> for marketplace publishers — a skill ships when it passes, not when it looks done.</li>
-      </ul>
-
-      <!-- Waitlist — düz POST, ürün etiketiyle. -->
-      <form class="signup" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post">
-        <label class="signup-label" for="wl-email">Join the list. You will hear about Cloud when there is something real to show — nothing else.</label>
-        <div class="signup-row">
-          <input id="wl-email" type="email" name="email" required
-                 placeholder="you@example.com" autocomplete="email">
-          <input type="hidden" name="tag" value="waitlist-skillbench">
-          <input type="hidden" name="embed" value="1">
-          <button class="btn btn--solid" type="submit" data-goatcounter-click="sb-waitlist">Join the Cloud list</button>
-        </div>
-      </form>
-    </div>
+  <section id="cloud" aria-labelledby="cloud-title">
+    <h2 id="cloud-title">Planned</h2>
+    <p>A hosted version, skillbench Cloud, is planned. The plugin stays free and local.</p>
+    <ul>
+      <li>Continuous measurement for a team skill library: lint and coverage tracked over time instead of run by hand.</li>
+      <li>Regression history: how a description change affected the trigger rate, before and after.</li>
+      <li>Pre-publish gate for marketplace publishers: a skill has to pass before it is published.</li>
+    </ul>
+    <p>To hear when it exists, subscribe on the <a href="/writing/#subscribe">writing page</a>.</p>
   </section>
 
-  <!-- ================================================== 06 family ======== -->
-  <section id="family" data-scene="grid">
-    <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">06</span> Family</p>
-      <h2 class="h-section" data-split>One suite. <br>Five more modules.</h2>
-    </div>
-
-    <div class="cards" data-reveal style="--d:.08s">
-      <a class="card" href="/agent-blackbox/">
-        <div class="card-top">
-          <span class="card-name">agent-blackbox</span>
-          <span class="card-kicker">Flight recorder</span>
-        </div>
-        <p>What your agent actually did — and what can still be undone.</p>
-        <div class="card-foot"><span>timeline &middot; risk &middot; undo</span><span class="go" aria-hidden="true">&rarr;</span></div>
-      </a>
-      <a class="card" href="/scar/">
-        <div class="card-top">
-          <span class="card-name">scar</span>
-          <span class="card-kicker">Closed loop</span>
-        </div>
-        <p>Failures that keep repeating, written down — then measured.</p>
-        <div class="card-foot"><span>mine &middot; write &middot; verify</span><span class="go" aria-hidden="true">&rarr;</span></div>
-      </a>
-      <a class="card" href="/gardener/">
-        <div class="card-top">
-          <span class="card-name">gardener</span>
-          <span class="card-kicker">Context hygiene</span>
-        </div>
-        <p>What CLAUDE.md costs you on every single request.</p>
-        <div class="card-foot"><span>audit &middot; compliance &middot; prune</span><span class="go" aria-hidden="true">&rarr;</span></div>
-      </a>
-      <a class="card" href="/painradar/">
-        <div class="card-top">
-          <span class="card-name">painradar</span>
-          <span class="card-kicker">Demand signal</span>
-        </div>
-        <p>Public complaints plus verified revenue — themes with links.</p>
-        <div class="card-foot"><span>scan &middot; fit &middot; launch</span><span class="go" aria-hidden="true">&rarr;</span></div>
-      </a>
-      <a class="card" href="/devpersona/">
-        <div class="card-top">
-          <span class="card-name">devpersona</span>
-          <span class="card-kicker">Developer profile</span>
-        </div>
-        <p>Who you are as a developer, read from your own history.</p>
-        <div class="card-foot"><span>stats &middot; analyze &middot; advise</span><span class="go" aria-hidden="true">&rarr;</span></div>
-      </a>
-    </div>
-
-    <div class="writing-foot" data-reveal style="margin-top:26px">
-      <a class="link" href="/repos/">Part of the hailneed suite <span class="arw" aria-hidden="true">&larr;</span></a>
-    </div>
+  <section id="related" aria-labelledby="related-title">
+    <h2 id="related-title">Other plugins</h2>
+    <p>The other five are <a href="/agent-blackbox/">agent-blackbox</a>, <a href="/scar/">scar</a>, <a href="/gardener/">gardener</a>, <a href="/painradar/">painradar</a> and <a href="/devpersona/">devpersona</a>. All six are described on the <a href="/repos/">tools page</a>.</p>
   </section>
 
+</article>
 </main>
 
-<footer class="foot">
-  <span>&copy; <span id="year">2026</span> halilneed</span>
-  <span class="colophon">
-    Static page. No framework, no build step, no cookies. Visits are counted in
-    aggregate by GoatCounter — nothing identifies you.
-    <a href="https://github.com/halilneed/halilneed.github.io" rel="noopener">Source</a>.
-  </span>
-  <a class="to-top" href="#hero">Back to top &uarr;</a>
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, Istanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/">Turkish PII detection model</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Source</a></li>
+    </ul>
+    <p class="small">No cookies. Visits are counted in aggregate with GoatCounter.</p>
+  </div>
 </footer>
 
-<div class="cursor" id="cursor" aria-hidden="true"></div>
-
-<script src="/assets/js/data.js"></script>
-<script src="/assets/js/instrument.js"></script>
-<script src="/assets/js/main.js"></script>
-<!-- Çerezsiz toplu sayaç — localhost'u varsayılan olarak saymaz. -->
-<script data-goatcounter="https://hailneed.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

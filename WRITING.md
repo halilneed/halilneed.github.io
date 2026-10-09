@@ -1,97 +1,60 @@
-# Yazı ekleme (Medium akışı)
+# Yazı ekleme
 
-Site bir yazıyı **iki yerde** gösterir: ana sayfadaki `Dispatches` bölümü (en yeni 3) ve
-`/writing/` (hepsi + etiket filtresi). İkisi de **tek bir listeden** okur:
+Yazılar Medium'da yayımlanır; site yalnızca listeler. Liste iki yerde durur ve ikisi de düz
+HTML'dir, JavaScript yok:
 
-```
-assets/js/data.js  →  HN.writing
-```
+- `writing/index.html`: bütün yazılar, yıl başlığı altında, yeniden eskiye
+- `index.html`: "Writing" bölümünde en yeni beş yazı
 
-Başka hiçbir dosyaya dokunmana gerek yok. HTML'e elle satır eklenmez.
+Yayımlanmamış yazı listelenmez.
 
----
+## Adımlar
 
-## 1. Yazıyı Medium'da yayımla
+**1. Medium'da yayımla.** Kanonik URL'yi kopyala (`?source=...` gibi takip parametreleri olmadan).
 
-Sonra kanonik URL'yi kopyala (`?source=...` gibi takip parametrelerini at).
+**2. `writing/index.html`.** İlgili yıl bölümünün en üstüne bir giriş ekle:
 
-## 2. `assets/js/data.js` içindeki `writing` dizisine gir
-
-Yeni yazı **en üste**. Zaten planlanmış olarak duruyorsa onu yerinde güncelle:
-
-```js
-{
-  title: 'Your agent says it fixed it. Here is how to check.',
-  dek:
-    'Coding agents narrate their own work. The session log on your disk ' +
-    'does not. Reading one against the other, turn by turn.',
-  status: 'published',                    // 'planned' idi
-  tags: ['agents', 'observability'],
-  date: '2026-09-04',                     // YYYY-MM-DD
-  readingTime: 9,                         // dakika, opsiyonel
-  url: 'https://medium.com/@hailneed/...' // kanonik link
-}
+```html
+<article class="post">
+  <time datetime="2026-11-03">2026-11-03</time>
+  <h3><a href="https://halilneed.medium.com/...">Yazının başlığı</a></h3>
+  <p>Bir iki cümlelik özet. Rakam varsa rakamla. Related: <a href="/skillbench/">skillbench</a>.</p>
+</article>
 ```
 
-### Alanlar
+- Türkçe yazıda başlık bağlantısına `lang="tr" hreflang="tr"` ekle ve özeti `In Turkish.` ile başlat.
+- Sitede ilgili bir sayfa varsa özetin sonuna `Related:` ile bağla; yoksa o cümleyi yazma.
+- Yeni yıl için yeni bir bölüm aç: `<section class="section" id="y2027" aria-labelledby="y2027-title">`.
 
-| Alan | Zorunlu | Not |
-|---|---|---|
-| `title` | evet | Kart başlığı. Nokta ile bitir, `<em>` kullanma — düz metin. |
-| `dek` | hayır | Bir–iki cümle. Başlığın altında görünür. |
-| `status` | evet | `'published'` veya `'planned'`. |
-| `tags` | hayır | Küçük harf, tireli. `/writing/` filtresi bunlardan üretilir. |
-| `date` | published ise evet | `YYYY-MM-DD`. Sıralama buna göre. |
-| `readingTime` | hayır | Tam sayı dakika. |
-| `url` | published ise evet | Kanonik Medium linki. |
+**3. Aynı dosyadaki JSON-LD.** `ItemList` içine en üste bir `ListItem` ekle (`name`, `url`),
+diğerlerinin `position` değerini bir artır, `numberOfItems` değerini güncelle.
 
-### İki durum
+**4. `index.html`.** "Writing" bölümündeki `<ul class="dated">` listesinin en üstüne ekle, en
+alttakini sil (beş satır kalsın):
 
-- **`planned`** — link yok, tıklanmaz, sağda `In the works` rozeti çıkar. Yazmayı
-  düşündüğün şeyi önceden listelemek için. Yayımlanmamış bir şeye link verilmez.
-- **`published`** — kart tıklanabilir olur, `Medium` rozeti ve okuma süresi çıkar.
+```html
+<li>
+  <time datetime="2026-11-03">2026-11-03</time>
+  <div><a href="https://halilneed.medium.com/...">Yazının başlığı</a></div>
+</li>
+```
 
-Sıralama otomatik: önce yayımlananlar (tarihe göre yeniden eskiye), sonra kuyruk
-(dosyadaki sıra).
+Türkçe yazıda: `<a ... lang="tr" hreflang="tr">Başlık</a> <span class="small">in Turkish</span>`.
 
-## 3. Kontrol et
+**5. `sitemap.xml`.** `/` ve `/writing/` satırlarındaki `lastmod` tarihini güncelle.
+
+**6. Kontrol et ve gönder.**
 
 ```bash
-npx serve .            # veya: python -m http.server 8000
-```
-
-`http://localhost:3000/` ve `/writing/` — ikisinde de göründüğünü doğrula.
-
-## 4. Commit + push
-
-```bash
-git add assets/js/data.js
-git commit -m "Add dispatch: <title>"
+python3 -m http.server 8000     # http://localhost:8000/ ve /writing/
+git add index.html writing/index.html sitemap.xml
+git commit -m "Add article: <başlık>"
 git push
 ```
 
-GitHub Pages 1–2 dakikada yayına alır.
+## Notlar
 
----
-
-## Medium profil linki
-
-Profil URL'si **tek yerde** durur:
-
-```js
-// assets/js/data.js
-profile.medium = 'https://medium.com/@hailneed'
-```
-
-`main.js` sayfadaki bütün `medium.com/@...` linklerini bu değerle günceller, yani
-HTML'deki yer tutucuları elle değiştirmene gerek yok. Gerçek profil adresini
-öğrendiğinde sadece bu satırı düzelt.
-
----
-
-## Sonraki adım: yazıyı site içinde de barındırmak
-
-Şu an yazılar Medium'da yaşıyor, site sadece indeksliyor. İleride bir yazıyı burada
-da yayımlamak istersen desen hazır: `url` alanına dış link yerine site içi bir yol
-(`/writing/agent-logs/`) yaz, o klasöre bir `index.html` koy. Kart hiç değişmeden
-oraya bağlanır — kod tarafında yapılacak bir şey yok.
+- Yazı metni düz olsun: başlıkta `<em>` yok, özette uzun tire yok.
+- Bir yazı sitedeki bir modeli ya da aracı anlatıyorsa o sayfadan da yazıya bağlantı ver
+  (örnek: PII model sayfasındaki "How it was trained" bölümü Medium yazısına bağlanır).
+- E-posta kayıt formu yalnızca `/writing/` sayfasındadır (`#subscribe`); başka sayfalar oraya bağlanır.

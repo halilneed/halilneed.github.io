@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turkish BSEBY classifier for banking data classes | halilneed</title>
+<meta name="description" content="Open classifier for Turkish banking text: personal, special-category and authentication data, customer and bank secrets under BSEBY. 0.944 micro-F1. MIT.">
+<link rel="canonical" href="https://halilneed.agency/models/turkish-bseby-classifier/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:title" content="Turkish BSEBY classifier for banking data classes | halilneed">
+<meta property="og:description" content="Open classifier for Turkish banking text: personal, special-category and authentication data, customer and bank secrets under BSEBY. 0.944 micro-F1. MIT.">
+<meta property="og:url" content="https://halilneed.agency/models/turkish-bseby-classifier/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-bseby-classifier.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Turkish BSEBY classifier for banking data classes | halilneed">
+<meta name="twitter:description" content="Open classifier for Turkish banking text: personal, special-category and authentication data, customer and bank secrets under BSEBY. 0.944 micro-F1. MIT.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-bseby-classifier.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Models",
+          "item": "https://halilneed.agency/models/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Turkish BSEBY classifier",
+          "item": "https://halilneed.agency/models/turkish-bseby-classifier/"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://halilneed.agency/models/turkish-bseby-classifier/#page",
+      "url": "https://halilneed.agency/models/turkish-bseby-classifier/",
+      "mainEntityOfPage": "https://halilneed.agency/models/turkish-bseby-classifier/",
+      "headline": "Turkish BSEBY classifier",
+      "description": "An open multi-label classifier for the BSEBY data classes in Turkish banking text: examples, the labels, results, Python usage, training and limitations.",
+      "inLanguage": [
+        "en",
+        "tr"
+      ],
+      "datePublished": "2026-10-09",
+      "dateModified": "2026-10-09",
+      "image": "https://halilneed.agency/assets/img/og-turkish-bseby-classifier.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "about": {
+        "@id": "https://halilneed.agency/models/turkish-bseby-classifier/#model"
+      }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://halilneed.agency/models/turkish-bseby-classifier/#model",
+      "name": "turkish-bseby-classifier",
+      "description": "Multi-label Turkish text classifier with 110M parameters, based on BERTurk. It flags personal data, special-category data, authentication data, customer secrets and bank secrets in banking text.",
+      "url": "https://huggingface.co/halilneed/turkish-bseby-classifier",
+      "programmingLanguage": "Python",
+      "license": "https://opensource.org/license/mit",
+      "isBasedOn": "https://huggingface.co/dbmdz/bert-base-turkish-cased",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="site-name" href="/">halilneed</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/models/" aria-current="true">Models</a></li>
+      <li><a href="/repos/">Tools</a></li>
+      <li><a href="/writing/">Writing</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">halilneed</a></li>
+    <li><a href="/models/">Models</a></li>
+    <li aria-current="page">Turkish BSEBY classifier</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>Turkish BSEBY classifier</h1>
+    <p class="lead"><code>turkish-bseby-classifier</code> is a multi-label model that flags five classes of data in Turkish text: personal data, special-category data, authentication data (which BSEBY calls sensitive data), customer secrets and bank secrets. It is built for bank data inventories and data loss prevention (DLP) pipelines.</p>
+    <p>BSEBY, the Turkish regulation on banks’ information systems, asks banks to set the security class of their data by three criteria: personal data, sensitive data and data covered by secrecy (Article 6/6). It also asks them to stop sensitive data and secrets from leaking in outbound traffic (Article 14/9). The model takes about 32 ms per text on a desktop CPU.</p>
+    <ul class="links">
+      <li><a href="https://huggingface.co/halilneed/turkish-bseby-classifier" data-goatcounter-click="bseby-download">Weights on Hugging Face</a></li>
+      <li><a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark" data-goatcounter-click="bseby-benchmark">Evaluation set</a></li>
+    </ul>
+
+    <dl class="kv">
+      <div><dt>Size</dt><dd>110M parameters</dd></div>
+      <div><dt>Base model</dt><dd><a href="https://huggingface.co/dbmdz/bert-base-turkish-cased"><code>dbmdz/bert-base-turkish-cased</code></a> (BERTurk)</dd></div>
+      <div><dt>Labels</dt><dd>5, multi-label</dd></div>
+      <div><dt>Result</dt><dd>0.944 micro-F1 on 747 held-out texts</dd></div>
+      <div><dt>CPU speed</dt><dd>about 32 ms per text</dd></div>
+      <div><dt>Licence</dt><dd>MIT</dd></div>
+    </dl>
+
+    <nav class="toc" aria-label="On this page">
+      <ul>
+        <li><a href="#example">Examples</a></li>
+        <li><a href="#labels">Labels</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#usage">Quick start</a></li>
+        <li><a href="#training">Training</a></li>
+        <li><a href="#limitations">Limitations</a></li>
+        <li><a href="#turkce" lang="tr">Türkçe</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="example" aria-labelledby="example-title">
+    <h2 id="example-title">Examples</h2>
+
+    <div class="table-scroll" role="region" aria-labelledby="examples-caption" tabindex="0">
+      <table class="stack" role="table">
+        <caption id="examples-caption">Six texts and the labels they get, from the model card</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col">Text</th>
+            <th role="columnheader" scope="col" class="col-s">Labels</th>
+            <th role="columnheader" scope="col">Why</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th role="rowheader" scope="row"><code class="mono" lang="tr">Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye çıkarıldı</code></th>
+            <td role="cell" data-label="Labels"><code class="nowrap">musteri_sirri</code></td>
+            <td role="cell" data-label="Why">A company is the customer, so there is no personal data.</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><code class="mono" lang="tr">müşteri kemoterapi gördüğü için kredi taksitlerinin ertelenmesini istedi</code></th>
+            <td role="cell" data-label="Labels"><code class="nowrap">kisisel_veri</code>, <code class="nowrap">ozel_nitelikli</code>, <code class="nowrap">musteri_sirri</code></td>
+            <td role="cell" data-label="Why">Health data about a bank customer.</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><code class="mono" lang="tr">internet şubesi parolanız: Kp!7731x, kimseyle paylaşmayın</code></th>
+            <td role="cell" data-label="Labels"><code class="nowrap">kisisel_veri</code>, <code class="nowrap">hassas_veri</code></td>
+            <td role="cell" data-label="Why">A person’s password, with its value in the text.</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><code class="mono" lang="tr">core banking prod DB servis hesabı: svc_cb / Xr9!mQ2</code></th>
+            <td role="cell" data-label="Labels"><code class="nowrap">banka_sirri</code></td>
+            <td role="cell" data-label="Why">A system credential belongs to the bank, not to a person.</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><code class="mono" lang="tr">abonenin son üç faturası ödenmemiş, hattı kısıtlanacak</code></th>
+            <td role="cell" data-label="Labels"><code class="nowrap">kisisel_veri</code></td>
+            <td role="cell" data-label="Why">A telecom customer, not a bank customer, so it is not a customer secret.</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><code class="mono" lang="tr">ihtiyaç kredisi faiz oranımız 1 Ekim itibarıyla %3,49'dur</code></th>
+            <td role="cell" data-label="Labels">no label</td>
+            <td role="cell" data-label="Why">A published rate.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="labels" aria-labelledby="labels-title">
+    <h2 id="labels-title">Labels</h2>
+
+    <div class="table-scroll" role="region" aria-labelledby="labels-caption" tabindex="0">
+      <table class="stack" role="table">
+        <caption id="labels-caption">The five labels, what they cover and where the class comes from</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col">Label</th>
+            <th role="columnheader" scope="col">Covers</th>
+            <th role="columnheader" scope="col" class="col-s">Basis</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>kisisel_veri</code></th>
+            <td role="cell" data-label="Covers">any information about a specific natural person</td>
+            <td role="cell" data-label="Basis">KVKK Art. 3; BSEBY Art. 6/3</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>ozel_nitelikli</code></th>
+            <td role="cell" data-label="Covers">health, biometrics, religion, criminal convictions, union membership and the other special categories</td>
+            <td role="cell" data-label="Basis">KVKK Art. 6</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>hassas_veri</code></th>
+            <td role="cell" data-label="Covers">authentication data whose value is in the text: password, PIN, one-time password, CVV, full card number, answer to a security question, session token</td>
+            <td role="cell" data-label="Basis">BSEBY Art. 3/1-o</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>musteri_sirri</code></th>
+            <td role="cell" data-label="Covers">information that arises from a specific natural or legal person’s relationship with a bank, including anything that shows they are a customer</td>
+            <td role="cell" data-label="Basis">Secrecy Regulation Art. 4/3-4</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>banka_sirri</code></th>
+            <td role="cell" data-label="Covers">the bank’s own undisclosed information: audit findings, internal limits and policies, unpublished results, system information and system credentials</td>
+            <td role="cell" data-label="Basis">Secrecy Regulation Art. 5/5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>No label means public information, a general rule, an announcement or a product description.</p>
+    <p>KVKK is the Turkish data protection law. BSEBY is the Regulation on Banks’ Information Systems and Electronic Banking Services (Official Gazette <time datetime="2020-03-15">15 March 2020</time>, no. 31069). The Secrecy Regulation is the Regulation on the Sharing of Confidential Information (Official Gazette <time datetime="2021-06-04">4 June 2021</time>, no. 31501).</p>
+
+    <h3>Where I drew the lines</h3>
+    <p>The regulations say what each class is for and do not settle the borderline cases, so I had to draw the lines myself. If your bank’s asset classification guide (BSEBY Article 6/5) draws them differently, evaluate the model against that guide.</p>
+    <ul>
+      <li><strong>Who owns the authentication data.</strong> The regulation says “belonging to the customer”. A text often does not show whether a password belongs to a customer or an employee, so a person’s authentication data is <code>hassas_veri</code> whoever owns it. The password of a system or service account and an API key belong to the institution, not to a person: <code>banka_sirri</code>.</li>
+      <li><strong>The value has to be in the text.</strong> “<span lang="tr">müşteri şifresini dolandırıcıya vermiş</span>” (the customer gave their password to a fraudster) is not <code>hassas_veri</code>. Neither is a masked value (<code>****</code>).</li>
+      <li><strong>Mother’s maiden name.</strong> On its own it is not <code>hassas_veri</code> (BSEBY Article 34/10 bans its use for authentication). It is marked when the text explicitly uses it as an authentication answer.</li>
+      <li><strong>Account identifiers.</strong> An IBAN, an account number and a full card number are <code>musteri_sirri</code> even when the banking context is not explicit.</li>
+      <li><strong>Customers of other businesses.</strong> A customer relationship outside banking (e-commerce, telecom, insurance) is personal data, not a customer secret. Debt, instalments and debt enforcement do not count as banking content by themselves.</li>
+      <li><strong>Bank secrets.</strong> The Secrecy Regulation says only “information that belongs only to the bank” (Article 5/5) and does not define the term further. If the institution is clearly not a bank, the label is not used. If it is unclear, a bank is assumed.</li>
+      <li><strong>Legal entities.</strong> Information about a customer that is a legal entity is <code>musteri_sirri</code>, not <code>kisisel_veri</code>.</li>
+    </ul>
+  </section>
+
+  <section id="results" aria-labelledby="results-title">
+    <h2 id="results-title">Results</h2>
+    <p>The main result is on an independent held-out set: 750 texts written from the labelling guide alone, without access to the training data, in two batches of 375, and then labelled a second time, blind. The 747 with exact agreement are the gold set. The second set is a template-disjoint test of 1,055 examples from 456 templates never used in training.</p>
+
+    <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
+      <table>
+        <caption id="results-caption">Scores on the two test sets</caption>
+        <thead>
+          <tr><th scope="col">Metric</th><th scope="col" class="num">Held-out<br>747 texts</th><th scope="col" class="num">Disjoint test<br>1,055 examples</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">micro-F1</th><td class="num">0.944</td><td class="num dim">0.945</td></tr>
+          <tr><th scope="row">macro-F1</th><td class="num">0.939</td><td class="num dim">0.913</td></tr>
+          <tr><th scope="row">Exact match (all labels correct)</th><td class="num">0.892</td><td class="num dim">0.902</td></tr>
+          <tr><th scope="row">Secret present: precision</th><td class="num">0.970</td><td class="num dim">0.918</td></tr>
+          <tr><th scope="row">Secret present: recall</th><td class="num">0.963</td><td class="num dim">0.961</td></tr>
+          <tr><th scope="row">Any protected data present: precision</th><td class="num">0.985</td><td class="num dim">0.978</td></tr>
+          <tr><th scope="row">Any protected data present: recall</th><td class="num">0.990</td><td class="num dim">0.973</td></tr>
+          <tr><th scope="row">Legal-entity slice fully correct</th><td class="num">0.859</td><td class="num dim">0.804</td></tr>
+          <tr><th scope="row">Legal-entity slice size (n)</th><td class="num">128</td><td class="num dim">56</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-scroll" role="region" aria-labelledby="labels-results-caption" tabindex="0">
+      <table>
+        <caption id="labels-results-caption">Per label, held-out set. P is precision, R is recall and n is the number of gold texts with the label.</caption>
+        <thead>
+          <tr><th scope="col">Label</th><th scope="col" class="num"><abbr title="Precision">P</abbr></th><th scope="col" class="num"><abbr title="Recall">R</abbr></th><th scope="col" class="num">F1</th><th scope="col" class="num">n</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" class="nowrap"><code>kisisel_veri</code></th><td class="num">0.958</td><td class="num">0.963</td><td class="num">0.960</td><td class="num">328</td></tr>
+          <tr><th scope="row" class="nowrap"><code>ozel_nitelikli</code></th><td class="num">0.983</td><td class="num">1.000</td><td class="num">0.991</td><td class="num">57</td></tr>
+          <tr><th scope="row" class="nowrap"><code>hassas_veri</code></th><td class="num">0.878</td><td class="num">0.867</td><td class="num">0.873</td><td class="num">83</td></tr>
+          <tr><th scope="row" class="nowrap"><code>musteri_sirri</code></th><td class="num">0.973</td><td class="num">0.928</td><td class="num">0.950</td><td class="num">306</td></tr>
+          <tr><th scope="row" class="nowrap"><code>banka_sirri</code></th><td class="num">0.888</td><td class="num">0.955</td><td class="num">0.920</td><td class="num">157</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Micro-F1 is F1 computed over all label decisions pooled together. Macro-F1 is the unweighted mean of the per-label F1 scores.</p>
+    <p>“Secret present” means <code>musteri_sirri</code> or <code>banka_sirri</code>. “Any protected data present” means at least one label. The legal-entity slice is the set of texts whose gold labels include a customer secret and no personal data. A prediction counts only if it gets both right.</p>
+    <p>The texts and both label passes were produced with the same language model (Claude) and the same guideline, and were not verified line by line by a person. The 99.6% exact agreement shows that the guideline can be applied consistently. It is not agreement between two independent people, and agreement with a human annotator has not been measured.</p>
+  </section>
+
+  <section id="usage" aria-labelledby="usage-title">
+    <h2 id="usage-title">Python quick start</h2>
+
+<pre tabindex="0" aria-label="Python example"><code>import json, torch
+from huggingface_hub import hf_hub_download
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
+MODEL = "halilneed/turkish-bseby-classifier"
+tok = AutoTokenizer.from_pretrained(MODEL)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL).eval()
+thresholds = json.load(open(hf_hub_download(MODEL, "thresholds.json")))
+
+def classify(text):
+    with torch.inference_mode():
+        p = torch.sigmoid(model(**tok(text, return_tensors="pt", truncation=True, max_length=320)).logits)[0]
+    return [model.config.id2label[i] for i, v in enumerate(p.tolist()) if v &gt;= thresholds[model.config.id2label[i]]]
+
+print(classify("Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye çıkarıldı"))
+# ['musteri_sirri']</code></pre>
+
+    <p>Per-label thresholds were tuned on the dev set and ship in <code>thresholds.json</code>. For the four labels other than <code>kisisel_veri</code> the threshold never goes above 0.5, which favours recall.</p>
+    <p>Measured speed: 32 ms per text at batch size one on an Intel i5-12400F with eight threads, for texts of 207 characters on average. Text beyond 320 tokens is cut off, so split long documents and take the union of the labels.</p>
+  </section>
+
+  <section id="training" aria-labelledby="training-title">
+    <h2 id="training-title">Training</h2>
+    <ul>
+      <li><strong>Base model.</strong> <code>dbmdz/bert-base-turkish-cased</code> (BERTurk, 110M).</li>
+      <li><strong>Method.</strong> Multi-label classification, sigmoid with binary cross-entropy, 5 epochs, learning rate 3e-5, bfloat16, up to 320 tokens. The checkpoint was chosen by dev micro-F1 (epoch 4).</li>
+      <li><strong>Data.</strong> 40,000 synthetic examples from 4,523 templates: the 3,276 templates of the KVKK classifier, with personal-data labels derived deterministically and 1,445 of them also marked for banking context, plus 1,247 templates written for this model covering natural- and legal-person customers, internal management and risk, IT and security, authentication data and traps. 16% have no label.</li>
+      <li><strong>Split.</strong> Train, dev and test are separated by template hash.</li>
+    </ul>
+  </section>
+
+  <section id="limitations" aria-labelledby="limitations-title">
+    <h2 id="limitations-title">Limitations</h2>
+    <ul>
+      <li>The training data and the evaluation sets are synthetic and were produced with a language model. Measure the model on real bank text before it goes into a critical pipeline.</li>
+      <li>The weakest label is <code>hassas_veri</code> (F1 0.873). Most of what it misses on the held-out set is token and key formats (JWT, private key block, device pairing key, personal access token) and passwords inside a JSON body. Most of its false alarms are masked card numbers and notices such as “<span lang="tr">sonu 7712 ile biten kartınız</span>” (your card ending in 7712). For values with a fixed format (card number, JWT, key block), use it together with a rule-based check.</li>
+      <li>Precision for <code>banka_sirri</code> is 0.888. The false alarms fall in three places: technical texts that belong to a corporate customer (a SWIFT MT message, a financial analysis summary), internal information of institutions that are clearly not banks (a factory production report, a foundry’s service account) and published fee schedules. Whether information has been disclosed often depends on a fact outside the text, and the model can only infer it from clues in the text.</li>
+      <li>In 20 of the 27 held-out texts that carry both <code>musteri_sirri</code> and <code>banka_sirri</code>, both labels are correct. In the rest, one of the two is missed.</li>
+      <li>The model looks at one piece of text at a time. A customer secret often arises from a combination of fields (Secrecy Regulation Article 4/4). When you classify tables or records, pass the fields together.</li>
+      <li>The labels are a classification signal, not a legal assessment. Compliance with BSEBY and with the duty of secrecy remains the user’s responsibility.</li>
+    </ul>
+  </section>
+
+  <section id="turkce" lang="tr" aria-labelledby="turkce-title">
+    <h2 id="turkce-title">Türkçe BSEBY veri sınıflandırma modeli</h2>
+    <p><code>turkish-bseby-classifier</code>, Türkçe bir metinde kişisel veri, hassas veri ya da sır kapsamındaki veri (müşteri sırrı, banka sırrı) bulunup bulunmadığını belirleyen çok etiketli bir sınıflandırıcıdır. Bankaların veri envanteri ve veri sızıntısı önleme (DLP) süreçleri için tasarlanmıştır.</p>
+    <p>Eğitim verisine bakılmadan yazılmış 747 metinlik bağımsız sette micro-F1 0.944, macro-F1 0.939’dur. CPU’da metin başına yaklaşık 32 ms sürer. Etiketler yalnızca bir sınıflandırma tahminidir, hukuki nitelendirme değildir.</p>
+  </section>
+
+  <section id="links" aria-labelledby="links-title">
+    <h2 id="links-title">Links</h2>
+    <ul>
+      <li><a href="https://huggingface.co/halilneed/turkish-bseby-classifier">Model card and weights</a></li>
+      <li><a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">Evaluation set</a></li>
+      <li><a href="/models/turkish-pii-detection/">Turkish PII detection and masking</a></li>
+      <li><a href="/models/turkish-kvkk-classifier/">Turkish KVKK classifier</a></li>
+      <li><a href="/models/">All models</a></li>
+    </ul>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, Istanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/">Turkish PII detection model</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Source</a></li>
+    </ul>
+    <p class="small">No cookies. Visits are counted in aggregate with GoatCounter.</p>
+  </div>
+</footer>
+
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turkish KVKK classifier (BERTurk, 24 categories) | halilneed</title>
+<meta name="description" content="Open multi-label classifier that says which of 24 KVKK and VERBİS personal-data categories a Turkish text contains. 0.874 micro-F1, 22 ms per text on CPU. MIT.">
+<link rel="canonical" href="https://halilneed.agency/models/turkish-kvkk-classifier/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:title" content="Turkish KVKK classifier (BERTurk, 24 categories) | halilneed">
+<meta property="og:description" content="Open multi-label classifier that says which of 24 KVKK and VERBİS personal-data categories a Turkish text contains. 0.874 micro-F1, 22 ms per text on CPU. MIT.">
+<meta property="og:url" content="https://halilneed.agency/models/turkish-kvkk-classifier/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Turkish KVKK classifier (BERTurk, 24 categories) | halilneed">
+<meta name="twitter:description" content="Open multi-label classifier that says which of 24 KVKK and VERBİS personal-data categories a Turkish text contains. 0.874 micro-F1, 22 ms per text on CPU. MIT.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Models",
+          "item": "https://halilneed.agency/models/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Turkish KVKK classifier",
+          "item": "https://halilneed.agency/models/turkish-kvkk-classifier/"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://halilneed.agency/models/turkish-kvkk-classifier/#page",
+      "url": "https://halilneed.agency/models/turkish-kvkk-classifier/",
+      "mainEntityOfPage": "https://halilneed.agency/models/turkish-kvkk-classifier/",
+      "headline": "Turkish KVKK classifier",
+      "description": "An open multi-label classifier for the 24 KVKK and VERBİS personal-data categories in Turkish text: what it does, the labels, results, Python usage, training and limitations.",
+      "inLanguage": [
+        "en",
+        "tr"
+      ],
+      "datePublished": "2026-10-09",
+      "dateModified": "2026-10-09",
+      "image": "https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "about": {
+        "@id": "https://halilneed.agency/models/turkish-kvkk-classifier/#model"
+      }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://halilneed.agency/models/turkish-kvkk-classifier/#model",
+      "name": "turkish-kvkk-classifier",
+      "description": "Multi-label Turkish text classifier with 110M parameters, based on BERTurk. It says which of 24 personal-data categories a text contains: the 14 VERBİS categories and the 10 special categories in Article 6 of KVKK.",
+      "url": "https://huggingface.co/halilneed/turkish-kvkk-classifier",
+      "programmingLanguage": "Python",
+      "license": "https://opensource.org/license/mit",
+      "isBasedOn": "https://huggingface.co/dbmdz/bert-base-turkish-cased",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="site-name" href="/">halilneed</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/models/" aria-current="true">Models</a></li>
+      <li><a href="/repos/">Tools</a></li>
+      <li><a href="/writing/">Writing</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">halilneed</a></li>
+    <li><a href="/models/">Models</a></li>
+    <li aria-current="page">Turkish KVKK classifier</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>Turkish KVKK classifier</h1>
+    <p class="lead"><code>turkish-kvkk-classifier</code> is a multi-label model that tells you which kinds of personal data a Turkish text contains. It covers 24 categories: the 14 used in <span lang="tr">VERBİS</span>, Turkey’s data controller registry, and the 10 special categories in Article 6 of KVKK, the Turkish data protection law. It takes about 22 ms per text on a desktop CPU.</p>
+    <ul class="links">
+      <li><a href="https://huggingface.co/halilneed/turkish-kvkk-classifier" data-goatcounter-click="kvkk-download">Weights on Hugging Face</a></li>
+      <li><a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark" data-goatcounter-click="kvkk-benchmark">Evaluation set</a></li>
+    </ul>
+
+    <dl class="kv">
+      <div><dt>Size</dt><dd>110M parameters</dd></div>
+      <div><dt>Base model</dt><dd><a href="https://huggingface.co/dbmdz/bert-base-turkish-cased"><code>dbmdz/bert-base-turkish-cased</code></a> (BERTurk)</dd></div>
+      <div><dt>Labels</dt><dd>24, multi-label</dd></div>
+      <div><dt>Result</dt><dd>0.874 micro-F1 on 987 held-out texts</dd></div>
+      <div><dt>CPU speed</dt><dd>about 22 ms per text</dd></div>
+      <div><dt>Licence</dt><dd>MIT</dd></div>
+    </dl>
+
+    <nav class="toc" aria-label="On this page">
+      <ul>
+        <li><a href="#example">Example</a></li>
+        <li><a href="#labels">Labels</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#usage">Quick start</a></li>
+        <li><a href="#training">Training</a></li>
+        <li><a href="#limitations">Limitations</a></li>
+        <li><a href="#turkce" lang="tr">Türkçe</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="example" aria-labelledby="example-title">
+    <h2 id="example-title">What it does</h2>
+    <dl class="example">
+      <div><dt>Input</dt><dd><code class="mono" lang="tr">hastanın böbrek yetmezliği ilerlemiş, eşi 0532 111 22 33'ten ulaşılabilir</code></dd></div>
+      <div><dt>Output</dt><dd><code class="mono">kimlik</code>, <code class="mono">iletisim</code>, <code class="mono">saglik</code> (special category: yes)</dd></div>
+    </dl>
+    <dl class="example">
+      <div><dt>Input</dt><dd><code class="mono" lang="tr">böbrek yetmezliği farkındalık haftası başladı</code></dd></div>
+      <div><dt>Output</dt><dd>no label</dd></div>
+    </dl>
+    <p>A category is marked only when the text holds that kind of information about a specific person, even an unnamed one such as “the patient” or “the customer”. General information, rules, announcements and statistics get no label. In the first example a patient’s kidney failure is health data. In the second, an awareness week for kidney failure is not about anyone.</p>
+    <p>The classifier is meant to sit in front of the <a href="/models/turkish-pii-detection/">masking model</a>: classify the text, pick a masking policy, then mask.</p>
+  </section>
+
+  <section id="labels" aria-labelledby="labels-title">
+    <h2 id="labels-title">Labels</h2>
+
+    <div class="table-scroll" role="region" aria-labelledby="labels-caption" tabindex="0">
+      <table class="stack" role="table">
+        <caption id="labels-caption">The 24 labels and their F1 on the held-out set</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col">Label</th>
+            <th role="columnheader" scope="col">Covers</th>
+            <th role="columnheader" scope="col">F1</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col" colspan="3"><strong>General categories (<span lang="tr">VERBİS</span>)</strong></th>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>kimlik</code></th>
+            <td role="cell" data-label="Covers">full name, national ID number (TCKN), birth details, age, gender, nationality, marital status, ID document numbers, signature</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.97</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>iletisim</code></th>
+            <td role="cell" data-label="Covers">phone, email, postal address</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.97</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>lokasyon</code></th>
+            <td role="cell" data-label="Covers">the person’s location, where they are or are going, route</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.74</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>ozluk</code></th>
+            <td role="cell" data-label="Covers">an employee’s personnel record: service record, payroll, leave, discipline, social security (SGK) declaration</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.84</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>hukuki_islem</code></th>
+            <td role="cell" data-label="Covers">lawsuit, debt enforcement, seizure, official notification, power of attorney, formal notice, mediation</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.89</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>musteri_islem</code></th>
+            <td role="cell" data-label="Covers">order, invoice, subscription, request or complaint, policy or contract transaction</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.75</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>fiziksel_mekan_guvenligi</code></th>
+            <td role="cell" data-label="Covers">building entry and exit, turnstile, visitor log, security camera</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.83</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>islem_guvenligi</code></th>
+            <td role="cell" data-label="Covers">IP address, log, device ID, username, password or PIN, session record</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.83</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>risk_yonetimi</code></th>
+            <td role="cell" data-label="Covers">credit score, risk score, suspicious transaction, blacklist, MASAK (Turkey’s financial crimes investigation board)</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.82</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>finans</code></th>
+            <td role="cell" data-label="Covers">account, IBAN, card, balance, debt, income or salary, tax number, crypto</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.85</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>mesleki_deneyim</code></th>
+            <td role="cell" data-label="Covers">workplace, profession, position, diploma, certificate, reference</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.80</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>pazarlama</code></th>
+            <td role="cell" data-label="Covers">shopping habits, preferences, contact consent, survey answers, cookie or segment data</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.83</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>gorsel_isitsel</code></th>
+            <td role="cell" data-label="Covers">the person’s photo, voice recording, video, call recording</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.79</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>arac</code></th>
+            <td role="cell" data-label="Covers">licence plate, chassis number, engine number, registration document</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.96</td>
+          </tr>
+          <tr role="row">
+            <th role="columnheader" scope="col" colspan="3"><strong>Special categories (KVKK Article 6)</strong></th>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>saglik</code></th>
+            <td role="cell" data-label="Covers">illness, diagnosis, treatment, medication, disability, blood type, pregnancy</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.92</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>biyometrik</code></th>
+            <td role="cell" data-label="Covers">fingerprint, face recognition, iris or retina, voiceprint</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.88</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>genetik</code></th>
+            <td role="cell" data-label="Covers">genetic test, DNA, carrier status</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.79</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>cinsel_hayat</code></th>
+            <td role="cell" data-label="Covers">sexual orientation, information about sexual life</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.86</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>ceza_mahkumiyeti</code></th>
+            <td role="cell" data-label="Covers">past offences, criminal record, conviction, security measure</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.84</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>din_felsefi_inanc</code></th>
+            <td role="cell" data-label="Covers">religion, sect, belief, religious practice</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.93</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>siyasi_dusunce</code></th>
+            <td role="cell" data-label="Covers">party membership or preference, political opinion, taking part in a protest</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.85</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>irk_etnik</code></th>
+            <td role="cell" data-label="Covers">race, ethnic origin</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.82</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>dernek_vakif_sendika</code></th>
+            <td role="cell" data-label="Covers">membership of an association, foundation or trade union</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.89</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>kilik_kiyafet</code></th>
+            <td role="cell" data-label="Covers">headscarf, choice of religious or cultural dress</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.91</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="results" aria-labelledby="results-title">
+    <h2 id="results-title">Results</h2>
+    <p>There are two test sets. The main one is an independent held-out set: 1,125 texts written without looking at the training data, then labelled a second time, blind. The 987 texts where both label sets agree exactly are the gold set (87.7% exact agreement, Cohen’s kappa per label between 0.84 and 1.00). The second is a template-disjoint test of 771 examples from 333 templates that were never used in training.</p>
+
+    <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
+      <table>
+        <caption id="results-caption">Scores on the two test sets</caption>
+        <thead>
+          <tr><th scope="col">Metric</th><th scope="col" class="num">Held-out<br>987 texts</th><th scope="col" class="num">Disjoint test<br>771 examples</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">micro-F1</th><td class="num">0.874</td><td class="num dim">0.895</td></tr>
+          <tr><th scope="row">macro-F1</th><td class="num">0.856</td><td class="num dim">0.875</td></tr>
+          <tr><th scope="row">Special category present: precision</th><td class="num">0.960</td><td class="num dim">0.955</td></tr>
+          <tr><th scope="row">Special category present: recall</th><td class="num">0.884</td><td class="num dim">0.955</td></tr>
+          <tr><th scope="row">Exact match (all labels correct)</th><td class="num">0.717</td><td class="num dim">0.733</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Micro-F1 is F1 computed over all label decisions pooled together. Macro-F1 is the unweighted mean of the per-label F1 scores.</p>
+    <p>The held-out texts and both label passes were produced with a language model and checked automatically. They were not verified line by line by a person.</p>
+  </section>
+
+  <section id="usage" aria-labelledby="usage-title">
+    <h2 id="usage-title">Python quick start</h2>
+
+<pre tabindex="0" aria-label="Python example"><code>import json, torch
+from huggingface_hub import hf_hub_download
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
+MODEL = "halilneed/turkish-kvkk-classifier"
+tok = AutoTokenizer.from_pretrained(MODEL)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL).eval()
+thresholds = json.load(open(hf_hub_download(MODEL, "thresholds.json")))
+SPECIAL = {"saglik", "biyometrik", "genetik", "cinsel_hayat", "ceza_mahkumiyeti", "din_felsefi_inanc",
+        "siyasi_dusunce", "irk_etnik", "dernek_vakif_sendika", "kilik_kiyafet"}
+
+def classify(text):
+    with torch.inference_mode():
+        p = torch.sigmoid(model(**tok(text, return_tensors="pt", truncation=True, max_length=320)).logits)[0]
+    labels = [model.config.id2label[i] for i, v in enumerate(p.tolist()) if v &gt;= thresholds[model.config.id2label[i]]]
+    return labels, bool(set(labels) &amp; SPECIAL)
+
+print(classify("hastanın böbrek yetmezliği ilerlemiş, eşi 0532 111 22 33'ten ulaşılabilir"))</code></pre>
+
+    <p>Per-label thresholds were tuned on the dev set and ship in <code>thresholds.json</code>. For the special categories the threshold never goes above 0.5, which favours recall.</p>
+    <p>Measured speed: 22 ms per text at batch size one on an Intel i5-12400F with eight threads, for texts of 126 characters on average.</p>
+  </section>
+
+  <section id="training" aria-labelledby="training-title">
+    <h2 id="training-title">Training</h2>
+    <ul>
+      <li><strong>Base model.</strong> <code>dbmdz/bert-base-turkish-cased</code> (BERTurk, 110M).</li>
+      <li><strong>Method.</strong> Multi-label classification, sigmoid with binary cross-entropy, 5 epochs, learning rate 3e-5, bfloat16, up to 320 tokens.</li>
+      <li><strong>Data.</strong> 36,000 synthetic examples from 3,276 templates. Most are the masking model’s templates: each PII slot maps to a category by a fixed rule, and each template is also marked for the categories its context adds. The rest are contextual sentences that contain no values. 21% of the examples are traps, texts that should get no label.</li>
+      <li><strong>Split.</strong> Train, dev and test are separated by template hash.</li>
+    </ul>
+  </section>
+
+  <section id="limitations" aria-labelledby="limitations-title">
+    <h2 id="limitations-title">Limitations</h2>
+    <ul>
+      <li>The training data is synthetic. Measure the model on your own organisation’s text before it goes into a critical pipeline.</li>
+      <li>The weakest labels are <code>lokasyon</code> (F1 0.74), <code>musteri_islem</code> (0.75) and <code>gorsel_isitsel</code> (0.79). All three are inferred from context and have no sharp boundary. <code>genetik</code> also scores 0.79.</li>
+      <li>For the question “is there special-category data here?” recall on the held-out set is 0.884, so roughly one such text in nine is missed.</li>
+      <li>The output is a category signal, not a legal assessment. The <span lang="tr">VERBİS</span> inventory and KVKK compliance remain the user’s responsibility.</li>
+    </ul>
+  </section>
+
+  <section id="turkce" lang="tr" aria-labelledby="turkce-title">
+    <h2 id="turkce-title">Türkçe KVKK kategori sınıflandırıcısı</h2>
+    <p><code>turkish-kvkk-classifier</code>, Türkçe bir metinde hangi kişisel veri kategorilerinin bulunduğunu belirleyen çok etiketli bir sınıflandırıcıdır: 14 VERBİS kategorisi ve KVKK md. 6’daki 10 özel nitelikli veri kategorisi. Maskeleme modelinden önce çalıştırılır: metin önce sınıflandırılır, sonuca göre maskeleme politikası seçilir, ardından metin maskelenir.</p>
+    <p>Eğitim verisine bakılmadan yazılmış 987 metinlik bağımsız sette micro-F1 0.874, macro-F1 0.856’dır. CPU’da metin başına yaklaşık 22 ms sürer. Çıktı yalnızca bir kategori tahminidir, hukuki nitelendirme değildir.</p>
+  </section>
+
+  <section id="links" aria-labelledby="links-title">
+    <h2 id="links-title">Links</h2>
+    <ul>
+      <li><a href="https://huggingface.co/halilneed/turkish-kvkk-classifier">Model card and weights</a></li>
+      <li><a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">Evaluation set</a></li>
+      <li><a href="/models/turkish-pii-detection/">Turkish PII detection and masking</a></li>
+      <li><a href="/models/turkish-bseby-classifier/">Turkish BSEBY classifier</a></li>
+      <li><a href="/models/">All models</a></li>
+    </ul>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, Istanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/">Turkish PII detection model</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Source</a></li>
+    </ul>
+    <p class="small">No cookies. Visits are counted in aggregate with GoatCounter.</p>
+  </div>
+</footer>
+
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

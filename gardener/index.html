@@ -2,155 +2,136 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>gardener — context hygiene for agent instruction files</title>
-<meta name="description" content="gardener resolves CLAUDE.md, AGENTS.md and GEMINI.md imports transitively, prices what loads on every request in lines and estimated tokens, and flags broken imports, stale paths and duplicated rules. No network calls, nothing edited, MIT.">
-<meta name="author" content="halilneed">
-<meta name="theme-color" content="#ffffff">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>gardener: cost audit and pruning plan for agent instruction files</title>
+<meta name="description" content="gardener resolves CLAUDE.md, AGENTS.md and GEMINI.md imports, prices what loads on every request and flags broken imports and duplicated rules. Local, MIT.">
 <link rel="canonical" href="https://halilneed.agency/gardener/">
-
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
-<meta property="og:title" content="gardener — context hygiene for agent instruction files">
-<meta property="og:description" content="Every line of CLAUDE.md is paid for again on every request. gardener resolves the import chain, prices it, and plans the pruning — without editing a single file.">
+<meta property="og:title" content="gardener: cost audit and pruning plan for agent instruction files">
+<meta property="og:description" content="gardener resolves CLAUDE.md, AGENTS.md and GEMINI.md imports, prices what loads on every request and flags broken imports and duplicated rules. Local, MIT.">
 <meta property="og:url" content="https://halilneed.agency/gardener/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-gardener.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="gardener — context hygiene for agent instruction files">
-<meta name="twitter:description" content="Import chain resolved, hot context priced in lines and estimated tokens, broken imports and duplicated rules flagged. Local, MIT.">
+<meta name="twitter:title" content="gardener: cost audit and pruning plan for agent instruction files">
+<meta name="twitter:description" content="gardener resolves CLAUDE.md, AGENTS.md and GEMINI.md imports, prices what loads on every request and flags broken imports and duplicated rules. Local, MIT.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-gardener.png">
-
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="alternate icon" href="/assets/img/favicon.svg">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/assets/css/main.css">
-<script>document.documentElement.classList.add('js');</script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "gardener",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Windows, macOS, Linux",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "license": "https://github.com/halilneed/gardener/blob/main/LICENSE",
-  "url": "https://halilneed.agency/gardener/",
-  "sameAs": ["https://github.com/halilneed/gardener"],
-  "author": { "@type": "Person", "name": "halilneed", "url": "https://halilneed.agency/" }
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://halilneed.agency/repos/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "gardener",
+          "item": "https://halilneed.agency/gardener/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "gardener",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "license": "https://github.com/halilneed/gardener/blob/main/LICENSE",
+      "url": "https://halilneed.agency/gardener/",
+      "sameAs": [
+        "https://github.com/halilneed/gardener"
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
+    }
+  ]
 }
 </script>
 </head>
-
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="grain" aria-hidden="true"></div>
-<canvas id="instrument" aria-hidden="true"></canvas>
-<div class="scrim" aria-hidden="true"></div>
-<div class="rules" aria-hidden="true"></div>
-
-<!-- icon sprite — yalnızca bu sayfanın kullandığı semboller -->
-<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
-  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l8.5 4.5L12 12 3.5 7.5z"/><path d="M3.5 12.5L12 17l8.5-4.5"/></symbol>
-  <symbol id="i-nonet" viewBox="0 0 24 24"><path d="M5 9.5a11 11 0 0 1 14 0"/><path d="M8 13a7 7 0 0 1 8 0"/><circle cx="12" cy="17.5" r="1.2"/><path d="M3.5 3.5l17 17"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 9.5-4.1-1.9-7-5.3-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></symbol>
-</defs></svg>
-
-<header class="topbar" id="topbar">
-  <a class="brand" href="/"><span class="dot" aria-hidden="true"></span> halilneed</a>
-  <nav class="topnav" id="topnav" aria-label="Sections">
-    <a href="/repos/#fieldkit">Suite</a>
-    <a href="#install">Install</a>
-    <a href="#cloud">Cloud</a>
-    <a href="/repos/#support">Support</a>
-    <a href="/writing/">Dispatches</a>
-    <a href="#family">Family</a>
+<header class="site-header">
+  <a class="site-name" href="/">halilneed</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/models/">Models</a></li>
+      <li><a href="/repos/" aria-current="true">Tools</a></li>
+      <li><a href="/writing/">Writing</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
   </nav>
-  <span class="topmeta">MIT &middot; local-first</span>
 </header>
 
-<main id="main" class="flow">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">halilneed</a></li>
+    <li><a href="/repos/">Tools</a></li>
+    <li aria-current="page">gardener</li>
+  </ol>
+</nav>
 
-  <!-- ================================================== 00 hero ========== -->
-  <section id="hero" data-scene="grid">
-    <div class="hero-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">00</span> hailneed suite &middot; module 04 &middot; context hygiene</p>
+<main id="main">
+<article class="prose">
 
-      <h1 class="h-display hero-title" data-split>The text you pay for <br>on <em>every</em> request — <br>measured, then pruned.</h1>
-
-      <p class="lede">
-        CLAUDE.md, AGENTS.md, GEMINI.md and everything they import load on every single
-        request. gardener resolves that import chain into one inventory, prices it in lines
-        and estimated tokens, and flags broken imports, stale paths and duplicated rules —
-        without editing a single file.
-      </p>
-
-      <div class="hero-actions">
-        <a class="btn btn--solid" href="#install" data-goatcounter-click="gd-cta-install">Install</a>
-        <a class="btn" href="https://github.com/halilneed/gardener" rel="noopener" data-goatcounter-click="gd-cta-source">Source <span aria-hidden="true">&#8599;</span></a>
-        <a class="btn" href="#cloud" data-goatcounter-click="gd-cta-cloud">Cloud waitlist <span aria-hidden="true">&darr;</span></a>
-      </div>
-    </div>
-
-    <ul class="metrics" data-reveal style="--d:.15s">
-      <li class="metric">
-        <svg class="ico ico--m" aria-hidden="true"><use href="#i-check"/></svg>
-        <div class="val" data-count="10">10</div>
-        <div class="lbl">Readable checks</div>
-      </li>
-      <li class="metric">
-        <svg class="ico ico--m" aria-hidden="true"><use href="#i-layers"/></svg>
-        <div class="val" data-count="3">3</div>
-        <div class="lbl">Agents read</div>
-      </li>
-      <li class="metric">
-        <svg class="ico ico--m" aria-hidden="true"><use href="#i-nonet"/></svg>
-        <div class="val" data-count="0">0</div>
-        <div class="lbl">Network calls</div>
-      </li>
-      <li class="metric">
-        <svg class="ico ico--m" aria-hidden="true"><use href="#i-shield"/></svg>
-        <div class="val" data-count="0">0</div>
-        <div class="lbl">Files edited</div>
-      </li>
+  <header class="page-head">
+    <h1>gardener</h1>
+    <p class="lead">CLAUDE.md, AGENTS.md, GEMINI.md and everything they import are loaded on every request. gardener resolves that import chain into one inventory, prices it in lines and estimated tokens, and flags broken imports, stale paths and duplicated rules. The script edits no files.</p>
+    <ul class="links">
+      <li><a href="https://github.com/halilneed/gardener" data-goatcounter-click="gd-cta-source">Source on GitHub</a></li>
+      <li><a href="#install" data-goatcounter-click="gd-cta-install">Install</a></li>
     </ul>
-  </section>
 
-  <!-- ================================================== 01 evidence ====== -->
-  <section id="evidence" data-scene="ink">
-    <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">01</span> Evidence</p>
-      <h2 class="h-section" data-split>This is a real audit. <br><em>Show, do not tell.</em></h2>
-      <p class="lede">
-        Abridged from an actual run of <code>--audit --md --lang en</code> against the
-        always-loaded instruction files on the machine this site was built on. Directory
-        names generalized and one finding label translated; every number is what the
-        script printed. Nothing in it ever left that machine.
-      </p>
-    </div>
+    <dl class="kv">
+      <div><dt>Checks</dt><dd>10</dd></div>
+      <div><dt>Agents read</dt><dd>Claude Code, Codex CLI, Gemini CLI</dd></div>
+      <div><dt>Network calls</dt><dd>none</dd></div>
+      <div><dt>Files edited</dt><dd>none by the script</dd></div>
+      <div><dt>Licence</dt><dd>MIT</dd></div>
+    </dl>
+  </header>
 
-    <div class="terminal" data-reveal>
-      <div class="terminal-bar">
-        <span class="lamp" aria-hidden="true"></span>
-        <span class="lamp" aria-hidden="true"></span>
-        <span class="lamp" aria-hidden="true"></span>
-        <span class="ttl">hot context audit — markdown out</span>
-      </div>
-      <pre><span class="c"># gardener — hot context audit</span>
+  <section id="example" aria-labelledby="example-title">
+    <h2 id="example-title">Example output</h2>
+    <p>This is abridged from a real run of <code class="nowrap">--audit --md --lang en</code> against the always-loaded instruction files on the machine this site was built on. Directory names are generalised and one finding label is translated. Every number is what the script printed. The scan made no network calls.</p>
 
-<span class="c">Source note: 6 files · 182 lines · ~2638 estimated tokens, per request · 76 directives · score: 12 (good)</span>
+<pre tabindex="0" aria-label="Hot context audit, Markdown output"><code># gardener — hot context audit
 
-<span class="c">Budgets: 300/600 lines per file, 4000/8000 estimated tokens in total.
-Token counts are a bytes/4 estimate, not a real tokenizer.</span>
+Source note: 6 files · 182 lines · ~2638 estimated tokens, per request · 76 directives · score: 12 (good)
 
-<span class="c">## What loads</span>
+Budgets: 300/600 lines per file, 4000/8000 estimated tokens in total.
+Token counts are a bytes/4 estimate, not a real tokenizer.
+
+## What loads
 
 | File                          | scope   | depth | lines | ~tokens |
 |-------------------------------|---------|-------|-------|---------|
@@ -162,240 +143,94 @@ Token counts are a bytes/4 estimate, not a real tokenizer.</span>
 | `&lt;repo&gt;/.claude/CLAUDE.md`   | project | 0     |    45 |     600 |
 | **total**                     |         |       | **182** | **2638** |
 
-<span class="c">## Findings</span>
+## Findings
 
 | Sev  | Check               | where              | what        |
 |------|---------------------|--------------------|-------------|
 | warn | duplicate-directive | instructions.md:52 | 86% overlap |
 | warn | duplicate-directive | instructions.md:32 | 69% overlap |
-| warn | duplicate-directive | instructions.md:28 | 67% overlap |</pre>
-    </div>
+| warn | duplicate-directive | instructions.md:28 | 67% overlap |</code></pre>
 
-    <p class="body" data-reveal style="margin-top:22px; max-width:var(--measure)">
-      Every finding names the check that fired, the file and line, and — for duplicates —
-      both overlapping texts, so you can disagree with the specific thing, not with the
-      tool. The checks are documented in
-      <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/gardener/blob/main/skills/audit/references/checks.md" rel="noopener">one file you can open</a>,
-      and any check you disagree with switches off with <code>--ignore</code>.
-    </p>
+    <p>Every finding names the check that fired, the file and the line. For duplicates it also shows both overlapping texts, so you can disagree with one specific finding. The checks are documented in <a href="https://github.com/halilneed/gardener/blob/main/skills/audit/references/checks.md">one file you can open</a>, and any check you disagree with can be switched off with <code class="nowrap">--ignore</code>.</p>
   </section>
 
-  <!-- ================================================== 02 install ======= -->
-  <section id="install" data-scene="registry">
-    <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">02</span> Install</p>
-      <h2 class="h-section" data-split>One marketplace. <br>Then one command.</h2>
-    </div>
+  <section id="install" aria-labelledby="install-title">
+    <h2 id="install-title">Install</h2>
 
-    <div class="install-grid">
-      <div class="terminal" data-reveal>
-        <div class="terminal-bar">
-          <span class="lamp" aria-hidden="true"></span>
-          <span class="lamp" aria-hidden="true"></span>
-          <span class="lamp" aria-hidden="true"></span>
-          <span class="ttl">claude code</span>
-          <button class="copy" type="button" data-copy="#install-src">Copy</button>
-        </div>
-        <pre id="install-src"><span class="c"># once</span>
-<span class="p">&gt;</span> /plugin marketplace add halilneed/plugins
+<pre tabindex="0" aria-label="Install commands"><code># once
+&gt; /plugin marketplace add halilneed/plugins
 
-<span class="c"># the gardener</span>
-<span class="p">&gt;</span> /plugin install gardener@hailneed
+# the plugin
+&gt; /plugin install gardener@hailneed
 
-<span class="c"># and try it</span>
-<span class="p">&gt;</span> /gardener:audit</pre>
-      </div>
+# and try it
+&gt; /gardener:audit</code></pre>
 
-      <div data-reveal style="--d:.1s">
-        <ul class="req">
-          <li><b>Claude Code</b> and Node.js 18 or newer.</li>
-          <li><b>No dependencies</b>, no build step, no API key, no account.</li>
-          <li><b>Standalone works too</b> — <code>node scripts/gardener.mjs --audit --repo . --md</code></li>
-          <li><b>CI-ready</b> — <code>--audit --out audit.json</code> has a stable output format; bind <code>totals.tokens</code> or <code>score.raw</code> to a threshold. <code>--selftest</code> needs no network.</li>
-        </ul>
-
-        <div class="entry-foot">
-          <a class="link" href="https://github.com/halilneed/plugins" rel="noopener">
-            Marketplace manifest <span class="arw" aria-hidden="true">&#8599;</span>
-          </a>
-        </div>
-      </div>
-    </div>
+    <p>The <a href="https://github.com/halilneed/plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
+    <ul>
+      <li>Claude Code and Node.js 18 or newer.</li>
+      <li>No dependencies, no build step, no API key, no account.</li>
+      <li>It also runs standalone: <code>node scripts/gardener.mjs <span class="nowrap">--audit</span> <span class="nowrap">--repo .</span> <span class="nowrap">--md</span></code></li>
+      <li>For CI, <code class="nowrap">--audit --out audit.json</code> has a stable output format. Fail the build when <code>totals.tokens</code> or <code>score.raw</code> goes above a threshold you set. <code class="nowrap">--selftest</code> needs no network.</li>
+    </ul>
   </section>
 
-  <!-- ================================================== 03 commands ====== -->
-  <section id="commands" data-scene="stack">
-    <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">03</span> Commands</p>
-      <h2 class="h-section" data-split>What loads. What holds. <br><em>What goes.</em></h2>
-    </div>
+  <section id="commands" aria-labelledby="commands-title">
+    <h2 id="commands-title">Commands</h2>
 
-    <div class="principles" data-reveal style="--d:.08s">
-      <article class="principle">
-        <div class="n">01</div>
-        <h3><code>/gardener:audit</code></h3>
-        <p>
-          What loads on every request: the import chain resolved transitively into one
-          inventory, priced in lines and estimated tokens — plus broken imports, stale
-          paths and duplicated instructions. An unresolvable import is never skipped
-          silently; believing rules load when they do not is the most expensive mistake.
-        </p>
-      </article>
-      <article class="principle">
-        <div class="n">02</div>
-        <h3><code>/gardener:compliance</code></h3>
-        <p>
-          Are the prohibitions actually followed: forbidden commands cross-referenced
-          against the commands really run in local sessions. It produces violation
-          candidates — verified line by line before anything is reported — and lists rules
-          whose subject never came up, insisting on the difference between dead weight and
-          a rule that is quietly working.
-        </p>
-      </article>
-      <article class="principle">
-        <div class="n">03</div>
-        <h3><code>/gardener:prune</code></h3>
-        <p>
-          A line-by-line plan marking each flagged directive cut, move, fix, rewrite or
-          enforce, with the reason — plus the split between what belongs in the
-          always-loaded file and what belongs on demand. It shows the lines and asks;
-          it never edits on its own.
-        </p>
-      </article>
-    </div>
+    <h3><code>/gardener:audit</code></h3>
+    <p>Reports what loads on every request. The import chain is resolved transitively into one inventory and priced in lines and estimated tokens, with broken imports, stale paths and duplicated instructions listed. An import that cannot be resolved is always listed, so you are not left assuming that rules load when they do not.</p>
+
+    <h3><code>/gardener:compliance</code></h3>
+    <p>Checks whether the prohibitions are followed. Forbidden commands are cross-referenced against the commands that were run in local sessions. It produces violation candidates, which are verified line by line before anything is reported, and lists rules whose subject never came up. Rules whose subject never came up are listed separately from rules that were followed.</p>
+
+    <h3><code>/gardener:prune</code></h3>
+    <p>Writes a line-by-line plan that marks each flagged directive as cut, move, fix, rewrite or enforce, with the reason. It also splits what belongs in the always-loaded file from what belongs on demand. It shows the lines, asks for confirmation, and then edits one file at a time.</p>
   </section>
 
-  <!-- ================================================== 04 trust ========= -->
-  <section id="trust" data-scene="dial">
-    <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">04</span> Trust</p>
-      <h2 class="h-section" data-split>Claims you can <br>check in the source.</h2>
-    </div>
-
-    <div data-reveal style="--d:.08s">
-      <ul class="req" style="max-width:var(--measure)">
-        <li><b>No network calls, nothing edited.</b>
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/gardener/blob/main/scripts/gardener.mjs" rel="noopener">gardener.mjs</a>
-          reads instruction files and session logs already on your disk and produces a plan. Your CLAUDE.md is never touched.</li>
-        <li><b>Honest counting.</b> Token numbers come from a bytes/4 estimate, not a tokenizer — enough to compare files and track change over time, and every report says so.</li>
-        <li><b>Candidates, not verdicts.</b> A compliance match may miss context the rule cares about; the skill opens each candidate, verifies it against the transcript and reports how many it discarded.</li>
-        <li><b>A zero is not dead weight.</b> A prohibition with zero occurrences is reported as a possible success — deleting a safety rule because it worked is the fastest way to bring the bug back.</li>
-        <li><b>10 checks, no model judgement</b> —
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/gardener/blob/main/skills/audit/references/checks.md" rel="noopener">checks.md</a>
-          documents every one with its severity and triage note, and <code>--selftest</code> proves them against 19 fixtures without touching your data.</li>
-        <li><b>Failure stays visible.</b> Unreadable sessions are counted in the source note, never silently dropped.</li>
-        <li><b>MIT.</b>
-          <a class="link" style="border:0;padding:0;font-size:inherit;letter-spacing:0;text-transform:none;font-family:var(--mono)" href="https://github.com/halilneed/gardener/blob/main/LICENSE" rel="noopener">LICENSE</a> — no account, no signup, no telemetry.</li>
-      </ul>
-    </div>
+  <section id="guarantees" aria-labelledby="guarantees-title">
+    <h2 id="guarantees-title">What it does and does not do</h2>
+    <ul>
+      <li>The script makes no network calls and edits no files. <a href="https://github.com/halilneed/gardener/blob/main/scripts/gardener.mjs"><code>gardener.mjs</code></a> reads instruction files and session logs already on your disk and produces a plan. The prune skill changes CLAUDE.md only after it has shown you the lines and you have confirmed.</li>
+      <li>Token numbers come from a bytes/4 estimate, not a tokenizer. That is enough to compare files and track change over time, and every report says so.</li>
+      <li>A compliance match is a candidate. It may miss context the rule cares about, so the skill opens each candidate, verifies it against the transcript and reports how many it discarded.</li>
+      <li>A prohibition with zero occurrences is reported as a possible success, and the skill does not propose deleting a safety rule on a zero count.</li>
+      <li>There are 10 checks and no model judgement. <a href="https://github.com/halilneed/gardener/blob/main/skills/audit/references/checks.md"><code>checks.md</code></a> documents every one with its severity and triage note, and <code class="nowrap">--selftest</code> runs them against 19 fixtures without touching your data.</li>
+      <li>Unreadable sessions are counted in the source note.</li>
+      <li>MIT-licensed (<a href="https://github.com/halilneed/gardener/blob/main/LICENSE"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
+    </ul>
   </section>
 
-  <!-- ================================================== 05 cloud ========= -->
-  <section id="cloud" data-scene="signoff">
-    <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">05</span> Cloud</p>
-      <h2 class="h-section" data-split>gardener Cloud <br>is <em>in design.</em></h2>
-      <p class="lede">
-        The plugin stays free and local — that is a promise, not a phase. Cloud is the
-        optional layer for teams whose instruction files change under many hands:
-      </p>
-    </div>
-
-    <div data-reveal style="--d:.08s">
-      <ul class="req" style="max-width:var(--measure)">
-        <li><b>Continuous budget tracking</b> — the hot-context cost of your team's instruction files, watched over time instead of audited once.</li>
-        <li><b>Before/after for rule changes</b> — what a changed rule actually did to agent behaviour, compared across the boundary.</li>
-        <li><b>Onboarding summary</b> — "the rules that actually apply in this repo", generated for the person who joined yesterday.</li>
-      </ul>
-
-      <!-- Waitlist — düz POST, ürün etiketiyle. -->
-      <form class="signup" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post">
-        <label class="signup-label" for="wl-email">Join the list. You will hear about Cloud when there is something real to show — nothing else.</label>
-        <div class="signup-row">
-          <input id="wl-email" type="email" name="email" required
-                 placeholder="you@example.com" autocomplete="email">
-          <input type="hidden" name="tag" value="waitlist-gardener">
-          <input type="hidden" name="embed" value="1">
-          <button class="btn btn--solid" type="submit" data-goatcounter-click="gd-waitlist">Join the Cloud list</button>
-        </div>
-      </form>
-    </div>
+  <section id="cloud" aria-labelledby="cloud-title">
+    <h2 id="cloud-title">Planned</h2>
+    <p>A hosted version, gardener Cloud, is planned. The plugin stays free and local.</p>
+    <ul>
+      <li>Continuous budget tracking: the hot-context cost of your team’s instruction files, watched over time instead of audited once.</li>
+      <li>Before and after for rule changes: what a changed rule did to agent behaviour, compared across the change.</li>
+      <li>Onboarding summary: the rules that apply in this repo, for new team members.</li>
+    </ul>
+    <p>To hear when it exists, subscribe on the <a href="/writing/#subscribe">writing page</a>.</p>
   </section>
 
-  <!-- ================================================== 06 family ======== -->
-  <section id="family" data-scene="grid">
-    <div class="section-head reveal--soft" data-reveal>
-      <p class="eyebrow"><span class="num">06</span> Family</p>
-      <h2 class="h-section" data-split>One suite. <br>Five more modules.</h2>
-    </div>
-
-    <div class="cards" data-reveal style="--d:.08s">
-      <a class="card" href="/agent-blackbox/">
-        <div class="card-top">
-          <span class="card-name">agent-blackbox</span>
-          <span class="card-kicker">Flight recorder</span>
-        </div>
-        <p>What your agent actually did — and what can be undone.</p>
-        <div class="card-foot"><span>timeline &middot; risk &middot; undo</span><span class="go" aria-hidden="true">&rarr;</span></div>
-      </a>
-      <a class="card" href="/skillbench/">
-        <div class="card-top">
-          <span class="card-name">skillbench</span>
-          <span class="card-kicker">Skill lint &amp; usage</span>
-        </div>
-        <p>Is the skill written right — and does it ever actually fire?</p>
-        <div class="card-foot"><span>26 checks &middot; real activations</span><span class="go" aria-hidden="true">&rarr;</span></div>
-      </a>
-      <a class="card" href="/scar/">
-        <div class="card-top">
-          <span class="card-name">scar</span>
-          <span class="card-kicker">Closed loop</span>
-        </div>
-        <p>Failures that keep repeating, written down — then measured.</p>
-        <div class="card-foot"><span>mine &middot; write &middot; verify</span><span class="go" aria-hidden="true">&rarr;</span></div>
-      </a>
-      <a class="card" href="/painradar/">
-        <div class="card-top">
-          <span class="card-name">painradar</span>
-          <span class="card-kicker">Demand signal</span>
-        </div>
-        <p>Public complaints plus verified revenue — themes with links.</p>
-        <div class="card-foot"><span>scan &middot; fit &middot; launch</span><span class="go" aria-hidden="true">&rarr;</span></div>
-      </a>
-      <a class="card" href="/devpersona/">
-        <div class="card-top">
-          <span class="card-name">devpersona</span>
-          <span class="card-kicker">Developer profile</span>
-        </div>
-        <p>Who you are as a developer, read from your own history.</p>
-        <div class="card-foot"><span>stats &middot; analyze &middot; advise</span><span class="go" aria-hidden="true">&rarr;</span></div>
-      </a>
-    </div>
-
-    <div class="writing-foot" data-reveal style="margin-top:26px">
-      <a class="link" href="/repos/">Part of the hailneed suite <span class="arw" aria-hidden="true">&larr;</span></a>
-    </div>
+  <section id="related" aria-labelledby="related-title">
+    <h2 id="related-title">Other plugins</h2>
+    <p>The other five are <a href="/agent-blackbox/">agent-blackbox</a>, <a href="/skillbench/">skillbench</a>, <a href="/scar/">scar</a>, <a href="/painradar/">painradar</a> and <a href="/devpersona/">devpersona</a>. All six are described on the <a href="/repos/">tools page</a>.</p>
   </section>
 
+</article>
 </main>
 
-<footer class="foot">
-  <span>&copy; <span id="year">2026</span> halilneed</span>
-  <span class="colophon">
-    Static page. No framework, no build step, no cookies. Visits are counted in
-    aggregate by GoatCounter — nothing identifies you.
-    <a href="https://github.com/halilneed/halilneed.github.io" rel="noopener">Source</a>.
-  </span>
-  <a class="to-top" href="#hero">Back to top &uarr;</a>
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, Istanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/">Turkish PII detection model</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Source</a></li>
+    </ul>
+    <p class="small">No cookies. Visits are counted in aggregate with GoatCounter.</p>
+  </div>
 </footer>
 
-<div class="cursor" id="cursor" aria-hidden="true"></div>
-
-<script src="/assets/js/data.js"></script>
-<script src="/assets/js/instrument.js"></script>
-<script src="/assets/js/main.js"></script>
-<!-- Çerezsiz toplu sayaç — localhost'u varsayılan olarak saymaz. -->
-<script data-goatcounter="https://hailneed.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
