@@ -25,24 +25,24 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --bg: #1f2126;
-    --text: #ededf0;   /* 13.6:1 */
-    --muted: #a9acb6;  /* 7.0:1 on bg, 6.0:1 on surface */
-    --line: #363942;
-    --rule: #7b7e89;   /* 3.9:1 */
-    --surface: #2a2c33;
-    --mark: #3f424c;
+    --bg: #2b2e36;
+    --text: #f1f1f4;   /* 11.9:1 */
+    --muted: #b8bbc5;  /* 7.0:1 on bg, 5.9:1 on surface */
+    --line: #454954;
+    --rule: #8c909c;   /* 4.1:1 */
+    --surface: #353944;
+    --mark: #4b4f5b;
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #1f2126;
-  --text: #ededf0;
-  --muted: #a9acb6;
-  --line: #363942;
-  --rule: #7b7e89;
-  --surface: #2a2c33;
-  --mark: #3f424c;
+  --bg: #2b2e36;
+  --text: #f1f1f4;
+  --muted: #b8bbc5;
+  --line: #454954;
+  --rule: #8c909c;
+  --surface: #353944;
+  --mark: #4b4f5b;
 }
 
 /* 2. Base */
@@ -333,15 +333,15 @@ details > :not(summary) { padding-bottom: 1.125rem; }
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --accent: #ff9ccb;               /* 8.6:1 on the slate */
-    --card: #282a31;
+    --accent: #ffa6d1;               /* 7.6:1 on the slate */
+    --card: #343741;
     --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .25);
     --shadow-up: 0 2px 6px rgb(0 0 0 / .5), 0 16px 40px rgb(0 0 0 / .45);
   }
 }
 :root[data-theme="dark"] {
-  --accent: #ff9ccb;
-  --card: #282a31;
+  --accent: #ffa6d1;
+  --card: #343741;
   --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .25);
   --shadow-up: 0 2px 6px rgb(0 0 0 / .5), 0 16px 40px rgb(0 0 0 / .45);
 }
@@ -522,27 +522,47 @@ a.card:hover, .card:has(> .card-title a:hover) { transform: translateY(-3px); bo
   .btn:hover, .repo:hover, a.card:hover, .card:has(> .card-title a:hover) { transform: none; }
 }
 
-/* 19. The adoption card in the hero, the services row, the showcase row.
-   The four steps light up in turn: one 16 s cycle, each step offset by a negative delay. */
-.plan { border: 1px solid var(--line); border-radius: 20px; background: var(--card); box-shadow: var(--shadow-up); overflow: hidden; }
-.plan-title { padding: 1rem 1.375rem; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, var(--accent-soft), var(--card)); font-weight: 650; letter-spacing: -.015em; }
-.steps { list-style: none; counter-reset: step; padding: .5rem 0; }
-.steps li { position: relative; display: grid; gap: .125rem; padding: .875rem 1.375rem .875rem 3.75rem; counter-increment: step; }
-.steps li::before {
-  content: counter(step); position: absolute; left: 1.375rem; top: .9rem; display: grid; place-items: center;
-  width: 1.625rem; height: 1.625rem; border: 1px solid var(--line); border-radius: 50%; background: var(--card);
-  font: 600 var(--tiny)/1 var(--mono); color: var(--muted); animation: step-dot 16s infinite both;
+/* 19. The hero figure, the services row, the showcase row.
+   Four icon tiles on a loop around a core. A dot travels the loop in 16 s and
+   each tile lights up as it arrives (same cycle, offset by a negative delay). */
+.orbit { position: relative; width: min(100%, 27rem); aspect-ratio: 1; margin-inline: auto; }
+.orbit > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.orbit-track { fill: none; stroke: var(--line); stroke-width: 1.5; }
+.orbit-flow { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 2 14; opacity: .55; animation: flow 1.6s linear infinite; }
+.orbit-spoke { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 6; }
+.orbit-dot { fill: var(--accent); }
+.orbit-glow { fill: var(--accent); opacity: .22; }
+@keyframes flow { to { stroke-dashoffset: -16; } }
+.orbit ol { list-style: none; }
+.node {
+  position: absolute; left: var(--x); top: var(--y); width: 24%; aspect-ratio: 1; transform: translate(-50%, -50%);
+  display: grid; place-items: center; border: 1px solid var(--line); border-radius: 26%;
+  background: var(--card); box-shadow: var(--shadow-up); color: var(--muted);
+  animation: node-on 16s infinite both; animation-delay: var(--t, 0s);
 }
-.steps li::after { content: ""; position: absolute; left: calc(1.375rem + .8125rem); top: 2.75rem; bottom: -.75rem; width: 1px; background: var(--line); }
-.steps li:last-child::after { content: none; }
-.steps b { font-weight: 600; letter-spacing: -.012em; animation: step-text 16s infinite both; }
-.steps span { font-size: var(--small); line-height: 1.5; color: var(--muted); }
-.steps li:nth-child(2)::before, .steps li:nth-child(2) b { animation-delay: -12s; }
-.steps li:nth-child(3)::before, .steps li:nth-child(3) b { animation-delay: -8s; }
-.steps li:nth-child(4)::before, .steps li:nth-child(4) b { animation-delay: -4s; }
-@keyframes step-dot { 0%, 22% { border-color: var(--accent); background: var(--accent); color: var(--card); box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 14%, transparent); } 27%, 100% { border-color: var(--line); background: var(--card); color: var(--muted); box-shadow: none; } }
-@keyframes step-text { 0%, 22% { color: var(--accent); } 27%, 100% { color: inherit; } }
-.plan-foot { padding: .875rem 1.375rem; border-top: 1px solid var(--line); font-size: var(--tiny); line-height: 1.5; color: var(--muted); }
+.node svg { width: 46%; height: 46%; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.node span {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin-top: .55rem; white-space: nowrap;
+  padding: .05rem .45rem; border-radius: 999px; background: var(--bg);
+  font-size: var(--tiny); font-weight: 600; letter-spacing: -.005em; color: var(--muted);
+  animation: label-on 16s infinite both; animation-delay: var(--t, 0s);
+}
+@keyframes node-on {
+  0%, 21% { color: var(--accent); border-color: var(--accent); transform: translate(-50%, -50%) scale(1.09);
+            box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent) 13%, transparent), 0 18px 44px color-mix(in srgb, var(--accent) 30%, transparent); }
+  27%, 100% { color: var(--muted); border-color: var(--line); transform: translate(-50%, -50%); box-shadow: var(--shadow-up); }
+}
+@keyframes label-on { 0%, 21% { color: var(--text); } 27%, 100% { color: var(--muted); } }
+.core {
+  position: absolute; left: 50%; top: 50%; width: 21%; aspect-ratio: 1; transform: translate(-50%, -50%);
+  display: grid; place-items: center; border-radius: 50%; color: var(--card);
+  background: radial-gradient(circle at 32% 28%, color-mix(in srgb, var(--accent) 70%, #fff), var(--accent) 62%, color-mix(in srgb, var(--accent) 70%, #000));
+  box-shadow: 0 14px 40px color-mix(in srgb, var(--accent) 42%, transparent);
+  font: 700 clamp(1rem, .7rem + 1.4vw, 1.5rem)/1 var(--sans); letter-spacing: -.02em;
+}
+.core::before, .core::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid var(--accent); animation: ring 3.2s var(--ease) infinite; }
+.core::after { animation-delay: 1.6s; }
+@keyframes ring { from { transform: scale(1); opacity: .6; } to { transform: scale(2.3); opacity: 0; } }
 .card-title--plain { font-size: 1.1875rem; }
 .showcase { display: grid; gap: 2rem 3rem; margin-top: 3rem; align-items: center; }
 .showcase h3 { font-size: 1.25rem; letter-spacing: -.02em; }
@@ -550,4 +570,7 @@ a.card:hover, .card:has(> .card-title a:hover) { transform: translateY(-3px); bo
 .cta { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; margin-top: 1.75rem; }
 .cta p { color: var(--muted); }
 @media (min-width: 60rem) { .showcase { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); } }
-@media (prefers-reduced-motion: reduce) { .steps li::before, .steps b { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .node, .node span, .orbit-flow, .core::before, .core::after { animation: none; }
+  .orbit-dot, .orbit-glow { display: none; }
+}
