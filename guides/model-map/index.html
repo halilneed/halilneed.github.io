@@ -407,6 +407,24 @@ footer a{color:var(--ink-2)}
 .cap{text-align:center;margin-top:18px;font-size:.9rem;color:var(--muted);max-width:52ch;margin-left:auto;margin-right:auto}
 .cap a{color:var(--ink-2)}
 
+/* lock panel: steps sent by email */
+.lock{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:40px 28px;background:linear-gradient(180deg,color-mix(in srgb,var(--hl) 14%,var(--surface)),var(--surface) 55%)}
+.lock-ic{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem;background:var(--hl);color:var(--hl-ink)}
+.lock h3{font-size:clamp(1.3rem,3.6vw,1.6rem);font-weight:700;letter-spacing:-.02em}
+.lock-p{color:var(--muted);max-width:44ch}
+.lock-list{list-style:none;margin:4px 0 6px;padding:0;display:grid;gap:8px;text-align:left}
+.lock-list li{display:flex;align-items:center;gap:10px;font-weight:500;font-size:.95rem}
+.lock-list svg{color:var(--ok)}
+.lock-form{display:flex;gap:8px;width:100%;max-width:460px;padding:6px;border-radius:999px;background:var(--surface);border:1px solid var(--line-strong);box-shadow:var(--shadow-sm)}
+.lock-form input[type=email]{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:.95rem;padding:0 14px;color:var(--ink);outline:none}
+.lock-form .btn{height:42px;padding:0 18px;white-space:nowrap}
+.lock-form:focus-within{border-color:var(--focus)}
+.lock .fine{margin-top:0;max-width:52ch;display:block}
+.lock .fine a{color:var(--ink-2)}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.seg button svg use[href="#i-lock"]{opacity:.8}
+@media (max-width:520px){.lock{padding:30px 16px}.lock-form{flex-direction:column;border-radius:16px}.lock-form input[type=email]{height:42px}}
+
 /* language switch, top right: TR | EN */
 .top .wrap{gap:12px}
 .top nav{margin-left:auto}
@@ -439,7 +457,7 @@ footer a{color:var(--ink-2)}
   html{font-size:14px}
   body{background:#fff}
   .print-only{display:block}
-  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
+  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.lock-form,.lock .fine,section.step:has(.lock.dup),.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
   section.step,section.step[hidden]{display:block!important;padding:0 0 6mm;break-before:page}
   .hero{min-height:235mm;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0}
   .hero p{max-width:46ch}
@@ -537,8 +555,8 @@ footer a{color:var(--ink-2)}
       <span class="thumb" aria-hidden="true"></span>
       <button data-go="1" aria-current="step"><svg class="i"><use href="#i-rule"/></svg><span class="t">Rules?</span><span class="ck"></span></button>
       <button data-go="2"><svg class="i"><use href="#i-grid"/></svg><span class="t">Kinds</span><span class="ck"></span></button>
-      <button data-go="3"><svg class="i"><use href="#i-help"/></svg><span class="t">4 questions</span><span class="ck"></span></button>
-      <button data-go="4"><svg class="i"><use href="#i-building"/></svg><span class="t">Departments</span><span class="ck"></span></button>
+      <button data-go="3"><svg class="i"><use href="#i-lock"/></svg><span class="t">4 questions</span><span class="ck"></span></button>
+      <button data-go="4"><svg class="i"><use href="#i-lock"/></svg><span class="t">Departments</span><span class="ck"></span></button>
     </nav>
   </div>
 </div>
@@ -591,13 +609,26 @@ footer a{color:var(--ink-2)}
     <p>Answer in order. The first “yes” picks the kind.</p>
   </div>
 
-  <div class="panel">
-    <div class="qs" id="kindQs"></div>
-    <div class="kinds" id="kindsResult"></div>
-    <div class="verdict" id="kindVerdict"></div>
+  <div class="panel lock">
+    <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
+    <h3>Steps 3 and 4 are in the full guide</h3>
+    <p class="lock-p">I send the full guide by email, as an interactive page and a PDF. It is free.</p>
+    <ul class="lock-list">
+      <li><svg class="i"><use href="#i-check"/></svg>Step 3 of 4: Four questions that choose</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Step 4 of 4: Where each department starts</li>
+      <li><svg class="i"><use href="#i-check"/></svg>The full guide as a PDF</li>
+    </ul>
+    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="model-map-request-form-en">
+      <label class="visually-hidden" for="lock-email-3">Email address</label>
+      <input id="lock-email-3" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      <input type="hidden" name="tag" value="guide-model-map">
+      <input type="hidden" name="tag" value="lang-en">
+      <input type="hidden" name="embed" value="1">
+      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Send me the full guide</button>
+    </form>
+    <p class="fine">Your address is used only to send the guide and to tell you about new ones; you can unsubscribe at any time. You can also write instead of using the form: <a href="mailto:halil@halilneed.agency?subject=Guide%20request%3A%20Which%20model%20for%20which%20process&amp;body=Hello%20Halil%2C%0A%0APlease%20send%20me%20the%20full%20guide%20%E2%80%9CWhich%20model%20for%20which%20process%E2%80%9D.%0A%0AMy%20team%20and%20where%20it%20gets%20stuck%20(optional)%3A%0A" data-goatcounter-click="model-map-request-mail-en">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Steps 3 and 4 and the full PDF are sent by email. To ask for them: <b>halilneed.agency/guides/model-map/#step-3</b></p>
   </div>
-
-  <div class="note"><svg class="i"><use href="#i-alert"/></svg>If every answer is “no”, you need a generative model. It is the most flexible and the most expensive option.</div>
 
   <div class="pager"><button class="btn ghost" data-go="2"><svg class="i"><use href="#i-back"/></svg>Back</button><button class="btn" data-go="4">Continue<svg class="i"><use href="#i-arrow"/></svg></button></div>
 </section>
@@ -609,18 +640,26 @@ footer a{color:var(--ink-2)}
     <p>Pick your department and see where to begin.</p>
   </div>
 
-  <div class="panel">
-    <div class="pills sm" id="deptPills"></div>
-    <ul class="steplist" id="deptSteps"></ul>
+  <div class="panel lock dup">
+    <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
+    <h3>Steps 3 and 4 are in the full guide</h3>
+    <p class="lock-p">I send the full guide by email, as an interactive page and a PDF. It is free.</p>
+    <ul class="lock-list">
+      <li><svg class="i"><use href="#i-check"/></svg>Step 3 of 4: Four questions that choose</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Step 4 of 4: Where each department starts</li>
+      <li><svg class="i"><use href="#i-check"/></svg>The full guide as a PDF</li>
+    </ul>
+    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="model-map-request-form-en">
+      <label class="visually-hidden" for="lock-email-4">Email address</label>
+      <input id="lock-email-4" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      <input type="hidden" name="tag" value="guide-model-map">
+      <input type="hidden" name="tag" value="lang-en">
+      <input type="hidden" name="embed" value="1">
+      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Send me the full guide</button>
+    </form>
+    <p class="fine">Your address is used only to send the guide and to tell you about new ones; you can unsubscribe at any time. You can also write instead of using the form: <a href="mailto:halil@halilneed.agency?subject=Guide%20request%3A%20Which%20model%20for%20which%20process&amp;body=Hello%20Halil%2C%0A%0APlease%20send%20me%20the%20full%20guide%20%E2%80%9CWhich%20model%20for%20which%20process%E2%80%9D.%0A%0AMy%20team%20and%20where%20it%20gets%20stuck%20(optional)%3A%0A" data-goatcounter-click="model-map-request-mail-en">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Steps 3 and 4 and the full PDF are sent by email. To ask for them: <b>halilneed.agency/guides/model-map/#step-3</b></p>
   </div>
-
-  <ul class="rules">
-    <li><span class="ic"><svg class="i"><use href="#i-rule"/></svg></span><b>Try a rule first</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-chip"/></svg></span><b>The smallest model that does the job</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-pen"/></svg></span><b>Generative models last</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-gauge"/></svg></span><b>A measure for every step</b></li>
-  </ul>
-
   <div class="cta">
     <h3>Next: personal data and AI</h3>
     <p>What to mask and what to keep in-house before text reaches a model.</p>
@@ -629,12 +668,11 @@ footer a{color:var(--ink-2)}
   </div>
 
   <div class="share">
-    <a class="btn ghost" href="/guides/model-map/which-model-for-which-process.pdf" data-goatcounter-click="model-map-pdf-en"><svg class="i"><use href="#i-download"/></svg>Download PDF</a>
+    <a class="btn ghost" href="/guides/model-map/which-model-for-which-process.pdf" data-goatcounter-click="model-map-pdf-en"><svg class="i"><use href="#i-download"/></svg>PDF preview</a>
     <a class="btn ghost" id="shareX" target="_blank" rel="noopener" data-goatcounter-click="model-map-share-x-en"><svg class="i"><use href="#i-share"/></svg>Share on X</a>
     <a class="btn ghost" id="shareLi" target="_blank" rel="noopener" data-goatcounter-click="model-map-share-li-en"><svg class="i"><use href="#i-share"/></svg>Share on LinkedIn</a>
     <button class="btn ghost" id="copyLink"><svg class="i"><use href="#i-link"/></svg><span>Copy link</span></button>
   </div>
-
 
   <div class="pager"><button class="btn ghost" data-go="3"><svg class="i"><use href="#i-back"/></svg>Back</button></div>
 </section>
@@ -645,7 +683,7 @@ footer a{color:var(--ink-2)}
 
 <script>
 (function(){
-  const L={"copied":"Copied","copyFail":"Could not copy","shareText":"Rules or a model? Six kinds of model and four questions that choose. The smallest right model for your department, in a 15-minute interactive guide:","keywords":["return","money","back","refund"],"ruleTag":"Rule","modelTag":"Model","messages":[["I want to return my order",1,1],["Can I get my money back?",1,1],["The item arrived broken, I want a refund",1,0],["These shoes don’t fit, what can I do?",1,1],["I read your return policy, thanks",0,0],["Where is my parcel?",0,0],["I’d like to change my billing address",0,0],["Is there a money-saving bundle?",0,0]],"kwLesson":["A one-word rule is exact, but it misses requests worded differently. Add words.","Every new word catches something and brings a false alarm. A model learns from examples, and it is sometimes wrong too."],"exampleLbl":"Example:","needsLbl":"Needs:","kinds":[{"name":"Classifier","icon":"flag","input":"Text","output":"A label","example":"Sending an email to the right team.","needs":"Dozens of examples per label."},{"name":"Extractor","icon":"table","input":"Document","output":"Fields","example":"Date, amount and IBAN from an invoice.","needs":"Documents with the fields marked."},{"name":"Generator","icon":"pen","input":"Prompt and text","output":"New text","example":"A summary or a draft reply to a long thread.","needs":"A good prompt and a person who reads every output."},{"name":"Search","icon":"search","input":"Question","output":"The best documents","example":"Finding a similar request that was already solved.","needs":"An organised document archive."},{"name":"Forecast","icon":"chart","input":"Past numbers","output":"A future number","example":"Next week’s call volume.","needs":"Consistent past data."},{"name":"Anomaly","icon":"alert","input":"A stream of transactions","output":"The unusual ones","example":"Flagging an unusual expense.","needs":"Data on what normal looks like."}],"questions":[{"text":"Is the output one of a fixed list of labels?","kinds":[0]},{"text":"Is the output pieces taken from the text?","kinds":[1]},{"text":"Is the output the best matches among existing documents?","kinds":[3]},{"text":"Is the output a number, or an unusual case?","kinds":[4,5]}],"fallbackKind":2,"yes":"Yes","no":"No","or":" or ","answerInOrder":"Answer the questions in order","depts":[{"name":"Sales","steps":[["Ranking incoming leads by priority",0],["Product and quantity from a quote email",1],["Forecasting monthly sales",4]]},{"name":"Customer service","steps":[["Routing a request to the right team",0],["Finding a similar solved request",3],["Summarising a long thread",2]]},{"name":"Finance","steps":[["Fields from invoices",1],["Flagging unusual expenses",5],["Forecasting cash flow",4]]},{"name":"HR","steps":[["Sorting leave requests by type",0],["Answering a staff question from the policy",3],["Experience and skills from a CV; people decide",1]]},{"name":"Operations","steps":[["Sorting fault reports by category",0],["Finding drift in sensor data",5],["Forecasting stock needs",4]]},{"name":"Legal","steps":[["Dates and parties from a contract",1],["Finding a similar clause in the archive",3],["Drafting a clause summary",2]]},{"name":"Marketing","steps":[["Sorting reviews into positive and negative",0],["Drafting campaign copy",2],["Forecasting campaign demand",4]]}]};
+  const L={"copied":"Copied","copyFail":"Could not copy","shareText":"Rules or a model? Six kinds of model and four questions that choose. The smallest right model for your department, in a 15-minute interactive guide:","keywords":["return","money","back","refund"],"ruleTag":"Rule","modelTag":"Model","messages":[["I want to return my order",1,1],["Can I get my money back?",1,1],["The item arrived broken, I want a refund",1,0],["These shoes don’t fit, what can I do?",1,1],["I read your return policy, thanks",0,0],["Where is my parcel?",0,0],["I’d like to change my billing address",0,0],["Is there a money-saving bundle?",0,0]],"kwLesson":["A one-word rule is exact, but it misses requests worded differently. Add words.","Every new word catches something and brings a false alarm. A model learns from examples, and it is sometimes wrong too."],"exampleLbl":"Example:","needsLbl":"Needs:","kinds":[{"name":"Classifier","icon":"flag","input":"Text","output":"A label","example":"Sending an email to the right team.","needs":"Dozens of examples per label."},{"name":"Extractor","icon":"table","input":"Document","output":"Fields","example":"Date, amount and IBAN from an invoice.","needs":"Documents with the fields marked."},{"name":"Generator","icon":"pen","input":"Prompt and text","output":"New text","example":"A summary or a draft reply to a long thread.","needs":"A good prompt and a person who reads every output."},{"name":"Search","icon":"search","input":"Question","output":"The best documents","example":"Finding a similar request that was already solved.","needs":"An organised document archive."},{"name":"Forecast","icon":"chart","input":"Past numbers","output":"A future number","example":"Next week’s call volume.","needs":"Consistent past data."},{"name":"Anomaly","icon":"alert","input":"A stream of transactions","output":"The unusual ones","example":"Flagging an unusual expense.","needs":"Data on what normal looks like."}]};
   const LANG=document.documentElement.lang;
   const icon=id=>'<svg class="i" aria-hidden="true"><use href="#i-'+id+'"/></svg>';
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -724,44 +762,13 @@ footer a{color:var(--ink-2)}
   $("kinds").querySelectorAll(".kind").forEach(b=>b.onclick=()=>showKind(+b.dataset.i));
   showKind(0);
 
-  /* step 3: four questions choose the kind; the first yes wins */
-  const qa=[null,null,null,null];
-  $("kindsResult").innerHTML=L.kinds.map((k,i)=>'<div class="kind" data-i="'+i+'"><span class="ic">'+icon(k.icon)+"</span><b>"+esc(k.name)+"</b></div>").join("");
-  $("kindQs").innerHTML=L.questions.map((q,i)=>'<div class="qrow">'+icon("help")+"<p>"+esc(q.text)+'</p><div class="yn" data-q="'+i+'"><button data-v="1" aria-pressed="false">'+esc(L.yes)+'</button><button data-v="0" aria-pressed="false">'+esc(L.no)+"</button></div></div>").join("");
-  function decide(){
-    let pick=null, open=false;
-    for(let i=0;i<qa.length;i++){
-      if(qa[i]===1){pick=L.questions[i].kinds;break;}
-      if(qa[i]==null){open=true;break;}
-    }
-    if(pick==null&&!open) pick=[L.fallbackKind];
-    $("kindsResult").classList.toggle("chosen",pick!=null);
-    $("kindsResult").querySelectorAll(".kind").forEach(el=>el.classList.toggle("on",pick!=null&&pick.includes(+el.dataset.i)));
-    const v=$("kindVerdict");
-    if(pick==null){v.className="verdict warn";v.innerHTML=icon("help")+esc(L.answerInOrder);}
-    else {v.className="verdict ok";v.innerHTML=icon("check")+esc(pick.map(i=>L.kinds[i].name).join(L.or));}
-  }
-  function setQ(q,val){
-    qa[q]=val;
-    document.querySelectorAll('#kindQs .yn[data-q="'+q+'"] button').forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.v===val)));
-    decide();
-  }
-  document.querySelectorAll("#kindQs .yn").forEach(g=>g.querySelectorAll("button").forEach(b=>b.onclick=()=>setQ(+g.dataset.q,+b.dataset.v)));
-  decide();
-
-  /* step 4: where each department can start */
-  function showDept(i){
-    $("deptSteps").innerHTML=L.depts[i].steps.map(([txt,k])=>"<li>"+icon("arrow")+'<span class="t">'+esc(txt)+'</span><span class="ktag">'+icon(L.kinds[k].icon)+esc(L.kinds[k].name)+"</span></li>").join("");
-  }
-  pills($("deptPills"),L.depts.map(d=>({label:d.name,icon:"building"})),showDept,0);
+  
 
   onPrint.push(()=>{
     [1,2,3].forEach(i=>{kwOn.add(i);$("kwPills").querySelector('[data-i="'+i+'"]').setAttribute("aria-pressed","true");});
     renderRule();
-    setQ(0,1);
-    $("deptPills").hidden=true;
-    $("deptSteps").innerHTML=L.depts.map(d=>'<li class="dept-h">'+icon("building")+'<span class="t"><b>'+esc(d.name)+"</b></span><span></span></li>"+d.steps.map(([txt,k])=>"<li>"+icon("arrow")+'<span class="t">'+esc(txt)+'</span><span class="ktag">'+icon(L.kinds[k].icon)+esc(L.kinds[k].name)+"</span></li>").join("")).join("");
   });
+  
 /* ---- end guide ---- */
 
   /* print: every step on its own page, experiments in their final state */

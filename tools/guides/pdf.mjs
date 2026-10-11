@@ -7,6 +7,7 @@
    Serves the repository on a local port, opens each page with ?print (which puts
    every experiment in its final state) and prints it with a locally installed
    Chrome in headless mode. Print styles: @media print in shared/guide.css.
+   `--full` prints the complete guides from private/ (see build.mjs) into private/.
    Nothing is installed. Chrome elsewhere: CHROME=/path/to/chrome node tools/guides/pdf.mjs */
 
 import { spawn } from 'node:child_process';
@@ -14,7 +15,7 @@ import { createServer } from 'node:http';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { dirname, extname, join, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { GUIDES, LANGS, paths } from './build.mjs';
+import { GUIDES, LANGS, paths, FULL, OUT } from './build.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..', '..');
@@ -31,9 +32,14 @@ const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 
 
 const server = createServer((req, res) => {
   const p = normalize(decodeURIComponent(new URL(req.url, 'http://x').pathname)).replace(/^([/\\])+/, '');
-  let file = join(ROOT, p);
-  if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html');
-  if (!file.startsWith(ROOT) || !existsSync(file)) { res.writeHead(404); res.end(); return; }
+  /* with --full, pages come from private/ and everything else (fonts, images) from the site */
+  let file = null;
+  for (const base of FULL ? [OUT, ROOT] : [ROOT]) {
+    let f = join(base, p);
+    if (existsSync(f) && statSync(f).isDirectory()) f = join(f, 'index.html');
+    if (f.startsWith(base) && existsSync(f)) { file = f; break; }
+  }
+  if (!file) { res.writeHead(404); res.end(); return; }
   res.writeHead(200, { 'content-type': TYPES[extname(file)] || 'application/octet-stream' });
   res.end(readFileSync(file));
 });
@@ -45,7 +51,7 @@ const run = (args) => new Promise((ok, fail) => {
 
 server.listen(0, '127.0.0.1', async () => {
   const port = server.address().port;
-  const only = process.argv[2];
+  const only = process.argv.slice(2).find((a) => !a.startsWith('--'));
   try {
     for (const slug of only ? [only] : GUIDES) {
       for (const lang of LANGS) {
@@ -54,10 +60,10 @@ server.listen(0, '127.0.0.1', async () => {
         await run([
           '--headless=new', '--disable-gpu', '--no-sandbox', '--hide-scrollbars',
           '--no-pdf-header-footer', '--virtual-time-budget=4000',
-          `--print-to-pdf=${join(ROOT, pdf.slice(1))}`,
+          `--print-to-pdf=${join(OUT, pdf.slice(1))}`,
           `http://127.0.0.1:${port}${path}?print`,
         ]);
-        console.log(`wrote ${pdf}`);
+        console.log(`wrote ${FULL ? 'private' : ''}${pdf}`);
       }
     }
   } finally {

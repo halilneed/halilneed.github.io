@@ -407,6 +407,24 @@ footer a{color:var(--ink-2)}
 .cap{text-align:center;margin-top:18px;font-size:.9rem;color:var(--muted);max-width:52ch;margin-left:auto;margin-right:auto}
 .cap a{color:var(--ink-2)}
 
+/* lock panel: steps sent by email */
+.lock{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:40px 28px;background:linear-gradient(180deg,color-mix(in srgb,var(--hl) 14%,var(--surface)),var(--surface) 55%)}
+.lock-ic{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem;background:var(--hl);color:var(--hl-ink)}
+.lock h3{font-size:clamp(1.3rem,3.6vw,1.6rem);font-weight:700;letter-spacing:-.02em}
+.lock-p{color:var(--muted);max-width:44ch}
+.lock-list{list-style:none;margin:4px 0 6px;padding:0;display:grid;gap:8px;text-align:left}
+.lock-list li{display:flex;align-items:center;gap:10px;font-weight:500;font-size:.95rem}
+.lock-list svg{color:var(--ok)}
+.lock-form{display:flex;gap:8px;width:100%;max-width:460px;padding:6px;border-radius:999px;background:var(--surface);border:1px solid var(--line-strong);box-shadow:var(--shadow-sm)}
+.lock-form input[type=email]{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:.95rem;padding:0 14px;color:var(--ink);outline:none}
+.lock-form .btn{height:42px;padding:0 18px;white-space:nowrap}
+.lock-form:focus-within{border-color:var(--focus)}
+.lock .fine{margin-top:0;max-width:52ch;display:block}
+.lock .fine a{color:var(--ink-2)}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.seg button svg use[href="#i-lock"]{opacity:.8}
+@media (max-width:520px){.lock{padding:30px 16px}.lock-form{flex-direction:column;border-radius:16px}.lock-form input[type=email]{height:42px}}
+
 /* language switch, top right: TR | EN */
 .top .wrap{gap:12px}
 .top nav{margin-left:auto}
@@ -439,7 +457,7 @@ footer a{color:var(--ink-2)}
   html{font-size:14px}
   body{background:#fff}
   .print-only{display:block}
-  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
+  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.lock-form,.lock .fine,section.step:has(.lock.dup),.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
   section.step,section.step[hidden]{display:block!important;padding:0 0 6mm;break-before:page}
   .hero{min-height:235mm;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0}
   .hero p{max-width:46ch}
@@ -537,8 +555,8 @@ footer a{color:var(--ink-2)}
       <span class="thumb" aria-hidden="true"></span>
       <button data-go="1" aria-current="step"><svg class="i"><use href="#i-note"/></svg><span class="t">Görev</span><span class="ck"></span></button>
       <button data-go="2"><svg class="i"><use href="#i-gauge"/></svg><span class="t">Ölçüm</span><span class="ck"></span></button>
-      <button data-go="3"><svg class="i"><use href="#i-stairs"/></svg><span class="t">Seviye</span><span class="ck"></span></button>
-      <button data-go="4"><svg class="i"><use href="#i-flag"/></svg><span class="t">Pilot</span><span class="ck"></span></button>
+      <button data-go="3"><svg class="i"><use href="#i-lock"/></svg><span class="t">Seviye</span><span class="ck"></span></button>
+      <button data-go="4"><svg class="i"><use href="#i-lock"/></svg><span class="t">Pilot</span><span class="ck"></span></button>
     </nav>
   </div>
 </div>
@@ -594,13 +612,26 @@ footer a{color:var(--ink-2)}
     <p>Üç soruyu yanıtlayın, başlangıç seviyesi işaretlensin.</p>
   </div>
 
-  <div class="panel">
-    <div class="qs" id="levelQs"></div>
-    <div class="ladder" id="ladder"></div>
-    <div class="verdict" id="levelVerdict"></div>
+  <div class="panel lock">
+    <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
+    <h3>Adım 3 ve 4 tam rehberde</h3>
+    <p class="lock-p">Tam rehberi, interaktif sayfa ve PDF olarak e-postayla ücretsiz gönderiyorum.</p>
+    <ul class="lock-list">
+      <li><svg class="i"><use href="#i-check"/></svg>Adım 3 / 4: Hangi seviyeden başlamalı?</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Adım 4 / 4: Önce gölge, sonra yardımcı</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Tam rehberin PDF’i</li>
+    </ul>
+    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="first-model-request-form-tr">
+      <label class="visually-hidden" for="lock-email-3">E-posta adresi</label>
+      <input id="lock-email-3" type="email" name="email" required autocomplete="email" placeholder="siz@ornek.com">
+      <input type="hidden" name="tag" value="guide-first-model">
+      <input type="hidden" name="tag" value="lang-tr">
+      <input type="hidden" name="embed" value="1">
+      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Tam rehberi gönder</button>
+    </form>
+    <p class="fine">Adresiniz yalnızca rehberi göndermek ve yeni rehberleri haber vermek için kullanılır; istediğiniz an ayrılabilirsiniz. Form yerine e-posta da yazabilirsiniz: <a href="mailto:halil@halilneed.agency?subject=Rehber%20iste%C4%9Fi%3A%20Bir%20i%C5%9F%20biriminin%20ilk%20yapay%20zek%C3%A2%20modeli&amp;body=Merhaba%20Halil%2C%0A%0A%E2%80%9CBir%20i%C5%9F%20biriminin%20ilk%20yapay%20zek%C3%A2%20modeli%E2%80%9D%20rehberinin%20tamam%C4%B1n%C4%B1%20g%C3%B6nderir%20misiniz%3F%0A%0AEkibim%20ve%20tak%C4%B1ld%C4%B1%C4%9F%C4%B1m%C4%B1z%20yer%20(iste%C4%9Fe%20ba%C4%9Fl%C4%B1)%3A%0A" data-goatcounter-click="first-model-request-mail-tr">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Adım 3 ve 4 ile tam PDF e-postayla gönderilir. İstemek için: <b>halilneed.agency/guides/first-model/tr/#step-3</b></p>
   </div>
-
-  <div class="note"><svg class="i"><use href="#i-alert"/></svg>4. seviye ilk pilot için neredeyse hiç gerekmez.</div>
 
   <div class="pager"><button class="btn ghost" data-go="2"><svg class="i"><use href="#i-back"/></svg>Geri</button><button class="btn" data-go="4">Devam et<svg class="i"><use href="#i-arrow"/></svg></button></div>
 </section>
@@ -612,19 +643,26 @@ footer a{color:var(--ink-2)}
     <p>Pilot iki aşamada çalışır. İkisine de bakın.</p>
   </div>
 
-  <div class="panel">
-    <div class="pills sm" id="modePills"></div>
-    <div class="flow" id="modeFlow" style="margin-top:26px"></div>
-    <p class="cap" id="modeCap"></p>
+  <div class="panel lock dup">
+    <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
+    <h3>Adım 3 ve 4 tam rehberde</h3>
+    <p class="lock-p">Tam rehberi, interaktif sayfa ve PDF olarak e-postayla ücretsiz gönderiyorum.</p>
+    <ul class="lock-list">
+      <li><svg class="i"><use href="#i-check"/></svg>Adım 3 / 4: Hangi seviyeden başlamalı?</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Adım 4 / 4: Önce gölge, sonra yardımcı</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Tam rehberin PDF’i</li>
+    </ul>
+    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="first-model-request-form-tr">
+      <label class="visually-hidden" for="lock-email-4">E-posta adresi</label>
+      <input id="lock-email-4" type="email" name="email" required autocomplete="email" placeholder="siz@ornek.com">
+      <input type="hidden" name="tag" value="guide-first-model">
+      <input type="hidden" name="tag" value="lang-tr">
+      <input type="hidden" name="embed" value="1">
+      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Tam rehberi gönder</button>
+    </form>
+    <p class="fine">Adresiniz yalnızca rehberi göndermek ve yeni rehberleri haber vermek için kullanılır; istediğiniz an ayrılabilirsiniz. Form yerine e-posta da yazabilirsiniz: <a href="mailto:halil@halilneed.agency?subject=Rehber%20iste%C4%9Fi%3A%20Bir%20i%C5%9F%20biriminin%20ilk%20yapay%20zek%C3%A2%20modeli&amp;body=Merhaba%20Halil%2C%0A%0A%E2%80%9CBir%20i%C5%9F%20biriminin%20ilk%20yapay%20zek%C3%A2%20modeli%E2%80%9D%20rehberinin%20tamam%C4%B1n%C4%B1%20g%C3%B6nderir%20misiniz%3F%0A%0AEkibim%20ve%20tak%C4%B1ld%C4%B1%C4%9F%C4%B1m%C4%B1z%20yer%20(iste%C4%9Fe%20ba%C4%9Fl%C4%B1)%3A%0A" data-goatcounter-click="first-model-request-mail-tr">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Adım 3 ve 4 ile tam PDF e-postayla gönderilir. İstemek için: <b>halilneed.agency/guides/first-model/tr/#step-3</b></p>
   </div>
-
-  <ul class="rules">
-    <li><span class="ic"><svg class="i"><use href="#i-target"/></svg></span><b>Tek görev, tek ölçü</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-grid"/></svg></span><b>Skoru dilim dilim okuyun</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-eye"/></svg></span><b>Önce gölge modda izleyin</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-flag"/></svg></span><b>Geçme eşiğini önceden yazın</b></li>
-  </ul>
-
   <div class="cta">
     <h3>Sıradaki: hangi süreçte hangi model</h3>
     <p>Altı tür model ve aralarında seçim yapan dört soru.</p>
@@ -633,12 +671,11 @@ footer a{color:var(--ink-2)}
   </div>
 
   <div class="share">
-    <a class="btn ghost" href="/guides/first-model/tr/ilk-yapay-zeka-modeli.pdf" data-goatcounter-click="first-model-pdf-tr"><svg class="i"><use href="#i-download"/></svg>PDF indir</a>
+    <a class="btn ghost" href="/guides/first-model/tr/ilk-yapay-zeka-modeli.pdf" data-goatcounter-click="first-model-pdf-tr"><svg class="i"><use href="#i-download"/></svg>PDF önizleme</a>
     <a class="btn ghost" id="shareX" target="_blank" rel="noopener" data-goatcounter-click="first-model-share-x-tr"><svg class="i"><use href="#i-share"/></svg>X’te paylaş</a>
     <a class="btn ghost" id="shareLi" target="_blank" rel="noopener" data-goatcounter-click="first-model-share-li-tr"><svg class="i"><use href="#i-share"/></svg>LinkedIn’de paylaş</a>
     <button class="btn ghost" id="copyLink"><svg class="i"><use href="#i-link"/></svg><span>Bağlantıyı kopyala</span></button>
   </div>
-
 
   <div class="pager"><button class="btn ghost" data-go="3"><svg class="i"><use href="#i-back"/></svg>Geri</button></div>
 </section>
@@ -649,7 +686,7 @@ footer a{color:var(--ink-2)}
 
 <script>
 (function(){
-  const L={"copied":"Kopyalandı","copyFail":"Kopyalanamadı","shareText":"Bir iş biriminin ilk yapay zekâ modeli: doğru görevi seçmek, skoru dilim dilim okumak, gölge modda başlamak. 15 dakikalık interaktif rehber:","cardRows":[["input","send","Girdi"],["output","out","Çıktı"],["examples","stack","Örnekler"],["metric","gauge","Başarı ölçüsü"],["human","user","İnsan kontrolü"]],"tasks":[{"name":"E-postayı sınıflandır","icon":"mail","input":"Gelen müşteri e-postası","output":"Altı kategoriden biri","examples":"Kategori başına 50 ve üzeri etiketli e-posta","metric":"Doğru kategori oranı, kategori bazında","human":"Model emin değilse e-posta insana gider","checks":[["ok","Sık tekrarlanır"],["ok","Kontrol edilebilir"],["ok","Hatası ucuz"]]},{"name":"Faturadan alan çıkar","icon":"table","input":"Fatura PDF’i","output":"Tarih, tutar, vergi no, IBAN","examples":"Alanları işaretlenmiş 200 fatura","metric":"Alan bazında tam eşleşme","human":"Eşiğin üstündeki tutarlar insana gider","checks":[["ok","Sık tekrarlanır"],["ok","Kontrol edilebilir"],["warn","Yanlış IBAN pahalı"]]},{"name":"Talebi özetle","icon":"note","input":"Uzun müşteri yazışması","output":"Beş maddelik özet","examples":"İyi yazılmış 30 örnek özet","metric":"Kontrol listesi: kritik bilgi kaçtı mı","human":"Her özet okunur","checks":[["ok","Sık tekrarlanır"],["warn","Doğruluğu ölçmek zor"],["ok","Hatası ucuz"]]},{"name":"Kredi başvurusunu onayla","icon":"user","input":"Başvuru formu ve belgeler","output":"Onay ya da ret","examples":"Geçmiş kararlar","metric":"Doğruluk ve adalet ölçüleri","human":"Karar insanda kalmalı","checks":[["ok","Sık tekrarlanır"],["warn","Kontrolü uzmanlık ister"],["no","Hatası pahalı, insanı etkiler"]]}],"verdicts":{"ok":"İyi bir ilk görev","warn":"Olur, ama dikkatle ölçün","no":"İlk pilot için uygun değil"},"views":["Genel skor","Dilimlere böl"],"shareLbl":"verinin %{n}’i","slices":[{"name":"Kısa e-postalar","share":50,"before":97,"after":97},{"name":"Uzun e-postalar","share":25,"before":93,"after":94},{"name":"Yazım hatalı e-postalar","share":10,"before":84,"after":88},{"name":"İngilizce e-postalar","share":8,"before":71,"after":89},{"name":"Nadir kategori: iade","share":7,"before":58,"after":86}],"sliceLesson":["Genel skor iyi görünüyor. Şimdi dilimlere bölün.","İki dilim zayıf ama küçük oldukları için genel skorda görünmüyor.","Daha büyük model değil, zayıf dilimlere hedefli örnek."],"levelN":"Seviye {n}","levels":[{"name":"Kural","icon":"rule","desc":"Sabit biçimler: tarih, IBAN, kod"},{"name":"Hazır model ve talimat","icon":"chat","desc":"Etiketli veri gerekmez"},{"name":"Küçük model, ince ayar","icon":"chip","desc":"Etiketli örnekle, kurum içinde"},{"name":"Özel model","icon":"stack","desc":"Büyük hacim, ekip ve bütçe"}],"questions":["Girdi sabit bir biçimde mi? (tarih, IBAN, ürün kodu)","Elinizde 100 ve üzeri etiketli örnek var mı?","Veri kurum dışına çıkabilir mi?"],"yes":"Evet","no":"Hayır","answerAll":"Soruları yanıtlayın","levelWhy":["Kural yazın, model gerekmez.","Hazır bir modelle ve iyi bir talimatla başlayın.","Örnekleriniz var ve veri içeride kalmalı: küçük bir model eğitin.","Önce hazır modelle deneyin; yetmezse seviye 3.","Kurum içinde çalışan hazır bir modelle başlayın, bu arada örnek toplayın."],"modes":[{"name":"Gölge mod","icon":"eye","nodes":[["mail","","İş gelir"],["user","you","İnsan karar verir"],["chip","hot","Model de tahmin eder"],["gauge","","Karşılaştırılır"]],"cap":"Model kimseyi etkilemez. İki ile dört hafta boyunca, dilim dilim skor toplanır."},{"name":"Yardımcı mod","icon":"pen","nodes":[["mail","","İş gelir"],["chip","hot","Model önerir"],["user","you","İnsan onaylar ya da düzeltir"],["stack","","Düzeltmeler örnek olur"]],"cap":"Geçme eşiği aşıldıysa. Son söz insanda, her düzeltme modeli besler."}]};
+  const L={"copied":"Kopyalandı","copyFail":"Kopyalanamadı","shareText":"Bir iş biriminin ilk yapay zekâ modeli: doğru görevi seçmek, skoru dilim dilim okumak, gölge modda başlamak. 15 dakikalık interaktif rehber:","cardRows":[["input","send","Girdi"],["output","out","Çıktı"],["examples","stack","Örnekler"],["metric","gauge","Başarı ölçüsü"],["human","user","İnsan kontrolü"]],"tasks":[{"name":"E-postayı sınıflandır","icon":"mail","input":"Gelen müşteri e-postası","output":"Altı kategoriden biri","examples":"Kategori başına 50 ve üzeri etiketli e-posta","metric":"Doğru kategori oranı, kategori bazında","human":"Model emin değilse e-posta insana gider","checks":[["ok","Sık tekrarlanır"],["ok","Kontrol edilebilir"],["ok","Hatası ucuz"]]},{"name":"Faturadan alan çıkar","icon":"table","input":"Fatura PDF’i","output":"Tarih, tutar, vergi no, IBAN","examples":"Alanları işaretlenmiş 200 fatura","metric":"Alan bazında tam eşleşme","human":"Eşiğin üstündeki tutarlar insana gider","checks":[["ok","Sık tekrarlanır"],["ok","Kontrol edilebilir"],["warn","Yanlış IBAN pahalı"]]},{"name":"Talebi özetle","icon":"note","input":"Uzun müşteri yazışması","output":"Beş maddelik özet","examples":"İyi yazılmış 30 örnek özet","metric":"Kontrol listesi: kritik bilgi kaçtı mı","human":"Her özet okunur","checks":[["ok","Sık tekrarlanır"],["warn","Doğruluğu ölçmek zor"],["ok","Hatası ucuz"]]},{"name":"Kredi başvurusunu onayla","icon":"user","input":"Başvuru formu ve belgeler","output":"Onay ya da ret","examples":"Geçmiş kararlar","metric":"Doğruluk ve adalet ölçüleri","human":"Karar insanda kalmalı","checks":[["ok","Sık tekrarlanır"],["warn","Kontrolü uzmanlık ister"],["no","Hatası pahalı, insanı etkiler"]]}],"verdicts":{"ok":"İyi bir ilk görev","warn":"Olur, ama dikkatle ölçün","no":"İlk pilot için uygun değil"},"views":["Genel skor","Dilimlere böl"],"shareLbl":"verinin %{n}’i","slices":[{"name":"Kısa e-postalar","share":50,"before":97,"after":97},{"name":"Uzun e-postalar","share":25,"before":93,"after":94},{"name":"Yazım hatalı e-postalar","share":10,"before":84,"after":88},{"name":"İngilizce e-postalar","share":8,"before":71,"after":89},{"name":"Nadir kategori: iade","share":7,"before":58,"after":86}],"sliceLesson":["Genel skor iyi görünüyor. Şimdi dilimlere bölün.","İki dilim zayıf ama küçük oldukları için genel skorda görünmüyor.","Daha büyük model değil, zayıf dilimlere hedefli örnek."]};
   const LANG=document.documentElement.lang;
   const icon=id=>'<svg class="i" aria-hidden="true"><use href="#i-'+id+'"/></svg>';
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -723,44 +760,10 @@ footer a{color:var(--ink-2)}
   $("fixSlices").onclick=()=>{fixed=true;renderSlices();};
   $("resetSlices").onclick=()=>{fixed=false;renderSlices();};
 
-  /* step 3: three questions choose the starting level */
-  const ans=[null,null,null];
-  $("ladder").innerHTML=L.levels.map((l,i)=>'<div class="level" data-i="'+i+'"><span class="n">'+fmt(L.levelN,i+1)+'</span><span class="ic">'+icon(l.icon)+"</span><b>"+esc(l.name)+'</b><span class="d">'+esc(l.desc)+"</span></div>").join("");
-  $("levelQs").innerHTML=L.questions.map((q,i)=>'<div class="qrow">'+icon("help")+"<p>"+esc(q)+'</p><div class="yn" data-q="'+i+'"><button data-v="1" aria-pressed="false">'+esc(L.yes)+'</button><button data-v="0" aria-pressed="false">'+esc(L.no)+"</button></div></div>").join("");
-  function chooseLevel(){
-    let lvl=null, why="";
-    if(ans[0]===1){lvl=0;why=L.levelWhy[0];}
-    else if(ans[0]===0&&ans[1]!=null&&ans[2]!=null){
-      if(ans[1]===1&&ans[2]===0){lvl=2;why=L.levelWhy[2];}
-      else if(ans[1]===1){lvl=1;why=L.levelWhy[3];}
-      else {lvl=1;why=ans[2]===1?L.levelWhy[1]:L.levelWhy[4];}
-    }
-    $("ladder").classList.toggle("chosen",lvl!=null);
-    $("ladder").querySelectorAll(".level").forEach(el=>el.classList.toggle("on",+el.dataset.i===lvl));
-    const v=$("levelVerdict");
-    if(lvl==null){v.className="verdict warn";v.innerHTML=icon("help")+esc(L.answerAll);}
-    else {v.className="verdict ok";v.innerHTML=icon("check")+esc(fmt(L.levelN,lvl+1)+": "+why);}
-  }
-  function setAns(q,val){
-    ans[q]=val;
-    document.querySelectorAll('.yn[data-q="'+q+'"] button').forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.v===val)));
-    chooseLevel();
-  }
-  document.querySelectorAll(".yn").forEach(g=>g.querySelectorAll("button").forEach(b=>b.onclick=()=>setAns(+g.dataset.q,+b.dataset.v)));
-  chooseLevel();
+  
 
-  /* step 4: shadow mode, then assist mode */
-  function showMode(i){
-    const md=L.modes[i];
-    $("modeFlow").innerHTML=md.nodes.map(([ic,kind,lbl],j)=>(j?'<span class="link" aria-hidden="true"></span>':"")+'<div class="node '+kind+'"><div class="ic">'+icon(ic)+'</div><div class="lb">'+esc(lbl)+"</div></div>").join("");
-    $("modeCap").textContent=md.cap;
-  }
-  const pickMode=pills($("modePills"),L.modes.map(md=>({label:md.name,icon:md.icon})),showMode,0);
-
-  onPrint.push(()=>{
-    pickView(1); fixed=true; renderSlices();
-    setAns(0,0); setAns(1,1); setAns(2,0);
-  });
+  onPrint.push(()=>{ pickView(1); fixed=true; renderSlices(); });
+  
 /* ---- end guide ---- */
 
   /* print: every step on its own page, experiments in their final state */

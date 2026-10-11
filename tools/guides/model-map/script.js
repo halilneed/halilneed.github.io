@@ -33,6 +33,7 @@
   $("kinds").querySelectorAll(".kind").forEach(b=>b.onclick=()=>showKind(+b.dataset.i));
   showKind(0);
 
+  /*@locked*/
   /* step 3: four questions choose the kind; the first yes wins */
   const qa=[null,null,null,null];
   $("kindsResult").innerHTML=L.kinds.map((k,i)=>'<div class="kind" data-i="'+i+'"><span class="ic">'+icon(k.icon)+"</span><b>"+esc(k.name)+"</b></div>").join("");
@@ -64,10 +65,16 @@
   }
   pills($("deptPills"),L.depts.map(d=>({label:d.name,icon:"building"})),showDept,0);
 
+  /*@end*/
+
   onPrint.push(()=>{
     [1,2,3].forEach(i=>{kwOn.add(i);$("kwPills").querySelector('[data-i="'+i+'"]').setAttribute("aria-pressed","true");});
     renderRule();
+  });
+  /*@locked*/
+  onPrint.push(()=>{
     setQ(0,1);
     $("deptPills").hidden=true;
     $("deptSteps").innerHTML=L.depts.map(d=>'<li class="dept-h">'+icon("building")+'<span class="t"><b>'+esc(d.name)+"</b></span><span></span></li>"+d.steps.map(([txt,k])=>"<li>"+icon("arrow")+'<span class="t">'+esc(txt)+'</span><span class="ktag">'+icon(L.kinds[k].icon)+esc(L.kinds[k].name)+"</span></li>").join("")).join("");
   });
+  /*@end*/

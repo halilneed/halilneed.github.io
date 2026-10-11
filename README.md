@@ -78,7 +78,7 @@ Her sayfanın sağ üstünde TR / EN anahtarı vardır ve sayfanın karşılığ
 
 ## Rehberler
 
-Dört rehber de herkese açıktır ve kaynağı bu depodadır (`tools/guides/`). Her rehber iki dilde
+Dört rehberin kaynağı bu depodadır (`tools/guides/`). Giriş rehberi (`first-step`) tamamen açıktır; diğer üçünün sitede ilk iki adımı açıktır, adım 3 ve 4 ile tam PDF e-postayla gönderilir (aşağıda "Kilitli adımlar"). Her rehber iki dilde
 aynı adımlara, deneylere ve sıraya sahiptir; çünkü iki dil aynı işaretleme ve betikten, yalnızca
 farklı metin dosyalarından üretilir.
 
@@ -94,6 +94,8 @@ tools/guides/
   <slug>/script.js          rehberin deneyleri
   <slug>/content/en.json    İngilizce metin ve demo verisi
   <slug>/content/tr.json    Türkçe metin ve demo verisi
+  <slug>/gate.json          varsa rehber kilitlidir: açık adım sayısı ve sitede yayımlanmayan metinler
+  shared/lock.html          kilitli adımların yerine gelen e-posta paneli
 ```
 
 ```bash
@@ -107,6 +109,24 @@ Metni değiştirmek için yalnızca iki `content/*.json` dosyası düzenlenir. Y
 `body.html` ve `script.js`'e eklenir, iki içerik dosyasına karşılığı yazılır. Yeni bir rehber
 `build.mjs` içindeki `GUIDES` listesine eklenir; Rehberler sayfası onu kendiliğinden listeler.
 Ana sayfadaki "Guides" bloğu elle tutulur.
+
+### Kilitli adımlar
+
+`gate.json` olan rehberlerde herkese açık derleme adım 1 ve 2'yi olduğu gibi yazar, adım 3 ve 4'ün
+yerine `shared/lock.html` panelini koyar. `script.js` içinde `/*@locked*/ … /*@end*/` arasındaki kod
+ve `gate.json`'daki `js` anahtarları sayfaya girmez. Sitedeki PDF bu yüzden bir önizlemedir (4 sayfa).
+
+Panel Buttondown formudur; kayıtlar `guide-<slug>` ve `lang-<tr|en>` etiketleriyle gelir. Form
+çalışmazsa `halil@halilneed.agency` adresine hazır konulu bir e-posta açılır.
+
+Tam sürüm `--full` ile `private/` klasörüne üretilir; bu klasör `.gitignore`'dadır, yayımlanmaz:
+
+```bash
+node tools/guides/build.mjs --full   # private/guides/<slug>/[tr/]index.html
+node tools/guides/pdf.mjs --full     # private/guides/<slug>/[tr/]*.pdf, e-postayla gönderilecek dosyalar
+```
+
+Not: kilit yumuşaktır. Kaynak metinler (`body.html`, `content/*.json`) bu herkese açık depodadır.
 
 ## Yerel çalıştırma
 

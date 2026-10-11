@@ -407,6 +407,24 @@ footer a{color:var(--ink-2)}
 .cap{text-align:center;margin-top:18px;font-size:.9rem;color:var(--muted);max-width:52ch;margin-left:auto;margin-right:auto}
 .cap a{color:var(--ink-2)}
 
+/* lock panel: steps sent by email */
+.lock{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:40px 28px;background:linear-gradient(180deg,color-mix(in srgb,var(--hl) 14%,var(--surface)),var(--surface) 55%)}
+.lock-ic{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem;background:var(--hl);color:var(--hl-ink)}
+.lock h3{font-size:clamp(1.3rem,3.6vw,1.6rem);font-weight:700;letter-spacing:-.02em}
+.lock-p{color:var(--muted);max-width:44ch}
+.lock-list{list-style:none;margin:4px 0 6px;padding:0;display:grid;gap:8px;text-align:left}
+.lock-list li{display:flex;align-items:center;gap:10px;font-weight:500;font-size:.95rem}
+.lock-list svg{color:var(--ok)}
+.lock-form{display:flex;gap:8px;width:100%;max-width:460px;padding:6px;border-radius:999px;background:var(--surface);border:1px solid var(--line-strong);box-shadow:var(--shadow-sm)}
+.lock-form input[type=email]{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:.95rem;padding:0 14px;color:var(--ink);outline:none}
+.lock-form .btn{height:42px;padding:0 18px;white-space:nowrap}
+.lock-form:focus-within{border-color:var(--focus)}
+.lock .fine{margin-top:0;max-width:52ch;display:block}
+.lock .fine a{color:var(--ink-2)}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.seg button svg use[href="#i-lock"]{opacity:.8}
+@media (max-width:520px){.lock{padding:30px 16px}.lock-form{flex-direction:column;border-radius:16px}.lock-form input[type=email]{height:42px}}
+
 /* language switch, top right: TR | EN */
 .top .wrap{gap:12px}
 .top nav{margin-left:auto}
@@ -439,7 +457,7 @@ footer a{color:var(--ink-2)}
   html{font-size:14px}
   body{background:#fff}
   .print-only{display:block}
-  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
+  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.lock-form,.lock .fine,section.step:has(.lock.dup),.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
   section.step,section.step[hidden]{display:block!important;padding:0 0 6mm;break-before:page}
   .hero{min-height:235mm;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0}
   .hero p{max-width:46ch}
@@ -537,8 +555,8 @@ footer a{color:var(--ink-2)}
       <span class="thumb" aria-hidden="true"></span>
       <button data-go="1" aria-current="step"><svg class="i"><use href="#i-route"/></svg><span class="t">Üç yol</span><span class="ck"></span></button>
       <button data-go="2"><svg class="i"><use href="#i-shield"/></svg><span class="t">Maskeleme</span><span class="ck"></span></button>
-      <button data-go="3"><svg class="i"><use href="#i-sliders"/></svg><span class="t">Duyarlılık</span><span class="ck"></span></button>
-      <button data-go="4"><svg class="i"><use href="#i-check"/></svg><span class="t">Akış</span><span class="ck"></span></button>
+      <button data-go="3"><svg class="i"><use href="#i-lock"/></svg><span class="t">Duyarlılık</span><span class="ck"></span></button>
+      <button data-go="4"><svg class="i"><use href="#i-lock"/></svg><span class="t">Akış</span><span class="ck"></span></button>
     </nav>
   </div>
 </div>
@@ -593,21 +611,26 @@ footer a{color:var(--ink-2)}
     <p>Hacmi ve duyarlılığı değiştirin, maskelenmeden geçeni görün.</p>
   </div>
 
-  <div class="panel">
-    <div class="sliders">
-      <div class="sl"><label for="vol">Günde işlenen metin <b id="volV"></b></label><input type="range" id="vol" min="100" max="20000" step="100" value="2000"></div>
-      <div class="sl"><label for="rate">Kişisel veri içeren metin oranı <b id="rateV"></b></label><input type="range" id="rate" min="5" max="80" step="1" value="30"></div>
-      <div class="sl"><label for="rec">Maskeleme duyarlılığı (recall) <b id="recV"></b></label><input type="range" id="rec" min="90" max="99.9" step="0.1" value="98"></div>
-    </div>
-    <div class="tiles">
-      <div class="tile"><b id="missDay"></b><span>günde kaçan</span></div>
-      <div class="tile hot"><b id="missMonth"></b><span>ayda kaçan</span></div>
-      <div class="tile"><b id="missYear"></b><span>yılda kaçan</span></div>
-    </div>
-    <p class="cap">Her metinde bir kişisel veri olduğu varsayılır. Ay 22, yıl 250 iş günü sayılır.</p>
+  <div class="panel lock">
+    <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
+    <h3>Adım 3 ve 4 tam rehberde</h3>
+    <p class="lock-p">Tam rehberi, interaktif sayfa ve PDF olarak e-postayla ücretsiz gönderiyorum.</p>
+    <ul class="lock-list">
+      <li><svg class="i"><use href="#i-check"/></svg>Adım 3 / 4: Bir duyarlılık değeri günde ne demek?</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Adım 4 / 4: Güvenli akış</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Tam rehberin PDF’i</li>
+    </ul>
+    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="personal-data-request-form-tr">
+      <label class="visually-hidden" for="lock-email-3">E-posta adresi</label>
+      <input id="lock-email-3" type="email" name="email" required autocomplete="email" placeholder="siz@ornek.com">
+      <input type="hidden" name="tag" value="guide-personal-data">
+      <input type="hidden" name="tag" value="lang-tr">
+      <input type="hidden" name="embed" value="1">
+      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Tam rehberi gönder</button>
+    </form>
+    <p class="fine">Adresiniz yalnızca rehberi göndermek ve yeni rehberleri haber vermek için kullanılır; istediğiniz an ayrılabilirsiniz. Form yerine e-posta da yazabilirsiniz: <a href="mailto:halil@halilneed.agency?subject=Rehber%20iste%C4%9Fi%3A%20Ki%C5%9Fisel%20veri%20ve%20yapay%20zek%C3%A2&amp;body=Merhaba%20Halil%2C%0A%0A%E2%80%9CKi%C5%9Fisel%20veri%20ve%20yapay%20zek%C3%A2%E2%80%9D%20rehberinin%20tamam%C4%B1n%C4%B1%20g%C3%B6nderir%20misiniz%3F%0A%0AEkibim%20ve%20tak%C4%B1ld%C4%B1%C4%9F%C4%B1m%C4%B1z%20yer%20(iste%C4%9Fe%20ba%C4%9Fl%C4%B1)%3A%0A" data-goatcounter-click="personal-data-request-mail-tr">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Adım 3 ve 4 ile tam PDF e-postayla gönderilir. İstemek için: <b>halilneed.agency/guides/personal-data/tr/#step-3</b></p>
   </div>
-
-  <div class="note" id="recNote"></div>
 
   <div class="pager"><button class="btn ghost" data-go="2"><svg class="i"><use href="#i-back"/></svg>Geri</button><button class="btn" data-go="4">Devam et<svg class="i"><use href="#i-arrow"/></svg></button></div>
 </section>
@@ -619,27 +642,26 @@ footer a{color:var(--ink-2)}
     <p>Metin bir modele gitmeden önce dört adım.</p>
   </div>
 
-  <div class="panel">
-    <div class="flow">
-      <div class="node"><div class="ic"><svg class="i"><use href="#i-flag"/></svg></div><div class="lb">Sınıflandır</div></div>
-      <span class="link" aria-hidden="true"></span>
-      <div class="node you"><div class="ic"><svg class="i"><use href="#i-sliders"/></svg></div><div class="lb">Politikayı seç</div></div>
-      <span class="link" aria-hidden="true"></span>
-      <div class="node hot"><div class="ic"><svg class="i"><use href="#i-shield"/></svg></div><div class="lb">Maskele</div></div>
-      <span class="link" aria-hidden="true"></span>
-      <div class="node"><div class="ic"><svg class="i"><use href="#i-route"/></svg></div><div class="lb">Gönder ya da içeride tut</div></div>
-    </div>
+  <div class="panel lock dup">
+    <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
+    <h3>Adım 3 ve 4 tam rehberde</h3>
+    <p class="lock-p">Tam rehberi, interaktif sayfa ve PDF olarak e-postayla ücretsiz gönderiyorum.</p>
+    <ul class="lock-list">
+      <li><svg class="i"><use href="#i-check"/></svg>Adım 3 / 4: Bir duyarlılık değeri günde ne demek?</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Adım 4 / 4: Güvenli akış</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Tam rehberin PDF’i</li>
+    </ul>
+    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="personal-data-request-form-tr">
+      <label class="visually-hidden" for="lock-email-4">E-posta adresi</label>
+      <input id="lock-email-4" type="email" name="email" required autocomplete="email" placeholder="siz@ornek.com">
+      <input type="hidden" name="tag" value="guide-personal-data">
+      <input type="hidden" name="tag" value="lang-tr">
+      <input type="hidden" name="embed" value="1">
+      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Tam rehberi gönder</button>
+    </form>
+    <p class="fine">Adresiniz yalnızca rehberi göndermek ve yeni rehberleri haber vermek için kullanılır; istediğiniz an ayrılabilirsiniz. Form yerine e-posta da yazabilirsiniz: <a href="mailto:halil@halilneed.agency?subject=Rehber%20iste%C4%9Fi%3A%20Ki%C5%9Fisel%20veri%20ve%20yapay%20zek%C3%A2&amp;body=Merhaba%20Halil%2C%0A%0A%E2%80%9CKi%C5%9Fisel%20veri%20ve%20yapay%20zek%C3%A2%E2%80%9D%20rehberinin%20tamam%C4%B1n%C4%B1%20g%C3%B6nderir%20misiniz%3F%0A%0AEkibim%20ve%20tak%C4%B1ld%C4%B1%C4%9F%C4%B1m%C4%B1z%20yer%20(iste%C4%9Fe%20ba%C4%9Fl%C4%B1)%3A%0A" data-goatcounter-click="personal-data-request-mail-tr">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Adım 3 ve 4 ile tam PDF e-postayla gönderilir. İstemek için: <b>halilneed.agency/guides/personal-data/tr/#step-3</b></p>
   </div>
-
-  <ul class="rules">
-    <li><span class="ic"><svg class="i"><use href="#i-flag"/></svg></span><b>Önce sınıflandırın, sonra karar verin</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-lock"/></svg></span><b>Özel nitelikli veri içeride kalır</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-gauge"/></svg></span><b>Maskelemeyi dilim dilim ölçün</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-scale"/></svg></span><b>Kuralı hukukla birlikte yazın</b></li>
-  </ul>
-
-  <p class="fine legal"><svg class="i"><use href="#i-scale"/></svg>Bu rehber hukuki tavsiye değildir. KVKK kapsamındaki kararlar için hukuk biriminize danışın.</p>
-
   <div class="cta">
     <h3>Dört rehberin hepsi</h3>
     <p>İnteraktif sayfa ve PDF olarak, Türkçe ve İngilizce.</p>
@@ -648,12 +670,11 @@ footer a{color:var(--ink-2)}
   </div>
 
   <div class="share">
-    <a class="btn ghost" href="/guides/personal-data/tr/kisisel-veri-ve-yapay-zeka.pdf" data-goatcounter-click="personal-data-pdf-tr"><svg class="i"><use href="#i-download"/></svg>PDF indir</a>
+    <a class="btn ghost" href="/guides/personal-data/tr/kisisel-veri-ve-yapay-zeka.pdf" data-goatcounter-click="personal-data-pdf-tr"><svg class="i"><use href="#i-download"/></svg>PDF önizleme</a>
     <a class="btn ghost" id="shareX" target="_blank" rel="noopener" data-goatcounter-click="personal-data-share-x-tr"><svg class="i"><use href="#i-share"/></svg>X’te paylaş</a>
     <a class="btn ghost" id="shareLi" target="_blank" rel="noopener" data-goatcounter-click="personal-data-share-li-tr"><svg class="i"><use href="#i-share"/></svg>LinkedIn’de paylaş</a>
     <button class="btn ghost" id="copyLink"><svg class="i"><use href="#i-link"/></svg><span>Bağlantıyı kopyala</span></button>
   </div>
-
 
   <div class="pager"><button class="btn ghost" data-go="3"><svg class="i"><use href="#i-back"/></svg>Geri</button></div>
 </section>
@@ -664,7 +685,7 @@ footer a{color:var(--ink-2)}
 
 <script>
 (function(){
-  const L={"copied":"Kopyalandı","copyFail":"Kopyalanamadı","shareText":"Bir metin yapay zekâya gitmeden önce: olduğu gibi mi, maskeleyerek mi, yoksa içeride mi? Kişisel veri ve KVKK için 15 dakikalık interaktif rehber:","routes":["Olduğu gibi","Maskele","İçeride tut"],"routeAria":"Bu metnin yolu","tally":"{n} / 6 karar","hits":"{n} isabet","texts":[["Üçüncü çeyrek satış sunumu için başlık önerileri iste",0,"Kişisel veri yok, olduğu gibi gönderilebilir."],["Müşteri Ayşe Yılmaz, 0532 111 22 33, kargosu gecikti diye şikâyetçi; yanıt taslağı yaz",1,"Ad ve telefon yanıt için gerekli değil. Maskeleyin, taslak yine yazılır."],["Çalışanın rapor süresi ve tanısı: bel fıtığı; izin planı yap",2,"Sağlık verisi özel nitelikli kişisel veridir. İçeride tutun."],["Genel duyuru: ofis cuma 15.00’te kapanacak; metni düzelt",0,"Kişisel veri yok."],["Müşterinin IBAN’ı ve son üç ayın hesap hareketleri; özet çıkar",2,"Banka sırrı ve finansal veri. Kurum dışına çıkmaz."],["Toplantı notu: Mehmet Bey bütçeyi onayladı, Zeynep Hanım sunumu hazırlayacak; aksiyon listesi çıkar",1,"İsimleri maskeleyin, listeyi alınca geri koyun."]],"maskModes":["Maskesiz","Kural","Model","Kural ve model"],"sample":["Müşteri ",["Ayşe Yılmaz","[AD]",0,1]," (TC ",["12345678901","[TCKN]",1,1],") dün ",["0532 111 22 33","[TEL]",1,1]," numarasından aradı. E-posta: ",["ayse@example.com","[E-POSTA]",1,1],". İade için IBAN: ",["TR12 0006 4000 0011 2345 6789 01","[IBAN]",1,1],". Adres: ",["Moda Cad. No 5, Kadıköy","[ADRES]",0,1],"."],"maskLesson":["Maskesiz: altı kişisel veri olduğu gibi gidiyor.","Kural sabit biçimleri kesin yakalar: TCKN, telefon, e-posta, IBAN. Ad ve adresi kaçırır.","Model serbest ifadeleri de yakalar: ad, adres. Bazen yanılır, bu yüzden ölçülür.","Birlikte: sabit biçimler kurala, gerisi modele. Gerçek sistemlerin çoğu böyle çalışır."],"workdaysMonth":22,"workdaysYear":250,"recLesson":"Bu ayarlarla ayda yaklaşık {n} kişisel veri maskelenmeden geçer. Yüksek görünen bir yüzde, hacimle çarpınca küçük kalmaz."};
+  const L={"copied":"Kopyalandı","copyFail":"Kopyalanamadı","shareText":"Bir metin yapay zekâya gitmeden önce: olduğu gibi mi, maskeleyerek mi, yoksa içeride mi? Kişisel veri ve KVKK için 15 dakikalık interaktif rehber:","routes":["Olduğu gibi","Maskele","İçeride tut"],"routeAria":"Bu metnin yolu","tally":"{n} / 6 karar","hits":"{n} isabet","texts":[["Üçüncü çeyrek satış sunumu için başlık önerileri iste",0,"Kişisel veri yok, olduğu gibi gönderilebilir."],["Müşteri Ayşe Yılmaz, 0532 111 22 33, kargosu gecikti diye şikâyetçi; yanıt taslağı yaz",1,"Ad ve telefon yanıt için gerekli değil. Maskeleyin, taslak yine yazılır."],["Çalışanın rapor süresi ve tanısı: bel fıtığı; izin planı yap",2,"Sağlık verisi özel nitelikli kişisel veridir. İçeride tutun."],["Genel duyuru: ofis cuma 15.00’te kapanacak; metni düzelt",0,"Kişisel veri yok."],["Müşterinin IBAN’ı ve son üç ayın hesap hareketleri; özet çıkar",2,"Banka sırrı ve finansal veri. Kurum dışına çıkmaz."],["Toplantı notu: Mehmet Bey bütçeyi onayladı, Zeynep Hanım sunumu hazırlayacak; aksiyon listesi çıkar",1,"İsimleri maskeleyin, listeyi alınca geri koyun."]],"maskModes":["Maskesiz","Kural","Model","Kural ve model"],"sample":["Müşteri ",["Ayşe Yılmaz","[AD]",0,1]," (TC ",["12345678901","[TCKN]",1,1],") dün ",["0532 111 22 33","[TEL]",1,1]," numarasından aradı. E-posta: ",["ayse@example.com","[E-POSTA]",1,1],". İade için IBAN: ",["TR12 0006 4000 0011 2345 6789 01","[IBAN]",1,1],". Adres: ",["Moda Cad. No 5, Kadıköy","[ADRES]",0,1],"."],"maskLesson":["Maskesiz: altı kişisel veri olduğu gibi gidiyor.","Kural sabit biçimleri kesin yakalar: TCKN, telefon, e-posta, IBAN. Ad ve adresi kaçırır.","Model serbest ifadeleri de yakalar: ad, adres. Bazen yanılır, bu yüzden ölçülür.","Birlikte: sabit biçimler kurala, gerisi modele. Gerçek sistemlerin çoğu böyle çalışır."]};
   const LANG=document.documentElement.lang;
   const icon=id=>'<svg class="i" aria-hidden="true"><use href="#i-'+id+'"/></svg>';
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -750,20 +771,7 @@ footer a{color:var(--ink-2)}
   }
   const pickMask=pills($("maskPills"),L.maskModes.map((m,i)=>({label:m,icon:["eye","rule","chip","shield"][i]})),renderMask,0);
 
-  /* step 3: what a recall figure means per day */
-  const nf=new Intl.NumberFormat(LANG);
-  function calc(){
-    const vol=+$("vol").value, rate=+$("rate").value/100, rec=+$("rec").value/100;
-    const day=vol*rate*(1-rec);
-    $("volV").textContent=nf.format(vol); $("rateV").textContent="%"+Math.round(rate*100); $("recV").textContent="%"+(rec*100).toFixed(1);
-    if(LANG==="en"){ $("rateV").textContent=Math.round(rate*100)+"%"; $("recV").textContent=(rec*100).toFixed(1)+"%"; }
-    $("missDay").textContent=nf.format(Math.round(day));
-    $("missMonth").textContent=nf.format(Math.round(day*L.workdaysMonth));
-    $("missYear").textContent=nf.format(Math.round(day*L.workdaysYear));
-    $("recNote").innerHTML=icon("bulb")+esc(fmt(L.recLesson,nf.format(Math.round(day*L.workdaysMonth))));
-  }
-  ["vol","rate","rec"].forEach(id=>$(id).addEventListener("input",calc));
-  calc();
+  
 
   onPrint.push(()=>{
     document.querySelectorAll("#texts .card").forEach((d,i)=>choose(d,i,L.texts[i][1]));

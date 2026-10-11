@@ -21,5 +21,16 @@
     "copyFail": "Could not copy"
   },
   "home": "/",
-  "switchAria": "Language"
+  "switchAria": "Language",
+  "lockH": "Steps 3 and 4 are in the full guide",
+  "lockP": "I send the full guide by email, as an interactive page and a PDF. It is free.",
+  "lockPdf": "The full guide as a PDF",
+  "lockBtn": "Send me the full guide",
+  "emailLbl": "Email address",
+  "placeholder": "you@example.com",
+  "lockSmall": "Your address is used only to send the guide and to tell you about new ones; you can unsubscribe at any time. You can also write instead of using the form:",
+  "lockPrint": "Steps 3 and 4 and the full PDF are sent by email. To ask for them:",
+  "previewPdfBtn": "PDF preview",
+  "mailSubject": "Guide request: {name}",
+  "mailBody": "Hello Halil,\n\nPlease send me the full guide “{name}”.\n\nMy team and where it gets stuck (optional):\n"
 }
