@@ -16,18 +16,16 @@
 | `repos/index.html` | Ajan araçları (altı eklenti). Menüde adı "Tools" |
 | `agent-blackbox/`, `skillbench/`, `scar/`, `gardener/`, `painradar/`, `devpersona/` | Eklenti sayfaları → [PRODUCTS.md](PRODUCTS.md) |
 | `writing/index.html` | Yazı listesi ve e-posta kaydı → [WRITING.md](WRITING.md) |
-| `guides/index.html` | Üç rehberin tanıtımı; istek `mailto:` ile gelir. Menüde adı "Guides" |
-| `guides/demo/`, `guides/demo/tr/` | Rehber 2'den herkese açık tek bölüm: "Rules or a model?" (İngilizce ve Türkçe). Tek dosyalık, kendi stilini ve betiğini taşır |
-| `guides/tr/index.html` | Rehberler sayfasının tam Türkçesi. `guides/index.html` ile aynı bölümler ve sıra; ikisinden biri değişirse diğeri de güncellenir |
-| `guides/first-step/`, `guides/first-step/tr/` | Rehber 0, "A first step into AI / Yapay zekâya ilk adım": herkese açık, 4 adımlı interaktif rehber ve PDF'leri. `tools/first-step/` içinden üretilir, elle düzenlenmez |
-| `guides/tr/yapay-zekaya-ilk-adim/` | Eski adres; `guides/first-step/tr/` sayfasına yönlendirir |
-| `assets/fonts/` | Yalnızca "first step" rehberinin kullandığı iki font (Bricolage Grotesque, Instrument Sans; SIL OFL). Site kendi sayfalarında web fontu kullanmaz |
+| `guides/index.html`, `guides/tr/index.html` | Rehberler sayfası, İngilizce ve Türkçe. `tools/guides/index.mjs` üretir; elle düzenlenmez. Menüde adı "Guides" / "Rehberler" |
+| `guides/<slug>/`, `guides/<slug>/tr/` | Dört interaktif rehber ve PDF'leri: `first-step` (giriş), `first-model` (1), `model-map` (2), `personal-data` (3). `tools/guides/` içinden üretilir, elle düzenlenmez |
+| `guides/demo/`, `guides/demo/tr/`, `guides/tr/yapay-zekaya-ilk-adim/` | Eski adresler; yeni sayfalara yönlendirir |
+| `assets/fonts/` | Yalnızca interaktif rehberlerin kullandığı iki font (Bricolage Grotesque, Instrument Sans; SIL OFL). Site kendi sayfalarında web fontu kullanmaz |
 | `404.html` | Bulunamadı sayfası |
 | `assets/css/site.css` | Tek stil dosyası |
 | `assets/js/site.js` | Kaydırınca belirme, ana sayfadaki maskeleme animasyonu, HF'den canlı indirme/beğeni sayıları. Sayfalar onsuz da eksiksiz okunur |
 | `assets/img/` | Favicon ve OG kartları |
 | `tools/make-og.mjs` | OG kartlarını üretir |
-| `tools/first-step/` | "First step" rehberinin kaynağı: `template.html`, `guide.css`, `icons.svg`, `content/en.json`, `content/tr.json`. `build.mjs` iki dilin sayfasını, `pdf.mjs` iki PDF'i üretir |
+| `tools/guides/` | Rehberlerin kaynağı ve derleme betikleri (aşağıda "Rehberler") |
 
 ## Tasarım
 
@@ -64,24 +62,35 @@ etiketler, süs amaçlı canvas ve imleç efektleri, uydurma sayaçlar, slogan, 
 
 ## Rehberler
 
-Rehberlerin kendisi (PDF ve etkileşimli HTML, Türkçe ve İngilizce) **bu depoda tutulmaz**:
-e-postayla istek üzerine gönderilir ve depo herkese açıktır. Kaynakları ve derleme betiği depo
-dışındadır. Burada yalnızca şunlar durur: tanıtım sayfası, kapak görselleri
-(`assets/img/guide-1.png` … `guide-3.png`) ve demo sayfaları. Üçü de rehber derlemesinin
-çıktısıdır; elle düzenlenmez, yeniden üretilip kopyalanır. Sayfa sayıları değişirse
-`guides/index.html`, `guides/tr/index.html` ve ana sayfadaki "Guides" bloğunu güncelle.
+Dört rehber de herkese açıktır ve kaynağı bu depodadır (`tools/guides/`). Her rehber iki dilde
+aynı adımlara, deneylere ve sıraya sahiptir; çünkü iki dil aynı işaretleme ve betikten, yalnızca
+farklı metin dosyalarından üretilir.
 
-İstisna: **Rehber 0, "first step"** herkese açıktır ve kaynağı bu depodadır (`tools/first-step/`).
-İki dil tek şablondan üretilir, böylece adımlar, deneyler ve sıra her iki dilde aynı kalır:
-
-```bash
-node tools/first-step/build.mjs   # guides/first-step/index.html ve tr/index.html
-node tools/first-step/pdf.mjs     # iki A4 PDF (yerel Chrome; CHROME=/yol/chrome ile değiştirilebilir)
+```
+tools/guides/
+  shared/page.html          baş, üst menü, giriş, adım çubuğu, alt bilgi, ortak betik
+  shared/end.html           son adımdaki "sıradaki rehber" kutusu ve paylaşım satırı
+  shared/guide.css          ekran (açık, koyu) ve baskı (A4) stilleri, site içi fontlar
+  shared/icons.svg          ikonlar
+  shared/strings.*.json     her rehberde ortak sözcükler
+  shared/index.*.json       Rehberler sayfasının metinleri
+  <slug>/body.html          rehberin dört adımı
+  <slug>/script.js          rehberin deneyleri
+  <slug>/content/en.json    İngilizce metin ve demo verisi
+  <slug>/content/tr.json    Türkçe metin ve demo verisi
 ```
 
-Metni değiştirmek için yalnızca `content/en.json` ve `content/tr.json` düzenlenir; yeni bir adım
-ya da deney şablona eklenir ve iki içerik dosyasına karşılığı yazılır. Kapaklar
-(`assets/img/guide-first-step.png`, `guide-first-step-tr.png`) PDF'in ilk sayfasıdır.
+```bash
+node tools/guides/build.mjs   # sekiz rehber sayfası (bir rehber için: build.mjs model-map)
+node tools/guides/pdf.mjs     # sekiz A4 PDF, yerel Chrome ile (CHROME=/yol/chrome)
+sh tools/guides/covers.sh     # kapaklar: PDF'in ilk sayfası, assets/img/guide-<slug>[-tr].png
+node tools/guides/index.mjs   # /guides/ ve /guides/tr/ (PDF sayfa sayılarını PDF'lerden okur)
+```
+
+Metni değiştirmek için yalnızca iki `content/*.json` dosyası düzenlenir. Yeni bir adım ya da deney
+`body.html` ve `script.js`'e eklenir, iki içerik dosyasına karşılığı yazılır. Yeni bir rehber
+`build.mjs` içindeki `GUIDES` listesine eklenir; Rehberler sayfası onu kendiliğinden listeler.
+Ana sayfadaki "Guides" bloğu elle tutulur.
 
 ## Yerel çalıştırma
 
@@ -110,9 +119,9 @@ node tools/make-og.mjs turkish-pii-detection    # tek kart
 
 - **GoatCounter** (`hailneed.goatcounter.com`): çerezsiz, toplu sayfa sayacı. Bağlantılardaki
   `data-goatcounter-click` nitelikleri tıklamaları adlandırır; ek JavaScript yok.
-- **E-posta kaydı** yalnızca `/writing/` sayfasındadır ve Buttondown'a düz `POST` eder
-  (`embed-subscribe/hailneed`).
-- **Rehber isteği** form değildir: `/guides/` sayfasındaki düğmeler konusu ve metni hazır bir
-  `mailto:` bağlantısıdır; istek doğrudan `halil@halilneed.agency` adresine gelir.
+- **E-posta kaydı** `/writing/` (etiket `newsletter`) ve `/guides/`, `/guides/tr/` (etiket `guides`)
+  sayfalarındadır; Buttondown'a düz `POST` eder (`embed-subscribe/hailneed`).
+- **Rehberler** herkese açıktır; istek formu yoktur. Rehberler sayfasındaki `mailto:` bağlantısı
+  ekiplerin soruları içindir ve doğrudan `halil@halilneed.agency` adresine gelir.
 
 Buradaki `hailneed` yazımı hata değil: sayaç, bülten ve eklenti marketinin kimliği hâlâ bu adla duruyor.

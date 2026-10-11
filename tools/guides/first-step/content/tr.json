@@ -1,18 +1,6 @@
 {
   "lang": "tr",
-  "locale": "tr_TR",
-  "out": "guides/first-step/tr/index.html",
-  "url": "https://halilneed.agency/guides/first-step/tr/",
-  "path": "/guides/first-step/tr/",
-  "altLang": "en",
-  "altPath": "/guides/first-step/",
-  "altUrl": "https://halilneed.agency/guides/first-step/",
-  "altLabel": "English",
-  "pdf": "/guides/first-step/tr/yapay-zekaya-ilk-adim.pdf",
   "pdfName": "yapay-zekaya-ilk-adim.pdf",
-  "guidesPath": "/guides/tr/",
-  "guidesName": "Rehberler",
-  "allGuides": "Tüm rehberler",
   "title": "Yapay zekâya ilk adım: 10 dakikalık interaktif rehber | halilneed",
   "name": "Yapay zekâya ilk adım",
   "desc": "Kurumsal çalışanlar için 10 dakikalık interaktif rehber: yapay zekâ nedir, nasıl öğrenir, işte nerede kullanılır, nerede kullanılmaz.",
@@ -20,15 +8,10 @@
   "chip": "10 dakika, 4 interaktif deney",
   "h1": "Yapay zekâya ilk adım",
   "heroP": "Okumak yerine deneyin. Kurumsal hayatta yapay zekâyı doğru yerde kullanmanın temeli.",
-  "printNote": "Bu PDF interaktif rehberin basılı hâlidir. Deneyleri kendiniz yapmak için:",
-  "stepsAria": "Adımlar",
   "tab1": "Nedir?",
   "tab2": "Öğrenme",
   "tab3": "Kullanım",
   "tab4": "Kurallar",
-  "kicker": "Adım {n} / 4",
-  "next": "Devam et",
-  "back": "Geri",
   "s1h": "Yapay zekâ nedir?",
   "s1p": "Kuralı biz yazmayız. Örneklerden kendisi çıkarır.",
   "classic": "Klasik yazılım",
@@ -68,15 +51,10 @@
   "r2": "Kişisel veriyi önce maskeleyin",
   "r3": "Rakam ve kaynağı doğrulayın",
   "r4": "Örnek verin, sonuç iyileşir",
-  "ctaH": "Devamı: 3 ücretsiz rehber",
-  "ctaP": "İlk yapay zekâ pilotu, model seçimi, kişisel veri ve KVKK.",
-  "ctaBtn": "E-postayla iste",
-  "ctaHref": "/guides/tr/#request",
-  "pdfBtn": "PDF indir",
-  "shareX": "X’te paylaş",
-  "shareLi": "LinkedIn’de paylaş",
-  "copy": "Bağlantıyı kopyala",
-  "footer": "Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.",
+  "ctaH": "Sıradaki: bir iş biriminin ilk yapay zekâ modeli",
+  "ctaP": "Tek bir işten ölçülebilir bir pilota.",
+  "ctaBtn": "Rehber 1’i aç",
+  "ctaHref": "/guides/first-model/tr/",
   "js": {
     "restart": "Yeniden dene",
     "probAria": "olasılık",
@@ -96,14 +74,63 @@
     "decisionAria": "Kararınız",
     "tally": "{n} / 10 karar",
     "hits": "{n} isabet",
-    "copied": "Kopyalandı",
-    "copyFail": "Kopyalanamadı",
     "shareText": "Yapay zekâ nasıl öğrenir? 10 dakikada, tarayıcıda deneyerek gördüm. İşte nerede kullanılır, nerede kullanılmaz testini de çözdüm:",
     "base": "Toplantıyı yarına",
     "rounds": [
-      [["erteleyelim", 58], ["alalım", 27], ["taşıyalım", 14], ["patlıcan", 0]],
-      [["çünkü", 46], ["mi?", 31], ["saat", 22], ["zürafa", 0]],
-      [["rapor", 52], ["müşteri", 29], ["herkes", 18], ["uzay", 0]]
+      [
+        [
+          "erteleyelim",
+          58
+        ],
+        [
+          "alalım",
+          27
+        ],
+        [
+          "taşıyalım",
+          14
+        ],
+        [
+          "patlıcan",
+          0
+        ]
+      ],
+      [
+        [
+          "çünkü",
+          46
+        ],
+        [
+          "mi?",
+          31
+        ],
+        [
+          "saat",
+          22
+        ],
+        [
+          "zürafa",
+          0
+        ]
+      ],
+      [
+        [
+          "rapor",
+          52
+        ],
+        [
+          "müşteri",
+          29
+        ],
+        [
+          "herkes",
+          18
+        ],
+        [
+          "uzay",
+          0
+        ]
+      ]
     ],
     "stop": "ve ile için bu bir da de mi var ki çok en ne gibi olan olarak ama",
     "urgentEx": [
@@ -123,12 +150,30 @@
       "Bugün akşam kafeteryada ekip yemeği var, katılım serbest"
     ],
     "tests": [
-      ["Müşteri portalı açılmıyor, şikayetler artıyor", 1],
-      ["Fatura ödemesi bekliyor, son gün yarın sabah", 1],
-      ["Bugün akşam departman yemeği var, katılım isteğe bağlı", 0],
-      ["Eğitim kayıtları gelecek hafta açılacak", 0],
-      ["Sistemde hata var, işlemler durdu", 1],
-      ["Sunum şablonunun yeni sürümü ektedir", 0]
+      [
+        "Müşteri portalı açılmıyor, şikayetler artıyor",
+        1
+      ],
+      [
+        "Fatura ödemesi bekliyor, son gün yarın sabah",
+        1
+      ],
+      [
+        "Bugün akşam departman yemeği var, katılım isteğe bağlı",
+        0
+      ],
+      [
+        "Eğitim kayıtları gelecek hafta açılacak",
+        0
+      ],
+      [
+        "Sistemde hata var, işlemler durdu",
+        1
+      ],
+      [
+        "Sunum şablonunun yeni sürümü ektedir",
+        0
+      ]
     ],
     "lessons": [
       "2 örnek: model çoğunda emin değil",
@@ -137,16 +182,70 @@
       "12 örnek: çeşitli örnek hatayı düzeltti"
     ],
     "tasks": [
-      ["note", "Toplantı notundan aksiyon listesi", "ok", "Dağınık metni düzenlemek tam ona göre."],
-      ["mail", "E-posta zincirini özetlemek", "ok", "Güçlü olduğu iş. Kişisel veri varsa onaylı araç."],
-      ["table", "Excel formülü yazdırmak", "ok", "Hızlı. Birkaç satırı elle kontrol edin."],
-      ["id", "TCKN’li müşteri metnini kişisel hesaba yapıştırmak", "no", "Kişisel veri: önce maskeleyin, onaylı araç kullanın."],
-      ["slides", "Sunum akışı ve başlık önerisi", "ok", "Boş sayfa sorununu çözer."],
-      ["chart", "Rakibin güncel pazar payını sormak", "warn", "Rakam uydurabilir. Kaynak isteyin, açıp doğrulayın."],
-      ["user", "Çalışanın performans notunu belirlemek", "no", "İnsanı etkileyen karar insanda kalır."],
-      ["scale", "Sözleşme maddesini sade dille açıklatmak", "warn", "Anlamak için iyi, hukuki görüş değil."],
-      ["lang", "Gizli olmayan e-postayı çevirmek", "ok", "Güçlü olduğu iş. Terimleri son okumada kontrol edin."],
-      ["calc", "Finansal tabloyu kontrol etmeden göndermek", "no", "Rakam hataları sık. Her rakamı doğrulayın."]
+      [
+        "note",
+        "Toplantı notundan aksiyon listesi",
+        "ok",
+        "Dağınık metni düzenlemek tam ona göre."
+      ],
+      [
+        "mail",
+        "E-posta zincirini özetlemek",
+        "ok",
+        "Güçlü olduğu iş. Kişisel veri varsa onaylı araç."
+      ],
+      [
+        "table",
+        "Excel formülü yazdırmak",
+        "ok",
+        "Hızlı. Birkaç satırı elle kontrol edin."
+      ],
+      [
+        "id",
+        "TCKN’li müşteri metnini kişisel hesaba yapıştırmak",
+        "no",
+        "Kişisel veri: önce maskeleyin, onaylı araç kullanın."
+      ],
+      [
+        "slides",
+        "Sunum akışı ve başlık önerisi",
+        "ok",
+        "Boş sayfa sorununu çözer."
+      ],
+      [
+        "chart",
+        "Rakibin güncel pazar payını sormak",
+        "warn",
+        "Rakam uydurabilir. Kaynak isteyin, açıp doğrulayın."
+      ],
+      [
+        "user",
+        "Çalışanın performans notunu belirlemek",
+        "no",
+        "İnsanı etkileyen karar insanda kalır."
+      ],
+      [
+        "scale",
+        "Sözleşme maddesini sade dille açıklatmak",
+        "warn",
+        "Anlamak için iyi, hukuki görüş değil."
+      ],
+      [
+        "lang",
+        "Gizli olmayan e-postayı çevirmek",
+        "ok",
+        "Güçlü olduğu iş. Terimleri son okumada kontrol edin."
+      ],
+      [
+        "calc",
+        "Finansal tabloyu kontrol etmeden göndermek",
+        "no",
+        "Rakam hataları sık. Her rakamı doğrulayın."
+      ]
     ]
-  }
+  },
+  "tabIcon1": "bulb",
+  "tabIcon2": "chip",
+  "tabIcon3": "check",
+  "tabIcon4": "shield"
 }

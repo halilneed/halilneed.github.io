@@ -1,0 +1,100 @@
+<section class="step" id="s1" aria-labelledby="h1s">
+  <div class="shead">
+    <span class="kicker">{{kicker:1}}</span>
+    <h2 id="h1s">{{s1h}}</h2>
+    <p>{{s1p}}</p>
+  </div>
+
+  <div class="panel">
+    <div class="flow">
+      <div class="node"><div class="ic"><svg class="i"><use href="#i-send"/></svg></div><div class="lb">{{route1}}</div></div>
+      <span class="link" aria-hidden="true"></span>
+      <div class="node hot"><div class="ic"><svg class="i"><use href="#i-shield"/></svg></div><div class="lb">{{route2}}</div></div>
+      <span class="link" aria-hidden="true"></span>
+      <div class="node you"><div class="ic"><svg class="i"><use href="#i-lock"/></svg></div><div class="lb">{{route3}}</div></div>
+    </div>
+  </div>
+
+  <div class="grid" id="texts" style="margin-top:20px"></div>
+  <div class="tally" aria-live="polite"><div><span id="tallyText"></span><span class="hit" id="tallyScore"></span></div></div>
+
+  <div class="pager"><button class="btn" data-go="2">{{next}}<svg class="i"><use href="#i-arrow"/></svg></button></div>
+</section>
+
+<section class="step" id="s2" hidden aria-labelledby="h2s">
+  <div class="shead">
+    <span class="kicker">{{kicker:2}}</span>
+    <h2 id="h2s">{{s2h}}</h2>
+    <p>{{s2p}}</p>
+  </div>
+
+  <div class="panel">
+    <div class="pills sm" id="maskPills"></div>
+    <div class="textview" id="maskView" aria-live="polite"></div>
+    <div class="tally-inline"><span>{{caughtLbl}} <b id="caught"></b></span><span>{{missedLbl}} <b id="missed"></b></span></div>
+    <p class="cap">{{s2cap}} <a href="/models/turkish-pii-detection/">turkish-pii-detection</a></p>
+  </div>
+
+  <div class="note" id="maskNote"></div>
+
+  <div class="pager"><button class="btn ghost" data-go="1"><svg class="i"><use href="#i-back"/></svg>{{back}}</button><button class="btn" data-go="3">{{next}}<svg class="i"><use href="#i-arrow"/></svg></button></div>
+</section>
+
+<section class="step" id="s3" hidden aria-labelledby="h3s">
+  <div class="shead">
+    <span class="kicker">{{kicker:3}}</span>
+    <h2 id="h3s">{{s3h}}</h2>
+    <p>{{s3p}}</p>
+  </div>
+
+  <div class="panel">
+    <div class="sliders">
+      <div class="sl"><label for="vol">{{volLbl}} <b id="volV"></b></label><input type="range" id="vol" min="100" max="20000" step="100" value="2000"></div>
+      <div class="sl"><label for="rate">{{rateLbl}} <b id="rateV"></b></label><input type="range" id="rate" min="5" max="80" step="1" value="30"></div>
+      <div class="sl"><label for="rec">{{recLbl}} <b id="recV"></b></label><input type="range" id="rec" min="90" max="99.9" step="0.1" value="98"></div>
+    </div>
+    <div class="tiles">
+      <div class="tile"><b id="missDay"></b><span>{{dayLbl}}</span></div>
+      <div class="tile hot"><b id="missMonth"></b><span>{{monthLbl}}</span></div>
+      <div class="tile"><b id="missYear"></b><span>{{yearLbl}}</span></div>
+    </div>
+    <p class="cap">{{s3cap}}</p>
+  </div>
+
+  <div class="note" id="recNote"></div>
+
+  <div class="pager"><button class="btn ghost" data-go="2"><svg class="i"><use href="#i-back"/></svg>{{back}}</button><button class="btn" data-go="4">{{next}}<svg class="i"><use href="#i-arrow"/></svg></button></div>
+</section>
+
+<section class="step" id="s4" hidden aria-labelledby="h4s">
+  <div class="shead">
+    <span class="kicker">{{kicker:4}}</span>
+    <h2 id="h4s">{{s4h}}</h2>
+    <p>{{s4p}}</p>
+  </div>
+
+  <div class="panel">
+    <div class="flow">
+      <div class="node"><div class="ic"><svg class="i"><use href="#i-flag"/></svg></div><div class="lb">{{f1}}</div></div>
+      <span class="link" aria-hidden="true"></span>
+      <div class="node you"><div class="ic"><svg class="i"><use href="#i-sliders"/></svg></div><div class="lb">{{f2}}</div></div>
+      <span class="link" aria-hidden="true"></span>
+      <div class="node hot"><div class="ic"><svg class="i"><use href="#i-shield"/></svg></div><div class="lb">{{f3}}</div></div>
+      <span class="link" aria-hidden="true"></span>
+      <div class="node"><div class="ic"><svg class="i"><use href="#i-route"/></svg></div><div class="lb">{{f4}}</div></div>
+    </div>
+  </div>
+
+  <ul class="rules">
+    <li><span class="ic"><svg class="i"><use href="#i-flag"/></svg></span><b>{{r1}}</b></li>
+    <li><span class="ic"><svg class="i"><use href="#i-lock"/></svg></span><b>{{r2}}</b></li>
+    <li><span class="ic"><svg class="i"><use href="#i-gauge"/></svg></span><b>{{r3}}</b></li>
+    <li><span class="ic"><svg class="i"><use href="#i-scale"/></svg></span><b>{{r4}}</b></li>
+  </ul>
+
+  <p class="fine legal"><svg class="i"><use href="#i-scale"/></svg>{{legal}}</p>
+
+{{end}}
+
+  <div class="pager"><button class="btn ghost" data-go="3"><svg class="i"><use href="#i-back"/></svg>{{back}}</button></div>
+</section>

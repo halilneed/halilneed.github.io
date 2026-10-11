@@ -1,0 +1,137 @@
+
+<section class="step" id="s1" aria-labelledby="h1s">
+  <div class="shead">
+    <span class="kicker">{{kicker:1}}</span>
+    <h2 id="h1s">{{s1h}}</h2>
+    <p>{{s1p}}</p>
+  </div>
+
+  <div class="panel">
+    <div class="track">
+      <div class="row">
+        <span class="row-label">{{classic}}</span>
+        <div class="flow">
+          <div class="node"><div class="ic"><svg class="i"><use href="#i-rule"/></svg></div><div class="lb">{{c1}}</div></div>
+          <span class="link" aria-hidden="true"></span>
+          <div class="node"><div class="ic"><svg class="i"><use href="#i-db"/></svg></div><div class="lb">{{c2}}</div></div>
+          <span class="link" aria-hidden="true"></span>
+          <div class="node"><div class="ic"><svg class="i"><use href="#i-out"/></svg></div><div class="lb">{{c3}}</div></div>
+        </div>
+      </div>
+      <div class="sep"></div>
+      <div class="row">
+        <span class="row-label hot"><svg class="i"><use href="#i-sparkle"/></svg>{{ai}}</span>
+        <div class="flow">
+          <div class="node hot"><div class="ic"><svg class="i"><use href="#i-stack"/></svg></div><div class="lb">{{a1}}</div></div>
+          <span class="link" aria-hidden="true"></span>
+          <div class="node hot"><div class="ic"><svg class="i"><use href="#i-chip"/></svg></div><div class="lb">{{a2}}</div></div>
+          <span class="link" aria-hidden="true"></span>
+          <div class="node hot"><div class="ic"><svg class="i"><use href="#i-target"/></svg></div><div class="lb">{{a3}}</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" aria-live="polite">
+    <div class="panel-title"><span class="ib"><svg class="i"><use href="#i-chat"/></svg></span>{{nwTitle}}</div>
+    <div class="sentence" id="sentence"></div>
+    <div class="opts" id="opts"></div>
+  </div>
+
+  <div class="note"><svg class="i"><use href="#i-alert"/></svg>{{note1}}</div>
+
+  <div class="pager"><button class="btn" data-go="2">{{next}}<svg class="i"><use href="#i-arrow"/></svg></button></div>
+</section>
+
+<section class="step" id="s2" hidden aria-labelledby="h2s">
+  <div class="shead">
+    <span class="kicker">{{kicker:2}}</span>
+    <h2 id="h2s">{{s2h}}</h2>
+    <p>{{s2p}}</p>
+  </div>
+
+  <div class="panel">
+    <div class="flow">
+      <div class="node"><div class="ic"><svg class="i"><use href="#i-mail"/></svg></div><div class="lb">{{f1}}</div></div>
+      <span class="link" aria-hidden="true"></span>
+      <div class="node hot"><div class="ic"><svg class="i"><use href="#i-chip"/></svg></div><div class="lb">{{f2}}</div></div>
+      <span class="link" aria-hidden="true"></span>
+      <div class="node"><div class="ic"><svg class="i"><use href="#i-mail"/></svg></div><div class="lb">{{f3}}</div></div>
+      <span class="link" aria-hidden="true"></span>
+      <div class="node"><div class="ic"><svg class="i"><use href="#i-flag"/></svg></div><div class="lb">{{f4}}</div></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="lab">
+      <div class="gauge">
+        <div class="ring" role="img" id="ringWrap" aria-label="">
+          <svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" id="ringFg" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg>
+          <div class="val"><b id="acc">0</b><span>{{ringOf}}</span></div>
+        </div>
+        <div class="excount" id="exCount"></div>
+        <div class="ctrl">
+          <button class="btn ghost icon" id="resetTrain" aria-label="{{reset}}"><svg class="i"><use href="#i-reset"/></svg></button>
+          <button class="btn" id="addEx"><svg class="i"><use href="#i-plus"/></svg><span></span></button>
+        </div>
+      </div>
+      <div>
+        <ul class="tests" id="tests" aria-live="polite"></ul>
+        <div class="legend"><span style="--sw:var(--hl)">{{legendHot}}</span><span style="--sw:var(--hl-cool)">{{legendCool}}</span></div>
+      </div>
+    </div>
+    <div class="note" id="lesson" aria-live="polite"></div>
+    <ul class="lessons print-only" id="lessonsAll" aria-label="{{lessonsTitle}}"></ul>
+    <div class="try">
+      <input id="own" type="text" maxlength="160" aria-label="{{ownAria}}" placeholder="{{placeholder}}">
+      <button class="btn" id="ownBtn">{{predict}}</button>
+    </div>
+    <div id="ownResult" aria-live="polite"></div>
+  </div>
+  <div class="fine"><svg class="i"><use href="#i-lock"/></svg>{{privacy}}</div>
+
+  <div class="pager"><button class="btn ghost" data-go="1"><svg class="i"><use href="#i-back"/></svg>{{back}}</button><button class="btn" data-go="3">{{next}}<svg class="i"><use href="#i-arrow"/></svg></button></div>
+</section>
+
+<section class="step" id="s3" hidden aria-labelledby="h3s">
+  <div class="shead">
+    <span class="kicker">{{kicker:3}}</span>
+    <h2 id="h3s">{{s3h}}</h2>
+    <p>{{s3p}}</p>
+  </div>
+  <div class="legend-key" id="legendKey"></div>
+  <div class="grid" id="tasks"></div>
+  <div class="tally" aria-live="polite"><div><span id="tallyText"></span><span class="hit" id="tallyScore"></span></div></div>
+  <div class="pager"><button class="btn ghost" data-go="2"><svg class="i"><use href="#i-back"/></svg>{{back}}</button><button class="btn" data-go="4">{{next}}<svg class="i"><use href="#i-arrow"/></svg></button></div>
+</section>
+
+<section class="step" id="s4" hidden aria-labelledby="h4s">
+  <div class="shead">
+    <span class="kicker">{{kicker:4}}</span>
+    <h2 id="h4s">{{s4h}}</h2>
+    <p>{{s4p}}</p>
+  </div>
+
+  <div class="panel">
+    <div class="flow">
+      <div class="node you"><div class="ic"><svg class="i"><use href="#i-user"/></svg></div><div class="lb">{{u1}}</div></div>
+      <span class="link" aria-hidden="true"></span>
+      <div class="node hot"><div class="ic"><svg class="i"><use href="#i-pen"/></svg></div><div class="lb">{{u2}}</div></div>
+      <span class="link" aria-hidden="true"></span>
+      <div class="node you"><div class="ic"><svg class="i"><use href="#i-eye"/></svg></div><div class="lb">{{u3}}</div></div>
+      <span class="link" aria-hidden="true"></span>
+      <div class="node you"><div class="ic"><svg class="i"><use href="#i-flag"/></svg></div><div class="lb">{{u4}}</div></div>
+    </div>
+  </div>
+
+  <ul class="rules">
+    <li><span class="ic"><svg class="i"><use href="#i-pen"/></svg></span><b>{{r1}}</b></li>
+    <li><span class="ic"><svg class="i"><use href="#i-shield"/></svg></span><b>{{r2}}</b></li>
+    <li><span class="ic"><svg class="i"><use href="#i-calc"/></svg></span><b>{{r3}}</b></li>
+    <li><span class="ic"><svg class="i"><use href="#i-stack"/></svg></span><b>{{r4}}</b></li>
+  </ul>
+
+{{end}}
+  <div class="pager"><button class="btn ghost" data-go="3"><svg class="i"><use href="#i-back"/></svg>{{back}}</button></div>
+</section>
+

@@ -1,0 +1,85 @@
+<section class="step" id="s1" aria-labelledby="h1s">
+  <div class="shead">
+    <span class="kicker">{{kicker:1}}</span>
+    <h2 id="h1s">{{s1h}}</h2>
+    <p>{{s1p}}</p>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title"><span class="ib"><svg class="i"><use href="#i-note"/></svg></span>{{s1title}}</div>
+    <div class="pills" id="taskPills"></div>
+    <div class="kv" id="taskCard"></div>
+    <div class="checks" id="taskChecks"></div>
+    <div class="verdict" id="taskVerdict"></div>
+  </div>
+
+  <div class="note"><svg class="i"><use href="#i-alert"/></svg>{{note1}}</div>
+
+  <div class="pager"><button class="btn" data-go="2">{{next}}<svg class="i"><use href="#i-arrow"/></svg></button></div>
+</section>
+
+<section class="step" id="s2" hidden aria-labelledby="h2s">
+  <div class="shead">
+    <span class="kicker">{{kicker:2}}</span>
+    <h2 id="h2s">{{s2h}}</h2>
+    <p>{{s2p}}</p>
+  </div>
+
+  <div class="panel">
+    <div class="big"><b id="overall"></b><span>{{overallLbl}}</span></div>
+    <div class="pills sm" id="viewPills"></div>
+    <div class="meters" id="slices" style="margin-top:24px"></div>
+    <div class="row-btns">
+      <button class="btn ghost icon" id="resetSlices" aria-label="{{reset}}"><svg class="i"><use href="#i-reset"/></svg></button>
+      <button class="btn" id="fixSlices"><svg class="i"><use href="#i-plus"/></svg><span>{{fixBtn}}</span></button>
+    </div>
+    <p class="cap">{{illustrative}} {{s2cap}}</p>
+  </div>
+
+  <div class="note" id="sliceNote"></div>
+
+  <div class="pager"><button class="btn ghost" data-go="1"><svg class="i"><use href="#i-back"/></svg>{{back}}</button><button class="btn" data-go="3">{{next}}<svg class="i"><use href="#i-arrow"/></svg></button></div>
+</section>
+
+<section class="step" id="s3" hidden aria-labelledby="h3s">
+  <div class="shead">
+    <span class="kicker">{{kicker:3}}</span>
+    <h2 id="h3s">{{s3h}}</h2>
+    <p>{{s3p}}</p>
+  </div>
+
+  <div class="panel">
+    <div class="qs" id="levelQs"></div>
+    <div class="ladder" id="ladder"></div>
+    <div class="verdict" id="levelVerdict"></div>
+  </div>
+
+  <div class="note"><svg class="i"><use href="#i-alert"/></svg>{{note3}}</div>
+
+  <div class="pager"><button class="btn ghost" data-go="2"><svg class="i"><use href="#i-back"/></svg>{{back}}</button><button class="btn" data-go="4">{{next}}<svg class="i"><use href="#i-arrow"/></svg></button></div>
+</section>
+
+<section class="step" id="s4" hidden aria-labelledby="h4s">
+  <div class="shead">
+    <span class="kicker">{{kicker:4}}</span>
+    <h2 id="h4s">{{s4h}}</h2>
+    <p>{{s4p}}</p>
+  </div>
+
+  <div class="panel">
+    <div class="pills sm" id="modePills"></div>
+    <div class="flow" id="modeFlow" style="margin-top:26px"></div>
+    <p class="cap" id="modeCap"></p>
+  </div>
+
+  <ul class="rules">
+    <li><span class="ic"><svg class="i"><use href="#i-target"/></svg></span><b>{{r1}}</b></li>
+    <li><span class="ic"><svg class="i"><use href="#i-grid"/></svg></span><b>{{r2}}</b></li>
+    <li><span class="ic"><svg class="i"><use href="#i-eye"/></svg></span><b>{{r3}}</b></li>
+    <li><span class="ic"><svg class="i"><use href="#i-flag"/></svg></span><b>{{r4}}</b></li>
+  </ul>
+
+{{end}}
+
+  <div class="pager"><button class="btn ghost" data-go="3"><svg class="i"><use href="#i-back"/></svg>{{back}}</button></div>
+</section>

@@ -1,0 +1,23 @@
+{
+  "locale": "tr_TR",
+  "altLang": "en",
+  "altLabel": "English",
+  "guidesPath": "/guides/tr/",
+  "guidesName": "Rehberler",
+  "allGuides": "Tüm rehberler",
+  "stepsAria": "Adımlar",
+  "kicker": "Adım {n} / 4",
+  "next": "Devam et",
+  "back": "Geri",
+  "printNote": "Bu PDF interaktif rehberin basılı hâlidir. Deneyleri kendiniz yapmak için:",
+  "pdfBtn": "PDF indir",
+  "shareX": "X’te paylaş",
+  "shareLi": "LinkedIn’de paylaş",
+  "copy": "Bağlantıyı kopyala",
+  "footer": "Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.",
+  "illustrative": "Rakamlar temsilîdir.",
+  "js": {
+    "copied": "Kopyalandı",
+    "copyFail": "Kopyalanamadı"
+  }
+}

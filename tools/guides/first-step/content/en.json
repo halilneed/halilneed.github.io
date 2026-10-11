@@ -1,18 +1,6 @@
 {
   "lang": "en",
-  "locale": "en_US",
-  "out": "guides/first-step/index.html",
-  "url": "https://halilneed.agency/guides/first-step/",
-  "path": "/guides/first-step/",
-  "altLang": "tr",
-  "altPath": "/guides/first-step/tr/",
-  "altUrl": "https://halilneed.agency/guides/first-step/tr/",
-  "altLabel": "Türkçe",
-  "pdf": "/guides/first-step/first-step-into-ai.pdf",
   "pdfName": "first-step-into-ai.pdf",
-  "guidesPath": "/guides/",
-  "guidesName": "Guides",
-  "allGuides": "All guides",
   "title": "A first step into AI: a 10-minute interactive guide | halilneed",
   "name": "A first step into AI",
   "desc": "A 10-minute interactive guide for people at work: what AI is, how it learns, where to use it at work and where not to.",
@@ -20,15 +8,10 @@
   "chip": "10 minutes, 4 interactive experiments",
   "h1": "A first step into AI",
   "heroP": "Try it instead of reading about it. The basics of using AI in the right places at work.",
-  "printNote": "This PDF is the printed version of an interactive guide. To run the experiments yourself:",
-  "stepsAria": "Steps",
   "tab1": "What is it?",
   "tab2": "Learning",
   "tab3": "At work",
   "tab4": "Rules",
-  "kicker": "Step {n} of 4",
-  "next": "Continue",
-  "back": "Back",
   "s1h": "What is AI?",
   "s1p": "Nobody writes the rule. It finds the pattern in examples.",
   "classic": "Classic software",
@@ -68,15 +51,10 @@
   "r2": "Mask personal data first",
   "r3": "Check numbers and sources",
   "r4": "Give examples, get better results",
-  "ctaH": "Next: three free guides",
-  "ctaP": "A first AI pilot, choosing a model, personal data.",
-  "ctaBtn": "Request by email",
-  "ctaHref": "/guides/#request",
-  "pdfBtn": "Download PDF",
-  "shareX": "Share on X",
-  "shareLi": "Share on LinkedIn",
-  "copy": "Copy link",
-  "footer": "No cookies. Visits are counted in aggregate with GoatCounter.",
+  "ctaH": "Next: a business unit’s first AI model",
+  "ctaP": "From one task to a pilot you can measure.",
+  "ctaBtn": "Open guide 1",
+  "ctaHref": "/guides/first-model/",
   "js": {
     "restart": "Try again",
     "probAria": "probability",
@@ -96,14 +74,63 @@
     "decisionAria": "Your call",
     "tally": "{n} of 10 decided",
     "hits": "Matches: {n}",
-    "copied": "Copied",
-    "copyFail": "Could not copy",
     "shareText": "How does AI learn? I watched it in my browser in 10 minutes, then sorted ten work tasks into fine, careful and don’t:",
     "base": "Let’s move the meeting to",
     "rounds": [
-      [["tomorrow", 58], ["Monday", 27], ["next week", 14], ["eggplant", 0]],
-      [["because", 46], ["at", 31], ["so", 22], ["giraffe", 0]],
-      [["the", 52], ["our", 29], ["everyone", 18], ["space", 0]]
+      [
+        [
+          "tomorrow",
+          58
+        ],
+        [
+          "Monday",
+          27
+        ],
+        [
+          "next week",
+          14
+        ],
+        [
+          "eggplant",
+          0
+        ]
+      ],
+      [
+        [
+          "because",
+          46
+        ],
+        [
+          "at",
+          31
+        ],
+        [
+          "so",
+          22
+        ],
+        [
+          "giraffe",
+          0
+        ]
+      ],
+      [
+        [
+          "the",
+          52
+        ],
+        [
+          "our",
+          29
+        ],
+        [
+          "everyone",
+          18
+        ],
+        [
+          "space",
+          0
+        ]
+      ]
     ],
     "stop": "the a an to and of in for on is are be it this that we our your you at by with from as or",
     "urgentEx": [
@@ -123,12 +150,30 @@
       "Today the team dinner is at the cafeteria, joining is optional"
     ],
     "tests": [
-      ["Customer portal will not open, complaints are rising", 1],
-      ["Invoice payment stuck, deadline tomorrow morning", 1],
-      ["Today the department lunch is on, attendance optional", 0],
-      ["Training registration opens next week", 0],
-      ["System error, transactions halted", 1],
-      ["New version of the slide template attached", 0]
+      [
+        "Customer portal will not open, complaints are rising",
+        1
+      ],
+      [
+        "Invoice payment stuck, deadline tomorrow morning",
+        1
+      ],
+      [
+        "Today the department lunch is on, attendance optional",
+        0
+      ],
+      [
+        "Training registration opens next week",
+        0
+      ],
+      [
+        "System error, transactions halted",
+        1
+      ],
+      [
+        "New version of the slide template attached",
+        0
+      ]
     ],
     "lessons": [
       "2 examples: the model is unsure about most messages",
@@ -137,16 +182,70 @@
       "12 examples: a more varied example fixed it"
     ],
     "tasks": [
-      ["note", "An action list from meeting notes", "ok", "Turning messy text into structure is exactly what it is good at."],
-      ["mail", "Summarising a long email thread", "ok", "One of its strengths. With personal data, use an approved tool."],
-      ["table", "Getting an Excel formula written", "ok", "Fast. Check a few rows by hand."],
-      ["id", "Pasting a customer complaint with ID number into a personal chat account", "no", "Personal data: mask it first and use an approved tool."],
-      ["slides", "A presentation outline and title ideas", "ok", "It gets you past the blank page."],
-      ["chart", "Asking for a competitor’s current market share", "warn", "It can make numbers up. Ask for sources and open them."],
-      ["user", "Letting it set an employee’s performance rating", "no", "Decisions about people stay with people."],
-      ["scale", "Explaining a contract clause in plain words", "warn", "Good for understanding, not a legal opinion."],
-      ["lang", "Translating an email with nothing confidential in it", "ok", "One of its strengths. Check the terms on a last read."],
-      ["calc", "Sending a financial table without checking it", "no", "Number errors are common. Check every figure."]
+      [
+        "note",
+        "An action list from meeting notes",
+        "ok",
+        "Turning messy text into structure is exactly what it is good at."
+      ],
+      [
+        "mail",
+        "Summarising a long email thread",
+        "ok",
+        "One of its strengths. With personal data, use an approved tool."
+      ],
+      [
+        "table",
+        "Getting an Excel formula written",
+        "ok",
+        "Fast. Check a few rows by hand."
+      ],
+      [
+        "id",
+        "Pasting a customer complaint with ID number into a personal chat account",
+        "no",
+        "Personal data: mask it first and use an approved tool."
+      ],
+      [
+        "slides",
+        "A presentation outline and title ideas",
+        "ok",
+        "It gets you past the blank page."
+      ],
+      [
+        "chart",
+        "Asking for a competitor’s current market share",
+        "warn",
+        "It can make numbers up. Ask for sources and open them."
+      ],
+      [
+        "user",
+        "Letting it set an employee’s performance rating",
+        "no",
+        "Decisions about people stay with people."
+      ],
+      [
+        "scale",
+        "Explaining a contract clause in plain words",
+        "warn",
+        "Good for understanding, not a legal opinion."
+      ],
+      [
+        "lang",
+        "Translating an email with nothing confidential in it",
+        "ok",
+        "One of its strengths. Check the terms on a last read."
+      ],
+      [
+        "calc",
+        "Sending a financial table without checking it",
+        "no",
+        "Number errors are common. Check every figure."
+      ]
     ]
-  }
+  },
+  "tabIcon1": "bulb",
+  "tabIcon2": "chip",
+  "tabIcon3": "check",
+  "tabIcon4": "shield"
 }
