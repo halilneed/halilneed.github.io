@@ -591,3 +591,14 @@ a.card:hover, .card:has(> .card-title a:hover) { transform: translateY(-3px); bo
 .plain { list-style: none; }
 .plain li + li { margin-top: .5rem; }
 @media (min-width: 40rem) { .guide { grid-template-columns: 10.5rem minmax(0, 1fr); padding: 1.5rem; } }
+/* three guides side by side, equal height, buttons on one line at the bottom */
+.gcards { display: grid; gap: .875rem; grid-template-columns: minmax(0, 1fr); list-style: none; }
+.gcard { display: flex; flex-direction: column; gap: .625rem; padding: 1rem 1rem 1.125rem; border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--shadow); }
+.gcard-cover { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.gcard .guide-title { font-size: 1.1875rem; }
+.gcard .guide-title a { text-decoration: none; }
+.gcard .guide-text { font-size: var(--small); line-height: 1.55; }
+.gcard .btns { margin-top: auto; padding-top: .375rem; }
+.gcard .btns { flex-wrap: nowrap; gap: .375rem; }
+.gcard .btns .btn { margin-top: 0; padding-inline: .8rem; font-size: var(--tiny); white-space: nowrap; }
+@media (min-width: 48rem) { .gcards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

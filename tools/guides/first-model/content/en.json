@@ -1,0 +1,93 @@
+{
+  "pdfName": "first-ai-model.pdf",
+  "time": "PT15M",
+  "title": "A business unit’s first AI model: an interactive guide | halilneed",
+  "name": "A business unit’s first AI model",
+  "desc": "From one task to a pilot you can measure, in four steps: the right first task, scores by slice, the level to start at, shadow and assist mode.",
+  "ogDesc": "From one task to a pilot you can measure, in four interactive steps.",
+  "chip": "Guide 1, 15 minutes, 4 steps",
+  "h1": "A business unit’s first AI model",
+  "heroP": "From one task to a pilot you can measure. For the people who run a process, not for the people who train models.",
+  "tab1": "Task",
+  "tab2": "Score",
+  "tab3": "Level",
+  "tab4": "Pilot",
+  "tabIcon1": "note",
+  "tabIcon2": "gauge",
+  "tabIcon3": "stairs",
+  "tabIcon4": "flag",
+  "s1h": "Which task first?",
+  "s1p": "Pick a task. The task card fills itself in.",
+  "s1title": "Task card",
+  "note1": "A good first task repeats often, has an output you can check and is cheap to get wrong.",
+  "s2h": "One score hides the weak cases",
+  "s2p": "Look at the overall score, then split it into slices.",
+  "overallLbl": "Overall accuracy",
+  "fixBtn": "Add examples to weak slices",
+  "reset": "Start over",
+  "s2cap": "I took my own Turkish personal-data model from 0.740 to 0.882 this way, without training a bigger model.",
+  "s3h": "Which level to start at?",
+  "s3p": "Answer three questions and the starting level lights up.",
+  "note3": "A first pilot almost never needs level 4.",
+  "s4h": "Shadow first, then assist",
+  "s4p": "A pilot runs in two stages. Look at both.",
+  "r1": "One task, one measure",
+  "r2": "Read the score slice by slice",
+  "r3": "Watch in shadow mode first",
+  "r4": "Write the pass mark down first",
+  "ctaH": "Next: which model for which process",
+  "ctaP": "Six kinds of model and four questions that choose between them.",
+  "ctaBtn": "Open guide 2",
+  "ctaHref": "/guides/model-map/",
+  "js": {
+    "shareText": "A business unit’s first AI model: pick the right task, read the score slice by slice, start in shadow mode. A 15-minute interactive guide:",
+    "cardRows": [["input", "send", "Input"], ["output", "out", "Output"], ["examples", "stack", "Examples"], ["metric", "gauge", "Measure of success"], ["human", "user", "Human check"]],
+    "tasks": [
+      {"name": "Sort emails", "icon": "mail", "input": "An incoming customer email", "output": "One of six categories", "examples": "50 or more labelled emails per category", "metric": "Share in the right category, per category", "human": "When the model is unsure, a person takes it", "checks": [["ok", "Repeats often"], ["ok", "Easy to check"], ["ok", "Cheap to get wrong"]]},
+      {"name": "Pull fields from invoices", "icon": "table", "input": "An invoice PDF", "output": "Date, amount, tax number, IBAN", "examples": "200 invoices with the fields marked", "metric": "Exact match per field", "human": "Amounts above a threshold go to a person", "checks": [["ok", "Repeats often"], ["ok", "Easy to check"], ["warn", "A wrong IBAN is costly"]]},
+      {"name": "Summarise requests", "icon": "note", "input": "A long customer thread", "output": "A five-point summary", "examples": "30 well-written example summaries", "metric": "Checklist: was anything critical left out", "human": "Every summary is read", "checks": [["ok", "Repeats often"], ["warn", "Hard to measure"], ["ok", "Cheap to get wrong"]]},
+      {"name": "Approve credit applications", "icon": "user", "input": "Application form and documents", "output": "Approve or reject", "examples": "Past decisions", "metric": "Accuracy and fairness measures", "human": "The decision has to stay with a person", "checks": [["ok", "Repeats often"], ["warn", "Checking needs an expert"], ["no", "Costly, affects people"]]}
+    ],
+    "verdicts": {"ok": "A good first task", "warn": "Workable, measure with care", "no": "Not for a first pilot"},
+    "views": ["Overall score", "Split into slices"],
+    "shareLbl": "{n}% of the data",
+    "slices": [
+      {"name": "Short emails", "share": 50, "before": 97, "after": 97},
+      {"name": "Long emails", "share": 25, "before": 93, "after": 94},
+      {"name": "Emails with typos", "share": 10, "before": 84, "after": 88},
+      {"name": "Emails in English", "share": 8, "before": 71, "after": 89},
+      {"name": "Rare category: refunds", "share": 7, "before": 58, "after": 86}
+    ],
+    "sliceLesson": [
+      "The overall score looks good. Now split it into slices.",
+      "Two slices are weak, but they are small, so the overall score hides them.",
+      "Not a bigger model: targeted examples for the weak slices."
+    ],
+    "levelN": "Level {n}",
+    "levels": [
+      {"name": "Rules", "icon": "rule", "desc": "Fixed formats: dates, IBANs, codes"},
+      {"name": "A ready model and a prompt", "icon": "chat", "desc": "No labelled data needed"},
+      {"name": "A small fine-tuned model", "icon": "chip", "desc": "With labelled examples, in-house"},
+      {"name": "A custom model", "icon": "stack", "desc": "High volume, a team and a budget"}
+    ],
+    "questions": [
+      "Does the input come in a fixed format? (date, IBAN, product code)",
+      "Do you have 100 or more labelled examples?",
+      "May the data leave the company?"
+    ],
+    "yes": "Yes",
+    "no": "No",
+    "answerAll": "Answer the questions",
+    "levelWhy": [
+      "Write a rule, no model needed.",
+      "Start with a ready model and a good prompt.",
+      "You have examples and the data must stay in: train a small model.",
+      "Try a ready model first; if it falls short, level 3.",
+      "Start with a ready model that runs in-house, and collect examples meanwhile."
+    ],
+    "modes": [
+      {"name": "Shadow mode", "icon": "eye", "nodes": [["mail", "", "Work comes in"], ["user", "you", "A person decides"], ["chip", "hot", "The model also guesses"], ["gauge", "", "The two are compared"]], "cap": "The model affects no one. For two to four weeks you collect scores, slice by slice."},
+      {"name": "Assist mode", "icon": "pen", "nodes": [["mail", "", "Work comes in"], ["chip", "hot", "The model suggests"], ["user", "you", "A person approves or fixes"], ["stack", "", "Fixes become examples"]], "cap": "Once the pass mark is met. A person has the last word, and every fix feeds the model."}
+    ]
+  }
+}

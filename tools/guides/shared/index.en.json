@@ -1,0 +1,66 @@
+{
+  "title": "Guides: AI for business units | halilneed",
+  "desc": "Four short interactive guides for business units: a first step into AI, a first AI model, which model for which process, personal data. Each one is an interactive page and a PDF, in English and Turkish.",
+  "skip": "Skip to content",
+  "navAria": "Main",
+  "nav": [
+    [
+      "/models/",
+      "Models"
+    ],
+    [
+      "/repos/",
+      "Tools"
+    ],
+    [
+      "/guides/",
+      "Guides"
+    ],
+    [
+      "/writing/",
+      "Writing"
+    ],
+    [
+      "/#about",
+      "About"
+    ]
+  ],
+  "crumbAria": "Breadcrumb",
+  "h1": "Guides",
+  "lead": "Four short guides for business units that want to put AI into their own processes. Each one is an interactive page that goes step by step, and a PDF of the same guide; in English and in Turkish, open to everyone.",
+  "startBtn": "Start with the first step",
+  "startH": "Start here",
+  "guidesH": "The guides",
+  "guidesLead": "Each guide has four steps. In every step you pick, change or add something and see the result straight away. The PDF is the same guide printed.",
+  "guideN": "Guide {n}",
+  "steps": "4 steps",
+  "pages": "PDF, {n} pages",
+  "langs": "English and Turkish",
+  "partsAria": "Steps",
+  "tryBtn": "Try it",
+  "pdfBtn": "Download PDF",
+  "coverAlt": "Cover of the guide: {n}",
+  "requestH": "New guides by email",
+  "requestP": "Hear by email when a new guide is out. At most one message a month, and you can unsubscribe at any time.",
+  "requestSmall": "If your team has a specific question or a process where it gets stuck, write to <a href=\"{mail}\" data-goatcounter-click=\"guides-mail\">halil@halilneed.agency</a>.",
+  "mailSubject": "A question for our team",
+  "mailBody": "Hello Halil,\n\nOur team and the process where we get stuck:\n",
+  "basisH": "What they are based on",
+  "basisP": "The guides follow from an article of mine, <a href=\"https://halilneed.medium.com/from-first-prompt-to-team-workflows-an-ai-productivity-roadmap-for-corporate-teams-761839e2c265\">From first prompt to team workflows</a>, and from training <a href=\"/models/\">three small Turkish-language models</a> for personal data. Where a guide gives a number from my own work, it is the number on the public model card. Other numbers are illustrative and marked as such.",
+  "footPlace": "© 2026 Halil, Istanbul",
+  "footLinks": [
+    [
+      "/models/turkish-pii-detection/",
+      "Turkish PII detection model"
+    ],
+    [
+      "https://github.com/halilneed/halilneed.github.io",
+      "Source"
+    ]
+  ],
+  "footSmall": "No cookies. Visits are counted in aggregate with GoatCounter.",
+  "introKicker": "Intro",
+  "emailLbl": "Email address",
+  "placeholder": "you@example.com",
+  "subscribeBtn": "Subscribe"
+}

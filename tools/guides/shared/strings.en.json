@@ -1,0 +1,23 @@
+{
+  "locale": "en_US",
+  "altLang": "tr",
+  "altLabel": "Türkçe",
+  "guidesPath": "/guides/",
+  "guidesName": "Guides",
+  "allGuides": "All guides",
+  "stepsAria": "Steps",
+  "kicker": "Step {n} of 4",
+  "next": "Continue",
+  "back": "Back",
+  "printNote": "This PDF is the printed version of an interactive guide. To run the experiments yourself:",
+  "pdfBtn": "Download PDF",
+  "shareX": "Share on X",
+  "shareLi": "Share on LinkedIn",
+  "copy": "Copy link",
+  "footer": "No cookies. Visits are counted in aggregate with GoatCounter.",
+  "illustrative": "The figures are illustrative.",
+  "js": {
+    "copied": "Copied",
+    "copyFail": "Could not copy"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "title": "Rehberler: iş birimleri için yapay zekâ | halilneed",
+  "desc": "İş birimleri için dört kısa, interaktif rehber: yapay zekâya ilk adım, ilk yapay zekâ modeli, hangi süreçte hangi model, kişisel veri. Her biri interaktif sayfa ve PDF, Türkçe ve İngilizce.",
+  "skip": "İçeriğe geç",
+  "navAria": "Ana menü",
+  "nav": [
+    [
+      "/models/",
+      "Modeller"
+    ],
+    [
+      "/repos/",
+      "Araçlar"
+    ],
+    [
+      "/guides/tr/",
+      "Rehberler"
+    ],
+    [
+      "/writing/",
+      "Yazılar"
+    ],
+    [
+      "/#about",
+      "Hakkında"
+    ]
+  ],
+  "crumbAria": "Konum",
+  "h1": "Rehberler",
+  "lead": "Yapay zekâyı kendi süreçlerine yerleştirmek isteyen iş birimleri için dört kısa rehber. Her biri adım adım ilerleyen interaktif bir sayfa ve aynı rehberin PDF’i; Türkçe ve İngilizce, herkese açık.",
+  "startBtn": "İlk adımla başlayın",
+  "startH": "Buradan başlayın",
+  "guidesH": "Rehberler",
+  "guidesLead": "Her rehber dört adım. Her adımda bir şey seçer, değiştirir ya da eklersiniz ve sonucu hemen görürsünüz. PDF, aynı rehberin basılı hâlidir.",
+  "guideN": "Rehber {n}",
+  "steps": "4 adım",
+  "pages": "PDF, {n} sayfa",
+  "langs": "Türkçe ve İngilizce",
+  "partsAria": "Adımlar",
+  "tryBtn": "Test et",
+  "pdfBtn": "PDF indir",
+  "coverAlt": "Rehberin kapağı: {n}",
+  "requestH": "Yeni rehberler e-postayla",
+  "requestP": "Yeni bir rehber çıktığında e-postayla haber alın. Ayda en fazla bir e-posta, istediğiniz an ayrılabilirsiniz.",
+  "requestSmall": "Ekibinize özel bir soru ya da takıldığınız bir süreç varsa <a href=\"{mail}\" data-goatcounter-click=\"guides-tr-mail\">halil@halilneed.agency</a> adresine yazın.",
+  "mailSubject": "Ekibimiz için bir soru",
+  "mailBody": "Merhaba Halil,\n\nEkibimiz ve takıldığımız süreç:\n",
+  "basisH": "Neye dayanıyorlar",
+  "basisP": "Rehberler, <a href=\"https://halilneed.medium.com/from-first-prompt-to-team-workflows-an-ai-productivity-roadmap-for-corporate-teams-761839e2c265\" lang=\"en\">From first prompt to team workflows</a> adlı yazımdan ve kişisel veri için eğittiğim <a href=\"/models/\">üç küçük Türkçe modelden</a> çıktı. Bir rehber kendi çalışmamdan bir rakam verdiğinde, bu rakam herkese açık model kartındaki rakamdır. Diğer rakamlar temsilîdir ve öyle işaretlenmiştir.",
+  "footPlace": "© 2026 Halil, İstanbul",
+  "footLinks": [
+    [
+      "/models/turkish-pii-detection/",
+      "Türkçe kişisel veri tespit modeli"
+    ],
+    [
+      "https://github.com/halilneed/halilneed.github.io",
+      "Kaynak"
+    ]
+  ],
+  "footSmall": "Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.",
+  "introKicker": "Giriş",
+  "emailLbl": "E-posta adresi",
+  "placeholder": "siz@ornek.com",
+  "subscribeBtn": "Abone ol"
+}

@@ -1,0 +1,93 @@
+{
+  "pdfName": "ilk-yapay-zeka-modeli.pdf",
+  "time": "PT15M",
+  "title": "Bir iş biriminin ilk yapay zekâ modeli: interaktif rehber | halilneed",
+  "name": "Bir iş biriminin ilk yapay zekâ modeli",
+  "desc": "Tek bir işten ölçülebilir bir pilota, dört adımda: doğru ilk görev, dilim bazında ölçüm, başlangıç seviyesi, gölge ve yardımcı mod.",
+  "ogDesc": "Tek bir işten ölçülebilir bir pilota, dört interaktif adımda.",
+  "chip": "Rehber 1, 15 dakika, 4 adım",
+  "h1": "Bir iş biriminin ilk yapay zekâ modeli",
+  "heroP": "Tek bir işten ölçülebilir bir pilota. Model eğitenler için değil, süreci yürütenler için.",
+  "tab1": "Görev",
+  "tab2": "Ölçüm",
+  "tab3": "Seviye",
+  "tab4": "Pilot",
+  "tabIcon1": "note",
+  "tabIcon2": "gauge",
+  "tabIcon3": "stairs",
+  "tabIcon4": "flag",
+  "s1h": "Hangi işle başlamalı?",
+  "s1p": "Bir iş seçin. Görev kartı kendini doldurur.",
+  "s1title": "Görev kartı",
+  "note1": "İyi ilk görev: sık tekrarlanır, çıktısı kontrol edilebilir, hatası ucuzdur.",
+  "s2h": "Tek skor zayıf durumları saklar",
+  "s2p": "Önce genel skora bakın, sonra dilimlere bölün.",
+  "overallLbl": "Genel doğruluk",
+  "fixBtn": "Zayıf dilimlere örnek ekle",
+  "reset": "Baştan başla",
+  "s2cap": "Kendi Türkçe kişisel veri modelimde aynı yolla, daha büyük model eğitmeden 0.740’tan 0.882’ye çıktım.",
+  "s3h": "Hangi seviyeden başlamalı?",
+  "s3p": "Üç soruyu yanıtlayın, başlangıç seviyesi işaretlensin.",
+  "note3": "4. seviye ilk pilot için neredeyse hiç gerekmez.",
+  "s4h": "Önce gölge, sonra yardımcı",
+  "s4p": "Pilot iki aşamada çalışır. İkisine de bakın.",
+  "r1": "Tek görev, tek ölçü",
+  "r2": "Skoru dilim dilim okuyun",
+  "r3": "Önce gölge modda izleyin",
+  "r4": "Geçme eşiğini önceden yazın",
+  "ctaH": "Sıradaki: hangi süreçte hangi model",
+  "ctaP": "Altı tür model ve aralarında seçim yapan dört soru.",
+  "ctaBtn": "Rehber 2’yi aç",
+  "ctaHref": "/guides/model-map/tr/",
+  "js": {
+    "shareText": "Bir iş biriminin ilk yapay zekâ modeli: doğru görevi seçmek, skoru dilim dilim okumak, gölge modda başlamak. 15 dakikalık interaktif rehber:",
+    "cardRows": [["input", "send", "Girdi"], ["output", "out", "Çıktı"], ["examples", "stack", "Örnekler"], ["metric", "gauge", "Başarı ölçüsü"], ["human", "user", "İnsan kontrolü"]],
+    "tasks": [
+      {"name": "E-postayı sınıflandır", "icon": "mail", "input": "Gelen müşteri e-postası", "output": "Altı kategoriden biri", "examples": "Kategori başına 50 ve üzeri etiketli e-posta", "metric": "Doğru kategori oranı, kategori bazında", "human": "Model emin değilse e-posta insana gider", "checks": [["ok", "Sık tekrarlanır"], ["ok", "Kontrol edilebilir"], ["ok", "Hatası ucuz"]]},
+      {"name": "Faturadan alan çıkar", "icon": "table", "input": "Fatura PDF’i", "output": "Tarih, tutar, vergi no, IBAN", "examples": "Alanları işaretlenmiş 200 fatura", "metric": "Alan bazında tam eşleşme", "human": "Eşiğin üstündeki tutarlar insana gider", "checks": [["ok", "Sık tekrarlanır"], ["ok", "Kontrol edilebilir"], ["warn", "Yanlış IBAN pahalı"]]},
+      {"name": "Talebi özetle", "icon": "note", "input": "Uzun müşteri yazışması", "output": "Beş maddelik özet", "examples": "İyi yazılmış 30 örnek özet", "metric": "Kontrol listesi: kritik bilgi kaçtı mı", "human": "Her özet okunur", "checks": [["ok", "Sık tekrarlanır"], ["warn", "Doğruluğu ölçmek zor"], ["ok", "Hatası ucuz"]]},
+      {"name": "Kredi başvurusunu onayla", "icon": "user", "input": "Başvuru formu ve belgeler", "output": "Onay ya da ret", "examples": "Geçmiş kararlar", "metric": "Doğruluk ve adalet ölçüleri", "human": "Karar insanda kalmalı", "checks": [["ok", "Sık tekrarlanır"], ["warn", "Kontrolü uzmanlık ister"], ["no", "Hatası pahalı, insanı etkiler"]]}
+    ],
+    "verdicts": {"ok": "İyi bir ilk görev", "warn": "Olur, ama dikkatle ölçün", "no": "İlk pilot için uygun değil"},
+    "views": ["Genel skor", "Dilimlere böl"],
+    "shareLbl": "verinin %{n}’i",
+    "slices": [
+      {"name": "Kısa e-postalar", "share": 50, "before": 97, "after": 97},
+      {"name": "Uzun e-postalar", "share": 25, "before": 93, "after": 94},
+      {"name": "Yazım hatalı e-postalar", "share": 10, "before": 84, "after": 88},
+      {"name": "İngilizce e-postalar", "share": 8, "before": 71, "after": 89},
+      {"name": "Nadir kategori: iade", "share": 7, "before": 58, "after": 86}
+    ],
+    "sliceLesson": [
+      "Genel skor iyi görünüyor. Şimdi dilimlere bölün.",
+      "İki dilim zayıf ama küçük oldukları için genel skorda görünmüyor.",
+      "Daha büyük model değil, zayıf dilimlere hedefli örnek."
+    ],
+    "levelN": "Seviye {n}",
+    "levels": [
+      {"name": "Kural", "icon": "rule", "desc": "Sabit biçimler: tarih, IBAN, kod"},
+      {"name": "Hazır model ve talimat", "icon": "chat", "desc": "Etiketli veri gerekmez"},
+      {"name": "Küçük model, ince ayar", "icon": "chip", "desc": "Etiketli örnekle, kurum içinde"},
+      {"name": "Özel model", "icon": "stack", "desc": "Büyük hacim, ekip ve bütçe"}
+    ],
+    "questions": [
+      "Girdi sabit bir biçimde mi? (tarih, IBAN, ürün kodu)",
+      "Elinizde 100 ve üzeri etiketli örnek var mı?",
+      "Veri kurum dışına çıkabilir mi?"
+    ],
+    "yes": "Evet",
+    "no": "Hayır",
+    "answerAll": "Soruları yanıtlayın",
+    "levelWhy": [
+      "Kural yazın, model gerekmez.",
+      "Hazır bir modelle ve iyi bir talimatla başlayın.",
+      "Örnekleriniz var ve veri içeride kalmalı: küçük bir model eğitin.",
+      "Önce hazır modelle deneyin; yetmezse seviye 3.",
+      "Kurum içinde çalışan hazır bir modelle başlayın, bu arada örnek toplayın."
+    ],
+    "modes": [
+      {"name": "Gölge mod", "icon": "eye", "nodes": [["mail", "", "İş gelir"], ["user", "you", "İnsan karar verir"], ["chip", "hot", "Model de tahmin eder"], ["gauge", "", "Karşılaştırılır"]], "cap": "Model kimseyi etkilemez. İki ile dört hafta boyunca, dilim dilim skor toplanır."},
+      {"name": "Yardımcı mod", "icon": "pen", "nodes": [["mail", "", "İş gelir"], ["chip", "hot", "Model önerir"], ["user", "you", "İnsan onaylar ya da düzeltir"], ["stack", "", "Düzeltmeler örnek olur"]], "cap": "Geçme eşiği aşıldıysa. Son söz insanda, her düzeltme modeli besler."}
+    ]
+  }
+}
