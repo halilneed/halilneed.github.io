@@ -40,6 +40,7 @@
   }
   const pickMask=pills($("maskPills"),L.maskModes.map((m,i)=>({label:m,icon:["eye","rule","chip","shield"][i]})),renderMask,0);
 
+  /*@locked*/
   /* step 3: what a recall figure means per day */
   const nf=new Intl.NumberFormat(LANG);
   function calc(){
@@ -54,6 +55,8 @@
   }
   ["vol","rate","rec"].forEach(id=>$(id).addEventListener("input",calc));
   calc();
+
+  /*@end*/
 
   onPrint.push(()=>{
     document.querySelectorAll("#texts .card").forEach((d,i)=>choose(d,i,L.texts[i][1]));

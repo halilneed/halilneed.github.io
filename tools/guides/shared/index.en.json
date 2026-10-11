@@ -27,11 +27,11 @@
   ],
   "crumbAria": "Breadcrumb",
   "h1": "Guides",
-  "lead": "Four short guides for business units that want to put AI into their own processes. Each one is an interactive page that goes step by step, and a PDF of the same guide; in English and in Turkish, open to everyone.",
+  "lead": "Four short guides for business units that want to put AI into their own processes. Each one is an interactive page that goes step by step, and a PDF; in English and in Turkish. The first step is fully open. Try the first two steps of the other three here and ask for the rest by email.",
   "startBtn": "Start with the first step",
   "startH": "Start here",
   "guidesH": "The guides",
-  "guidesLead": "Each guide has four steps. In every step you pick, change or add something and see the result straight away. The PDF is the same guide printed.",
+  "guidesLead": "Each guide has four steps. The first two are open here: you pick, change or add something and see the result straight away. I send steps 3 and 4 and the full PDF by email, for free.",
   "guideN": "Guide {n}",
   "steps": "4 steps",
   "pages": "PDF, {n} pages",
@@ -64,5 +64,9 @@
   "placeholder": "you@example.com",
   "subscribeBtn": "Subscribe",
   "home": "/",
-  "switchAria": "Language"
+  "switchAria": "Language",
+  "gatedSteps": "2 steps open",
+  "gatedRest": "full guide and PDF by email",
+  "previewBtn": "PDF preview",
+  "fullBtn": "Get the full guide"
 }

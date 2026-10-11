@@ -27,11 +27,11 @@
   ],
   "crumbAria": "Konum",
   "h1": "Rehberler",
-  "lead": "Yapay zekâyı kendi süreçlerine yerleştirmek isteyen iş birimleri için dört kısa rehber. Her biri adım adım ilerleyen interaktif bir sayfa ve aynı rehberin PDF’i; Türkçe ve İngilizce, herkese açık.",
+  "lead": "Yapay zekâyı kendi süreçlerine yerleştirmek isteyen iş birimleri için dört kısa rehber. Her biri adım adım ilerleyen interaktif bir sayfa ve PDF; Türkçe ve İngilizce. İlk adım tamamen açık. Diğer üç rehberin ilk iki adımını burada deneyin, tamamını e-postayla isteyin.",
   "startBtn": "İlk adımla başlayın",
   "startH": "Buradan başlayın",
   "guidesH": "Rehberler",
-  "guidesLead": "Her rehber dört adım. Her adımda bir şey seçer, değiştirir ya da eklersiniz ve sonucu hemen görürsünüz. PDF, aynı rehberin basılı hâlidir.",
+  "guidesLead": "Her rehber dört adım. İlk iki adım burada açık: bir şey seçer, değiştirir ya da eklersiniz ve sonucu hemen görürsünüz. Adım 3 ve 4 ile tam PDF’i e-postayla ücretsiz gönderiyorum.",
   "guideN": "Rehber {n}",
   "steps": "4 adım",
   "pages": "PDF, {n} sayfa",
@@ -64,5 +64,9 @@
   "placeholder": "siz@ornek.com",
   "subscribeBtn": "Abone ol",
   "home": "/tr/",
-  "switchAria": "Dil"
+  "switchAria": "Dil",
+  "gatedSteps": "2 adım açık",
+  "gatedRest": "tamamı ve PDF e-postayla",
+  "previewBtn": "PDF önizleme",
+  "fullBtn": "Tamamını iste"
 }

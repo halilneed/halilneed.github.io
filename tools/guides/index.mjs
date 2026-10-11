@@ -11,7 +11,7 @@
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { GUIDES, LANGS, paths } from './build.mjs';
+import { GUIDES, LANGS, paths, gateOf } from './build.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..', '..');
@@ -36,16 +36,16 @@ for (const lang of LANGS) {
     const gAlt = json(slug, 'content', `${alt}.json`);
     const me = paths(slug, lang, g.pdfName);
     const them = paths(slug, alt, gAlt.pdfName);
-    return { slug, g, me, them, pages: pdfPages(join(ROOT, me.pdf.slice(1))), parts: [g.s1h, g.s2h, g.s3h, g.s4h] };
+    return { slug, g, me, them, gate: gateOf(slug), pages: pdfPages(join(ROOT, me.pdf.slice(1))), parts: [g.s1h, g.s2h, g.s3h, g.s4h] };
   });
 
-  const kicker = (i, x) => [i ? t.guideN.replace('{n}', i) : t.introKicker, t.steps, x.pages ? t.pages.replace('{n}', x.pages) : '', t.langs]
+  const kicker = (i, x) => [i ? t.guideN.replace('{n}', i) : t.introKicker, x.gate ? t.gatedSteps : t.steps, x.gate ? '' : (x.pages ? t.pages.replace('{n}', x.pages) : ''), x.gate ? t.gatedRest : t.langs]
     .filter(Boolean).map((s) => `<span>${esc(s)}</span>`).join('');
   const parts = (x) => `<ul class="guide-list" aria-label="${esc(t.partsAria)}">${x.parts.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`;
   const btns = (x) => `<ul class="btns">
             <li><a class="btn btn--solid" href="${x.me.path}" data-goatcounter-click="guides-${lang}-${x.slug}-open">${esc(t.tryBtn)}</a></li>
-            <li><a class="btn" href="${x.me.pdf}" data-goatcounter-click="guides-${lang}-${x.slug}-pdf">${esc(t.pdfBtn)}</a></li>
-            <li><a class="btn" href="${x.them.path}" lang="${alt}" hreflang="${alt}">${altLabel}</a></li>
+            <li><a class="btn" href="${x.me.pdf}" data-goatcounter-click="guides-${lang}-${x.slug}-pdf">${esc(x.gate ? t.previewBtn : t.pdfBtn)}</a></li>
+            ${x.gate ? `<li><a class="btn" href="${x.me.path}#step-3" data-goatcounter-click="guides-${lang}-${x.slug}-full">${esc(t.fullBtn)}</a></li>` : ''}
           </ul>`;
 
   const [first, ...rest] = guides;

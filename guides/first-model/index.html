@@ -407,6 +407,24 @@ footer a{color:var(--ink-2)}
 .cap{text-align:center;margin-top:18px;font-size:.9rem;color:var(--muted);max-width:52ch;margin-left:auto;margin-right:auto}
 .cap a{color:var(--ink-2)}
 
+/* lock panel: steps sent by email */
+.lock{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:40px 28px;background:linear-gradient(180deg,color-mix(in srgb,var(--hl) 14%,var(--surface)),var(--surface) 55%)}
+.lock-ic{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem;background:var(--hl);color:var(--hl-ink)}
+.lock h3{font-size:clamp(1.3rem,3.6vw,1.6rem);font-weight:700;letter-spacing:-.02em}
+.lock-p{color:var(--muted);max-width:44ch}
+.lock-list{list-style:none;margin:4px 0 6px;padding:0;display:grid;gap:8px;text-align:left}
+.lock-list li{display:flex;align-items:center;gap:10px;font-weight:500;font-size:.95rem}
+.lock-list svg{color:var(--ok)}
+.lock-form{display:flex;gap:8px;width:100%;max-width:460px;padding:6px;border-radius:999px;background:var(--surface);border:1px solid var(--line-strong);box-shadow:var(--shadow-sm)}
+.lock-form input[type=email]{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:.95rem;padding:0 14px;color:var(--ink);outline:none}
+.lock-form .btn{height:42px;padding:0 18px;white-space:nowrap}
+.lock-form:focus-within{border-color:var(--focus)}
+.lock .fine{margin-top:0;max-width:52ch;display:block}
+.lock .fine a{color:var(--ink-2)}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.seg button svg use[href="#i-lock"]{opacity:.8}
+@media (max-width:520px){.lock{padding:30px 16px}.lock-form{flex-direction:column;border-radius:16px}.lock-form input[type=email]{height:42px}}
+
 /* language switch, top right: TR | EN */
 .top .wrap{gap:12px}
 .top nav{margin-left:auto}
@@ -439,7 +457,7 @@ footer a{color:var(--ink-2)}
   html{font-size:14px}
   body{background:#fff}
   .print-only{display:block}
-  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
+  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.lock-form,.lock .fine,section.step:has(.lock.dup),.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
   section.step,section.step[hidden]{display:block!important;padding:0 0 6mm;break-before:page}
   .hero{min-height:235mm;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0}
   .hero p{max-width:46ch}
@@ -537,8 +555,8 @@ footer a{color:var(--ink-2)}
       <span class="thumb" aria-hidden="true"></span>
       <button data-go="1" aria-current="step"><svg class="i"><use href="#i-note"/></svg><span class="t">Task</span><span class="ck"></span></button>
       <button data-go="2"><svg class="i"><use href="#i-gauge"/></svg><span class="t">Score</span><span class="ck"></span></button>
-      <button data-go="3"><svg class="i"><use href="#i-stairs"/></svg><span class="t">Level</span><span class="ck"></span></button>
-      <button data-go="4"><svg class="i"><use href="#i-flag"/></svg><span class="t">Pilot</span><span class="ck"></span></button>
+      <button data-go="3"><svg class="i"><use href="#i-lock"/></svg><span class="t">Level</span><span class="ck"></span></button>
+      <button data-go="4"><svg class="i"><use href="#i-lock"/></svg><span class="t">Pilot</span><span class="ck"></span></button>
     </nav>
   </div>
 </div>
@@ -594,13 +612,26 @@ footer a{color:var(--ink-2)}
     <p>Answer three questions and the starting level lights up.</p>
   </div>
 
-  <div class="panel">
-    <div class="qs" id="levelQs"></div>
-    <div class="ladder" id="ladder"></div>
-    <div class="verdict" id="levelVerdict"></div>
+  <div class="panel lock">
+    <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
+    <h3>Steps 3 and 4 are in the full guide</h3>
+    <p class="lock-p">I send the full guide by email, as an interactive page and a PDF. It is free.</p>
+    <ul class="lock-list">
+      <li><svg class="i"><use href="#i-check"/></svg>Step 3 of 4: Which level to start at?</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Step 4 of 4: Shadow first, then assist</li>
+      <li><svg class="i"><use href="#i-check"/></svg>The full guide as a PDF</li>
+    </ul>
+    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="first-model-request-form-en">
+      <label class="visually-hidden" for="lock-email-3">Email address</label>
+      <input id="lock-email-3" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      <input type="hidden" name="tag" value="guide-first-model">
+      <input type="hidden" name="tag" value="lang-en">
+      <input type="hidden" name="embed" value="1">
+      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Send me the full guide</button>
+    </form>
+    <p class="fine">Your address is used only to send the guide and to tell you about new ones; you can unsubscribe at any time. You can also write instead of using the form: <a href="mailto:halil@halilneed.agency?subject=Guide%20request%3A%20A%20business%20unit%E2%80%99s%20first%20AI%20model&amp;body=Hello%20Halil%2C%0A%0APlease%20send%20me%20the%20full%20guide%20%E2%80%9CA%20business%20unit%E2%80%99s%20first%20AI%20model%E2%80%9D.%0A%0AMy%20team%20and%20where%20it%20gets%20stuck%20(optional)%3A%0A" data-goatcounter-click="first-model-request-mail-en">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Steps 3 and 4 and the full PDF are sent by email. To ask for them: <b>halilneed.agency/guides/first-model/#step-3</b></p>
   </div>
-
-  <div class="note"><svg class="i"><use href="#i-alert"/></svg>A first pilot almost never needs level 4.</div>
 
   <div class="pager"><button class="btn ghost" data-go="2"><svg class="i"><use href="#i-back"/></svg>Back</button><button class="btn" data-go="4">Continue<svg class="i"><use href="#i-arrow"/></svg></button></div>
 </section>
@@ -612,19 +643,26 @@ footer a{color:var(--ink-2)}
     <p>A pilot runs in two stages. Look at both.</p>
   </div>
 
-  <div class="panel">
-    <div class="pills sm" id="modePills"></div>
-    <div class="flow" id="modeFlow" style="margin-top:26px"></div>
-    <p class="cap" id="modeCap"></p>
+  <div class="panel lock dup">
+    <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
+    <h3>Steps 3 and 4 are in the full guide</h3>
+    <p class="lock-p">I send the full guide by email, as an interactive page and a PDF. It is free.</p>
+    <ul class="lock-list">
+      <li><svg class="i"><use href="#i-check"/></svg>Step 3 of 4: Which level to start at?</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Step 4 of 4: Shadow first, then assist</li>
+      <li><svg class="i"><use href="#i-check"/></svg>The full guide as a PDF</li>
+    </ul>
+    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="first-model-request-form-en">
+      <label class="visually-hidden" for="lock-email-4">Email address</label>
+      <input id="lock-email-4" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      <input type="hidden" name="tag" value="guide-first-model">
+      <input type="hidden" name="tag" value="lang-en">
+      <input type="hidden" name="embed" value="1">
+      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Send me the full guide</button>
+    </form>
+    <p class="fine">Your address is used only to send the guide and to tell you about new ones; you can unsubscribe at any time. You can also write instead of using the form: <a href="mailto:halil@halilneed.agency?subject=Guide%20request%3A%20A%20business%20unit%E2%80%99s%20first%20AI%20model&amp;body=Hello%20Halil%2C%0A%0APlease%20send%20me%20the%20full%20guide%20%E2%80%9CA%20business%20unit%E2%80%99s%20first%20AI%20model%E2%80%9D.%0A%0AMy%20team%20and%20where%20it%20gets%20stuck%20(optional)%3A%0A" data-goatcounter-click="first-model-request-mail-en">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Steps 3 and 4 and the full PDF are sent by email. To ask for them: <b>halilneed.agency/guides/first-model/#step-3</b></p>
   </div>
-
-  <ul class="rules">
-    <li><span class="ic"><svg class="i"><use href="#i-target"/></svg></span><b>One task, one measure</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-grid"/></svg></span><b>Read the score slice by slice</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-eye"/></svg></span><b>Watch in shadow mode first</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-flag"/></svg></span><b>Write the pass mark down first</b></li>
-  </ul>
-
   <div class="cta">
     <h3>Next: which model for which process</h3>
     <p>Six kinds of model and four questions that choose between them.</p>
@@ -633,12 +671,11 @@ footer a{color:var(--ink-2)}
   </div>
 
   <div class="share">
-    <a class="btn ghost" href="/guides/first-model/first-ai-model.pdf" data-goatcounter-click="first-model-pdf-en"><svg class="i"><use href="#i-download"/></svg>Download PDF</a>
+    <a class="btn ghost" href="/guides/first-model/first-ai-model.pdf" data-goatcounter-click="first-model-pdf-en"><svg class="i"><use href="#i-download"/></svg>PDF preview</a>
     <a class="btn ghost" id="shareX" target="_blank" rel="noopener" data-goatcounter-click="first-model-share-x-en"><svg class="i"><use href="#i-share"/></svg>Share on X</a>
     <a class="btn ghost" id="shareLi" target="_blank" rel="noopener" data-goatcounter-click="first-model-share-li-en"><svg class="i"><use href="#i-share"/></svg>Share on LinkedIn</a>
     <button class="btn ghost" id="copyLink"><svg class="i"><use href="#i-link"/></svg><span>Copy link</span></button>
   </div>
-
 
   <div class="pager"><button class="btn ghost" data-go="3"><svg class="i"><use href="#i-back"/></svg>Back</button></div>
 </section>
@@ -649,7 +686,7 @@ footer a{color:var(--ink-2)}
 
 <script>
 (function(){
-  const L={"copied":"Copied","copyFail":"Could not copy","shareText":"A business unit’s first AI model: pick the right task, read the score slice by slice, start in shadow mode. A 15-minute interactive guide:","cardRows":[["input","send","Input"],["output","out","Output"],["examples","stack","Examples"],["metric","gauge","Measure of success"],["human","user","Human check"]],"tasks":[{"name":"Sort emails","icon":"mail","input":"An incoming customer email","output":"One of six categories","examples":"50 or more labelled emails per category","metric":"Share in the right category, per category","human":"When the model is unsure, a person takes it","checks":[["ok","Repeats often"],["ok","Easy to check"],["ok","Cheap to get wrong"]]},{"name":"Pull fields from invoices","icon":"table","input":"An invoice PDF","output":"Date, amount, tax number, IBAN","examples":"200 invoices with the fields marked","metric":"Exact match per field","human":"Amounts above a threshold go to a person","checks":[["ok","Repeats often"],["ok","Easy to check"],["warn","A wrong IBAN is costly"]]},{"name":"Summarise requests","icon":"note","input":"A long customer thread","output":"A five-point summary","examples":"30 well-written example summaries","metric":"Checklist: was anything critical left out","human":"Every summary is read","checks":[["ok","Repeats often"],["warn","Hard to measure"],["ok","Cheap to get wrong"]]},{"name":"Approve credit applications","icon":"user","input":"Application form and documents","output":"Approve or reject","examples":"Past decisions","metric":"Accuracy and fairness measures","human":"The decision has to stay with a person","checks":[["ok","Repeats often"],["warn","Checking needs an expert"],["no","Costly, affects people"]]}],"verdicts":{"ok":"A good first task","warn":"Workable, measure with care","no":"Not for a first pilot"},"views":["Overall score","Split into slices"],"shareLbl":"{n}% of the data","slices":[{"name":"Short emails","share":50,"before":97,"after":97},{"name":"Long emails","share":25,"before":93,"after":94},{"name":"Emails with typos","share":10,"before":84,"after":88},{"name":"Emails in English","share":8,"before":71,"after":89},{"name":"Rare category: refunds","share":7,"before":58,"after":86}],"sliceLesson":["The overall score looks good. Now split it into slices.","Two slices are weak, but they are small, so the overall score hides them.","Not a bigger model: targeted examples for the weak slices."],"levelN":"Level {n}","levels":[{"name":"Rules","icon":"rule","desc":"Fixed formats: dates, IBANs, codes"},{"name":"A ready model and a prompt","icon":"chat","desc":"No labelled data needed"},{"name":"A small fine-tuned model","icon":"chip","desc":"With labelled examples, in-house"},{"name":"A custom model","icon":"stack","desc":"High volume, a team and a budget"}],"questions":["Does the input come in a fixed format? (date, IBAN, product code)","Do you have 100 or more labelled examples?","May the data leave the company?"],"yes":"Yes","no":"No","answerAll":"Answer the questions","levelWhy":["Write a rule, no model needed.","Start with a ready model and a good prompt.","You have examples and the data must stay in: train a small model.","Try a ready model first; if it falls short, level 3.","Start with a ready model that runs in-house, and collect examples meanwhile."],"modes":[{"name":"Shadow mode","icon":"eye","nodes":[["mail","","Work comes in"],["user","you","A person decides"],["chip","hot","The model also guesses"],["gauge","","The two are compared"]],"cap":"The model affects no one. For two to four weeks you collect scores, slice by slice."},{"name":"Assist mode","icon":"pen","nodes":[["mail","","Work comes in"],["chip","hot","The model suggests"],["user","you","A person approves or fixes"],["stack","","Fixes become examples"]],"cap":"Once the pass mark is met. A person has the last word, and every fix feeds the model."}]};
+  const L={"copied":"Copied","copyFail":"Could not copy","shareText":"A business unit’s first AI model: pick the right task, read the score slice by slice, start in shadow mode. A 15-minute interactive guide:","cardRows":[["input","send","Input"],["output","out","Output"],["examples","stack","Examples"],["metric","gauge","Measure of success"],["human","user","Human check"]],"tasks":[{"name":"Sort emails","icon":"mail","input":"An incoming customer email","output":"One of six categories","examples":"50 or more labelled emails per category","metric":"Share in the right category, per category","human":"When the model is unsure, a person takes it","checks":[["ok","Repeats often"],["ok","Easy to check"],["ok","Cheap to get wrong"]]},{"name":"Pull fields from invoices","icon":"table","input":"An invoice PDF","output":"Date, amount, tax number, IBAN","examples":"200 invoices with the fields marked","metric":"Exact match per field","human":"Amounts above a threshold go to a person","checks":[["ok","Repeats often"],["ok","Easy to check"],["warn","A wrong IBAN is costly"]]},{"name":"Summarise requests","icon":"note","input":"A long customer thread","output":"A five-point summary","examples":"30 well-written example summaries","metric":"Checklist: was anything critical left out","human":"Every summary is read","checks":[["ok","Repeats often"],["warn","Hard to measure"],["ok","Cheap to get wrong"]]},{"name":"Approve credit applications","icon":"user","input":"Application form and documents","output":"Approve or reject","examples":"Past decisions","metric":"Accuracy and fairness measures","human":"The decision has to stay with a person","checks":[["ok","Repeats often"],["warn","Checking needs an expert"],["no","Costly, affects people"]]}],"verdicts":{"ok":"A good first task","warn":"Workable, measure with care","no":"Not for a first pilot"},"views":["Overall score","Split into slices"],"shareLbl":"{n}% of the data","slices":[{"name":"Short emails","share":50,"before":97,"after":97},{"name":"Long emails","share":25,"before":93,"after":94},{"name":"Emails with typos","share":10,"before":84,"after":88},{"name":"Emails in English","share":8,"before":71,"after":89},{"name":"Rare category: refunds","share":7,"before":58,"after":86}],"sliceLesson":["The overall score looks good. Now split it into slices.","Two slices are weak, but they are small, so the overall score hides them.","Not a bigger model: targeted examples for the weak slices."]};
   const LANG=document.documentElement.lang;
   const icon=id=>'<svg class="i" aria-hidden="true"><use href="#i-'+id+'"/></svg>';
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -723,44 +760,10 @@ footer a{color:var(--ink-2)}
   $("fixSlices").onclick=()=>{fixed=true;renderSlices();};
   $("resetSlices").onclick=()=>{fixed=false;renderSlices();};
 
-  /* step 3: three questions choose the starting level */
-  const ans=[null,null,null];
-  $("ladder").innerHTML=L.levels.map((l,i)=>'<div class="level" data-i="'+i+'"><span class="n">'+fmt(L.levelN,i+1)+'</span><span class="ic">'+icon(l.icon)+"</span><b>"+esc(l.name)+'</b><span class="d">'+esc(l.desc)+"</span></div>").join("");
-  $("levelQs").innerHTML=L.questions.map((q,i)=>'<div class="qrow">'+icon("help")+"<p>"+esc(q)+'</p><div class="yn" data-q="'+i+'"><button data-v="1" aria-pressed="false">'+esc(L.yes)+'</button><button data-v="0" aria-pressed="false">'+esc(L.no)+"</button></div></div>").join("");
-  function chooseLevel(){
-    let lvl=null, why="";
-    if(ans[0]===1){lvl=0;why=L.levelWhy[0];}
-    else if(ans[0]===0&&ans[1]!=null&&ans[2]!=null){
-      if(ans[1]===1&&ans[2]===0){lvl=2;why=L.levelWhy[2];}
-      else if(ans[1]===1){lvl=1;why=L.levelWhy[3];}
-      else {lvl=1;why=ans[2]===1?L.levelWhy[1]:L.levelWhy[4];}
-    }
-    $("ladder").classList.toggle("chosen",lvl!=null);
-    $("ladder").querySelectorAll(".level").forEach(el=>el.classList.toggle("on",+el.dataset.i===lvl));
-    const v=$("levelVerdict");
-    if(lvl==null){v.className="verdict warn";v.innerHTML=icon("help")+esc(L.answerAll);}
-    else {v.className="verdict ok";v.innerHTML=icon("check")+esc(fmt(L.levelN,lvl+1)+": "+why);}
-  }
-  function setAns(q,val){
-    ans[q]=val;
-    document.querySelectorAll('.yn[data-q="'+q+'"] button').forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.v===val)));
-    chooseLevel();
-  }
-  document.querySelectorAll(".yn").forEach(g=>g.querySelectorAll("button").forEach(b=>b.onclick=()=>setAns(+g.dataset.q,+b.dataset.v)));
-  chooseLevel();
+  
 
-  /* step 4: shadow mode, then assist mode */
-  function showMode(i){
-    const md=L.modes[i];
-    $("modeFlow").innerHTML=md.nodes.map(([ic,kind,lbl],j)=>(j?'<span class="link" aria-hidden="true"></span>':"")+'<div class="node '+kind+'"><div class="ic">'+icon(ic)+'</div><div class="lb">'+esc(lbl)+"</div></div>").join("");
-    $("modeCap").textContent=md.cap;
-  }
-  const pickMode=pills($("modePills"),L.modes.map(md=>({label:md.name,icon:md.icon})),showMode,0);
-
-  onPrint.push(()=>{
-    pickView(1); fixed=true; renderSlices();
-    setAns(0,0); setAns(1,1); setAns(2,0);
-  });
+  onPrint.push(()=>{ pickView(1); fixed=true; renderSlices(); });
+  
 /* ---- end guide ---- */
 
   /* print: every step on its own page, experiments in their final state */

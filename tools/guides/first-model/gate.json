@@ -1,0 +1,13 @@
+{
+  "openSteps": 2,
+  "js": [
+    "levelN",
+    "levels",
+    "questions",
+    "yes",
+    "no",
+    "answerAll",
+    "levelWhy",
+    "modes"
+  ]
+}

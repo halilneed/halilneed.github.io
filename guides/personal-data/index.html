@@ -407,6 +407,24 @@ footer a{color:var(--ink-2)}
 .cap{text-align:center;margin-top:18px;font-size:.9rem;color:var(--muted);max-width:52ch;margin-left:auto;margin-right:auto}
 .cap a{color:var(--ink-2)}
 
+/* lock panel: steps sent by email */
+.lock{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:40px 28px;background:linear-gradient(180deg,color-mix(in srgb,var(--hl) 14%,var(--surface)),var(--surface) 55%)}
+.lock-ic{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem;background:var(--hl);color:var(--hl-ink)}
+.lock h3{font-size:clamp(1.3rem,3.6vw,1.6rem);font-weight:700;letter-spacing:-.02em}
+.lock-p{color:var(--muted);max-width:44ch}
+.lock-list{list-style:none;margin:4px 0 6px;padding:0;display:grid;gap:8px;text-align:left}
+.lock-list li{display:flex;align-items:center;gap:10px;font-weight:500;font-size:.95rem}
+.lock-list svg{color:var(--ok)}
+.lock-form{display:flex;gap:8px;width:100%;max-width:460px;padding:6px;border-radius:999px;background:var(--surface);border:1px solid var(--line-strong);box-shadow:var(--shadow-sm)}
+.lock-form input[type=email]{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:.95rem;padding:0 14px;color:var(--ink);outline:none}
+.lock-form .btn{height:42px;padding:0 18px;white-space:nowrap}
+.lock-form:focus-within{border-color:var(--focus)}
+.lock .fine{margin-top:0;max-width:52ch;display:block}
+.lock .fine a{color:var(--ink-2)}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.seg button svg use[href="#i-lock"]{opacity:.8}
+@media (max-width:520px){.lock{padding:30px 16px}.lock-form{flex-direction:column;border-radius:16px}.lock-form input[type=email]{height:42px}}
+
 /* language switch, top right: TR | EN */
 .top .wrap{gap:12px}
 .top nav{margin-left:auto}
@@ -439,7 +457,7 @@ footer a{color:var(--ink-2)}
   html{font-size:14px}
   body{background:#fff}
   .print-only{display:block}
-  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
+  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.lock-form,.lock .fine,section.step:has(.lock.dup),.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
   section.step,section.step[hidden]{display:block!important;padding:0 0 6mm;break-before:page}
   .hero{min-height:235mm;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0}
   .hero p{max-width:46ch}
@@ -537,8 +555,8 @@ footer a{color:var(--ink-2)}
       <span class="thumb" aria-hidden="true"></span>
       <button data-go="1" aria-current="step"><svg class="i"><use href="#i-route"/></svg><span class="t">Routes</span><span class="ck"></span></button>
       <button data-go="2"><svg class="i"><use href="#i-shield"/></svg><span class="t">Masking</span><span class="ck"></span></button>
-      <button data-go="3"><svg class="i"><use href="#i-sliders"/></svg><span class="t">Recall</span><span class="ck"></span></button>
-      <button data-go="4"><svg class="i"><use href="#i-check"/></svg><span class="t">Flow</span><span class="ck"></span></button>
+      <button data-go="3"><svg class="i"><use href="#i-lock"/></svg><span class="t">Recall</span><span class="ck"></span></button>
+      <button data-go="4"><svg class="i"><use href="#i-lock"/></svg><span class="t">Flow</span><span class="ck"></span></button>
     </nav>
   </div>
 </div>
@@ -593,21 +611,26 @@ footer a{color:var(--ink-2)}
     <p>Change the volume and the recall, and see what gets through unmasked.</p>
   </div>
 
-  <div class="panel">
-    <div class="sliders">
-      <div class="sl"><label for="vol">Texts processed per day <b id="volV"></b></label><input type="range" id="vol" min="100" max="20000" step="100" value="2000"></div>
-      <div class="sl"><label for="rate">Share of texts with personal data <b id="rateV"></b></label><input type="range" id="rate" min="5" max="80" step="1" value="30"></div>
-      <div class="sl"><label for="rec">Masking recall <b id="recV"></b></label><input type="range" id="rec" min="90" max="99.9" step="0.1" value="98"></div>
-    </div>
-    <div class="tiles">
-      <div class="tile"><b id="missDay"></b><span>missed per day</span></div>
-      <div class="tile hot"><b id="missMonth"></b><span>missed per month</span></div>
-      <div class="tile"><b id="missYear"></b><span>missed per year</span></div>
-    </div>
-    <p class="cap">Assumes one piece of personal data per text, 22 working days a month and 250 a year.</p>
+  <div class="panel lock">
+    <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
+    <h3>Steps 3 and 4 are in the full guide</h3>
+    <p class="lock-p">I send the full guide by email, as an interactive page and a PDF. It is free.</p>
+    <ul class="lock-list">
+      <li><svg class="i"><use href="#i-check"/></svg>Step 3 of 4: What a recall figure means per day</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Step 4 of 4: The safe flow</li>
+      <li><svg class="i"><use href="#i-check"/></svg>The full guide as a PDF</li>
+    </ul>
+    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="personal-data-request-form-en">
+      <label class="visually-hidden" for="lock-email-3">Email address</label>
+      <input id="lock-email-3" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      <input type="hidden" name="tag" value="guide-personal-data">
+      <input type="hidden" name="tag" value="lang-en">
+      <input type="hidden" name="embed" value="1">
+      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Send me the full guide</button>
+    </form>
+    <p class="fine">Your address is used only to send the guide and to tell you about new ones; you can unsubscribe at any time. You can also write instead of using the form: <a href="mailto:halil@halilneed.agency?subject=Guide%20request%3A%20Personal%20data%20and%20AI&amp;body=Hello%20Halil%2C%0A%0APlease%20send%20me%20the%20full%20guide%20%E2%80%9CPersonal%20data%20and%20AI%E2%80%9D.%0A%0AMy%20team%20and%20where%20it%20gets%20stuck%20(optional)%3A%0A" data-goatcounter-click="personal-data-request-mail-en">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Steps 3 and 4 and the full PDF are sent by email. To ask for them: <b>halilneed.agency/guides/personal-data/#step-3</b></p>
   </div>
-
-  <div class="note" id="recNote"></div>
 
   <div class="pager"><button class="btn ghost" data-go="2"><svg class="i"><use href="#i-back"/></svg>Back</button><button class="btn" data-go="4">Continue<svg class="i"><use href="#i-arrow"/></svg></button></div>
 </section>
@@ -619,27 +642,26 @@ footer a{color:var(--ink-2)}
     <p>Four steps before text goes to a model.</p>
   </div>
 
-  <div class="panel">
-    <div class="flow">
-      <div class="node"><div class="ic"><svg class="i"><use href="#i-flag"/></svg></div><div class="lb">Classify</div></div>
-      <span class="link" aria-hidden="true"></span>
-      <div class="node you"><div class="ic"><svg class="i"><use href="#i-sliders"/></svg></div><div class="lb">Choose the policy</div></div>
-      <span class="link" aria-hidden="true"></span>
-      <div class="node hot"><div class="ic"><svg class="i"><use href="#i-shield"/></svg></div><div class="lb">Mask</div></div>
-      <span class="link" aria-hidden="true"></span>
-      <div class="node"><div class="ic"><svg class="i"><use href="#i-route"/></svg></div><div class="lb">Send or keep in-house</div></div>
-    </div>
+  <div class="panel lock dup">
+    <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
+    <h3>Steps 3 and 4 are in the full guide</h3>
+    <p class="lock-p">I send the full guide by email, as an interactive page and a PDF. It is free.</p>
+    <ul class="lock-list">
+      <li><svg class="i"><use href="#i-check"/></svg>Step 3 of 4: What a recall figure means per day</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Step 4 of 4: The safe flow</li>
+      <li><svg class="i"><use href="#i-check"/></svg>The full guide as a PDF</li>
+    </ul>
+    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="personal-data-request-form-en">
+      <label class="visually-hidden" for="lock-email-4">Email address</label>
+      <input id="lock-email-4" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      <input type="hidden" name="tag" value="guide-personal-data">
+      <input type="hidden" name="tag" value="lang-en">
+      <input type="hidden" name="embed" value="1">
+      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Send me the full guide</button>
+    </form>
+    <p class="fine">Your address is used only to send the guide and to tell you about new ones; you can unsubscribe at any time. You can also write instead of using the form: <a href="mailto:halil@halilneed.agency?subject=Guide%20request%3A%20Personal%20data%20and%20AI&amp;body=Hello%20Halil%2C%0A%0APlease%20send%20me%20the%20full%20guide%20%E2%80%9CPersonal%20data%20and%20AI%E2%80%9D.%0A%0AMy%20team%20and%20where%20it%20gets%20stuck%20(optional)%3A%0A" data-goatcounter-click="personal-data-request-mail-en">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Steps 3 and 4 and the full PDF are sent by email. To ask for them: <b>halilneed.agency/guides/personal-data/#step-3</b></p>
   </div>
-
-  <ul class="rules">
-    <li><span class="ic"><svg class="i"><use href="#i-flag"/></svg></span><b>Classify first, then decide</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-lock"/></svg></span><b>Special-category data stays in</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-gauge"/></svg></span><b>Measure masking slice by slice</b></li>
-    <li><span class="ic"><svg class="i"><use href="#i-scale"/></svg></span><b>Write the rule with your legal team</b></li>
-  </ul>
-
-  <p class="fine legal"><svg class="i"><use href="#i-scale"/></svg>This guide is not legal advice. For decisions under KVKK, consult your legal team.</p>
-
   <div class="cta">
     <h3>All four guides</h3>
     <p>Interactive page and PDF, in English and Turkish.</p>
@@ -648,12 +670,11 @@ footer a{color:var(--ink-2)}
   </div>
 
   <div class="share">
-    <a class="btn ghost" href="/guides/personal-data/personal-data-and-ai.pdf" data-goatcounter-click="personal-data-pdf-en"><svg class="i"><use href="#i-download"/></svg>Download PDF</a>
+    <a class="btn ghost" href="/guides/personal-data/personal-data-and-ai.pdf" data-goatcounter-click="personal-data-pdf-en"><svg class="i"><use href="#i-download"/></svg>PDF preview</a>
     <a class="btn ghost" id="shareX" target="_blank" rel="noopener" data-goatcounter-click="personal-data-share-x-en"><svg class="i"><use href="#i-share"/></svg>Share on X</a>
     <a class="btn ghost" id="shareLi" target="_blank" rel="noopener" data-goatcounter-click="personal-data-share-li-en"><svg class="i"><use href="#i-share"/></svg>Share on LinkedIn</a>
     <button class="btn ghost" id="copyLink"><svg class="i"><use href="#i-link"/></svg><span>Copy link</span></button>
   </div>
-
 
   <div class="pager"><button class="btn ghost" data-go="3"><svg class="i"><use href="#i-back"/></svg>Back</button></div>
 </section>
@@ -664,7 +685,7 @@ footer a{color:var(--ink-2)}
 
 <script>
 (function(){
-  const L={"copied":"Copied","copyFail":"Could not copy","shareText":"Before a text goes to AI: send it as is, mask it, or keep it in-house? A 15-minute interactive guide on personal data and AI:","routes":["As is","Mask","Keep in"],"routeAria":"Route for this text","tally":"{n} of 6 decided","hits":"Matches: {n}","texts":[["Ask for title ideas for the Q3 sales presentation",0,"No personal data, it can go as is."],["Customer Ayşe Yılmaz, 0532 111 22 33, complains her parcel is late; draft a reply",1,"The name and phone number are not needed for the reply. Mask them and the draft still works."],["An employee’s sick-leave length and diagnosis: a slipped disc; plan the leave",2,"Health data is special-category personal data. Keep it in-house."],["Company notice: the office closes at 3pm on Friday; fix the wording",0,"No personal data."],["A customer’s IBAN and three months of account activity; summarise it",2,"Banking secrecy and financial data. It does not leave the company."],["Meeting note: Mehmet approved the budget, Zeynep will prepare the deck; make an action list",1,"Mask the names and put them back when the list returns."]],"maskModes":["No masking","Rules","Model","Rules and model"],"sample":["Customer ",["Ayşe Yılmaz","[NAME]",0,1]," (national ID ",["12345678901","[ID]",1,1],") called yesterday from ",["0532 111 22 33","[PHONE]",1,1],". Email: ",["ayse@example.com","[EMAIL]",1,1],". IBAN for the refund: ",["TR12 0006 4000 0011 2345 6789 01","[IBAN]",1,1],". Address: ",["Moda Cad. No 5, Kadıköy","[ADDRESS]",0,1],"."],"maskLesson":["No masking: six pieces of personal data go out as they are.","Rules catch fixed formats exactly: ID, phone, email, IBAN. They miss the name and the address.","A model also catches free wording: names, addresses. It is sometimes wrong, so it gets measured.","Together: fixed formats to the rules, the rest to the model. Most real systems work this way."],"workdaysMonth":22,"workdaysYear":250,"recLesson":"With these settings about {n} pieces of personal data get through unmasked every month. A high percentage is not small once it meets volume."};
+  const L={"copied":"Copied","copyFail":"Could not copy","shareText":"Before a text goes to AI: send it as is, mask it, or keep it in-house? A 15-minute interactive guide on personal data and AI:","routes":["As is","Mask","Keep in"],"routeAria":"Route for this text","tally":"{n} of 6 decided","hits":"Matches: {n}","texts":[["Ask for title ideas for the Q3 sales presentation",0,"No personal data, it can go as is."],["Customer Ayşe Yılmaz, 0532 111 22 33, complains her parcel is late; draft a reply",1,"The name and phone number are not needed for the reply. Mask them and the draft still works."],["An employee’s sick-leave length and diagnosis: a slipped disc; plan the leave",2,"Health data is special-category personal data. Keep it in-house."],["Company notice: the office closes at 3pm on Friday; fix the wording",0,"No personal data."],["A customer’s IBAN and three months of account activity; summarise it",2,"Banking secrecy and financial data. It does not leave the company."],["Meeting note: Mehmet approved the budget, Zeynep will prepare the deck; make an action list",1,"Mask the names and put them back when the list returns."]],"maskModes":["No masking","Rules","Model","Rules and model"],"sample":["Customer ",["Ayşe Yılmaz","[NAME]",0,1]," (national ID ",["12345678901","[ID]",1,1],") called yesterday from ",["0532 111 22 33","[PHONE]",1,1],". Email: ",["ayse@example.com","[EMAIL]",1,1],". IBAN for the refund: ",["TR12 0006 4000 0011 2345 6789 01","[IBAN]",1,1],". Address: ",["Moda Cad. No 5, Kadıköy","[ADDRESS]",0,1],"."],"maskLesson":["No masking: six pieces of personal data go out as they are.","Rules catch fixed formats exactly: ID, phone, email, IBAN. They miss the name and the address.","A model also catches free wording: names, addresses. It is sometimes wrong, so it gets measured.","Together: fixed formats to the rules, the rest to the model. Most real systems work this way."]};
   const LANG=document.documentElement.lang;
   const icon=id=>'<svg class="i" aria-hidden="true"><use href="#i-'+id+'"/></svg>';
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -750,20 +771,7 @@ footer a{color:var(--ink-2)}
   }
   const pickMask=pills($("maskPills"),L.maskModes.map((m,i)=>({label:m,icon:["eye","rule","chip","shield"][i]})),renderMask,0);
 
-  /* step 3: what a recall figure means per day */
-  const nf=new Intl.NumberFormat(LANG);
-  function calc(){
-    const vol=+$("vol").value, rate=+$("rate").value/100, rec=+$("rec").value/100;
-    const day=vol*rate*(1-rec);
-    $("volV").textContent=nf.format(vol); $("rateV").textContent="%"+Math.round(rate*100); $("recV").textContent="%"+(rec*100).toFixed(1);
-    if(LANG==="en"){ $("rateV").textContent=Math.round(rate*100)+"%"; $("recV").textContent=(rec*100).toFixed(1)+"%"; }
-    $("missDay").textContent=nf.format(Math.round(day));
-    $("missMonth").textContent=nf.format(Math.round(day*L.workdaysMonth));
-    $("missYear").textContent=nf.format(Math.round(day*L.workdaysYear));
-    $("recNote").innerHTML=icon("bulb")+esc(fmt(L.recLesson,nf.format(Math.round(day*L.workdaysMonth))));
-  }
-  ["vol","rate","rec"].forEach(id=>$(id).addEventListener("input",calc));
-  calc();
+  
 
   onPrint.push(()=>{
     document.querySelectorAll("#texts .card").forEach((d,i)=>choose(d,i,L.texts[i][1]));

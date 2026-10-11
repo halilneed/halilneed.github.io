@@ -1,0 +1,8 @@
+{
+  "openSteps": 2,
+  "js": [
+    "workdaysMonth",
+    "workdaysYear",
+    "recLesson"
+  ]
+}

@@ -17,7 +17,7 @@
    (Turkish). Both languages share the markup and the script, so the steps,
    experiments and order are always the same. After a change run pdf.mjs. */
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -32,6 +32,30 @@ export const LANGS = ['en', 'tr'];
 const read = (...p) => readFileSync(join(HERE, ...p), 'utf8');
 const json = (...p) => JSON.parse(read(...p));
 
+/* Gated guides (a gate.json in the guide's folder) are published with their first
+   steps only: the later sections, their script blocks (between the @locked and
+   @end marker comments) and their data keys never reach the public page. A lock panel with an
+   email form takes their place. `--full` builds the complete guide into private/
+   (git-ignored) instead, for sending by email. */
+export const FULL = process.argv.includes('--full');
+export const OUT = FULL ? join(ROOT, 'private') : ROOT;
+export const gateOf = (slug) => (existsSync(join(HERE, slug, 'gate.json')) ? json(slug, 'gate.json') : null);
+
+const mailto = (subject, body) => `mailto:halil@halilneed.agency?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+function gateBody(body, slug) {
+  const lock = read('shared', 'lock.html');
+  const sections = body.split(/(?=<section class="step")/);
+  const keep = sections.filter((s) => /id="s[12]"/.test(s));
+  const panel = (n) => lock
+    .replaceAll('@N@', n)
+    .replace('@DUP@', n === 4 ? ' dup' : '')
+    .replace('@PREV@', String(n - 1))
+    .replace('@NEXT@', n === 3 ? '<button class="btn" data-go="4">{{next}}<svg class="i"><use href="#i-arrow"/></svg></button>' : '')
+    .replace('@END@', n === 4 ? '{{end}}' : '');
+  return keep.join('') + panel(3) + '\n' + panel(4);
+}
+
 export function paths(slug, lang, pdfName) {
   const base = `/guides/${slug}/`;
   const path = lang === 'en' ? base : `${base}tr/`;
@@ -45,8 +69,11 @@ function build(slug) {
   const end = read('shared', 'end.html');
   const css = read('shared', 'guide.css').trim();
   const icons = read('shared', 'icons.svg').trim();
-  const body = read(slug, 'body.html');
-  const script = read(slug, 'script.js').trim();
+  const gate = FULL ? null : gateOf(slug);
+  const body = gate ? gateBody(read(slug, 'body.html'), slug) : read(slug, 'body.html');
+  let script = read(slug, 'script.js').trim();
+  if (gate) script = script.replace(/\/\*@locked\*\/[\s\S]*?\/\*@end\*\//g, '');
+  else script = script.replace(/\s*\/\*@(locked|end)\*\//g, '');
 
   for (const lang of LANGS) {
     const s = json('shared', `strings.${lang}.json`);
@@ -65,6 +92,13 @@ function build(slug) {
       urlEnPath: lang === 'en' ? me.path : other.path,
       urlTrPath: lang === 'tr' ? me.path : other.path,
     };
+    if (gate) {
+      c.tabIcon3 = 'lock'; c.tabIcon4 = 'lock';
+      c.pdfBtn = s.previewPdfBtn;
+      c.lockMailHref = mailto(s.mailSubject.replace('{name}', g.name), s.mailBody.replace('{name}', g.name));
+    }
+    const js = { ...s.js, ...g.js };
+    if (gate) for (const k of gate.js) delete js[k];
 
     const jsonld = {
       '@context': 'https://schema.org',
@@ -102,7 +136,7 @@ function build(slug) {
       curTr: lang === 'tr' ? ' aria-current="true"' : '',
       curEn: lang === 'en' ? ' aria-current="true"' : '',
       jsonld: JSON.stringify(jsonld, null, 2),
-      js: JSON.stringify({ ...s.js, ...g.js }).replace(/</g, '\\u003c'),
+      js: JSON.stringify(js).replace(/</g, '\\u003c'),
     };
 
     let html = page.replace('{{body}}', body.replace('{{end}}', end));
@@ -114,14 +148,14 @@ function build(slug) {
     });
     for (const [k, v] of Object.entries(raw)) html = html.split(`{{${k}}}`).join(v);
 
-    const out = join(ROOT, me.path.slice(1), 'index.html');
+    const out = join(OUT, me.path.slice(1), 'index.html');
     mkdirSync(dirname(out), { recursive: true });
     writeFileSync(out, html);
-    console.log(`wrote ${me.path}index.html`);
+    console.log(`wrote ${FULL ? 'private' : ''}${me.path}index.html${gate ? ' (steps 1-2 public)' : ''}`);
   }
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const only = process.argv[2];
+  const only = process.argv.slice(2).find((a) => !a.startsWith('--'));
   for (const slug of only ? [only] : GUIDES) build(slug);
 }

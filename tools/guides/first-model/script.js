@@ -28,6 +28,7 @@
   $("fixSlices").onclick=()=>{fixed=true;renderSlices();};
   $("resetSlices").onclick=()=>{fixed=false;renderSlices();};
 
+  /*@locked*/
   /* step 3: three questions choose the starting level */
   const ans=[null,null,null];
   $("ladder").innerHTML=L.levels.map((l,i)=>'<div class="level" data-i="'+i+'"><span class="n">'+fmt(L.levelN,i+1)+'</span><span class="ic">'+icon(l.icon)+"</span><b>"+esc(l.name)+'</b><span class="d">'+esc(l.desc)+"</span></div>").join("");
@@ -62,7 +63,9 @@
   }
   const pickMode=pills($("modePills"),L.modes.map(md=>({label:md.name,icon:md.icon})),showMode,0);
 
-  onPrint.push(()=>{
-    pickView(1); fixed=true; renderSlices();
-    setAns(0,0); setAns(1,1); setAns(2,0);
-  });
+  /*@end*/
+
+  onPrint.push(()=>{ pickView(1); fixed=true; renderSlices(); });
+  /*@locked*/
+  onPrint.push(()=>{ setAns(0,0); setAns(1,1); setAns(2,0); });
+  /*@end*/

@@ -21,5 +21,16 @@
     "copyFail": "Kopyalanamadı"
   },
   "home": "/tr/",
-  "switchAria": "Dil"
+  "switchAria": "Dil",
+  "lockH": "Adım 3 ve 4 tam rehberde",
+  "lockP": "Tam rehberi, interaktif sayfa ve PDF olarak e-postayla ücretsiz gönderiyorum.",
+  "lockPdf": "Tam rehberin PDF’i",
+  "lockBtn": "Tam rehberi gönder",
+  "emailLbl": "E-posta adresi",
+  "placeholder": "siz@ornek.com",
+  "lockSmall": "Adresiniz yalnızca rehberi göndermek ve yeni rehberleri haber vermek için kullanılır; istediğiniz an ayrılabilirsiniz. Form yerine e-posta da yazabilirsiniz:",
+  "lockPrint": "Adım 3 ve 4 ile tam PDF e-postayla gönderilir. İstemek için:",
+  "previewPdfBtn": "PDF önizleme",
+  "mailSubject": "Rehber isteği: {name}",
+  "mailBody": "Merhaba Halil,\n\n“{name}” rehberinin tamamını gönderir misiniz?\n\nEkibim ve takıldığımız yer (isteğe bağlı):\n"
 }

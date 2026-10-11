@@ -1,0 +1,12 @@
+{
+  "openSteps": 2,
+  "js": [
+    "questions",
+    "fallbackKind",
+    "yes",
+    "no",
+    "or",
+    "answerInOrder",
+    "depts"
+  ]
+}
