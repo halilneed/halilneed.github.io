@@ -18,6 +18,7 @@
 | `writing/index.html` | Yazı listesi ve e-posta kaydı → [WRITING.md](WRITING.md) |
 | `guides/index.html` | Üç rehberin tanıtımı; istek `mailto:` ile gelir. Menüde adı "Guides" |
 | `guides/demo/`, `guides/demo/tr/` | Rehber 2'den herkese açık tek bölüm: "Rules or a model?" (İngilizce ve Türkçe). Tek dosyalık, kendi stilini ve betiğini taşır |
+| `guides/tr/yapay-zekaya-ilk-adim/` | Türkçe, 10 dakikalık interaktif giriş rehberi (4 adım). Tek dosyalık, kendi stilini ve betiğini taşır; tasarımı "halilneed-interaktif-rehber" skill'inden gelir. Ana sitenin aksine iki web fontu yükler (Bricolage Grotesque, Instrument Sans) |
 | `404.html` | Bulunamadı sayfası |
 | `assets/css/site.css` | Tek stil dosyası |
 | `assets/js/site.js` | Kaydırınca belirme, ana sayfadaki maskeleme animasyonu, HF'den canlı indirme/beğeni sayıları. Sayfalar onsuz da eksiksiz okunur |
