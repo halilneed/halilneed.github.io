@@ -18,12 +18,16 @@
 | `writing/index.html` | Yazı listesi ve e-posta kaydı → [WRITING.md](WRITING.md) |
 | `guides/index.html` | Üç rehberin tanıtımı; istek `mailto:` ile gelir. Menüde adı "Guides" |
 | `guides/demo/`, `guides/demo/tr/` | Rehber 2'den herkese açık tek bölüm: "Rules or a model?" (İngilizce ve Türkçe). Tek dosyalık, kendi stilini ve betiğini taşır |
-| `guides/tr/yapay-zekaya-ilk-adim/` | Türkçe, 10 dakikalık interaktif giriş rehberi (4 adım). Tek dosyalık, kendi stilini ve betiğini taşır; tasarımı "halilneed-interaktif-rehber" skill'inden gelir. Ana sitenin aksine iki web fontu yükler (Bricolage Grotesque, Instrument Sans) |
+| `guides/tr/index.html` | Rehberler sayfasının tam Türkçesi. `guides/index.html` ile aynı bölümler ve sıra; ikisinden biri değişirse diğeri de güncellenir |
+| `guides/first-step/`, `guides/first-step/tr/` | Rehber 0, "A first step into AI / Yapay zekâya ilk adım": herkese açık, 4 adımlı interaktif rehber ve PDF'leri. `tools/first-step/` içinden üretilir, elle düzenlenmez |
+| `guides/tr/yapay-zekaya-ilk-adim/` | Eski adres; `guides/first-step/tr/` sayfasına yönlendirir |
+| `assets/fonts/` | Yalnızca "first step" rehberinin kullandığı iki font (Bricolage Grotesque, Instrument Sans; SIL OFL). Site kendi sayfalarında web fontu kullanmaz |
 | `404.html` | Bulunamadı sayfası |
 | `assets/css/site.css` | Tek stil dosyası |
 | `assets/js/site.js` | Kaydırınca belirme, ana sayfadaki maskeleme animasyonu, HF'den canlı indirme/beğeni sayıları. Sayfalar onsuz da eksiksiz okunur |
 | `assets/img/` | Favicon ve OG kartları |
 | `tools/make-og.mjs` | OG kartlarını üretir |
+| `tools/first-step/` | "First step" rehberinin kaynağı: `template.html`, `guide.css`, `icons.svg`, `content/en.json`, `content/tr.json`. `build.mjs` iki dilin sayfasını, `pdf.mjs` iki PDF'i üretir |
 
 ## Tasarım
 
@@ -65,7 +69,19 @@ e-postayla istek üzerine gönderilir ve depo herkese açıktır. Kaynakları ve
 dışındadır. Burada yalnızca şunlar durur: tanıtım sayfası, kapak görselleri
 (`assets/img/guide-1.png` … `guide-3.png`) ve demo sayfaları. Üçü de rehber derlemesinin
 çıktısıdır; elle düzenlenmez, yeniden üretilip kopyalanır. Sayfa sayıları değişirse
-`guides/index.html` ve ana sayfadaki "Guides" bloğunu güncelle.
+`guides/index.html`, `guides/tr/index.html` ve ana sayfadaki "Guides" bloğunu güncelle.
+
+İstisna: **Rehber 0, "first step"** herkese açıktır ve kaynağı bu depodadır (`tools/first-step/`).
+İki dil tek şablondan üretilir, böylece adımlar, deneyler ve sıra her iki dilde aynı kalır:
+
+```bash
+node tools/first-step/build.mjs   # guides/first-step/index.html ve tr/index.html
+node tools/first-step/pdf.mjs     # iki A4 PDF (yerel Chrome; CHROME=/yol/chrome ile değiştirilebilir)
+```
+
+Metni değiştirmek için yalnızca `content/en.json` ve `content/tr.json` düzenlenir; yeni bir adım
+ya da deney şablona eklenir ve iki içerik dosyasına karşılığı yazılır. Kapaklar
+(`assets/img/guide-first-step.png`, `guide-first-step-tr.png`) PDF'in ilk sayfasıdır.
 
 ## Yerel çalıştırma
 
