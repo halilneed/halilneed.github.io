@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kodlama ajanları için araçlar | halilneed</title>
+<meta name="description" content="Altı açık kaynak Claude Code eklentisi. agent-blackbox, skillbench, scar, gardener ve devpersona yerel oturum kayıtlarını okur; painradar herkese açık şikâyetleri okur. MIT.">
+<link rel="canonical" href="https://halilneed.agency/repos/tr/">
+<link rel="alternate" hreflang="en" href="https://halilneed.agency/repos/">
+<link rel="alternate" hreflang="tr" href="https://halilneed.agency/repos/tr/">
+<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/repos/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Kodlama ajanları için araçlar | halilneed">
+<meta property="og:description" content="Altı açık kaynak Claude Code eklentisi. agent-blackbox, skillbench, scar, gardener ve devpersona yerel oturum kayıtlarını okur; painradar herkese açık şikâyetleri okur. MIT.">
+<meta property="og:url" content="https://halilneed.agency/repos/tr/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-repos.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kodlama ajanları için araçlar | halilneed">
+<meta name="twitter:description" content="Altı açık kaynak Claude Code eklentisi. agent-blackbox, skillbench, scar, gardener ve devpersona yerel oturum kayıtlarını okur; painradar herkese açık şikâyetleri okur. MIT.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-repos.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Araçlar",
+          "item": "https://halilneed.agency/repos/tr/"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://halilneed.agency/repos/tr/#page",
+      "url": "https://halilneed.agency/repos/tr/",
+      "name": "Kodlama ajanları için araçlar",
+      "description": "Altı açık kaynak Claude Code eklentisi. agent-blackbox, skillbench, scar, gardener ve devpersona yerel oturum kayıtlarını okur; painradar herkese açık şikâyetleri okur. MIT.",
+      "inLanguage": "tr",
+      "dateModified": "2026-10-09",
+      "image": "https://halilneed.agency/assets/img/og-repos.png",
+      "isPartOf": {
+        "@id": "https://halilneed.agency/#website"
+      },
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "mainEntity": {
+        "@id": "https://halilneed.agency/repos/tr/#plugin-list"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://halilneed.agency/repos/tr/#plugin-list",
+      "name": "Altı eklenti",
+      "numberOfItems": 6,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "agent-blackbox",
+          "url": "https://halilneed.agency/agent-blackbox/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "skillbench",
+          "url": "https://halilneed.agency/skillbench/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "scar",
+          "url": "https://halilneed.agency/scar/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "gardener",
+          "url": "https://halilneed.agency/gardener/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "painradar",
+          "url": "https://halilneed.agency/painradar/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "devpersona",
+          "url": "https://halilneed.agency/devpersona/tr/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/repos/tr/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ücretsizler mi, yoksa şimdilik mi ücretsizler?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ücretsizler. Her depo MIT lisansıyla yayımlandı ve bu, var olan bir sürümden geri alınamaz. Sizin için en kötü durum, son sağlam commit'in bir fork'udur. Ücretli ürün ayrı, barındırılan bir hizmet olan Cloud olacak; yerel eklentiler onsuz da çalışmaya devam edecek."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cloud nedir, ücretli mi olacak?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cloud, hâlâ tasarlanmakta olan barındırılan sürüm: makine değiştirince kaybolmayan oturum geçmişi, tek bir dizüstü yerine bütün ekip için risk raporları ve bir haftadan uzun kayıt gerektiren eğilim çizgileri. Ücretli olacak, ayda tek haneli bir tutar. Ne zaman çıkacağını öğrenmek için yazılar sayfasından abone olun."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bilgisayarımdan dışarı bir şey çıkıyor mu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Altı eklentiden beşi hiç ağ çağrısı yapmaz. Ajanınızın diskinize zaten yazdığı kayıtları okurlar ve agent-blackbox, rapor yazılmadan önce kimlik bilgisine benzeyen her şeyi maskeler. Altıncısı, painradar, işini yapmak için herkese açık web'e çıkmak zorunda; hangi kaynaklara gittiği kendi sayfasında yazıyor. Hiçbirinde telemetri yok."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "İş yerinde, ticari olarak kullanabilir miyim?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet. MIT; kapalı kaynak ürünlerde ve ücretli danışmanlık işlerinde de geçerli. Lisans dosyasını koruyun; bunun dışında istenecek bir izin ya da e-posta atılacak biri yok."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hangi ajanların kayıtlarını okuyabilirler?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Claude Code, Codex CLI ve Gemini CLI; üçü de oturumlarını diske okunabilir bir biçimde yazar. Eklentiler Claude Code için paketlendi. Kayıt okuyan beş tarayıcı aynı zamanda eklenti olmadan çalışan düz Node betikleridir ve diğer iki ajanın kayıtlarını da okur; örneğin agent-blackbox deposunda node scripts/blackbox.mjs."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<header class="site-header">
+  <a class="site-name" href="/tr/">halilneed</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="/models/tr/">Modeller</a></li>
+      <li><a href="/repos/tr/" aria-current="true">Araçlar</a></li>
+      <li><a href="/guides/tr/">Rehberler</a></li>
+      <li><a href="/writing/tr/">Yazılar</a></li>
+      <li><a href="/tr/#about">Hakkında</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Dil"><a href="/repos/tr/" hreflang="tr" lang="tr" aria-current="true">TR</a><a href="/repos/" hreflang="en" lang="en">EN</a></div>
+</header>
+
+<nav class="breadcrumb" aria-label="Konum">
+  <ol>
+    <li><a href="/tr/">halilneed</a></li>
+    <li aria-current="page">Araçlar</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>Kodlama ajanları için araçlar</h1>
+    <p class="lead">Claude Code, Codex CLI ve Gemini CLI her oturumu zaten diskinize yazıyor. Bu altı eklentiden beşi o kayıtları okuyup ne olduğunu raporlar, hiç ağ çağrısı yapmadan. Altıncısı, painradar, web’deki herkese açık şikâyetleri okur.</p>
+    <ul class="links">
+      <li><a href="#install" data-goatcounter-click="cta-install-tr">Kurulum</a></li>
+      <li><a href="https://github.com/halilneed" data-goatcounter-click="cta-github-tr">GitHub</a></li>
+    </ul>
+
+    <dl class="kv">
+      <div><dt>Eklentiler</dt><dd>6</dd></div>
+      <div><dt>Komutlar</dt><dd>18, eklenti başına üç</dd></div>
+      <div><dt>Kurallar ve kontroller</dt><dd>78, hepsi açıp okuyabileceğiniz dosyalarda (agent-blackbox’ta 26, skillbench’te 26, scar’da 16, gardener’da 10)</dd></div>
+      <div><dt>Ağ çağrısı</dt><dd>altıdan beşinde yok</dd></div>
+      <div><dt>Lisans</dt><dd>MIT</dd></div>
+    </dl>
+  </header>
+
+  <section id="plugins" aria-labelledby="plugins-title">
+    <h2 id="plugins-title">Altı eklenti</h2>
+
+    <div class="table-scroll" role="region" aria-labelledby="plugins-caption" tabindex="0">
+      <table class="stack" role="table">
+        <caption id="plugins-caption">Her eklentinin neyi raporladığı, komutları ve ağ kullanımı</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col" class="col-s">Eklenti</th>
+            <th role="columnheader" scope="col">Neyi raporlar</th>
+            <th role="columnheader" scope="col">Komutlar</th>
+            <th role="columnheader" scope="col">Ağ</th>
+            <th role="columnheader" scope="col">Kaynak</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th role="rowheader" scope="row"><a href="/agent-blackbox/tr/">agent-blackbox</a></th>
+            <td role="cell" data-label="Neyi raporlar">Ajanın tur tur ne yaptığını ve neyin hâlâ geri alınabileceğini</td>
+            <td role="cell" data-label="Komutlar"><code class="nowrap">timeline</code>, <code class="nowrap">risk</code>, <code class="nowrap">undo</code></td>
+            <td role="cell" data-label="Ağ">yok</td>
+            <td role="cell" data-label="Kaynak"><a href="https://github.com/halilneed/agent-blackbox">GitHub<span class="visually-hidden"> üzerinde agent-blackbox deposu</span></a></td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><a href="/skillbench/tr/">skillbench</a></th>
+            <td role="cell" data-label="Neyi raporlar">Bir skill’in doğru yazılıp yazılmadığını ve hiç tetiklenip tetiklenmediğini</td>
+            <td role="cell" data-label="Komutlar"><code class="nowrap">lint</code>, <code class="nowrap">coverage</code>, <code class="nowrap">collide</code></td>
+            <td role="cell" data-label="Ağ">yok</td>
+            <td role="cell" data-label="Kaynak"><a href="https://github.com/halilneed/skillbench">GitHub<span class="visually-hidden"> üzerinde skillbench deposu</span></a></td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><a href="/scar/tr/">scar</a></th>
+            <td role="cell" data-label="Neyi raporlar">Oturumlar arasında tekrar eden hataları, her biri için bir kural ya da test ve bunun işe yarayıp yaramadığını</td>
+            <td role="cell" data-label="Komutlar"><code class="nowrap">mine</code>, <code class="nowrap">write</code>, <code class="nowrap">verify</code></td>
+            <td role="cell" data-label="Ağ">yok</td>
+            <td role="cell" data-label="Kaynak"><a href="https://github.com/halilneed/scar">GitHub<span class="visually-hidden"> üzerinde scar deposu</span></a></td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><a href="/gardener/tr/">gardener</a></th>
+            <td role="cell" data-label="Neyi raporlar"><code>CLAUDE.md</code> ve içe aktardığı dosyaların her istekte neye mal olduğunu</td>
+            <td role="cell" data-label="Komutlar"><code class="nowrap">audit</code>, <code class="nowrap">compliance</code>, <code class="nowrap">prune</code></td>
+            <td role="cell" data-label="Ağ">yok</td>
+            <td role="cell" data-label="Kaynak"><a href="https://github.com/halilneed/gardener">GitHub<span class="visually-hidden"> üzerinde gardener deposu</span></a></td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><a href="/painradar/tr/">painradar</a></th>
+            <td role="cell" data-label="Neyi raporlar">Herkese açık şikâyetleri ve doğrulanmış geliri, bağlantılarıyla temalara ayrılmış olarak</td>
+            <td role="cell" data-label="Komutlar"><code class="nowrap">scan</code>, <code class="nowrap">fit</code>, <code class="nowrap">launch</code></td>
+            <td role="cell" data-label="Ağ">yalnızca herkese açık kaynaklar</td>
+            <td role="cell" data-label="Kaynak"><a href="https://github.com/halilneed/painradar">GitHub<span class="visually-hidden"> üzerinde painradar deposu</span></a></td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><a href="/devpersona/tr/">devpersona</a></th>
+            <td role="cell" data-label="Neyi raporlar">Kendi ajan geçmişinizden çıkarılan bir geliştirici profilini</td>
+            <td role="cell" data-label="Komutlar"><code class="nowrap">stats</code>, <code class="nowrap">analyze</code>, <code class="nowrap">advise</code></td>
+            <td role="cell" data-label="Ağ">yok</td>
+            <td role="cell" data-label="Kaynak"><a href="https://github.com/halilneed/devpersona">GitHub<span class="visually-hidden"> üzerinde devpersona deposu</span></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="install" aria-labelledby="install-title">
+    <h2 id="install-title">Kurulum</h2>
+
+<pre tabindex="0" aria-label="Claude Code için kurulum komutları"><code># bir kez
+&gt; /plugin marketplace add halilneed/plugins
+
+# sonra istediğiniz eklentiyi
+&gt; /plugin install agent-blackbox@hailneed
+&gt; /plugin install skillbench@hailneed
+&gt; /plugin install scar@hailneed
+&gt; /plugin install gardener@hailneed
+&gt; /plugin install painradar@hailneed
+&gt; /plugin install devpersona@hailneed
+
+# ve deneyin
+&gt; /agent-blackbox:risk</code></pre>
+
+    <p>Market kimliği <code>hailneed</code>; kurulum satırlarının <code>@hailneed</code> ile bitmesinin nedeni bu.</p>
+    <p>Claude Code marketleri adlarına göre tutar. Her eklenti deposunun içinde bir manifest olsaydı her biri bir öncekinin üzerine yazar, eklentiler bir arada kurulamazdı. Tek bir manifest deposu bu çakışmayı ortadan kaldırıyor. <a href="https://github.com/halilneed/plugins"><code>halilneed/plugins</code></a> yalnızca bu manifesti içerir.</p>
+    <ul>
+      <li><strong>Claude Code</strong> ve Node.js 18 ya da daha yenisi.</li>
+      <li><strong>Bağımlılık yok</strong>, derleme adımı yok, API anahtarı yok.</li>
+      <li><strong>Her tarayıcı tek başına da çalışır.</strong> agent-blackbox deposunda: <code>node scripts/blackbox.mjs --scan --days 30 --md</code></li>
+      <li><strong>İsteğe bağlı, painradar için:</strong> <code>GITHUB_TOKEN</code> arama sınırlarını yükseltir, <code>TRUSTMRR_API_KEY</code> doğrulanmış gelir verisini açar.</li>
+    </ul>
+  </section>
+
+  <section id="method" aria-labelledby="method-title">
+    <h2 id="method-title">Nasıl yapıldılar</h2>
+    <ol>
+      <li><strong>Her bulgu kaynağını gösterir.</strong> Raporlar kaydı, kuralı ve eşleşen metni belirtir; böylece her bulgu kayda bakarak kontrol edilebilir.</li>
+      <li><strong>Tarayıcılar yerel dosyaları okur.</strong> Veri zaten diskinizde. agent-blackbox tarayıcısı hiç ağ çağrısı yapmaz ve rapor yazılmadan önce kimlik bilgisine benzeyen her şeyi maskeler.</li>
+      <li><strong>Kurallar açıp okuyabileceğiniz dosyalarda.</strong> Risk sınıflandırması bir desen listesidir, işin içinde model yoktur; her kural bir bayrakla kapatılabilir.</li>
+      <li><strong>Başarısızlıklar raporlanır.</strong> Bir kaynağa ulaşılamazsa ya da bir kayıt ayrıştırılamazsa rapor bunu kaynak notunda söyler.</li>
+    </ol>
+  </section>
+
+  <section id="cost" aria-labelledby="cost-title">
+    <h2 id="cost-title">Ücret</h2>
+    <p>Altı eklentinin hepsi ücretsiz ve MIT lisanslıdır, ticari kullanım dahil. Hiçbir şey bir hesabın ya da ücretli bir planın arkasında kilitli değil. painradar isteğe bağlı olarak size ait iki anahtar alır.</p>
+    <p>Ekipler için Cloud adında barındırılan bir sürüm planlıyorum: makine değiştirince kaybolmayan oturum geçmişi, ekip genelinde risk raporları ve bir haftadan uzun kayıt gerektiren eğilim çizgileri. Ücretli olacak. Yerel eklentiler onsuz da çalışmaya devam edecek. Hazır olduğunda haber almak için <a href="/writing/tr/#subscribe">yazılar sayfasından abone olun</a>.</p>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Sorular</h2>
+
+    <details>
+      <summary>Ücretsizler mi, yoksa şimdilik mi ücretsizler?</summary>
+      <p>Ücretsizler. Her depo MIT lisansıyla yayımlandı ve bu, var olan bir sürümden geri alınamaz. Sizin için en kötü durum, son sağlam commit’in bir fork’udur. Ücretli ürün ayrı, barındırılan bir hizmet olan Cloud olacak; yerel eklentiler onsuz da çalışmaya devam edecek.</p>
+    </details>
+    <details>
+      <summary>Cloud nedir, ücretli mi olacak?</summary>
+      <p>Cloud, hâlâ tasarlanmakta olan barındırılan sürüm: makine değiştirince kaybolmayan oturum geçmişi, tek bir dizüstü yerine bütün ekip için risk raporları ve bir haftadan uzun kayıt gerektiren eğilim çizgileri. Ücretli olacak, ayda tek haneli bir tutar. Ne zaman çıkacağını öğrenmek için <a href="/writing/tr/#subscribe">yazılar sayfasından</a> abone olun.</p>
+    </details>
+    <details>
+      <summary>Bilgisayarımdan dışarı bir şey çıkıyor mu?</summary>
+      <p>Altı eklentiden beşi hiç ağ çağrısı yapmaz. Ajanınızın diskinize zaten yazdığı kayıtları okurlar ve agent-blackbox, rapor yazılmadan önce kimlik bilgisine benzeyen her şeyi maskeler. Altıncısı, <a href="/painradar/tr/">painradar</a>, işini yapmak için herkese açık web’e çıkmak zorunda; hangi kaynaklara gittiği kendi sayfasında yazıyor. Hiçbirinde telemetri yok.</p>
+    </details>
+    <details>
+      <summary>İş yerinde, ticari olarak kullanabilir miyim?</summary>
+      <p>Evet. MIT; kapalı kaynak ürünlerde ve ücretli danışmanlık işlerinde de geçerli. Lisans dosyasını koruyun; bunun dışında istenecek bir izin ya da e-posta atılacak biri yok.</p>
+    </details>
+    <details>
+      <summary>Hangi ajanların kayıtlarını okuyabilirler?</summary>
+      <p>Claude Code, Codex CLI ve Gemini CLI; üçü de oturumlarını diske okunabilir bir biçimde yazar. Eklentiler Claude Code için paketlendi. Kayıt okuyan beş tarayıcı aynı zamanda eklenti olmadan çalışan düz Node betikleridir ve diğer iki ajanın kayıtlarını da okur; örneğin agent-blackbox deposunda <code>node scripts/blackbox.mjs</code>.</p>
+    </details>
+  </section>
+
+  <section id="other" aria-labelledby="other-title">
+    <h2 id="other-title">Diğer depolar</h2>
+    <ul>
+      <li><a href="https://github.com/halilneed/agentmemora">agentmemora</a><br>Oturum kayıtlarını, otomatik belleği ve talimat dosyalarını okuyarak ajanlarınızın ne bildiğini gösteren, risk altındaki bağlamı işaretleyen ve bağlamı oturumlar, makineler ve ajanlar arasında taşıyan yerel bir panel. npm’de.</li>
+      <li><a href="https://github.com/halilneed/solostacks">solostacks</a><br>Reddit, GitHub Trending ve Hacker News’ten canlı veri çeken ve tek başına çalışan geliştiricilere araç öneren bir MCP sunucusu.</li>
+      <li><a href="https://github.com/halilneed/hyperframes-agent-skill">hyperframes-agent-skill</a><br>Bir kodlama ajanına doğru HyperFrames (HTML’den videoya) kompozisyonları yazmayı öğreten 19 kural dosyası.</li>
+      <li><a href="https://github.com/halilneed/promptrank">promptrank</a><br>Beş prompt senaryosu olan, netlik, yaratıcılık, teknik derinlik ve strateji üzerinden puanlayan tarayıcıda çalışan küçük bir test. Türkçe, İngilizce ve İspanyolca.</li>
+      <li><a href="https://github.com/halilneed/plugins">plugins</a><br>Altı eklentinin yan yana kurulabilmesini sağlayan manifest.</li>
+    </ul>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, İstanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespit modeli</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Kaynak</a></li>
+    </ul>
+    <p class="small">Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

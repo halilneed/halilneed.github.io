@@ -52,26 +52,96 @@
   "ctaHref": "/guides/",
   "js": {
     "shareText": "Before a text goes to AI: send it as is, mask it, or keep it in-house? A 15-minute interactive guide on personal data and AI:",
-    "routes": ["As is", "Mask", "Keep in"],
+    "routes": [
+      "As is",
+      "Mask",
+      "Keep in"
+    ],
     "routeAria": "Route for this text",
     "tally": "{n} of 6 decided",
     "hits": "Matches: {n}",
     "texts": [
-      ["Ask for title ideas for the Q3 sales presentation", 0, "No personal data, it can go as is."],
-      ["Customer Ayşe Yılmaz, 0532 111 22 33, complains her parcel is late; draft a reply", 1, "The name and phone number are not needed for the reply. Mask them and the draft still works."],
-      ["An employee’s sick-leave length and diagnosis: a slipped disc; plan the leave", 2, "Health data is special-category personal data. Keep it in-house."],
-      ["Company notice: the office closes at 3pm on Friday; fix the wording", 0, "No personal data."],
-      ["A customer’s IBAN and three months of account activity; summarise it", 2, "Banking secrecy and financial data. It does not leave the company."],
-      ["Meeting note: Mehmet approved the budget, Zeynep will prepare the deck; make an action list", 1, "Mask the names and put them back when the list returns."]
+      [
+        "Ask for title ideas for the Q3 sales presentation",
+        0,
+        "No personal data, it can go as is."
+      ],
+      [
+        "Customer Ayşe Yılmaz, 0532 111 22 33, complains her parcel is late; draft a reply",
+        1,
+        "The name and phone number are not needed for the reply. Mask them and the draft still works."
+      ],
+      [
+        "An employee’s sick-leave length and diagnosis: a slipped disc; plan the leave",
+        2,
+        "Health data is special-category personal data. Keep it in-house."
+      ],
+      [
+        "Company notice: the office closes at 3pm on Friday; fix the wording",
+        0,
+        "No personal data."
+      ],
+      [
+        "A customer’s IBAN and three months of account activity; summarise it",
+        2,
+        "Banking secrecy and financial data. It does not leave the company."
+      ],
+      [
+        "Meeting note: Mehmet approved the budget, Zeynep will prepare the deck; make an action list",
+        1,
+        "Mask the names and put them back when the list returns."
+      ]
     ],
-    "maskModes": ["No masking", "Rules", "Model", "Rules and model"],
+    "maskModes": [
+      "No masking",
+      "Rules",
+      "Model",
+      "Rules and model"
+    ],
     "sample": [
-      "Customer ", ["Ayşe Yılmaz", "[NAME]", 0, 1],
-      " (national ID ", ["12345678901", "[ID]", 1, 1],
-      ") called yesterday from ", ["0532 111 22 33", "[PHONE]", 1, 1],
-      ". Email: ", ["ayse@example.com", "[EMAIL]", 1, 1],
-      ". IBAN for the refund: ", ["TR12 0006 4000 0011 2345 6789 01", "[IBAN]", 1, 1],
-      ". Address: ", ["Moda Cad. No 5, Kadıköy", "[ADDRESS]", 0, 1], "."
+      "Customer ",
+      [
+        "Ayşe Yılmaz",
+        "[NAME]",
+        0,
+        1
+      ],
+      " (national ID ",
+      [
+        "12345678901",
+        "[ID]",
+        1,
+        1
+      ],
+      ") called yesterday from ",
+      [
+        "0532 111 22 33",
+        "[PHONE]",
+        1,
+        1
+      ],
+      ". Email: ",
+      [
+        "ayse@example.com",
+        "[EMAIL]",
+        1,
+        1
+      ],
+      ". IBAN for the refund: ",
+      [
+        "TR12 0006 4000 0011 2345 6789 01",
+        "[IBAN]",
+        1,
+        1
+      ],
+      ". Address: ",
+      [
+        "Moda Cad. No 5, Kadıköy",
+        "[ADDRESS]",
+        0,
+        1
+      ],
+      "."
     ],
     "maskLesson": [
       "No masking: six pieces of personal data go out as they are.",
@@ -82,5 +152,6 @@
     "workdaysMonth": 22,
     "workdaysYear": 250,
     "recLesson": "With these settings about {n} pieces of personal data get through unmasked every month. A high percentage is not small once it meets volume."
-  }
+  },
+  "modelHref": "/models/turkish-pii-detection/"
 }

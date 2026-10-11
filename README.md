@@ -26,6 +26,8 @@
 | `assets/img/` | Favicon ve OG kartları |
 | `tools/make-og.mjs` | OG kartlarını üretir |
 | `tools/guides/` | Rehberlerin kaynağı ve derleme betikleri (aşağıda "Rehberler") |
+| `<yol>/tr/index.html`, `tr/index.html` | Her sayfanın Türkçesi (aşağıda "İki dil") |
+| `tools/lang-switch.mjs` | Elle yazılan sayfaların hreflang etiketlerini ve TR / EN anahtarını yazar |
 
 ## Tasarım
 
@@ -59,6 +61,20 @@ etiketler, süs amaçlı canvas ve imleç efektleri, uydurma sayaçlar, slogan, 
 - Sitede soyad ve kişisel e-posta geçmez. Herkese açık adres `halil@halilneed.agency`.
 - Her sayfada `canonical`, OG/Twitter etiketleri ve JSON-LD bulunur. Yeni sayfa
   `sitemap.xml`'e `lastmod` ile eklenir.
+
+## İki dil
+
+Sitenin her sayfası İngilizce ve Türkçedir. Türkçe sayfa, İngilizcesinin yolunun altında `tr/`
+klasöründedir: `/models/` → `/models/tr/`, ana sayfa `/` → `/tr/`, rehberler `/guides/<slug>/tr/`.
+Her sayfanın sağ üstünde TR / EN anahtarı vardır ve sayfanın karşılığına gider; `<head>` içinde
+`hreflang` en / tr / x-default çifti bulunur. 404 sayfası iki dillidir.
+
+- Türkçe sayfada menü, içerik bağlantıları, breadcrumb ve alt bilgi Türkçe sayfalara gider.
+  Kod blokları, model ve eklenti adları, rakamlar İngilizcesiyle aynıdır.
+- Bir sayfa değişince Türkçesi de aynı değişikliği alır.
+- Elle yazılan sayfalarda anahtar ve hreflang için: `node tools/lang-switch.mjs` (yeni bir sayfayı
+  betikteki `PAGES` listesine ekleyin). Rehberlerde bunu `tools/guides/` kendisi yapar.
+- `assets/js/site.js` metinlerini `<html lang>` değerine göre yazar.
 
 ## Rehberler
 

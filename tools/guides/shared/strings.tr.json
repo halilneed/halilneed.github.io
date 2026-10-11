@@ -19,5 +19,7 @@
   "js": {
     "copied": "Kopyalandı",
     "copyFail": "Kopyalanamadı"
-  }
+  },
+  "home": "/tr/",
+  "switchAria": "Dil"
 }

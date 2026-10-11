@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>agent-blackbox: oturum akışı, risk denetimi ve geri alma haritası</title>
+<meta name="description" content="agent-blackbox, Claude Code, Codex CLI ve Gemini CLI oturum kayıtlarını diskinizden okur; zaman çizelgesi, 26 kurallı risk denetimi ve geri alma haritası verir.">
+<link rel="canonical" href="https://halilneed.agency/agent-blackbox/tr/">
+<link rel="alternate" hreflang="en" href="https://halilneed.agency/agent-blackbox/">
+<link rel="alternate" hreflang="tr" href="https://halilneed.agency/agent-blackbox/tr/">
+<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/agent-blackbox/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:title" content="agent-blackbox: oturum akışı, risk denetimi ve geri alma haritası">
+<meta property="og:description" content="agent-blackbox, Claude Code, Codex CLI ve Gemini CLI oturum kayıtlarını diskinizden okur; zaman çizelgesi, 26 kurallı risk denetimi ve geri alma haritası verir.">
+<meta property="og:url" content="https://halilneed.agency/agent-blackbox/tr/">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-agent-blackbox.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="agent-blackbox: oturum akışı, risk denetimi ve geri alma haritası">
+<meta name="twitter:description" content="agent-blackbox, Claude Code, Codex CLI ve Gemini CLI oturum kayıtlarını diskinizden okur; zaman çizelgesi, 26 kurallı risk denetimi ve geri alma haritası verir.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-agent-blackbox.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Araçlar",
+          "item": "https://halilneed.agency/repos/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "agent-blackbox",
+          "item": "https://halilneed.agency/agent-blackbox/tr/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "agent-blackbox",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "license": "https://github.com/halilneed/agent-blackbox/blob/main/LICENSE",
+      "@id": "https://halilneed.agency/agent-blackbox/tr/",
+      "url": "https://halilneed.agency/agent-blackbox/tr/",
+      "inLanguage": "tr",
+      "sameAs": [
+        "https://github.com/halilneed/agent-blackbox"
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<header class="site-header">
+  <a class="site-name" href="/tr/">halilneed</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="/models/tr/">Modeller</a></li>
+      <li><a href="/repos/tr/" aria-current="true">Araçlar</a></li>
+      <li><a href="/guides/tr/">Rehberler</a></li>
+      <li><a href="/writing/tr/">Yazılar</a></li>
+      <li><a href="/tr/#about">Hakkında</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Dil"><a href="/agent-blackbox/tr/" hreflang="tr" lang="tr" aria-current="true">TR</a><a href="/agent-blackbox/" hreflang="en" lang="en">EN</a></div>
+</header>
+
+<nav class="breadcrumb" aria-label="Konum">
+  <ol>
+    <li><a href="/tr/">halilneed</a></li>
+    <li><a href="/repos/tr/">Araçlar</a></li>
+    <li aria-current="page">agent-blackbox</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>agent-blackbox</h1>
+    <p class="lead">Claude Code, Codex CLI ve Gemini CLI her oturumu zaten diskinize yazıyor. <span class="nowrap">agent-blackbox</span> bu kayıtları okur ve adım adım bir zaman çizelgesi, okunabilir 26 kurala dayanan bir risk denetimi ve bir geri alma haritası çıkarır. Hiçbir yere bir şey göndermez.</p>
+    <ul class="links">
+      <li><a href="https://github.com/halilneed/agent-blackbox" data-goatcounter-click="ab-cta-source-tr">GitHub’da kaynak kod</a></li>
+      <li><a href="#install" data-goatcounter-click="ab-cta-install-tr">Kurulum</a></li>
+    </ul>
+
+    <dl class="kv">
+      <div><dt>Kurallar</dt><dd>26</dd></div>
+      <div><dt>Okunan ajanlar</dt><dd>Claude Code, Codex CLI, Gemini CLI</dd></div>
+      <div><dt>Ağ çağrısı</dt><dd>yok</dd></div>
+      <div><dt>Bağımlılık</dt><dd>yok</dd></div>
+      <div><dt>Lisans</dt><dd>MIT</dd></div>
+    </dl>
+  </header>
+
+  <section id="example" aria-labelledby="example-title">
+    <h2 id="example-title">Örnek çıktı</h2>
+    <p>Aşağıdaki alıntı, bu sitenin hazırlandığı makinede <code class="nowrap">--scan --days 7</code> ile yapılan gerçek bir çalıştırmadan kısaltıldı. Oturum klasörlerinin adları değiştirildi. Geri kalan her şey tarayıcının yazdığı gibi. Tarama hiçbir ağ çağrısı yapmadı.</p>
+
+<pre tabindex="0" aria-label="Risk raporu, Markdown çıktısı"><code># Risk report — last 7 days
+
+Source note: 25 sessions scanned (all) · Risk score: 395 (high)
+
+## Most triggered rules
+
+| Rule                     | n  | Severity |
+|--------------------------|----|----------|
+| force-kill               | 21 | low      |
+| fs-recursive-delete      | 20 | high     |
+| hardcoded-credential     | 13 | medium   |
+| write-outside-workspace  |  6 | medium   |
+| git-hard-reset           |  2 | high     |
+| secret-file-access       |  2 | high     |
+
+## Findings (top of 36)
+
+| Severity | Rule                | Session    | Evidence           |
+|----------|---------------------|------------|--------------------|
+| high     | fs-recursive-delete | `e7d88fce` | `rm -rf`           |
+| high     | git-hard-reset      | `efb30291` | `git reset --hard` |
+| high     | secret-file-access  | `2f51f1d8` | `.env`             |</code></pre>
+
+    <p>Her bulgu, tetiklenen kuralı, tetiklendiği oturumu ve eşleşen metni gösterir. Böylece tek bir bulguya itiraz edebilirsiniz. Kurallar <a href="https://github.com/halilneed/agent-blackbox/blob/main/scripts/lib/rules.mjs">açıp okuyabileceğiniz tek bir dosyada</a> duruyor. Katılmadığınız bir kuralı <code class="nowrap">--ignore</code> ile kapatabilirsiniz.</p>
+  </section>
+
+  <section id="install" aria-labelledby="install-title">
+    <h2 id="install-title">Kurulum</h2>
+
+<pre tabindex="0" aria-label="Kurulum komutları"><code># bir kez
+&gt; /plugin marketplace add halilneed/plugins
+
+# eklenti
+&gt; /plugin install agent-blackbox@hailneed
+
+# ve deneyin
+&gt; /agent-blackbox:risk</code></pre>
+
+    <p><a href="https://github.com/halilneed/plugins">Market</a> kimliği <code>hailneed</code>, kurulum satırının <code>@hailneed</code> ile bitmesinin nedeni bu.</p>
+    <ul>
+      <li>Claude Code ve Node.js 18 ya da daha yenisi.</li>
+      <li>Bağımlılık, derleme adımı, API anahtarı ya da hesap gerekmez.</li>
+      <li>Eklenti olmadan da çalışır: <code>node scripts/blackbox.mjs <span class="nowrap">--scan</span> <span class="nowrap">--days 30</span> <span class="nowrap">--md</span></code></li>
+      <li>CI için <code class="nowrap">--scan --out risk.json</code> sabit bir çıktı biçimi verir. Böylece risk puanı belirlediğiniz eşiği geçtiğinde derleme başarısız olabilir.</li>
+    </ul>
+  </section>
+
+  <section id="commands" aria-labelledby="commands-title">
+    <h2 id="commands-title">Komutlar</h2>
+
+    <h3><code>/agent-blackbox:timeline</code></h3>
+    <p>Oturumu adım adım gösterir: ne istendi, ne çalıştı, ne bozuldu ve ne değişti. Hata zincirlerini, reddedilen çağrıları ve zamanın nereye gittiğini de gösterir.</p>
+
+    <h3><code>/agent-blackbox:risk</code></h3>
+    <p>Ajanın çalıştırmasına izin verilen şeylerin denetimi: yıkıcı komutlar, bir döküme düşmüş gizli bilgiler, izin ve sandbox atlatmaları, çalışma alanı dışına yazmalar. Her yüksek bulgu raporlanmadan önce dökümle karşılaştırılarak doğrulanır. Doğrulanamayan bulgu çıkarılır.</p>
+
+    <h3><code>/agent-blackbox:undo</code></h3>
+    <p>Ajanın dokunduğu her dosyayı bir kurtarma kaynağıyla eşler (kendi yedeği, git ya da ters yama). Hiç geri alınamayacak olanları ayrı bir listede verir. Bir kurtarma önerir, kendi başına hiçbir şeyi geri yüklemez.</p>
+  </section>
+
+  <section id="guarantees" aria-labelledby="guarantees-title">
+    <h2 id="guarantees-title">Ne yapar, ne yapmaz</h2>
+    <ul>
+      <li>Ağ çağrısı yapmaz. Tarayıcı yalnızca diskinizde zaten bulunan dosyaları okur. <a href="https://github.com/halilneed/agent-blackbox/blob/main/scripts/blackbox.mjs"><code>blackbox.mjs</code></a> içinde fetch ya da soket yok.</li>
+      <li>Gizli bilgiler, herhangi bir rapor yazılmadan önce maskelenir: API anahtarları, JWT’ler, özel anahtar başlıkları ve kimlik bilgisi içeren bağlantı dizeleri. Maskeleme varsayılan olarak açıktır. <code class="nowrap">--no-redact</code> seçeneği var, kullanıp kullanmamak size kalmış.</li>
+      <li>Düşünme metni kayıttan hiç çıkmaz. Yalnızca sayısı raporlanır.</li>
+      <li>26 kural var, model yargısı yok. <a href="https://github.com/halilneed/agent-blackbox/blob/main/scripts/lib/rules.mjs"><code>rules.mjs</code></a> okuyabileceğiniz bir desen listesi. <code class="nowrap">--selftest</code> bu listeyi verilerinize dokunmadan 33 test örneği üzerinde çalıştırır.</li>
+      <li>Okunamayan oturumlar kaynak notunda sayılır.</li>
+      <li>MIT lisanslı (<a href="https://github.com/halilneed/agent-blackbox/blob/main/LICENSE"><code>LICENSE</code></a>). Hesap, kayıt ya da telemetri yok.</li>
+    </ul>
+  </section>
+
+  <section id="cloud" aria-labelledby="cloud-title">
+    <h2 id="cloud-title">Planlanan</h2>
+    <p>Barındırılan bir sürüm, <span class="nowrap">agent-blackbox</span> Cloud, planlanıyor. Eklenti ücretsiz ve yerel kalacak.</p>
+    <ul>
+      <li>Ekip toplamı: her üyenin raporları tek bir panoda.</li>
+      <li>Ekibin makinelerinde risk eğiliminin zaman içindeki seyri.</li>
+      <li>Politika uyarıları ve denetim dışa aktarımı: ihlalde Slack ya da Telegram bildirimi, ISO/SOC2 kanıtı için biçimlenmiş denetim izi dışa aktarımı.</li>
+    </ul>
+    <p>Hazır olduğunda haber almak için <a href="/writing/tr/#subscribe">yazılar sayfasından</a> abone olun.</p>
+  </section>
+
+  <section id="related" aria-labelledby="related-title">
+    <h2 id="related-title">Diğer eklentiler</h2>
+    <p>Diğer beşi <a href="/skillbench/tr/">skillbench</a>, <a href="/scar/tr/">scar</a>, <a href="/gardener/tr/">gardener</a>, <a href="/painradar/tr/">painradar</a> ve <a href="/devpersona/tr/">devpersona</a>. Altısının açıklaması <a href="/repos/tr/">araçlar sayfasında</a>.</p>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, İstanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespit modeli</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Kaynak</a></li>
+    </ul>
+    <p class="small">Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

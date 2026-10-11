@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>gardener: talimat dosyaları için maliyet denetimi ve budama planı</title>
+<meta name="description" content="gardener, CLAUDE.md, AGENTS.md ve GEMINI.md içe aktarımlarını çözer, her istekte yüklenenin maliyetini ölçer, kırık içe aktarım ve tekrarlı kuralları işaretler.">
+<link rel="canonical" href="https://halilneed.agency/gardener/tr/">
+<link rel="alternate" hreflang="en" href="https://halilneed.agency/gardener/">
+<link rel="alternate" hreflang="tr" href="https://halilneed.agency/gardener/tr/">
+<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/gardener/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:title" content="gardener: talimat dosyaları için maliyet denetimi ve budama planı">
+<meta property="og:description" content="gardener, CLAUDE.md, AGENTS.md ve GEMINI.md içe aktarımlarını çözer, her istekte yüklenenin maliyetini ölçer, kırık içe aktarım ve tekrarlı kuralları işaretler.">
+<meta property="og:url" content="https://halilneed.agency/gardener/tr/">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-gardener.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="gardener: talimat dosyaları için maliyet denetimi ve budama planı">
+<meta name="twitter:description" content="gardener, CLAUDE.md, AGENTS.md ve GEMINI.md içe aktarımlarını çözer, her istekte yüklenenin maliyetini ölçer, kırık içe aktarım ve tekrarlı kuralları işaretler.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-gardener.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Araçlar",
+          "item": "https://halilneed.agency/repos/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "gardener",
+          "item": "https://halilneed.agency/gardener/tr/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "gardener",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "license": "https://github.com/halilneed/gardener/blob/main/LICENSE",
+      "@id": "https://halilneed.agency/gardener/tr/",
+      "url": "https://halilneed.agency/gardener/tr/",
+      "inLanguage": "tr",
+      "sameAs": [
+        "https://github.com/halilneed/gardener"
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<header class="site-header">
+  <a class="site-name" href="/tr/">halilneed</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="/models/tr/">Modeller</a></li>
+      <li><a href="/repos/tr/" aria-current="true">Araçlar</a></li>
+      <li><a href="/guides/tr/">Rehberler</a></li>
+      <li><a href="/writing/tr/">Yazılar</a></li>
+      <li><a href="/tr/#about">Hakkında</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Dil"><a href="/gardener/tr/" hreflang="tr" lang="tr" aria-current="true">TR</a><a href="/gardener/" hreflang="en" lang="en">EN</a></div>
+</header>
+
+<nav class="breadcrumb" aria-label="Konum">
+  <ol>
+    <li><a href="/tr/">halilneed</a></li>
+    <li><a href="/repos/tr/">Araçlar</a></li>
+    <li aria-current="page">gardener</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>gardener</h1>
+    <p class="lead">CLAUDE.md, AGENTS.md, GEMINI.md ve bunların içe aktardığı her şey her istekte yüklenir. gardener bu içe aktarma zincirini tek bir envantere çözer, maliyetini satır ve tahmini token olarak hesaplar; kırık içe aktarımları, eskimiş yolları ve tekrarlı kuralları işaretler. Betik hiçbir dosyayı düzenlemez.</p>
+    <ul class="links">
+      <li><a href="https://github.com/halilneed/gardener" data-goatcounter-click="gd-cta-source-tr">GitHub’da kaynak kod</a></li>
+      <li><a href="#install" data-goatcounter-click="gd-cta-install-tr">Kurulum</a></li>
+    </ul>
+
+    <dl class="kv">
+      <div><dt>Kontroller</dt><dd>10</dd></div>
+      <div><dt>Okunan ajanlar</dt><dd>Claude Code, Codex CLI, Gemini CLI</dd></div>
+      <div><dt>Ağ çağrısı</dt><dd>yok</dd></div>
+      <div><dt>Düzenlenen dosya</dt><dd>betik tarafından yok</dd></div>
+      <div><dt>Lisans</dt><dd>MIT</dd></div>
+    </dl>
+  </header>
+
+  <section id="example" aria-labelledby="example-title">
+    <h2 id="example-title">Örnek çıktı</h2>
+    <p>Aşağıdaki alıntı, bu sitenin hazırlandığı makinede her zaman yüklenen talimat dosyaları üzerinde <code class="nowrap">--audit --md --lang en</code> ile yapılan gerçek bir çalıştırmadan kısaltıldı. Klasör adları genellendi ve bir bulgu etiketi çevrildi. Her sayı betiğin yazdığı gibi. Tarama hiçbir ağ çağrısı yapmadı.</p>
+
+<pre tabindex="0" aria-label="Sıcak bağlam denetimi, Markdown çıktısı"><code># gardener — hot context audit
+
+Source note: 6 files · 182 lines · ~2638 estimated tokens, per request · 76 directives · score: 12 (good)
+
+Budgets: 300/600 lines per file, 4000/8000 estimated tokens in total.
+Token counts are a bytes/4 estimate, not a real tokenizer.
+
+## What loads
+
+| File                          | scope   | depth | lines | ~tokens |
+|-------------------------------|---------|-------|-------|---------|
+| `~/.claude/CLAUDE.md`         | global  | 0     |     7 |      60 |
+| `~/agent-defs/instructions.md`| global  | 1     |    53 |     749 |
+| `~/agent-defs/identity.md`    | global  | 2     |    46 |     553 |
+| `~/agent-defs/memory/MEMORY.md`| global | 2     |    30 |     676 |
+| `~/.gemini/GEMINI.md`         | global  | 0     |     1 |       0 |
+| `&lt;repo&gt;/.claude/CLAUDE.md`   | project | 0     |    45 |     600 |
+| **total**                     |         |       | **182** | **2638** |
+
+## Findings
+
+| Sev  | Check               | where              | what        |
+|------|---------------------|--------------------|-------------|
+| warn | duplicate-directive | instructions.md:52 | 86% overlap |
+| warn | duplicate-directive | instructions.md:32 | 69% overlap |
+| warn | duplicate-directive | instructions.md:28 | 67% overlap |</code></pre>
+
+    <p>Her bulgu, tetiklenen kontrolü, dosyayı ve satırı gösterir. Tekrarlarda örtüşen iki metni de gösterir. Böylece tek bir bulguya itiraz edebilirsiniz. Kontroller <a href="https://github.com/halilneed/gardener/blob/main/skills/audit/references/checks.md">açıp okuyabileceğiniz tek bir dosyada</a> belgelenmiş. Katılmadığınız bir kontrolü <code class="nowrap">--ignore</code> ile kapatabilirsiniz.</p>
+  </section>
+
+  <section id="install" aria-labelledby="install-title">
+    <h2 id="install-title">Kurulum</h2>
+
+<pre tabindex="0" aria-label="Kurulum komutları"><code># bir kez
+&gt; /plugin marketplace add halilneed/plugins
+
+# eklenti
+&gt; /plugin install gardener@hailneed
+
+# ve deneyin
+&gt; /gardener:audit</code></pre>
+
+    <p><a href="https://github.com/halilneed/plugins">Market</a> kimliği <code>hailneed</code>, kurulum satırının <code>@hailneed</code> ile bitmesinin nedeni bu.</p>
+    <ul>
+      <li>Claude Code ve Node.js 18 ya da daha yenisi.</li>
+      <li>Bağımlılık, derleme adımı, API anahtarı ya da hesap gerekmez.</li>
+      <li>Eklenti olmadan da çalışır: <code>node scripts/gardener.mjs <span class="nowrap">--audit</span> <span class="nowrap">--repo .</span> <span class="nowrap">--md</span></code></li>
+      <li>CI için <code class="nowrap">--audit --out audit.json</code> sabit bir çıktı biçimi verir. <code>totals.tokens</code> ya da <code>score.raw</code> belirlediğiniz eşiği aştığında derlemeyi başarısız sayabilirsiniz. <code class="nowrap">--selftest</code> ağ gerektirmez.</li>
+    </ul>
+  </section>
+
+  <section id="commands" aria-labelledby="commands-title">
+    <h2 id="commands-title">Komutlar</h2>
+
+    <h3><code>/gardener:audit</code></h3>
+    <p>Her istekte neyin yüklendiğini raporlar. İçe aktarma zinciri, dolaylı içe aktarımlar dahil tek bir envantere çözülür ve satır ile tahmini token olarak fiyatlanır. Kırık içe aktarımlar, eskimiş yollar ve tekrarlı talimatlar listelenir. Çözülemeyen bir içe aktarım her zaman listede yer alır. Böylece yüklenmeyen kuralları yükleniyor sanmazsınız.</p>
+
+    <h3><code>/gardener:compliance</code></h3>
+    <p>Yasaklara uyulup uyulmadığını kontrol eder. Yasaklı komutlar, yerel oturumlarda çalıştırılan komutlarla karşılaştırılır. İhlal adayları çıkarır ve bunlar raporlanmadan önce satır satır doğrulanır. Konusu hiç geçmemiş kuralları da listeler. Konusu hiç geçmemiş kurallar, uyulan kurallardan ayrı listelenir.</p>
+
+    <h3><code>/gardener:prune</code></h3>
+    <p>İşaretlenen her talimatı gerekçesiyle birlikte sil, taşı, düzelt, yeniden yaz ya da zorunlu kıl olarak işaretleyen satır satır bir plan yazar. Her zaman yüklenen dosyaya ait olanı, gerektiğinde yüklenmesi gerekenden ayırır. Satırları gösterir, onay ister ve sonra her seferinde tek bir dosyayı düzenler.</p>
+  </section>
+
+  <section id="guarantees" aria-labelledby="guarantees-title">
+    <h2 id="guarantees-title">Ne yapar, ne yapmaz</h2>
+    <ul>
+      <li>Betik ağ çağrısı yapmaz ve hiçbir dosyayı düzenlemez. <a href="https://github.com/halilneed/gardener/blob/main/scripts/gardener.mjs"><code>gardener.mjs</code></a> diskinizde zaten bulunan talimat dosyalarını ve oturum kayıtlarını okur ve bir plan çıkarır. prune skill’i CLAUDE.md dosyasını ancak satırları size gösterip onayınızı aldıktan sonra değiştirir.</li>
+      <li>Token sayıları bir tokenizer’dan değil, bytes/4 tahmininden gelir. Dosyaları karşılaştırmak ve değişimi zaman içinde izlemek için bu yeterli. Her rapor bunu belirtir.</li>
+      <li>Uyum eşleşmesi yalnızca bir adaydır. Kuralın önemsediği bağlamı kaçırmış olabilir. Bu yüzden skill her adayı açar, dökümle karşılaştırarak doğrular ve kaçını elediğini raporlar.</li>
+      <li>Hiç rastlanmayan bir yasak olası bir başarı olarak raporlanır. Skill, sıfır sayıma bakarak bir güvenlik kuralının silinmesini önermez.</li>
+      <li>10 kontrol var, model yargısı yok. <a href="https://github.com/halilneed/gardener/blob/main/skills/audit/references/checks.md"><code>checks.md</code></a> her birini önem düzeyi ve değerlendirme notuyla belgeler. <code class="nowrap">--selftest</code> bunları verilerinize dokunmadan 19 test örneği üzerinde çalıştırır.</li>
+      <li>Okunamayan oturumlar kaynak notunda sayılır.</li>
+      <li>MIT lisanslı (<a href="https://github.com/halilneed/gardener/blob/main/LICENSE"><code>LICENSE</code></a>). Hesap, kayıt ya da telemetri yok.</li>
+    </ul>
+  </section>
+
+  <section id="cloud" aria-labelledby="cloud-title">
+    <h2 id="cloud-title">Planlanan</h2>
+    <p>Barındırılan bir sürüm, gardener Cloud, planlanıyor. Eklenti ücretsiz ve yerel kalacak.</p>
+    <ul>
+      <li>Sürekli bütçe takibi: ekibinizin talimat dosyalarının sıcak bağlam maliyeti, bir kez denetlenmek yerine zaman içinde izlenir.</li>
+      <li>Kural değişiklikleri için önce ve sonra: değişen bir kuralın ajan davranışına etkisi, değişikliğin iki yanı karşılaştırılarak.</li>
+      <li>Oryantasyon özeti: yeni ekip üyeleri için bu repoda geçerli kurallar.</li>
+    </ul>
+    <p>Hazır olduğunda haber almak için <a href="/writing/tr/#subscribe">yazılar sayfasından</a> abone olun.</p>
+  </section>
+
+  <section id="related" aria-labelledby="related-title">
+    <h2 id="related-title">Diğer eklentiler</h2>
+    <p>Diğer beşi <a href="/agent-blackbox/tr/">agent-blackbox</a>, <a href="/skillbench/tr/">skillbench</a>, <a href="/scar/tr/">scar</a>, <a href="/painradar/tr/">painradar</a> ve <a href="/devpersona/tr/">devpersona</a>. Altısının açıklaması <a href="/repos/tr/">araçlar sayfasında</a>.</p>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, İstanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespit modeli</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Kaynak</a></li>
+    </ul>
+    <p class="small">Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -26,20 +26,45 @@
       <li><a href="/#about">About</a></li>
     </ul>
   </nav>
+  <div class="lang-switch" role="group" aria-label="Language"><a href="/tr/" hreflang="tr" lang="tr">TR</a><a href="/" hreflang="en" lang="en">EN</a></div>
 </header>
 
 <main id="main">
 
-  <div class="page-head">
+  <div class="page-head" id="nf-en" lang="en">
     <h1>Page not found</h1>
     <p class="lead">There is nothing at this address. The page may have moved when the site was reorganised.</p>
     <ul class="links">
       <li><a href="/">Home</a></li>
       <li><a href="/models/">Models</a></li>
       <li><a href="/repos/">Tools</a></li>
+      <li><a href="/guides/">Guides</a></li>
       <li><a href="/writing/">Writing</a></li>
     </ul>
   </div>
+
+  <div class="page-head" id="nf-tr" lang="tr">
+    <h2>Sayfa bulunamadı</h2>
+    <p class="lead">Bu adreste bir şey yok. Site yeniden düzenlenirken sayfa taşınmış olabilir.</p>
+    <ul class="links">
+      <li><a href="/tr/">Ana sayfa</a></li>
+      <li><a href="/models/tr/">Modeller</a></li>
+      <li><a href="/repos/tr/">Araçlar</a></li>
+      <li><a href="/guides/tr/">Rehberler</a></li>
+      <li><a href="/writing/tr/">Yazılar</a></li>
+    </ul>
+  </div>
+  <script>
+    /* Turkish first when the missing address was a Turkish one */
+    if (/\/tr(\/|$)/.test(location.pathname)) {
+      var en = document.getElementById('nf-en'), tr = document.getElementById('nf-tr');
+      en.parentNode.insertBefore(tr, en);
+      tr.querySelector('h2').outerHTML = '<h1>Sayfa bulunamadı</h1>';
+      en.querySelector('h1').outerHTML = '<h2>Page not found</h2>';
+      document.documentElement.lang = 'tr';
+      document.title = 'Sayfa bulunamadı | halilneed';
+    }
+  </script>
 
 </main>
 

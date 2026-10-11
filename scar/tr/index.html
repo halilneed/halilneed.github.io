@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>scar: tekrarlayan ajan hataları, kural taslakları ve doğrulama</title>
+<meta name="description" content="scar, kodlama ajanlarının oturum kayıtlarında oturumlar arasında tekrarlayan hataları bulur, her biri için kural ya da test özeti yazar ve dersin tutup tutmadığını ölçer.">
+<link rel="canonical" href="https://halilneed.agency/scar/tr/">
+<link rel="alternate" hreflang="en" href="https://halilneed.agency/scar/">
+<link rel="alternate" hreflang="tr" href="https://halilneed.agency/scar/tr/">
+<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/scar/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="scar: tekrarlayan ajan hataları, kural taslakları ve doğrulama">
+<meta property="og:description" content="scar, kodlama ajanlarının oturum kayıtlarında oturumlar arasında tekrarlayan hataları bulur, her biri için kural ya da test özeti yazar ve dersin tutup tutmadığını ölçer.">
+<meta property="og:url" content="https://halilneed.agency/scar/tr/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-scar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="scar: tekrarlayan ajan hataları, kural taslakları ve doğrulama">
+<meta name="twitter:description" content="scar, kodlama ajanlarının oturum kayıtlarında oturumlar arasında tekrarlayan hataları bulur, her biri için kural ya da test özeti yazar ve dersin tutup tutmadığını ölçer.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-scar.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Araçlar",
+          "item": "https://halilneed.agency/repos/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "scar",
+          "item": "https://halilneed.agency/scar/tr/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "scar",
+      "description": "scar, kodlama ajanlarının oturum kayıtlarında oturumlar arasında tekrarlayan hataları bulur, her biri için kural ya da test özeti yazar ve dersin tutup tutmadığını ölçer.",
+      "inLanguage": "tr",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "license": "https://github.com/halilneed/scar/blob/main/LICENSE",
+      "url": "https://halilneed.agency/scar/tr/",
+      "sameAs": [
+        "https://github.com/halilneed/scar"
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<header class="site-header">
+  <a class="site-name" href="/tr/">halilneed</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="/models/tr/">Modeller</a></li>
+      <li><a href="/repos/tr/" aria-current="true">Araçlar</a></li>
+      <li><a href="/guides/tr/">Rehberler</a></li>
+      <li><a href="/writing/tr/">Yazılar</a></li>
+      <li><a href="/tr/#about">Hakkında</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Dil"><a href="/scar/tr/" hreflang="tr" lang="tr" aria-current="true">TR</a><a href="/scar/" hreflang="en" lang="en">EN</a></div>
+</header>
+
+<nav class="breadcrumb" aria-label="Konum">
+  <ol>
+    <li><a href="/tr/">halilneed</a></li>
+    <li><a href="/repos/tr/">Araçlar</a></li>
+    <li aria-current="page">scar</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>scar</h1>
+    <p class="lead">scar, Claude Code, Codex CLI ve Gemini CLI’ın diskinizde zaten tuttuğu oturum kayıtlarını tarar ve ayrı oturumlarda tekrar eden hataları bulur. Her biri için bir kural, test özeti ya da düzeltme taslağı yazar, sonra dersin tutup tutmadığını ölçer. Hiçbir ağ isteği yapmaz ve reponuza kendiliğinden hiçbir şey yazmaz.</p>
+    <ul class="links">
+      <li><a href="https://github.com/halilneed/scar" data-goatcounter-click="sc-cta-source-tr">GitHub’da kaynak kod</a></li>
+      <li><a href="#install" data-goatcounter-click="sc-cta-install-tr">Kurulum</a></li>
+    </ul>
+
+    <dl class="kv">
+      <div><dt>Hata aileleri</dt><dd>16</dd></div>
+      <div><dt>Sonuçlar</dt><dd>tuttu, tekrarladı, çok yeni, kanıt yok</dd></div>
+      <div><dt>Okunan ajanlar</dt><dd>Claude Code, Codex CLI, Gemini CLI</dd></div>
+      <div><dt>Ağ istekleri</dt><dd>yok</dd></div>
+      <div><dt>Lisans</dt><dd>MIT</dd></div>
+    </dl>
+  </header>
+
+  <section id="example" aria-labelledby="example-title">
+    <h2 id="example-title">Örnek çıktı</h2>
+    <p>Bu, bu sitenin yapıldığı makinede <code class="nowrap">--mine --days 90</code> ile yapılmış gerçek bir çalıştırmanın kısaltılmış hâlidir. Özel projelerin adını içeren satırlar çıkarıldı, uzun hata satırları kısaltıldı. Sayılar, tarayıcının yazdırdığı sayılardır. Tarama hiçbir ağ isteği yapmadı.</p>
+
+<pre tabindex="0" aria-label="Tekrarlayan hatalar raporu, Markdown çıktısı"><code># scar — recurring failures
+
+Source note: 156 sessions scanned (all, 90d) · 305 failure episodes
+             · 6 low-confidence signatures dropped · 16 scars
+
+| Id             | cost | sessions | projects | family            | artifact | error                        |
+|----------------|------|----------|----------|-------------------|----------|------------------------------|
+| `scar-0eqc684` |   68 |       14 |        5 | shell-quoting     | rule     | unexpected EOF while looki…  |
+| `scar-0qkezmw` |   42 |        8 |        4 | edit-precondition | rule     | &lt;tool_use_error&gt;String to…  |
+| `scar-12srzqa` |   36 |        6 |        5 | not-a-git-repo    | rule     | fatal: not a git repositor…  |
+| `scar-08kw0mp` |   12 |        2 |        2 | timeout           | rule     | Command timed out after 2m…  |
+| `scar-0w2b7dp` |   12 |        2 |        2 | compile-error     | test     | Build failed. Use dotnet b…  |
+
+## What to do
+
+`node scar.mjs --draft scar-0eqc684` &rarr; rule</code></pre>
+
+    <p>Sıralama ham sayıya göre değil, maliyete göre yapılır: ayrı oturumlar × 3, dokunulan projeler × 2, tekrarlar için bir üst sınır, ve aynı duvara birden fazla ajan çarptıysa +4. Kötü geçen bir öğleden sonranın tüm yeniden denemeleri tek bir olay sayılır. Her scar’ı sınıflandıran 16 aile <a href="https://github.com/halilneed/scar/blob/main/scripts/lib/scars.mjs">açıp okuyabileceğiniz bir örüntü listesidir</a>. Sonraki adım tablonun altına yazdırılır.</p>
+  </section>
+
+  <section id="install" aria-labelledby="install-title">
+    <h2 id="install-title">Kurulum</h2>
+
+<pre tabindex="0" aria-label="Kurulum komutları"><code># bir kez
+&gt; /plugin marketplace add halilneed/plugins
+
+# eklenti
+&gt; /plugin install scar@hailneed
+
+# ve deneyin
+&gt; /scar:mine</code></pre>
+
+    <p><a href="https://github.com/halilneed/plugins">Marketin</a> kimliği <code>hailneed</code>; kurulum satırının <code>@hailneed</code> ile bitmesi bu yüzden.</p>
+    <ul>
+      <li>Claude Code ve Node.js 18 ya da üstü.</li>
+      <li>Bağımlılık yok, API anahtarı yok, kota harcanmaz.</li>
+      <li>Tek başına da çalışır: <code>node scripts/scar.mjs <span class="nowrap">--mine</span> <span class="nowrap">--md</span> <span class="nowrap">--lang en</span></code></li>
+      <li>CI için <code class="nowrap">--verify --out verify.json</code> sabit bir çıktı biçimi verir. Kontrolü <code>written[].verdict</code> üzerine kurun.</li>
+    </ul>
+  </section>
+
+  <section id="commands" aria-labelledby="commands-title">
+    <h2 id="commands-title">Komutlar</h2>
+
+    <h3><code>/scar:mine</code></h3>
+    <p>Tekrarlayan hatalar, maliyetlerine göre sıralı: hangi hata kaç ayrı oturumda ve projede geri geldi, hangi komutlar başarısız oldu ve hemen ardından ne işe yaradı. Olayların çoğu başka bir aracın başarısıyla bitiyorsa rapor bunu söyler, çünkü o durumda ders daha iyi bir komut değil, araç seçimidir.</p>
+
+    <h3><code>/scar:write &lt;id&gt;</code></h3>
+    <p>Kalıcı ders: bir kural, bir regresyon testi özeti, bir ortam düzeltmesi ya da bir karar kaydı. Her birinde bir kanıt satırı ve bir scar işareti bulunur, böylece sonuç daha sonra ölçülebilir. Taslağı size gösterir ve reponuza bir şey yazmadan önce sorar.</p>
+
+    <h3><code>/scar:verify</code></h3>
+    <p>Dersin tutup tutmadığını kontrol eder. İşaretli her çıktı için hatanın, çıktı yazılmadan önceki ve sonraki tekrar sayısını verir. Dört sonuç vardır: tuttu, tekrarladı, çok yeni, kanıt yok. “Tekrarladı” sonucu, kuralın hatayı durdurmadığı anlamına gelir.</p>
+  </section>
+
+  <section id="guarantees" aria-labelledby="guarantees-title">
+    <h2 id="guarantees-title">Ne yapar, ne yapmaz</h2>
+    <ul>
+      <li>Hiçbir ağ isteği yapmaz ve reponuza hiçbir şey yazmaz. Taslaklar stdout’a gider, <a href="https://github.com/halilneed/scar/blob/main/scripts/scar.mjs"><code>scar.mjs</code></a> içinde ne fetch ne soket vardır; repoya neyin gireceğine siz karar verirsiniz.</li>
+      <li>16 aile vardır ve model yargısı yoktur. <a href="https://github.com/halilneed/scar/blob/main/scripts/lib/scars.mjs"><code>scars.mjs</code></a> okuyabileceğiniz bir örüntü listesidir, <code class="nowrap">--selftest</code> onu verilerinize dokunmadan çalıştırır.</li>
+      <li>Yeniden deneme döngüleri sıralamayı şişirmez. Bir olay, art arda gelen başarısızlıklar ile ardından gelen ilk başarıdan oluşur; tek oturumdaki yirmi deneme tek bir derstir.</li>
+      <li><code>verify</code> işarete bağlıdır. Tekrarları işaretin tarihinden önce ve sonra sayar, bu yüzden işareti olmayan bir kural ölçülemez.</li>
+      <li>Okunamayan oturumlar ve düşük güvenli olduğu için atılan imzalar kaynak notunda sayılır.</li>
+      <li>MIT lisanslıdır (<a href="https://github.com/halilneed/scar/blob/main/LICENSE"><code>LICENSE</code></a>). Hesap yok, kayıt yok, telemetri yok.</li>
+    </ul>
+  </section>
+
+  <section id="cloud" aria-labelledby="cloud-title">
+    <h2 id="cloud-title">Planlanan</h2>
+    <p>Barındırılan bir sürüm, scar Cloud, planlanıyor. Eklenti ücretsiz ve yerel kalacak.</p>
+    <ul>
+      <li>Ekip çapında scar havuzu: bir kişinin yaşadığı hata bütün ekip için bir kurala dönüşür.</li>
+      <li>Kural etkinliği zaman serisi: hangi dersler ekip genelinde tutuyor, hangileri sessizce işe yaramaz oldu.</li>
+      <li>İşe başlama özeti: yeni ekip üyeleri için bu repodaki bilinen tuzaklar.</li>
+    </ul>
+    <p>Hazır olduğunda haberdar olmak için <a href="/writing/tr/#subscribe">yazılar sayfasından</a> abone olun.</p>
+  </section>
+
+  <section id="related" aria-labelledby="related-title">
+    <h2 id="related-title">Diğer eklentiler</h2>
+    <p>Diğer beşi <a href="/agent-blackbox/tr/">agent-blackbox</a>, <a href="/skillbench/tr/">skillbench</a>, <a href="/gardener/tr/">gardener</a>, <a href="/painradar/tr/">painradar</a> ve <a href="/devpersona/tr/">devpersona</a>. Altısı da <a href="/repos/tr/">araçlar sayfasında</a> anlatılıyor.</p>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, İstanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespit modeli</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Kaynak</a></li>
+    </ul>
+    <p class="small">Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

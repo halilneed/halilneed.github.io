@@ -62,5 +62,7 @@
   "introKicker": "Intro",
   "emailLbl": "Email address",
   "placeholder": "you@example.com",
-  "subscribeBtn": "Subscribe"
+  "subscribeBtn": "Subscribe",
+  "home": "/",
+  "switchAria": "Language"
 }
