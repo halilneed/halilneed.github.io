@@ -40,13 +40,12 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="/"><i>h</i>halilneed</a>
+    <a class="brand" href="{{home}}"><i>h</i>halilneed</a>
     <nav aria-label="{{guidesName}}">
       <a href="{{guidesPath}}">{{allGuides}}</a>
       <a href="{{pdf}}" data-goatcounter-click="{{slug}}-pdf-top-{{lang}}">PDF</a>
-      <span class="sep" aria-hidden="true"></span>
-      <a href="{{altPath}}" lang="{{altLang}}" hreflang="{{altLang}}">{{altLabel}}</a>
     </nav>
+    <div class="lang-switch" role="group" aria-label="{{switchAria}}"><a href="{{urlTrPath}}" hreflang="tr" lang="tr"{{curTr}}>TR</a><a href="{{urlEnPath}}" hreflang="en" lang="en"{{curEn}}>EN</a></div>
   </div>
 </header>
 
@@ -73,7 +72,7 @@
 {{body}}
 </main>
 
-<footer>© 2026 Halil, <a href="/">halilneed.agency</a>. {{footer}}</footer>
+<footer>© 2026 Halil, <a href="{{home}}">halilneed.agency</a>. {{footer}}</footer>
 
 <script>
 (function(){

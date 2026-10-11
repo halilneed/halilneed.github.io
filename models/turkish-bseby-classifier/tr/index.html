@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bankacılık veri sınıfları için Türkçe BSEBY sınıflandırıcısı | halilneed</title>
+<meta name="description" content="Türkçe bankacılık metinleri için açık sınıflandırıcı: BSEBY kapsamında kişisel, özel nitelikli ve kimlik doğrulama verisi, müşteri sırrı ve banka sırrı. 0.944 micro-F1. MIT.">
+<link rel="canonical" href="https://halilneed.agency/models/turkish-bseby-classifier/tr/">
+<link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-bseby-classifier/">
+<link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/turkish-bseby-classifier/tr/">
+<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/models/turkish-bseby-classifier/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Bankacılık veri sınıfları için Türkçe BSEBY sınıflandırıcısı | halilneed">
+<meta property="og:description" content="Türkçe bankacılık metinleri için açık sınıflandırıcı: BSEBY kapsamında kişisel, özel nitelikli ve kimlik doğrulama verisi, müşteri sırrı ve banka sırrı. 0.944 micro-F1. MIT.">
+<meta property="og:url" content="https://halilneed.agency/models/turkish-bseby-classifier/tr/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-bseby-classifier.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bankacılık veri sınıfları için Türkçe BSEBY sınıflandırıcısı | halilneed">
+<meta name="twitter:description" content="Türkçe bankacılık metinleri için açık sınıflandırıcı: BSEBY kapsamında kişisel, özel nitelikli ve kimlik doğrulama verisi, müşteri sırrı ve banka sırrı. 0.944 micro-F1. MIT.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-bseby-classifier.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Modeller",
+          "item": "https://halilneed.agency/models/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Türkçe BSEBY sınıflandırıcısı",
+          "item": "https://halilneed.agency/models/turkish-bseby-classifier/tr/"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://halilneed.agency/models/turkish-bseby-classifier/tr/#page",
+      "url": "https://halilneed.agency/models/turkish-bseby-classifier/tr/",
+      "mainEntityOfPage": "https://halilneed.agency/models/turkish-bseby-classifier/tr/",
+      "headline": "Türkçe BSEBY sınıflandırıcısı",
+      "description": "Türkçe bankacılık metinlerinde BSEBY veri sınıfları için açık, çok etiketli bir sınıflandırıcı: örnekler, etiketler, sonuçlar, Python ile kullanım, eğitim ve sınırlar.",
+      "inLanguage": "tr",
+      "datePublished": "2026-10-09",
+      "dateModified": "2026-10-09",
+      "image": "https://halilneed.agency/assets/img/og-turkish-bseby-classifier.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "about": {
+        "@id": "https://halilneed.agency/models/turkish-bseby-classifier/#model"
+      }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://halilneed.agency/models/turkish-bseby-classifier/#model",
+      "name": "turkish-bseby-classifier",
+      "description": "BERTurk tabanlı, 110M parametreli, çok etiketli Türkçe metin sınıflandırıcısı. Bankacılık metinlerinde kişisel veriyi, özel nitelikli kişisel veriyi, kimlik doğrulama verisini, müşteri sırrını ve banka sırrını işaretler.",
+      "url": "https://huggingface.co/halilneed/turkish-bseby-classifier",
+      "programmingLanguage": "Python",
+      "license": "https://opensource.org/license/mit",
+      "isBasedOn": "https://huggingface.co/dbmdz/bert-base-turkish-cased",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<header class="site-header">
+  <a class="site-name" href="/tr/">halilneed</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="/models/tr/" aria-current="true">Modeller</a></li>
+      <li><a href="/repos/tr/">Araçlar</a></li>
+      <li><a href="/guides/tr/">Rehberler</a></li>
+      <li><a href="/writing/tr/">Yazılar</a></li>
+      <li><a href="/tr/#about">Hakkında</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Dil"><a href="/models/turkish-bseby-classifier/tr/" hreflang="tr" lang="tr" aria-current="true">TR</a><a href="/models/turkish-bseby-classifier/" hreflang="en" lang="en">EN</a></div>
+</header>
+
+<nav class="breadcrumb" aria-label="Konum">
+  <ol>
+    <li><a href="/tr/">halilneed</a></li>
+    <li><a href="/models/tr/">Modeller</a></li>
+    <li aria-current="page">Türkçe BSEBY sınıflandırıcısı</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>Türkçe BSEBY sınıflandırıcısı</h1>
+    <p class="lead"><code>turkish-bseby-classifier</code>, Türkçe metinde beş veri sınıfını işaretleyen çok etiketli bir modeldir: kişisel veri, özel nitelikli kişisel veri, kimlik doğrulama verisi (BSEBY’de hassas veri), müşteri sırrı ve banka sırrı. Bankaların veri envanteri ve veri sızıntısı önleme (DLP) süreçleri için yaptım.</p>
+    <p>Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (BSEBY), bankalardan verilerinin güvenlik sınıfını üç ölçüte göre belirlemesini ister: kişisel veri, hassas veri ve sır niteliğindeki veri (md. 6/6). Hassas verinin ve sırların dışarı giden trafikte sızmasının önlenmesini de ister (md. 14/9). Model masaüstü bir CPU’da metin başına yaklaşık 32 ms sürer.</p>
+    <ul class="links">
+      <li><a href="https://huggingface.co/halilneed/turkish-bseby-classifier" data-goatcounter-click="bseby-download-tr">Hugging Face’te ağırlıklar</a></li>
+      <li><a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark" data-goatcounter-click="bseby-benchmark-tr">Değerlendirme seti</a></li>
+    </ul>
+
+    <dl class="kv">
+      <div><dt>Boyut</dt><dd>110M parametre</dd></div>
+      <div><dt>Temel model</dt><dd><a href="https://huggingface.co/dbmdz/bert-base-turkish-cased"><code>dbmdz/bert-base-turkish-cased</code></a> (BERTurk)</dd></div>
+      <div><dt>Etiketler</dt><dd>5, çok etiketli</dd></div>
+      <div><dt>Sonuç</dt><dd>Ayrılmış 747 metinde 0.944 micro-F1</dd></div>
+      <div><dt>CPU hızı</dt><dd>metin başına yaklaşık 32 ms</dd></div>
+      <div><dt>Lisans</dt><dd>MIT</dd></div>
+    </dl>
+
+    <nav class="toc" aria-label="Bu sayfada">
+      <ul>
+        <li><a href="#example">Örnekler</a></li>
+        <li><a href="#labels">Etiketler</a></li>
+        <li><a href="#results">Sonuçlar</a></li>
+        <li><a href="#usage">Hızlı başlangıç</a></li>
+        <li><a href="#training">Eğitim</a></li>
+        <li><a href="#limitations">Sınırlar</a></li>
+        <li><a href="#turkce">Kısa özet</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="example" aria-labelledby="example-title">
+    <h2 id="example-title">Örnekler</h2>
+
+    <div class="table-scroll" role="region" aria-labelledby="examples-caption" tabindex="0">
+      <table class="stack" role="table">
+        <caption id="examples-caption">Model kartından altı metin ve aldıkları etiketler</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col">Metin</th>
+            <th role="columnheader" scope="col" class="col-s">Etiketler</th>
+            <th role="columnheader" scope="col">Neden</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th role="rowheader" scope="row"><code class="mono" lang="tr">Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye çıkarıldı</code></th>
+            <td role="cell" data-label="Etiketler"><code class="nowrap">musteri_sirri</code></td>
+            <td role="cell" data-label="Neden">Müşteri bir şirket, bu yüzden kişisel veri yok.</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><code class="mono" lang="tr">müşteri kemoterapi gördüğü için kredi taksitlerinin ertelenmesini istedi</code></th>
+            <td role="cell" data-label="Etiketler"><code class="nowrap">kisisel_veri</code>, <code class="nowrap">ozel_nitelikli</code>, <code class="nowrap">musteri_sirri</code></td>
+            <td role="cell" data-label="Neden">Bir banka müşterisinin sağlık verisi.</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><code class="mono" lang="tr">internet şubesi parolanız: Kp!7731x, kimseyle paylaşmayın</code></th>
+            <td role="cell" data-label="Etiketler"><code class="nowrap">kisisel_veri</code>, <code class="nowrap">hassas_veri</code></td>
+            <td role="cell" data-label="Neden">Bir kişinin parolası, değeri metnin içinde.</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><code class="mono" lang="tr">core banking prod DB servis hesabı: svc_cb / Xr9!mQ2</code></th>
+            <td role="cell" data-label="Etiketler"><code class="nowrap">banka_sirri</code></td>
+            <td role="cell" data-label="Neden">Sistem kimlik bilgisi bir kişiye değil, bankaya aittir.</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><code class="mono" lang="tr">abonenin son üç faturası ödenmemiş, hattı kısıtlanacak</code></th>
+            <td role="cell" data-label="Etiketler"><code class="nowrap">kisisel_veri</code></td>
+            <td role="cell" data-label="Neden">Banka müşterisi değil, telekom müşterisi; bu yüzden müşteri sırrı değil.</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row"><code class="mono" lang="tr">ihtiyaç kredisi faiz oranımız 1 Ekim itibarıyla %3,49'dur</code></th>
+            <td role="cell" data-label="Etiketler">etiket yok</td>
+            <td role="cell" data-label="Neden">Yayımlanmış bir oran.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="labels" aria-labelledby="labels-title">
+    <h2 id="labels-title">Etiketler</h2>
+
+    <div class="table-scroll" role="region" aria-labelledby="labels-caption" tabindex="0">
+      <table class="stack" role="table">
+        <caption id="labels-caption">Beş etiket, kapsadıkları ve sınıfın dayanağı</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col">Etiket</th>
+            <th role="columnheader" scope="col">Kapsam</th>
+            <th role="columnheader" scope="col" class="col-s">Dayanak</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>kisisel_veri</code></th>
+            <td role="cell" data-label="Kapsam">belirli bir gerçek kişiye ilişkin her türlü bilgi</td>
+            <td role="cell" data-label="Dayanak">KVKK md. 3; BSEBY md. 6/3</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>ozel_nitelikli</code></th>
+            <td role="cell" data-label="Kapsam">sağlık, biyometrik veri, din, ceza mahkûmiyeti, sendika üyeliği ve diğer özel nitelikli kişisel veriler</td>
+            <td role="cell" data-label="Dayanak">KVKK md. 6</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>hassas_veri</code></th>
+            <td role="cell" data-label="Kapsam">değeri metinde geçen kimlik doğrulama verisi: parola, PIN, tek kullanımlık şifre, CVV, tam kart numarası, güvenlik sorusunun cevabı, oturum anahtarı</td>
+            <td role="cell" data-label="Dayanak">BSEBY md. 3/1-o</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>musteri_sirri</code></th>
+            <td role="cell" data-label="Kapsam">belirli bir gerçek ya da tüzel kişinin bir bankayla ilişkisinden doğan bilgi; müşteri olduğunu gösteren her şey dahil</td>
+            <td role="cell" data-label="Dayanak">Sır Yönetmeliği md. 4/3-4</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>banka_sirri</code></th>
+            <td role="cell" data-label="Kapsam">bankanın açıklanmamış kendi bilgisi: denetim bulguları, iç limitler ve politikalar, yayımlanmamış sonuçlar, sistem bilgileri ve sistem kimlik bilgileri</td>
+            <td role="cell" data-label="Dayanak">Sır Yönetmeliği md. 5/5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Etiket yoksa metin kamuya açık bir bilgi, genel bir kural, bir duyuru ya da bir ürün tanımıdır.</p>
+    <p>KVKK, Kişisel Verilerin Korunması Kanunu’dur. BSEBY, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik’tir (Resmî Gazete <time datetime="2020-03-15">15 Mart 2020</time>, sayı 31069). Sır Yönetmeliği, Sır Niteliğindeki Bilgilerin Paylaşılmasına İlişkin Yönetmelik’tir (Resmî Gazete <time datetime="2021-06-04">4 Haziran 2021</time>, sayı 31501).</p>
+
+    <h3>Sınırları nereden çizdim</h3>
+    <p>Yönetmelikler her sınıfın neye hizmet ettiğini söylüyor ama sınırdaki durumları çözmüyor, bu yüzden sınırları kendim çizmem gerekti. Bankanızın varlık sınıflandırma rehberi (BSEBY md. 6/5) bu sınırları farklı çiziyorsa, modeli o rehbere göre değerlendirin.</p>
+    <ul>
+      <li><strong>Kimlik doğrulama verisi kimin.</strong> Yönetmelik “müşteriye ait” diyor. Bir parolanın müşteriye mi çalışana mı ait olduğu metinden çoğu zaman anlaşılmaz, bu yüzden bir kişinin kimlik doğrulama verisi, sahibi kim olursa olsun <code>hassas_veri</code> sayılır. Bir sistem ya da servis hesabının parolası ve bir API anahtarı kişiye değil kuruma aittir: <code>banka_sirri</code>.</li>
+      <li><strong>Değer metinde olmalı.</strong> “müşteri şifresini dolandırıcıya vermiş” <code>hassas_veri</code> değildir. Maskelenmiş bir değer (<code>****</code>) de değildir.</li>
+      <li><strong>Anne kızlık soyadı.</strong> Tek başına <code>hassas_veri</code> değildir (BSEBY md. 34/10 kimlik doğrulamada kullanılmasını yasaklar). Metin onu açıkça bir kimlik doğrulama cevabı olarak kullanıyorsa işaretlenir.</li>
+      <li><strong>Hesap tanımlayıcıları.</strong> IBAN, hesap numarası ve tam kart numarası, bankacılık bağlamı açık olmasa da <code>musteri_sirri</code> sayılır.</li>
+      <li><strong>Başka işletmelerin müşterileri.</strong> Bankacılık dışındaki bir müşteri ilişkisi (e-ticaret, telekom, sigorta) müşteri sırrı değil, kişisel veridir. Borç, taksit ve icra takibi tek başına bankacılık içeriği sayılmaz.</li>
+      <li><strong>Banka sırrı.</strong> Sır Yönetmeliği yalnızca “sadece bankaya ait bilgi” der (md. 5/5) ve terimi daha fazla tanımlamaz. Kurum açıkça banka değilse etiket kullanılmaz. Belirsizse banka olduğu varsayılır.</li>
+      <li><strong>Tüzel kişiler.</strong> Tüzel kişi bir müşteriye ilişkin bilgi <code>kisisel_veri</code> değil, <code>musteri_sirri</code> sayılır.</li>
+    </ul>
+  </section>
+
+  <section id="results" aria-labelledby="results-title">
+    <h2 id="results-title">Sonuçlar</h2>
+    <p>Ana sonuç bağımsız, ayrılmış bir sette: eğitim verisine erişim olmadan, yalnızca etiketleme rehberinden yazılmış 375’erlik iki parti hâlinde 750 metin; ardından ikinci kez, kör olarak etiketlendi. Tam uyuşan 747 metin altın settir. İkinci set, eğitimde hiç kullanılmamış 456 şablondan gelen 1.055 örneklik, şablonları ayrık bir testtir.</p>
+
+    <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
+      <table>
+        <caption id="results-caption">İki test setindeki skorlar</caption>
+        <thead>
+          <tr><th scope="col">Metrik</th><th scope="col" class="num">Ayrılmış set<br>747 metin</th><th scope="col" class="num">Ayrık test<br>1.055 örnek</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">micro-F1</th><td class="num">0.944</td><td class="num dim">0.945</td></tr>
+          <tr><th scope="row">macro-F1</th><td class="num">0.939</td><td class="num dim">0.913</td></tr>
+          <tr><th scope="row">Tam eşleşme (tüm etiketler doğru)</th><td class="num">0.892</td><td class="num dim">0.902</td></tr>
+          <tr><th scope="row">Sır var: kesinlik</th><td class="num">0.970</td><td class="num dim">0.918</td></tr>
+          <tr><th scope="row">Sır var: duyarlılık (recall)</th><td class="num">0.963</td><td class="num dim">0.961</td></tr>
+          <tr><th scope="row">Korunan veri var: kesinlik</th><td class="num">0.985</td><td class="num dim">0.978</td></tr>
+          <tr><th scope="row">Korunan veri var: duyarlılık (recall)</th><td class="num">0.990</td><td class="num dim">0.973</td></tr>
+          <tr><th scope="row">Tüzel kişi diliminde tamamen doğru</th><td class="num">0.859</td><td class="num dim">0.804</td></tr>
+          <tr><th scope="row">Tüzel kişi dilimi büyüklüğü (n)</th><td class="num">128</td><td class="num dim">56</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-scroll" role="region" aria-labelledby="labels-results-caption" tabindex="0">
+      <table>
+        <caption id="labels-results-caption">Etiket bazında, ayrılmış set. P kesinlik, R duyarlılık (recall), n o etiketi taşıyan altın metin sayısıdır.</caption>
+        <thead>
+          <tr><th scope="col">Etiket</th><th scope="col" class="num"><abbr title="Kesinlik (precision)">P</abbr></th><th scope="col" class="num"><abbr title="Duyarlılık (recall)">R</abbr></th><th scope="col" class="num">F1</th><th scope="col" class="num">n</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" class="nowrap"><code>kisisel_veri</code></th><td class="num">0.958</td><td class="num">0.963</td><td class="num">0.960</td><td class="num">328</td></tr>
+          <tr><th scope="row" class="nowrap"><code>ozel_nitelikli</code></th><td class="num">0.983</td><td class="num">1.000</td><td class="num">0.991</td><td class="num">57</td></tr>
+          <tr><th scope="row" class="nowrap"><code>hassas_veri</code></th><td class="num">0.878</td><td class="num">0.867</td><td class="num">0.873</td><td class="num">83</td></tr>
+          <tr><th scope="row" class="nowrap"><code>musteri_sirri</code></th><td class="num">0.973</td><td class="num">0.928</td><td class="num">0.950</td><td class="num">306</td></tr>
+          <tr><th scope="row" class="nowrap"><code>banka_sirri</code></th><td class="num">0.888</td><td class="num">0.955</td><td class="num">0.920</td><td class="num">157</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Micro-F1, tüm etiket kararları bir araya toplanarak hesaplanan F1’dir. Macro-F1, etiket bazındaki F1 skorlarının ağırlıksız ortalamasıdır.</p>
+    <p>“Sır var”, <code>musteri_sirri</code> ya da <code>banka_sirri</code> anlamına gelir. “Korunan veri var”, en az bir etiket demektir. Tüzel kişi dilimi, altın etiketlerinde müşteri sırrı olup kişisel veri olmayan metinlerdir. Bir tahmin ancak ikisini de doğru bilirse sayılır.</p>
+    <p>Metinler ve iki etiketleme turu aynı dil modeliyle (Claude) ve aynı rehberle üretildi; bir insan tarafından satır satır doğrulanmadı. %99,6’lık tam uyuşma, rehberin tutarlı uygulanabildiğini gösterir. Bu iki bağımsız insan arasındaki uyuşma değildir ve bir insan etiketleyiciyle uyuşma ölçülmedi.</p>
+  </section>
+
+  <section id="usage" aria-labelledby="usage-title">
+    <h2 id="usage-title">Python ile hızlı başlangıç</h2>
+
+<pre tabindex="0" aria-label="Python örneği"><code>import json, torch
+from huggingface_hub import hf_hub_download
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
+MODEL = "halilneed/turkish-bseby-classifier"
+tok = AutoTokenizer.from_pretrained(MODEL)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL).eval()
+thresholds = json.load(open(hf_hub_download(MODEL, "thresholds.json")))
+
+def classify(text):
+    with torch.inference_mode():
+        p = torch.sigmoid(model(**tok(text, return_tensors="pt", truncation=True, max_length=320)).logits)[0]
+    return [model.config.id2label[i] for i, v in enumerate(p.tolist()) if v &gt;= thresholds[model.config.id2label[i]]]
+
+print(classify("Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye çıkarıldı"))
+# ['musteri_sirri']</code></pre>
+
+    <p>Etiket bazındaki eşikler geliştirme setinde ayarlandı ve <code>thresholds.json</code> içinde gelir. <code>kisisel_veri</code> dışındaki dört etikette eşik hiçbir zaman 0.5’in üstüne çıkmaz; bu duyarlılığı (recall) öne alır.</p>
+    <p>Ölçülen hız: ortalama 207 karakterlik metinlerde, sekiz iş parçacıklı bir Intel i5-12400F üzerinde, bir metinlik partilerle metin başına 32 ms. 320 token’ı aşan kısım kesilir; uzun belgeleri bölün ve etiketlerin birleşimini alın.</p>
+  </section>
+
+  <section id="training" aria-labelledby="training-title">
+    <h2 id="training-title">Eğitim</h2>
+    <ul>
+      <li><strong>Temel model.</strong> <code>dbmdz/bert-base-turkish-cased</code> (BERTurk, 110M).</li>
+      <li><strong>Yöntem.</strong> Çok etiketli sınıflandırma, sigmoid ve ikili çapraz entropi, 5 epoch, öğrenme oranı 3e-5, bfloat16, en fazla 320 token. Kontrol noktasını geliştirme setindeki micro-F1’e göre seçtim (4. epoch).</li>
+      <li><strong>Veri.</strong> 4.523 şablondan 40.000 sentetik örnek: KVKK sınıflandırıcısının 3.276 şablonu (kişisel veri etiketleri deterministik olarak türetildi, 1.445’i ayrıca bankacılık bağlamı olarak işaretlendi) ve bu model için yazdığım 1.247 şablon: gerçek ve tüzel kişi müşteriler, iç yönetim ve risk, BT ve güvenlik, kimlik doğrulama verisi ve tuzaklar. Örneklerin %16’sında etiket yok.</li>
+      <li><strong>Bölme.</strong> Eğitim, geliştirme ve test setleri şablon özetine (hash) göre ayrıldı.</li>
+    </ul>
+  </section>
+
+  <section id="limitations" aria-labelledby="limitations-title">
+    <h2 id="limitations-title">Sınırlar</h2>
+    <ul>
+      <li>Eğitim verisi ve değerlendirme setleri sentetiktir ve bir dil modeliyle üretildi. Kritik bir sürece almadan önce modeli gerçek banka metinlerinde ölçün.</li>
+      <li>En zayıf etiket <code>hassas_veri</code> (F1 0.873). Ayrılmış sette kaçırdıklarının çoğu token ve anahtar biçimleri (JWT, özel anahtar bloğu, cihaz eşleştirme anahtarı, kişisel erişim token’ı) ve bir JSON gövdesindeki parolalar. Yanlış alarmlarının çoğu maskelenmiş kart numaraları ve “sonu 7712 ile biten kartınız” gibi bildirimler. Biçimi sabit değerler için (kart numarası, JWT, anahtar bloğu) modeli kural tabanlı bir kontrolle birlikte kullanın.</li>
+      <li><code>banka_sirri</code> için kesinlik 0.888. Yanlış alarmlar üç yerde toplanıyor: kurumsal bir müşteriye ait teknik metinler (SWIFT MT mesajı, finansal analiz özeti), açıkça banka olmayan kurumların iç bilgileri (bir fabrikanın üretim raporu, bir dökümhanenin servis hesabı) ve yayımlanmış ücret tarifeleri. Bir bilginin açıklanıp açıklanmadığı çoğu zaman metnin dışındaki bir olguya bağlıdır; model bunu yalnızca metindeki ipuçlarından çıkarabilir.</li>
+      <li>Ayrılmış sette hem <code>musteri_sirri</code> hem <code>banka_sirri</code> taşıyan 27 metnin 20’sinde iki etiket de doğru. Geri kalanında ikisinden biri kaçırılıyor.</li>
+      <li>Model her seferinde tek bir metin parçasına bakar. Müşteri sırrı çoğu zaman alanların birleşiminden doğar (Sır Yönetmeliği md. 4/4). Tablo ya da kayıt sınıflandırırken alanları birlikte verin.</li>
+      <li>Etiketler hukuki bir değerlendirme değil, bir sınıflandırma sinyalidir. BSEBY’ye ve sır saklama yükümlülüğüne uyum kullanıcının sorumluluğunda kalır.</li>
+    </ul>
+  </section>
+
+  <section id="turkce" lang="tr" aria-labelledby="turkce-title">
+    <h2 id="turkce-title">Türkçe BSEBY veri sınıflandırma modeli</h2>
+    <p><code>turkish-bseby-classifier</code>, Türkçe bir metinde kişisel veri, hassas veri ya da sır kapsamındaki veri (müşteri sırrı, banka sırrı) bulunup bulunmadığını belirleyen çok etiketli bir sınıflandırıcıdır. Bankaların veri envanteri ve veri sızıntısı önleme (DLP) süreçleri için tasarlanmıştır.</p>
+    <p>Eğitim verisine bakılmadan yazılmış 747 metinlik bağımsız sette micro-F1 0.944, macro-F1 0.939’dur. CPU’da metin başına yaklaşık 32 ms sürer. Etiketler yalnızca bir sınıflandırma tahminidir, hukuki nitelendirme değildir.</p>
+  </section>
+
+  <section id="links" aria-labelledby="links-title">
+    <h2 id="links-title">Bağlantılar</h2>
+    <ul>
+      <li><a href="https://huggingface.co/halilneed/turkish-bseby-classifier">Model kartı ve ağırlıklar</a></li>
+      <li><a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">Değerlendirme seti</a></li>
+      <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespiti ve maskeleme</a></li>
+      <li><a href="/models/turkish-kvkk-classifier/tr/">Türkçe KVKK sınıflandırıcısı</a></li>
+      <li><a href="/models/tr/">Tüm modeller</a></li>
+    </ul>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, İstanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespit modeli</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Kaynak</a></li>
+    </ul>
+    <p class="small">Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

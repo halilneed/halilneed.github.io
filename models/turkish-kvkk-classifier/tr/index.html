@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Türkçe KVKK sınıflandırıcısı (BERTurk, 24 kategori) | halilneed</title>
+<meta name="description" content="Türkçe bir metinde 24 KVKK ve VERBİS kişisel veri kategorisinden hangilerinin bulunduğunu söyleyen açık, çok etiketli sınıflandırıcı. 0.874 micro-F1, CPU'da metin başına 22 ms. MIT.">
+<link rel="canonical" href="https://halilneed.agency/models/turkish-kvkk-classifier/tr/">
+<link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-kvkk-classifier/">
+<link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/turkish-kvkk-classifier/tr/">
+<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/models/turkish-kvkk-classifier/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Türkçe KVKK sınıflandırıcısı (BERTurk, 24 kategori) | halilneed">
+<meta property="og:description" content="Türkçe bir metinde 24 KVKK ve VERBİS kişisel veri kategorisinden hangilerinin bulunduğunu söyleyen açık, çok etiketli sınıflandırıcı. 0.874 micro-F1, CPU'da metin başına 22 ms. MIT.">
+<meta property="og:url" content="https://halilneed.agency/models/turkish-kvkk-classifier/tr/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Türkçe KVKK sınıflandırıcısı (BERTurk, 24 kategori) | halilneed">
+<meta name="twitter:description" content="Türkçe bir metinde 24 KVKK ve VERBİS kişisel veri kategorisinden hangilerinin bulunduğunu söyleyen açık, çok etiketli sınıflandırıcı. 0.874 micro-F1, CPU'da metin başına 22 ms. MIT.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Modeller",
+          "item": "https://halilneed.agency/models/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Türkçe KVKK sınıflandırıcısı",
+          "item": "https://halilneed.agency/models/turkish-kvkk-classifier/tr/"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://halilneed.agency/models/turkish-kvkk-classifier/tr/#page",
+      "url": "https://halilneed.agency/models/turkish-kvkk-classifier/tr/",
+      "mainEntityOfPage": "https://halilneed.agency/models/turkish-kvkk-classifier/tr/",
+      "headline": "Türkçe KVKK sınıflandırıcısı",
+      "description": "Türkçe metinde 24 KVKK ve VERBİS kişisel veri kategorisini tespit eden açık, çok etiketli sınıflandırıcı: ne yaptığı, etiketler, sonuçlar, Python ile kullanımı, eğitimi ve sınırları.",
+      "inLanguage": "tr",
+      "datePublished": "2026-10-09",
+      "dateModified": "2026-10-09",
+      "image": "https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "about": {
+        "@id": "https://halilneed.agency/models/turkish-kvkk-classifier/#model"
+      }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://halilneed.agency/models/turkish-kvkk-classifier/#model",
+      "name": "turkish-kvkk-classifier",
+      "description": "BERTurk tabanlı, 110M parametreli, çok etiketli Türkçe metin sınıflandırıcısı. Bir metinde 24 kişisel veri kategorisinden hangilerinin bulunduğunu söyler: 14 VERBİS kategorisi ve KVKK md. 6'daki 10 özel nitelikli kişisel veri kategorisi.",
+      "url": "https://huggingface.co/halilneed/turkish-kvkk-classifier",
+      "programmingLanguage": "Python",
+      "license": "https://opensource.org/license/mit",
+      "isBasedOn": "https://huggingface.co/dbmdz/bert-base-turkish-cased",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<header class="site-header">
+  <a class="site-name" href="/tr/">halilneed</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="/models/tr/" aria-current="true">Modeller</a></li>
+      <li><a href="/repos/tr/">Araçlar</a></li>
+      <li><a href="/guides/tr/">Rehberler</a></li>
+      <li><a href="/writing/tr/">Yazılar</a></li>
+      <li><a href="/tr/#about">Hakkında</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Dil"><a href="/models/turkish-kvkk-classifier/tr/" hreflang="tr" lang="tr" aria-current="true">TR</a><a href="/models/turkish-kvkk-classifier/" hreflang="en" lang="en">EN</a></div>
+</header>
+
+<nav class="breadcrumb" aria-label="Konum">
+  <ol>
+    <li><a href="/tr/">halilneed</a></li>
+    <li><a href="/models/tr/">Modeller</a></li>
+    <li aria-current="page">Türkçe KVKK sınıflandırıcısı</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>Türkçe KVKK sınıflandırıcısı</h1>
+    <p class="lead"><code>turkish-kvkk-classifier</code>, Türkçe bir metinde hangi tür kişisel verilerin bulunduğunu söyleyen çok etiketli bir model. 24 kategoriyi kapsar: Veri Sorumluları Sicil Bilgi Sistemi <span lang="tr">VERBİS</span>'te kullanılan 14 kategori ve 6698 sayılı Kişisel Verilerin Korunması Kanunu'nun (KVKK) 6. maddesindeki 10 özel nitelikli kişisel veri kategorisi. Bir masaüstü CPU'da metin başına yaklaşık 22 ms sürer.</p>
+    <ul class="links">
+      <li><a href="https://huggingface.co/halilneed/turkish-kvkk-classifier" data-goatcounter-click="kvkk-download-tr">Hugging Face'te ağırlıklar</a></li>
+      <li><a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark" data-goatcounter-click="kvkk-benchmark-tr">Değerlendirme seti</a></li>
+    </ul>
+
+    <dl class="kv">
+      <div><dt>Boyut</dt><dd>110M parametre</dd></div>
+      <div><dt>Temel model</dt><dd><a href="https://huggingface.co/dbmdz/bert-base-turkish-cased"><code>dbmdz/bert-base-turkish-cased</code></a> (BERTurk)</dd></div>
+      <div><dt>Etiketler</dt><dd>24, çok etiketli</dd></div>
+      <div><dt>Sonuç</dt><dd>Eğitimde kullanılmayan 987 metinde 0.874 micro-F1</dd></div>
+      <div><dt>CPU hızı</dt><dd>metin başına yaklaşık 22 ms</dd></div>
+      <div><dt>Lisans</dt><dd>MIT</dd></div>
+    </dl>
+
+    <nav class="toc" aria-label="Bu sayfada">
+      <ul>
+        <li><a href="#example">Örnek</a></li>
+        <li><a href="#labels">Etiketler</a></li>
+        <li><a href="#results">Sonuçlar</a></li>
+        <li><a href="#usage">Hızlı başlangıç</a></li>
+        <li><a href="#training">Eğitim</a></li>
+        <li><a href="#limitations">Sınırlar</a></li>
+        <li><a href="#turkce">Kısa özet</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="example" aria-labelledby="example-title">
+    <h2 id="example-title">Ne yapar</h2>
+    <dl class="example">
+      <div><dt>Girdi</dt><dd><code class="mono" lang="tr">hastanın böbrek yetmezliği ilerlemiş, eşi 0532 111 22 33'ten ulaşılabilir</code></dd></div>
+      <div><dt>Çıktı</dt><dd><code class="mono">kimlik</code>, <code class="mono">iletisim</code>, <code class="mono">saglik</code> (özel nitelikli: evet)</dd></div>
+    </dl>
+    <dl class="example">
+      <div><dt>Girdi</dt><dd><code class="mono" lang="tr">böbrek yetmezliği farkındalık haftası başladı</code></dd></div>
+      <div><dt>Çıktı</dt><dd>etiket yok</dd></div>
+    </dl>
+    <p>Bir kategori yalnızca metin belirli bir kişiye ait o türden bir bilgi içerdiğinde işaretlenir; kişinin adı geçmese bile, “hasta” ya da “müşteri” gibi. Genel bilgiler, kurallar, duyurular ve istatistikler etiket almaz. İlk örnekte bir hastanın böbrek yetmezliği sağlık verisidir. İkincisinde böbrek yetmezliği farkındalık haftası kimseyle ilgili değildir.</p>
+    <p>Sınıflandırıcı <a href="/models/turkish-pii-detection/tr/">maskeleme modelinin</a> önünde çalışmak için tasarlandı: metni sınıflandırın, bir maskeleme politikası seçin, sonra maskeleyin.</p>
+  </section>
+
+  <section id="labels" aria-labelledby="labels-title">
+    <h2 id="labels-title">Etiketler</h2>
+
+    <div class="table-scroll" role="region" aria-labelledby="labels-caption" tabindex="0">
+      <table class="stack" role="table">
+        <caption id="labels-caption">24 etiket ve eğitimde kullanılmayan setteki F1 skorları</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col">Etiket</th>
+            <th role="columnheader" scope="col">Kapsam</th>
+            <th role="columnheader" scope="col">F1</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col" colspan="3"><strong>Genel kategoriler (<span lang="tr">VERBİS</span>)</strong></th>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>kimlik</code></th>
+            <td role="cell" data-label="Kapsam">Kimlik: ad soyad, T.C. kimlik numarası (TCKN), doğum bilgileri, yaş, cinsiyet, uyruk, medeni durum, kimlik belgesi numaraları, imza</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.97</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>iletisim</code></th>
+            <td role="cell" data-label="Kapsam">İletişim: telefon, e-posta, posta adresi</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.97</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>lokasyon</code></th>
+            <td role="cell" data-label="Kapsam">Lokasyon: kişinin konumu, nerede bulunduğu ya da nereye gittiği, güzergâhı</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.74</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>ozluk</code></th>
+            <td role="cell" data-label="Kapsam">Özlük: çalışanın özlük kaydı, hizmet dökümü, bordro, izin, disiplin, SGK bildirgesi</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.84</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>hukuki_islem</code></th>
+            <td role="cell" data-label="Kapsam">Hukuki İşlem: dava, icra takibi, haciz, tebligat, vekâletname, ihtarname, arabuluculuk</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.89</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>musteri_islem</code></th>
+            <td role="cell" data-label="Kapsam">Müşteri İşlem: sipariş, fatura, abonelik, talep ya da şikâyet, poliçe ya da sözleşme işlemi</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.75</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>fiziksel_mekan_guvenligi</code></th>
+            <td role="cell" data-label="Kapsam">Fiziksel Mekân Güvenliği: bina giriş çıkışları, turnike, ziyaretçi kaydı, güvenlik kamerası</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.83</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>islem_guvenligi</code></th>
+            <td role="cell" data-label="Kapsam">İşlem Güvenliği: IP adresi, log, cihaz kimliği, kullanıcı adı, parola ya da PIN, oturum kaydı</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.83</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>risk_yonetimi</code></th>
+            <td role="cell" data-label="Kapsam">Risk Yönetimi: kredi notu, risk skoru, şüpheli işlem, kara liste, MASAK (Mali Suçları Araştırma Kurulu)</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.82</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>finans</code></th>
+            <td role="cell" data-label="Kapsam">Finans: hesap, IBAN, kart, bakiye, borç, gelir ya da maaş, vergi numarası, kripto varlık</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.85</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>mesleki_deneyim</code></th>
+            <td role="cell" data-label="Kapsam">Mesleki Deneyim: işyeri, meslek, pozisyon, diploma, sertifika, referans</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.80</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>pazarlama</code></th>
+            <td role="cell" data-label="Kapsam">Pazarlama: alışveriş alışkanlıkları, tercihler, iletişim izni, anket cevapları, çerez ya da segment verisi</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.83</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>gorsel_isitsel</code></th>
+            <td role="cell" data-label="Kapsam">Görsel ve İşitsel Kayıtlar: kişinin fotoğrafı, ses kaydı, videosu, çağrı kaydı</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.79</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>arac</code></th>
+            <td role="cell" data-label="Kapsam">Araç bilgileri: plaka, şasi numarası, motor numarası, ruhsat</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.96</td>
+          </tr>
+          <tr role="row">
+            <th role="columnheader" scope="col" colspan="3"><strong>Özel nitelikli kişisel veriler (KVKK md. 6)</strong></th>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>saglik</code></th>
+            <td role="cell" data-label="Kapsam">Sağlık Bilgileri: hastalık, teşhis, tedavi, ilaç, engellilik, kan grubu, gebelik</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.92</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>biyometrik</code></th>
+            <td role="cell" data-label="Kapsam">Biyometrik Veri: parmak izi, yüz tanıma, iris ya da retina, ses izi</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.88</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>genetik</code></th>
+            <td role="cell" data-label="Kapsam">Genetik Veri: genetik test, DNA, taşıyıcılık durumu</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.79</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>cinsel_hayat</code></th>
+            <td role="cell" data-label="Kapsam">Cinsel Hayat: cinsel yönelim, cinsel hayata ilişkin bilgiler</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.86</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>ceza_mahkumiyeti</code></th>
+            <td role="cell" data-label="Kapsam">Ceza Mahkûmiyeti ve Güvenlik Tedbirleri: geçmiş suçlar, adli sicil kaydı, mahkûmiyet, güvenlik tedbiri</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.84</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>din_felsefi_inanc</code></th>
+            <td role="cell" data-label="Kapsam">Felsefi İnanç, Din, Mezhep ve Diğer İnançlar: din, mezhep, inanç, dini pratikler</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.93</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>siyasi_dusunce</code></th>
+            <td role="cell" data-label="Kapsam">Siyasi Düşünce: parti üyeliği ya da tercihi, siyasi görüş, bir eyleme katılım</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.85</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>irk_etnik</code></th>
+            <td role="cell" data-label="Kapsam">Irk ve Etnik Köken: ırk, etnik köken</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.82</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>dernek_vakif_sendika</code></th>
+            <td role="cell" data-label="Kapsam">Dernek, Vakıf ve Sendika Üyeliği: bir derneğe, vakfa ya da sendikaya üyelik</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.89</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row" class="nowrap"><code>kilik_kiyafet</code></th>
+            <td role="cell" data-label="Kapsam">Kılık ve Kıyafet: başörtüsü, dini ya da kültürel kıyafet tercihi</td>
+            <td role="cell" class="mono nowrap" data-label="F1">0.91</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="results" aria-labelledby="results-title">
+    <h2 id="results-title">Sonuçlar</h2>
+    <p>İki test seti var. Ana set, eğitimde kullanılmayan bağımsız bir set: eğitim verisine bakılmadan yazılmış 1.125 metin, ikinci kez ve kör olarak yeniden etiketlendi. İki etiketlemenin birebir örtüştüğü 987 metin altın standart seti oluşturuyor (%87.7 tam uyum, etiket başına Cohen's kappa 0.84 ile 1.00 arasında). İkinci set, eğitimde hiç kullanılmamış 333 şablondan gelen 771 örneklik, şablon bazında ayrık bir test.</p>
+
+    <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
+      <table>
+        <caption id="results-caption">İki test setindeki skorlar</caption>
+        <thead>
+          <tr><th scope="col">Metrik</th><th scope="col" class="num">Bağımsız set<br>987 metin</th><th scope="col" class="num">Ayrık test<br>771 örnek</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">micro-F1</th><td class="num">0.874</td><td class="num dim">0.895</td></tr>
+          <tr><th scope="row">macro-F1</th><td class="num">0.856</td><td class="num dim">0.875</td></tr>
+          <tr><th scope="row">Özel nitelikli veri var mı: kesinlik</th><td class="num">0.960</td><td class="num dim">0.955</td></tr>
+          <tr><th scope="row">Özel nitelikli veri var mı: duyarlılık (recall)</th><td class="num">0.884</td><td class="num dim">0.955</td></tr>
+          <tr><th scope="row">Tam eşleşme (tüm etiketler doğru)</th><td class="num">0.717</td><td class="num dim">0.733</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Micro-F1, tüm etiket kararları bir araya toplanarak hesaplanan F1'dir. Macro-F1, etiket başına F1 skorlarının ağırlıksız ortalamasıdır.</p>
+    <p>Bağımsız setteki metinler ve iki etiketleme turu bir dil modeliyle üretildi ve otomatik olarak kontrol edildi. Bir insan tarafından satır satır doğrulanmadı.</p>
+  </section>
+
+  <section id="usage" aria-labelledby="usage-title">
+    <h2 id="usage-title">Python ile hızlı başlangıç</h2>
+
+<pre tabindex="0" aria-label="Python örneği"><code>import json, torch
+from huggingface_hub import hf_hub_download
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
+MODEL = "halilneed/turkish-kvkk-classifier"
+tok = AutoTokenizer.from_pretrained(MODEL)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL).eval()
+thresholds = json.load(open(hf_hub_download(MODEL, "thresholds.json")))
+SPECIAL = {"saglik", "biyometrik", "genetik", "cinsel_hayat", "ceza_mahkumiyeti", "din_felsefi_inanc",
+        "siyasi_dusunce", "irk_etnik", "dernek_vakif_sendika", "kilik_kiyafet"}
+
+def classify(text):
+    with torch.inference_mode():
+        p = torch.sigmoid(model(**tok(text, return_tensors="pt", truncation=True, max_length=320)).logits)[0]
+    labels = [model.config.id2label[i] for i, v in enumerate(p.tolist()) if v &gt;= thresholds[model.config.id2label[i]]]
+    return labels, bool(set(labels) &amp; SPECIAL)
+
+print(classify("hastanın böbrek yetmezliği ilerlemiş, eşi 0532 111 22 33'ten ulaşılabilir"))</code></pre>
+
+    <p>Etiket başına eşikler dev setinde ayarlandı ve <code>thresholds.json</code> içinde gelir. Özel nitelikli kategorilerde eşik hiçbir zaman 0.5'in üstüne çıkmaz; bu da duyarlılığı (recall) öne alır.</p>
+    <p>Ölçülen hız: Intel i5-12400F üzerinde sekiz thread ve batch boyutu bir ile, ortalama 126 karakterlik metinlerde metin başına 22 ms.</p>
+  </section>
+
+  <section id="training" aria-labelledby="training-title">
+    <h2 id="training-title">Eğitim</h2>
+    <ul>
+      <li><strong>Temel model.</strong> <code>dbmdz/bert-base-turkish-cased</code> (BERTurk, 110M).</li>
+      <li><strong>Yöntem.</strong> Çok etiketli sınıflandırma, ikili çapraz entropi ile sigmoid, 5 epoch, öğrenme oranı 3e-5, bfloat16, en fazla 320 token.</li>
+      <li><strong>Veri.</strong> 3.276 şablondan 36.000 sentetik örnek. Çoğu maskeleme modelinin şablonlarıdır: her kişisel veri alanı sabit bir kuralla bir kategoriye eşlenir, her şablon ayrıca bağlamının eklediği kategorilerle de işaretlenir. Geri kalanı hiç değer içermeyen bağlamsal cümlelerdir. Örneklerin %21'i tuzaktır, yani hiç etiket almaması gereken metinlerdir.</li>
+      <li><strong>Bölme.</strong> Eğitim, dev ve test setleri şablon hash'ine göre ayrıldı.</li>
+    </ul>
+  </section>
+
+  <section id="limitations" aria-labelledby="limitations-title">
+    <h2 id="limitations-title">Sınırlar</h2>
+    <ul>
+      <li>Eğitim verisi sentetik. Model kritik bir akışa girmeden önce onu kendi kurumunuzun metinlerinde ölçün.</li>
+      <li>En zayıf etiketler <code>lokasyon</code> (F1 0.74), <code>musteri_islem</code> (0.75) ve <code>gorsel_isitsel</code> (0.79). Üçü de bağlamdan çıkarılıyor ve keskin bir sınırları yok. <code>genetik</code> de 0.79 alıyor.</li>
+      <li>“Burada özel nitelikli kişisel veri var mı?” sorusu için bağımsız setteki duyarlılık (recall) 0.884; yani bu tür metinlerin kabaca dokuzda biri kaçıyor.</li>
+      <li>Çıktı bir kategori sinyalidir, hukuki bir değerlendirme değildir. <span lang="tr">VERBİS</span> envanteri ve KVKK'ya uyum kullanıcının sorumluluğunda kalır.</li>
+    </ul>
+  </section>
+
+  <section id="turkce" lang="tr" aria-labelledby="turkce-title">
+    <h2 id="turkce-title">Türkçe KVKK kategori sınıflandırıcısı</h2>
+    <p><code>turkish-kvkk-classifier</code>, Türkçe bir metinde hangi kişisel veri kategorilerinin bulunduğunu belirleyen çok etiketli bir sınıflandırıcıdır: 14 VERBİS kategorisi ve KVKK md. 6’daki 10 özel nitelikli veri kategorisi. Maskeleme modelinden önce çalıştırılır: metin önce sınıflandırılır, sonuca göre maskeleme politikası seçilir, ardından metin maskelenir.</p>
+    <p>Eğitim verisine bakılmadan yazılmış 987 metinlik bağımsız sette micro-F1 0.874, macro-F1 0.856’dır. CPU’da metin başına yaklaşık 22 ms sürer. Çıktı yalnızca bir kategori tahminidir, hukuki nitelendirme değildir.</p>
+  </section>
+
+  <section id="links" aria-labelledby="links-title">
+    <h2 id="links-title">Bağlantılar</h2>
+    <ul>
+      <li><a href="https://huggingface.co/halilneed/turkish-kvkk-classifier">Model kartı ve ağırlıklar</a></li>
+      <li><a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">Değerlendirme seti</a></li>
+      <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespiti ve maskeleme</a></li>
+      <li><a href="/models/turkish-bseby-classifier/tr/">Türkçe BSEBY sınıflandırıcısı</a></li>
+      <li><a href="/models/tr/">Tüm modeller</a></li>
+    </ul>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, İstanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespit modeli</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Kaynak</a></li>
+    </ul>
+    <p class="small">Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

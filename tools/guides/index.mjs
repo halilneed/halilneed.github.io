@@ -73,7 +73,7 @@ for (const lang of LANGS) {
     '@context': 'https://schema.org',
     '@graph': [
       { '@type': 'BreadcrumbList', itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'halilneed', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 1, name: 'halilneed', item: SITE + t.home },
         { '@type': 'ListItem', position: 2, name: t.h1, item: SITE + self } ] },
       { '@type': 'CollectionPage', '@id': `${SITE}${self}#page`, url: SITE + self, name: t.h1, description: t.desc,
         inLanguage: lang, dateModified: DATE, image: `${SITE}/assets/img/og-guides.png`,
@@ -123,17 +123,18 @@ ${JSON.stringify(jsonld, null, 2)}
 <a class="skip-link" href="#main">${esc(t.skip)}</a>
 
 <header class="site-header">
-  <a class="site-name" href="/">halilneed</a>
+  <a class="site-name" href="${t.home}">halilneed</a>
   <nav aria-label="${esc(t.navAria)}">
     <ul>
 ${t.nav.map(([href, label]) => `      <li><a href="${href}"${href === self ? ' aria-current="true"' : ''}>${esc(label)}</a></li>`).join('\n')}
     </ul>
   </nav>
+  <div class="lang-switch" role="group" aria-label="${esc(t.switchAria)}"><a href="/guides/tr/" hreflang="tr" lang="tr"${lang === 'tr' ? ' aria-current="true"' : ''}>TR</a><a href="/guides/" hreflang="en" lang="en"${lang === 'en' ? ' aria-current="true"' : ''}>EN</a></div>
 </header>
 
 <nav class="breadcrumb" aria-label="${esc(t.crumbAria)}">
   <ol>
-    <li><a href="/">halilneed</a></li>
+    <li><a href="${t.home}">halilneed</a></li>
     <li aria-current="page">${esc(t.h1)}</li>
   </ol>
 </nav>

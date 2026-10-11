@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>skillbench: kodlama ajanları için skill denetimi ve kullanım kanıtı</title>
+<meta name="description" content="skillbench, kodlama ajanı skill’lerini 26 kontrolle denetler ve Claude Code’un tuttuğu oturum geçmişinden gerçek tetiklenme sayılarını okur. Ağ isteği yok. MIT.">
+<link rel="canonical" href="https://halilneed.agency/skillbench/tr/">
+<link rel="alternate" hreflang="en" href="https://halilneed.agency/skillbench/">
+<link rel="alternate" hreflang="tr" href="https://halilneed.agency/skillbench/tr/">
+<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/skillbench/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="skillbench: kodlama ajanları için skill denetimi ve kullanım kanıtı">
+<meta property="og:description" content="skillbench, kodlama ajanı skill’lerini 26 kontrolle denetler ve Claude Code’un tuttuğu oturum geçmişinden gerçek tetiklenme sayılarını okur. Ağ isteği yok. MIT.">
+<meta property="og:url" content="https://halilneed.agency/skillbench/tr/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-skillbench.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="skillbench: kodlama ajanları için skill denetimi ve kullanım kanıtı">
+<meta name="twitter:description" content="skillbench, kodlama ajanı skill’lerini 26 kontrolle denetler ve Claude Code’un tuttuğu oturum geçmişinden gerçek tetiklenme sayılarını okur. Ağ isteği yok. MIT.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-skillbench.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Araçlar",
+          "item": "https://halilneed.agency/repos/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "skillbench",
+          "item": "https://halilneed.agency/skillbench/tr/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "skillbench",
+      "description": "skillbench, kodlama ajanı skill’lerini 26 kontrolle denetler ve Claude Code’un tuttuğu oturum geçmişinden gerçek tetiklenme sayılarını okur.",
+      "inLanguage": "tr",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "license": "https://github.com/halilneed/skillbench/blob/main/LICENSE",
+      "url": "https://halilneed.agency/skillbench/tr/",
+      "sameAs": [
+        "https://github.com/halilneed/skillbench"
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<header class="site-header">
+  <a class="site-name" href="/tr/">halilneed</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="/models/tr/">Modeller</a></li>
+      <li><a href="/repos/tr/" aria-current="true">Araçlar</a></li>
+      <li><a href="/guides/tr/">Rehberler</a></li>
+      <li><a href="/writing/tr/">Yazılar</a></li>
+      <li><a href="/tr/#about">Hakkında</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Dil"><a href="/skillbench/tr/" hreflang="tr" lang="tr" aria-current="true">TR</a><a href="/skillbench/" hreflang="en" lang="en">EN</a></div>
+</header>
+
+<nav class="breadcrumb" aria-label="Konum">
+  <ol>
+    <li><a href="/tr/">halilneed</a></li>
+    <li><a href="/repos/tr/">Araçlar</a></li>
+    <li aria-current="page">skillbench</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>skillbench</h1>
+    <p class="lead">skillbench ajan skill’lerini, yani bir kodlama ajanının bir istek eşleştiğinde yüklediği talimat dosyalarını kontrol eder. Her skill dosyasını 26 kontrolle denetler, ardından ajanınızın zaten tuttuğu oturum geçmişinden tetiklenme sayılarını okur. Codex CLI ve Gemini CLI hangi skill’in etkin olduğunu kaydetmez, bu yüzden onların skill’leri “ölçülmedi” olarak bildirilir.</p>
+    <ul class="links">
+      <li><a href="https://github.com/halilneed/skillbench" data-goatcounter-click="sb-cta-source-tr">GitHub’da kaynak kod</a></li>
+      <li><a href="#install" data-goatcounter-click="sb-cta-install-tr">Kurulum</a></li>
+    </ul>
+
+    <dl class="kv">
+      <div><dt>Kontroller</dt><dd>26</dd></div>
+      <div><dt>Okunan ajanlar</dt><dd>Claude Code, Codex CLI, Gemini CLI</dd></div>
+      <div><dt>Ağ istekleri</dt><dd>yok</dd></div>
+      <div><dt>Bağımlılıklar</dt><dd>yok</dd></div>
+      <div><dt>Lisans</dt><dd>MIT</dd></div>
+    </dl>
+  </header>
+
+  <section id="example" aria-labelledby="example-title">
+    <h2 id="example-title">Örnek çıktı</h2>
+    <p>Bu, bu sitenin yapıldığı makinede kurulu bütün skill’ler üzerinde <code class="nowrap">--lint</code> ile yapılmış gerçek bir çalıştırmanın kısaltılmış hâlidir. Skill adları genellendi. Her sayı ve puan, denetleyicinin yazdırdığı değerdir. Tarama hiçbir ağ isteği yapmadı.</p>
+
+<pre tabindex="0" aria-label="Denetim raporu, Markdown çıktısı"><code># skillbench — lint
+
+Source note: 38 skill · installed agent roots · claude-code/installed: 3
+· claude-code/user: 13 · gemini-cli/user: 8 · codex/user: 8
+· codex/system: 6 · score: 223 (poor)
+
+1 error &middot; 42 warn &middot; 45 info
+
+## By check
+
+| Sev   | Check               | n  | example skills                |
+|-------|---------------------|----|-------------------------------|
+| error | ref-broken-link     |  1 | skill-creator                 |
+| warn  | eval-missing        | 35 | agent-notes:intake, video-su… |
+| warn  | fm-desc-no-trigger  |  5 | video-suite, skill-creator, … |
+| warn  | path-absolute       |  1 | agent-notes:intake            |
+| info  | fm-desc-no-boundary | 30 | persona:stats, agent-notes:w… |
+
+## Skills needing most work
+
+| Skill              | agent       | error | warn | info | score |
+|--------------------|-------------|-------|------|------|-------|
+| `video-suite`      | claude-code |     0 |    6 |    3 |    27 |
+| `skill-creator`    | codex       |     1 |    3 |    0 |    22 |
+| `media-assets`     | claude-code |     0 |    3 |    9 |    21 |
+| `video-suite-cli`  | claude-code |     0 |    3 |    6 |    18 |
+| `agent-notes:intake` | claude-code |   0 |    2 |    1 |     9 |</code></pre>
+
+    <p>Bu denetleyiciyi yazdığım makine “poor” puan alıyor. Her bulgu kontrolün, skill’in ve önem derecesinin adını verir; her kontrolün bir “neden önemli” ve bir “nasıl düzeltilir” satırı vardır. Kontroller <a href="https://github.com/halilneed/skillbench/blob/main/scripts/lib/checks.mjs">açıp okuyabileceğiniz tek bir dosyada</a> durur; katılmadığınız bir kontrolü <code class="nowrap">--ignore</code> ile kapatabilirsiniz.</p>
+  </section>
+
+  <section id="install" aria-labelledby="install-title">
+    <h2 id="install-title">Kurulum</h2>
+
+<pre tabindex="0" aria-label="Kurulum komutları"><code># bir kez
+&gt; /plugin marketplace add halilneed/plugins
+
+# eklenti
+&gt; /plugin install skillbench@hailneed
+
+# ve deneyin
+&gt; /skillbench:coverage</code></pre>
+
+    <p><a href="https://github.com/halilneed/plugins">Marketin</a> kimliği <code>hailneed</code>; kurulum satırının <code>@hailneed</code> ile bitmesi bu yüzden.</p>
+    <ul>
+      <li>Claude Code ve Node.js 18 ya da üstü.</li>
+      <li>Bağımlılık yok, derleme adımı yok, API anahtarı yok, hesap yok.</li>
+      <li>Tek başına da çalışır: <code>node scripts/skillbench.mjs <span class="nowrap">--coverage</span> <span class="nowrap">--md</span> <span class="nowrap">--lang en</span></code></li>
+      <li>CI için <code><span class="nowrap">--lint</span> <span class="nowrap">--path .</span> <span class="nowrap">--out lint.json</span></code> sabit bir çıktı biçimi verir. <code>score.raw</code> belirlediğiniz eşiğin üstüne çıktığında derlemeyi durdurun.</li>
+    </ul>
+  </section>
+
+  <section id="commands" aria-labelledby="commands-title">
+    <h2 id="commands-title">Komutlar</h2>
+
+    <h3><code>/skillbench:lint</code></h3>
+    <p>Bir skill’in doğru yazılıp yazılmadığını kontrol eder. 26 kontrol şunları kapsar: frontmatter, tetiklenme kalitesi (tetikleyici ifadeler, negatif sınır), gövde boyutu, kırık referanslar, taşınabilirlik, araç izinleri ve eval kapsamı. Geliştirdiğiniz repo üzerinde (<code class="nowrap">--path</code>) ya da Claude Code, Codex CLI ve Gemini CLI’da kurulu bütün skill’ler üzerinde çalışır.</p>
+
+    <h3><code>/skillbench:coverage</code></h3>
+    <p>Bir skill’in hiç tetiklenip tetiklenmediğini gösterir. Claude Code her araç çağrısında hangi skill’in etkin olduğunu kaydeder. Coverage bunu skill başına gerçek tetiklenmelere çevirir (çağrılar, farklı oturumlar, projeler, en son kullanım) ve hiç tetiklenmemiş skill’leri en olası nedenleriyle listeler. Codex CLI ve Gemini CLI bu bilgiyi kaydetmez, bu yüzden onların skill’leri ölçülmedi olarak bildirilir.</p>
+
+    <h3><code>/skillbench:collide</code></h3>
+    <p>İki skill’in aynı istek için yarışıp yarışmadığını gösterir. Sınırı bulanıklaştıran ortak terimleri adlandıran, idf ağırlıklı bir örtüşme puanı verir. Birkaç ajan dizinine kopyalanmış skill’lerde kopyaların hâlâ aynı olup olmadığına bakarak sapmayı da tespit eder.</p>
+  </section>
+
+  <section id="guarantees" aria-labelledby="guarantees-title">
+    <h2 id="guarantees-title">Ne yapar, ne yapmaz</h2>
+    <ul>
+      <li>Hiçbir ağ isteği yapmaz. Tarayıcı yalnızca diskinizde zaten bulunan skill dosyalarını ve oturum kayıtlarını okur; <a href="https://github.com/halilneed/skillbench/blob/main/scripts/skillbench.mjs"><code>skillbench.mjs</code></a> içinde ne fetch ne soket vardır.</li>
+      <li>Skill bilgisini yalnızca Claude Code saklar, bu yüzden Codex CLI ve Gemini CLI’daki skill’ler ölçülmedi olarak bildirilir ve sayı almaz.</li>
+      <li>Kota harcanmaz. Her şey diskten okunur. Canlı tetikleme testi, yani <code>should_trigger</code> istemlerini çalıştırmak, kota harcadığı için bilerek v0.2’ye bırakıldı.</li>
+      <li>26 kontrol vardır ve model yargısı yoktur. <a href="https://github.com/halilneed/skillbench/blob/main/scripts/lib/checks.mjs"><code>checks.mjs</code></a> okuyabileceğiniz bir listedir, <code class="nowrap">--selftest</code> motoru verilerinize dokunmadan 20 test örneği üzerinde çalıştırır.</li>
+      <li>Sembolik bağlantılar izlenir. Bir geliştirme reposundan bağlanmış skill’ler bulunur ve denetlenir. Saf bir tarayıcı bunların hepsini sessizce atlar.</li>
+      <li>MIT lisanslıdır (<a href="https://github.com/halilneed/skillbench/blob/main/LICENSE"><code>LICENSE</code></a>). Hesap yok, kayıt yok, telemetri yok.</li>
+    </ul>
+  </section>
+
+  <section id="cloud" aria-labelledby="cloud-title">
+    <h2 id="cloud-title">Planlanan</h2>
+    <p>Barındırılan bir sürüm, skillbench Cloud, planlanıyor. Eklenti ücretsiz ve yerel kalacak.</p>
+    <ul>
+      <li>Ekip skill kütüphanesi için sürekli ölçüm: denetim ve kapsam elle çalıştırılmak yerine zaman içinde izlenir.</li>
+      <li>Regresyon geçmişi: bir açıklama değişikliğinin tetiklenme oranını öncesi ve sonrasıyla nasıl etkilediği.</li>
+      <li>Market yayıncıları için yayın öncesi kapı: bir skill yayımlanmadan önce bu kontrolden geçmek zorundadır.</li>
+    </ul>
+    <p>Hazır olduğunda haberdar olmak için <a href="/writing/tr/#subscribe">yazılar sayfasından</a> abone olun.</p>
+  </section>
+
+  <section id="related" aria-labelledby="related-title">
+    <h2 id="related-title">Diğer eklentiler</h2>
+    <p>Diğer beşi <a href="/agent-blackbox/tr/">agent-blackbox</a>, <a href="/scar/tr/">scar</a>, <a href="/gardener/tr/">gardener</a>, <a href="/painradar/tr/">painradar</a> ve <a href="/devpersona/tr/">devpersona</a>. Altısı da <a href="/repos/tr/">araçlar sayfasında</a> anlatılıyor.</p>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, İstanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespit modeli</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Kaynak</a></li>
+    </ul>
+    <p class="small">Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

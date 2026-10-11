@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Türkçe kişisel veri tespit ve maskeleme modeli (270M) | halilneed</title>
+<meta name="description" content="Türkçe metinde kişisel verileri bulup maskeleyen 270M parametreli açık model. Ad, TCKN, IBAN, telefon ve e-postayı talimata göre etiketlerle değiştirir. CPU'da yerelde çalışır.">
+<link rel="canonical" href="https://halilneed.agency/models/turkish-pii-detection/tr/">
+<link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-pii-detection/">
+<link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/turkish-pii-detection/tr/">
+<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/models/turkish-pii-detection/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Türkçe kişisel veri tespit ve maskeleme modeli (270M) | halilneed">
+<meta property="og:description" content="Türkçe metinde kişisel verileri bulup maskeleyen 270M parametreli açık model. Ad, TCKN, IBAN, telefon ve e-postayı talimata göre etiketlerle değiştirir. CPU'da yerelde çalışır.">
+<meta property="og:url" content="https://halilneed.agency/models/turkish-pii-detection/tr/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-pii-detection.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Türkçe kişisel veri tespit ve maskeleme modeli (270M) | halilneed">
+<meta name="twitter:description" content="Türkçe metinde kişisel verileri bulup maskeleyen 270M parametreli açık model. Ad, TCKN, IBAN, telefon ve e-postayı talimata göre etiketlerle değiştirir. CPU'da yerelde çalışır.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-pii-detection.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Modeller",
+          "item": "https://halilneed.agency/models/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Türkçe kişisel veri tespiti",
+          "item": "https://halilneed.agency/models/turkish-pii-detection/tr/"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://halilneed.agency/models/turkish-pii-detection/tr/#page",
+      "url": "https://halilneed.agency/models/turkish-pii-detection/tr/",
+      "mainEntityOfPage": "https://halilneed.agency/models/turkish-pii-detection/tr/",
+      "headline": "Türkçe kişisel veri tespiti ve maskeleme",
+      "description": "Türkçe metinde kişisel verileri bulup maskeleyen 270M parametreli açık model: ne yaptığı, Python ile kullanımı, benchmark sonuçları, eğitimi ve sınırları.",
+      "inLanguage": "tr",
+      "datePublished": "2026-10-05",
+      "dateModified": "2026-10-09",
+      "image": "https://halilneed.agency/assets/img/og-turkish-pii-detection.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "about": {
+        "@id": "https://halilneed.agency/models/turkish-pii-detection/#model"
+      }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://halilneed.agency/models/turkish-pii-detection/#model",
+      "name": "turkish-pii-detection",
+      "description": "Türkçe kişisel verileri talimata göre tespit edip maskeleyen 270M parametreli model. Maskelenmiş metin üretir, varlık konumlarını döndürmez.",
+      "url": "https://huggingface.co/halilneed/turkish-pii-detection",
+      "codeRepository": "https://github.com/halilneed/turkish-pii-detection",
+      "programmingLanguage": "Python",
+      "version": "v02",
+      "dateModified": "2026-09-30",
+      "license": "https://ai.google.dev/gemma/terms",
+      "isBasedOn": "https://huggingface.co/cagrigungor/pii-guard-turkish-270m",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/models/turkish-pii-detection/tr/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Bu bir Türkçe NER modeli mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Maskelenmiş metin üretir; token etiketi ya da karakter konumu döndürmez. Konum bilgisine ihtiyacınız varsa token sınıflandırma (token classification) modeli kullanın."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Metni bir API'ye göndermeden çalıştırabilir miyim?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet. Ağırlıkları bir kez indirip modeli Transformers ile yerelde, CPU'da ya da GPU'da çalıştırabilirsiniz. Tarayıcı demosu da sizin cihazınızda çalışır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hangi kişisel verileri kapsıyor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Şemada 53 etiket var. Ad soyad, T.C. kimlik numarası (TCKN), telefon numarası, e-posta adresi, IBAN ve işyeri gibi verilerin yanında sağlık ve biyometrik veri gibi özel nitelikli kişisel verileri de kapsar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "KVKK sınıflandırıcısından farkı ne?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bu model metni yeniden yazar. Türkçe KVKK sınıflandırıcısı ise yalnızca metinde hangi kişisel veri kategorilerinin bulunduğunu söyler; bu da maskeleme politikasını seçerken işe yarar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hangi sürümü indireceğim?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "main dalı v02'yi verir. İlk sürüm için revision=\"v01\" verin; tekrarlanabilir sonuç istiyorsanız bir commit hash'ine sabitleyin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Maskeleme verilerimi KVKK'ya uygun hale getirir mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Maskelenmiş çıktı kendiliğinden anonim olmaz. Uyum, modele değil verinin nasıl işlendiğine bağlıdır."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<header class="site-header">
+  <a class="site-name" href="/tr/">halilneed</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="/models/tr/" aria-current="true">Modeller</a></li>
+      <li><a href="/repos/tr/">Araçlar</a></li>
+      <li><a href="/guides/tr/">Rehberler</a></li>
+      <li><a href="/writing/tr/">Yazılar</a></li>
+      <li><a href="/tr/#about">Hakkında</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Dil"><a href="/models/turkish-pii-detection/tr/" hreflang="tr" lang="tr" aria-current="true">TR</a><a href="/models/turkish-pii-detection/" hreflang="en" lang="en">EN</a></div>
+</header>
+
+<nav class="breadcrumb" aria-label="Konum">
+  <ol>
+    <li><a href="/tr/">halilneed</a></li>
+    <li><a href="/models/tr/">Modeller</a></li>
+    <li aria-current="page">Türkçe kişisel veri tespiti</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>Türkçe kişisel veri tespiti ve maskeleme</h1>
+    <p class="lead"><code>turkish-pii-detection</code>, Türkçe metinde kişisel verileri (PII) bulup etiketlerle değiştiren, 270M parametreli açık bir model. Ona metni ve neyin maskeleneceğini söyleyen kısa bir Türkçe talimatı veriyorsunuz, o da metni yeniden yazıp döndürüyor. CPU'da çalışacak kadar küçük, bu yüzden metnin makinenizden çıkması gerekmiyor.</p>
+    <ul class="links">
+      <li><a href="https://huggingface.co/halilneed/turkish-pii-detection" data-goatcounter-click="pii-download-tr">Hugging Face'te ağırlıklar</a></li>
+      <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="pii-demo-tr">Tarayıcıda deneyin</a></li>
+      <li><a href="https://github.com/halilneed/turkish-pii-detection" data-goatcounter-click="pii-github-tr">GitHub'da kod ve örnekler</a></li>
+    </ul>
+
+    <dl class="kv">
+      <div><dt>Boyut</dt><dd>270M parametre</dd></div>
+      <div><dt>Temel model</dt><dd><a href="https://huggingface.co/cagrigungor/pii-guard-turkish-270m"><code>cagrigungor/pii-guard-turkish-270m</code></a>, Gemma 3 270M üzerine ince ayar</dd></div>
+      <div><dt>Etiket şeması</dt><dd>53 etiket</dd></div>
+      <div><dt>Benchmark</dt><dd>1.000 satırda 0.944 tam eşleşme</dd></div>
+      <div><dt>CPU hızı</dt><dd>kısa bir cümle için yaklaşık 600 ms</dd></div>
+      <div><dt>Sürüm</dt><dd>v02, <time datetime="2026-09-30">30 Eylül 2026</time> tarihinde yayımlandı</dd></div>
+      <div><dt>Lisans</dt><dd><a href="https://ai.google.dev/gemma/terms" lang="en">Gemma Terms of Use</a></dd></div>
+    </dl>
+
+    <nav class="toc" aria-label="Bu sayfada">
+      <ul>
+        <li><a href="#example">Örnek</a></li>
+        <li><a href="#usage">Hızlı başlangıç</a></li>
+        <li><a href="#results">Sonuçlar</a></li>
+        <li><a href="#training">Eğitim</a></li>
+        <li><a href="#limitations">Sınırlar</a></li>
+        <li><a href="#faq">Sorular</a></li>
+        <li><a href="#turkce">Kısa özet</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="example" aria-labelledby="example-title">
+    <h2 id="example-title">Türkçe kişisel veri maskeleme nasıl çalışır</h2>
+    <p>Model bir talimat ve bir metin okur, metni istenen alanlar etiketlerle değiştirilmiş olarak geri yazar: ad için <code>[AD]</code>, T.C. kimlik numarası için <code>[TCKN]</code>, telefon numarası için <code>[TEL]</code>, e-posta için <code>[EMAIL]</code> gibi. Aynı ağırlıklar üç tür politikayı da karşılar.</p>
+    <dl class="example">
+      <div><dt>Girdi</dt><dd lang="tr">müşteri <mark>Ayşe Yılmaz</mark> tc <mark>12345678901</mark> tel <mark>0532 111 22 33</mark> <span class="nowrap">e-posta</span> <mark>demo@example.com</mark>.</dd></div>
+    </dl>
+
+    <div class="table-scroll" role="region" aria-labelledby="policies-caption" tabindex="0">
+      <table class="stack caption-below" role="table">
+        <caption id="policies-caption">Çıktılar <time datetime="2026-10-05">5 Ekim 2026</time> tarihinde v02 ağırlıklarıyla CPU'da kaydedildi (PyTorch 2.8.0, Transformers 4.56.1). Kişi ve numaralar uydurmadır.</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col" class="col-s">Politika</th>
+            <th role="columnheader" scope="col">Talimat</th>
+            <th role="columnheader" scope="col" class="col-m">Çıktı</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th role="rowheader" scope="row">Her şeyi maskele</th>
+            <td role="cell" class="mono" lang="tr" data-label="Talimat">Metindeki tüm kişisel verileri uygun etiketlerle maskele.</td>
+            <td role="cell" class="mono" lang="tr" data-label="Çıktı">müşteri <mark>[AD]</mark> tc <mark>[TCKN]</mark> tel <mark>[TEL]</mark> <span class="nowrap">e-posta</span> <mark>[EMAIL]</mark>.</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row">Yalnızca telefon numaraları</th>
+            <td role="cell" class="mono" lang="tr" data-label="Talimat">Metindeki yalnızca telefon numaralarını maskele; diğer tüm bilgileri olduğu gibi koru.</td>
+            <td role="cell" class="mono" lang="tr" data-label="Çıktı">müşteri Ayşe Yılmaz tc 12345678901 tel <mark>[TEL]</mark> <span class="nowrap">e-posta</span> demo@example.com.</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row">İsimler dışında her şey</th>
+            <td role="cell" class="mono" lang="tr" data-label="Talimat">Metindeki kişi isimleri hariç tüm kişisel verileri uygun etiketlerle maskele. Kişi isimlerini olduğu gibi koru.</td>
+            <td role="cell" class="mono" lang="tr" data-label="Çıktı">müşteri Ayşe Yılmaz tc <mark>[TCKN]</mark> tel <mark>[TEL]</mark> <span class="nowrap">e-posta</span> <mark>[EMAIL]</mark>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Tipik kullanım, destek mesajlarını, uygulama loglarını ya da belge parçalarını bir LLM'e, bir log deposuna ya da bir tedarikçiye gitmeden önce temizlemektir. Model yalnızca metin döndürür. Karakter konumuna ya da token etiketine ihtiyacınız varsa span tabanlı bir varlık ismi tanıma (NER) modeli kullanın.</p>
+  </section>
+
+  <section id="usage" aria-labelledby="usage-title">
+    <h2 id="usage-title">Python ile hızlı başlangıç</h2>
+    <p>PyTorch ve Transformers'ı kurun, ardından şunu CPU'da çalıştırın.</p>
+
+<pre tabindex="0" aria-label="Kurulum komutu"><code>python -m pip install torch==2.8.0 transformers==4.56.1</code></pre>
+
+<pre tabindex="0" aria-label="Python örneği"><code>import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+MODEL_ID = "halilneed/turkish-pii-detection"
+REVISION = "28644718923ae38b0105c9f3d2be57312ad0ced3"  # v02
+
+tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, revision=REVISION)
+model = AutoModelForCausalLM.from_pretrained(
+    MODEL_ID, revision=REVISION, torch_dtype=torch.float32
+).to("cpu").eval()
+end_turn = tokenizer.convert_tokens_to_ids("&lt;end_of_turn&gt;")
+
+def mask_turkish_pii(text, instruction):
+    prompt = (
+        f"{tokenizer.bos_token}&lt;start_of_turn&gt;user\n{instruction}\n\n"
+        f"Metin: {text}&lt;end_of_turn&gt;\n&lt;start_of_turn&gt;model\n"
+    )
+    inputs = tokenizer(prompt, return_tensors="pt", add_special_tokens=False)
+    with torch.inference_mode():
+        sequence = model.generate(
+            **inputs, max_new_tokens=512, do_sample=False,
+            eos_token_id=end_turn, pad_token_id=tokenizer.eos_token_id,
+        )
+    generated = sequence[0, inputs["input_ids"].shape[1]:]
+    return tokenizer.decode(generated, skip_special_tokens=True).strip()
+
+text = "müşteri Ayşe Yılmaz tc 12345678901 tel 0532 111 22 33 e-posta demo@example.com."
+print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle maskele."))
+# müşteri [AD] tc [TCKN] tel [TEL] e-posta [EMAIL].</code></pre>
+
+    <p>Prompt biçimini gösterildiği gibi koruyun. BOS token'ıyla başlar ve Gemma'nın tur işaretlerini kullanır; tokenizer çağrısında <code>add_special_tokens=False</code> verilir ki BOS iki kez eklenmesin. Talimat da metin de Türkçedir.</p>
+    <p><code>REVISION</code>, v02 ağırlıklarına sabitler. <code>main</code> dalını izlemek için bu satırı çıkarın; ilk sürüm için <code>revision="v01"</code> verin. GPU'da <code>.to("cpu")</code> yerine <code>torch.bfloat16</code> ve <code>device_map="auto"</code> ile yükleyin, girdileri de <code>.to(model.device)</code> ile modelin cihazına taşıyın.</p>
+    <p>GitHub deposunda <a href="https://github.com/halilneed/turkish-pii-detection/blob/main/docs/python-turkish-pii-masking.md">adım adım bir eğitim</a> ve yerel bir demo var. <a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Tarayıcı demosu</a>, kuantize edilmiş bir ONNX sürümünü sizin cihazınızda çalıştırır. İlk açılışta yaklaşık 472 MB indirir ve çıktısı Python modelinden farklı olabilir. Benchmark skorları bu sürüm için yeniden ölçülmedi.</p>
+  </section>
+
+  <section id="results" aria-labelledby="results-title">
+    <h2 id="results-title">Benchmark sonuçları</h2>
+    <p>Değerlendirmeyi <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark"><code>cagrigungor/turkish-pii-masking-benchmark</code></a> üzerinde yapıyorum: 1.000 sentetik Türkçe örnekten oluşan, herkese açık bir değerlendirme seti. Metrik, satır bazında tam eşleşme: çıktının tamamı beklenen metne birebir eşit olmalı, yani tek bir yanlış etiket satırı düşürür.</p>
+
+    <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
+      <table>
+        <caption id="results-caption">Turkish PII Masking Benchmark üzerinde tam eşleşme</caption>
+        <thead>
+          <tr><th scope="col">Dilim</th><th scope="col" class="num">v01</th><th scope="col" class="num">v02</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">1.000 satırın tamamı</th><td class="num dim">0.880</td><td class="num">0.944</td></tr>
+          <tr><th scope="row">Şemadan bağımsız satırlar (903)</th><td class="num dim">0.900</td><td class="num">0.951</td></tr>
+          <tr><th scope="row">Seçimde kullanılmayan satırlar (531)</th><td class="num dim">0.885</td><td class="num">0.945</td></tr>
+          <tr><th scope="row">Her şeyi maskele</th><td class="num dim">0.851</td><td class="num">0.917</td></tr>
+          <tr><th scope="row">Yalnızca belirtilen alanları maskele</th><td class="num dim">0.895</td><td class="num">0.940</td></tr>
+          <tr><th scope="row">Belirtilen alanlar dışında her şeyi maskele</th><td class="num dim">0.893</td><td class="num">0.967</td></tr>
+          <tr><th scope="row">İstenen alan metinde yok</th><td class="num dim">0.960</td><td class="num">1.000</td></tr>
+          <tr><th scope="row">Kişisel veri içermeyen tuzak metinler</th><td class="num dim">0.865</td><td class="num">0.950</td></tr>
+          <tr><th scope="row">Uzun metin</th><td class="num dim">0.656</td><td class="num">0.844</td></tr>
+          <tr><th scope="row">Büyük harfli metin</th><td class="num dim">0.775</td><td class="num">0.838</td></tr>
+          <tr><th scope="row">Türkçe ek almış kişisel veri</th><td class="num dim">0.758</td><td class="num">0.803</td></tr>
+          <tr><th scope="row">Aynı metinde birden çok kişi</th><td class="num dim">0.600</td><td class="num">0.750</td></tr>
+          <tr><th scope="row">Yazıyla yazılmış sayılar</th><td class="num dim">0.946</td><td class="num">1.000</td></tr>
+          <tr><th scope="row">Çok alanlı kayıtlar</th><td class="num dim">0.968</td><td class="num">0.980</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Benchmark eğitim verisi olarak kullanılmadı; üretilen satırlardan benchmark ile çakışanlar ayıklandı. v02'yi geliştirirken benchmark'tan gelen toplu geri bildirime baktım (dilim bazında skorlar ve bir kez de etiket grubu bazında doğruluk). Bu yüzden benchmark'ı id'ye göre ikiye böldüm. Son ağırlıkların karışım oranı bir yarıda (469 satır) seçildi, diğer yarı (531 satır) bu seçimde kullanılmadı. O yarıda skor 0.885'ten 0.945'e çıktı.</p>
+    <p>v01 sütunu aynı betikle yeniden ölçüldü. v01'in model kartı tüm satırlarda 0.882, şemadan bağımsız satırlarda 0.902 bildirmişti. İkisi de iki satır daha yüksek; fark, toplu (batched) bfloat16 çıkarımdan kaynaklanıyor.</p>
+    <p>Karşılaştırma için, iki büyük model aynı benchmark'ta kendi kartlarında skor bildiriyor: <code>cagrigungor/pii-guard-turkish-0.8b</code> tüm satırlarda 0.876, <code>saturday-labs/turkish-pii-guard-0.8b</code> (eski adıyla <code>melikegks/turkish-pii-guard-0.8b</code>) şemadan bağımsız satırlarda 0.922. Bunları kendim yeniden çalıştırmadım.</p>
+    <p>Tam eşleşme, modelleri karşılaştırmak için katı bir skordur. Varlık bazında duyarlılık (recall) değildir ve gerçek belgelerin %94'ünün paylaşılmaya hazır olduğu anlamına gelmez.</p>
+  </section>
+
+  <section id="training" aria-labelledby="training-title">
+    <h2 id="training-title">Nasıl eğitildi</h2>
+    <p>v01 (<time datetime="2026-09-17">17 Eylül 2026</time>), Gemma 3 270M tabanlı <code>cagrigungor/pii-guard-turkish-270m</code> üzerinde sürdürülen bir ince ayardır. Başlangıç modelinin zayıf olduğu dilimlere ağırlık veren (büyük harfli metin, uzun kayıtlar, yazıyla yazılmış sayılar, aynı metinde birden çok kişi) 24.000 sentetik bankacılık ve ERP tarzı mesaj ürettim ve bir epoch eğittim. Benchmark skoru 0.740'tan 0.882'ye çıktı, ama iki dilim kötüleşti: ek almış kişisel veriler ve hiç kişisel veri içermeyen tuzak metinler.</p>
+    <p>v02 (<time datetime="2026-09-30">30 Eylül 2026</time>) bu ikisine odaklandı.</p>
+    <ol>
+      <li><strong>Yeni bir sentetik veri üreteci.</strong> 53 etiket; elle yazılmış yaklaşık 1.500 şablon (bankacılık, insan kaynakları, sağlık, telekom, e-ticaret, araçlar, BT logları, uzun e-postalar ve çağrı dökümleri); Türkçe ünlü uyumuna uyan bir ek motoru; büyük harf ve ASCII varyantları; yazıyla yazılmış sayılar ve yaklaşık 600 farklı talimat. Toplam 40.000 örnek.</li>
+      <li><strong>Öğretmen hizalaması.</strong> v01 aynı etiket kümesiyle geçerli bir maskeleme ürettiği her yerde etiket sınırları v01'inkilerle hizalandı. Sağlık, aile ve biyometri gibi anlamsal etiketlerde v01 ile çelişen 7.136 örnek çıkarıldı, geriye 32.864 örnek kaldı.</li>
+      <li><strong>v01'den sürdürülen tam ince ayar.</strong> Bir epoch, öğrenme oranı 2e-5, etkin batch boyutu 32, kayıp yalnızca çıktı token'larında.</li>
+      <li><strong>Ağırlık enterpolasyonu.</strong> İnce ayarlı model tek başına benchmark'ta 0.844'e düştü, çünkü üretecin dağılımına kaymıştı. Ağırlıklarını v01 ile 50/50 ortalamak (WiSE-FT olarak bilinen yöntem) 0.944 verdi: hem v01'den (0.880) hem de ince ayarlı modelin tek başına skorundan yüksek.</li>
+    </ol>
+    <p>v01'in hikâyesini Medium'da Türkçe yazdım: <a href="https://halilneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d" lang="tr" hreflang="tr">Daha büyük model eğitmedim, zayıf dilimleri eğittim</a>.</p>
+  </section>
+
+  <section id="limitations" aria-labelledby="limitations-title">
+    <h2 id="limitations-title">Sınırlar</h2>
+    <ul>
+      <li>Değerlendirmenin tamamı sentetik veri üzerinde. Modele güvenmeden önce kendi metinlerinizde ölçün.</li>
+      <li>En zayıf dilimler: birden çok kişi içeren metinler (0.750), “<span lang="tr">Cem Aslan’ın</span>” örneğindeki gibi Türkçe ek almış kişisel veriler (0.803) ve büyük harfli metinler (0.838).</li>
+      <li>Bağlamı olmayan kısa parçalar maskelenmeden kalabilir. Tek başına “<span lang="tr">vergi numarası 4810271935</span>” geçip gidebilir. Aynı numara bir müşteriden söz eden bir cümlenin içinde maskelenir.</li>
+      <li>Kişisel veriyi kaçırabilir, dokunmaması gereken metni değiştirebilir ya da şema dışında bir etiket üretebilir. Çıktıyı kontrol edin; boş ya da yarıda kesilmiş çıktıyı hata sayın.</li>
+      <li>Maskeleme anonimleştirme ile aynı şey değildir. Modeli kullanmak bir süreci KVKK'ya (6698 sayılı Kişisel Verilerin Korunması Kanunu) ya da GDPR'a uygun hale getirmez.</li>
+      <li>Ağırlıklar <span lang="en">Gemma Terms of Use</span> kapsamındadır. GitHub deposundaki kod MIT lisanslıdır.</li>
+    </ul>
+    <p>Ölçülen hız: Intel i5-12400F üzerinde fp32, sekiz thread ve batch boyutu bir ile cümle başına (ortalama 50 karakter) yaklaşık 600 ms ve 1.6 GB RAM.</p>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Bu modelle Türkçe kişisel veri tespiti üzerine sorular</h2>
+
+    <details>
+      <summary>Bu bir Türkçe NER modeli mi?</summary>
+      <p>Hayır. Maskelenmiş metin üretir; token etiketi ya da karakter konumu döndürmez. Konum bilgisine ihtiyacınız varsa token sınıflandırma (token classification) modeli kullanın.</p>
+    </details>
+    <details>
+      <summary>Metni bir API'ye göndermeden çalıştırabilir miyim?</summary>
+      <p>Evet. Ağırlıkları bir kez indirip modeli Transformers ile yerelde, CPU'da ya da GPU'da çalıştırabilirsiniz. Tarayıcı demosu da sizin cihazınızda çalışır.</p>
+    </details>
+    <details>
+      <summary>Hangi kişisel verileri kapsıyor?</summary>
+      <p>Şemada 53 etiket var. Ad soyad, T.C. kimlik numarası (TCKN), telefon numarası, e-posta adresi, IBAN ve işyeri gibi verilerin yanında sağlık ve biyometrik veri gibi özel nitelikli kişisel verileri de kapsar.</p>
+    </details>
+    <details>
+      <summary>KVKK sınıflandırıcısından farkı ne?</summary>
+      <p>Bu model metni yeniden yazar. <a href="/models/turkish-kvkk-classifier/tr/">Türkçe KVKK sınıflandırıcısı</a> ise yalnızca metinde hangi kişisel veri kategorilerinin bulunduğunu söyler; bu da maskeleme politikasını seçerken işe yarar.</p>
+    </details>
+    <details>
+      <summary>Hangi sürümü indireceğim?</summary>
+      <p><code>main</code> dalı v02'yi verir. İlk sürüm için <code>revision="v01"</code> verin; tekrarlanabilir sonuç istiyorsanız bir commit hash'ine sabitleyin.</p>
+    </details>
+    <details>
+      <summary>Maskeleme verilerimi KVKK'ya uygun hale getirir mi?</summary>
+      <p>Hayır. Maskelenmiş çıktı kendiliğinden anonim olmaz. Uyum, modele değil verinin nasıl işlendiğine bağlıdır.</p>
+    </details>
+  </section>
+
+  <section id="turkce" lang="tr" aria-labelledby="turkce-title">
+    <h2 id="turkce-title">Türkçe kişisel veri maskeleme modeli</h2>
+    <p><code>turkish-pii-detection</code>, Türkçe metindeki kişisel verileri verilen talimata göre etiketlerle değiştiren, 270M parametreli açık bir modeldir. Tüm kişisel verileri, yalnızca seçtiğiniz alanları ya da belirttiğiniz alanlar dışındaki her şeyi maskeleyebilir. GPU gerektirmeyecek kadar küçüktür: işlemcide (CPU) çalışır ve metin makinenizden çıkmaz.</p>
+    <p>Çıktı olarak yalnızca maskelenmiş metni verir; karakter konumu, token etiketi ya da KVKK kategorisi döndürmez. v02, 1.000 sentetik örnekten oluşan herkese açık benchmark’ta 0.944 tam eşleşme skoruna ulaştı (v01: 0.880). Model seçiminde kullanılmayan 531 örnekte skor 0.945’tir. En zayıf olduğu dilim çok kişili metinlerdir (0.750).</p>
+    <p>Ağırlıklar ve model kartı Hugging Face’te, Python kullanım örnekleri GitHub’dadır. Tarayıcı demosunda kendi metninizi deneyebilirsiniz; model cihazınızda çalışır. Üretime almadan önce modelin başarımını kendi verinizde ölçün ve çıktıyı doğrulayın.</p>
+    <ul class="links">
+      <li><a href="https://huggingface.co/halilneed/turkish-pii-detection">Hugging Face modeli</a></li>
+      <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Tarayıcı demosu</a></li>
+      <li><a href="https://github.com/halilneed/turkish-pii-detection">GitHub</a></li>
+    </ul>
+  </section>
+
+  <section id="links" aria-labelledby="links-title">
+    <h2 id="links-title">Bağlantılar</h2>
+    <ul>
+      <li><a href="https://huggingface.co/halilneed/turkish-pii-detection">Model kartı ve ağırlıklar</a></li>
+      <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Tarayıcı demosu</a></li>
+      <li><a href="https://github.com/halilneed/turkish-pii-detection">GitHub'da kod, eğitim ve değerlendirme betiği</a></li>
+      <li><a href="/models/turkish-kvkk-classifier/tr/">Türkçe KVKK sınıflandırıcısı</a> ve <a href="/models/turkish-bseby-classifier/tr/">Türkçe BSEBY sınıflandırıcısı</a></li>
+      <li><a href="/models/tr/">Tüm modeller</a></li>
+    </ul>
+    <p>Model işinize yaradıysa Hugging Face sayfasında beğenmeniz, başkalarının da onu bulmasına yardım eder.</p>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, İstanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/tr/" aria-current="page">Türkçe kişisel veri tespit modeli</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Kaynak</a></li>
+    </ul>
+    <p class="small">Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -52,26 +52,96 @@
   "ctaHref": "/guides/tr/",
   "js": {
     "shareText": "Bir metin yapay zekâya gitmeden önce: olduğu gibi mi, maskeleyerek mi, yoksa içeride mi? Kişisel veri ve KVKK için 15 dakikalık interaktif rehber:",
-    "routes": ["Olduğu gibi", "Maskele", "İçeride tut"],
+    "routes": [
+      "Olduğu gibi",
+      "Maskele",
+      "İçeride tut"
+    ],
     "routeAria": "Bu metnin yolu",
     "tally": "{n} / 6 karar",
     "hits": "{n} isabet",
     "texts": [
-      ["Üçüncü çeyrek satış sunumu için başlık önerileri iste", 0, "Kişisel veri yok, olduğu gibi gönderilebilir."],
-      ["Müşteri Ayşe Yılmaz, 0532 111 22 33, kargosu gecikti diye şikâyetçi; yanıt taslağı yaz", 1, "Ad ve telefon yanıt için gerekli değil. Maskeleyin, taslak yine yazılır."],
-      ["Çalışanın rapor süresi ve tanısı: bel fıtığı; izin planı yap", 2, "Sağlık verisi özel nitelikli kişisel veridir. İçeride tutun."],
-      ["Genel duyuru: ofis cuma 15.00’te kapanacak; metni düzelt", 0, "Kişisel veri yok."],
-      ["Müşterinin IBAN’ı ve son üç ayın hesap hareketleri; özet çıkar", 2, "Banka sırrı ve finansal veri. Kurum dışına çıkmaz."],
-      ["Toplantı notu: Mehmet Bey bütçeyi onayladı, Zeynep Hanım sunumu hazırlayacak; aksiyon listesi çıkar", 1, "İsimleri maskeleyin, listeyi alınca geri koyun."]
+      [
+        "Üçüncü çeyrek satış sunumu için başlık önerileri iste",
+        0,
+        "Kişisel veri yok, olduğu gibi gönderilebilir."
+      ],
+      [
+        "Müşteri Ayşe Yılmaz, 0532 111 22 33, kargosu gecikti diye şikâyetçi; yanıt taslağı yaz",
+        1,
+        "Ad ve telefon yanıt için gerekli değil. Maskeleyin, taslak yine yazılır."
+      ],
+      [
+        "Çalışanın rapor süresi ve tanısı: bel fıtığı; izin planı yap",
+        2,
+        "Sağlık verisi özel nitelikli kişisel veridir. İçeride tutun."
+      ],
+      [
+        "Genel duyuru: ofis cuma 15.00’te kapanacak; metni düzelt",
+        0,
+        "Kişisel veri yok."
+      ],
+      [
+        "Müşterinin IBAN’ı ve son üç ayın hesap hareketleri; özet çıkar",
+        2,
+        "Banka sırrı ve finansal veri. Kurum dışına çıkmaz."
+      ],
+      [
+        "Toplantı notu: Mehmet Bey bütçeyi onayladı, Zeynep Hanım sunumu hazırlayacak; aksiyon listesi çıkar",
+        1,
+        "İsimleri maskeleyin, listeyi alınca geri koyun."
+      ]
     ],
-    "maskModes": ["Maskesiz", "Kural", "Model", "Kural ve model"],
+    "maskModes": [
+      "Maskesiz",
+      "Kural",
+      "Model",
+      "Kural ve model"
+    ],
     "sample": [
-      "Müşteri ", ["Ayşe Yılmaz", "[AD]", 0, 1],
-      " (TC ", ["12345678901", "[TCKN]", 1, 1],
-      ") dün ", ["0532 111 22 33", "[TEL]", 1, 1],
-      " numarasından aradı. E-posta: ", ["ayse@example.com", "[E-POSTA]", 1, 1],
-      ". İade için IBAN: ", ["TR12 0006 4000 0011 2345 6789 01", "[IBAN]", 1, 1],
-      ". Adres: ", ["Moda Cad. No 5, Kadıköy", "[ADRES]", 0, 1], "."
+      "Müşteri ",
+      [
+        "Ayşe Yılmaz",
+        "[AD]",
+        0,
+        1
+      ],
+      " (TC ",
+      [
+        "12345678901",
+        "[TCKN]",
+        1,
+        1
+      ],
+      ") dün ",
+      [
+        "0532 111 22 33",
+        "[TEL]",
+        1,
+        1
+      ],
+      " numarasından aradı. E-posta: ",
+      [
+        "ayse@example.com",
+        "[E-POSTA]",
+        1,
+        1
+      ],
+      ". İade için IBAN: ",
+      [
+        "TR12 0006 4000 0011 2345 6789 01",
+        "[IBAN]",
+        1,
+        1
+      ],
+      ". Adres: ",
+      [
+        "Moda Cad. No 5, Kadıköy",
+        "[ADRES]",
+        0,
+        1
+      ],
+      "."
     ],
     "maskLesson": [
       "Maskesiz: altı kişisel veri olduğu gibi gidiyor.",
@@ -82,5 +152,6 @@
     "workdaysMonth": 22,
     "workdaysYear": 250,
     "recLesson": "Bu ayarlarla ayda yaklaşık {n} kişisel veri maskelenmeden geçer. Yüksek görünen bir yüzde, hacimle çarpınca küçük kalmaz."
-  }
+  },
+  "modelHref": "/models/turkish-pii-detection/tr/"
 }

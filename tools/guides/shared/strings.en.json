@@ -19,5 +19,7 @@
   "js": {
     "copied": "Copied",
     "copyFail": "Could not copy"
-  }
+  },
+  "home": "/",
+  "switchAria": "Language"
 }

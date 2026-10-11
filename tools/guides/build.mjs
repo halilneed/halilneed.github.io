@@ -62,6 +62,8 @@ function build(slug) {
       urlEn: lang === 'en' ? me.url : other.url,
       urlTr: lang === 'tr' ? me.url : other.url,
       urlShort: me.url.replace('https://', ''),
+      urlEnPath: lang === 'en' ? me.path : other.path,
+      urlTrPath: lang === 'tr' ? me.path : other.path,
     };
 
     const jsonld = {
@@ -70,7 +72,7 @@ function build(slug) {
         {
           '@type': 'BreadcrumbList',
           itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'halilneed', item: `${SITE}/` },
+            { '@type': 'ListItem', position: 1, name: 'halilneed', item: SITE + c.home },
             { '@type': 'ListItem', position: 2, name: c.guidesName, item: SITE + c.guidesPath },
             { '@type': 'ListItem', position: 3, name: c.name, item: c.url },
           ],
@@ -97,6 +99,8 @@ function build(slug) {
 
     const raw = {
       css, icons, script,
+      curTr: lang === 'tr' ? ' aria-current="true"' : '',
+      curEn: lang === 'en' ? ' aria-current="true"' : '',
       jsonld: JSON.stringify(jsonld, null, 2),
       js: JSON.stringify({ ...s.js, ...g.js }).replace(/</g, '\\u003c'),
     };

@@ -2,6 +2,7 @@
    1. reveal on scroll   2. the masking demo   3. live numbers from the Hugging Face API */
 (function () {
   'use strict';
+  var TR = (document.documentElement.lang || '').slice(0, 2) === 'tr';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
@@ -56,7 +57,7 @@
         if (hit && stagger) later(apply, 260 * i++); else apply();
       });
       demo.classList.toggle('is-masked', on);
-      if (status) status.textContent = on ? 'Output' : 'Input';
+      if (status) status.textContent = TR ? (on ? 'Çıktı' : 'Girdi') : (on ? 'Output' : 'Input');
     }
     function show(i, animate) {
       clear();
@@ -84,6 +85,12 @@
     var ago = function (iso) {
       var d = Math.floor((Date.now() - new Date(iso).getTime()) / 864e5);
       if (isNaN(d) || d < 0) return null;
+      if (TR) {
+        if (d === 0) return 'Bugün güncellendi';
+        if (d === 1) return 'Dün güncellendi';
+        if (d < 31) return d + ' gün önce güncellendi';
+        return new Date(iso).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', year: 'numeric' }) + ' güncellendi';
+      }
       if (d === 0) return 'Updated today';
       if (d === 1) return 'Updated yesterday';
       if (d < 31) return 'Updated ' + d + ' days ago';

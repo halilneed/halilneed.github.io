@@ -37,7 +37,7 @@
           "@type": "ListItem",
           "position": 1,
           "name": "halilneed",
-          "item": "https://halilneed.agency/"
+          "item": "https://halilneed.agency/tr/"
         },
         {
           "@type": "ListItem",
@@ -407,6 +407,15 @@ footer a{color:var(--ink-2)}
 .cap{text-align:center;margin-top:18px;font-size:.9rem;color:var(--muted);max-width:52ch;margin-left:auto;margin-right:auto}
 .cap a{color:var(--ink-2)}
 
+/* language switch, top right: TR | EN */
+.top .wrap{gap:12px}
+.top nav{margin-left:auto}
+.lang-switch{display:inline-flex;padding:2px;border:1px solid var(--line);border-radius:999px;background:var(--surface);box-shadow:var(--shadow-sm)}
+.lang-switch a{min-width:36px;padding:4px 10px;border-radius:999px;font-size:.78rem;font-weight:600;letter-spacing:.02em;text-align:center;color:var(--muted);text-decoration:none}
+.lang-switch a:hover{color:var(--ink)}
+.lang-switch a[aria-current]{background:var(--ink);color:var(--bg)}
+@media (max-width:520px){.top nav a[href$=".pdf"]{display:none}}
+
 /* header links and print-only blocks */
 .top nav{display:flex;align-items:center;gap:18px}
 .top nav .sep{width:1px;height:16px;background:var(--line-strong)}
@@ -430,7 +439,7 @@ footer a{color:var(--ink-2)}
   html{font-size:14px}
   body{background:#fff}
   .print-only{display:block}
-  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
+  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
   section.step,section.step[hidden]{display:block!important;padding:0 0 6mm;break-before:page}
   .hero{min-height:235mm;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0}
   .hero p{max-width:46ch}
@@ -506,13 +515,12 @@ footer a{color:var(--ink-2)}
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="/"><i>h</i>halilneed</a>
+    <a class="brand" href="/tr/"><i>h</i>halilneed</a>
     <nav aria-label="Rehberler">
       <a href="/guides/tr/">Tüm rehberler</a>
       <a href="/guides/personal-data/tr/kisisel-veri-ve-yapay-zeka.pdf" data-goatcounter-click="personal-data-pdf-top-tr">PDF</a>
-      <span class="sep" aria-hidden="true"></span>
-      <a href="/guides/personal-data/" lang="en" hreflang="en">English</a>
     </nav>
+    <div class="lang-switch" role="group" aria-label="Dil"><a href="/guides/personal-data/tr/" hreflang="tr" lang="tr" aria-current="true">TR</a><a href="/guides/personal-data/" hreflang="en" lang="en">EN</a></div>
   </div>
 </header>
 
@@ -570,7 +578,7 @@ footer a{color:var(--ink-2)}
     <div class="pills sm" id="maskPills"></div>
     <div class="textview" id="maskView" aria-live="polite"></div>
     <div class="tally-inline"><span>Yakalanan: <b id="caught"></b></span><span>Kaçan: <b id="missed"></b></span></div>
-    <p class="cap">Örnek metin uydurmadır, kural ve model sonuçları temsilîdir. Gerçek bir Türkçe maskeleme modeli (1.000 satırda 0.944 tam eşleşme): <a href="/models/turkish-pii-detection/">turkish-pii-detection</a></p>
+    <p class="cap">Örnek metin uydurmadır, kural ve model sonuçları temsilîdir. Gerçek bir Türkçe maskeleme modeli (1.000 satırda 0.944 tam eşleşme): <a href="/models/turkish-pii-detection/tr/">turkish-pii-detection</a></p>
   </div>
 
   <div class="note" id="maskNote"></div>
@@ -652,7 +660,7 @@ footer a{color:var(--ink-2)}
 
 </main>
 
-<footer>© 2026 Halil, <a href="/">halilneed.agency</a>. Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.</footer>
+<footer>© 2026 Halil, <a href="/tr/">halilneed.agency</a>. Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.</footer>
 
 <script>
 (function(){
