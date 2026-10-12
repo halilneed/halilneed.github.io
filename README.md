@@ -35,7 +35,7 @@ Her sayfa aynı üst menüyü, aynı alt bilgiyi ve aynı 44rem'lik çerçeveyi 
 
 - **Yazı tipi:** sistem fontları, web fontu yok. Dışarıya giden istekler: GoatCounter ve model kartlarındaki canlı sayılar için Hugging Face API.
 - **Renk:** nötr gri tonları ve tek bir vurgu rengi (`--accent`): koleksiyon başlığı, kart kenarlığı, hover ve odak. Bağlantılar metin rengindedir ve altı çizilidir.
-  Açık ve koyu tema `prefers-color-scheme` ile gelir.
+  Beyaz arka plan ve açık tema sabittir; sistemin koyu tema tercihi siteyi değiştirmez.
 - **Yerleşim:** ana sayfa tipindeki bölümlerde solda 13rem'lik bir sütun (bölüm adı, başlık,
   tarih), sağda metin. Makale tipindeki sayfalar tek sütun; düz yazı 35rem'de durur, tablo
   ve kod çerçevenin tamamını kullanır. Tek kırılma noktası 48rem.
