@@ -187,6 +187,7 @@
       </table>
     </div>
     <p>Hugging Face’te varsayılan sürüm v2. Trafiğinizin çoğu ajan araçlı sohbetse ve az yanlış alarm en önemli şeyse <code>revision="v1"</code> ile v1’e sabitleyin.</p>
+    <p>Üçüncü bir seçenek daha var: <code>detect.py</code>’nin önce duyarlılık modu. v1 ile v2’nin ortalamasını alır ve 0,2’de işaretler; ikisi de seçim protokolünde seçildi. Her kaynak dışarıda bırakıldığında ortalama F1 0.677 (conv 0.690), fevzi’nin %96’sını yakalar. Ama 1k test setinin 34 zararsız satırından 14’ünü işaretler (v2: 1) ve metin başına yaklaşık 59 ms sürer. Kaçan saldırının engellenen istekten pahalı olduğu yerde kullanın.</p>
     <p>v1’i test bölmelerinde ölçmüştüm ve birkaç varyantı da orada karşılaştırmıştım; bu, sayılarını olduğundan iyi gösterir. v2’de seçimi ayrı tuttum: her tarif, her eğitim kaynağı dışarıda bırakılarak o kaynağın train ve validation bölmelerinde ve eğitimde hiç kullanılmayan zararsız bölmelerde ölçüldü. Test bölmelerine bu sayfadaki sayılar için bir kez dokunuldu. Bu protokolden sekiz tarif geçti; seçilen tarif ikinci bir tohumla tekrarlandı. Seçilen tarif (mmBERT-base, gizleme artırımı, İngilizce ajan verisi) iki eğitim tohumunda ortalama 0.717 ve 0.661 F1 aldı; v1 tarifi 0.612. Yayının ikinci, daha zayıf tohumdan çıkacağını önceden sabitledim.</p>
   </section>
 
@@ -245,7 +246,7 @@
         </tbody>
       </table>
     </div>
-    <p>Üç set: <a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">KVKK benchmark’ım</a>, <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">BSEBY benchmark’ım</a> ve cagrigungor’un PII benchmark’ındaki talimatlar; hepsi CC0. Bu setler bu model için aynı alan, diğerleri için değil: eğitim verisinde aynı alanlardan başka metinler var. Bu metinler olmadan eğitilen v1 tarifi bankacılık metinlerinin %65’ini, görev talimatlarının %98,5’ini işaretledi. Trafiğiniz başka bir alandansa önce kendi zararsız metninizde ölçün.</p>
+    <p>Üç set birlikte <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark">halilneed/turkish-prompt-injection-false-alarm-benchmark</a> adıyla yayında: 2.875 zararsız Türkçe metin ve bu tabloyu herhangi bir model için yeniden üreten bir betik. Kaynakları <a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">KVKK benchmark’ım</a>, <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">BSEBY benchmark’ım</a> ve cagrigungor’un PII benchmark’ındaki talimatlar; hepsi CC0. Bu setler bu model için aynı alan, diğerleri için değil: eğitim verisinde aynı alanlardan başka metinler var. Bu metinler olmadan eğitilen v1 tarifi bankacılık metinlerinin %65’ini, görev talimatlarının %98,5’ini işaretledi. Trafiğiniz başka bir alandansa önce kendi zararsız metninizde ölçün.</p>
   </section>
 
   <section id="fails" aria-labelledby="fails-title">

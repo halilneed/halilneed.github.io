@@ -198,6 +198,7 @@
       </table>
     </div>
     <p>v2 is the default on Hugging Face. If most of your traffic is chat with agent tools and few false alarms matter most, pin v1 with <code>revision="v1"</code>.</p>
+    <p>There is a third option, the recall mode of <code>detect.py</code>: it averages v1 and v2 and flags at 0.2, both chosen on the selection protocol. With each source held out its mean F1 is 0.677 (conv 0.690), and it catches 96% of fevzi. It also flags 14 of the 34 benign rows in the 1k test set, against 1 for v2, and needs about 59 ms per text. Use it where a missed attack costs more than a blocked request.</p>
     <p>v1 was measured on the test splits, and I also compared a few variants there, which flatters its numbers. For v2 I kept selection apart: every recipe was compared with each training source held out and measured on that source’s train and validation splits, and on benign splits never used in training. The test splits were touched once, for the numbers on this page. Eight recipes went through that protocol, and the chosen one was repeated with a second seed. The chosen one (mmBERT-base, obfuscation augmentation, English agentic data) scored a mean F1 of 0.717 and 0.661 with two training seeds, against 0.612 for the v1 recipe. I fixed in advance that the release would use the second seed, the weaker one.</p>
   </section>
 
@@ -256,7 +257,7 @@
         </tbody>
       </table>
     </div>
-    <p>The three sets are <a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">my KVKK benchmark</a>, <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">my BSEBY benchmark</a> and the instructions of cagrigungor’s PII benchmark, all CC0. They are in-domain for this model and not for the others: its training data has other texts from the same domains. Trained without them, the v1 recipe flagged 65% of banking texts and 98.5% of task instructions. If your traffic is from another domain, measure the false-positive rate on your own benign text first.</p>
+    <p>The three sets are published together as <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark">halilneed/turkish-prompt-injection-false-alarm-benchmark</a>, 2,875 benign Turkish texts with a script that reproduces this table for any model. They come from <a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">my KVKK benchmark</a>, <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">my BSEBY benchmark</a> and the instructions of cagrigungor’s PII benchmark, all CC0. They are in-domain for this model and not for the others: its training data has other texts from the same domains. Trained without them, the v1 recipe flagged 65% of banking texts and 98.5% of task instructions. If your traffic is from another domain, measure the false-positive rate on your own benign text first.</p>
   </section>
 
   <section id="fails" aria-labelledby="fails-title">
