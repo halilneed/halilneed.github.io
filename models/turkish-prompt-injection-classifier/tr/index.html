@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Türkçe prompt injection sınıflandırıcısı | halilneed</title>
-<meta name="description" content="LLM'e giren Türkçe metinde prompt injection için açık sınıflandırıcı. v2: kodlanmış saldırıların 13'te 13'ü, gizli Unicode'un %95'i, %2'nin altında yanlış alarm. MIT.">
+<meta name="description" content="LLM'e giren Türkçe metinde prompt injection için açık sınıflandırıcı. v2: kodlanmış saldırıların 13'te 13'ü, gizli Unicode'un %98'i, yaklaşık %2 yanlış alarm. MIT.">
 <link rel="canonical" href="https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-prompt-injection-classifier/">
 <link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/">
@@ -18,14 +18,14 @@
 <meta property="og:site_name" content="halilneed">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:title" content="Türkçe prompt injection sınıflandırıcısı | halilneed">
-<meta property="og:description" content="LLM'e giren Türkçe metinde prompt injection için açık sınıflandırıcı. v2: kodlanmış saldırıların 13'te 13'ü, gizli Unicode'un %95'i, %2'nin altında yanlış alarm. MIT.">
+<meta property="og:description" content="LLM'e giren Türkçe metinde prompt injection için açık sınıflandırıcı. v2: kodlanmış saldırıların 13'te 13'ü, gizli Unicode'un %98'i, yaklaşık %2 yanlış alarm. MIT.">
 <meta property="og:url" content="https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-prompt-injection-classifier.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Türkçe prompt injection sınıflandırıcısı | halilneed">
-<meta name="twitter:description" content="LLM'e giren Türkçe metinde prompt injection için açık sınıflandırıcı. v2: kodlanmış saldırıların 13'te 13'ü, gizli Unicode'un %95'i, %2'nin altında yanlış alarm. MIT.">
+<meta name="twitter:description" content="LLM'e giren Türkçe metinde prompt injection için açık sınıflandırıcı. v2: kodlanmış saldırıların 13'te 13'ü, gizli Unicode'un %98'i, yaklaşık %2 yanlış alarm. MIT.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-prompt-injection-classifier.png">
 <script type="application/ld+json">
 {
@@ -89,7 +89,7 @@
   <header class="page-head">
     <h1>Türkçe prompt injection sınıflandırıcısı</h1>
     <p class="lead"><code>turkish-prompt-injection-classifier</code>, bir LLM’e giren Türkçe metni <code>BENIGN</code> (zararsız) ya da <code>INJECTION</code> olarak işaretler. Kullanıcı mesajlarında ve asistanın okuduğu içerikte çalışır: e-posta, belge, getirilen pasaj, araç çıktısı.</p>
-    <p>Sürüm 2 yayında. Açık bir test setindeki 13 kodlanmış saldırının 13’ünü (v1: 5) ve görünmez Unicode ile gizlenmiş talimatların %95’ini (v1: %40) yakalıyor. 2.875 zararsız Türkçe metinde en fazla %1,7 yanlış alarm veriyor; açık koruma modelleri aynı görev talimatlarının %77’sine kadarını saldırı sayıyor. Görmediği bir kaynaktan gelen konuşma ve ajan saldırılarında v1’den zayıf; iki sürüm de kullanılabilir.</p>
+    <p>Sürüm 2 yayında. Açık bir test setindeki 13 kodlanmış saldırının 13’ünü (v1: 5) ve görünmez Unicode ile gizlenmiş talimatların %98’ini (v1: %40) yakalıyor; görmediği her saldırı setinde v1’den yüksek skor alıyor. 2.875 zararsız Türkçe metinde en fazla %2,1 yanlış alarm veriyor; açık koruma modelleri aynı görev talimatlarının %77’sine kadarını saldırı sayıyor. İki sürüm de kullanılabilir. Tüm ölçümler açık bir benchmark’ta: <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark">halilneed/turkish-prompt-injection-benchmark</a>.</p>
     <ul class="links">
       <li><a href="https://huggingface.co/halilneed/turkish-prompt-injection-classifier" data-goatcounter-click="pinj-download-tr">Hugging Face’te ağırlıklar</a></li>
     </ul>
@@ -97,8 +97,8 @@
     <dl class="kv">
       <div><dt>Boyut</dt><dd>307M parametre (v2), 110M (v1)</dd></div>
       <div><dt>Temel model</dt><dd>v2: <a href="https://huggingface.co/jhu-clsp/mmBERT-base"><code>jhu-clsp/mmBERT-base</code></a>; v1: <a href="https://huggingface.co/dbmdz/bert-base-turkish-cased"><code>dbmdz/bert-base-turkish-cased</code></a></dd></div>
-      <div><dt>Etiketler</dt><dd><code>BENIGN</code>, <code>INJECTION</code>; eşik 0,3</dd></div>
-      <div><dt>Sonuç</dt><dd>Her eğitim kaynağı dışarıda bırakıldığında ortalama F1 0.622 (v1: 0.567); zararsız Türkçede %0–1,7 yanlış alarm</dd></div>
+      <div><dt>Etiketler</dt><dd><code>BENIGN</code>, <code>INJECTION</code>; eşik 0,05</dd></div>
+      <div><dt>Sonuç</dt><dd>Her eğitim kaynağı dışarıda bırakıldığında ortalama F1 0.690 (v1: 0.567); zararsız Türkçede %0–2,1 yanlış alarm</dd></div>
       <div><dt>CPU hızı</dt><dd>metin başına yaklaşık 35 ms (v1: yaklaşık 23 ms)</dd></div>
       <div><dt>Lisans</dt><dd>MIT</dd></div>
     </dl>
@@ -164,30 +164,32 @@
         </tbody>
       </table>
     </div>
-    <p>İlk üç satır zararsız: <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark">cagrigungor/turkish-pii-masking-benchmark</a> setinden bir görev talimatı, kullanıcının kendi önceki üslup isteğini değiştirmesi ve asistanı korumak için yazılmış bir kural. Son ikisi saldırı: talimatı geçersiz kılma ve hafızaya kural yerleştirme girişimi; ikincisini v2 kaçırıyor. Kalın, eşiğin üstündeki skordur (burada v1 ve v2 için 0,3, proventra için 0,5).</p>
+    <p>İlk üç satır zararsız: <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark">cagrigungor/turkish-pii-masking-benchmark</a> setinden bir görev talimatı, kullanıcının kendi önceki üslup isteğini değiştirmesi ve asistanı korumak için yazılmış bir kural. Son ikisi saldırı: talimatı geçersiz kılma ve hafızaya kural yerleştirme girişimi; ikincisini v2 kaçırıyor. Kalın, eşiğin üstündeki skordur (v2 için 0,05, v1 ve proventra için 0,5).</p>
   </section>
 
   <section id="versions" aria-labelledby="versions-title">
     <h2 id="versions-title">v1 ve v2</h2>
     <div class="table-scroll" role="region" aria-labelledby="versions-caption" tabindex="0">
       <table>
-        <caption id="versions-caption">İki sürüm yan yana. Eşik v1 için 0,5, v2 için 0,3.</caption>
+        <caption id="versions-caption">İki sürüm yan yana. Eşik v1 için 0,5, v2 için 0,05.</caption>
         <thead>
           <tr><th scope="col">Ölçüt</th><th scope="col" class="num">v1</th><th scope="col" class="num">v2</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Görmediği kaynakta F1: conv</th><td class="num"><strong>0.588</strong></td><td class="num">0.465</td></tr>
-          <tr><th scope="row">Görmediği kaynakta F1: 1k</th><td class="num">0.823</td><td class="num"><strong>0.954</strong></td></tr>
-          <tr><th scope="row">Görmediği kaynakta F1: berat</th><td class="num">0.290</td><td class="num"><strong>0.447</strong></td></tr>
-          <tr><th scope="row">Gizlenmiş saldırı, duyarlılık (fevzi, 107)</th><td class="num">0.832</td><td class="num"><strong>0.944</strong></td></tr>
-          <tr><th scope="row">Görünmez Unicode ile gizlenmiş, duyarlılık (42)</th><td class="num">0.405</td><td class="num"><strong>0.952</strong></td></tr>
-          <tr><th scope="row">Bankacılık metninde yanlış alarm (750)</th><td class="num"><strong>%1,1</strong></td><td class="num">%1,7</td></tr>
+          <tr><th scope="row">Görmediği kaynakta F1: conv</th><td class="num">0.588</td><td class="num"><strong>0.596</strong></td></tr>
+          <tr><th scope="row">Görmediği kaynakta F1: 1k</th><td class="num">0.823</td><td class="num"><strong>0.968</strong></td></tr>
+          <tr><th scope="row">Görmediği kaynakta F1: berat</th><td class="num">0.290</td><td class="num"><strong>0.506</strong></td></tr>
+          <tr><th scope="row">Gizlenmiş saldırı, duyarlılık (fevzi, 107)</th><td class="num">0.832</td><td class="num"><strong>0.963</strong></td></tr>
+          <tr><th scope="row">Görünmez Unicode ile gizlenmiş, duyarlılık (42)</th><td class="num">0.405</td><td class="num"><strong>0.976</strong></td></tr>
+          <tr><th scope="row">Bankacılık metninde yanlış alarm (750)</th><td class="num"><strong>%1,1</strong></td><td class="num">%2,1</td></tr>
           <tr><th scope="row">CPU, metin başına ortalama</th><td class="num"><strong>23 ms</strong></td><td class="num">35 ms</td></tr>
         </tbody>
       </table>
     </div>
-    <p>Hugging Face’te varsayılan sürüm v2. Trafiğinizin çoğu ajan araçlı sohbetse ve az yanlış alarm en önemli şeyse <code>revision="v1"</code> ile v1’e sabitleyin.</p>
-    <p>v1’i test bölmelerinde ölçmüştüm ve birkaç varyantı da orada karşılaştırmıştım; bu, sayılarını olduğundan iyi gösterir. v2’de seçimi ayrı tuttum: her tarif, her eğitim kaynağı dışarıda bırakılarak o kaynağın train ve validation bölmelerinde ve eğitimde hiç kullanılmayan zararsız bölmelerde ölçüldü. Test bölmelerine bu sayfadaki sayılar için bir kez dokunuldu. Bu protokolden sekiz tarif geçti; seçilen tarif ikinci bir tohumla tekrarlandı. Seçilen tarif (mmBERT-base, gizleme artırımı, İngilizce ajan verisi) iki eğitim tohumunda ortalama 0.717 ve 0.661 F1 aldı; v1 tarifi 0.612. Yayının ikinci, daha zayıf tohumdan çıkacağını önceden sabitledim.</p>
+    <p>Hugging Face’te varsayılan sürüm v2. Az yanlış alarm ve hız en önemli şeyse <code>revision="v1"</code> ile v1’e sabitleyin.</p>
+    <p>v2 önce 0,3 eşikle yayınlandı; o değer yayınlanmayan bir eğitim tohumunun koşusunda seçilmişti. Yayınlanan modelin kendi kaynak-dışarıda koşularında, test bölmelerine dokunmadan yeniden bakınca eşik 0,05 çıktı. Ağırlıklar aynı; bu sayfa ve model kartı 0,05’teki sayıları gösteriyor.</p>
+    <p>Üçüncü bir seçenek daha var: <code>detect.py</code>’nin önce duyarlılık modu. v1 ile v2’nin ortalamasını alır ve 0,2’de işaretler; ikisi de seçim protokolünde seçildi. Her kaynak dışarıda bırakıldığında ortalama F1 0.677 (conv 0.690), fevzi’nin %96’sını yakalar. Ama 1k test setinin 34 zararsız satırından 14’ünü işaretler (v2: 2) ve metin başına yaklaşık 59 ms sürer. v2’nin yeni eşiğiyle bu mod yalnızca conv’da daha iyi.</p>
+    <p>v1’i test bölmelerinde ölçmüştüm ve birkaç varyantı da orada karşılaştırmıştım; bu, sayılarını olduğundan iyi gösterir. v2’de seçimi ayrı tuttum: her tarif, her eğitim kaynağı dışarıda bırakılarak o kaynağın train ve validation bölmelerinde ve eğitimde hiç kullanılmayan zararsız bölmelerde ölçüldü. Test bölmelerine bu sayfadaki sayılar için bir kez dokunuldu. Bu protokolden sekiz tarif geçti; seçilen tarif ikinci bir tohumla tekrarlandı. Seçilen tarif (mmBERT-base, gizleme artırımı, İngilizce ajan verisi) iki eğitim tohumunda ortalama 0.717 ve 0.661 F1 aldı; v1 tarifi 0.612. Yayının ikinci, daha zayıf tohumdan çıkacağını önceden sabitledim. Sonra eğittiğim iki tohum 0.638 ve 0.529 aldı: üç tohumun ortalaması daha yüksek skor veriyor ama zor zararsız satırlarda yanlış alarmı artırıyor ve üç kat pahalı; ağırlıklarının ortalaması tek tohumdan kötü. Yayın tek model olarak kaldı.</p>
   </section>
 
   <section id="results" aria-labelledby="results-title">
@@ -206,7 +208,7 @@
           <tr><th scope="row">proventra mdeberta-v3</th><td class="num">0.633</td><td class="num">0.910</td><td class="num">0.907*</td></tr>
           <tr><th scope="row">patronus wolf-defender small</th><td class="num">0.596</td><td class="num">0.868</td><td class="num">0.525</td></tr>
           <tr><th scope="row">Bu model v1</th><td class="num">0.588</td><td class="num">0.823</td><td class="num">0.290</td></tr>
-          <tr><th scope="row"><strong>Bu model v2</strong></th><td class="num"><strong>0.465</strong></td><td class="num"><strong>0.954</strong></td><td class="num"><strong>0.447</strong></td></tr>
+          <tr><th scope="row"><strong>Bu model v2</strong></th><td class="num"><strong>0.596</strong></td><td class="num"><strong>0.968</strong></td><td class="num"><strong>0.506</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -223,7 +225,7 @@
           <tr><th scope="row">proventra mdeberta-v3</th><td class="num">0.925</td><td class="num">0.953</td><td class="num">0.976</td><td class="num">0.976</td></tr>
           <tr><th scope="row">patronus wolf-defender small</th><td class="num">0.841</td><td class="num">0.851</td><td class="num">1.000</td><td class="num">1.000</td></tr>
           <tr><th scope="row">Bu model v1</th><td class="num">0.832</td><td class="num">0.851</td><td class="num">0.405</td><td class="num">0.905</td></tr>
-          <tr><th scope="row"><strong>Bu model v2</strong></th><td class="num"><strong>0.944</strong></td><td class="num"><strong>0.944</strong></td><td class="num"><strong>0.952</strong></td><td class="num"><strong>0.952</strong></td></tr>
+          <tr><th scope="row"><strong>Bu model v2</strong></th><td class="num"><strong>0.963</strong></td><td class="num"><strong>0.963</strong></td><td class="num"><strong>0.976</strong></td><td class="num"><strong>0.976</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -241,21 +243,21 @@
           <tr><th scope="row">proventra mdeberta-v3</th><td class="num">0.002</td><td class="num">0.032</td><td class="num">0.772</td></tr>
           <tr><th scope="row">patronus wolf-defender small</th><td class="num">0.011</td><td class="num">0.076</td><td class="num">0.607</td></tr>
           <tr><th scope="row">Bu model v1</th><td class="num">0.002</td><td class="num">0.011</td><td class="num">0.000</td></tr>
-          <tr><th scope="row"><strong>Bu model v2</strong></th><td class="num"><strong>0.008</strong></td><td class="num"><strong>0.017</strong></td><td class="num"><strong>0.000</strong></td></tr>
+          <tr><th scope="row"><strong>Bu model v2</strong></th><td class="num"><strong>0.011</strong></td><td class="num"><strong>0.021</strong></td><td class="num"><strong>0.000</strong></td></tr>
         </tbody>
       </table>
     </div>
-    <p>Üç set: <a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">KVKK benchmark’ım</a>, <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">BSEBY benchmark’ım</a> ve cagrigungor’un PII benchmark’ındaki talimatlar; hepsi CC0. Bu setler bu model için aynı alan, diğerleri için değil: eğitim verisinde aynı alanlardan başka metinler var. Bu metinler olmadan eğitilen v1 tarifi bankacılık metinlerinin %65’ini, görev talimatlarının %98,5’ini işaretledi. Trafiğiniz başka bir alandansa önce kendi zararsız metninizde ölçün.</p>
+    <p>Üç set birlikte <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark">halilneed/turkish-prompt-injection-false-alarm-benchmark</a> adıyla yayında: 2.875 zararsız Türkçe metin ve bu tabloyu herhangi bir model için yeniden üreten bir betik. Kaynakları <a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">KVKK benchmark’ım</a>, <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">BSEBY benchmark’ım</a> ve cagrigungor’un PII benchmark’ındaki talimatlar; hepsi CC0. Bu setler bu model için aynı alan, diğerleri için değil: eğitim verisinde aynı alanlardan başka metinler var. Bu metinler olmadan eğitilen v1 tarifi bankacılık metinlerinin %65’ini, görev talimatlarının %98,5’ini işaretledi. Trafiğiniz başka bir alandansa önce kendi zararsız metninizde ölçün.</p>
   </section>
 
   <section id="fails" aria-labelledby="fails-title">
     <h2 id="fails-title">Nerede yanılıyor</h2>
     <ul>
-      <li><strong>Görmediği kaynaktan ajan saldırıları</strong> (conv, kaynak dışarıda): yetki iddiası, belgeye gömülü talimat, hafıza zehirleme, veri sızdırma ve araç kötüye kullanımı 3’te 0. Her biri üç satır; skor değil, yön olarak okuyun. v1 burada daha iyiydi.</li>
-      <li><strong>Türkçe ek ve söz dizimi oyunları</strong> (fevzi): 15’te 12, v1’de 9.</li>
-      <li><strong>deepset çevirisi üslubu</strong> (berat, kaynak dışarıda): duyarlılık 0.288, v1’de 0.170.</li>
+      <li><strong>Görmediği kaynaktan ajan saldırıları</strong> (conv, kaynak dışarıda): hafıza zehirleme, veri sızdırma ve araç kötüye kullanımı 3’te 0; sistem promptu sızdırma ve RAG zehirleme 3’te 1. Her biri üç satır; skor değil, yön olarak okuyun.</li>
+      <li><strong>Türkçe ek ve söz dizimi oyunları</strong> (fevzi): 15’te 13, v1’de 9.</li>
+      <li><strong>deepset çevirisi üslubu</strong> (berat, kaynak dışarıda): duyarlılık 0.339, v1’de 0.170.</li>
     </ul>
-    <p>Dayandığı yerler: kodlanmış saldırılar, fevzi’de 13’te 13 (v1 5, proventra 10, wolf-defender 12); kullanıcının kendi önceki talimatını değiştirmesi, 1k test setinde o kaynak dışarıdayken 7’de 6 (proventra 7’de 0, wolf-defender 7’de 1).</p>
+    <p>Dayandığı yerler: kodlanmış saldırılar, fevzi’de 13’te 13 (v1 5, proventra 10, wolf-defender 12); kullanıcının kendi önceki talimatını değiştirmesi, 1k test setinde o kaynak dışarıdayken 7’de 5 (proventra 7’de 0, wolf-defender 7’de 1).</p>
   </section>
 
   <section id="usage" aria-labelledby="usage-title">
@@ -265,7 +267,7 @@
 
 clf = pipeline("text-classification", model="halilneed/turkish-prompt-injection-classifier")
 scores = {d["label"]: d["score"] for d in clf("Önceki mesajımdaki formatı unut, bu sefer tablo olarak yaz.", top_k=None)}
-is_injection = scores["INJECTION"] &gt;= 0.3
+is_injection = scores["INJECTION"] &gt;= 0.05
 # v1 için: pipeline(..., revision="v1")</code></pre>
 
     <p>Repoda ayrıca <code>detect.py</code> ve <code>guard.py</code> var: metni ve çözülmüş biçimlerini sınıflandıran, en yüksek skoru, hangi biçimlerin çözüldüğünü ve skoru hangisinin belirlediğini döndüren bir <code>Detector</code>. Çözücü metin başına 1 ms’den az ekler.</p>

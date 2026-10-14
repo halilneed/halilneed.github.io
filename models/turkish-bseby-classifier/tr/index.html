@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bankacılık veri sınıfları için Türkçe BSEBY sınıflandırıcısı | halilneed</title>
-<meta name="description" content="Türkçe bankacılık metinleri için açık sınıflandırıcı: BSEBY kapsamında kişisel, özel nitelikli ve kimlik doğrulama verisi, müşteri sırrı ve banka sırrı. 0.944 micro-F1. MIT.">
+<meta name="description" content="Türkçe bankacılık metinleri için açık sınıflandırıcı: BSEBY kapsamında kişisel, özel nitelikli ve kimlik doğrulama verisi, müşteri sırrı ve banka sırrı. v2: 0.960 micro-F1. MIT.">
 <link rel="canonical" href="https://halilneed.agency/models/turkish-bseby-classifier/tr/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-bseby-classifier/">
 <link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/turkish-bseby-classifier/tr/">
@@ -18,14 +18,14 @@
 <meta property="og:site_name" content="halilneed">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:title" content="Bankacılık veri sınıfları için Türkçe BSEBY sınıflandırıcısı | halilneed">
-<meta property="og:description" content="Türkçe bankacılık metinleri için açık sınıflandırıcı: BSEBY kapsamında kişisel, özel nitelikli ve kimlik doğrulama verisi, müşteri sırrı ve banka sırrı. 0.944 micro-F1. MIT.">
+<meta property="og:description" content="Türkçe bankacılık metinleri için açık sınıflandırıcı: BSEBY kapsamında kişisel, özel nitelikli ve kimlik doğrulama verisi, müşteri sırrı ve banka sırrı. v2: 0.960 micro-F1. MIT.">
 <meta property="og:url" content="https://halilneed.agency/models/turkish-bseby-classifier/tr/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-bseby-classifier.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bankacılık veri sınıfları için Türkçe BSEBY sınıflandırıcısı | halilneed">
-<meta name="twitter:description" content="Türkçe bankacılık metinleri için açık sınıflandırıcı: BSEBY kapsamında kişisel, özel nitelikli ve kimlik doğrulama verisi, müşteri sırrı ve banka sırrı. 0.944 micro-F1. MIT.">
+<meta name="twitter:description" content="Türkçe bankacılık metinleri için açık sınıflandırıcı: BSEBY kapsamında kişisel, özel nitelikli ve kimlik doğrulama verisi, müşteri sırrı ve banka sırrı. v2: 0.960 micro-F1. MIT.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-bseby-classifier.png">
 <script type="application/ld+json">
 {
@@ -145,7 +145,7 @@
       <div><dt>Boyut</dt><dd>110M parametre</dd></div>
       <div><dt>Temel model</dt><dd><a href="https://huggingface.co/dbmdz/bert-base-turkish-cased"><code>dbmdz/bert-base-turkish-cased</code></a> (BERTurk)</dd></div>
       <div><dt>Etiketler</dt><dd>5, çok etiketli</dd></div>
-      <div><dt>Sonuç</dt><dd>Ayrılmış 747 metinde 0.944 micro-F1</dd></div>
+      <div><dt>Sonuç</dt><dd>v2: ayrılmış 747 metinde 0.960 micro-F1 (v1: 0.944); 202 metinlik zor sette 0.933 (v1: 0.860)</dd></div>
       <div><dt>CPU hızı</dt><dd>metin başına yaklaşık 32 ms</dd></div>
       <div><dt>Lisans</dt><dd>MIT</dd></div>
     </dl>
@@ -273,47 +273,30 @@
 
   <section id="results" aria-labelledby="results-title">
     <h2 id="results-title">Sonuçlar</h2>
-    <p>Ana sonuç bağımsız, ayrılmış bir sette: eğitim verisine erişim olmadan, yalnızca etiketleme rehberinden yazılmış 375’erlik iki parti hâlinde 750 metin; ardından ikinci kez, kör olarak etiketlendi. Tam uyuşan 747 metin altın settir. İkinci set, eğitimde hiç kullanılmamış 456 şablondan gelen 1.055 örneklik, şablonları ayrık bir testtir.</p>
+    <p>Sürüm 2 (14 Ekim 2026), ilk sürümün sayfasında yazdığım zayıf noktalar için 263 eğitim şablonu ekliyor: tüzel kişi müşteriler, açıkça banka dışı kurumların iç bilgisi, bankanın kamuya açık bilgisi ve iki sırrın birlikte geçtiği metinler. Ayarlar aynı. v1 <code>revision="v1"</code> ile duruyor.</p>
+    <p>İki set de <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">halilneed/turkish-bseby-classification-benchmark</a> içinde. Held-out set (747 metin) 2 Ekim’de, v2 şablonlarından önce ve onlardan bağımsız yazıldı; asıl sonuç odur. Zor set (202 metin, <code>hard</code> yapılandırması) v2 şablonlarıyla aynı zayıf noktaları hedefliyor; yazarı şablonları görmedi ama aynı dil modelini ve kılavuzu kullandı. v2’nin oradaki kazancını daha temkinli okuyun.</p>
 
     <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
       <table>
-        <caption id="results-caption">İki test setindeki skorlar</caption>
+        <caption id="results-caption">v1 ve v2, iki bağımsız sette. Held-out: 747 metin; zor set: 202 metin</caption>
         <thead>
-          <tr><th scope="col">Metrik</th><th scope="col" class="num">Ayrılmış set<br>747 metin</th><th scope="col" class="num">Ayrık test<br>1.055 örnek</th></tr>
+          <tr><th scope="col">Ölçüt</th><th scope="col" class="num">Held-out v1</th><th scope="col" class="num">Held-out v2</th><th scope="col" class="num">Zor set v1</th><th scope="col" class="num">Zor set v2</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">micro-F1</th><td class="num">0.944</td><td class="num dim">0.945</td></tr>
-          <tr><th scope="row">macro-F1</th><td class="num">0.939</td><td class="num dim">0.913</td></tr>
-          <tr><th scope="row">Tam eşleşme (tüm etiketler doğru)</th><td class="num">0.892</td><td class="num dim">0.902</td></tr>
-          <tr><th scope="row">Sır var: kesinlik</th><td class="num">0.970</td><td class="num dim">0.918</td></tr>
-          <tr><th scope="row">Sır var: duyarlılık (recall)</th><td class="num">0.963</td><td class="num dim">0.961</td></tr>
-          <tr><th scope="row">Korunan veri var: kesinlik</th><td class="num">0.985</td><td class="num dim">0.978</td></tr>
-          <tr><th scope="row">Korunan veri var: duyarlılık (recall)</th><td class="num">0.990</td><td class="num dim">0.973</td></tr>
-          <tr><th scope="row">Tüzel kişi diliminde tamamen doğru</th><td class="num">0.859</td><td class="num dim">0.804</td></tr>
-          <tr><th scope="row">Tüzel kişi dilimi büyüklüğü (n)</th><td class="num">128</td><td class="num dim">56</td></tr>
+          <tr><th scope="row">micro-F1</th><td class="num dim">0.944</td><td class="num"><strong>0.960</strong></td><td class="num dim">0.860</td><td class="num"><strong>0.933</strong></td></tr>
+          <tr><th scope="row">macro-F1</th><td class="num dim">0.939</td><td class="num"><strong>0.952</strong></td><td class="num dim">0.879</td><td class="num"><strong>0.908</strong></td></tr>
+          <tr><th scope="row">Tam eşleşme (tüm etiketler doğru)</th><td class="num dim">0.892</td><td class="num"><strong>0.913</strong></td><td class="num dim">0.738</td><td class="num"><strong>0.871</strong></td></tr>
+          <tr><th scope="row">Sır var mı: kesinlik / duyarlılık</th><td class="num dim">0.970 / 0.963</td><td class="num"><strong>0.966 / 0.979</strong></td><td class="num dim">0.829 / 0.983</td><td class="num"><strong>0.899 / 0.983</strong></td></tr>
+          <tr><th scope="row">Tüzel kişi dilimi tam doğru</th><td class="num dim">0.859</td><td class="num"><strong>0.953</strong></td><td class="num dim">0.771</td><td class="num"><strong>0.964</strong></td></tr>
+          <tr><th scope="row">İki sır birlikte, ikisi de doğru</th><td class="num dim">20 / 27</td><td class="num"><strong>25 / 27</strong></td><td class="num dim">18 / 35</td><td class="num"><strong>27 / 35</strong></td></tr>
+          <tr><th scope="row"><code>banka_sirri</code> F1 (kesinlik)</th><td class="num dim">0.920 (0.888)</td><td class="num"><strong>0.965 (0.956)</strong></td><td class="num dim">0.685 (0.561)</td><td class="num"><strong>0.795 (0.761)</strong></td></tr>
+          <tr><th scope="row"><code>hassas_veri</code> F1</th><td class="num dim">0.873</td><td class="num"><strong>0.881</strong></td><td class="num dim">0.857 (n=4)</td><td class="num"><strong>0.857 (n=4)</strong></td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="table-scroll" role="region" aria-labelledby="labels-results-caption" tabindex="0">
-      <table>
-        <caption id="labels-results-caption">Etiket bazında, ayrılmış set. P kesinlik, R duyarlılık (recall), n o etiketi taşıyan altın metin sayısıdır.</caption>
-        <thead>
-          <tr><th scope="col">Etiket</th><th scope="col" class="num"><abbr title="Kesinlik (precision)">P</abbr></th><th scope="col" class="num"><abbr title="Duyarlılık (recall)">R</abbr></th><th scope="col" class="num">F1</th><th scope="col" class="num">n</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row" class="nowrap"><code>kisisel_veri</code></th><td class="num">0.958</td><td class="num">0.963</td><td class="num">0.960</td><td class="num">328</td></tr>
-          <tr><th scope="row" class="nowrap"><code>ozel_nitelikli</code></th><td class="num">0.983</td><td class="num">1.000</td><td class="num">0.991</td><td class="num">57</td></tr>
-          <tr><th scope="row" class="nowrap"><code>hassas_veri</code></th><td class="num">0.878</td><td class="num">0.867</td><td class="num">0.873</td><td class="num">83</td></tr>
-          <tr><th scope="row" class="nowrap"><code>musteri_sirri</code></th><td class="num">0.973</td><td class="num">0.928</td><td class="num">0.950</td><td class="num">306</td></tr>
-          <tr><th scope="row" class="nowrap"><code>banka_sirri</code></th><td class="num">0.888</td><td class="num">0.955</td><td class="num">0.920</td><td class="num">157</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p>Micro-F1, tüm etiket kararları bir araya toplanarak hesaplanan F1’dir. Macro-F1, etiket bazındaki F1 skorlarının ağırlıksız ortalamasıdır.</p>
-    <p>“Sır var”, <code>musteri_sirri</code> ya da <code>banka_sirri</code> anlamına gelir. “Korunan veri var”, en az bir etiket demektir. Tüzel kişi dilimi, altın etiketlerinde müşteri sırrı olup kişisel veri olmayan metinlerdir. Bir tahmin ancak ikisini de doğru bilirse sayılır.</p>
-    <p>Metinler ve iki etiketleme turu aynı dil modeliyle (Claude) ve aynı rehberle üretildi; bir insan tarafından satır satır doğrulanmadı. %99,6’lık tam uyuşma, rehberin tutarlı uygulanabildiğini gösterir. Bu iki bağımsız insan arasındaki uyuşma değildir ve bir insan etiketleyiciyle uyuşma ölçülmedi.</p>
+    <p>“Sır var mı”, <code>musteri_sirri</code> ya da <code>banka_sirri</code> demektir. Tüzel kişi dilimi, altın etiketinde müşteri sırrı olup kişisel veri olmayan metinlerdir; tahmin ikisini de doğru verirse doğru sayılır. v2’nin kendi şablon-ayrık test bölmesinde (1.102 örnek) micro-F1 0.950.</p>
+    <p>Metinler ve iki etiketleme aynı dil modeliyle (Claude) ve aynı kılavuzla üretildi; satır satır insan doğrulaması yok. Birebir uzlaşma held-out’ta %99,6, zor sette %100. Bu, kılavuzun tutarlı uygulanabildiğini gösterir; iki bağımsız insanın uzlaşması değildir.</p>
   </section>
 
   <section id="usage" aria-labelledby="usage-title">
@@ -344,8 +327,8 @@ print(classify("Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye ç�
     <h2 id="training-title">Eğitim</h2>
     <ul>
       <li><strong>Temel model.</strong> <code>dbmdz/bert-base-turkish-cased</code> (BERTurk, 110M).</li>
-      <li><strong>Yöntem.</strong> Çok etiketli sınıflandırma, sigmoid ve ikili çapraz entropi, 5 epoch, öğrenme oranı 3e-5, bfloat16, en fazla 320 token. Kontrol noktasını geliştirme setindeki micro-F1’e göre seçtim (4. epoch).</li>
-      <li><strong>Veri.</strong> 4.523 şablondan 40.000 sentetik örnek: KVKK sınıflandırıcısının 3.276 şablonu (kişisel veri etiketleri deterministik olarak türetildi, 1.445’i ayrıca bankacılık bağlamı olarak işaretlendi) ve bu model için yazdığım 1.247 şablon: gerçek ve tüzel kişi müşteriler, iç yönetim ve risk, BT ve güvenlik, kimlik doğrulama verisi ve tuzaklar. Örneklerin %16’sında etiket yok.</li>
+      <li><strong>Yöntem.</strong> Çok etiketli sınıflandırma, sigmoid ve ikili çapraz entropi, 5 epoch, öğrenme oranı 3e-5, bfloat16, en fazla 320 token. Kontrol noktasını geliştirme setindeki micro-F1’e göre seçtim. v1 ve v2’de ayarlar aynı.</li>
+      <li><strong>Veri.</strong> 4.786 şablondan 40.000 sentetik örnek (v1: 4.523; v2 tüzel kişi müşteriler, banka dışı kurumlar, kamuya açık banka bilgisi ve iki sırrın birlikte geçtiği metinler için 263 şablon ekliyor): KVKK sınıflandırıcısının 3.276 şablonu (kişisel veri etiketleri deterministik olarak türetildi, 1.445’i ayrıca bankacılık bağlamı olarak işaretlendi) ve bu model için yazdığım 1.247 şablon: gerçek ve tüzel kişi müşteriler, iç yönetim ve risk, BT ve güvenlik, kimlik doğrulama verisi ve tuzaklar. Örneklerin %16’sında etiket yok.</li>
       <li><strong>Bölme.</strong> Eğitim, geliştirme ve test setleri şablon özetine (hash) göre ayrıldı.</li>
     </ul>
   </section>
@@ -354,9 +337,9 @@ print(classify("Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye ç�
     <h2 id="limitations-title">Sınırlar</h2>
     <ul>
       <li>Eğitim verisi ve değerlendirme setleri sentetiktir ve bir dil modeliyle üretildi. Kritik bir sürece almadan önce modeli gerçek banka metinlerinde ölçün.</li>
-      <li>En zayıf etiket <code>hassas_veri</code> (F1 0.873). Ayrılmış sette kaçırdıklarının çoğu token ve anahtar biçimleri (JWT, özel anahtar bloğu, cihaz eşleştirme anahtarı, kişisel erişim token’ı) ve bir JSON gövdesindeki parolalar. Yanlış alarmlarının çoğu maskelenmiş kart numaraları ve “sonu 7712 ile biten kartınız” gibi bildirimler. Biçimi sabit değerler için (kart numarası, JWT, anahtar bloğu) modeli kural tabanlı bir kontrolle birlikte kullanın.</li>
-      <li><code>banka_sirri</code> için kesinlik 0.888. Yanlış alarmlar üç yerde toplanıyor: kurumsal bir müşteriye ait teknik metinler (SWIFT MT mesajı, finansal analiz özeti), açıkça banka olmayan kurumların iç bilgileri (bir fabrikanın üretim raporu, bir dökümhanenin servis hesabı) ve yayımlanmış ücret tarifeleri. Bir bilginin açıklanıp açıklanmadığı çoğu zaman metnin dışındaki bir olguya bağlıdır; model bunu yalnızca metindeki ipuçlarından çıkarabilir.</li>
-      <li>Ayrılmış sette hem <code>musteri_sirri</code> hem <code>banka_sirri</code> taşıyan 27 metnin 20’sinde iki etiket de doğru. Geri kalanında ikisinden biri kaçırılıyor.</li>
+      <li>En zayıf etiket hâlâ <code>hassas_veri</code> (v2: F1 0.881). v2 bu etiketi hedeflemedi: token ve anahtar biçimleri için yeni şablon yazılamadı. v1’de ayrılmış sette kaçırdıklarının çoğu token ve anahtar biçimleri (JWT, özel anahtar bloğu, cihaz eşleştirme anahtarı, kişisel erişim token’ı) ve bir JSON gövdesindeki parolalar. Yanlış alarmlarının çoğu maskelenmiş kart numaraları ve “sonu 7712 ile biten kartınız” gibi bildirimler. Biçimi sabit değerler için (kart numarası, JWT, anahtar bloğu) modeli kural tabanlı bir kontrolle birlikte kullanın.</li>
+      <li><code>banka_sirri</code> kesinliği held-out’ta 0.888’den 0.956’ya çıktı, zor sette 0.761. v1’de yanlış alarmlar üç yerde toplanıyordu: kurumsal bir müşteriye ait teknik metinler (SWIFT MT mesajı, finansal analiz özeti), açıkça banka olmayan kurumların iç bilgileri (bir fabrikanın üretim raporu, bir dökümhanenin servis hesabı) ve yayımlanmış ücret tarifeleri. Bir bilginin açıklanıp açıklanmadığı çoğu zaman metnin dışındaki bir olguya bağlıdır; model bunu yalnızca metindeki ipuçlarından çıkarabilir.</li>
+      <li>Hem <code>musteri_sirri</code> hem <code>banka_sirri</code> taşıyan metinlerde v2 ayrılmış sette 27’nin 25’ini, zor sette 35’in 27’sini tam doğru veriyor (v1: 20 ve 18).</li>
       <li>Model her seferinde tek bir metin parçasına bakar. Müşteri sırrı çoğu zaman alanların birleşiminden doğar (Sır Yönetmeliği md. 4/4). Tablo ya da kayıt sınıflandırırken alanları birlikte verin.</li>
       <li>Etiketler hukuki bir değerlendirme değil, bir sınıflandırma sinyalidir. BSEBY’ye ve sır saklama yükümlülüğüne uyum kullanıcının sorumluluğunda kalır.</li>
     </ul>
@@ -365,7 +348,7 @@ print(classify("Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye ç�
   <section id="turkce" lang="tr" aria-labelledby="turkce-title">
     <h2 id="turkce-title">Türkçe BSEBY veri sınıflandırma modeli</h2>
     <p><code>turkish-bseby-classifier</code>, Türkçe bir metinde kişisel veri, hassas veri ya da sır kapsamındaki veri (müşteri sırrı, banka sırrı) bulunup bulunmadığını belirleyen çok etiketli bir sınıflandırıcıdır. Bankaların veri envanteri ve veri sızıntısı önleme (DLP) süreçleri için tasarlanmıştır.</p>
-    <p>Eğitim verisine bakılmadan yazılmış 747 metinlik bağımsız sette micro-F1 0.944, macro-F1 0.939’dur. CPU’da metin başına yaklaşık 32 ms sürer. Etiketler yalnızca bir sınıflandırma tahminidir, hukuki nitelendirme değildir.</p>
+    <p>Eğitim verisine bakılmadan yazılmış 747 metinlik bağımsız sette v2’de micro-F1 0.960, macro-F1 0.952’dir (v1: 0.944, 0.939); 202 metinlik zor sette 0.933. CPU’da metin başına yaklaşık 32 ms sürer. Etiketler yalnızca bir sınıflandırma tahminidir, hukuki nitelendirme değildir.</p>
   </section>
 
   <section id="links" aria-labelledby="links-title">

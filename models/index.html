@@ -159,7 +159,7 @@
       <span class="repo-id">halilneed/turkish-bseby-classifier</span>
       <span class="repo-desc">Built for bank data inventories and data loss prevention (DLP) pipelines. Flags personal data, special-category data, authentication data, customer secrets and bank secrets.</span>
       <span class="repo-meta"><span>Text classification</span><span>110M parameters</span><span>about 32 ms per text</span><span data-hf-updated>Updated 2 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>13</span><span class="visually-hidden"> downloads</span></span></span>
-      <span class="repo-stat"><b>0.944</b><span>micro-F1, 747 held-out texts</span></span>
+      <span class="repo-stat"><b>0.960</b><span>micro-F1, 747 held-out texts</span></span>
     </a>
     <a class="repo" href="/models/turkish-prompt-injection-classifier/" data-hf="models/halilneed/turkish-prompt-injection-classifier">
       <span class="repo-id">halilneed/turkish-prompt-injection-classifier</span>
@@ -191,6 +191,13 @@
         <p class="entry-meta"><span>747 gold texts</span> <span>5 labels</span> <span>CC0</span></p>
         <div class="entry-body">
           <p>Same method: 750 fictional texts, 747 with exact agreement. Both passes used the same language model and guideline, so the 99.6% agreement shows the guideline can be applied consistently. It is not agreement between two independent people.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <h3 class="entry-title"><a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark">turkish-prompt-injection-false-alarm-benchmark</a></h3>
+        <p class="entry-meta"><span>2,875 benign texts</span> <span>3 subsets</span> <span>CC0</span></p>
+        <div class="entry-body">
+          <p>How often a prompt injection guard blocks ordinary Turkish business text and task instructions. No new text: collected from the two sets above and cagrigungor’s PII benchmark. Public guards flag 17.8% to 27.8% of it.</p>
         </div>
       </article>
     </div>

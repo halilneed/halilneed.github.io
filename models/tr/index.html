@@ -160,7 +160,7 @@
       <span class="repo-id">halilneed/turkish-bseby-classifier</span>
       <span class="repo-desc">Banka veri envanterleri ve veri kaybı önleme (DLP) hatları için yapıldı. Kişisel veriyi, özel nitelikli kişisel veriyi, kimlik doğrulama verisini, müşteri sırrını ve banka sırrını işaretler.</span>
       <span class="repo-meta"><span>Metin sınıflandırma</span><span>110M parametre</span><span>metin başına yaklaşık 32 ms</span><span data-hf-updated>2 Eki 2026 güncellendi</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>13</span><span class="visually-hidden"> indirme</span></span></span>
-      <span class="repo-stat"><b>0.944</b><span>micro-F1, ayrılmış 747 metin</span></span>
+      <span class="repo-stat"><b>0.960</b><span>micro-F1, ayrılmış 747 metin</span></span>
     </a>
     <a class="repo" href="/models/turkish-prompt-injection-classifier/tr/" data-hf="models/halilneed/turkish-prompt-injection-classifier">
       <span class="repo-id">halilneed/turkish-prompt-injection-classifier</span>
@@ -192,6 +192,13 @@
         <p class="entry-meta"><span>747 altın metin</span> <span>5 etiket</span> <span>CC0</span></p>
         <div class="entry-body">
           <p>Aynı yöntem: 750 kurgusal metin, bunların 747’sinde birebir uyum. İki tur da aynı dil modelini ve aynı yönergeyi kullandı, bu yüzden %99.6’lık uyum yönergenin tutarlı uygulanabildiğini gösterir. Birbirinden bağımsız iki kişi arasındaki uyum değildir.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <h3 class="entry-title"><a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark">turkish-prompt-injection-false-alarm-benchmark</a></h3>
+        <p class="entry-meta"><span>2.875 zararsız metin</span> <span>3 alt set</span> <span>CC0</span></p>
+        <div class="entry-body">
+          <p>Bir prompt injection koruma modelinin sıradan Türkçe iş metnini ve görev talimatını ne sıklıkla engellediğini ölçer. Yeni metin yok: yukarıdaki iki setten ve cagrigungor’un PII benchmark’ından derlendi. Açık koruma modelleri bu setin %17,8 ile %27,8’ini engelliyor.</p>
         </div>
       </article>
     </div>

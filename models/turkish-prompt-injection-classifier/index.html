@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Turkish prompt injection classifier | halilneed</title>
-<meta name="description" content="Open classifier for prompt injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, 95% of hidden Unicode, under 2% false alarms. MIT.">
+<meta name="description" content="Open classifier for prompt injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, 98% of hidden Unicode, about 2% false alarms. MIT.">
 <link rel="canonical" href="https://halilneed.agency/models/turkish-prompt-injection-classifier/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-prompt-injection-classifier/">
 <link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/">
@@ -17,14 +17,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
 <meta property="og:title" content="Turkish prompt injection classifier | halilneed">
-<meta property="og:description" content="Open classifier for prompt injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, 95% of hidden Unicode, under 2% false alarms. MIT.">
+<meta property="og:description" content="Open classifier for prompt injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, 98% of hidden Unicode, about 2% false alarms. MIT.">
 <meta property="og:url" content="https://halilneed.agency/models/turkish-prompt-injection-classifier/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-prompt-injection-classifier.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Turkish prompt injection classifier | halilneed">
-<meta name="twitter:description" content="Open classifier for prompt injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, 95% of hidden Unicode, under 2% false alarms. MIT.">
+<meta name="twitter:description" content="Open classifier for prompt injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, 98% of hidden Unicode, about 2% false alarms. MIT.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-prompt-injection-classifier.png">
 <script type="application/ld+json">
 {
@@ -99,7 +99,7 @@
   <header class="page-head">
     <h1>Turkish prompt injection classifier</h1>
     <p class="lead"><code>turkish-prompt-injection-classifier</code> labels Turkish text going into an LLM as <code>BENIGN</code> or <code>INJECTION</code>: user messages, and the content an assistant reads, such as emails, documents, retrieved passages and tool output.</p>
-    <p>Version 2 is out. It catches all 13 encoded attacks in a public test set (v1 caught 5) and 95% of instructions hidden in invisible Unicode (v1: 40%). On 2,875 benign Turkish texts it flags at most 1.7%; public guards flag up to 77% of the same task instructions. It is weaker than v1 on conversational and agentic attacks from a source it has never seen, and both versions stay available.</p>
+    <p>Version 2 is out. It catches all 13 encoded attacks in a public test set (v1 caught 5) and 98% of instructions hidden in invisible Unicode (v1: 40%), and it scores higher than v1 on every attack set it never saw. On 2,875 benign Turkish texts it flags at most 2.1%; public guards flag up to 77% of the same task instructions. Both versions stay available. Everything is measured on an open benchmark: <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark">halilneed/turkish-prompt-injection-benchmark</a>.</p>
     <ul class="links">
       <li><a href="https://huggingface.co/halilneed/turkish-prompt-injection-classifier" data-goatcounter-click="pinj-download">Weights on Hugging Face</a></li>
     </ul>
@@ -107,8 +107,8 @@
     <dl class="kv">
       <div><dt>Size</dt><dd>307M parameters (v2), 110M (v1)</dd></div>
       <div><dt>Base model</dt><dd>v2: <a href="https://huggingface.co/jhu-clsp/mmBERT-base"><code>jhu-clsp/mmBERT-base</code></a>; v1: <a href="https://huggingface.co/dbmdz/bert-base-turkish-cased"><code>dbmdz/bert-base-turkish-cased</code></a></dd></div>
-      <div><dt>Labels</dt><dd><code>BENIGN</code>, <code>INJECTION</code>; threshold 0.3</dd></div>
-      <div><dt>Result</dt><dd>mean F1 0.622 with each training source held out (v1: 0.567); false alarms 0 to 1.7% on benign Turkish</dd></div>
+      <div><dt>Labels</dt><dd><code>BENIGN</code>, <code>INJECTION</code>; threshold 0.05</dd></div>
+      <div><dt>Result</dt><dd>mean F1 0.690 with each training source held out (v1: 0.567); false alarms 0 to 2.1% on benign Turkish</dd></div>
       <div><dt>CPU speed</dt><dd>about 35 ms per text (v1: about 23 ms)</dd></div>
       <div><dt>Licence</dt><dd>MIT</dd></div>
     </dl>
@@ -175,30 +175,32 @@
         </tbody>
       </table>
     </div>
-    <p>The first three rows are benign: a task instruction from <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark">cagrigungor/turkish-pii-masking-benchmark</a> (“mask all personal data in the text with suitable tags”), a user changing their own earlier style instruction, and a rule written to protect the assistant. The last two are attacks: an instruction override, and an attempt to plant a rule in memory, which v2 misses. Bold is a score at or above the threshold (0.3 for v1 and v2 here, 0.5 for proventra).</p>
+    <p>The first three rows are benign: a task instruction from <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark">cagrigungor/turkish-pii-masking-benchmark</a> (“mask all personal data in the text with suitable tags”), a user changing their own earlier style instruction, and a rule written to protect the assistant. The last two are attacks: an instruction override, and an attempt to plant a rule in memory, which v2 misses. Bold is a score at or above the threshold (0.05 for v2, 0.5 for v1 and proventra).</p>
   </section>
 
   <section id="versions" aria-labelledby="versions-title">
     <h2 id="versions-title">v1 and v2</h2>
     <div class="table-scroll" role="region" aria-labelledby="versions-caption" tabindex="0">
       <table>
-        <caption id="versions-caption">The two versions side by side. Threshold 0.5 for v1, 0.3 for v2.</caption>
+        <caption id="versions-caption">The two versions side by side. Threshold 0.5 for v1, 0.05 for v2.</caption>
         <thead>
           <tr><th scope="col">Measure</th><th scope="col" class="num">v1</th><th scope="col" class="num">v2</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Unseen source F1: conv</th><td class="num"><strong>0.588</strong></td><td class="num">0.465</td></tr>
-          <tr><th scope="row">Unseen source F1: 1k</th><td class="num">0.823</td><td class="num"><strong>0.954</strong></td></tr>
-          <tr><th scope="row">Unseen source F1: berat</th><td class="num">0.290</td><td class="num"><strong>0.447</strong></td></tr>
-          <tr><th scope="row">Obfuscated attacks, recall (fevzi, 107)</th><td class="num">0.832</td><td class="num"><strong>0.944</strong></td></tr>
-          <tr><th scope="row">Hidden in invisible Unicode, recall (42)</th><td class="num">0.405</td><td class="num"><strong>0.952</strong></td></tr>
-          <tr><th scope="row">False alarms on banking texts (750)</th><td class="num"><strong>1.1%</strong></td><td class="num">1.7%</td></tr>
+          <tr><th scope="row">Unseen source F1: conv</th><td class="num">0.588</td><td class="num"><strong>0.596</strong></td></tr>
+          <tr><th scope="row">Unseen source F1: 1k</th><td class="num">0.823</td><td class="num"><strong>0.968</strong></td></tr>
+          <tr><th scope="row">Unseen source F1: berat</th><td class="num">0.290</td><td class="num"><strong>0.506</strong></td></tr>
+          <tr><th scope="row">Obfuscated attacks, recall (fevzi, 107)</th><td class="num">0.832</td><td class="num"><strong>0.963</strong></td></tr>
+          <tr><th scope="row">Hidden in invisible Unicode, recall (42)</th><td class="num">0.405</td><td class="num"><strong>0.976</strong></td></tr>
+          <tr><th scope="row">False alarms on banking texts (750)</th><td class="num"><strong>1.1%</strong></td><td class="num">2.1%</td></tr>
           <tr><th scope="row">CPU, mean per text</th><td class="num"><strong>23 ms</strong></td><td class="num">35 ms</td></tr>
         </tbody>
       </table>
     </div>
-    <p>v2 is the default on Hugging Face. If most of your traffic is chat with agent tools and few false alarms matter most, pin v1 with <code>revision="v1"</code>.</p>
-    <p>v1 was measured on the test splits, and I also compared a few variants there, which flatters its numbers. For v2 I kept selection apart: every recipe was compared with each training source held out and measured on that source’s train and validation splits, and on benign splits never used in training. The test splits were touched once, for the numbers on this page. Eight recipes went through that protocol, and the chosen one was repeated with a second seed. The chosen one (mmBERT-base, obfuscation augmentation, English agentic data) scored a mean F1 of 0.717 and 0.661 with two training seeds, against 0.612 for the v1 recipe. I fixed in advance that the release would use the second seed, the weaker one.</p>
+    <p>v2 is the default on Hugging Face. If few false alarms and speed matter most, pin v1 with <code>revision="v1"</code>.</p>
+    <p>v2 was first published with threshold 0.3, which had been picked on a different training seed than the one released. Re-checked on the released model’s own held-out-source runs, without touching the test splits, the threshold moved to 0.05. The weights are the same; this page and the model card show the numbers at 0.05.</p>
+    <p>There is a third option, the recall mode of <code>detect.py</code>: it averages v1 and v2 and flags at 0.2, both chosen on the selection protocol. With each source held out its mean F1 is 0.677 (conv 0.690), and it catches 96% of fevzi. It also flags 14 of the 34 benign rows in the 1k test set, against 2 for v2, and needs about 59 ms per text. With v2 at its new threshold, recall mode is only better on conv.</p>
+    <p>v1 was measured on the test splits, and I also compared a few variants there, which flatters its numbers. For v2 I kept selection apart: every recipe was compared with each training source held out and measured on that source’s train and validation splits, and on benign splits never used in training. The test splits were touched once, for the numbers on this page. Eight recipes went through that protocol, and the chosen one was repeated with a second seed. The chosen one (mmBERT-base, obfuscation augmentation, English agentic data) scored a mean F1 of 0.717 and 0.661 with two training seeds, against 0.612 for the v1 recipe. I fixed in advance that the release would use the second seed, the weaker one. Two more seeds trained later scored 0.638 and 0.529: averaging three seeds scores higher but raises false alarms on hard benign rows and costs three times as much, and averaging their weights is worse than one seed. The release stays one model.</p>
   </section>
 
   <section id="results" aria-labelledby="results-title">
@@ -217,7 +219,7 @@
           <tr><th scope="row">proventra mdeberta-v3</th><td class="num">0.633</td><td class="num">0.910</td><td class="num">0.907*</td></tr>
           <tr><th scope="row">patronus wolf-defender small</th><td class="num">0.596</td><td class="num">0.868</td><td class="num">0.525</td></tr>
           <tr><th scope="row">This model v1</th><td class="num">0.588</td><td class="num">0.823</td><td class="num">0.290</td></tr>
-          <tr><th scope="row"><strong>This model v2</strong></th><td class="num"><strong>0.465</strong></td><td class="num"><strong>0.954</strong></td><td class="num"><strong>0.447</strong></td></tr>
+          <tr><th scope="row"><strong>This model v2</strong></th><td class="num"><strong>0.596</strong></td><td class="num"><strong>0.968</strong></td><td class="num"><strong>0.506</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -234,7 +236,7 @@
           <tr><th scope="row">proventra mdeberta-v3</th><td class="num">0.925</td><td class="num">0.953</td><td class="num">0.976</td><td class="num">0.976</td></tr>
           <tr><th scope="row">patronus wolf-defender small</th><td class="num">0.841</td><td class="num">0.851</td><td class="num">1.000</td><td class="num">1.000</td></tr>
           <tr><th scope="row">This model v1</th><td class="num">0.832</td><td class="num">0.851</td><td class="num">0.405</td><td class="num">0.905</td></tr>
-          <tr><th scope="row"><strong>This model v2</strong></th><td class="num"><strong>0.944</strong></td><td class="num"><strong>0.944</strong></td><td class="num"><strong>0.952</strong></td><td class="num"><strong>0.952</strong></td></tr>
+          <tr><th scope="row"><strong>This model v2</strong></th><td class="num"><strong>0.963</strong></td><td class="num"><strong>0.963</strong></td><td class="num"><strong>0.976</strong></td><td class="num"><strong>0.976</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -252,21 +254,21 @@
           <tr><th scope="row">proventra mdeberta-v3</th><td class="num">0.002</td><td class="num">0.032</td><td class="num">0.772</td></tr>
           <tr><th scope="row">patronus wolf-defender small</th><td class="num">0.011</td><td class="num">0.076</td><td class="num">0.607</td></tr>
           <tr><th scope="row">This model v1</th><td class="num">0.002</td><td class="num">0.011</td><td class="num">0.000</td></tr>
-          <tr><th scope="row"><strong>This model v2</strong></th><td class="num"><strong>0.008</strong></td><td class="num"><strong>0.017</strong></td><td class="num"><strong>0.000</strong></td></tr>
+          <tr><th scope="row"><strong>This model v2</strong></th><td class="num"><strong>0.011</strong></td><td class="num"><strong>0.021</strong></td><td class="num"><strong>0.000</strong></td></tr>
         </tbody>
       </table>
     </div>
-    <p>The three sets are <a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">my KVKK benchmark</a>, <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">my BSEBY benchmark</a> and the instructions of cagrigungor’s PII benchmark, all CC0. They are in-domain for this model and not for the others: its training data has other texts from the same domains. Trained without them, the v1 recipe flagged 65% of banking texts and 98.5% of task instructions. If your traffic is from another domain, measure the false-positive rate on your own benign text first.</p>
+    <p>The three sets are published together as <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark">halilneed/turkish-prompt-injection-false-alarm-benchmark</a>, 2,875 benign Turkish texts with a script that reproduces this table for any model. They come from <a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">my KVKK benchmark</a>, <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">my BSEBY benchmark</a> and the instructions of cagrigungor’s PII benchmark, all CC0. They are in-domain for this model and not for the others: its training data has other texts from the same domains. Trained without them, the v1 recipe flagged 65% of banking texts and 98.5% of task instructions. If your traffic is from another domain, measure the false-positive rate on your own benign text first.</p>
   </section>
 
   <section id="fails" aria-labelledby="fails-title">
     <h2 id="fails-title">Where it fails</h2>
     <ul>
-      <li><strong>Agentic attacks from an unseen source</strong> (conv, source held out): authority claims, indirect content injection, memory poisoning, data exfiltration and tool abuse are each caught in 0 of 3 rows. Three rows each, so read them as a direction. v1 did better here.</li>
-      <li><strong>Turkish morphological rewording</strong> (fevzi): 12 of 15, up from 9 in v1.</li>
-      <li><strong>The deepset translation style</strong> (berat, source held out): recall 0.288, up from 0.170.</li>
+      <li><strong>Agentic attacks from an unseen source</strong> (conv, source held out): memory poisoning, data exfiltration and tool abuse are each caught in 0 of 3 rows; system prompt extraction and RAG poisoning in 1 of 3. Three rows each, so read them as a direction.</li>
+      <li><strong>Turkish morphological rewording</strong> (fevzi): 13 of 15, up from 9 in v1.</li>
+      <li><strong>The deepset translation style</strong> (berat, source held out): recall 0.339, up from 0.170.</li>
     </ul>
-    <p>Where it holds up: encoded attacks, 13 of 13 in fevzi (v1 5, proventra 10, wolf-defender 12); users changing their own earlier instruction, 6 of 7 in the 1k test set with that source held out (proventra 0 of 7, wolf-defender 1 of 7).</p>
+    <p>Where it holds up: encoded attacks, 13 of 13 in fevzi (v1 5, proventra 10, wolf-defender 12); users changing their own earlier instruction, 5 of 7 in the 1k test set with that source held out (proventra 0 of 7, wolf-defender 1 of 7).</p>
   </section>
 
   <section id="usage" aria-labelledby="usage-title">
@@ -276,7 +278,7 @@
 
 clf = pipeline("text-classification", model="halilneed/turkish-prompt-injection-classifier")
 scores = {d["label"]: d["score"] for d in clf("Önceki mesajımdaki formatı unut, bu sefer tablo olarak yaz.", top_k=None)}
-is_injection = scores["INJECTION"] &gt;= 0.3
+is_injection = scores["INJECTION"] &gt;= 0.05
 # v1 instead: pipeline(..., revision="v1")</code></pre>
 
     <p>The repository also ships <code>detect.py</code> and <code>guard.py</code>: a <code>Detector</code> that classifies the text and its decoded forms and returns the highest score, which forms were decoded, and which one set the score. The decoder adds under 1 ms per text.</p>
