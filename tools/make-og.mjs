@@ -49,7 +49,7 @@ const CARDS = {
   'turkish-bseby-classifier': {
     kicker: 'Model · 110M parameters',
     title: 'Turkish BSEBY classifier',
-    line: 'Personal data, authentication data and banking secrets in Turkish text. 0.944 micro-F1 on 747 held-out texts.',
+    line: 'Personal data, authentication data and banking secrets in Turkish text. v2: 0.960 micro-F1 on 747 held-out texts.',
   },
   'turkish-prompt-injection-classifier': {
     kicker: 'Model · 307M parameters · v2',
