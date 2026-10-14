@@ -51,6 +51,11 @@ const CARDS = {
     title: 'Turkish BSEBY classifier',
     line: 'Personal data, authentication data and banking secrets in Turkish text. 0.944 micro-F1 on 747 held-out texts.',
   },
+  'turkish-prompt-injection-classifier': {
+    kicker: 'Model · 307M parameters · v2',
+    title: 'Turkish prompt injection classifier',
+    line: 'Flags injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, under 2% false alarms.',
+  },
   repos: {
     kicker: 'Open source · MIT',
     title: 'Tools for coding agents',

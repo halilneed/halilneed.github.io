@@ -10,9 +10,10 @@
 | Yol | Ne |
 |---|---|
 | `index.html` | Ana sayfa: giriş, modeller, araçlar, yazılar, hakkında |
-| `models/index.html` | Üç model ve değerlendirme setleri |
+| `models/index.html` | Dört model ve değerlendirme setleri |
 | `models/turkish-pii-detection/` | PII modeli. "turkish pii detection" aramasının hedef sayfası |
 | `models/turkish-kvkk-classifier/`, `models/turkish-bseby-classifier/` | Sınıflandırıcı sayfaları |
+| `models/turkish-prompt-injection-classifier/` | Prompt injection sınıflandırıcısı, v1 ve v2 yan yana. Sonuçlar kaynak dışarıda bırakılarak ölçülür; rakamlar HF kartıyla aynı |
 | `repos/index.html` | Ajan araçları (altı eklenti). Menüde adı "Tools" |
 | `agent-blackbox/`, `skillbench/`, `scar/`, `gardener/`, `painradar/`, `devpersona/` | Eklenti sayfaları → [PRODUCTS.md](PRODUCTS.md) |
 | `writing/index.html` | Yazı listesi ve e-posta kaydı → [WRITING.md](WRITING.md) |

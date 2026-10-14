@@ -170,7 +170,7 @@
 
   <section class="block" id="models" aria-labelledby="models-title">
     <h2 id="models-title">Models</h2>
-    <p class="block-lead">Three small models for Turkish personal data. Run them locally; explore their weights, benchmarks and demos.</p>
+    <p class="block-lead">Four small models for Turkish text: three for personal data, one for prompt injection. Run them locally; explore their weights, benchmarks and demos.</p>
 
     <div class="block-body collection">
       <div class="collection-head">
@@ -198,6 +198,12 @@
         <span class="repo-desc">Identify five banking data classes for inventories and DLP workflows.</span>
         <span class="repo-meta"><span>Text classification</span><span>110M parameters</span><span>about 32 ms per text</span><span data-hf-updated>Updated 2 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>13</span><span class="visually-hidden"> downloads</span></span></span>
         <span class="repo-stat"><b>0.944</b><span>micro-F1, 747 held-out texts</span></span>
+      </a>
+      <a class="repo" href="/models/turkish-prompt-injection-classifier/" data-hf="models/halilneed/turkish-prompt-injection-classifier">
+        <span class="repo-id">halilneed/turkish-prompt-injection-classifier</span>
+        <span class="repo-desc">Flag prompt injection in Turkish text before it reaches an LLM, including encoded and hidden instructions.</span>
+        <span class="repo-meta"><span>Text classification</span><span>307M parameters</span><span>about 35 ms per text</span><span data-hf-updated>Updated 14 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>0</span><span class="visually-hidden"> downloads</span></span></span>
+        <span class="repo-stat"><b>13/13</b><span>encoded attacks caught, under 2% false alarms</span></span>
       </a>
 
       <p class="collection-sub">Evaluation sets and demo</p>

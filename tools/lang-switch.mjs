@@ -18,7 +18,8 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://halilneed.agency';
 export const PAGES = [
   '/', '/models/', '/models/turkish-pii-detection/', '/models/turkish-kvkk-classifier/',
-  '/models/turkish-bseby-classifier/', '/repos/', '/agent-blackbox/', '/skillbench/', '/scar/',
+  '/models/turkish-bseby-classifier/', '/models/turkish-prompt-injection-classifier/',
+  '/repos/', '/agent-blackbox/', '/skillbench/', '/scar/',
   '/gardener/', '/painradar/', '/devpersona/', '/writing/',
 ];
 

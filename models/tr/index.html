@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kişisel veri için Türkçe NLP modelleri | halilneed</title>
-<meta name="description" content="halilneed’in üç açık Türkçe modeli: kişisel veri tespiti ve maskeleme, bir KVKK kişisel veri sınıflandırıcısı ve bir BSEBY bankacılık verisi sınıflandırıcısı, değerlendirme setleriyle birlikte.">
+<meta name="description" content="halilneed’in dört açık Türkçe modeli: kişisel veri maskeleme, KVKK ve BSEBY sınıflandırıcıları, prompt injection sınıflandırıcısı ve değerlendirme setleri.">
 <link rel="canonical" href="https://halilneed.agency/models/tr/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/models/">
 <link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/tr/">
@@ -18,14 +18,14 @@
 <meta property="og:site_name" content="halilneed">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:title" content="Kişisel veri için Türkçe NLP modelleri | halilneed">
-<meta property="og:description" content="halilneed’in üç açık Türkçe modeli: kişisel veri tespiti ve maskeleme, bir KVKK kişisel veri sınıflandırıcısı ve bir BSEBY bankacılık verisi sınıflandırıcısı, değerlendirme setleriyle birlikte.">
+<meta property="og:description" content="halilneed’in dört açık Türkçe modeli: kişisel veri maskeleme, KVKK ve BSEBY sınıflandırıcıları, prompt injection sınıflandırıcısı ve değerlendirme setleri.">
 <meta property="og:url" content="https://halilneed.agency/models/tr/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Kişisel veri için Türkçe NLP modelleri | halilneed">
-<meta name="twitter:description" content="halilneed’in üç açık Türkçe modeli: kişisel veri tespiti ve maskeleme, bir KVKK kişisel veri sınıflandırıcısı ve bir BSEBY bankacılık verisi sınıflandırıcısı, değerlendirme setleriyle birlikte.">
+<meta name="twitter:description" content="halilneed’in dört açık Türkçe modeli: kişisel veri maskeleme, KVKK ve BSEBY sınıflandırıcıları, prompt injection sınıflandırıcısı ve değerlendirme setleri.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og.png">
 <script type="application/ld+json">
 {
@@ -71,7 +71,7 @@
       },
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 3,
+        "numberOfItems": 4,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -90,6 +90,12 @@
             "position": 3,
             "name": "Türkçe BSEBY sınıflandırıcısı",
             "url": "https://halilneed.agency/models/turkish-bseby-classifier/tr/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Türkçe prompt injection sınıflandırıcısı",
+            "url": "https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/"
           }
         ]
       }
@@ -126,7 +132,7 @@
 
   <div class="page-head">
     <h1>Modeller</h1>
-    <p class="lead">Türkçe metindeki kişisel veri için üç küçük, açık model ve onları ölçmekte kullandığım değerlendirme setleri. Hepsi CPU üzerinde çalışır.</p>
+    <p class="lead">Türkçe metin için dört küçük, açık model (üçü kişisel veri, biri prompt injection için) ve onları ölçmekte kullandığım değerlendirme setleri. Hepsi CPU üzerinde çalışır.</p>
   </div>
 
   <div class="collection">
@@ -156,12 +162,18 @@
       <span class="repo-meta"><span>Metin sınıflandırma</span><span>110M parametre</span><span>metin başına yaklaşık 32 ms</span><span data-hf-updated>2 Eki 2026 güncellendi</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>13</span><span class="visually-hidden"> indirme</span></span></span>
       <span class="repo-stat"><b>0.944</b><span>micro-F1, ayrılmış 747 metin</span></span>
     </a>
+    <a class="repo" href="/models/turkish-prompt-injection-classifier/tr/" data-hf="models/halilneed/turkish-prompt-injection-classifier">
+      <span class="repo-id">halilneed/turkish-prompt-injection-classifier</span>
+      <span class="repo-desc">LLM’e giren Türkçe metinde, kodlanmış ve gizlenmiş talimatlar dahil, prompt injection’ı işaretler; sıradan Türkçe talimatları engellemeden.</span>
+      <span class="repo-meta"><span>Metin sınıflandırma</span><span>307M parametre</span><span>metin başına yaklaşık 35 ms</span><span data-hf-updated>14 Eki 2026 güncellendi</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>0</span><span class="visually-hidden"> indirme</span></span></span>
+      <span class="repo-stat"><b>13/13</b><span>kodlanmış saldırı, %2’nin altında yanlış alarm</span></span>
+    </a>
   </div>
   <p class="small">Hızlar sekiz iş parçacıklı bir Intel i5-12400F üzerinde, batch boyutu bir ile ölçüldü.</p>
 
   <section class="section" id="together" aria-labelledby="together-title">
     <h2 id="together-title">Birlikte nasıl çalışırlar</h2>
-    <p>İki sınıflandırıcı bir metinde ne olduğunu söyler. Maskeleme modeli ise metni değiştirir. Tipik bir hat önce sınıflandırır, sonuca göre bir maskeleme politikası seçer, ardından maskeler.</p>
+    <p>İki sınıflandırıcı bir metinde ne olduğunu söyler. Maskeleme modeli ise metni değiştirir. Tipik bir hat önce sınıflandırır, sonuca göre bir maskeleme politikası seçer, ardından maskeler. Prompt injection sınıflandırıcısı LLM’in önünde durur: içeri giren metni, kullanıcı yazmış ya da asistan getirmiş olsun, kontrol eder.</p>
   </section>
 
   <section class="section" id="evaluation" aria-labelledby="evaluation-title">
@@ -185,7 +197,7 @@
     </div>
 
     <div class="note">
-      <p>Kişisel veri modeli üçüncü taraf bir set üzerinde değerlendirilir: <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark"><code>cagrigungor/turkish-pii-masking-benchmark</code></a>, 1.000 sentetik satır.</p>
+      <p>Kişisel veri modeli üçüncü taraf bir set üzerinde değerlendirilir: <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark"><code>cagrigungor/turkish-pii-masking-benchmark</code></a>, 1.000 sentetik satır. Prompt injection sınıflandırıcısı dört açık Türkçe sette, her eğitim kaynağı sırayla dışarıda bırakılarak ölçüldü; ayrıntı <a href="/models/turkish-prompt-injection-classifier/tr/#results">kendi sayfasında</a>.</p>
     </div>
   </section>
 
