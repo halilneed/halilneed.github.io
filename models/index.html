@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Turkish NLP models for personal data | halilneed</title>
-<meta name="description" content="Three open Turkish models by halilneed: PII detection and masking, a KVKK personal-data classifier and a BSEBY banking-data classifier, with their benchmarks.">
+<meta name="description" content="Four open Turkish models by halilneed: PII masking, KVKK and BSEBY data classifiers, and a prompt injection classifier, with their benchmarks.">
 <link rel="canonical" href="https://halilneed.agency/models/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/models/">
 <link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/tr/">
-<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/models/">
+<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/models/">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/css/site.css">
 <meta name="author" content="Halil">
@@ -17,14 +17,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
 <meta property="og:title" content="Turkish NLP models for personal data | halilneed">
-<meta property="og:description" content="Three open Turkish models by halilneed: PII detection and masking, a KVKK personal-data classifier and a BSEBY banking-data classifier, with their benchmarks.">
+<meta property="og:description" content="Four open Turkish models by halilneed: PII masking, KVKK and BSEBY data classifiers, and a prompt injection classifier, with their benchmarks.">
 <meta property="og:url" content="https://halilneed.agency/models/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Turkish NLP models for personal data | halilneed">
-<meta name="twitter:description" content="Three open Turkish models by halilneed: PII detection and masking, a KVKK personal-data classifier and a BSEBY banking-data classifier, with their benchmarks.">
+<meta name="twitter:description" content="Four open Turkish models by halilneed: PII masking, KVKK and BSEBY data classifiers, and a prompt injection classifier, with their benchmarks.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og.png">
 <script type="application/ld+json">
 {
@@ -70,7 +70,7 @@
       },
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 3,
+        "numberOfItems": 4,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -89,6 +89,12 @@
             "position": 3,
             "name": "Turkish BSEBY classifier",
             "url": "https://halilneed.agency/models/turkish-bseby-classifier/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Turkish prompt injection classifier",
+            "url": "https://halilneed.agency/models/turkish-prompt-injection-classifier/"
           }
         ]
       }
@@ -125,7 +131,7 @@
 
   <div class="page-head">
     <h1>Models</h1>
-    <p class="lead">Three small, open models for personal data in Turkish text, and the evaluation sets I use to measure them. All of them run on a CPU.</p>
+    <p class="lead">Four small, open models for Turkish text: three for personal data, one for prompt injection, and the evaluation sets I use to measure them. All of them run on a CPU.</p>
   </div>
 
   <div class="collection">
@@ -155,12 +161,18 @@
       <span class="repo-meta"><span>Text classification</span><span>110M parameters</span><span>about 32 ms per text</span><span data-hf-updated>Updated 2 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>13</span><span class="visually-hidden"> downloads</span></span></span>
       <span class="repo-stat"><b>0.944</b><span>micro-F1, 747 held-out texts</span></span>
     </a>
+    <a class="repo" href="/models/turkish-prompt-injection-classifier/" data-hf="models/halilneed/turkish-prompt-injection-classifier">
+      <span class="repo-id">halilneed/turkish-prompt-injection-classifier</span>
+      <span class="repo-desc">Flags prompt injection in Turkish text going into an LLM: user messages, emails, documents and tool output. Built not to block ordinary Turkish instructions.</span>
+      <span class="repo-meta"><span>Text classification</span><span>110M parameters</span><span>about 23 ms per text</span><span data-hf-updated>Updated 14 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>0</span><span class="visually-hidden"> downloads</span></span></span>
+      <span class="repo-stat"><b>0–1.1%</b><span>false alarms, 2,875 benign texts</span></span>
+    </a>
   </div>
   <p class="small">Speeds were measured on an Intel i5-12400F with eight threads and batch size one.</p>
 
   <section class="section" id="together" aria-labelledby="together-title">
     <h2 id="together-title">How they fit together</h2>
-    <p>The two classifiers answer what is in a text. The masking model changes the text. A typical pipeline classifies first, picks a masking policy from the result, then masks.</p>
+    <p>The two classifiers answer what is in a text. The masking model changes the text. A typical pipeline classifies first, picks a masking policy from the result, then masks. The prompt injection classifier sits in front of the LLM: it checks what goes in, whether a user typed it or an assistant retrieved it.</p>
   </section>
 
   <section class="section" id="evaluation" aria-labelledby="evaluation-title">
@@ -184,7 +196,7 @@
     </div>
 
     <div class="note">
-      <p>The PII model is evaluated on a third-party set, <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark"><code>cagrigungor/turkish-pii-masking-benchmark</code></a>, 1,000 synthetic rows.</p>
+      <p>The PII model is evaluated on a third-party set, <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark"><code>cagrigungor/turkish-pii-masking-benchmark</code></a>, 1,000 synthetic rows. The prompt injection classifier is measured on four public Turkish sets with each training source held out in turn; see <a href="/models/turkish-prompt-injection-classifier/#results">its page</a>.</p>
     </div>
   </section>
 
