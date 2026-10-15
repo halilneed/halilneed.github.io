@@ -63,7 +63,7 @@
       "description": "Türkçe bankacılık metinlerinde BSEBY veri sınıfları için açık, çok etiketli bir sınıflandırıcı: örnekler, etiketler, sonuçlar, Python ile kullanım, eğitim ve sınırlar.",
       "inLanguage": "tr",
       "datePublished": "2026-10-09",
-      "dateModified": "2026-10-09",
+      "dateModified": "2026-10-15",
       "image": "https://halilneed.agency/assets/img/og-turkish-bseby-classifier.png",
       "author": {
         "@type": "Person",
@@ -275,6 +275,7 @@
     <h2 id="results-title">Sonuçlar</h2>
     <p>Sürüm 2 (14 Ekim 2026), ilk sürümün sayfasında yazdığım zayıf noktalar için 263 eğitim şablonu ekliyor: tüzel kişi müşteriler, açıkça banka dışı kurumların iç bilgisi, bankanın kamuya açık bilgisi ve iki sırrın birlikte geçtiği metinler. Ayarlar aynı. v1 <code>revision="v1"</code> ile duruyor.</p>
     <p>İki set de <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">halilneed/turkish-bseby-classification-benchmark</a> içinde. Held-out set (747 metin) 2 Ekim’de, v2 şablonlarından önce ve onlardan bağımsız yazıldı; asıl sonuç odur. Zor set (202 metin, <code>hard</code> yapılandırması) v2 şablonlarıyla aynı zayıf noktaları hedefliyor; yazarı şablonları görmedi ama aynı dil modelini ve kılavuzu kullandı. v2’nin oradaki kazancını daha temkinli okuyun.</p>
+    <p>747 metinlik held-out sette <code>turkish-bseby-classifier</code> v2, 0.960 micro-F1 ve 0.952 macro-F1 alıyor (v1: 0.944 ve 0.939).</p>
 
     <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
       <table>
@@ -358,6 +359,8 @@ print(classify("Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye ç�
       <li><a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">Değerlendirme seti</a></li>
       <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespiti ve maskeleme</a></li>
       <li><a href="/models/turkish-kvkk-classifier/tr/">Türkçe KVKK sınıflandırıcısı</a></li>
+      <li><a href="/models/turkish-prompt-injection-classifier/tr/">Türkçe prompt injection sınıflandırıcısı</a></li>
+      <li><a href="/guides/personal-data/tr/">Kişisel veri ve yapay zekâ</a>: metin bir modele ulaşmadan önce neyin maskelenip neyin içeride tutulacağını anlatan kısa rehber</li>
       <li><a href="/models/tr/">Tüm modeller</a></li>
     </ul>
   </section>

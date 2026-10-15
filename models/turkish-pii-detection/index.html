@@ -65,7 +65,7 @@
         "tr"
       ],
       "datePublished": "2026-10-05",
-      "dateModified": "2026-10-09",
+      "dateModified": "2026-10-15",
       "image": "https://halilneed.agency/assets/img/og-turkish-pii-detection.png",
       "author": {
         "@type": "Person",
@@ -154,7 +154,7 @@
           "name": "Does masking make my data KVKK compliant?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Masked output is not automatically anonymous, and compliance depends on how the data is processed, not on the model."
+            "text": "No. Masked output is not automatically anonymous, and compliance depends on how the data is processed, not on the model. The personal data and AI guide shows how to decide what to mask and what to keep in-house."
           }
         }
       ]
@@ -306,7 +306,7 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
 
   <section id="results" aria-labelledby="results-title">
     <h2 id="results-title">Benchmark results</h2>
-    <p>I evaluate on <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark"><code>cagrigungor/turkish-pii-masking-benchmark</code></a>, a public set of 1,000 synthetic Turkish examples. The metric is whole-row exact match: the full output has to equal the expected string, so one wrong label fails the row.</p>
+    <p>I evaluate on <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark"><code>cagrigungor/turkish-pii-masking-benchmark</code></a>, a public set of 1,000 synthetic Turkish examples. The metric is whole-row exact match: the full output has to equal the expected string, so one wrong label fails the row. On it, <code>turkish-pii-detection</code> v02 scores 0.944 exact match on all 1,000 rows and 0.945 on the 531 rows not used for model selection.</p>
 
     <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
       <table>
@@ -390,7 +390,7 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
     </details>
     <details>
       <summary>Does masking make my data KVKK compliant?</summary>
-      <p>No. Masked output is not automatically anonymous, and compliance depends on how the data is processed, not on the model.</p>
+      <p>No. Masked output is not automatically anonymous, and compliance depends on how the data is processed, not on the model. The <a href="/guides/personal-data/">personal data and AI guide</a> shows how to decide what to mask and what to keep in-house.</p>
     </details>
   </section>
 
@@ -412,7 +412,8 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
       <li><a href="https://huggingface.co/halilneed/turkish-pii-detection">Model card and weights</a></li>
       <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Browser demo</a></li>
       <li><a href="https://github.com/halilneed/turkish-pii-detection">Code, tutorial and evaluator on GitHub</a></li>
-      <li><a href="/models/turkish-kvkk-classifier/">Turkish KVKK classifier</a> and <a href="/models/turkish-bseby-classifier/">Turkish BSEBY classifier</a></li>
+      <li><a href="/models/turkish-kvkk-classifier/">Turkish KVKK classifier</a>, <a href="/models/turkish-bseby-classifier/">Turkish BSEBY classifier</a> and <a href="/models/turkish-prompt-injection-classifier/">Turkish prompt injection classifier</a></li>
+      <li><a href="/guides/personal-data/">Personal data and AI</a>: a short guide for teams on what to mask and what to keep in-house before text reaches a model</li>
       <li><a href="/models/">All models</a></li>
     </ul>
     <p>If the model is useful to you, a like on its Hugging Face page helps other people find it.</p>

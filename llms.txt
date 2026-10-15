@@ -1,0 +1,36 @@
+# halilneed
+
+> Halil (halilneed), Istanbul. Open Turkish NLP models for personal data and prompt injection, the benchmarks used to measure them, short interactive guides for business teams adopting AI, and open-source Claude Code plugins. Every page has an English version and a Turkish version under `tr/`. All numbers below are my own measurements and match the Hugging Face model cards.
+
+## Models
+
+- [Turkish PII detection and masking](https://halilneed.agency/models/turkish-pii-detection/): open 270M-parameter model that replaces names, national ID numbers (TCKN), IBANs, phone numbers and emails in Turkish text with labels, following a Turkish instruction. Runs locally on CPU. v02 scores 0.944 whole-row exact match on the public 1,000-row cagrigungor/turkish-pii-masking-benchmark (0.945 on the 531 rows not used for model selection). It returns masked text, not entity offsets. Turkish: https://halilneed.agency/models/turkish-pii-detection/tr/
+- [Turkish KVKK classifier](https://halilneed.agency/models/turkish-kvkk-classifier/): multi-label classifier for 24 personal data categories in Turkish text (14 VERBİS categories and 10 special categories under Article 6 of KVKK, the Turkish data protection law). 0.874 micro-F1 on 987 held-out texts. About 22 ms per text on CPU. MIT. Turkish: https://halilneed.agency/models/turkish-kvkk-classifier/tr/
+- [Turkish BSEBY classifier](https://halilneed.agency/models/turkish-bseby-classifier/): multi-label classifier for bank data inventories and DLP: personal data, special-category data, authentication data, customer secrets and bank secrets under the Turkish Regulation on Banks' Information Systems and Electronic Banking Services (BSEBY). v2: 0.960 micro-F1 on 747 held-out texts. MIT. Turkish: https://halilneed.agency/models/turkish-bseby-classifier/tr/
+- [Turkish prompt injection classifier](https://halilneed.agency/models/turkish-prompt-injection-classifier/): binary BENIGN / INJECTION classifier for Turkish text going into an LLM. v2 catches 96.3% of 107 obfuscated attacks and 97.6% of 42 attacks hidden in invisible Unicode, none seen in training, and flags 2.1% of 750 ordinary Turkish banking texts. Results are reported with each training source held out. MIT. Turkish: https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/
+- [All models and evaluation sets](https://halilneed.agency/models/)
+
+## Datasets (Hugging Face)
+
+- [turkish-kvkk-classification-benchmark](https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark): 987 gold Turkish texts, 24 KVKK / VERBİS labels, CC0.
+- [turkish-bseby-classification-benchmark](https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark): 747 gold Turkish banking texts, 5 labels, CC0.
+- [turkish-prompt-injection-benchmark](https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark): 3,372 rows, 317 attacks from five public Turkish sets and 3,055 benign rows.
+- [turkish-prompt-injection-false-alarm-benchmark](https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark): 2,875 benign Turkish business texts; public guards flag 17.8% to 27.8% of them. CC0.
+
+## Guides for teams
+
+- [A first step into AI](https://halilneed.agency/guides/first-step/): 10-minute interactive guide: what AI is, how it learns, where to use it at work and where not to. Turkish: https://halilneed.agency/guides/first-step/tr/
+- [A business unit's first AI model](https://halilneed.agency/guides/first-model/): from one task to a pilot you can measure. Turkish: https://halilneed.agency/guides/first-model/tr/
+- [Which model for which process](https://halilneed.agency/guides/model-map/): a map from everyday business tasks to the smallest model that does them. Turkish: https://halilneed.agency/guides/model-map/tr/
+- [Personal data and AI](https://halilneed.agency/guides/personal-data/): what to mask and what to keep in-house before text reaches a model, for teams under KVKK. Not legal advice. Turkish: https://halilneed.agency/guides/personal-data/tr/
+
+## Tools
+
+- [Claude Code plugins](https://halilneed.agency/repos/): agent-blackbox, skillbench, scar, gardener, painradar and devpersona. Open source, MIT.
+
+## Optional
+
+- [Writing](https://halilneed.agency/writing/): articles on Medium.
+- [Hugging Face profile](https://huggingface.co/halilneed)
+- [GitHub](https://github.com/halilneed)
+- Contact: halil@halilneed.agency

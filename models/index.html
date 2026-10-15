@@ -52,9 +52,9 @@
       "@id": "https://halilneed.agency/models/#page",
       "url": "https://halilneed.agency/models/",
       "name": "Models",
-      "description": "Three small, open models for personal data in Turkish text, and the evaluation sets used to measure them.",
+      "description": "Four small, open models for personal data and prompt injection in Turkish text, and the four evaluation sets used to measure them.",
       "inLanguage": "en",
-      "dateModified": "2026-10-09",
+      "dateModified": "2026-10-15",
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://halilneed.agency/#website",
@@ -97,6 +97,111 @@
             "url": "https://halilneed.agency/models/turkish-prompt-injection-classifier/"
           }
         ]
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://halilneed.agency/models/#dataset-turkish-kvkk-classification-benchmark",
+      "name": "Turkish KVKK classification benchmark",
+      "description": "Multi-label evaluation set for Turkish text: which of 24 personal data categories (the 14 VERBİS categories and the 10 special categories of KVKK, the Turkish data protection law) a text contains. 987 gold texts where two labelling passes agree exactly, out of 1,125 fictional texts.",
+      "url": "https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark",
+      "identifier": "halilneed/turkish-kvkk-classification-benchmark",
+      "inLanguage": "tr",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keywords": [
+        "KVKK",
+        "VERBİS",
+        "personal data",
+        "Turkish",
+        "multi-label classification"
+      ],
+      "isAccessibleForFree": true,
+      "creator": {
+        "@id": "https://halilneed.agency/#halil"
+      },
+      "includedInDataCatalog": {
+        "@type": "DataCatalog",
+        "name": "Hugging Face Hub",
+        "url": "https://huggingface.co/datasets"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://halilneed.agency/models/#dataset-turkish-bseby-classification-benchmark",
+      "name": "Turkish BSEBY classification benchmark",
+      "description": "Multi-label evaluation set for Turkish banking text: personal data, special-category data, authentication data, customer secrets and bank secrets under the Regulation on Banks’ Information Systems and Electronic Banking Services (BSEBY). 747 gold texts out of 750 fictional texts.",
+      "url": "https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark",
+      "identifier": "halilneed/turkish-bseby-classification-benchmark",
+      "inLanguage": "tr",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keywords": [
+        "BSEBY",
+        "BDDK",
+        "banking",
+        "data classification",
+        "DLP",
+        "Turkish"
+      ],
+      "isAccessibleForFree": true,
+      "creator": {
+        "@id": "https://halilneed.agency/#halil"
+      },
+      "includedInDataCatalog": {
+        "@type": "DataCatalog",
+        "name": "Hugging Face Hub",
+        "url": "https://huggingface.co/datasets"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://halilneed.agency/models/#dataset-turkish-prompt-injection-benchmark",
+      "name": "Turkish prompt injection benchmark",
+      "description": "Tests a prompt injection guard on Turkish text from both sides in one run: 317 attacks from five public Turkish sets and 3,055 benign rows. No new text; every row keeps its source dataset, row id and licence.",
+      "url": "https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark",
+      "identifier": "halilneed/turkish-prompt-injection-benchmark",
+      "inLanguage": "tr",
+      "license": "https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark/blob/main/LICENSE.md",
+      "keywords": [
+        "prompt injection",
+        "LLM security",
+        "guardrails",
+        "Turkish",
+        "benchmark"
+      ],
+      "isAccessibleForFree": true,
+      "creator": {
+        "@id": "https://halilneed.agency/#halil"
+      },
+      "includedInDataCatalog": {
+        "@type": "DataCatalog",
+        "name": "Hugging Face Hub",
+        "url": "https://huggingface.co/datasets"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://halilneed.agency/models/#dataset-turkish-prompt-injection-false-alarm-benchmark",
+      "name": "Turkish prompt injection false-alarm benchmark",
+      "description": "2,875 ordinary Turkish business texts and AI task instructions, all benign. Measures how often a prompt injection guard blocks normal Turkish text. Public guards flag 17.8% to 27.8% of it.",
+      "url": "https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark",
+      "identifier": "halilneed/turkish-prompt-injection-false-alarm-benchmark",
+      "inLanguage": "tr",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keywords": [
+        "prompt injection",
+        "false positives",
+        "guardrails",
+        "Turkish",
+        "benchmark"
+      ],
+      "isAccessibleForFree": true,
+      "creator": {
+        "@id": "https://halilneed.agency/#halil"
+      },
+      "includedInDataCatalog": {
+        "@type": "DataCatalog",
+        "name": "Hugging Face Hub",
+        "url": "https://huggingface.co/datasets"
       }
     }
   ]
@@ -146,25 +251,25 @@
     <a class="repo" href="/models/turkish-pii-detection/" data-hf="models/halilneed/turkish-pii-detection">
       <span class="repo-id">halilneed/turkish-pii-detection</span>
       <span class="repo-desc">Rewrites Turkish text with names, national ID numbers, IBANs, phone numbers and email addresses replaced by labels. You tell it what to mask in a short Turkish instruction.</span>
-      <span class="repo-meta"><span>Text generation</span><span>270M parameters</span><span data-hf-updated>Updated 5 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>2.3k</span><span class="visually-hidden"> downloads</span></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span data-hf-likes>1</span><span class="visually-hidden"> likes</span></span></span>
+      <span class="repo-meta"><span>Text generation</span><span>270M parameters</span><span data-hf-updated>Updated 5 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>2.4k</span><span class="visually-hidden"> downloads</span></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span data-hf-likes>1</span><span class="visually-hidden"> likes</span></span></span>
       <span class="repo-stat"><b>0.944</b><span>exact match, 1,000 rows</span></span>
     </a>
     <a class="repo" href="/models/turkish-kvkk-classifier/" data-hf="models/halilneed/turkish-kvkk-classifier">
       <span class="repo-id">halilneed/turkish-kvkk-classifier</span>
       <span class="repo-desc">Tells you which of 24 kinds of personal data a Turkish text contains: the 14 VERBİS categories and the 10 special categories of KVKK, the Turkish data protection law.</span>
-      <span class="repo-meta"><span>Text classification</span><span>110M parameters</span><span>about 22 ms per text</span><span data-hf-updated>Updated 2 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>22</span><span class="visually-hidden"> downloads</span></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span data-hf-likes>1</span><span class="visually-hidden"> likes</span></span></span>
+      <span class="repo-meta"><span>Text classification</span><span>110M parameters</span><span>about 22 ms per text</span><span data-hf-updated>Updated 2 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>25</span><span class="visually-hidden"> downloads</span></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span data-hf-likes>1</span><span class="visually-hidden"> likes</span></span></span>
       <span class="repo-stat"><b>0.874</b><span>micro-F1, 987 held-out texts</span></span>
     </a>
     <a class="repo" href="/models/turkish-bseby-classifier/" data-hf="models/halilneed/turkish-bseby-classifier">
       <span class="repo-id">halilneed/turkish-bseby-classifier</span>
       <span class="repo-desc">Built for bank data inventories and data loss prevention (DLP) pipelines. Flags personal data, special-category data, authentication data, customer secrets and bank secrets.</span>
-      <span class="repo-meta"><span>Text classification</span><span>110M parameters</span><span>about 32 ms per text</span><span data-hf-updated>Updated 2 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>13</span><span class="visually-hidden"> downloads</span></span></span>
+      <span class="repo-meta"><span>Text classification</span><span>110M parameters</span><span>about 32 ms per text</span><span data-hf-updated>Updated 2 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>20</span><span class="visually-hidden"> downloads</span></span></span>
       <span class="repo-stat"><b>0.960</b><span>micro-F1, 747 held-out texts</span></span>
     </a>
     <a class="repo" href="/models/turkish-prompt-injection-classifier/" data-hf="models/halilneed/turkish-prompt-injection-classifier">
       <span class="repo-id">halilneed/turkish-prompt-injection-classifier</span>
       <span class="repo-desc">Flags prompt injection in Turkish text going into an LLM, including encoded and hidden instructions, without blocking ordinary Turkish instructions.</span>
-      <span class="repo-meta"><span>Text classification</span><span>307M parameters</span><span>about 35 ms per text</span><span data-hf-updated>Updated 14 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>0</span><span class="visually-hidden"> downloads</span></span></span>
+      <span class="repo-meta"><span>Text classification</span><span>307M parameters</span><span>about 35 ms per text</span><span data-hf-updated>Updated 14 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>34</span><span class="visually-hidden"> downloads</span></span></span>
       <span class="repo-stat"><b>13/13</b><span>encoded attacks caught, under 2% false alarms</span></span>
     </a>
   </div>
@@ -191,6 +296,13 @@
         <p class="entry-meta"><span>747 gold texts</span> <span>5 labels</span> <span>CC0</span></p>
         <div class="entry-body">
           <p>Same method: 750 fictional texts, 747 with exact agreement. Both passes used the same language model and guideline, so the 99.6% agreement shows the guideline can be applied consistently. It is not agreement between two independent people.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <h3 class="entry-title"><a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark">turkish-prompt-injection-benchmark</a></h3>
+        <p class="entry-meta"><span>3,372 rows</span> <span>317 attacks</span> <span>mixed licences</span></p>
+        <div class="entry-body">
+          <p>Tests a prompt injection guard from both sides in one run: 317 attacks from five public Turkish sets, and 3,055 benign rows. The benign rows are the hard negatives that ship with those sets plus the 2,875 texts of the false-alarm set below. No new text was written; every row keeps its source and licence.</p>
         </div>
       </article>
       <article class="entry">

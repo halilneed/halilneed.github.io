@@ -34,9 +34,24 @@
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "halilneed", "item": "https://halilneed.agency/tr/"},
-        {"@type": "ListItem", "position": 2, "name": "Modeller", "item": "https://halilneed.agency/models/tr/"},
-        {"@type": "ListItem", "position": 3, "name": "Türkçe prompt injection sınıflandırıcısı", "item": "https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Modeller",
+          "item": "https://halilneed.agency/models/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Türkçe prompt injection sınıflandırıcısı",
+          "item": "https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/"
+        }
       ]
     },
     {
@@ -48,11 +63,42 @@
       "description": "Türkçe metinde prompt injection için açık ikili sınıflandırıcı: örnekler, her eğitim kaynağı dışarıda bırakılarak ölçülen sonuçlar, zararsız Türkçede yanlış alarm, Python kullanımı, eğitim verisi ve sınırlar.",
       "inLanguage": "tr",
       "datePublished": "2026-10-14",
-      "dateModified": "2026-10-14",
+      "dateModified": "2026-10-15",
       "image": "https://halilneed.agency/assets/img/og-turkish-prompt-injection-classifier.png",
-      "author": {"@type": "Person", "@id": "https://halilneed.agency/#halil", "name": "Halil", "alternateName": "halilneed", "url": "https://halilneed.agency/"},
-      "publisher": {"@type": "Person", "@id": "https://halilneed.agency/#halil", "name": "Halil", "alternateName": "halilneed", "url": "https://halilneed.agency/"},
-      "about": {"@id": "https://halilneed.agency/models/turkish-prompt-injection-classifier/#model"}
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "about": {
+        "@id": "https://halilneed.agency/models/turkish-prompt-injection-classifier/#model"
+      }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://halilneed.agency/models/turkish-prompt-injection-classifier/#model",
+      "name": "turkish-prompt-injection-classifier",
+      "description": "İkili Türkçe metin sınıflandırıcısı. v2: mmBERT-base tabanlı, 307M parametre; v1: BERTurk tabanlı, 110M parametre. Bir LLM’e giden metni BENIGN ya da INJECTION olarak etiketler.",
+      "url": "https://huggingface.co/halilneed/turkish-prompt-injection-classifier",
+      "programmingLanguage": "Python",
+      "license": "https://opensource.org/license/mit",
+      "isBasedOn": "https://huggingface.co/jhu-clsp/mmBERT-base",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
     }
   ]
 }
@@ -195,6 +241,7 @@
   <section id="results" aria-labelledby="results-title">
     <h2 id="results-title">Sonuçlar</h2>
     <p>Dürüst sayı <strong>kaynak dışarıda</strong> sütunudur: her test seti için o kaynaktan tek satır görmeden eğitilmiş ayrı bir model, o kaynağın test bölmesinde ölçüldü. Her modeli aynı betikle ben koştum; bunlar yazarların yayımladığı sayılar değil, benim ölçümlerim.</p>
+    <p>Kısaca: v2, eğitimde ve seçimde hiç görmediği 107 gizlenmiş saldırının %96,3’ünü ve görünmez Unicode içine saklanmış 42 saldırının %97,6’sını yakalıyor; 750 sıradan Türkçe bankacılık metninin %2,1’ini işaretliyor.</p>
 
     <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
       <table>
@@ -303,6 +350,7 @@ is_injection = scores["INJECTION"] &gt;= 0.05
     <h2 id="links-title">Bağlantılar</h2>
     <ul>
       <li><a href="https://huggingface.co/halilneed/turkish-prompt-injection-classifier">Model kartı ve ağırlıklar</a></li>
+      <li><a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark">Türkçe prompt injection benchmark’ı</a> ve <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark">yanlış alarm seti</a></li>
       <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespiti ve maskeleme</a></li>
       <li><a href="/models/turkish-kvkk-classifier/tr/">Türkçe KVKK sınıflandırıcısı</a></li>
       <li><a href="/models/turkish-bseby-classifier/tr/">Türkçe BSEBY sınıflandırıcısı</a></li>

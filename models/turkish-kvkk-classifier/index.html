@@ -65,7 +65,7 @@
         "tr"
       ],
       "datePublished": "2026-10-09",
-      "dateModified": "2026-10-09",
+      "dateModified": "2026-10-15",
       "image": "https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png",
       "author": {
         "@type": "Person",
@@ -325,7 +325,7 @@
 
   <section id="results" aria-labelledby="results-title">
     <h2 id="results-title">Results</h2>
-    <p>There are two test sets. The main one is an independent held-out set: 1,125 texts written without looking at the training data, then labelled a second time, blind. The 987 texts where both label sets agree exactly are the gold set (87.7% exact agreement, Cohen’s kappa per label between 0.84 and 1.00). The second is a template-disjoint test of 771 examples from 333 templates that were never used in training.</p>
+    <p>There are two test sets. The main one is an independent held-out set: 1,125 texts written without looking at the training data, then labelled a second time, blind. The 987 texts where both label sets agree exactly are the gold set (87.7% exact agreement, Cohen’s kappa per label between 0.84 and 1.00). The second is a template-disjoint test of 771 examples from 333 templates that were never used in training. On the 987-text gold set, <code>turkish-kvkk-classifier</code> scores 0.874 micro-F1 and 0.856 macro-F1.</p>
 
     <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
       <table>
@@ -406,6 +406,8 @@ print(classify("hastanın böbrek yetmezliği ilerlemiş, eşi 0532 111 22 33'te
       <li><a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">Evaluation set</a></li>
       <li><a href="/models/turkish-pii-detection/">Turkish PII detection and masking</a></li>
       <li><a href="/models/turkish-bseby-classifier/">Turkish BSEBY classifier</a></li>
+      <li><a href="/models/turkish-prompt-injection-classifier/">Turkish prompt injection classifier</a></li>
+      <li><a href="/guides/personal-data/">Personal data and AI</a>: a short guide for teams on what to mask and what to keep in-house before text reaches a model</li>
       <li><a href="/models/">All models</a></li>
     </ul>
   </section>
