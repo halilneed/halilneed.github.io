@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kişisel veri maskeleme aracı: TC kimlik, IBAN, telefon | halilneed</title>
+<meta name="description" content="TC kimlik no, IBAN, telefon, e-posta ve kart numarasını tarayıcınızda maskeleyin, metni yapay zekâya öyle gönderin. Metin cihazınızdan çıkmaz. Ücretsiz.">
+<link rel="canonical" href="https://halilneed.agency/masking-tool/tr/">
+<link rel="alternate" hreflang="en" href="https://halilneed.agency/masking-tool/">
+<link rel="alternate" hreflang="tr" href="https://halilneed.agency/masking-tool/tr/">
+<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/masking-tool/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:title" content="Kişisel veri maskeleme aracı: TC kimlik, IBAN, telefon | halilneed">
+<meta property="og:description" content="TC kimlik no, IBAN, telefon, e-posta ve kart numarasını tarayıcınızda maskeleyin, metni yapay zekâya öyle gönderin. Metin cihazınızdan çıkmaz. Ücretsiz.">
+<meta property="og:url" content="https://halilneed.agency/masking-tool/tr/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-masking-tool.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kişisel veri maskeleme aracı: TC kimlik, IBAN, telefon | halilneed">
+<meta name="twitter:description" content="TC kimlik no, IBAN, telefon, e-posta ve kart numarasını tarayıcınızda maskeleyin, metni yapay zekâya öyle gönderin. Metin cihazınızdan çıkmaz. Ücretsiz.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-masking-tool.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Kişisel veri maskeleme aracı",
+          "item": "https://halilneed.agency/masking-tool/tr/"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://halilneed.agency/masking-tool/#app",
+      "name": "Kişisel veri maskeleme aracı",
+      "description": "Metin bir yapay zekâ aracına gönderilmeden önce TC kimlik numarasını, IBAN’ı, telefonu, e-postayı, kart numarasını ve listelenen adları tarayıcıda maskeleyen, geri açılabilir etiketli araç. Metin sunucuya gönderilmez.",
+      "url": "https://halilneed.agency/masking-tool/tr/",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Any (web browser)",
+      "browserRequirements": "Requires JavaScript",
+      "inLanguage": "tr",
+      "isAccessibleForFree": true,
+      "featureList": [
+        "TC kimlik algoritması kontrolü",
+        "IBAN mod 97 kontrolü",
+        "Kart numarası için Luhn kontrolü",
+        "Türkiye telefon biçimleri",
+        "Türkçe büyük-küçük harfe duyarsız ad listesi",
+        "Geri açılabilir etiketler",
+        "CSV ve Excel’den yapıştırılan hücreler"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "datePublished": "2026-10-15",
+      "dateModified": "2026-10-15",
+      "image": "https://halilneed.agency/assets/img/og-masking-tool.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/masking-tool/tr/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Metnim bir sunucuya gönderiliyor mu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Maskeleme bu sayfadaki betikle tarayıcınızda yapılır ve betik hiçbir ağ isteği yapmaz. Sayfa ziyaretleri GoatCounter ile çerezsiz ve toplu sayılır; yazdığınız metin sayılmaz ve kaydedilmez."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Metni ChatGPT’ye göndermek için bu yeterli mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Numaralar ve listeye yazdığınız adlar için büyük ölçüde evet, metnin geri kalanı için hayır. Olayın kendisi, adres ya da unvan kişiyi yine belli edebilir. Kurumda kullanacaksanız hangi metinlerin hiç gönderilmeyeceğine önce karar verin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Geri açma nasıl çalışır?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Geri açılabilir etiketler seçiliyken her farklı değer numaralı bir etiket alır; aynı telefon iki kez geçerse ikisi de [TEL_1] olur. Eşleşme tablosu yalnızca bu sekmenin belleğinde durur. Cevaptaki etiketler bu tabloyla gerçek değerlere çevrilir. Sayfayı yenilerseniz tablo silinir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Excel dosyasını doğrudan açabilir miyim?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "XLSX açılmaz, CSV açılır. Excel’de Farklı Kaydet ile CSV seçin ya da hücreleri kopyalayıp Metin kutusuna yapıştırın."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ücretli mi, kayıt gerekiyor mu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Araç ücretsizdir ve hesap istemez."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<header class="site-header">
+  <a class="site-name" href="/tr/">halilneed</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="/models/tr/">Modeller</a></li>
+      <li><a href="/repos/tr/">Araçlar</a></li>
+      <li><a href="/guides/tr/">Rehberler</a></li>
+      <li><a href="/writing/tr/">Yazılar</a></li>
+      <li><a href="/tr/#about">Hakkında</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Dil"><a href="/masking-tool/tr/" hreflang="tr" lang="tr" aria-current="true">TR</a><a href="/masking-tool/" hreflang="en" lang="en">EN</a></div>
+</header>
+
+<nav class="breadcrumb" aria-label="Konum">
+  <ol>
+    <li><a href="/tr/">halilneed</a></li>
+    <li aria-current="page">Kişisel veri maskeleme aracı</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>Kişisel veri maskeleme aracı</h1>
+    <p class="lead">Metni ChatGPT’ye ya da başka bir yapay zekâ aracına göndermeden önce TC kimlik numarasını, IBAN’ı, telefonu, e-postayı ve kart numarasını burada maskeleyin. Maskeleme tarayıcınızda çalışır; metin bu sayfadan hiçbir yere gönderilmez. Cevap geldiğinde etiketleri gerçek değerlere geri çevirebilirsiniz.</p>
+
+    <dl class="kv">
+      <div><dt>Çalıştığı yer</dt><dd>Tarayıcınız. Metin sunucuya gitmez.</dd></div>
+      <div><dt>Bulduğu veri</dt><dd>TC kimlik no, IBAN, telefon, e-posta, kart numarası ve sizin yazdığınız adlar</dd></div>
+      <div><dt>Doğrulama</dt><dd>TC kimlik algoritması, IBAN için mod 97, kart için Luhn</dd></div>
+      <div><dt>Dosya</dt><dd>CSV, TSV, TXT. Excel hücrelerini kopyalayıp yapıştırabilirsiniz.</dd></div>
+      <div><dt>Ücret</dt><dd>Ücretsiz, kayıt yok</dd></div>
+    </dl>
+
+    <nav class="toc" aria-label="Bu sayfada">
+      <ul>
+        <li><a href="#tool">Araç</a></li>
+        <li><a href="#how">Nasıl kullanılır</a></li>
+        <li><a href="#excel">Excel ile</a></li>
+        <li><a href="#what">Neyi bulur</a></li>
+        <li><a href="#tckn">TC kimlik doğrulama</a></li>
+        <li><a href="#anonymous">Maskeleme ve anonimleştirme</a></li>
+        <li><a href="#limits">Sınırlar</a></li>
+        <li><a href="#faq">Sorular</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="tool" aria-labelledby="tool-title">
+    <h2 id="tool-title">Metni maskeleyin</h2>
+    <noscript><p class="note">Araç JavaScript ile çalışır. JavaScript kapalıyken aşağıdaki açıklamalar yine okunur.</p></noscript>
+
+    <div class="tool" id="masker">
+      <div>
+        <label class="field" for="mask-input">Metin</label>
+        <textarea id="mask-input" rows="7" spellcheck="false">Müşteri Ayşe Yılmaz (TC 10000000146) 0532 111 22 33 numarasından aradı. İade için IBAN’ı TR33 0006 1005 1978 6457 8413 26, e-posta adresi ayse.yilmaz@example.com. Bu müşteriye nasıl bir cevap yazalım?</textarea>
+      </div>
+
+      <fieldset>
+        <legend>Maskelenecek veriler</legend>
+        <div class="checks">
+          <label><input type="checkbox" name="type" value="tckn" checked> TC kimlik no</label>
+          <label><input type="checkbox" name="type" value="iban" checked> IBAN</label>
+          <label><input type="checkbox" name="type" value="phone" checked> Telefon</label>
+          <label><input type="checkbox" name="type" value="email" checked> E-posta</label>
+          <label><input type="checkbox" name="type" value="card" checked> Kart numarası</label>
+        </div>
+      </fieldset>
+
+      <div>
+        <label class="field" for="mask-names">Adlar ve kelimeler</label>
+        <input type="text" id="mask-names" value="Ayşe Yılmaz" autocomplete="off" spellcheck="false" aria-describedby="mask-names-hint">
+        <p class="small" id="mask-names-hint">Virgülle ayırın. Adları kural bulamaz; buraya yazdıklarınız [AD] olur. Büyük-küçük harf ve i, ı, İ, I farkı gözetilmez.</p>
+      </div>
+
+      <fieldset>
+        <legend>Seçenekler</legend>
+        <div class="checks">
+          <label><input type="checkbox" id="mask-reversible" checked> Geri açılabilir etiketler ([TCKN_1] gibi)</label>
+          <label><input type="checkbox" id="mask-valid"> Yalnızca doğrulamadan geçen TC kimlik ve IBAN</label>
+        </div>
+      </fieldset>
+
+      <div>
+        <label class="field" for="mask-output">Maskelenmiş metin</label>
+        <textarea id="mask-output" rows="7" readonly spellcheck="false"></textarea>
+        <p class="tool-status" id="mask-status" role="status" aria-live="polite"></p>
+        <div class="btns">
+          <button type="button" class="btn btn--solid" id="mask-copy" data-goatcounter-click="mt-copy">Kopyala</button>
+          <button type="button" class="btn" id="mask-download" data-goatcounter-click="mt-download">İndir</button>
+          <label class="btn" data-goatcounter-click="mt-file"><input type="file" id="mask-file" class="visually-hidden" accept=".csv,.tsv,.txt,text/plain,text/csv">Dosya aç (CSV, TXT)</label>
+        </div>
+      </div>
+
+      <div class="tool-restore">
+        <h3 id="restore-title">Cevabı geri açın</h3>
+        <p>Yapay zekânın cevabını buraya yapıştırın. [TCKN_1] ya da [AD_1] gibi etiketler, bu sekmede maskelediğiniz değerlere döner. Eşleşme yalnızca bu sekmenin belleğinde durur; sayfayı yenileyince silinir.</p>
+        <label class="field" for="restore-input">Yapay zekânın cevabı</label>
+        <textarea id="restore-input" rows="5" spellcheck="false"></textarea>
+        <div class="btns">
+          <button type="button" class="btn btn--solid" id="restore-run" data-goatcounter-click="mt-restore">Geri aç</button>
+          <button type="button" class="btn" id="restore-copy">Kopyala</button>
+        </div>
+        <label class="field" for="restore-output">Geri açılmış metin</label>
+        <textarea id="restore-output" rows="5" readonly spellcheck="false"></textarea>
+        <p class="tool-status" id="restore-status" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" aria-labelledby="how-title">
+    <h2 id="how-title">Nasıl kullanılır</h2>
+    <ol>
+      <li>Metni yapıştırın ya da bir CSV veya TXT dosyası açın. Maskelenmiş metin siz yazdıkça yenilenir.</li>
+      <li>Kuralın bulamayacağı adları “Adlar ve kelimeler” kutusuna ekleyin: müşteri, çalışan ya da firma adları.</li>
+      <li>Maskelenmiş metni kopyalayıp yapay zekâ aracına gönderin. Göndermeden önce bir kez okuyun; listede olmayan bir ad ya da bir adres kalmış olabilir.</li>
+      <li>Cevabı “Cevabı geri açın” kutusuna yapıştırın. Etiketler gerçek değerlere döner.</li>
+    </ol>
+  </section>
+
+  <section id="excel" aria-labelledby="excel-title">
+    <h2 id="excel-title">Excel ile kullanım</h2>
+    <p>Excel’de hücreleri seçip kopyalayın ve Metin kutusuna yapıştırın. Hücreler sekmeyle, satırlar satır sonuyla gelir; araç ikisini de korur. Maskelenmiş metni kopyalayıp Excel’de bir hücreye yapıştırdığınızda tablo aynı düzende geri gelir.</p>
+    <p>CSV dosyasını doğrudan da açabilirsiniz. Türkçe Windows’ta kaydedilmiş eski CSV dosyalarındaki ş, ğ, ı gibi harfler de doğru okunur. İndirilen CSV, Excel Türkçe karakterleri tanısın diye UTF-8 BOM ile kaydedilir. XLSX dosyası açılmaz; Excel’de Farklı Kaydet ile CSV seçin.</p>
+  </section>
+
+  <section id="what" aria-labelledby="what-title">
+    <h2 id="what-title">Hangi verileri bulur?</h2>
+    <div class="table-scroll" role="region" aria-labelledby="what-caption" tabindex="0">
+      <table class="stack" role="table">
+        <caption id="what-caption">Araç kurallarla çalışır. Örneklerdeki kişi ve numaralar uydurmadır.</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col" class="col-s">Veri</th>
+            <th role="columnheader" scope="col">Nasıl bulunur</th>
+            <th role="columnheader" scope="col">Etiket</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th role="rowheader" scope="row">TC kimlik no</th>
+            <td role="cell" data-label="Nasıl bulunur">11 hane, ilk hane 0 değil. Algoritma kontrolü aşağıda. Örnek: <span class="mono">10000000146</span></td>
+            <td role="cell" class="mono" data-label="Etiket">[TCKN]</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row">IBAN</th>
+            <td role="cell" data-label="Nasıl bulunur">TR ve 24 hane, boşluklu ya da bitişik; mod 97 kontrolü. Yabancı IBAN yalnızca kontrolü geçerse maskelenir. Örnek: <span class="mono nowrap">TR33 0006 1005 1978 6457 8413 26</span></td>
+            <td role="cell" class="mono" data-label="Etiket">[IBAN]</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row">Telefon</th>
+            <td role="cell" data-label="Nasıl bulunur">+90, 0090 ya da 0 önekli 10 hane; parantez, boşluk, nokta ve tire olabilir. Öneksiz yazılmışsa yalnızca 5 ile başlayan cep numaraları. Örnek: <span class="mono nowrap">0532 111 22 33</span>, <span class="mono nowrap">(0212) 123 45 67</span></td>
+            <td role="cell" class="mono" data-label="Etiket">[TEL]</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row">E-posta</th>
+            <td role="cell" data-label="Nasıl bulunur">ad@alan.uzantı biçimi. Örnek: <span class="mono">ayse@example.com</span></td>
+            <td role="cell" class="mono" data-label="Etiket">[EMAIL]</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row">Kart numarası</th>
+            <td role="cell" data-label="Nasıl bulunur">13 ile 19 hane, yalnızca Luhn kontrolünü geçerse. Örnek: <span class="mono nowrap">4111 1111 1111 1111</span></td>
+            <td role="cell" class="mono" data-label="Etiket">[KART]</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row">Ad ve kelime</th>
+            <td role="cell" data-label="Nasıl bulunur">Sizin yazdığınız liste. Ekler korunur: “Ayşe Yılmaz’ın” → “[AD]’ın”.</td>
+            <td role="cell" class="mono" data-label="Etiket">[AD]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>[AD], [TCKN], [TEL] ve [EMAIL] etiketleri <a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri modelimdekilerle</a> aynıdır. Varsayılan olarak doğrulamadan geçmeyen 11 haneli sayılar ve TR IBAN’ları da maskelenir, çünkü yanlış yazılmış bir kimlik numarası da bir kişiyi gösterebilir. Sipariş numarası gibi sayılar yanlışlıkla maskeleniyorsa “Yalnızca doğrulamadan geçen” seçeneğini açın.</p>
+  </section>
+
+  <section id="tckn" aria-labelledby="tckn-title">
+    <h2 id="tckn-title">TC kimlik numarası nasıl doğrulanır?</h2>
+    <p>TC kimlik numarası 11 hanedir ve ilk hanesi 0 olamaz. Son iki hane, önceki hanelerden hesaplanır:</p>
+    <ol>
+      <li>1, 3, 5, 7 ve 9. hanelerin toplamı 7 ile çarpılır, 2, 4, 6 ve 8. hanelerin toplamı bundan çıkarılır. Sonucun 10’a bölümünden kalan 10. haneyi verir.</li>
+      <li>İlk 10 hanenin toplamının 10’a bölümünden kalan 11. haneyi verir.</li>
+    </ol>
+    <p>Örnek: <span class="mono">10000000146</span>. Tek sıradaki haneler 1 + 0 + 0 + 0 + 1 = 2, çift sıradakiler 0. 2 × 7 − 0 = 14, kalan 4: 10. hane 4. İlk on hanenin toplamı 6, kalan 6: 11. hane 6. Numara algoritmayı geçer. Algoritmayı geçmek numaranın gerçek bir kişiye ait olduğunu göstermez; yalnızca yazım hatasını yakalar.</p>
+    <p>IBAN için kontrol farklıdır: ilk dört karakter sona alınır, harfler sayıya çevrilir (A = 10, B = 11, …, Z = 35) ve çıkan sayının 97’ye bölümünden kalan 1 olmalıdır. Türkiye IBAN’ı 26 karakterdir: TR, iki kontrol hanesi, beş haneli banka kodu, bir rezerv hane ve 16 haneli hesap numarası.</p>
+  </section>
+
+  <section id="anonymous" aria-labelledby="anonymous-title">
+    <h2 id="anonymous-title">Maskeleme, takma ad ve anonimleştirme</h2>
+    <p>Bu üç kavram sık karıştırılır.</p>
+    <ul>
+      <li><strong>Maskeleme:</strong> değerin yerine bir etiket koymak. [TCKN] gibi düz bir etiketle değer metinden çıkar, ama metnin geri kalanı (olay, tarih, yer, unvan) kişiyi yine belli edebilir.</li>
+      <li><strong>Takma ad:</strong> değerin yerine, karşılığı bir yerde saklanan bir etiket koymak. Bu araçtaki geri açılabilir etiketler ([TCKN_1]) böyledir. Eşleşme sizde durduğu sürece veri bir kişiyle yeniden ilişkilendirilebilir.</li>
+      <li><strong>Anonimleştirme:</strong> KVKK’nın tanımıyla, kişisel verinin başka verilerle eşleştirilse bile kimliği belirli ya da belirlenebilir bir kişiyle hiçbir şekilde ilişkilendirilemeyecek hâle getirilmesi. Ne düz maskeleme ne takma ad kendiliğinden bu düzeye ulaşır.</li>
+    </ul>
+    <p>Bu araç dışarı gönderdiğiniz kişisel veriyi azaltır; bir işlemi kendi başına KVKK’ya uygun hâle getirmez. Bu sayfa hukuki tavsiye değildir; kararı hukuk ekibinizle birlikte verin. Hangi metnin maskelenip hangisinin içeride tutulacağına nasıl karar verileceğini <a href="/guides/personal-data/tr/">Kişisel veri ve yapay zekâ rehberi</a> anlatıyor.</p>
+  </section>
+
+  <section id="limits" aria-labelledby="limits-title">
+    <h2 id="limits-title">Sınırlar</h2>
+    <ul>
+      <li>Listede olmayan adları, adresleri, sağlık bilgisini, plaka ve doğum tarihini bulmaz. Serbest metindeki adlar ve adresler için <a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri maskeleme modelim</a> kullanılabilir: 53 etiketi var, CPU’da yerelde çalışır ve <a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">tarayıcıda denenebilir</a>.</li>
+      <li>10 haneli vergi kimlik numaralarını ayrıca tanımaz; 5 ile başlayan biri telefon olarak etiketlenebilir.</li>
+      <li>Bir metinde hangi kişisel veri kategorilerinin bulunduğunu bilmek isterseniz <a href="/models/turkish-kvkk-classifier/tr/">Türkçe KVKK sınıflandırıcısı</a> 24 kategoriyi işaretler.</li>
+      <li>Kurallar bilerek basit tutuldu. Maskelenmiş metni göndermeden önce okuyun.</li>
+    </ul>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Sorular</h2>
+
+    <details>
+      <summary>Metnim bir sunucuya gönderiliyor mu?</summary>
+      <p>Hayır. Maskeleme bu sayfadaki betikle tarayıcınızda yapılır ve betik hiçbir ağ isteği yapmaz. Sayfa ziyaretleri GoatCounter ile çerezsiz ve toplu sayılır; yazdığınız metin sayılmaz ve kaydedilmez.</p>
+    </details>
+    <details>
+      <summary>Metni ChatGPT’ye göndermek için bu yeterli mi?</summary>
+      <p>Numaralar ve listeye yazdığınız adlar için büyük ölçüde evet, metnin geri kalanı için hayır. Olayın kendisi, adres ya da unvan kişiyi yine belli edebilir. Kurumda kullanacaksanız hangi metinlerin hiç gönderilmeyeceğine önce karar verin.</p>
+    </details>
+    <details>
+      <summary>Geri açma nasıl çalışır?</summary>
+      <p>Geri açılabilir etiketler seçiliyken her farklı değer numaralı bir etiket alır; aynı telefon iki kez geçerse ikisi de [TEL_1] olur. Eşleşme tablosu yalnızca bu sekmenin belleğinde durur. Cevaptaki etiketler bu tabloyla gerçek değerlere çevrilir. Sayfayı yenilerseniz tablo silinir.</p>
+    </details>
+    <details>
+      <summary>Excel dosyasını doğrudan açabilir miyim?</summary>
+      <p>XLSX açılmaz, CSV açılır. Excel’de Farklı Kaydet ile CSV seçin ya da hücreleri kopyalayıp Metin kutusuna yapıştırın.</p>
+    </details>
+    <details>
+      <summary>Ücretli mi, kayıt gerekiyor mu?</summary>
+      <p>Hayır. Araç ücretsizdir ve hesap istemez.</p>
+    </details>
+  </section>
+
+  <section id="links" aria-labelledby="links-title">
+    <h2 id="links-title">Bağlantılar</h2>
+    <ul>
+      <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri maskeleme modeli</a>: serbest metindeki adlar ve adresler için</li>
+      <li><a href="/models/turkish-kvkk-classifier/tr/">Türkçe KVKK sınıflandırıcısı</a>: metinde hangi veri kategorileri var</li>
+      <li><a href="/guides/personal-data/tr/">Kişisel veri ve yapay zekâ</a>: ekipler için kısa, interaktif rehber</li>
+      <li><a href="/models/tr/">Tüm modeller</a></li>
+    </ul>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, İstanbul</p>
+    <ul class="links">
+      <li><a href="/masking-tool/tr/" aria-current="page">Kişisel veri maskeleme aracı</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Kaynak</a></li>
+    </ul>
+    <p class="small">Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/masking-tool.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

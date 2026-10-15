@@ -56,6 +56,12 @@ const CARDS = {
     title: 'Turkish prompt injection classifier',
     line: 'Flags injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, under 2% false alarms.',
   },
+  'masking-tool': {
+    kicker: 'Free tool · runs in your browser',
+    title: 'Turkish PII masking tool',
+    line: 'Mask national ID numbers, IBANs, phone numbers and emails before text goes to an AI tool.',
+    mono: 'müşteri [AD_1] tc [TCKN_1] tel [TEL_1] iban [IBAN_1]',
+  },
   repos: {
     kicker: 'Open source · MIT',
     title: 'Tools for coding agents',

@@ -580,3 +580,31 @@ a.card:hover, .card:has(> .card-title a:hover) { transform: translateY(-3px); bo
 .gcard .btns { flex-wrap: nowrap; gap: .375rem; }
 .gcard .btns .btn { margin-top: 0; padding-inline: .8rem; font-size: var(--tiny); white-space: nowrap; }
 @media (min-width: 48rem) { .gcards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* 21. Masking tool (/masking-tool/): two text areas, options, restore */
+.prose section > .tool { max-width: none; }
+.tool { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--shadow); }
+.tool > * + * { margin-top: 1.5rem; }
+.tool fieldset { margin-inline: 0; margin-bottom: 0; padding: 0; border: 0; min-width: 0; }
+.tool .field, .tool legend { display: block; margin-bottom: .375rem; padding: 0; font-size: var(--small); font-weight: 600; }
+.tool textarea, .tool input[type="text"] {
+  display: block; width: 100%; padding: .625rem .75rem; border: 1px solid var(--rule); border-radius: 8px;
+  background: var(--bg); color: inherit;
+}
+.tool textarea { min-height: 9rem; font: var(--tiny)/1.6 var(--mono); resize: vertical; tab-size: 4; }
+.tool input[type="text"] { min-height: 2.75rem; font: inherit; font-size: var(--small); }
+.tool textarea[readonly] { border-color: var(--line); background: var(--surface); }
+.tool :is(textarea, input[type="text"]):focus-visible { outline-offset: 1px; border-color: var(--accent); }
+.tool .small { margin-top: .375rem; }
+.checks { display: flex; flex-wrap: wrap; gap: .125rem 1.25rem; font-size: var(--small); }
+.checks label { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.25rem; cursor: pointer; }
+.checks input { width: 1.0625rem; height: 1.0625rem; margin: 0; accent-color: var(--accent); }
+.tool .btns { margin-top: .75rem; }
+.tool button.btn { font-family: inherit; cursor: pointer; }
+.tool label.btn { cursor: pointer; }
+.tool label.btn:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+.tool-status { min-height: 1.5em; margin-top: .5rem; font-size: var(--small); line-height: 1.5; color: var(--muted); }
+.tool-restore { padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.tool-restore > * + * { margin-top: .75rem; }
+.tool-restore > p { max-width: var(--measure); font-size: var(--small); color: var(--muted); }
+@media (min-width: 48rem) { .tool { padding: 1.5rem; } }
