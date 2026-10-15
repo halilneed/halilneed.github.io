@@ -64,7 +64,7 @@ const CARDS = {
   guides: {
     kicker: 'Guides · PDF and interactive · English and Turkish',
     title: 'AI models for business units',
-    line: 'A first model in seven steps, which model for which process, and personal data. Sent by email.',
+    line: 'A first model, which model for which process, and personal data. Free PDFs on Gumroad.',
   },
   'agent-blackbox': {
     kicker: 'Claude Code plugin · MIT',

@@ -19,7 +19,7 @@
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..', '..');
@@ -34,9 +34,9 @@ const json = (...p) => JSON.parse(read(...p));
 
 /* Gated guides (a gate.json in the guide's folder) are published with their first
    steps only: the later sections, their script blocks (between the @locked and
-   @end marker comments) and their data keys never reach the public page. A lock panel with an
-   email form takes their place. `--full` builds the complete guide into private/
-   (git-ignored) instead, for sending by email. */
+   @end marker comments) and their data keys never reach the public page. A lock panel with a
+   link to the guide's Gumroad page (gate.json "gumroad") takes their place. `--full` builds
+   the complete guide into private/ (git-ignored) instead; its PDFs are the Gumroad files. */
 export const FULL = process.argv.includes('--full');
 export const OUT = FULL ? join(ROOT, 'private') : ROOT;
 export const gateOf = (slug) => (existsSync(join(HERE, slug, 'gate.json')) ? json(slug, 'gate.json') : null);
@@ -96,6 +96,8 @@ function build(slug) {
       c.tabIcon3 = 'lock'; c.tabIcon4 = 'lock';
       c.pdfBtn = s.previewPdfBtn;
       c.lockMailHref = mailto(s.mailSubject.replace('{name}', g.name), s.mailBody.replace('{name}', g.name));
+      c.gumroad = gate.gumroad;
+      c.gumroadShort = gate.gumroad.replace('https://', '');
     }
     const js = { ...s.js, ...g.js };
     if (gate) for (const k of gate.js) delete js[k];
@@ -155,7 +157,7 @@ function build(slug) {
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {  /* Windows'ta da çalışsın */
   const only = process.argv.slice(2).find((a) => !a.startsWith('--'));
   for (const slug of only ? [only] : GUIDES) build(slug);
 }

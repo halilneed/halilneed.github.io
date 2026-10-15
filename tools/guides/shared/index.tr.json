@@ -27,11 +27,11 @@
   ],
   "crumbAria": "Konum",
   "h1": "Rehberler",
-  "lead": "Yapay zekâyı kendi süreçlerine yerleştirmek isteyen iş birimleri için dört kısa rehber. Her biri adım adım ilerleyen interaktif bir sayfa ve PDF; Türkçe ve İngilizce. İlk adım tamamen açık. Diğer üç rehberin ilk iki adımını burada deneyin, tamamını e-postayla isteyin.",
+  "lead": "Yapay zekâyı kendi süreçlerine yerleştirmek isteyen iş birimleri için dört kısa rehber. Her biri adım adım ilerleyen interaktif bir sayfa ve PDF; Türkçe ve İngilizce. İlk adım tamamen açık. Diğer üç rehberin ilk iki adımını burada deneyin; tamamı Gumroad’da ücretsiz PDF.",
   "startBtn": "İlk adımla başlayın",
   "startH": "Buradan başlayın",
   "guidesH": "Rehberler",
-  "guidesLead": "Her rehber dört adım. İlk iki adım burada açık: bir şey seçer, değiştirir ya da eklersiniz ve sonucu hemen görürsünüz. Adım 3 ve 4 ile tam PDF’i e-postayla ücretsiz gönderiyorum.",
+  "guidesLead": "Her rehber dört adım. İlk iki adım burada açık: bir şey seçer, değiştirir ya da eklersiniz ve sonucu hemen görürsünüz. Adım 3 ve 4 ile tam PDF Gumroad’da, ücretsiz.",
   "guideN": "Rehber {n}",
   "steps": "4 adım",
   "pages": "PDF, {n} sayfa",
@@ -66,7 +66,7 @@
   "home": "/tr/",
   "switchAria": "Dil",
   "gatedSteps": "2 adım açık",
-  "gatedRest": "tamamı ve PDF e-postayla",
+  "gatedRest": "tam PDF Gumroad’da",
   "previewBtn": "PDF önizleme",
-  "fullBtn": "Tamamını iste"
+  "fullBtn": "Tamamını al"
 }

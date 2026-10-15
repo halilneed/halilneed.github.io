@@ -407,7 +407,7 @@ footer a{color:var(--ink-2)}
 .cap{text-align:center;margin-top:18px;font-size:.9rem;color:var(--muted);max-width:52ch;margin-left:auto;margin-right:auto}
 .cap a{color:var(--ink-2)}
 
-/* lock panel: steps sent by email */
+/* lock panel: the full guide is on Gumroad */
 .lock{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:40px 28px;background:linear-gradient(180deg,color-mix(in srgb,var(--hl) 14%,var(--surface)),var(--surface) 55%)}
 .lock-ic{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem;background:var(--hl);color:var(--hl-ink)}
 .lock h3{font-size:clamp(1.3rem,3.6vw,1.6rem);font-weight:700;letter-spacing:-.02em}
@@ -415,15 +415,12 @@ footer a{color:var(--ink-2)}
 .lock-list{list-style:none;margin:4px 0 6px;padding:0;display:grid;gap:8px;text-align:left}
 .lock-list li{display:flex;align-items:center;gap:10px;font-weight:500;font-size:.95rem}
 .lock-list svg{color:var(--ok)}
-.lock-form{display:flex;gap:8px;width:100%;max-width:460px;padding:6px;border-radius:999px;background:var(--surface);border:1px solid var(--line-strong);box-shadow:var(--shadow-sm)}
-.lock-form input[type=email]{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:.95rem;padding:0 14px;color:var(--ink);outline:none}
-.lock-form .btn{height:42px;padding:0 18px;white-space:nowrap}
-.lock-form:focus-within{border-color:var(--focus)}
+.lock-btn{white-space:nowrap}
 .lock .fine{margin-top:0;max-width:52ch;display:block}
 .lock .fine a{color:var(--ink-2)}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .seg button svg use[href="#i-lock"]{opacity:.8}
-@media (max-width:520px){.lock{padding:30px 16px}.lock-form{flex-direction:column;border-radius:16px}.lock-form input[type=email]{height:42px}}
+@media (max-width:520px){.lock{padding:30px 16px}}
 
 /* language switch, top right: TR | EN */
 .top .wrap{gap:12px}
@@ -457,7 +454,7 @@ footer a{color:var(--ink-2)}
   html{font-size:14px}
   body{background:#fff}
   .print-only{display:block}
-  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.lock-form,.lock .fine,section.step:has(.lock.dup),.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
+  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.lock-btn,.lock .fine,section.step:has(.lock.dup),.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
   section.step,section.step[hidden]{display:block!important;padding:0 0 6mm;break-before:page}
   .hero{min-height:235mm;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0}
   .hero p{max-width:46ch}
@@ -615,22 +612,15 @@ footer a{color:var(--ink-2)}
   <div class="panel lock">
     <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
     <h3>Adım 3 ve 4 tam rehberde</h3>
-    <p class="lock-p">Tam rehberi, interaktif sayfa ve PDF olarak e-postayla ücretsiz gönderiyorum.</p>
+    <p class="lock-p">Tam rehber Gumroad’da, Türkçe ve İngilizce PDF olarak. Ücretsiz; isterseniz istediğiniz kadar ödeyebilirsiniz.</p>
     <ul class="lock-list">
       <li><svg class="i"><use href="#i-check"/></svg>Adım 3 / 4: Hangi seviyeden başlamalı?</li>
       <li><svg class="i"><use href="#i-check"/></svg>Adım 4 / 4: Önce gölge, sonra yardımcı</li>
-      <li><svg class="i"><use href="#i-check"/></svg>Tam rehberin PDF’i</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Tam rehberin PDF’i, Türkçe ve İngilizce</li>
     </ul>
-    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="first-model-request-form-tr">
-      <label class="visually-hidden" for="lock-email-3">E-posta adresi</label>
-      <input id="lock-email-3" type="email" name="email" required autocomplete="email" placeholder="siz@ornek.com">
-      <input type="hidden" name="tag" value="guide-first-model">
-      <input type="hidden" name="tag" value="lang-tr">
-      <input type="hidden" name="embed" value="1">
-      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Tam rehberi gönder</button>
-    </form>
-    <p class="fine">Adresiniz yalnızca rehberi göndermek ve yeni rehberleri haber vermek için kullanılır; istediğiniz an ayrılabilirsiniz. Form yerine e-posta da yazabilirsiniz: <a href="mailto:halil@halilneed.agency?subject=Rehber%20iste%C4%9Fi%3A%20Bir%20i%C5%9F%20biriminin%20ilk%20yapay%20zek%C3%A2%20modeli&amp;body=Merhaba%20Halil%2C%0A%0A%E2%80%9CBir%20i%C5%9F%20biriminin%20ilk%20yapay%20zek%C3%A2%20modeli%E2%80%9D%20rehberinin%20tamam%C4%B1n%C4%B1%20g%C3%B6nderir%20misiniz%3F%0A%0AEkibim%20ve%20tak%C4%B1ld%C4%B1%C4%9F%C4%B1m%C4%B1z%20yer%20(iste%C4%9Fe%20ba%C4%9Fl%C4%B1)%3A%0A" data-goatcounter-click="first-model-request-mail-tr">halil@halilneed.agency</a></p>
-    <p class="print-only print-url">Adım 3 ve 4 ile tam PDF e-postayla gönderilir. İstemek için: <b>halilneed.agency/guides/first-model/tr/#step-3</b></p>
+    <a class="btn lock-btn" href="https://halilneed.gumroad.com/l/ilk-model" target="_blank" rel="noopener" data-goatcounter-click="first-model-gumroad-tr"><svg class="i"><use href="#i-download"/></svg>Tam rehberi al</a>
+    <p class="fine">Gumroad, PDF’i göndermek için e-posta adresinizi ister. Gumroad kullanmak istemezseniz bana yazın: <a href="mailto:halil@halilneed.agency?subject=Rehber%20iste%C4%9Fi%3A%20Bir%20i%C5%9F%20biriminin%20ilk%20yapay%20zek%C3%A2%20modeli&amp;body=Merhaba%20Halil%2C%0A%0A%E2%80%9CBir%20i%C5%9F%20biriminin%20ilk%20yapay%20zek%C3%A2%20modeli%E2%80%9D%20rehberinin%20tamam%C4%B1n%C4%B1%20g%C3%B6nderir%20misiniz%3F%0A%0AEkibim%20ve%20tak%C4%B1ld%C4%B1%C4%9F%C4%B1m%C4%B1z%20yer%20(iste%C4%9Fe%20ba%C4%9Fl%C4%B1)%3A%0A" data-goatcounter-click="first-model-request-mail-tr">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Adım 3 ve 4 ile tam PDF ücretsiz. Almak için: <b>halilneed.gumroad.com/l/ilk-model</b></p>
   </div>
 
   <div class="pager"><button class="btn ghost" data-go="2"><svg class="i"><use href="#i-back"/></svg>Geri</button><button class="btn" data-go="4">Devam et<svg class="i"><use href="#i-arrow"/></svg></button></div>
@@ -646,22 +636,15 @@ footer a{color:var(--ink-2)}
   <div class="panel lock dup">
     <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
     <h3>Adım 3 ve 4 tam rehberde</h3>
-    <p class="lock-p">Tam rehberi, interaktif sayfa ve PDF olarak e-postayla ücretsiz gönderiyorum.</p>
+    <p class="lock-p">Tam rehber Gumroad’da, Türkçe ve İngilizce PDF olarak. Ücretsiz; isterseniz istediğiniz kadar ödeyebilirsiniz.</p>
     <ul class="lock-list">
       <li><svg class="i"><use href="#i-check"/></svg>Adım 3 / 4: Hangi seviyeden başlamalı?</li>
       <li><svg class="i"><use href="#i-check"/></svg>Adım 4 / 4: Önce gölge, sonra yardımcı</li>
-      <li><svg class="i"><use href="#i-check"/></svg>Tam rehberin PDF’i</li>
+      <li><svg class="i"><use href="#i-check"/></svg>Tam rehberin PDF’i, Türkçe ve İngilizce</li>
     </ul>
-    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="first-model-request-form-tr">
-      <label class="visually-hidden" for="lock-email-4">E-posta adresi</label>
-      <input id="lock-email-4" type="email" name="email" required autocomplete="email" placeholder="siz@ornek.com">
-      <input type="hidden" name="tag" value="guide-first-model">
-      <input type="hidden" name="tag" value="lang-tr">
-      <input type="hidden" name="embed" value="1">
-      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Tam rehberi gönder</button>
-    </form>
-    <p class="fine">Adresiniz yalnızca rehberi göndermek ve yeni rehberleri haber vermek için kullanılır; istediğiniz an ayrılabilirsiniz. Form yerine e-posta da yazabilirsiniz: <a href="mailto:halil@halilneed.agency?subject=Rehber%20iste%C4%9Fi%3A%20Bir%20i%C5%9F%20biriminin%20ilk%20yapay%20zek%C3%A2%20modeli&amp;body=Merhaba%20Halil%2C%0A%0A%E2%80%9CBir%20i%C5%9F%20biriminin%20ilk%20yapay%20zek%C3%A2%20modeli%E2%80%9D%20rehberinin%20tamam%C4%B1n%C4%B1%20g%C3%B6nderir%20misiniz%3F%0A%0AEkibim%20ve%20tak%C4%B1ld%C4%B1%C4%9F%C4%B1m%C4%B1z%20yer%20(iste%C4%9Fe%20ba%C4%9Fl%C4%B1)%3A%0A" data-goatcounter-click="first-model-request-mail-tr">halil@halilneed.agency</a></p>
-    <p class="print-only print-url">Adım 3 ve 4 ile tam PDF e-postayla gönderilir. İstemek için: <b>halilneed.agency/guides/first-model/tr/#step-3</b></p>
+    <a class="btn lock-btn" href="https://halilneed.gumroad.com/l/ilk-model" target="_blank" rel="noopener" data-goatcounter-click="first-model-gumroad-tr"><svg class="i"><use href="#i-download"/></svg>Tam rehberi al</a>
+    <p class="fine">Gumroad, PDF’i göndermek için e-posta adresinizi ister. Gumroad kullanmak istemezseniz bana yazın: <a href="mailto:halil@halilneed.agency?subject=Rehber%20iste%C4%9Fi%3A%20Bir%20i%C5%9F%20biriminin%20ilk%20yapay%20zek%C3%A2%20modeli&amp;body=Merhaba%20Halil%2C%0A%0A%E2%80%9CBir%20i%C5%9F%20biriminin%20ilk%20yapay%20zek%C3%A2%20modeli%E2%80%9D%20rehberinin%20tamam%C4%B1n%C4%B1%20g%C3%B6nderir%20misiniz%3F%0A%0AEkibim%20ve%20tak%C4%B1ld%C4%B1%C4%9F%C4%B1m%C4%B1z%20yer%20(iste%C4%9Fe%20ba%C4%9Fl%C4%B1)%3A%0A" data-goatcounter-click="first-model-request-mail-tr">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Adım 3 ve 4 ile tam PDF ücretsiz. Almak için: <b>halilneed.gumroad.com/l/ilk-model</b></p>
   </div>
   <div class="cta">
     <h3>Sıradaki: hangi süreçte hangi model</h3>
