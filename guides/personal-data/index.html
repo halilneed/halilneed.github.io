@@ -407,7 +407,7 @@ footer a{color:var(--ink-2)}
 .cap{text-align:center;margin-top:18px;font-size:.9rem;color:var(--muted);max-width:52ch;margin-left:auto;margin-right:auto}
 .cap a{color:var(--ink-2)}
 
-/* lock panel: steps sent by email */
+/* lock panel: the full guide is on Gumroad */
 .lock{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:40px 28px;background:linear-gradient(180deg,color-mix(in srgb,var(--hl) 14%,var(--surface)),var(--surface) 55%)}
 .lock-ic{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem;background:var(--hl);color:var(--hl-ink)}
 .lock h3{font-size:clamp(1.3rem,3.6vw,1.6rem);font-weight:700;letter-spacing:-.02em}
@@ -415,15 +415,12 @@ footer a{color:var(--ink-2)}
 .lock-list{list-style:none;margin:4px 0 6px;padding:0;display:grid;gap:8px;text-align:left}
 .lock-list li{display:flex;align-items:center;gap:10px;font-weight:500;font-size:.95rem}
 .lock-list svg{color:var(--ok)}
-.lock-form{display:flex;gap:8px;width:100%;max-width:460px;padding:6px;border-radius:999px;background:var(--surface);border:1px solid var(--line-strong);box-shadow:var(--shadow-sm)}
-.lock-form input[type=email]{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:.95rem;padding:0 14px;color:var(--ink);outline:none}
-.lock-form .btn{height:42px;padding:0 18px;white-space:nowrap}
-.lock-form:focus-within{border-color:var(--focus)}
+.lock-btn{white-space:nowrap}
 .lock .fine{margin-top:0;max-width:52ch;display:block}
 .lock .fine a{color:var(--ink-2)}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .seg button svg use[href="#i-lock"]{opacity:.8}
-@media (max-width:520px){.lock{padding:30px 16px}.lock-form{flex-direction:column;border-radius:16px}.lock-form input[type=email]{height:42px}}
+@media (max-width:520px){.lock{padding:30px 16px}}
 
 /* language switch, top right: TR | EN */
 .top .wrap{gap:12px}
@@ -457,7 +454,7 @@ footer a{color:var(--ink-2)}
   html{font-size:14px}
   body{background:#fff}
   .print-only{display:block}
-  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.lock-form,.lock .fine,section.step:has(.lock.dup),.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
+  .stepbar,.pager,.ctrl,.try,#ownResult,.share,.restart,.cursor,.tally,.top nav,.lang-switch,.lock-btn,.lock .fine,section.step:has(.lock.dup),.pdf-row,.fine:not(.legal),.cta .btn{display:none!important}
   section.step,section.step[hidden]{display:block!important;padding:0 0 6mm;break-before:page}
   .hero{min-height:235mm;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0}
   .hero p{max-width:46ch}
@@ -614,22 +611,15 @@ footer a{color:var(--ink-2)}
   <div class="panel lock">
     <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
     <h3>Steps 3 and 4 are in the full guide</h3>
-    <p class="lock-p">I send the full guide by email, as an interactive page and a PDF. It is free.</p>
+    <p class="lock-p">The full guide is on Gumroad as a PDF in English and Turkish. It is free; pay what you want if you like.</p>
     <ul class="lock-list">
       <li><svg class="i"><use href="#i-check"/></svg>Step 3 of 4: What a recall figure means per day</li>
       <li><svg class="i"><use href="#i-check"/></svg>Step 4 of 4: The safe flow</li>
-      <li><svg class="i"><use href="#i-check"/></svg>The full guide as a PDF</li>
+      <li><svg class="i"><use href="#i-check"/></svg>The full guide as a PDF, English and Turkish</li>
     </ul>
-    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="personal-data-request-form-en">
-      <label class="visually-hidden" for="lock-email-3">Email address</label>
-      <input id="lock-email-3" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
-      <input type="hidden" name="tag" value="guide-personal-data">
-      <input type="hidden" name="tag" value="lang-en">
-      <input type="hidden" name="embed" value="1">
-      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Send me the full guide</button>
-    </form>
-    <p class="fine">Your address is used only to send the guide and to tell you about new ones; you can unsubscribe at any time. You can also write instead of using the form: <a href="mailto:halil@halilneed.agency?subject=Guide%20request%3A%20Personal%20data%20and%20AI&amp;body=Hello%20Halil%2C%0A%0APlease%20send%20me%20the%20full%20guide%20%E2%80%9CPersonal%20data%20and%20AI%E2%80%9D.%0A%0AMy%20team%20and%20where%20it%20gets%20stuck%20(optional)%3A%0A" data-goatcounter-click="personal-data-request-mail-en">halil@halilneed.agency</a></p>
-    <p class="print-only print-url">Steps 3 and 4 and the full PDF are sent by email. To ask for them: <b>halilneed.agency/guides/personal-data/#step-3</b></p>
+    <a class="btn lock-btn" href="https://halilneed.gumroad.com/l/kisisel-veri" target="_blank" rel="noopener" data-goatcounter-click="personal-data-gumroad-en"><svg class="i"><use href="#i-download"/></svg>Get the full guide</a>
+    <p class="fine">Gumroad asks for your email address to send the PDF. If you would rather not use Gumroad, write to me: <a href="mailto:halil@halilneed.agency?subject=Guide%20request%3A%20Personal%20data%20and%20AI&amp;body=Hello%20Halil%2C%0A%0APlease%20send%20me%20the%20full%20guide%20%E2%80%9CPersonal%20data%20and%20AI%E2%80%9D.%0A%0AMy%20team%20and%20where%20it%20gets%20stuck%20(optional)%3A%0A" data-goatcounter-click="personal-data-request-mail-en">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Steps 3 and 4 and the full PDF are free. To get them: <b>halilneed.gumroad.com/l/kisisel-veri</b></p>
   </div>
 
   <div class="pager"><button class="btn ghost" data-go="2"><svg class="i"><use href="#i-back"/></svg>Back</button><button class="btn" data-go="4">Continue<svg class="i"><use href="#i-arrow"/></svg></button></div>
@@ -645,22 +635,15 @@ footer a{color:var(--ink-2)}
   <div class="panel lock dup">
     <div class="lock-ic"><svg class="i"><use href="#i-lock"/></svg></div>
     <h3>Steps 3 and 4 are in the full guide</h3>
-    <p class="lock-p">I send the full guide by email, as an interactive page and a PDF. It is free.</p>
+    <p class="lock-p">The full guide is on Gumroad as a PDF in English and Turkish. It is free; pay what you want if you like.</p>
     <ul class="lock-list">
       <li><svg class="i"><use href="#i-check"/></svg>Step 3 of 4: What a recall figure means per day</li>
       <li><svg class="i"><use href="#i-check"/></svg>Step 4 of 4: The safe flow</li>
-      <li><svg class="i"><use href="#i-check"/></svg>The full guide as a PDF</li>
+      <li><svg class="i"><use href="#i-check"/></svg>The full guide as a PDF, English and Turkish</li>
     </ul>
-    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="personal-data-request-form-en">
-      <label class="visually-hidden" for="lock-email-4">Email address</label>
-      <input id="lock-email-4" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
-      <input type="hidden" name="tag" value="guide-personal-data">
-      <input type="hidden" name="tag" value="lang-en">
-      <input type="hidden" name="embed" value="1">
-      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>Send me the full guide</button>
-    </form>
-    <p class="fine">Your address is used only to send the guide and to tell you about new ones; you can unsubscribe at any time. You can also write instead of using the form: <a href="mailto:halil@halilneed.agency?subject=Guide%20request%3A%20Personal%20data%20and%20AI&amp;body=Hello%20Halil%2C%0A%0APlease%20send%20me%20the%20full%20guide%20%E2%80%9CPersonal%20data%20and%20AI%E2%80%9D.%0A%0AMy%20team%20and%20where%20it%20gets%20stuck%20(optional)%3A%0A" data-goatcounter-click="personal-data-request-mail-en">halil@halilneed.agency</a></p>
-    <p class="print-only print-url">Steps 3 and 4 and the full PDF are sent by email. To ask for them: <b>halilneed.agency/guides/personal-data/#step-3</b></p>
+    <a class="btn lock-btn" href="https://halilneed.gumroad.com/l/kisisel-veri" target="_blank" rel="noopener" data-goatcounter-click="personal-data-gumroad-en"><svg class="i"><use href="#i-download"/></svg>Get the full guide</a>
+    <p class="fine">Gumroad asks for your email address to send the PDF. If you would rather not use Gumroad, write to me: <a href="mailto:halil@halilneed.agency?subject=Guide%20request%3A%20Personal%20data%20and%20AI&amp;body=Hello%20Halil%2C%0A%0APlease%20send%20me%20the%20full%20guide%20%E2%80%9CPersonal%20data%20and%20AI%E2%80%9D.%0A%0AMy%20team%20and%20where%20it%20gets%20stuck%20(optional)%3A%0A" data-goatcounter-click="personal-data-request-mail-en">halil@halilneed.agency</a></p>
+    <p class="print-only print-url">Steps 3 and 4 and the full PDF are free. To get them: <b>halilneed.gumroad.com/l/kisisel-veri</b></p>
   </div>
   <div class="cta">
     <h3>All four guides</h3>

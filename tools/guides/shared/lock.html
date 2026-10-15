@@ -14,16 +14,9 @@
       <li><svg class="i"><use href="#i-check"/></svg>{{kicker:4}}: {{s4h}}</li>
       <li><svg class="i"><use href="#i-check"/></svg>{{lockPdf}}</li>
     </ul>
-    <form class="lock-form" action="https://buttondown.com/api/emails/embed-subscribe/hailneed" method="post" target="_blank" data-goatcounter-click="{{slug}}-request-form-{{lang}}">
-      <label class="visually-hidden" for="lock-email-@N@">{{emailLbl}}</label>
-      <input id="lock-email-@N@" type="email" name="email" required autocomplete="email" placeholder="{{placeholder}}">
-      <input type="hidden" name="tag" value="guide-{{slug}}">
-      <input type="hidden" name="tag" value="lang-{{lang}}">
-      <input type="hidden" name="embed" value="1">
-      <button class="btn" type="submit"><svg class="i"><use href="#i-mail"/></svg>{{lockBtn}}</button>
-    </form>
+    <a class="btn lock-btn" href="{{gumroad}}" target="_blank" rel="noopener" data-goatcounter-click="{{slug}}-gumroad-{{lang}}"><svg class="i"><use href="#i-download"/></svg>{{lockBtn}}</a>
     <p class="fine">{{lockSmall}} <a href="{{lockMailHref}}" data-goatcounter-click="{{slug}}-request-mail-{{lang}}">halil@halilneed.agency</a></p>
-    <p class="print-only print-url">{{lockPrint}} <b>{{urlShort}}#step-3</b></p>
+    <p class="print-only print-url">{{lockPrint}} <b>{{gumroadShort}}</b></p>
   </div>
 @END@
   <div class="pager"><button class="btn ghost" data-go="@PREV@"><svg class="i"><use href="#i-back"/></svg>{{back}}</button>@NEXT@</div>
