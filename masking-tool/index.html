@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turkish PII masking tool: TCKN, IBAN, phone, email | halilneed</title>
+<meta name="description" content="Mask Turkish national ID numbers, IBANs, phone numbers, emails and card numbers in your browser before text goes to an AI tool. Nothing leaves your device.">
+<link rel="canonical" href="https://halilneed.agency/masking-tool/">
+<link rel="alternate" hreflang="en" href="https://halilneed.agency/masking-tool/">
+<link rel="alternate" hreflang="tr" href="https://halilneed.agency/masking-tool/tr/">
+<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/masking-tool/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:title" content="Turkish PII masking tool: TCKN, IBAN, phone, email | halilneed">
+<meta property="og:description" content="Mask Turkish national ID numbers, IBANs, phone numbers, emails and card numbers in your browser before text goes to an AI tool. Nothing leaves your device.">
+<meta property="og:url" content="https://halilneed.agency/masking-tool/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-masking-tool.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Turkish PII masking tool: TCKN, IBAN, phone, email | halilneed">
+<meta name="twitter:description" content="Mask Turkish national ID numbers, IBANs, phone numbers, emails and card numbers in your browser before text goes to an AI tool. Nothing leaves your device.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-masking-tool.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Turkish PII masking tool",
+          "item": "https://halilneed.agency/masking-tool/"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://halilneed.agency/masking-tool/#app",
+      "name": "Turkish PII masking tool",
+      "description": "Browser tool that masks Turkish national ID numbers (TCKN), IBANs, phone numbers, emails, card numbers and listed names before text is sent to an AI tool, with reversible labels. Runs locally; the text is not sent to a server.",
+      "url": "https://halilneed.agency/masking-tool/",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Any (web browser)",
+      "browserRequirements": "Requires JavaScript",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "featureList": [
+        "TCKN checksum validation",
+        "IBAN mod 97 validation",
+        "Luhn check for card numbers",
+        "Turkish phone number formats",
+        "Custom name list with Turkish case folding",
+        "Reversible labels and restore",
+        "CSV and pasted Excel cells"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "datePublished": "2026-10-15",
+      "dateModified": "2026-10-15",
+      "image": "https://halilneed.agency/assets/img/og-masking-tool.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/masking-tool/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is my text sent to a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Masking is done in your browser by the script on this page, and the script makes no network requests. Page visits are counted in aggregate with GoatCounter, without cookies; the text you type is neither counted nor stored."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this enough before I send text to ChatGPT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mostly yes for numbers and the names on your list, no for the rest of the text. The event itself, an address or a job title can still identify a person. If your organisation uses it, decide first which texts should never be sent at all."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does restoring work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With reversible labels on, each distinct value gets a numbered label; the same phone number appearing twice becomes [TEL_1] both times. The mapping lives only in this tab’s memory. Labels in the answer are replaced with the real values from it. Reloading the page deletes the mapping."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I open an Excel file directly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "XLSX does not open; CSV does. In Excel, use Save As and choose CSV, or copy the cells and paste them into the Text box."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it cost anything or need an account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The tool is free and needs no account."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="site-name" href="/">halilneed</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/models/">Models</a></li>
+      <li><a href="/repos/">Tools</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/writing/">Writing</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Language"><a href="/masking-tool/tr/" hreflang="tr" lang="tr">TR</a><a href="/masking-tool/" hreflang="en" lang="en" aria-current="true">EN</a></div>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">halilneed</a></li>
+    <li aria-current="page">Turkish PII masking tool</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>Turkish PII masking tool</h1>
+    <p class="lead">Before you send text to ChatGPT or another AI tool, mask Turkish national ID numbers (TCKN), IBANs, phone numbers, emails and card numbers here. Masking runs in your browser; the text is not sent anywhere from this page. When the answer comes back, you can turn the labels back into the real values.</p>
+
+    <dl class="kv">
+      <div><dt>Runs in</dt><dd>Your browser. The text never reaches a server.</dd></div>
+      <div><dt>Finds</dt><dd>TCKN, IBAN, phone, email, card number and the names you list</dd></div>
+      <div><dt>Validation</dt><dd>TCKN checksum, mod 97 for IBAN, Luhn for cards</dd></div>
+      <div><dt>Files</dt><dd>CSV, TSV, TXT. You can also paste cells from Excel.</dd></div>
+      <div><dt>Price</dt><dd>Free, no sign-up</dd></div>
+    </dl>
+
+    <nav class="toc" aria-label="On this page">
+      <ul>
+        <li><a href="#tool">Tool</a></li>
+        <li><a href="#how">How to use it</a></li>
+        <li><a href="#excel">With Excel</a></li>
+        <li><a href="#what">What it finds</a></li>
+        <li><a href="#tckn">TCKN checksum</a></li>
+        <li><a href="#anonymous">Masking and anonymisation</a></li>
+        <li><a href="#limits">Limits</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="tool" aria-labelledby="tool-title">
+    <h2 id="tool-title">Mask your text</h2>
+    <noscript><p class="note">The tool needs JavaScript. Without it, the explanations below still read in full.</p></noscript>
+
+    <div class="tool" id="masker">
+      <div>
+        <label class="field" for="mask-input">Text</label>
+        <textarea id="mask-input" rows="7" spellcheck="false">Customer Ayşe Yılmaz (TCKN 10000000146) called from 0532 111 22 33. Refund to TR33 0006 1005 1978 6457 8413 26, email ayse.yilmaz@example.com. How should we reply?</textarea>
+      </div>
+
+      <fieldset>
+        <legend>What to mask</legend>
+        <div class="checks">
+          <label><input type="checkbox" name="type" value="tckn" checked> National ID (TCKN)</label>
+          <label><input type="checkbox" name="type" value="iban" checked> IBAN</label>
+          <label><input type="checkbox" name="type" value="phone" checked> Phone</label>
+          <label><input type="checkbox" name="type" value="email" checked> Email</label>
+          <label><input type="checkbox" name="type" value="card" checked> Card number</label>
+        </div>
+      </fieldset>
+
+      <div>
+        <label class="field" for="mask-names">Names and words</label>
+        <input type="text" id="mask-names" value="Ayşe Yılmaz" autocomplete="off" spellcheck="false" aria-describedby="mask-names-hint">
+        <p class="small" id="mask-names-hint">Separate with commas. Rules cannot find names; what you type here becomes [AD]. Case and the Turkish i, ı, İ, I are ignored.</p>
+      </div>
+
+      <fieldset>
+        <legend>Options</legend>
+        <div class="checks">
+          <label><input type="checkbox" id="mask-reversible" checked> Reversible labels (such as [TCKN_1])</label>
+          <label><input type="checkbox" id="mask-valid"> Only TCKNs and IBANs that pass validation</label>
+        </div>
+      </fieldset>
+
+      <div>
+        <label class="field" for="mask-output">Masked text</label>
+        <textarea id="mask-output" rows="7" readonly spellcheck="false"></textarea>
+        <p class="tool-status" id="mask-status" role="status" aria-live="polite"></p>
+        <div class="btns">
+          <button type="button" class="btn btn--solid" id="mask-copy" data-goatcounter-click="mt-copy">Copy</button>
+          <button type="button" class="btn" id="mask-download" data-goatcounter-click="mt-download">Download</button>
+          <label class="btn" data-goatcounter-click="mt-file"><input type="file" id="mask-file" class="visually-hidden" accept=".csv,.tsv,.txt,text/plain,text/csv">Open a file (CSV, TXT)</label>
+        </div>
+      </div>
+
+      <div class="tool-restore">
+        <h3 id="restore-title">Restore the answer</h3>
+        <p>Paste the AI tool’s answer here. Labels such as [TCKN_1] or [AD_1] turn back into the values you masked in this tab. The mapping lives only in this tab’s memory and is gone when you reload the page.</p>
+        <label class="field" for="restore-input">The AI tool’s answer</label>
+        <textarea id="restore-input" rows="5" spellcheck="false"></textarea>
+        <div class="btns">
+          <button type="button" class="btn btn--solid" id="restore-run" data-goatcounter-click="mt-restore">Restore</button>
+          <button type="button" class="btn" id="restore-copy">Copy</button>
+        </div>
+        <label class="field" for="restore-output">Restored text</label>
+        <textarea id="restore-output" rows="5" readonly spellcheck="false"></textarea>
+        <p class="tool-status" id="restore-status" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" aria-labelledby="how-title">
+    <h2 id="how-title">How to use it</h2>
+    <ol>
+      <li>Paste text or open a CSV or TXT file. The masked text updates as you type.</li>
+      <li>Add the names the rules cannot find to “Names and words”: customers, employees or companies.</li>
+      <li>Copy the masked text and send it to the AI tool. Read it once first; a name that is not on your list, or an address, may still be there.</li>
+      <li>Paste the answer into “Restore the answer”. The labels turn back into the real values.</li>
+    </ol>
+  </section>
+
+  <section id="excel" aria-labelledby="excel-title">
+    <h2 id="excel-title">Using it with Excel</h2>
+    <p>Select cells in Excel, copy them and paste them into the Text box. Cells arrive separated by tabs and rows by line breaks, and the tool keeps both. Copy the masked text and paste it into a cell in Excel, and the table comes back in the same layout.</p>
+    <p>You can also open a CSV file directly. Older CSV files saved on Turkish Windows are read correctly too, including letters such as ş, ğ and ı. A downloaded CSV is saved as UTF-8 with a BOM so that Excel shows Turkish characters. XLSX files do not open; in Excel, use Save As and choose CSV.</p>
+  </section>
+
+  <section id="what" aria-labelledby="what-title">
+    <h2 id="what-title">What does it find?</h2>
+    <div class="table-scroll" role="region" aria-labelledby="what-caption" tabindex="0">
+      <table class="stack" role="table">
+        <caption id="what-caption">The tool works with rules. The people and numbers in the examples are made up.</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col" class="col-s">Data</th>
+            <th role="columnheader" scope="col">How it is found</th>
+            <th role="columnheader" scope="col">Label</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th role="rowheader" scope="row">National ID (TCKN)</th>
+            <td role="cell" data-label="How it is found">11 digits, not starting with 0. The checksum is explained below. Example: <span class="mono">10000000146</span></td>
+            <td role="cell" class="mono" data-label="Label">[TCKN]</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row">IBAN</th>
+            <td role="cell" data-label="How it is found">TR and 24 digits, with or without spaces; mod 97 check. Other countries’ IBANs only if they pass the check. Example: <span class="mono nowrap">TR33 0006 1005 1978 6457 8413 26</span></td>
+            <td role="cell" class="mono" data-label="Label">[IBAN]</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row">Phone</th>
+            <td role="cell" data-label="How it is found">10 digits after +90, 0090 or 0, with brackets, spaces, dots or hyphens. Without a prefix, only mobile numbers starting with 5. Example: <span class="mono nowrap">0532 111 22 33</span>, <span class="mono nowrap">(0212) 123 45 67</span></td>
+            <td role="cell" class="mono" data-label="Label">[TEL]</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row">Email</th>
+            <td role="cell" data-label="How it is found">name@domain.tld. Example: <span class="mono">ayse@example.com</span></td>
+            <td role="cell" class="mono" data-label="Label">[EMAIL]</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row">Card number</th>
+            <td role="cell" data-label="How it is found">13 to 19 digits, only if they pass the Luhn check. Example: <span class="mono nowrap">4111 1111 1111 1111</span></td>
+            <td role="cell" class="mono" data-label="Label">[KART]</td>
+          </tr>
+          <tr role="row">
+            <th role="rowheader" scope="row">Names and words</th>
+            <td role="cell" data-label="How it is found">The list you type. Turkish suffixes stay: “<span lang="tr">Ayşe Yılmaz’ın</span>” becomes “[AD]’ın”.</td>
+            <td role="cell" class="mono" data-label="Label">[AD]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The labels are short Turkish words; [AD], [TCKN], [TEL] and [EMAIL] are the same as in my <a href="/models/turkish-pii-detection/">Turkish PII model</a>. By default, 11-digit numbers and TR IBANs that fail validation are masked too, because a mistyped ID number can still point to a person. If order numbers and similar get masked by mistake, switch on “Only TCKNs and IBANs that pass validation”.</p>
+  </section>
+
+  <section id="tckn" aria-labelledby="tckn-title">
+    <h2 id="tckn-title">How is a Turkish national ID number validated?</h2>
+    <p>A TCKN has 11 digits and cannot start with 0. The last two digits are computed from the ones before them:</p>
+    <ol>
+      <li>Multiply the sum of digits 1, 3, 5, 7 and 9 by 7 and subtract the sum of digits 2, 4, 6 and 8. The remainder after dividing by 10 is digit 10.</li>
+      <li>The remainder of the sum of the first 10 digits divided by 10 is digit 11.</li>
+    </ol>
+    <p>Example: <span class="mono">10000000146</span>. The odd positions add up to 1 + 0 + 0 + 0 + 1 = 2, the even positions to 0. 2 × 7 − 0 = 14, remainder 4: digit 10 is 4. The first ten digits add up to 6, remainder 6: digit 11 is 6. The number passes. Passing does not mean the number belongs to a real person; the check only catches typing errors.</p>
+    <p>IBANs use a different check: move the first four characters to the end, turn letters into numbers (A = 10, B = 11, …, Z = 35), and the remainder of that number divided by 97 must be 1. A Turkish IBAN has 26 characters: TR, two check digits, a five-digit bank code, one reserved digit and a 16-digit account number.</p>
+  </section>
+
+  <section id="anonymous" aria-labelledby="anonymous-title">
+    <h2 id="anonymous-title">Masking, pseudonymisation and anonymisation</h2>
+    <p>These three are often confused.</p>
+    <ul>
+      <li><strong>Masking:</strong> replacing a value with a label. With a plain label such as [TCKN] the value leaves the text, but the rest of the text (the event, a date, a place, a job title) can still identify the person.</li>
+      <li><strong>Pseudonymisation:</strong> replacing a value with a label whose original is kept somewhere. The reversible labels in this tool ([TCKN_1]) work this way. As long as you hold the mapping, the data can be linked back to a person.</li>
+      <li><strong>Anonymisation:</strong> in the words of KVKK, the Turkish data protection law, making personal data impossible to associate with an identified or identifiable person, even when matched with other data. Neither plain masking nor pseudonymisation gets there on its own.</li>
+    </ul>
+    <p>This tool reduces the personal data you send out; it does not by itself make a process compliant with KVKK or GDPR. This page is not legal advice; decide with your legal team. The <a href="/guides/personal-data/">personal data and AI guide</a> shows how to decide what to mask and what to keep in-house.</p>
+  </section>
+
+  <section id="limits" aria-labelledby="limits-title">
+    <h2 id="limits-title">Limits</h2>
+    <ul>
+      <li>It does not find names that are not on your list, addresses, health information, licence plates or dates of birth. For names and addresses in free text, use my <a href="/models/turkish-pii-detection/">Turkish PII detection and masking model</a>: it has 53 labels, runs locally on a CPU and can be <a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">tried in the browser</a>.</li>
+      <li>It does not recognise 10-digit Turkish tax numbers separately; one that starts with 5 may be labelled as a phone number.</li>
+      <li>To see which categories of personal data a text contains, the <a href="/models/turkish-kvkk-classifier/">Turkish KVKK classifier</a> flags 24 of them.</li>
+      <li>The rules are deliberately simple. Read the masked text before you send it.</li>
+    </ul>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Questions</h2>
+
+    <details>
+      <summary>Is my text sent to a server?</summary>
+      <p>No. Masking is done in your browser by the script on this page, and the script makes no network requests. Page visits are counted in aggregate with GoatCounter, without cookies; the text you type is neither counted nor stored.</p>
+    </details>
+    <details>
+      <summary>Is this enough before I send text to ChatGPT?</summary>
+      <p>Mostly yes for numbers and the names on your list, no for the rest of the text. The event itself, an address or a job title can still identify a person. If your organisation uses it, decide first which texts should never be sent at all.</p>
+    </details>
+    <details>
+      <summary>How does restoring work?</summary>
+      <p>With reversible labels on, each distinct value gets a numbered label; the same phone number appearing twice becomes [TEL_1] both times. The mapping lives only in this tab’s memory. Labels in the answer are replaced with the real values from it. Reloading the page deletes the mapping.</p>
+    </details>
+    <details>
+      <summary>Can I open an Excel file directly?</summary>
+      <p>XLSX does not open; CSV does. In Excel, use Save As and choose CSV, or copy the cells and paste them into the Text box.</p>
+    </details>
+    <details>
+      <summary>Does it cost anything or need an account?</summary>
+      <p>No. The tool is free and needs no account.</p>
+    </details>
+  </section>
+
+  <section id="links" aria-labelledby="links-title">
+    <h2 id="links-title">Links</h2>
+    <ul>
+      <li><a href="/models/turkish-pii-detection/">Turkish PII detection and masking model</a>: for names and addresses in free text</li>
+      <li><a href="/models/turkish-kvkk-classifier/">Turkish KVKK classifier</a>: which categories of personal data a text contains</li>
+      <li><a href="/guides/personal-data/">Personal data and AI</a>: a short interactive guide for teams</li>
+      <li><a href="/models/">All models</a></li>
+    </ul>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, Istanbul</p>
+    <ul class="links">
+      <li><a href="/masking-tool/" aria-current="page">Turkish PII masking tool</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Source</a></li>
+    </ul>
+    <p class="small">No cookies. Visits are counted in aggregate with GoatCounter.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/masking-tool.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -16,6 +16,7 @@
 | `models/turkish-prompt-injection-classifier/` | Prompt injection sınıflandırıcısı, v1 ve v2 yan yana. Sonuçlar kaynak dışarıda bırakılarak ölçülür; rakamlar HF kartıyla aynı |
 | `repos/index.html` | Ajan araçları (altı eklenti). Menüde adı "Tools" |
 | `agent-blackbox/`, `skillbench/`, `scar/`, `gardener/`, `painradar/`, `devpersona/` | Eklenti sayfaları → [PRODUCTS.md](PRODUCTS.md) |
+| `masking-tool/`, `masking-tool/tr/` | Kişisel veri maskeleme aracı: TC kimlik, IBAN, telefon, e-posta, kart ve ad listesi, geri açılabilir etiketler. Tamamı tarayıcıda, `assets/js/masking-tool.js`; ağ isteği yok. Testler: `node tools/test-masking-tool.mjs` |
 | `writing/index.html` | Yazı listesi ve e-posta kaydı → [WRITING.md](WRITING.md) |
 | `guides/index.html`, `guides/tr/index.html` | Rehberler sayfası, İngilizce ve Türkçe. `tools/guides/index.mjs` üretir; elle düzenlenmez. Menüde adı "Guides" / "Rehberler" |
 | `guides/<slug>/`, `guides/<slug>/tr/` | Dört interaktif rehber ve PDF'leri: `first-step` (giriş), `first-model` (1), `model-map` (2), `personal-data` (3). `tools/guides/` içinden üretilir, elle düzenlenmez |

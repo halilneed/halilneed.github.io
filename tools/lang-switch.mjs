@@ -20,7 +20,7 @@ export const PAGES = [
   '/', '/models/', '/models/turkish-pii-detection/', '/models/turkish-kvkk-classifier/',
   '/models/turkish-bseby-classifier/', '/models/turkish-prompt-injection-classifier/',
   '/repos/', '/agent-blackbox/', '/skillbench/', '/scar/',
-  '/gardener/', '/painradar/', '/devpersona/', '/writing/',
+  '/gardener/', '/painradar/', '/devpersona/', '/writing/', '/masking-tool/',
 ];
 
 const trOf = (p) => (p === '/' ? '/tr/' : `${p}tr/`);

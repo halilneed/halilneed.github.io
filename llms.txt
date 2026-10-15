@@ -26,6 +26,7 @@
 
 ## Tools
 
+- [Turkish PII masking tool](https://halilneed.agency/masking-tool/): free browser tool that masks Turkish national ID numbers (TCKN, checksum-validated), IBANs (mod 97), phone numbers, emails, card numbers (Luhn) and listed names before text is sent to an AI tool, with reversible labels such as [TCKN_1]. Runs locally; nothing is sent to a server. Turkish: https://halilneed.agency/masking-tool/tr/
 - [Claude Code plugins](https://halilneed.agency/repos/): agent-blackbox, skillbench, scar, gardener, painradar and devpersona. Open source, MIT.
 
 ## Optional
