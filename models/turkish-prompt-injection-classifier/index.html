@@ -33,9 +33,24 @@
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "halilneed", "item": "https://halilneed.agency/"},
-        {"@type": "ListItem", "position": 2, "name": "Models", "item": "https://halilneed.agency/models/"},
-        {"@type": "ListItem", "position": 3, "name": "Turkish prompt injection classifier", "item": "https://halilneed.agency/models/turkish-prompt-injection-classifier/"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Models",
+          "item": "https://halilneed.agency/models/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Turkish prompt injection classifier",
+          "item": "https://halilneed.agency/models/turkish-prompt-injection-classifier/"
+        }
       ]
     },
     {
@@ -45,13 +60,30 @@
       "mainEntityOfPage": "https://halilneed.agency/models/turkish-prompt-injection-classifier/",
       "headline": "Turkish prompt injection classifier",
       "description": "An open binary classifier for prompt injection in Turkish text: examples, results with each training source held out, false alarms on benign Turkish, Python usage, training data and limitations.",
-      "inLanguage": ["en", "tr"],
+      "inLanguage": [
+        "en",
+        "tr"
+      ],
       "datePublished": "2026-10-14",
-      "dateModified": "2026-10-14",
+      "dateModified": "2026-10-15",
       "image": "https://halilneed.agency/assets/img/og-turkish-prompt-injection-classifier.png",
-      "author": {"@type": "Person", "@id": "https://halilneed.agency/#halil", "name": "Halil", "alternateName": "halilneed", "url": "https://halilneed.agency/"},
-      "publisher": {"@type": "Person", "@id": "https://halilneed.agency/#halil", "name": "Halil", "alternateName": "halilneed", "url": "https://halilneed.agency/"},
-      "about": {"@id": "https://halilneed.agency/models/turkish-prompt-injection-classifier/#model"}
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "about": {
+        "@id": "https://halilneed.agency/models/turkish-prompt-injection-classifier/#model"
+      }
     },
     {
       "@type": "SoftwareSourceCode",
@@ -62,7 +94,13 @@
       "programmingLanguage": "Python",
       "license": "https://opensource.org/license/mit",
       "isBasedOn": "https://huggingface.co/jhu-clsp/mmBERT-base",
-      "author": {"@type": "Person", "@id": "https://halilneed.agency/#halil", "name": "Halil", "alternateName": "halilneed", "url": "https://halilneed.agency/"}
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      }
     }
   ]
 }
@@ -206,6 +244,7 @@
   <section id="results" aria-labelledby="results-title">
     <h2 id="results-title">Results</h2>
     <p>The honest number is <strong>source held out</strong>: for each test set, a separate model is trained without any row from that source and tested on that source’s test split. I ran every model with the same script. These are my measurements, not the authors’ published numbers.</p>
+    <p>In short: v2 catches 96.3% of 107 obfuscated attacks and 97.6% of 42 attacks hidden in invisible Unicode, none of which it saw in training or selection, and flags 2.1% of 750 ordinary Turkish banking texts.</p>
 
     <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
       <table>
@@ -320,6 +359,7 @@ is_injection = scores["INJECTION"] &gt;= 0.05
     <h2 id="links-title">Links</h2>
     <ul>
       <li><a href="https://huggingface.co/halilneed/turkish-prompt-injection-classifier">Model card and weights</a></li>
+      <li><a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark">Turkish prompt injection benchmark</a> and its <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark">false-alarm set</a></li>
       <li><a href="/models/turkish-pii-detection/">Turkish PII detection and masking</a></li>
       <li><a href="/models/turkish-kvkk-classifier/">Turkish KVKK classifier</a></li>
       <li><a href="/models/turkish-bseby-classifier/">Turkish BSEBY classifier</a></li>

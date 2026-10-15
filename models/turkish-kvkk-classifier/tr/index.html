@@ -63,7 +63,7 @@
       "description": "Türkçe metinde 24 KVKK ve VERBİS kişisel veri kategorisini tespit eden açık, çok etiketli sınıflandırıcı: ne yaptığı, etiketler, sonuçlar, Python ile kullanımı, eğitimi ve sınırları.",
       "inLanguage": "tr",
       "datePublished": "2026-10-09",
-      "dateModified": "2026-10-09",
+      "dateModified": "2026-10-15",
       "image": "https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png",
       "author": {
         "@type": "Person",
@@ -323,7 +323,7 @@
 
   <section id="results" aria-labelledby="results-title">
     <h2 id="results-title">Sonuçlar</h2>
-    <p>İki test seti var. Ana set, eğitimde kullanılmayan bağımsız bir set: eğitim verisine bakılmadan yazılmış 1.125 metin, ikinci kez ve kör olarak yeniden etiketlendi. İki etiketlemenin birebir örtüştüğü 987 metin altın standart seti oluşturuyor (%87.7 tam uyum, etiket başına Cohen's kappa 0.84 ile 1.00 arasında). İkinci set, eğitimde hiç kullanılmamış 333 şablondan gelen 771 örneklik, şablon bazında ayrık bir test.</p>
+    <p>İki test seti var. Ana set, eğitimde kullanılmayan bağımsız bir set: eğitim verisine bakılmadan yazılmış 1.125 metin, ikinci kez ve kör olarak yeniden etiketlendi. İki etiketlemenin birebir örtüştüğü 987 metin altın standart seti oluşturuyor (%87.7 tam uyum, etiket başına Cohen's kappa 0.84 ile 1.00 arasında). İkinci set, eğitimde hiç kullanılmamış 333 şablondan gelen 771 örneklik, şablon bazında ayrık bir test. 987 metinlik altın sette <code>turkish-kvkk-classifier</code> 0.874 micro-F1 ve 0.856 macro-F1 alıyor.</p>
 
     <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
       <table>
@@ -404,6 +404,8 @@ print(classify("hastanın böbrek yetmezliği ilerlemiş, eşi 0532 111 22 33'te
       <li><a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">Değerlendirme seti</a></li>
       <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespiti ve maskeleme</a></li>
       <li><a href="/models/turkish-bseby-classifier/tr/">Türkçe BSEBY sınıflandırıcısı</a></li>
+      <li><a href="/models/turkish-prompt-injection-classifier/tr/">Türkçe prompt injection sınıflandırıcısı</a></li>
+      <li><a href="/guides/personal-data/tr/">Kişisel veri ve yapay zekâ</a>: metin bir modele ulaşmadan önce neyin maskelenip neyin içeride tutulacağını anlatan kısa rehber</li>
       <li><a href="/models/tr/">Tüm modeller</a></li>
     </ul>
   </section>

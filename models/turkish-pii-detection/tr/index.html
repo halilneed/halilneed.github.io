@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Türkçe kişisel veri tespit ve maskeleme modeli (270M) | halilneed</title>
-<meta name="description" content="Türkçe metinde kişisel verileri bulup maskeleyen 270M parametreli açık model. Ad, TCKN, IBAN, telefon ve e-postayı talimata göre etiketlerle değiştirir. CPU'da yerelde çalışır.">
+<title>Türkçe kişisel veri maskeleme modeli: TC kimlik, IBAN, ad | halilneed</title>
+<meta name="description" content="Ad, TC kimlik no, IBAN, telefon ve e-postayı talimata göre maskeleyen açık Türkçe model. Metni yapay zekâya göndermeden önce, CPU’da yerelde çalışır.">
 <link rel="canonical" href="https://halilneed.agency/models/turkish-pii-detection/tr/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-pii-detection/">
 <link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/turkish-pii-detection/tr/">
@@ -17,15 +17,15 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
 <meta property="og:locale" content="tr_TR">
-<meta property="og:title" content="Türkçe kişisel veri tespit ve maskeleme modeli (270M) | halilneed">
-<meta property="og:description" content="Türkçe metinde kişisel verileri bulup maskeleyen 270M parametreli açık model. Ad, TCKN, IBAN, telefon ve e-postayı talimata göre etiketlerle değiştirir. CPU'da yerelde çalışır.">
+<meta property="og:title" content="Türkçe kişisel veri maskeleme modeli: TC kimlik, IBAN, ad | halilneed">
+<meta property="og:description" content="Ad, TC kimlik no, IBAN, telefon ve e-postayı talimata göre maskeleyen açık Türkçe model. Metni yapay zekâya göndermeden önce, CPU’da yerelde çalışır.">
 <meta property="og:url" content="https://halilneed.agency/models/turkish-pii-detection/tr/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-pii-detection.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Türkçe kişisel veri tespit ve maskeleme modeli (270M) | halilneed">
-<meta name="twitter:description" content="Türkçe metinde kişisel verileri bulup maskeleyen 270M parametreli açık model. Ad, TCKN, IBAN, telefon ve e-postayı talimata göre etiketlerle değiştirir. CPU'da yerelde çalışır.">
+<meta name="twitter:title" content="Türkçe kişisel veri maskeleme modeli: TC kimlik, IBAN, ad | halilneed">
+<meta name="twitter:description" content="Ad, TC kimlik no, IBAN, telefon ve e-postayı talimata göre maskeleyen açık Türkçe model. Metni yapay zekâya göndermeden önce, CPU’da yerelde çalışır.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-pii-detection.png">
 <script type="application/ld+json">
 {
@@ -63,7 +63,7 @@
       "description": "Türkçe metinde kişisel verileri bulup maskeleyen 270M parametreli açık model: ne yaptığı, Python ile kullanımı, benchmark sonuçları, eğitimi ve sınırları.",
       "inLanguage": "tr",
       "datePublished": "2026-10-05",
-      "dateModified": "2026-10-09",
+      "dateModified": "2026-10-15",
       "image": "https://halilneed.agency/assets/img/og-turkish-pii-detection.png",
       "author": {
         "@type": "Person",
@@ -152,7 +152,7 @@
           "name": "Maskeleme verilerimi KVKK'ya uygun hale getirir mi?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Hayır. Maskelenmiş çıktı kendiliğinden anonim olmaz. Uyum, modele değil verinin nasıl işlendiğine bağlıdır."
+            "text": "Hayır. Maskelenmiş çıktı kendiliğinden anonim olmaz. Uyum, modele değil verinin nasıl işlendiğine bağlıdır. Neyin maskelenip neyin içeride tutulacağına nasıl karar verileceğini Kişisel veri ve yapay zekâ rehberi anlatıyor."
           }
         }
       ]
@@ -304,7 +304,7 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
 
   <section id="results" aria-labelledby="results-title">
     <h2 id="results-title">Benchmark sonuçları</h2>
-    <p>Değerlendirmeyi <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark"><code>cagrigungor/turkish-pii-masking-benchmark</code></a> üzerinde yapıyorum: 1.000 sentetik Türkçe örnekten oluşan, herkese açık bir değerlendirme seti. Metrik, satır bazında tam eşleşme: çıktının tamamı beklenen metne birebir eşit olmalı, yani tek bir yanlış etiket satırı düşürür.</p>
+    <p>Değerlendirmeyi <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark"><code>cagrigungor/turkish-pii-masking-benchmark</code></a> üzerinde yapıyorum: 1.000 sentetik Türkçe örnekten oluşan, herkese açık bir değerlendirme seti. Metrik, satır bazında tam eşleşme: çıktının tamamı beklenen metne birebir eşit olmalı, yani tek bir yanlış etiket satırı düşürür. Bu sette <code>turkish-pii-detection</code> v02, 1.000 satırın tamamında 0.944, model seçiminde kullanılmayan 531 satırda 0.945 tam eşleşme alıyor.</p>
 
     <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
       <table>
@@ -388,7 +388,7 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
     </details>
     <details>
       <summary>Maskeleme verilerimi KVKK'ya uygun hale getirir mi?</summary>
-      <p>Hayır. Maskelenmiş çıktı kendiliğinden anonim olmaz. Uyum, modele değil verinin nasıl işlendiğine bağlıdır.</p>
+      <p>Hayır. Maskelenmiş çıktı kendiliğinden anonim olmaz. Uyum, modele değil verinin nasıl işlendiğine bağlıdır. Neyin maskelenip neyin içeride tutulacağına nasıl karar verileceğini <a href="/guides/personal-data/tr/">Kişisel veri ve yapay zekâ rehberi</a> anlatıyor.</p>
     </details>
   </section>
 
@@ -410,7 +410,8 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
       <li><a href="https://huggingface.co/halilneed/turkish-pii-detection">Model kartı ve ağırlıklar</a></li>
       <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Tarayıcı demosu</a></li>
       <li><a href="https://github.com/halilneed/turkish-pii-detection">GitHub'da kod, eğitim ve değerlendirme betiği</a></li>
-      <li><a href="/models/turkish-kvkk-classifier/tr/">Türkçe KVKK sınıflandırıcısı</a> ve <a href="/models/turkish-bseby-classifier/tr/">Türkçe BSEBY sınıflandırıcısı</a></li>
+      <li><a href="/models/turkish-kvkk-classifier/tr/">Türkçe KVKK sınıflandırıcısı</a>, <a href="/models/turkish-bseby-classifier/tr/">Türkçe BSEBY sınıflandırıcısı</a> ve <a href="/models/turkish-prompt-injection-classifier/tr/">Türkçe prompt injection sınıflandırıcısı</a></li>
+      <li><a href="/guides/personal-data/tr/">Kişisel veri ve yapay zekâ</a>: metin bir modele ulaşmadan önce neyin maskelenip neyin içeride tutulacağını anlatan kısa rehber</li>
       <li><a href="/models/tr/">Tüm modeller</a></li>
     </ul>
     <p>Model işinize yaradıysa Hugging Face sayfasında beğenmeniz, başkalarının da onu bulmasına yardım eder.</p>

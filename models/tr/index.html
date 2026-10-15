@@ -53,9 +53,9 @@
       "@id": "https://halilneed.agency/models/tr/#page",
       "url": "https://halilneed.agency/models/tr/",
       "name": "Modeller",
-      "description": "Türkçe metindeki kişisel veri için üç küçük, açık model ve onları ölçmekte kullanılan değerlendirme setleri.",
+      "description": "Türkçe metinde kişisel veri ve prompt injection için dört küçük, açık model ve onları ölçmekte kullanılan dört değerlendirme seti.",
       "inLanguage": "tr",
-      "dateModified": "2026-10-09",
+      "dateModified": "2026-10-15",
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://halilneed.agency/#website",
@@ -98,6 +98,109 @@
             "url": "https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/"
           }
         ]
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://halilneed.agency/models/#dataset-turkish-kvkk-classification-benchmark",
+      "name": "Türkçe KVKK sınıflandırma benchmark’ı",
+      "description": "Türkçe bir metinde 24 kişisel veri kategorisinden (14 VERBİS kategorisi ve KVKK’nın 10 özel nitelikli kategorisi) hangilerinin bulunduğunu ölçen çok etiketli değerlendirme seti. 1.125 kurgusal metinden, iki etiketleme turunun birebir örtüştüğü 987 altın metin.",
+      "url": "https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark",
+      "identifier": "halilneed/turkish-kvkk-classification-benchmark",
+      "inLanguage": "tr",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keywords": [
+        "KVKK",
+        "VERBİS",
+        "kişisel veri",
+        "Türkçe",
+        "çok etiketli sınıflandırma"
+      ],
+      "isAccessibleForFree": true,
+      "creator": {
+        "@id": "https://halilneed.agency/#halil"
+      },
+      "includedInDataCatalog": {
+        "@type": "DataCatalog",
+        "name": "Hugging Face Hub",
+        "url": "https://huggingface.co/datasets"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://halilneed.agency/models/#dataset-turkish-bseby-classification-benchmark",
+      "name": "Türkçe BSEBY sınıflandırma benchmark’ı",
+      "description": "Türkçe bankacılık metninde kişisel veri, özel nitelikli veri, kimlik doğrulama verisi, müşteri sırrı ve banka sırrı bulunup bulunmadığını ölçen çok etiketli değerlendirme seti (Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik, BSEBY). 750 kurgusal metinden 747 altın metin.",
+      "url": "https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark",
+      "identifier": "halilneed/turkish-bseby-classification-benchmark",
+      "inLanguage": "tr",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keywords": [
+        "BSEBY",
+        "BDDK",
+        "bankacılık",
+        "veri sınıflandırma",
+        "DLP",
+        "Türkçe"
+      ],
+      "isAccessibleForFree": true,
+      "creator": {
+        "@id": "https://halilneed.agency/#halil"
+      },
+      "includedInDataCatalog": {
+        "@type": "DataCatalog",
+        "name": "Hugging Face Hub",
+        "url": "https://huggingface.co/datasets"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://halilneed.agency/models/#dataset-turkish-prompt-injection-benchmark",
+      "name": "Türkçe prompt injection benchmark’ı",
+      "description": "Bir prompt injection koruma modelini Türkçe metinde tek çalıştırmada iki yönden sınar: beş açık Türkçe setten 317 saldırı ve 3.055 zararsız satır. Yeni metin yazılmadı; her satır kaynak setini, oradaki satır kimliğini ve lisansını korur.",
+      "url": "https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark",
+      "identifier": "halilneed/turkish-prompt-injection-benchmark",
+      "inLanguage": "tr",
+      "license": "https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark/blob/main/LICENSE.md",
+      "keywords": [
+        "prompt injection",
+        "LLM güvenliği",
+        "Türkçe",
+        "benchmark"
+      ],
+      "isAccessibleForFree": true,
+      "creator": {
+        "@id": "https://halilneed.agency/#halil"
+      },
+      "includedInDataCatalog": {
+        "@type": "DataCatalog",
+        "name": "Hugging Face Hub",
+        "url": "https://huggingface.co/datasets"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://halilneed.agency/models/#dataset-turkish-prompt-injection-false-alarm-benchmark",
+      "name": "Türkçe prompt injection yanlış alarm benchmark’ı",
+      "description": "Tamamı zararsız 2.875 sıradan Türkçe iş metni ve yapay zekâ görev talimatı. Bir prompt injection koruma modelinin normal Türkçe metni ne sıklıkla engellediğini ölçer. Açık koruma modelleri bu setin %17,8 ile %27,8’ini engelliyor.",
+      "url": "https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark",
+      "identifier": "halilneed/turkish-prompt-injection-false-alarm-benchmark",
+      "inLanguage": "tr",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keywords": [
+        "prompt injection",
+        "yanlış alarm",
+        "Türkçe",
+        "benchmark"
+      ],
+      "isAccessibleForFree": true,
+      "creator": {
+        "@id": "https://halilneed.agency/#halil"
+      },
+      "includedInDataCatalog": {
+        "@type": "DataCatalog",
+        "name": "Hugging Face Hub",
+        "url": "https://huggingface.co/datasets"
       }
     }
   ]
@@ -147,25 +250,25 @@
     <a class="repo" href="/models/turkish-pii-detection/tr/" data-hf="models/halilneed/turkish-pii-detection">
       <span class="repo-id">halilneed/turkish-pii-detection</span>
       <span class="repo-desc">Türkçe metni, içindeki adları, T.C. kimlik numaralarını, IBAN’ları, telefon numaralarını ve e-posta adreslerini etiketlerle değiştirerek yeniden yazar. Neyin maskeleneceğini kısa bir Türkçe talimatla söylersiniz.</span>
-      <span class="repo-meta"><span>Metin üretimi</span><span>270M parametre</span><span data-hf-updated>5 Eki 2026 güncellendi</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>2.3k</span><span class="visually-hidden"> indirme</span></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span data-hf-likes>1</span><span class="visually-hidden"> beğeni</span></span></span>
+      <span class="repo-meta"><span>Metin üretimi</span><span>270M parametre</span><span data-hf-updated>5 Eki 2026 güncellendi</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>2.4k</span><span class="visually-hidden"> indirme</span></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span data-hf-likes>1</span><span class="visually-hidden"> beğeni</span></span></span>
       <span class="repo-stat"><b>0.944</b><span>tam eşleşme, 1.000 satır</span></span>
     </a>
     <a class="repo" href="/models/turkish-kvkk-classifier/tr/" data-hf="models/halilneed/turkish-kvkk-classifier">
       <span class="repo-id">halilneed/turkish-kvkk-classifier</span>
       <span class="repo-desc">Bir Türkçe metnin 24 kişisel veri türünden hangilerini içerdiğini söyler: 14 VERBİS kategorisi ve KVKK’daki 10 özel nitelikli kişisel veri kategorisi.</span>
-      <span class="repo-meta"><span>Metin sınıflandırma</span><span>110M parametre</span><span>metin başına yaklaşık 22 ms</span><span data-hf-updated>2 Eki 2026 güncellendi</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>22</span><span class="visually-hidden"> indirme</span></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span data-hf-likes>1</span><span class="visually-hidden"> beğeni</span></span></span>
+      <span class="repo-meta"><span>Metin sınıflandırma</span><span>110M parametre</span><span>metin başına yaklaşık 22 ms</span><span data-hf-updated>2 Eki 2026 güncellendi</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>25</span><span class="visually-hidden"> indirme</span></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span data-hf-likes>1</span><span class="visually-hidden"> beğeni</span></span></span>
       <span class="repo-stat"><b>0.874</b><span>micro-F1, ayrılmış 987 metin</span></span>
     </a>
     <a class="repo" href="/models/turkish-bseby-classifier/tr/" data-hf="models/halilneed/turkish-bseby-classifier">
       <span class="repo-id">halilneed/turkish-bseby-classifier</span>
       <span class="repo-desc">Banka veri envanterleri ve veri kaybı önleme (DLP) hatları için yapıldı. Kişisel veriyi, özel nitelikli kişisel veriyi, kimlik doğrulama verisini, müşteri sırrını ve banka sırrını işaretler.</span>
-      <span class="repo-meta"><span>Metin sınıflandırma</span><span>110M parametre</span><span>metin başına yaklaşık 32 ms</span><span data-hf-updated>2 Eki 2026 güncellendi</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>13</span><span class="visually-hidden"> indirme</span></span></span>
+      <span class="repo-meta"><span>Metin sınıflandırma</span><span>110M parametre</span><span>metin başına yaklaşık 32 ms</span><span data-hf-updated>2 Eki 2026 güncellendi</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>20</span><span class="visually-hidden"> indirme</span></span></span>
       <span class="repo-stat"><b>0.960</b><span>micro-F1, ayrılmış 747 metin</span></span>
     </a>
     <a class="repo" href="/models/turkish-prompt-injection-classifier/tr/" data-hf="models/halilneed/turkish-prompt-injection-classifier">
       <span class="repo-id">halilneed/turkish-prompt-injection-classifier</span>
       <span class="repo-desc">LLM’e giren Türkçe metinde, kodlanmış ve gizlenmiş talimatlar dahil, prompt injection’ı işaretler; sıradan Türkçe talimatları engellemeden.</span>
-      <span class="repo-meta"><span>Metin sınıflandırma</span><span>307M parametre</span><span>metin başına yaklaşık 35 ms</span><span data-hf-updated>14 Eki 2026 güncellendi</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>0</span><span class="visually-hidden"> indirme</span></span></span>
+      <span class="repo-meta"><span>Metin sınıflandırma</span><span>307M parametre</span><span>metin başına yaklaşık 35 ms</span><span data-hf-updated>14 Eki 2026 güncellendi</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>34</span><span class="visually-hidden"> indirme</span></span></span>
       <span class="repo-stat"><b>13/13</b><span>kodlanmış saldırı, %2’nin altında yanlış alarm</span></span>
     </a>
   </div>
@@ -192,6 +295,13 @@
         <p class="entry-meta"><span>747 altın metin</span> <span>5 etiket</span> <span>CC0</span></p>
         <div class="entry-body">
           <p>Aynı yöntem: 750 kurgusal metin, bunların 747’sinde birebir uyum. İki tur da aynı dil modelini ve aynı yönergeyi kullandı, bu yüzden %99.6’lık uyum yönergenin tutarlı uygulanabildiğini gösterir. Birbirinden bağımsız iki kişi arasındaki uyum değildir.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <h3 class="entry-title"><a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark">turkish-prompt-injection-benchmark</a></h3>
+        <p class="entry-meta"><span>3.372 satır</span> <span>317 saldırı</span> <span>karma lisans</span></p>
+        <div class="entry-body">
+          <p>Bir prompt injection koruma modelini tek çalıştırmada iki yönden sınar: beş açık Türkçe setten 317 saldırı ve 3.055 zararsız satır. Zararsız satırlar, o setlerle birlikte gelen zor negatifler ve aşağıdaki yanlış alarm setinin 2.875 metnidir. Yeni metin yazılmadı; her satır kaynağını ve lisansını korur.</p>
         </div>
       </article>
       <article class="entry">

@@ -22,6 +22,8 @@
 | `guides/demo/`, `guides/demo/tr/`, `guides/tr/yapay-zekaya-ilk-adim/` | Eski adresler; yeni sayfalara yönlendirir |
 | `assets/fonts/` | Yalnızca interaktif rehberlerin kullandığı iki font (Bricolage Grotesque, Instrument Sans; SIL OFL). Site kendi sayfalarında web fontu kullanmaz |
 | `404.html` | Bulunamadı sayfası |
+| `llms.txt` | Yapay zekâ tarayıcıları için site özeti: modeller, rakamlar, verisetleri, rehberler. Rakam değişince burası da güncellenir |
+| `e579c01fa5f985b49615838de9fca53c.txt` | IndexNow anahtarı (Bing, Yandex). Değiştirmeyin; deploy sonrası URL bildirimi bu anahtarla yapılır |
 | `assets/css/site.css` | Tek stil dosyası |
 | `assets/js/site.js` | Kaydırınca belirme, ana sayfadaki maskeleme animasyonu, HF'den canlı indirme/beğeni sayıları. Sayfalar onsuz da eksiksiz okunur |
 | `assets/img/` | Favicon ve OG kartları |
