@@ -156,7 +156,7 @@ Token counts are a bytes/4 estimate, not a real tokenizer.
 | warn | duplicate-directive | instructions.md:32 | 69% overlap |
 | warn | duplicate-directive | instructions.md:28 | 67% overlap |</code></pre>
 
-    <p>Every finding names the check that fired, the file and the line. For duplicates it also shows both overlapping texts, so you can disagree with one specific finding. The checks are documented in <a href="https://github.com/halilneed/gardener/blob/main/skills/audit/references/checks.md">one file you can open</a>, and any check you disagree with can be switched off with <code class="nowrap">--ignore</code>.</p>
+    <p>Every finding names the check that fired, the file and the line. For duplicates it also shows both overlapping texts, so you can disagree with one specific finding. The checks are documented in <a href="https://github.com/halilneed/gardener/blob/main/skills/audit/references/checks.md" data-goatcounter-click="gd-gh-gardener-checks">one file you can open</a>, and any check you disagree with can be switched off with <code class="nowrap">--ignore</code>.</p>
   </section>
 
   <section id="install" aria-labelledby="install-title">
@@ -171,7 +171,7 @@ Token counts are a bytes/4 estimate, not a real tokenizer.
 # and try it
 &gt; /gardener:audit</code></pre>
 
-    <p>The <a href="https://github.com/halilneed/plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
+    <p>The <a href="https://github.com/halilneed/plugins" data-goatcounter-click="gd-gh-plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
     <ul>
       <li>Claude Code and Node.js 18 or newer.</li>
       <li>No dependencies, no build step, no API key, no account.</li>
@@ -196,13 +196,13 @@ Token counts are a bytes/4 estimate, not a real tokenizer.
   <section id="guarantees" aria-labelledby="guarantees-title">
     <h2 id="guarantees-title">What it does and does not do</h2>
     <ul>
-      <li>The script makes no network calls and edits no files. <a href="https://github.com/halilneed/gardener/blob/main/scripts/gardener.mjs"><code>gardener.mjs</code></a> reads instruction files and session logs already on your disk and produces a plan. The prune skill changes CLAUDE.md only after it has shown you the lines and you have confirmed.</li>
+      <li>The script makes no network calls and edits no files. <a href="https://github.com/halilneed/gardener/blob/main/scripts/gardener.mjs" data-goatcounter-click="gd-gh-gardener-gardener-mjs"><code>gardener.mjs</code></a> reads instruction files and session logs already on your disk and produces a plan. The prune skill changes CLAUDE.md only after it has shown you the lines and you have confirmed.</li>
       <li>Token numbers come from a bytes/4 estimate, not a tokenizer. That is enough to compare files and track change over time, and every report says so.</li>
       <li>A compliance match is a candidate. It may miss context the rule cares about, so the skill opens each candidate, verifies it against the transcript and reports how many it discarded.</li>
       <li>A prohibition with zero occurrences is reported as a possible success, and the skill does not propose deleting a safety rule on a zero count.</li>
-      <li>There are 10 checks and no model judgement. <a href="https://github.com/halilneed/gardener/blob/main/skills/audit/references/checks.md"><code>checks.md</code></a> documents every one with its severity and triage note, and <code class="nowrap">--selftest</code> runs them against 19 fixtures without touching your data.</li>
+      <li>There are 10 checks and no model judgement. <a href="https://github.com/halilneed/gardener/blob/main/skills/audit/references/checks.md" data-goatcounter-click="gd-gh-gardener-checks-2"><code>checks.md</code></a> documents every one with its severity and triage note, and <code class="nowrap">--selftest</code> runs them against 19 fixtures without touching your data.</li>
       <li>Unreadable sessions are counted in the source note.</li>
-      <li>MIT-licensed (<a href="https://github.com/halilneed/gardener/blob/main/LICENSE"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
+      <li>MIT-licensed (<a href="https://github.com/halilneed/gardener/blob/main/LICENSE" data-goatcounter-click="gd-gh-gardener-license"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
     </ul>
   </section>
 

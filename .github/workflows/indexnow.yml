@@ -1,0 +1,27 @@
+# GitHub Pages yayını başarıyla bitince, son commit'te değişen sayfaları IndexNow ile
+# Bing ve Yandex'e bildirir. Yayından önce bildirilirse tarayıcı eski sayfayı görür; bu yüzden
+# push'a değil, yayın iş akışının bitişine bağlı.
+name: indexnow
+
+on:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Değişen sayfaları bildir
+        run: node tools/indexnow.mjs

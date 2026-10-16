@@ -135,7 +135,7 @@
   <header class="page-head">
     <h1>Türkçe prompt injection sınıflandırıcısı</h1>
     <p class="lead"><code>turkish-prompt-injection-classifier</code>, bir LLM’e giren Türkçe metni <code>BENIGN</code> (zararsız) ya da <code>INJECTION</code> olarak işaretler. Kullanıcı mesajlarında ve asistanın okuduğu içerikte çalışır: e-posta, belge, getirilen pasaj, araç çıktısı.</p>
-    <p>Sürüm 2 yayında. Açık bir test setindeki 13 kodlanmış saldırının 13’ünü (v1: 5) ve görünmez Unicode ile gizlenmiş talimatların %98’ini (v1: %40) yakalıyor; görmediği her saldırı setinde v1’den yüksek skor alıyor. 2.875 zararsız Türkçe metinde en fazla %2,1 yanlış alarm veriyor; açık koruma modelleri aynı görev talimatlarının %77’sine kadarını saldırı sayıyor. İki sürüm de kullanılabilir. Tüm ölçümler açık bir benchmark’ta: <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark">halilneed/turkish-prompt-injection-benchmark</a>.</p>
+    <p>Sürüm 2 yayında. Açık bir test setindeki 13 kodlanmış saldırının 13’ünü (v1: 5) ve görünmez Unicode ile gizlenmiş talimatların %98’ini (v1: %40) yakalıyor; görmediği her saldırı setinde v1’den yüksek skor alıyor. 2.875 zararsız Türkçe metinde en fazla %2,1 yanlış alarm veriyor; açık koruma modelleri aynı görev talimatlarının %77’sine kadarını saldırı sayıyor. İki sürüm de kullanılabilir. Tüm ölçümler açık bir benchmark’ta: <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection-tr">halilneed/turkish-prompt-injection-benchmark</a>.</p>
     <ul class="links">
       <li><a href="https://huggingface.co/halilneed/turkish-prompt-injection-classifier" data-goatcounter-click="pinj-download-tr">Hugging Face’te ağırlıklar</a></li>
     </ul>
@@ -294,7 +294,7 @@
         </tbody>
       </table>
     </div>
-    <p>Üç set birlikte <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark">halilneed/turkish-prompt-injection-false-alarm-benchmark</a> adıyla yayında: 2.875 zararsız Türkçe metin ve bu tabloyu herhangi bir model için yeniden üreten bir betik. Kaynakları <a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">KVKK benchmark’ım</a>, <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">BSEBY benchmark’ım</a> ve cagrigungor’un PII benchmark’ındaki talimatlar; hepsi CC0. Bu setler bu model için aynı alan, diğerleri için değil: eğitim verisinde aynı alanlardan başka metinler var. Bu metinler olmadan eğitilen v1 tarifi bankacılık metinlerinin %65’ini, görev talimatlarının %98,5’ini işaretledi. Trafiğiniz başka bir alandansa önce kendi zararsız metninizde ölçün.</p>
+    <p>Üç set birlikte <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection-false-alarm-tr">halilneed/turkish-prompt-injection-false-alarm-benchmark</a> adıyla yayında: 2.875 zararsız Türkçe metin ve bu tabloyu herhangi bir model için yeniden üreten bir betik. Kaynakları <a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark" data-goatcounter-click="pinj-hfds-kvkk-classification-tr">KVKK benchmark’ım</a>, <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark" data-goatcounter-click="pinj-hfds-bseby-classification-tr">BSEBY benchmark’ım</a> ve cagrigungor’un PII benchmark’ındaki talimatlar; hepsi CC0. Bu setler bu model için aynı alan, diğerleri için değil: eğitim verisinde aynı alanlardan başka metinler var. Bu metinler olmadan eğitilen v1 tarifi bankacılık metinlerinin %65’ini, görev talimatlarının %98,5’ini işaretledi. Trafiğiniz başka bir alandansa önce kendi zararsız metninizde ölçün.</p>
   </section>
 
   <section id="fails" aria-labelledby="fails-title">
@@ -349,8 +349,8 @@ is_injection = scores["INJECTION"] &gt;= 0.05
   <section id="links" aria-labelledby="links-title">
     <h2 id="links-title">Bağlantılar</h2>
     <ul>
-      <li><a href="https://huggingface.co/halilneed/turkish-prompt-injection-classifier">Model kartı ve ağırlıklar</a></li>
-      <li><a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark">Türkçe prompt injection benchmark’ı</a> ve <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark">yanlış alarm seti</a></li>
+      <li><a href="https://huggingface.co/halilneed/turkish-prompt-injection-classifier" data-goatcounter-click="pinj-hf-prompt-injection-classifier-tr">Model kartı ve ağırlıklar</a></li>
+      <li><a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection-2-tr">Türkçe prompt injection benchmark’ı</a> ve <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection-false-alarm-2-tr">yanlış alarm seti</a></li>
       <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespiti ve maskeleme</a></li>
       <li><a href="/models/turkish-kvkk-classifier/tr/">Türkçe KVKK sınıflandırıcısı</a></li>
       <li><a href="/models/turkish-bseby-classifier/tr/">Türkçe BSEBY sınıflandırıcısı</a></li>

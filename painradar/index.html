@@ -141,7 +141,7 @@ Source note: hackernews: 44 · github: 30
 | github     | Quota exhausted in ~20 min; cache reads at 0 | 2026-08-16 | 3·7  | 0.35 | github.com/…/issues/42935             |
 | github     | [Pro 20x] 7-day quota depletion on light use | 2026-08-13 | 2·3  | 0.35 | github.com/…/issues/38335             |</code></pre>
 
-    <p>In the table, Eng. is engagement and Int. is intensity. Intensity is 1, 0.7 or 0.35 and is set by a pattern classifier, with no model involved. The patterns are in <a href="https://github.com/halilneed/painradar/blob/main/scripts/radar.mjs">one file you can open</a>, and <code class="nowrap">--selftest</code> runs them against 6 fixtures with the network off (6/6 on this machine, the same day). A blocked source is printed as blocked with its HTTP status, so a gap in the evidence stays visible in the report.</p>
+    <p>In the table, Eng. is engagement and Int. is intensity. Intensity is 1, 0.7 or 0.35 and is set by a pattern classifier, with no model involved. The patterns are in <a href="https://github.com/halilneed/painradar/blob/main/scripts/radar.mjs" data-goatcounter-click="pr-gh-painradar-radar-mjs">one file you can open</a>, and <code class="nowrap">--selftest</code> runs them against 6 fixtures with the network off (6/6 on this machine, the same day). A blocked source is printed as blocked with its HTTP status, so a gap in the evidence stays visible in the report.</p>
   </section>
 
   <section id="install" aria-labelledby="install-title">
@@ -156,7 +156,7 @@ Source note: hackernews: 44 · github: 30
 # and try it
 &gt; /painradar:scan "organic traffic loss after AI Overviews"</code></pre>
 
-    <p>The <a href="https://github.com/halilneed/plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
+    <p>The <a href="https://github.com/halilneed/plugins" data-goatcounter-click="pr-gh-plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
     <ul>
       <li>Claude Code and Node.js 18 or newer.</li>
       <li>No dependencies, no build step, no account. Two keys are optional, and both are yours: <code>GITHUB_TOKEN</code> raises search limits and <code>TRUSTMRR_API_KEY</code> unlocks verified revenue.</li>
@@ -182,13 +182,13 @@ Source note: hackernews: 44 · github: 30
     <h2 id="guarantees-title">What it does and does not do</h2>
     <p>painradar is the one plugin of the six that goes online.</p>
     <ul>
-      <li>It fetches public sources only: Hacker News via Algolia, GitHub Issues search and App Store review RSS, plus Reddit if you enable it and TrustMRR if you set its key. Every fetch is in <a href="https://github.com/halilneed/painradar/blob/main/scripts/radar.mjs"><code>radar.mjs</code></a>, one file you can read.</li>
+      <li>It fetches public sources only: Hacker News via Algolia, GitHub Issues search and App Store review RSS, plus Reddit if you enable it and TrustMRR if you set its key. Every fetch is in <a href="https://github.com/halilneed/painradar/blob/main/scripts/radar.mjs" data-goatcounter-click="pr-gh-painradar-radar-mjs-2"><code>radar.mjs</code></a>, one file you can read.</li>
       <li>Your persona card, your repo and your chat history are read locally and sent nowhere. Only the search queries you chose are sent.</li>
       <li>There are no usernames in the output. Items keep title, link, date and counts, and an author field is never written.</li>
       <li>Reddit is off by default because of licence and rate-limit risk. If you enable it, a 403 or 429 stops the run and the report says “blocked”.</li>
       <li>An unreachable source appears in the source note with its HTTP status. Missing evidence is reported as a weak signal.</li>
       <li>The two keys are optional: <code>GITHUB_TOKEN</code> raises the search quota and <code>TRUSTMRR_API_KEY</code> unlocks verified revenue. Without them the tool still runs and marks revenue figures as unverified.</li>
-      <li>MIT-licensed (<a href="https://github.com/halilneed/painradar/blob/main/LICENSE"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
+      <li>MIT-licensed (<a href="https://github.com/halilneed/painradar/blob/main/LICENSE" data-goatcounter-click="pr-gh-painradar-license"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
     </ul>
   </section>
 

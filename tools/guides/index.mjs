@@ -173,6 +173,10 @@ ${cards}
       <input id="subscribe-email" type="email" name="email" required autocomplete="email" placeholder="${esc(t.placeholder)}">
       <input type="hidden" name="tag" value="guides">
       <input type="hidden" name="embed" value="1">
+      <input type="hidden" name="metadata__page" value="${self}">
+      <input type="hidden" name="utm_source" value="halilneed.agency">
+      <input type="hidden" name="utm_medium" value="form">
+      <input type="hidden" name="utm_campaign" value="guides">
       <button type="submit" data-goatcounter-click="signup-guides-${lang}">${esc(t.subscribeBtn)}</button>
     </form>
     <p class="small">${t.requestSmall.replace('{mail}', mail)}</p>
