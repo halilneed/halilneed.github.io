@@ -157,7 +157,7 @@ Source: Claude Code, Codex CLI · 187 sessions scanned
 
 &gt; This report was generated entirely locally; no data left this machine.</code></pre>
 
-    <p>Projects are grouped by working directory, so a project worked on in two agents, like the pipeline above, appears once with the agents named and is never counted twice. The adapter layer is <a href="https://github.com/halilneed/devpersona/blob/main/scripts/lib/adapters.mjs">one file you can open</a>, and <code class="nowrap">--selftest</code> runs the command classifier against 15 fixtures without reading your data.</p>
+    <p>Projects are grouped by working directory, so a project worked on in two agents, like the pipeline above, appears once with the agents named and is never counted twice. The adapter layer is <a href="https://github.com/halilneed/devpersona/blob/main/scripts/lib/adapters.mjs" data-goatcounter-click="dp-gh-devpersona-adapters-mjs">one file you can open</a>, and <code class="nowrap">--selftest</code> runs the command classifier against 15 fixtures without reading your data.</p>
   </section>
 
   <section id="install" aria-labelledby="install-title">
@@ -172,7 +172,7 @@ Source: Claude Code, Codex CLI · 187 sessions scanned
 # and try it
 &gt; /devpersona:analyze</code></pre>
 
-    <p>The <a href="https://github.com/halilneed/plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
+    <p>The <a href="https://github.com/halilneed/plugins" data-goatcounter-click="dp-gh-plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
     <ul>
       <li>Claude Code and Node.js 18 or newer.</li>
       <li>No dependencies, no build step, no API key, no account.</li>
@@ -197,12 +197,12 @@ Source: Claude Code, Codex CLI · 187 sessions scanned
   <section id="guarantees" aria-labelledby="guarantees-title">
     <h2 id="guarantees-title">What it does and does not do</h2>
     <ul>
-      <li>It makes no network calls. The scanner only reads files already on your disk, and <a href="https://github.com/halilneed/devpersona/blob/main/scripts/scan.mjs"><code>scan.mjs</code></a> contains no fetch and no sockets.</li>
+      <li>It makes no network calls. The scanner only reads files already on your disk, and <a href="https://github.com/halilneed/devpersona/blob/main/scripts/scan.mjs" data-goatcounter-click="dp-gh-devpersona-scan-mjs"><code>scan.mjs</code></a> contains no fetch and no sockets.</li>
       <li>The default output has no raw chat text, only numbers, file names and session titles. Session titles are short AI-generated summaries of chat content, so read a report through before you share it.</li>
       <li>Prompt samples are printed only on request. <code class="nowrap">--prompts &lt;project&gt;</code> prints them to your terminal and nowhere else.</li>
       <li>Interpretation stays in your session. The persona card is written by the Claude Code session you already run, with no second model and no service in between.</li>
       <li>The classifier can be tested: <code class="nowrap">--selftest</code> runs 15 fixtures without touching your history or the network, and prints the score.</li>
-      <li>MIT-licensed (<a href="https://github.com/halilneed/devpersona/blob/main/LICENSE"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
+      <li>MIT-licensed (<a href="https://github.com/halilneed/devpersona/blob/main/LICENSE" data-goatcounter-click="dp-gh-devpersona-license"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
     </ul>
   </section>
 

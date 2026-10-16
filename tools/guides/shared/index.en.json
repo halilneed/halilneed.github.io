@@ -46,7 +46,7 @@
   "mailSubject": "A question for our team",
   "mailBody": "Hello Halil,\n\nOur team and the process where we get stuck:\n",
   "basisH": "What they are based on",
-  "basisP": "The guides follow from an article of mine, <a href=\"https://halilneed.medium.com/from-first-prompt-to-team-workflows-an-ai-productivity-roadmap-for-corporate-teams-761839e2c265\">From first prompt to team workflows</a>, and from training <a href=\"/models/\">three small Turkish-language models</a> for personal data. Where a guide gives a number from my own work, it is the number on the public model card. Other numbers are illustrative and marked as such.",
+  "basisP": "The guides follow from an article of mine, <a href=\"https://halilneed.medium.com/from-first-prompt-to-team-workflows-an-ai-productivity-roadmap-for-corporate-teams-761839e2c265\" data-goatcounter-click=\"guides-en-medium\">From first prompt to team workflows</a>, and from training <a href=\"/models/\">three small Turkish-language models</a> for personal data. Where a guide gives a number from my own work, it is the number on the public model card. Other numbers are illustrative and marked as such.",
   "footPlace": "© 2026 Halil, Istanbul",
   "footLinks": [
     [

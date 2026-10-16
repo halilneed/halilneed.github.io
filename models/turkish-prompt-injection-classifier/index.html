@@ -137,7 +137,7 @@
   <header class="page-head">
     <h1>Turkish prompt injection classifier</h1>
     <p class="lead"><code>turkish-prompt-injection-classifier</code> labels Turkish text going into an LLM as <code>BENIGN</code> or <code>INJECTION</code>: user messages, and the content an assistant reads, such as emails, documents, retrieved passages and tool output.</p>
-    <p>Version 2 is out. It catches all 13 encoded attacks in a public test set (v1 caught 5) and 98% of instructions hidden in invisible Unicode (v1: 40%), and it scores higher than v1 on every attack set it never saw. On 2,875 benign Turkish texts it flags at most 2.1%; public guards flag up to 77% of the same task instructions. Both versions stay available. Everything is measured on an open benchmark: <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark">halilneed/turkish-prompt-injection-benchmark</a>.</p>
+    <p>Version 2 is out. It catches all 13 encoded attacks in a public test set (v1 caught 5) and 98% of instructions hidden in invisible Unicode (v1: 40%), and it scores higher than v1 on every attack set it never saw. On 2,875 benign Turkish texts it flags at most 2.1%; public guards flag up to 77% of the same task instructions. Both versions stay available. Everything is measured on an open benchmark: <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection">halilneed/turkish-prompt-injection-benchmark</a>.</p>
     <ul class="links">
       <li><a href="https://huggingface.co/halilneed/turkish-prompt-injection-classifier" data-goatcounter-click="pinj-download">Weights on Hugging Face</a></li>
     </ul>
@@ -297,7 +297,7 @@
         </tbody>
       </table>
     </div>
-    <p>The three sets are published together as <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark">halilneed/turkish-prompt-injection-false-alarm-benchmark</a>, 2,875 benign Turkish texts with a script that reproduces this table for any model. They come from <a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark">my KVKK benchmark</a>, <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark">my BSEBY benchmark</a> and the instructions of cagrigungor’s PII benchmark, all CC0. They are in-domain for this model and not for the others: its training data has other texts from the same domains. Trained without them, the v1 recipe flagged 65% of banking texts and 98.5% of task instructions. If your traffic is from another domain, measure the false-positive rate on your own benign text first.</p>
+    <p>The three sets are published together as <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection-false-alarm">halilneed/turkish-prompt-injection-false-alarm-benchmark</a>, 2,875 benign Turkish texts with a script that reproduces this table for any model. They come from <a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark" data-goatcounter-click="pinj-hfds-kvkk-classification">my KVKK benchmark</a>, <a href="https://huggingface.co/datasets/halilneed/turkish-bseby-classification-benchmark" data-goatcounter-click="pinj-hfds-bseby-classification">my BSEBY benchmark</a> and the instructions of cagrigungor’s PII benchmark, all CC0. They are in-domain for this model and not for the others: its training data has other texts from the same domains. Trained without them, the v1 recipe flagged 65% of banking texts and 98.5% of task instructions. If your traffic is from another domain, measure the false-positive rate on your own benign text first.</p>
   </section>
 
   <section id="fails" aria-labelledby="fails-title">
@@ -358,8 +358,8 @@ is_injection = scores["INJECTION"] &gt;= 0.05
   <section id="links" aria-labelledby="links-title">
     <h2 id="links-title">Links</h2>
     <ul>
-      <li><a href="https://huggingface.co/halilneed/turkish-prompt-injection-classifier">Model card and weights</a></li>
-      <li><a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark">Turkish prompt injection benchmark</a> and its <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark">false-alarm set</a></li>
+      <li><a href="https://huggingface.co/halilneed/turkish-prompt-injection-classifier" data-goatcounter-click="pinj-hf-prompt-injection-classifier">Model card and weights</a></li>
+      <li><a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection-2">Turkish prompt injection benchmark</a> and its <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection-false-alarm-2">false-alarm set</a></li>
       <li><a href="/models/turkish-pii-detection/">Turkish PII detection and masking</a></li>
       <li><a href="/models/turkish-kvkk-classifier/">Turkish KVKK classifier</a></li>
       <li><a href="/models/turkish-bseby-classifier/">Turkish BSEBY classifier</a></li>
