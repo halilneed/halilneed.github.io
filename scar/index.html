@@ -146,7 +146,7 @@ Source note: 156 sessions scanned (all, 90d) · 305 failure episodes
 
 `node scar.mjs --draft scar-0eqc684` &rarr; rule</code></pre>
 
-    <p>The ranking is by cost rather than raw count: separate sessions × 3, projects touched × 2, repeats capped, and +4 when more than one agent hit the same wall. One bad afternoon of retries counts as a single episode. The 16 families that classify each scar are <a href="https://github.com/halilneed/scar/blob/main/scripts/lib/scars.mjs">a pattern list you can open</a>, and the next step is printed under the table.</p>
+    <p>The ranking is by cost rather than raw count: separate sessions × 3, projects touched × 2, repeats capped, and +4 when more than one agent hit the same wall. One bad afternoon of retries counts as a single episode. The 16 families that classify each scar are <a href="https://github.com/halilneed/scar/blob/main/scripts/lib/scars.mjs" data-goatcounter-click="sc-gh-scar-scars-mjs">a pattern list you can open</a>, and the next step is printed under the table.</p>
   </section>
 
   <section id="install" aria-labelledby="install-title">
@@ -161,7 +161,7 @@ Source note: 156 sessions scanned (all, 90d) · 305 failure episodes
 # and try it
 &gt; /scar:mine</code></pre>
 
-    <p>The <a href="https://github.com/halilneed/plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
+    <p>The <a href="https://github.com/halilneed/plugins" data-goatcounter-click="sc-gh-plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
     <ul>
       <li>Claude Code and Node.js 18 or newer.</li>
       <li>No dependencies, no API key, no quota spent.</li>
@@ -186,12 +186,12 @@ Source note: 156 sessions scanned (all, 90d) · 305 failure episodes
   <section id="guarantees" aria-labelledby="guarantees-title">
     <h2 id="guarantees-title">What it does and does not do</h2>
     <ul>
-      <li>It makes no network calls and writes nothing into your repo. Drafts go to stdout, <a href="https://github.com/halilneed/scar/blob/main/scripts/scar.mjs"><code>scar.mjs</code></a> contains no fetch and no sockets, and you decide what lands in the repo.</li>
-      <li>There are 16 families and no model judgement. <a href="https://github.com/halilneed/scar/blob/main/scripts/lib/scars.mjs"><code>scars.mjs</code></a> is a pattern list you can read, and <code class="nowrap">--selftest</code> runs it without touching your data.</li>
+      <li>It makes no network calls and writes nothing into your repo. Drafts go to stdout, <a href="https://github.com/halilneed/scar/blob/main/scripts/scar.mjs" data-goatcounter-click="sc-gh-scar-scar-mjs"><code>scar.mjs</code></a> contains no fetch and no sockets, and you decide what lands in the repo.</li>
+      <li>There are 16 families and no model judgement. <a href="https://github.com/halilneed/scar/blob/main/scripts/lib/scars.mjs" data-goatcounter-click="sc-gh-scar-scars-mjs-2"><code>scars.mjs</code></a> is a pattern list you can read, and <code class="nowrap">--selftest</code> runs it without touching your data.</li>
       <li>Retry loops do not inflate the ranking. An episode is one run of consecutive failures plus the first success after it, so twenty attempts in one session is one lesson.</li>
       <li><code>verify</code> depends on the marker. It counts recurrences before and after the marker’s date, so a rule without a marker cannot be measured.</li>
       <li>Unreadable sessions and dropped low-confidence signatures are counted in the source note.</li>
-      <li>MIT-licensed (<a href="https://github.com/halilneed/scar/blob/main/LICENSE"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
+      <li>MIT-licensed (<a href="https://github.com/halilneed/scar/blob/main/LICENSE" data-goatcounter-click="sc-gh-scar-license"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
     </ul>
   </section>
 

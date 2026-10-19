@@ -32,6 +32,7 @@
 | `tools/guides/` | Rehberlerin kaynağı ve derleme betikleri (aşağıda "Rehberler") |
 | `<yol>/tr/index.html`, `tr/index.html` | Her sayfanın Türkçesi (aşağıda "İki dil") |
 | `tools/lang-switch.mjs` | Elle yazılan sayfaların hreflang etiketlerini ve TR / EN anahtarını yazar |
+| `tools/audit-tracking.mjs`, `tools/name-clicks.mjs`, `tools/indexnow.mjs` | Ölçüm denetimi, eksik tıklama adlarını ekleme, IndexNow bildirimi (aşağıda "Ölçüm sözleşmesi") |
 
 ## Tasarım
 
@@ -162,6 +163,27 @@ node tools/make-og.mjs turkish-pii-detection    # tek kart
   `data-goatcounter-click` nitelikleri tıklamaları adlandırır; ek JavaScript yok.
 - **E-posta kaydı** `/writing/` (etiket `newsletter`) ve `/guides/`, `/guides/tr/` (etiket `guides`)
   sayfalarındadır; Buttondown'a düz `POST` eder (`embed-subscribe/hailneed`).
+
+### Ölçüm sözleşmesi
+
+Amaç: bir satışın ya da aboneliğin hangi sayfadan, hangi düğmeden ve hangi dilde geldiğini bilmek.
+Tarayıcı Gumroad'a ve Buttondown'a yalnız alan adını gönderir, sayfa yolunu değil; bu yüzden bilgi
+bağlantıda ve formda açıkça taşınır.
+
+- **Tıklama adı** her sayfada ve sitede tekildir. Türkçe sayfada adın bir parçası `tr`'dir
+  (`cta-contact-tr`, `guides-tr-start`). Sahip olunan hedeflere (Hugging Face, GitHub, Medium, Gumroad,
+  Buttondown, e-posta) giden her bağlantının adı vardır; üçüncü taraf atıflar ve altbilgi sayılmaz.
+  Elle yazılan sayfalarda eksik adları `node tools/name-clicks.mjs` ekler (`<önek>-<hedef>[-tr]`).
+- **Gumroad bağlantısı** `utm_source=halilneed.agency&utm_medium=guide&utm_campaign=<rehber>&utm_content=s<adım>-<dil>`
+  taşır. Rehberlerde `tools/guides/shared/lock.html` yazar; adım 3 ve 4'teki düğmelerin adı da ayrıdır
+  (`<rehber>-gumroad-s3-tr`). Gumroad bu alanları satış kaydına yazar.
+- **Bülten formu** gizli `metadata__page` (formun durduğu sayfanın yolu) ve `utm_source/medium/campaign` taşır.
+- **Denetim:** `node tools/audit-tracking.mjs` sayaç, tıklama adı, Gumroad UTM'leri, form kaynağı, sitemap,
+  canonical, hreflang ve JSON-LD'yi kontrol eder; hata varsa çıkış kodu 1. Kuralların testleri:
+  `node tools/test-audit-tracking.mjs`. İkisi de her PR'da çalışır (`.github/workflows/audit.yml`).
+- **IndexNow:** GitHub Pages yayını bitince `.github/workflows/indexnow.yml` son commit'te değişen ve
+  sitemap'te bulunan sayfaları Bing ve Yandex'e bildirir. Elle: `node tools/indexnow.mjs --dry`.
+- Toplanan veriyi birleştiren huni aracı bu deponun dışındadır (müşteri e-postası içerir).
 - **Rehberler** herkese açıktır; istek formu yoktur. Rehberler sayfasındaki `mailto:` bağlantısı
   ekiplerin soruları içindir ve doğrudan `halil@halilneed.agency` adresine gelir.
 

@@ -1,0 +1,26 @@
+# Ölçüm denetimi: her PR ve main'e her push'ta çalışır. Sayfa sayacı, tıklama adları,
+# Gumroad kaynak bilgisi, sitemap, canonical ve hreflang hatası varsa iş kırmızı olur.
+name: audit
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Ölçüm denetimi
+        run: node tools/audit-tracking.mjs
+      - name: Maskeleme aracı testleri
+        run: node tools/test-masking-tool.mjs
+      - name: Denetim kurallarının testleri
+        run: node tools/test-audit-tracking.mjs

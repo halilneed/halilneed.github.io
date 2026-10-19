@@ -12,7 +12,7 @@
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://halilneed.agency';
@@ -45,10 +45,13 @@ function apply(path, enPath, trPath, lang) {
   writeFileSync(file(path), h);
 }
 
-for (const en of PAGES) {
-  const tr = trOf(en);
-  if (!existsSync(file(tr))) { console.warn(`skip ${en}: no ${tr}`); continue; }
-  apply(en, en, tr, 'en');
-  apply(tr, en, tr, 'tr');
-  console.log(`linked ${en} <-> ${tr}`);
+/* Yalnız doğrudan çalıştırılınca yazar; PAGES başka betikten içe aktarılabilsin */
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  for (const en of PAGES) {
+    const tr = trOf(en);
+    if (!existsSync(file(tr))) { console.warn(`skip ${en}: no ${tr}`); continue; }
+    apply(en, en, tr, 'en');
+    apply(tr, en, tr, 'tr');
+    console.log(`linked ${en} <-> ${tr}`);
+  }
 }

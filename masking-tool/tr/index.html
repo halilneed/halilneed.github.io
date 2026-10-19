@@ -225,9 +225,9 @@
         <textarea id="mask-output" rows="7" readonly spellcheck="false"></textarea>
         <p class="tool-status" id="mask-status" role="status" aria-live="polite"></p>
         <div class="btns">
-          <button type="button" class="btn btn--solid" id="mask-copy" data-goatcounter-click="mt-copy">Kopyala</button>
-          <button type="button" class="btn" id="mask-download" data-goatcounter-click="mt-download">İndir</button>
-          <label class="btn" data-goatcounter-click="mt-file"><input type="file" id="mask-file" class="visually-hidden" accept=".csv,.tsv,.txt,text/plain,text/csv">Dosya aç (CSV, TXT)</label>
+          <button type="button" class="btn btn--solid" id="mask-copy" data-goatcounter-click="mt-copy-tr">Kopyala</button>
+          <button type="button" class="btn" id="mask-download" data-goatcounter-click="mt-download-tr">İndir</button>
+          <label class="btn" data-goatcounter-click="mt-file-tr"><input type="file" id="mask-file" class="visually-hidden" accept=".csv,.tsv,.txt,text/plain,text/csv">Dosya aç (CSV, TXT)</label>
         </div>
       </div>
 
@@ -237,7 +237,7 @@
         <label class="field" for="restore-input">Yapay zekânın cevabı</label>
         <textarea id="restore-input" rows="5" spellcheck="false"></textarea>
         <div class="btns">
-          <button type="button" class="btn btn--solid" id="restore-run" data-goatcounter-click="mt-restore">Geri aç</button>
+          <button type="button" class="btn btn--solid" id="restore-run" data-goatcounter-click="mt-restore-tr">Geri aç</button>
           <button type="button" class="btn" id="restore-copy">Kopyala</button>
         </div>
         <label class="field" for="restore-output">Geri açılmış metin</label>
@@ -337,7 +337,7 @@
   <section id="limits" aria-labelledby="limits-title">
     <h2 id="limits-title">Sınırlar</h2>
     <ul>
-      <li>Listede olmayan adları, adresleri, sağlık bilgisini, plaka ve doğum tarihini bulmaz. Serbest metindeki adlar ve adresler için <a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri maskeleme modelim</a> kullanılabilir: 53 etiketi var, CPU’da yerelde çalışır ve <a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">tarayıcıda denenebilir</a>.</li>
+      <li>Listede olmayan adları, adresleri, sağlık bilgisini, plaka ve doğum tarihini bulmaz. Serbest metindeki adlar ve adresler için <a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri maskeleme modelim</a> kullanılabilir: 53 etiketi var, CPU’da yerelde çalışır ve <a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="mt-space-pii-detection-tr">tarayıcıda denenebilir</a>.</li>
       <li>10 haneli vergi kimlik numaralarını ayrıca tanımaz; 5 ile başlayan biri telefon olarak etiketlenebilir.</li>
       <li>Bir metinde hangi kişisel veri kategorilerinin bulunduğunu bilmek isterseniz <a href="/models/turkish-kvkk-classifier/tr/">Türkçe KVKK sınıflandırıcısı</a> 24 kategoriyi işaretler.</li>
       <li>Kurallar bilerek basit tutuldu. Maskelenmiş metni göndermeden önce okuyun.</li>

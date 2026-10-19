@@ -152,7 +152,7 @@ Source note: 25 sessions scanned (all) · Risk score: 395 (high)
 | high     | git-hard-reset      | `efb30291` | `git reset --hard` |
 | high     | secret-file-access  | `2f51f1d8` | `.env`             |</code></pre>
 
-    <p>Every finding names the rule that fired, the session it fired in and the matched text, so you can disagree with one specific finding. The rules live in <a href="https://github.com/halilneed/agent-blackbox/blob/main/scripts/lib/rules.mjs">one file you can open</a>, and any rule you disagree with can be switched off with <code class="nowrap">--ignore</code>.</p>
+    <p>Every finding names the rule that fired, the session it fired in and the matched text, so you can disagree with one specific finding. The rules live in <a href="https://github.com/halilneed/agent-blackbox/blob/main/scripts/lib/rules.mjs" data-goatcounter-click="ab-gh-agent-blackbox-rules-mjs">one file you can open</a>, and any rule you disagree with can be switched off with <code class="nowrap">--ignore</code>.</p>
   </section>
 
   <section id="install" aria-labelledby="install-title">
@@ -167,7 +167,7 @@ Source note: 25 sessions scanned (all) · Risk score: 395 (high)
 # and try it
 &gt; /agent-blackbox:risk</code></pre>
 
-    <p>The <a href="https://github.com/halilneed/plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
+    <p>The <a href="https://github.com/halilneed/plugins" data-goatcounter-click="ab-gh-plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
     <ul>
       <li>Claude Code and Node.js 18 or newer.</li>
       <li>No dependencies, no build step, no API key, no account.</li>
@@ -192,12 +192,12 @@ Source note: 25 sessions scanned (all) · Risk score: 395 (high)
   <section id="guarantees" aria-labelledby="guarantees-title">
     <h2 id="guarantees-title">What it does and does not do</h2>
     <ul>
-      <li>It makes no network calls. The scanner only reads files already on your disk, and <a href="https://github.com/halilneed/agent-blackbox/blob/main/scripts/blackbox.mjs"><code>blackbox.mjs</code></a> contains no fetch and no sockets.</li>
+      <li>It makes no network calls. The scanner only reads files already on your disk, and <a href="https://github.com/halilneed/agent-blackbox/blob/main/scripts/blackbox.mjs" data-goatcounter-click="ab-gh-agent-blackbox-blackbox-mjs"><code>blackbox.mjs</code></a> contains no fetch and no sockets.</li>
       <li>Secrets are masked before any report is written: API keys, JWTs, private-key headers and credentialed connection strings. Masking is on by default. <code class="nowrap">--no-redact</code> exists and is your call.</li>
       <li>Thinking text never leaves the log. Only its count is reported.</li>
-      <li>There are 26 rules and no model judgement. <a href="https://github.com/halilneed/agent-blackbox/blob/main/scripts/lib/rules.mjs"><code>rules.mjs</code></a> is a pattern list you can read, and <code class="nowrap">--selftest</code> runs it against 33 fixtures without touching your data.</li>
+      <li>There are 26 rules and no model judgement. <a href="https://github.com/halilneed/agent-blackbox/blob/main/scripts/lib/rules.mjs" data-goatcounter-click="ab-gh-agent-blackbox-rules-mjs-2"><code>rules.mjs</code></a> is a pattern list you can read, and <code class="nowrap">--selftest</code> runs it against 33 fixtures without touching your data.</li>
       <li>Unreadable sessions are counted in the source note.</li>
-      <li>MIT-licensed (<a href="https://github.com/halilneed/agent-blackbox/blob/main/LICENSE"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
+      <li>MIT-licensed (<a href="https://github.com/halilneed/agent-blackbox/blob/main/LICENSE" data-goatcounter-click="ab-gh-agent-blackbox-license"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
     </ul>
   </section>
 

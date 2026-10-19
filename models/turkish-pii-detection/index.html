@@ -301,7 +301,7 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
 
     <p>Keep the prompt format as shown. It starts with the BOS token and uses Gemma turn markers, and the tokenizer call sets <code>add_special_tokens=False</code> so that BOS is not added twice. The instruction and the text are both in Turkish.</p>
     <p><code>REVISION</code> pins the v02 weights. Leave it out to follow <code>main</code>, or pass <code>revision="v01"</code> for the first release. On a GPU, load with <code>torch.bfloat16</code> and <code>device_map="auto"</code> instead of <code>.to("cpu")</code>, and move the inputs to the model with <code>.to(model.device)</code>.</p>
-    <p>The GitHub repository has a <a href="https://github.com/halilneed/turkish-pii-detection/blob/main/docs/python-turkish-pii-masking.md">step-by-step tutorial</a> and a local demo. The <a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">browser demo</a> runs a quantised ONNX build on your own device. Its first load downloads about 472 MB, and its output can differ from the Python model. The benchmark scores have not been re-checked for that build.</p>
+    <p>The GitHub repository has a <a href="https://github.com/halilneed/turkish-pii-detection/blob/main/docs/python-turkish-pii-masking.md" data-goatcounter-click="pii-gh-pii-detection-python-turkish-pii">step-by-step tutorial</a> and a local demo. The <a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="pii-space-pii-detection">browser demo</a> runs a quantised ONNX build on your own device. Its first load downloads about 472 MB, and its output can differ from the Python model. The benchmark scores have not been re-checked for that build.</p>
   </section>
 
   <section id="results" aria-labelledby="results-title">
@@ -349,7 +349,7 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
       <li><strong>Continued full fine-tuning from v01.</strong> One epoch, learning rate 2e-5, effective batch size 32, loss on the output tokens only.</li>
       <li><strong>Weight interpolation.</strong> The fine-tuned model alone dropped to 0.844 on the benchmark because it had drifted toward the generator’s distribution. Averaging its weights 50/50 with v01, a method known as WiSE-FT, scored 0.944, higher than v01 (0.880) and higher than the fine-tuned model alone.</li>
     </ol>
-    <p>The v01 story is written up in Turkish on Medium: <a href="https://halilneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d" lang="tr" hreflang="tr">Daha büyük model eğitmedim, zayıf dilimleri eğittim</a>.</p>
+    <p>The v01 story is written up in Turkish on Medium: <a href="https://halilneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d" lang="tr" hreflang="tr" data-goatcounter-click="pii-medium-daha-buyuk-model-egitmedim">Daha büyük model eğitmedim, zayıf dilimleri eğittim</a>.</p>
   </section>
 
   <section id="limitations" aria-labelledby="limitations-title">
@@ -400,19 +400,19 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
     <p>Çıktı olarak yalnızca maskelenmiş metni verir; karakter konumu, token etiketi ya da KVKK kategorisi döndürmez. v02, 1.000 sentetik örnekten oluşan herkese açık benchmark’ta 0.944 tam eşleşme skoruna ulaştı (v01: 0.880). Model seçiminde kullanılmayan 531 örnekte skor 0.945’tir. En zayıf olduğu dilim çok kişili metinlerdir (0.750).</p>
     <p>Ağırlıklar ve model kartı Hugging Face’te, Python kullanım örnekleri GitHub’dadır. Tarayıcı demosunda kendi metninizi deneyebilirsiniz; model cihazınızda çalışır. Üretime almadan önce modelin başarımını kendi verinizde ölçün ve çıktıyı doğrulayın.</p>
     <ul class="links">
-      <li><a href="https://huggingface.co/halilneed/turkish-pii-detection">Hugging Face modeli</a></li>
-      <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Tarayıcı demosu</a></li>
-      <li><a href="https://github.com/halilneed/turkish-pii-detection">GitHub</a></li>
+      <li><a href="https://huggingface.co/halilneed/turkish-pii-detection" data-goatcounter-click="pii-hf-pii-detection">Hugging Face modeli</a></li>
+      <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="pii-space-pii-detection-2">Tarayıcı demosu</a></li>
+      <li><a href="https://github.com/halilneed/turkish-pii-detection" data-goatcounter-click="pii-gh-pii-detection">GitHub</a></li>
     </ul>
   </section>
 
   <section id="links" aria-labelledby="links-title">
     <h2 id="links-title">Links</h2>
     <ul>
-      <li><a href="https://huggingface.co/halilneed/turkish-pii-detection">Model card and weights</a></li>
-      <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Browser demo</a></li>
+      <li><a href="https://huggingface.co/halilneed/turkish-pii-detection" data-goatcounter-click="pii-hf-pii-detection-2">Model card and weights</a></li>
+      <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="pii-space-pii-detection-3">Browser demo</a></li>
       <li><a href="/masking-tool/">Masking tool</a>: a rule-based companion for TCKN, IBAN, phone and email, with reversible labels</li>
-      <li><a href="https://github.com/halilneed/turkish-pii-detection">Code, tutorial and evaluator on GitHub</a></li>
+      <li><a href="https://github.com/halilneed/turkish-pii-detection" data-goatcounter-click="pii-gh-pii-detection-2">Code, tutorial and evaluator on GitHub</a></li>
       <li><a href="/models/turkish-kvkk-classifier/">Turkish KVKK classifier</a>, <a href="/models/turkish-bseby-classifier/">Turkish BSEBY classifier</a> and <a href="/models/turkish-prompt-injection-classifier/">Turkish prompt injection classifier</a></li>
       <li><a href="/guides/personal-data/">Personal data and AI</a>: a short guide for teams on what to mask and what to keep in-house before text reaches a model</li>
       <li><a href="/models/">All models</a></li>

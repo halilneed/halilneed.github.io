@@ -299,7 +299,7 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
 
     <p>Prompt biçimini gösterildiği gibi koruyun. BOS token'ıyla başlar ve Gemma'nın tur işaretlerini kullanır; tokenizer çağrısında <code>add_special_tokens=False</code> verilir ki BOS iki kez eklenmesin. Talimat da metin de Türkçedir.</p>
     <p><code>REVISION</code>, v02 ağırlıklarına sabitler. <code>main</code> dalını izlemek için bu satırı çıkarın; ilk sürüm için <code>revision="v01"</code> verin. GPU'da <code>.to("cpu")</code> yerine <code>torch.bfloat16</code> ve <code>device_map="auto"</code> ile yükleyin, girdileri de <code>.to(model.device)</code> ile modelin cihazına taşıyın.</p>
-    <p>GitHub deposunda <a href="https://github.com/halilneed/turkish-pii-detection/blob/main/docs/python-turkish-pii-masking.md">adım adım bir eğitim</a> ve yerel bir demo var. <a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Tarayıcı demosu</a>, kuantize edilmiş bir ONNX sürümünü sizin cihazınızda çalıştırır. İlk açılışta yaklaşık 472 MB indirir ve çıktısı Python modelinden farklı olabilir. Benchmark skorları bu sürüm için yeniden ölçülmedi.</p>
+    <p>GitHub deposunda <a href="https://github.com/halilneed/turkish-pii-detection/blob/main/docs/python-turkish-pii-masking.md" data-goatcounter-click="pii-gh-pii-detection-python-turkish-pii-tr">adım adım bir eğitim</a> ve yerel bir demo var. <a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="pii-space-pii-detection-tr">Tarayıcı demosu</a>, kuantize edilmiş bir ONNX sürümünü sizin cihazınızda çalıştırır. İlk açılışta yaklaşık 472 MB indirir ve çıktısı Python modelinden farklı olabilir. Benchmark skorları bu sürüm için yeniden ölçülmedi.</p>
   </section>
 
   <section id="results" aria-labelledby="results-title">
@@ -347,7 +347,7 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
       <li><strong>v01'den sürdürülen tam ince ayar.</strong> Bir epoch, öğrenme oranı 2e-5, etkin batch boyutu 32, kayıp yalnızca çıktı token'larında.</li>
       <li><strong>Ağırlık enterpolasyonu.</strong> İnce ayarlı model tek başına benchmark'ta 0.844'e düştü, çünkü üretecin dağılımına kaymıştı. Ağırlıklarını v01 ile 50/50 ortalamak (WiSE-FT olarak bilinen yöntem) 0.944 verdi: hem v01'den (0.880) hem de ince ayarlı modelin tek başına skorundan yüksek.</li>
     </ol>
-    <p>v01'in hikâyesini Medium'da Türkçe yazdım: <a href="https://halilneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d" lang="tr" hreflang="tr">Daha büyük model eğitmedim, zayıf dilimleri eğittim</a>.</p>
+    <p>v01'in hikâyesini Medium'da Türkçe yazdım: <a href="https://halilneed.medium.com/daha-b%C3%BCy%C3%BCk-model-e%C4%9Fitmedim-zay%C4%B1f-dilimleri-e%C4%9Fittim-f4dcc4afaf5d" lang="tr" hreflang="tr" data-goatcounter-click="pii-medium-daha-buyuk-model-egitmedim-tr">Daha büyük model eğitmedim, zayıf dilimleri eğittim</a>.</p>
   </section>
 
   <section id="limitations" aria-labelledby="limitations-title">
@@ -398,19 +398,19 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
     <p>Çıktı olarak yalnızca maskelenmiş metni verir; karakter konumu, token etiketi ya da KVKK kategorisi döndürmez. v02, 1.000 sentetik örnekten oluşan herkese açık benchmark’ta 0.944 tam eşleşme skoruna ulaştı (v01: 0.880). Model seçiminde kullanılmayan 531 örnekte skor 0.945’tir. En zayıf olduğu dilim çok kişili metinlerdir (0.750).</p>
     <p>Ağırlıklar ve model kartı Hugging Face’te, Python kullanım örnekleri GitHub’dadır. Tarayıcı demosunda kendi metninizi deneyebilirsiniz; model cihazınızda çalışır. Üretime almadan önce modelin başarımını kendi verinizde ölçün ve çıktıyı doğrulayın.</p>
     <ul class="links">
-      <li><a href="https://huggingface.co/halilneed/turkish-pii-detection">Hugging Face modeli</a></li>
-      <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Tarayıcı demosu</a></li>
-      <li><a href="https://github.com/halilneed/turkish-pii-detection">GitHub</a></li>
+      <li><a href="https://huggingface.co/halilneed/turkish-pii-detection" data-goatcounter-click="pii-hf-pii-detection-tr">Hugging Face modeli</a></li>
+      <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="pii-space-pii-detection-2-tr">Tarayıcı demosu</a></li>
+      <li><a href="https://github.com/halilneed/turkish-pii-detection" data-goatcounter-click="pii-gh-pii-detection-tr">GitHub</a></li>
     </ul>
   </section>
 
   <section id="links" aria-labelledby="links-title">
     <h2 id="links-title">Bağlantılar</h2>
     <ul>
-      <li><a href="https://huggingface.co/halilneed/turkish-pii-detection">Model kartı ve ağırlıklar</a></li>
-      <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo">Tarayıcı demosu</a></li>
+      <li><a href="https://huggingface.co/halilneed/turkish-pii-detection" data-goatcounter-click="pii-hf-pii-detection-2-tr">Model kartı ve ağırlıklar</a></li>
+      <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="pii-space-pii-detection-3-tr">Tarayıcı demosu</a></li>
       <li><a href="/masking-tool/tr/">Maskeleme aracı</a>: TC kimlik, IBAN, telefon ve e-posta için kural tabanlı, geri açılabilir etiketli yardımcı</li>
-      <li><a href="https://github.com/halilneed/turkish-pii-detection">GitHub'da kod, eğitim ve değerlendirme betiği</a></li>
+      <li><a href="https://github.com/halilneed/turkish-pii-detection" data-goatcounter-click="pii-gh-pii-detection-2-tr">GitHub'da kod, eğitim ve değerlendirme betiği</a></li>
       <li><a href="/models/turkish-kvkk-classifier/tr/">Türkçe KVKK sınıflandırıcısı</a>, <a href="/models/turkish-bseby-classifier/tr/">Türkçe BSEBY sınıflandırıcısı</a> ve <a href="/models/turkish-prompt-injection-classifier/tr/">Türkçe prompt injection sınıflandırıcısı</a></li>
       <li><a href="/guides/personal-data/tr/">Kişisel veri ve yapay zekâ</a>: metin bir modele ulaşmadan önce neyin maskelenip neyin içeride tutulacağını anlatan kısa rehber</li>
       <li><a href="/models/tr/">Tüm modeller</a></li>

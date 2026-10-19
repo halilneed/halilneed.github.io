@@ -157,7 +157,7 @@ Source note: 38 skill · installed agent roots · claude-code/installed: 3
 | `video-suite-cli`  | claude-code |     0 |    3 |    6 |    18 |
 | `agent-notes:intake` | claude-code |   0 |    2 |    1 |     9 |</code></pre>
 
-    <p>The machine I wrote this linter on scores “poor”. Every finding names the check, the skill and the severity, and every check carries a “why it matters” line and a “how to fix” line. The checks live in <a href="https://github.com/halilneed/skillbench/blob/main/scripts/lib/checks.mjs">one file you can open</a>, and any check you disagree with can be switched off with <code class="nowrap">--ignore</code>.</p>
+    <p>The machine I wrote this linter on scores “poor”. Every finding names the check, the skill and the severity, and every check carries a “why it matters” line and a “how to fix” line. The checks live in <a href="https://github.com/halilneed/skillbench/blob/main/scripts/lib/checks.mjs" data-goatcounter-click="sb-gh-skillbench-checks-mjs">one file you can open</a>, and any check you disagree with can be switched off with <code class="nowrap">--ignore</code>.</p>
   </section>
 
   <section id="install" aria-labelledby="install-title">
@@ -172,7 +172,7 @@ Source note: 38 skill · installed agent roots · claude-code/installed: 3
 # and try it
 &gt; /skillbench:coverage</code></pre>
 
-    <p>The <a href="https://github.com/halilneed/plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
+    <p>The <a href="https://github.com/halilneed/plugins" data-goatcounter-click="sb-gh-plugins">marketplace</a> id is <code>hailneed</code>, which is why the install line ends in <code>@hailneed</code>.</p>
     <ul>
       <li>Claude Code and Node.js 18 or newer.</li>
       <li>No dependencies, no build step, no API key, no account.</li>
@@ -197,12 +197,12 @@ Source note: 38 skill · installed agent roots · claude-code/installed: 3
   <section id="guarantees" aria-labelledby="guarantees-title">
     <h2 id="guarantees-title">What it does and does not do</h2>
     <ul>
-      <li>It makes no network calls. The scanner only reads skill files and session logs already on your disk, and <a href="https://github.com/halilneed/skillbench/blob/main/scripts/skillbench.mjs"><code>skillbench.mjs</code></a> contains no fetch and no sockets.</li>
+      <li>It makes no network calls. The scanner only reads skill files and session logs already on your disk, and <a href="https://github.com/halilneed/skillbench/blob/main/scripts/skillbench.mjs" data-goatcounter-click="sb-gh-skillbench-skillbench-mjs"><code>skillbench.mjs</code></a> contains no fetch and no sockets.</li>
       <li>Only Claude Code stores skill attribution, so skills on Codex CLI and Gemini CLI are reported as unmeasured and get no count.</li>
       <li>No quota is spent. Everything is read from disk. Live trigger testing, which means running <code>should_trigger</code> prompts, is deliberately deferred to v0.2 because it costs quota.</li>
-      <li>There are 26 checks and no model judgement. <a href="https://github.com/halilneed/skillbench/blob/main/scripts/lib/checks.mjs"><code>checks.mjs</code></a> is a list you can read, and <code class="nowrap">--selftest</code> runs the engine against 20 fixtures without touching your data.</li>
+      <li>There are 26 checks and no model judgement. <a href="https://github.com/halilneed/skillbench/blob/main/scripts/lib/checks.mjs" data-goatcounter-click="sb-gh-skillbench-checks-mjs-2"><code>checks.mjs</code></a> is a list you can read, and <code class="nowrap">--selftest</code> runs the engine against 20 fixtures without touching your data.</li>
       <li>Symlinks are followed. Skills linked from a development repo are found and linted. A naive scanner silently misses every one of them.</li>
-      <li>MIT-licensed (<a href="https://github.com/halilneed/skillbench/blob/main/LICENSE"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
+      <li>MIT-licensed (<a href="https://github.com/halilneed/skillbench/blob/main/LICENSE" data-goatcounter-click="sb-gh-skillbench-license"><code>LICENSE</code></a>). No account, no signup, no telemetry.</li>
     </ul>
   </section>
 
