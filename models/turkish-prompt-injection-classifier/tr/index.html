@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Türkçe prompt injection sınıflandırıcısı | halilneed</title>
-<meta name="description" content="LLM'e giren Türkçe metinde prompt injection için açık sınıflandırıcı. v2: kodlanmış saldırıların 13'te 13'ü, gizli Unicode'un %98'i, yaklaşık %2 yanlış alarm. MIT.">
+<meta name="description" content="LLM'e giren Türkçe metinde prompt injection için açık sınıflandırıcı. v2: kodlanmış saldırıların 13'te 13'ü, gizli Unicode'un %98'i, %1 yanlış alarm. MIT.">
 <link rel="canonical" href="https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-prompt-injection-classifier/">
 <link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/">
@@ -18,14 +18,14 @@
 <meta property="og:site_name" content="halilneed">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:title" content="Türkçe prompt injection sınıflandırıcısı | halilneed">
-<meta property="og:description" content="LLM'e giren Türkçe metinde prompt injection için açık sınıflandırıcı. v2: kodlanmış saldırıların 13'te 13'ü, gizli Unicode'un %98'i, yaklaşık %2 yanlış alarm. MIT.">
+<meta property="og:description" content="LLM'e giren Türkçe metinde prompt injection için açık sınıflandırıcı. v2: kodlanmış saldırıların 13'te 13'ü, gizli Unicode'un %98'i, %1 yanlış alarm. MIT.">
 <meta property="og:url" content="https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-prompt-injection-classifier.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Türkçe prompt injection sınıflandırıcısı | halilneed">
-<meta name="twitter:description" content="LLM'e giren Türkçe metinde prompt injection için açık sınıflandırıcı. v2: kodlanmış saldırıların 13'te 13'ü, gizli Unicode'un %98'i, yaklaşık %2 yanlış alarm. MIT.">
+<meta name="twitter:description" content="LLM'e giren Türkçe metinde prompt injection için açık sınıflandırıcı. v2: kodlanmış saldırıların 13'te 13'ü, gizli Unicode'un %98'i, %1 yanlış alarm. MIT.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-prompt-injection-classifier.png">
 <script type="application/ld+json">
 {
@@ -63,7 +63,7 @@
       "description": "Türkçe metinde prompt injection için açık ikili sınıflandırıcı: örnekler, her eğitim kaynağı dışarıda bırakılarak ölçülen sonuçlar, zararsız Türkçede yanlış alarm, Python kullanımı, eğitim verisi ve sınırlar.",
       "inLanguage": "tr",
       "datePublished": "2026-10-14",
-      "dateModified": "2026-10-15",
+      "dateModified": "2026-10-19",
       "image": "https://halilneed.agency/assets/img/og-turkish-prompt-injection-classifier.png",
       "author": {
         "@type": "Person",
@@ -99,6 +99,44 @@
         "alternateName": "halilneed",
         "url": "https://halilneed.agency/"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Prompt injection korumaları Türkçe metinde yanlış alarm verir mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet, sıradan Türkçe görev talimatlarında. “Metindeki tüm kişisel verileri maskele” gibi 1.000 zararsız talimatın %77,2’sini proventra mdeberta-v3, %60,7’sini patronus wolf-defender small, %31,5’ini protectai deberta-v3 v2 saldırı sayıyor. Bu model hiçbirini işaretlemiyor, 2.875 zararsız metnin tamamında oranı %1,0. Bu metinler bu model için aynı alandan geliyor; kendi trafiğinizde de ölçün."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Türkçe için açık bir prompt injection tespit modeli var mı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Var: turkish-prompt-injection-classifier, MIT lisanslı. v2, mmBERT-base tabanlı 307M parametreli bir model; metni CPU’da metin başına yaklaşık 35 ms’de BENIGN ya da INJECTION olarak işaretliyor. Her eğitim kaynağı dışarıda bırakıldığında ortalama F1 0.690. Kodlanmış 13 saldırının 13’ünü, görünmez Unicode ile gizlenmiş 42 saldırının %97,6’sını yakalıyor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Nerede yanılıyor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Görmediği bir kaynaktan gelen ajan saldırılarında: bellek zehirleme, veri sızdırma ve araç kötüye kullanımı 3 satırın 0’ında, sistem talimatını çıkarma ve RAG zehirleme 3’ün 1’inde yakalanıyor. Her seferinde tek bir metne bakar; konuşmayı ve sistem talimatını görmez. En az yetkiyle çalışan araçların yanında tek bir katman olarak kullanın."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kendi korumamın Türkçedeki yanlış alarm oranını nasıl ölçerim?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "halilneed/turkish-prompt-injection-false-alarm-benchmark üzerinde çalıştırın: 2.875 zararsız Türkçe metin (iş metinleri, bankacılık metinleri ve maskeleme talimatları) ve yanlış alarm tablosunu herhangi bir model için yeniden üreten bir betik. Ardından kendi zararsız trafiğinizden bir örnekte tekrarlayın."
+          }
+        }
+      ]
     }
   ]
 }
@@ -135,7 +173,7 @@
   <header class="page-head">
     <h1>Türkçe prompt injection sınıflandırıcısı</h1>
     <p class="lead"><code>turkish-prompt-injection-classifier</code>, bir LLM’e giren Türkçe metni <code>BENIGN</code> (zararsız) ya da <code>INJECTION</code> olarak işaretler. Kullanıcı mesajlarında ve asistanın okuduğu içerikte çalışır: e-posta, belge, getirilen pasaj, araç çıktısı.</p>
-    <p>Sürüm 2 yayında. Açık bir test setindeki 13 kodlanmış saldırının 13’ünü (v1: 5) ve görünmez Unicode ile gizlenmiş talimatların %98’ini (v1: %40) yakalıyor; görmediği her saldırı setinde v1’den yüksek skor alıyor. 2.875 zararsız Türkçe metinde en fazla %2,1 yanlış alarm veriyor; açık koruma modelleri aynı görev talimatlarının %77’sine kadarını saldırı sayıyor. İki sürüm de kullanılabilir. Tüm ölçümler açık bir benchmark’ta: <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection-tr">halilneed/turkish-prompt-injection-benchmark</a>.</p>
+    <p>Sürüm 2 yayında. Açık bir test setindeki 13 kodlanmış saldırının 13’ünü (v1: 5) ve görünmez Unicode ile gizlenmiş talimatların %98’ini (v1: %40) yakalıyor; görmediği her saldırı setinde v1’den yüksek skor alıyor. 2.875 zararsız Türkçe metnin %1,0’ını işaretliyor (en kötü alt sette %2,1). Açık koruma modelleri 1.000 sıradan Türkçe maskeleme talimatında çok daha fazla alarm veriyor: proventra mdeberta-v3 %77,2, patronus wolf-defender small %60,7, protectai deberta-v3 v2 %31,5, bu model hiç. Bu zararsız metinler benim alanlarımdan geldiği için bunu eşit bir yarış değil, açık korumalar için bir uyarı olarak okuyun. İki sürüm de kullanılabilir. Tüm ölçümler açık bir benchmark’ta: <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection-tr">halilneed/turkish-prompt-injection-benchmark</a>.</p>
     <ul class="links">
       <li><a href="https://huggingface.co/halilneed/turkish-prompt-injection-classifier" data-goatcounter-click="pinj-download-tr">Hugging Face’te ağırlıklar</a></li>
     </ul>
@@ -147,6 +185,7 @@
       <div><dt>Sonuç</dt><dd>Her eğitim kaynağı dışarıda bırakıldığında ortalama F1 0.690 (v1: 0.567); zararsız Türkçede %0–2,1 yanlış alarm</dd></div>
       <div><dt>CPU hızı</dt><dd>metin başına yaklaşık 35 ms (v1: yaklaşık 23 ms)</dd></div>
       <div><dt>Lisans</dt><dd>MIT</dd></div>
+      <div><dt>Güncelleme</dt><dd><time datetime="2026-10-19">19 Ekim 2026</time></dd></div>
     </dl>
 
     <nav class="toc" aria-label="Bu sayfada">
@@ -158,6 +197,7 @@
         <li><a href="#usage">Hızlı başlangıç</a></li>
         <li><a href="#training">Eğitim verisi</a></li>
         <li><a href="#limitations">Sınırlar</a></li>
+        <li><a href="#faq">Sorular</a></li>
       </ul>
     </nav>
   </header>
@@ -344,6 +384,27 @@ is_injection = scores["INJECTION"] &gt;= 0.05
       <li>İçerik moderasyonu modeli değildir. Manipülasyon içermeyen zararlı bir istek tasarım gereği <code>BENIGN</code>’dir.</li>
       <li>Karşılaştırılmayanlar: Llama Prompt Guard 2 (erişim kısıtlı, erişimim yok) ve <code>transformers</code> ile yüklenmeyen bir scikit-learn Türkçe dedektörü.</li>
     </ul>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Türkçede prompt injection hakkında sorular</h2>
+
+    <details>
+      <summary>Prompt injection korumaları Türkçe metinde yanlış alarm verir mi?</summary>
+      <p>Evet, sıradan Türkçe görev talimatlarında. “Metindeki tüm kişisel verileri maskele” gibi 1.000 zararsız talimatın %77,2’sini proventra mdeberta-v3, %60,7’sini patronus wolf-defender small, %31,5’ini protectai deberta-v3 v2 saldırı sayıyor. Bu model hiçbirini işaretlemiyor, 2.875 zararsız metnin tamamında oranı %1,0. Bu metinler bu model için aynı alandan geliyor; kendi trafiğinizde de ölçün.</p>
+    </details>
+    <details>
+      <summary>Türkçe için açık bir prompt injection tespit modeli var mı?</summary>
+      <p>Var: turkish-prompt-injection-classifier, MIT lisanslı. v2, mmBERT-base tabanlı 307M parametreli bir model; metni CPU’da metin başına yaklaşık 35 ms’de BENIGN ya da INJECTION olarak işaretliyor. Her eğitim kaynağı dışarıda bırakıldığında ortalama F1 0.690. Kodlanmış 13 saldırının 13’ünü, görünmez Unicode ile gizlenmiş 42 saldırının %97,6’sını yakalıyor.</p>
+    </details>
+    <details>
+      <summary>Nerede yanılıyor?</summary>
+      <p>Görmediği bir kaynaktan gelen ajan saldırılarında: bellek zehirleme, veri sızdırma ve araç kötüye kullanımı 3 satırın 0’ında, sistem talimatını çıkarma ve RAG zehirleme 3’ün 1’inde yakalanıyor. Her seferinde tek bir metne bakar; konuşmayı ve sistem talimatını görmez. En az yetkiyle çalışan araçların yanında tek bir katman olarak kullanın.</p>
+    </details>
+    <details>
+      <summary>Kendi korumamın Türkçedeki yanlış alarm oranını nasıl ölçerim?</summary>
+      <p><a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection-false-alarm-faq-tr">halilneed/turkish-prompt-injection-false-alarm-benchmark</a> üzerinde çalıştırın: 2.875 zararsız Türkçe metin (iş metinleri, bankacılık metinleri ve maskeleme talimatları) ve yanlış alarm tablosunu herhangi bir model için yeniden üreten bir betik. Ardından kendi zararsız trafiğinizden bir örnekte tekrarlayın.</p>
+    </details>
   </section>
 
   <section id="links" aria-labelledby="links-title">

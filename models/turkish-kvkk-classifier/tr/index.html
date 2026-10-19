@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Türkçe KVKK sınıflandırıcısı (BERTurk, 24 kategori) | halilneed</title>
-<meta name="description" content="Türkçe bir metinde 24 KVKK ve VERBİS kişisel veri kategorisinden hangilerinin bulunduğunu söyleyen açık, çok etiketli sınıflandırıcı. 0.874 micro-F1, CPU'da metin başına 22 ms. MIT.">
+<meta name="description" content="Türkçe bir metinde 24 KVKK ve VERBİS kişisel veri kategorisinden hangilerinin bulunduğunu söyleyen açık, çok etiketli sınıflandırıcı. 0.878 micro-F1, CPU'da metin başına 22 ms. MIT.">
 <link rel="canonical" href="https://halilneed.agency/models/turkish-kvkk-classifier/tr/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-kvkk-classifier/">
 <link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/turkish-kvkk-classifier/tr/">
@@ -18,14 +18,14 @@
 <meta property="og:site_name" content="halilneed">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:title" content="Türkçe KVKK sınıflandırıcısı (BERTurk, 24 kategori) | halilneed">
-<meta property="og:description" content="Türkçe bir metinde 24 KVKK ve VERBİS kişisel veri kategorisinden hangilerinin bulunduğunu söyleyen açık, çok etiketli sınıflandırıcı. 0.874 micro-F1, CPU'da metin başına 22 ms. MIT.">
+<meta property="og:description" content="Türkçe bir metinde 24 KVKK ve VERBİS kişisel veri kategorisinden hangilerinin bulunduğunu söyleyen açık, çok etiketli sınıflandırıcı. 0.878 micro-F1, CPU'da metin başına 22 ms. MIT.">
 <meta property="og:url" content="https://halilneed.agency/models/turkish-kvkk-classifier/tr/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Türkçe KVKK sınıflandırıcısı (BERTurk, 24 kategori) | halilneed">
-<meta name="twitter:description" content="Türkçe bir metinde 24 KVKK ve VERBİS kişisel veri kategorisinden hangilerinin bulunduğunu söyleyen açık, çok etiketli sınıflandırıcı. 0.874 micro-F1, CPU'da metin başına 22 ms. MIT.">
+<meta name="twitter:description" content="Türkçe bir metinde 24 KVKK ve VERBİS kişisel veri kategorisinden hangilerinin bulunduğunu söyleyen açık, çok etiketli sınıflandırıcı. 0.878 micro-F1, CPU'da metin başına 22 ms. MIT.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png">
 <script type="application/ld+json">
 {
@@ -63,7 +63,7 @@
       "description": "Türkçe metinde 24 KVKK ve VERBİS kişisel veri kategorisini tespit eden açık, çok etiketli sınıflandırıcı: ne yaptığı, etiketler, sonuçlar, Python ile kullanımı, eğitimi ve sınırları.",
       "inLanguage": "tr",
       "datePublished": "2026-10-09",
-      "dateModified": "2026-10-15",
+      "dateModified": "2026-10-19",
       "image": "https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png",
       "author": {
         "@type": "Person",
@@ -99,6 +99,44 @@
         "alternateName": "halilneed",
         "url": "https://halilneed.agency/"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/models/turkish-kvkk-classifier/tr/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "VERBİS veri kategorileri nelerdir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bu model VERBİS’teki 14 genel kategoriyi kullanır: kimlik, iletişim, lokasyon, özlük, hukuki işlem, müşteri işlem, fiziksel mekân güvenliği, işlem güvenliği, risk yönetimi, finans, mesleki deneyim, pazarlama, görsel ve işitsel kayıtlar, ve VERBİS’te “diğer” altında duran araç bilgisi. Kesin liste ve kayıt yükümlülüğü için KVKK Kurumu’nun VERBİS kaynaklarına bakın."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Özel nitelikli kişisel veriler nelerdir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KVKK md. 6’ya göre kişilerin ırkı, etnik kökeni, siyasi düşüncesi, felsefi inancı, dini, mezhebi veya diğer inançları, kılık ve kıyafeti, dernek, vakıf ya da sendika üyeliği, sağlığı, cinsel hayatı, ceza mahkûmiyeti ve güvenlik tedbirleriyle ilgili verileri ile biyometrik ve genetik verileri özel nitelikli kişisel veridir. Model bunları 10 etiketle işaretler."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bir metinde hangi kişisel veri kategorilerinin olduğu otomatik bulunabilir mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bir sinyal olarak evet. turkish-kvkk-classifier, Türkçe bir metnin 24 kategoriden hangilerini içerdiğini CPU’da yaklaşık 22 ms’de söyler. Bağımsız 987 metinde micro-F1 0.878. “Özel nitelikli veri var mı?” sorusunda kesinlik 0.959, duyarlılık 0.913; yani bu tür yaklaşık 11 metinden 1’ini kaçırır. En zayıf etiketleri lokasyon (0.74) ve müşteri işlem (0.75)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Sınıflandırıcı VERBİS envanterinin yerine geçer mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Bir metinde hangi kategorilerin muhtemelen bulunduğunu söyler. İşlemenin hukuka uygun olup olmadığına, hangi işleme şartının geçerli olduğuna ya da neyin kaydedileceğine karar vermez. Kişisel verinin nerede durduğunu bulmak için kullanın; değerlendirmeyi hukuk ekibiniz yapsın."
+          }
+        }
+      ]
     }
   ]
 }
@@ -144,9 +182,10 @@
       <div><dt>Boyut</dt><dd>110M parametre</dd></div>
       <div><dt>Temel model</dt><dd><a href="https://huggingface.co/dbmdz/bert-base-turkish-cased"><code>dbmdz/bert-base-turkish-cased</code></a> (BERTurk)</dd></div>
       <div><dt>Etiketler</dt><dd>24, çok etiketli</dd></div>
-      <div><dt>Sonuç</dt><dd>Eğitimde kullanılmayan 987 metinde 0.874 micro-F1</dd></div>
+      <div><dt>Sonuç</dt><dd>Eğitimde kullanılmayan 987 metinde 0.878 micro-F1 (v1.1)</dd></div>
       <div><dt>CPU hızı</dt><dd>metin başına yaklaşık 22 ms</dd></div>
       <div><dt>Lisans</dt><dd>MIT</dd></div>
+      <div><dt>Güncelleme</dt><dd><time datetime="2026-10-19">19 Ekim 2026</time></dd></div>
     </dl>
 
     <nav class="toc" aria-label="Bu sayfada">
@@ -157,6 +196,7 @@
         <li><a href="#usage">Hızlı başlangıç</a></li>
         <li><a href="#training">Eğitim</a></li>
         <li><a href="#limitations">Sınırlar</a></li>
+        <li><a href="#faq">Sorular</a></li>
         <li><a href="#turkce">Kısa özet</a></li>
       </ul>
     </nav>
@@ -323,26 +363,27 @@
 
   <section id="results" aria-labelledby="results-title">
     <h2 id="results-title">Sonuçlar</h2>
-    <p>İki test seti var. Ana set, eğitimde kullanılmayan bağımsız bir set: eğitim verisine bakılmadan yazılmış 1.125 metin, ikinci kez ve kör olarak yeniden etiketlendi. İki etiketlemenin birebir örtüştüğü 987 metin altın standart seti oluşturuyor (%87.7 tam uyum, etiket başına Cohen's kappa 0.84 ile 1.00 arasında). İkinci set, eğitimde hiç kullanılmamış 333 şablondan gelen 771 örneklik, şablon bazında ayrık bir test. 987 metinlik altın sette <code>turkish-kvkk-classifier</code> 0.874 micro-F1 ve 0.856 macro-F1 alıyor.</p>
+    <p>Üç test seti var. Ana set, eğitimde kullanılmayan bağımsız bir set: eğitim verisine bakılmadan yazılmış 1.125 metin, ikinci kez ve kör olarak yeniden etiketlendi. İki etiketlemenin birebir örtüştüğü 987 metin altın standart seti oluşturuyor (%87.7 tam uyum, etiket başına Cohen's kappa 0.84 ile 1.00 arasında). İkinci set, en zayıf etiketlere yönelik 317 metinlik bir zor set: bu model eğitildikten sonra, eğitim şablonlarını hiç görmemiş yazarlarca yazıldı; %63'ü form, log, CRM notu gibi yapısal kayıt. Üçüncüsü, eğitimde hiç kullanılmamış 333 şablondan gelen 771 örneklik, şablon bazında ayrık bir test. 987 metinlik altın sette <code>turkish-kvkk-classifier</code> v1.1, 0.878 micro-F1 ve 0.863 macro-F1 alıyor.</p>
 
     <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
       <table>
-        <caption id="results-caption">İki test setindeki skorlar</caption>
+        <caption id="results-caption">v1.1'in üç test setindeki skorları</caption>
         <thead>
-          <tr><th scope="col">Metrik</th><th scope="col" class="num">Bağımsız set<br>987 metin</th><th scope="col" class="num">Ayrık test<br>771 örnek</th></tr>
+          <tr><th scope="col">Metrik</th><th scope="col" class="num">Bağımsız set<br>987 metin</th><th scope="col" class="num">Zor set<br>317 metin</th><th scope="col" class="num">Ayrık test<br>771 örnek</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">micro-F1</th><td class="num">0.874</td><td class="num dim">0.895</td></tr>
-          <tr><th scope="row">macro-F1</th><td class="num">0.856</td><td class="num dim">0.875</td></tr>
-          <tr><th scope="row">Özel nitelikli veri var mı: kesinlik</th><td class="num">0.960</td><td class="num dim">0.955</td></tr>
-          <tr><th scope="row">Özel nitelikli veri var mı: duyarlılık (recall)</th><td class="num">0.884</td><td class="num dim">0.955</td></tr>
-          <tr><th scope="row">Tam eşleşme (tüm etiketler doğru)</th><td class="num">0.717</td><td class="num dim">0.733</td></tr>
+          <tr><th scope="row">micro-F1</th><td class="num">0.878</td><td class="num">0.902</td><td class="num dim">0.895</td></tr>
+          <tr><th scope="row">macro-F1</th><td class="num">0.863</td><td class="num">0.853</td><td class="num dim">0.876</td></tr>
+          <tr><th scope="row">Özel nitelikli veri var mı: kesinlik</th><td class="num">0.959</td><td class="num">0.926</td><td class="num dim">0.956</td></tr>
+          <tr><th scope="row">Özel nitelikli veri var mı: duyarlılık (recall)</th><td class="num">0.913</td><td class="num">0.822</td><td class="num dim">0.972</td></tr>
+          <tr><th scope="row">Tam eşleşme (tüm etiketler doğru)</th><td class="num">0.721</td><td class="num">0.656</td><td class="num dim">0.733</td></tr>
         </tbody>
       </table>
     </div>
 
     <p>Micro-F1, tüm etiket kararları bir araya toplanarak hesaplanan F1'dir. Macro-F1, etiket başına F1 skorlarının ağırlıksız ortalamasıdır.</p>
-    <p>Bağımsız setteki metinler ve iki etiketleme turu bir dil modeliyle üretildi ve otomatik olarak kontrol edildi. Bir insan tarafından satır satır doğrulanmadı.</p>
+    <p>v1.1 (15 Ekim 2026) v1'in ağırlıklarını korur; yalnızca bazı özel nitelikli etiketlerin eşiklerini düşürür, eşikler yine yalnızca dev setinde ayarlandı. v1 bağımsız sette 0.874 micro-F1 ve 0.884 özel nitelikli duyarlılık almıştı. Eşik kuralındaki sorunu yayınlanmamış bir v2'nin bağımsız set sonuçlarını incelerken fark ettim; bu yüzden duyarlılıktaki artışı (0.884'ten 0.913'e) tamamen bağımsız bir ölçüm saymayın. v1 eşikleri <code>revision="v1"</code> ile duruyor.</p>
+    <p>Bağımsız setteki metinler ve iki etiketleme turu bir dil modeliyle üretildi ve otomatik olarak kontrol edildi. Bir insan tarafından satır satır doğrulanmadı. Zor setin iki etiketlemesi de aynı dil modeli ve aynı kılavuzla yapıldı; %99.1 uyum kılavuzun tutarlı uygulandığını gösterir, iki bağımsız kişinin uzlaştığını değil.</p>
   </section>
 
   <section id="usage" aria-labelledby="usage-title">
@@ -367,7 +408,7 @@ def classify(text):
 
 print(classify("hastanın böbrek yetmezliği ilerlemiş, eşi 0532 111 22 33'ten ulaşılabilir"))</code></pre>
 
-    <p>Etiket başına eşikler dev setinde ayarlandı ve <code>thresholds.json</code> içinde gelir. Özel nitelikli kategorilerde eşik hiçbir zaman 0.5'in üstüne çıkmaz; bu da duyarlılığı (recall) öne alır.</p>
+    <p>Etiket başına eşikler dev setinde ayarlandı ve <code>thresholds.json</code> içinde gelir. Özel nitelikli kategorilerde eşik hiçbir zaman 0.5'in üstüne çıkmaz ve dev F1'i eşit eşikler arasından en düşüğü seçilir; bu da duyarlılığı (recall) öne alır.</p>
     <p>Ölçülen hız: Intel i5-12400F üzerinde sekiz thread ve batch boyutu bir ile, ortalama 126 karakterlik metinlerde metin başına 22 ms.</p>
   </section>
 
@@ -386,15 +427,37 @@ print(classify("hastanın böbrek yetmezliği ilerlemiş, eşi 0532 111 22 33'te
     <ul>
       <li>Eğitim verisi sentetik. Model kritik bir akışa girmeden önce onu kendi kurumunuzun metinlerinde ölçün.</li>
       <li>En zayıf etiketler <code>lokasyon</code> (F1 0.74), <code>musteri_islem</code> (0.75) ve <code>gorsel_isitsel</code> (0.79). Üçü de bağlamdan çıkarılıyor ve keskin bir sınırları yok. <code>genetik</code> de 0.79 alıyor.</li>
-      <li>“Burada özel nitelikli kişisel veri var mı?” sorusu için bağımsız setteki duyarlılık (recall) 0.884; yani bu tür metinlerin kabaca dokuzda biri kaçıyor.</li>
+      <li>“Burada özel nitelikli kişisel veri var mı?” sorusu için bağımsız setteki duyarlılık (recall) 0.913; yani bu tür metinlerin kabaca on birde biri kaçıyor.</li>
+      <li>Zor sette, yönelim açıkça söylenmeden partner ya da ilişki üzerinden anlatılan cinsel hayat bilgisini (duyarlılık 0.37) ve yapısal kayıtlara gömülü ceza mahkûmiyeti bilgisini (0.68) sık kaçırıyor.</li>
       <li>Çıktı bir kategori sinyalidir, hukuki bir değerlendirme değildir. <span lang="tr">VERBİS</span> envanteri ve KVKK'ya uyum kullanıcının sorumluluğunda kalır.</li>
     </ul>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">KVKK kişisel veri kategorileri hakkında sorular</h2>
+
+    <details>
+      <summary>VERBİS veri kategorileri nelerdir?</summary>
+      <p>Bu model VERBİS’teki 14 genel kategoriyi kullanır: kimlik, iletişim, lokasyon, özlük, hukuki işlem, müşteri işlem, fiziksel mekân güvenliği, işlem güvenliği, risk yönetimi, finans, mesleki deneyim, pazarlama, görsel ve işitsel kayıtlar, ve VERBİS’te “diğer” altında duran araç bilgisi. Kesin liste ve kayıt yükümlülüğü için KVKK Kurumu’nun VERBİS kaynaklarına bakın.</p>
+    </details>
+    <details>
+      <summary>Özel nitelikli kişisel veriler nelerdir?</summary>
+      <p>KVKK md. 6’ya göre kişilerin ırkı, etnik kökeni, siyasi düşüncesi, felsefi inancı, dini, mezhebi veya diğer inançları, kılık ve kıyafeti, dernek, vakıf ya da sendika üyeliği, sağlığı, cinsel hayatı, ceza mahkûmiyeti ve güvenlik tedbirleriyle ilgili verileri ile biyometrik ve genetik verileri özel nitelikli kişisel veridir. Model bunları 10 etiketle işaretler.</p>
+    </details>
+    <details>
+      <summary>Bir metinde hangi kişisel veri kategorilerinin olduğu otomatik bulunabilir mi?</summary>
+      <p>Bir sinyal olarak evet. turkish-kvkk-classifier, Türkçe bir metnin 24 kategoriden hangilerini içerdiğini CPU’da yaklaşık 22 ms’de söyler. Bağımsız 987 metinde micro-F1 0.878. “Özel nitelikli veri var mı?” sorusunda kesinlik 0.959, duyarlılık 0.913; yani bu tür yaklaşık 11 metinden 1’ini kaçırır. En zayıf etiketleri lokasyon (0.74) ve müşteri işlem (0.75).</p>
+    </details>
+    <details>
+      <summary>Sınıflandırıcı VERBİS envanterinin yerine geçer mi?</summary>
+      <p>Hayır. Bir metinde hangi kategorilerin muhtemelen bulunduğunu söyler. İşlemenin hukuka uygun olup olmadığına, hangi işleme şartının geçerli olduğuna ya da neyin kaydedileceğine karar vermez. Kişisel verinin nerede durduğunu bulmak için kullanın; değerlendirmeyi hukuk ekibiniz yapsın.</p>
+    </details>
   </section>
 
   <section id="turkce" lang="tr" aria-labelledby="turkce-title">
     <h2 id="turkce-title">Türkçe KVKK kategori sınıflandırıcısı</h2>
     <p><code>turkish-kvkk-classifier</code>, Türkçe bir metinde hangi kişisel veri kategorilerinin bulunduğunu belirleyen çok etiketli bir sınıflandırıcıdır: 14 VERBİS kategorisi ve KVKK md. 6’daki 10 özel nitelikli veri kategorisi. Maskeleme modelinden önce çalıştırılır: metin önce sınıflandırılır, sonuca göre maskeleme politikası seçilir, ardından metin maskelenir.</p>
-    <p>Eğitim verisine bakılmadan yazılmış 987 metinlik bağımsız sette micro-F1 0.874, macro-F1 0.856’dır. CPU’da metin başına yaklaşık 22 ms sürer. Çıktı yalnızca bir kategori tahminidir, hukuki nitelendirme değildir.</p>
+    <p>Eğitim verisine bakılmadan yazılmış 987 metinlik bağımsız sette micro-F1 0.878, macro-F1 0.863’tür (v1.1). CPU’da metin başına yaklaşık 22 ms sürer. Çıktı yalnızca bir kategori tahminidir, hukuki nitelendirme değildir.</p>
   </section>
 
   <section id="links" aria-labelledby="links-title">

@@ -65,7 +65,7 @@
         "tr"
       ],
       "datePublished": "2026-10-09",
-      "dateModified": "2026-10-15",
+      "dateModified": "2026-10-19",
       "image": "https://halilneed.agency/assets/img/og-turkish-bseby-classifier.png",
       "author": {
         "@type": "Person",
@@ -101,6 +101,44 @@
         "alternateName": "halilneed",
         "url": "https://halilneed.agency/"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/models/turkish-bseby-classifier/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a customer secret under Turkish banking rules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In this model a customer secret (müşteri sırrı) is information that arises from a specific natural or legal person’s relationship with a bank, including anything that shows they are a customer, following Article 4/3-4 of the Secrecy Regulation. An IBAN, an account number or a full card number counts even without explicit banking context. Being a customer of a shop, telco or insurer is personal data, not a customer secret."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a bank secret?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Secrecy Regulation says only “information that belongs only to the bank” (Article 5/5) and does not define the term further. This model reads it as the bank’s own undisclosed information: audit findings, internal limits and policies, unpublished results, system information, and system credentials such as service-account passwords and API keys."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does BSEBY ask banks to do with their data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BSEBY, the Regulation on Banks’ Information Systems and Electronic Banking Services, asks banks to set the security class of their data by three criteria: personal data, sensitive data and data covered by secrecy (Article 6/6). It also asks them to stop sensitive data and secrets from leaking in outbound traffic (Article 14/9)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a model find customer and bank secrets in Turkish text?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As a signal, yes. turkish-bseby-classifier v2 flags five data classes in about 32 ms per text on CPU and scores 0.960 micro-F1 on 747 held-out texts. For “is any secret present?” precision is 0.966 and recall 0.979. Its weakest label is authentication data (F1 0.881), so pair it with rule-based checks for card numbers, tokens and keys."
+          }
+        }
+      ]
     }
   ]
 }
@@ -150,6 +188,7 @@
       <div><dt>Result</dt><dd>v2: 0.960 micro-F1 on 747 held-out texts (v1: 0.944); 0.933 on a 202-text hard set (v1: 0.860)</dd></div>
       <div><dt>CPU speed</dt><dd>about 32 ms per text</dd></div>
       <div><dt>Licence</dt><dd>MIT</dd></div>
+      <div><dt>Updated</dt><dd><time datetime="2026-10-19">19 October 2026</time></dd></div>
     </dl>
 
     <nav class="toc" aria-label="On this page">
@@ -160,6 +199,7 @@
         <li><a href="#usage">Quick start</a></li>
         <li><a href="#training">Training</a></li>
         <li><a href="#limitations">Limitations</a></li>
+        <li><a href="#faq">Questions</a></li>
         <li><a href="#turkce" lang="tr">Türkçe</a></li>
       </ul>
     </nav>
@@ -299,7 +339,7 @@
     </div>
 
     <p>“Secret present” means <code>musteri_sirri</code> or <code>banka_sirri</code>. The legal-entity slice is the set of texts whose gold labels include a customer secret and no personal data; a prediction counts only if it gets both right. The template-disjoint test of v2’s own split (1,102 examples) gives micro-F1 0.950.</p>
-    <p>The texts and both label passes were produced with the same language model (Claude) and the same guideline, and were not verified line by line by a person. Exact agreement was 99.6% on the held-out set and 100% on the hard set. That shows the guideline can be applied consistently; it is not agreement between two independent people.</p>
+    <p>The texts and both label passes were produced with the same language model and the same guideline, and were not verified line by line by a person. Exact agreement was 99.6% on the held-out set and 100% on the hard set. That shows the guideline can be applied consistently; it is not agreement between two independent people.</p>
   </section>
 
   <section id="usage" aria-labelledby="usage-title">
@@ -346,6 +386,27 @@ print(classify("Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye ç�
       <li>The model looks at one piece of text at a time. A customer secret often arises from a combination of fields (Secrecy Regulation Article 4/4). When you classify tables or records, pass the fields together.</li>
       <li>The labels are a classification signal, not a legal assessment. Compliance with BSEBY and with the duty of secrecy remains the user’s responsibility.</li>
     </ul>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Questions about bank data classes</h2>
+
+    <details>
+      <summary>What is a customer secret under Turkish banking rules?</summary>
+      <p>In this model a customer secret (müşteri sırrı) is information that arises from a specific natural or legal person’s relationship with a bank, including anything that shows they are a customer, following Article 4/3-4 of the Secrecy Regulation. An IBAN, an account number or a full card number counts even without explicit banking context. Being a customer of a shop, telco or insurer is personal data, not a customer secret.</p>
+    </details>
+    <details>
+      <summary>What is a bank secret?</summary>
+      <p>The Secrecy Regulation says only “information that belongs only to the bank” (Article 5/5) and does not define the term further. This model reads it as the bank’s own undisclosed information: audit findings, internal limits and policies, unpublished results, system information, and system credentials such as service-account passwords and API keys.</p>
+    </details>
+    <details>
+      <summary>What does BSEBY ask banks to do with their data?</summary>
+      <p>BSEBY, the Regulation on Banks’ Information Systems and Electronic Banking Services, asks banks to set the security class of their data by three criteria: personal data, sensitive data and data covered by secrecy (Article 6/6). It also asks them to stop sensitive data and secrets from leaking in outbound traffic (Article 14/9).</p>
+    </details>
+    <details>
+      <summary>Can a model find customer and bank secrets in Turkish text?</summary>
+      <p>As a signal, yes. turkish-bseby-classifier v2 flags five data classes in about 32 ms per text on CPU and scores 0.960 micro-F1 on 747 held-out texts. For “is any secret present?” precision is 0.966 and recall 0.979. Its weakest label is authentication data (F1 0.881), so pair it with rule-based checks for card numbers, tokens and keys.</p>
+    </details>
   </section>
 
   <section id="turkce" lang="tr" aria-labelledby="turkce-title">

@@ -51,7 +51,7 @@
       "mainEntity": {
         "@id": "https://halilneed.agency/#halil"
       },
-      "dateModified": "2026-10-15"
+      "dateModified": "2026-10-19"
     },
     {
       "@type": "Person",
@@ -71,6 +71,7 @@
       "knowsAbout": [
         "Turkish NLP",
         "PII detection and masking",
+        "prompt injection detection",
         "KVKK data classification",
         "data loss prevention",
         "Claude Code plugins",
@@ -192,7 +193,7 @@
         <span class="repo-id">halilneed/turkish-kvkk-classifier</span>
         <span class="repo-desc">Classify Turkish text across 24 VERBİS and KVKK personal data categories.</span>
         <span class="repo-meta"><span>Text classification</span><span>110M parameters</span><span>about 22 ms per text</span><span data-hf-updated>Updated 2 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>25</span><span class="visually-hidden"> downloads</span></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span data-hf-likes>1</span><span class="visually-hidden"> likes</span></span></span>
-        <span class="repo-stat"><b>0.874</b><span>micro-F1, 987 held-out texts</span></span>
+        <span class="repo-stat"><b>0.878</b><span>micro-F1, 987 held-out texts</span></span>
       </a>
       <a class="repo" href="/models/turkish-bseby-classifier/" data-hf="models/halilneed/turkish-bseby-classifier">
         <span class="repo-id">halilneed/turkish-bseby-classifier</span>
@@ -204,7 +205,7 @@
         <span class="repo-id">halilneed/turkish-prompt-injection-classifier</span>
         <span class="repo-desc">Flag prompt injection in Turkish text before it reaches an LLM, including encoded and hidden instructions.</span>
         <span class="repo-meta"><span>Text classification</span><span>307M parameters</span><span>about 35 ms per text</span><span data-hf-updated>Updated 14 Oct 2026</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-hf-downloads>34</span><span class="visually-hidden"> downloads</span></span></span>
-        <span class="repo-stat"><b>13/13</b><span>encoded attacks caught, under 2% false alarms</span></span>
+        <span class="repo-stat"><b>13/13</b><span>encoded attacks caught, 1% false alarms on 2,875 benign texts</span></span>
       </a>
 
       <p class="collection-sub">Evaluation sets and demo</p>

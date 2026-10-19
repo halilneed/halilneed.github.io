@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Turkish KVKK classifier (BERTurk, 24 categories) | halilneed</title>
-<meta name="description" content="Open multi-label classifier that says which of 24 KVKK and VERBİS personal-data categories a Turkish text contains. 0.874 micro-F1, 22 ms per text on CPU. MIT.">
+<meta name="description" content="Open multi-label classifier that says which of 24 KVKK and VERBİS personal-data categories a Turkish text contains. 0.878 micro-F1, 22 ms per text on CPU. MIT.">
 <link rel="canonical" href="https://halilneed.agency/models/turkish-kvkk-classifier/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-kvkk-classifier/">
 <link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/turkish-kvkk-classifier/tr/">
@@ -17,14 +17,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
 <meta property="og:title" content="Turkish KVKK classifier (BERTurk, 24 categories) | halilneed">
-<meta property="og:description" content="Open multi-label classifier that says which of 24 KVKK and VERBİS personal-data categories a Turkish text contains. 0.874 micro-F1, 22 ms per text on CPU. MIT.">
+<meta property="og:description" content="Open multi-label classifier that says which of 24 KVKK and VERBİS personal-data categories a Turkish text contains. 0.878 micro-F1, 22 ms per text on CPU. MIT.">
 <meta property="og:url" content="https://halilneed.agency/models/turkish-kvkk-classifier/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Turkish KVKK classifier (BERTurk, 24 categories) | halilneed">
-<meta name="twitter:description" content="Open multi-label classifier that says which of 24 KVKK and VERBİS personal-data categories a Turkish text contains. 0.874 micro-F1, 22 ms per text on CPU. MIT.">
+<meta name="twitter:description" content="Open multi-label classifier that says which of 24 KVKK and VERBİS personal-data categories a Turkish text contains. 0.878 micro-F1, 22 ms per text on CPU. MIT.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png">
 <script type="application/ld+json">
 {
@@ -65,7 +65,7 @@
         "tr"
       ],
       "datePublished": "2026-10-09",
-      "dateModified": "2026-10-15",
+      "dateModified": "2026-10-19",
       "image": "https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png",
       "author": {
         "@type": "Person",
@@ -101,6 +101,44 @@
         "alternateName": "halilneed",
         "url": "https://halilneed.agency/"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/models/turkish-kvkk-classifier/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which personal-data categories does VERBİS use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This model uses the 14 general categories of VERBİS, Turkey’s data controller registry: identity, contact, location, personnel, legal transaction, customer transaction, physical space security, transaction security, risk management, finance, professional experience, marketing, audio-visual records, and vehicle data, which VERBİS files under “other”. For the registry’s own list and the duty to register, see the KVKK authority."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is special-category personal data under KVKK?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Article 6 of KVKK lists data on race, ethnic origin, political opinion, philosophical belief, religion, sect or other beliefs, appearance and dress, membership of associations, foundations or trade unions, health, sex life, criminal convictions and security measures, and biometric and genetic data. The model marks these with 10 labels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a model find which KVKK categories a text contains?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, as a signal. turkish-kvkk-classifier labels a Turkish text with any of 24 categories in about 22 ms on CPU. On 987 independent texts it scores 0.878 micro-F1. For “is there special-category data?” precision is 0.959 and recall 0.913, so about one such text in eleven is missed. Its weakest labels are location (0.74) and customer transaction (0.75)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the classifier replace a VERBİS inventory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It tells you which categories a text probably contains. It does not decide whether processing is lawful, which legal basis applies or what must be registered. Use it to find where personal data sits, then let your legal team make the assessment."
+          }
+        }
+      ]
     }
   ]
 }
@@ -146,9 +184,10 @@
       <div><dt>Size</dt><dd>110M parameters</dd></div>
       <div><dt>Base model</dt><dd><a href="https://huggingface.co/dbmdz/bert-base-turkish-cased"><code>dbmdz/bert-base-turkish-cased</code></a> (BERTurk)</dd></div>
       <div><dt>Labels</dt><dd>24, multi-label</dd></div>
-      <div><dt>Result</dt><dd>0.874 micro-F1 on 987 held-out texts</dd></div>
+      <div><dt>Result</dt><dd>0.878 micro-F1 on 987 held-out texts (v1.1)</dd></div>
       <div><dt>CPU speed</dt><dd>about 22 ms per text</dd></div>
       <div><dt>Licence</dt><dd>MIT</dd></div>
+      <div><dt>Updated</dt><dd><time datetime="2026-10-19">19 October 2026</time></dd></div>
     </dl>
 
     <nav class="toc" aria-label="On this page">
@@ -159,6 +198,7 @@
         <li><a href="#usage">Quick start</a></li>
         <li><a href="#training">Training</a></li>
         <li><a href="#limitations">Limitations</a></li>
+        <li><a href="#faq">Questions</a></li>
         <li><a href="#turkce" lang="tr">Türkçe</a></li>
       </ul>
     </nav>
@@ -325,26 +365,27 @@
 
   <section id="results" aria-labelledby="results-title">
     <h2 id="results-title">Results</h2>
-    <p>There are two test sets. The main one is an independent held-out set: 1,125 texts written without looking at the training data, then labelled a second time, blind. The 987 texts where both label sets agree exactly are the gold set (87.7% exact agreement, Cohen’s kappa per label between 0.84 and 1.00). The second is a template-disjoint test of 771 examples from 333 templates that were never used in training. On the 987-text gold set, <code>turkish-kvkk-classifier</code> scores 0.874 micro-F1 and 0.856 macro-F1.</p>
+    <p>There are three test sets. The main one is an independent held-out set: 1,125 texts written without looking at the training data, then labelled a second time, blind. The 987 texts where both label sets agree exactly are the gold set (87.7% exact agreement, Cohen’s kappa per label between 0.84 and 1.00). The second is a hard set of 317 texts aimed at the weakest labels, written after this model was trained by authors who never saw the training templates; 63% are structured records such as forms, logs and CRM notes. The third is a template-disjoint test of 771 examples from 333 templates that were never used in training. On the 987-text gold set, <code>turkish-kvkk-classifier</code> v1.1 scores 0.878 micro-F1 and 0.863 macro-F1.</p>
 
     <div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
       <table>
-        <caption id="results-caption">Scores on the two test sets</caption>
+        <caption id="results-caption">Scores of v1.1 on the three test sets</caption>
         <thead>
-          <tr><th scope="col">Metric</th><th scope="col" class="num">Held-out<br>987 texts</th><th scope="col" class="num">Disjoint test<br>771 examples</th></tr>
+          <tr><th scope="col">Metric</th><th scope="col" class="num">Held-out<br>987 texts</th><th scope="col" class="num">Hard set<br>317 texts</th><th scope="col" class="num">Disjoint test<br>771 examples</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">micro-F1</th><td class="num">0.874</td><td class="num dim">0.895</td></tr>
-          <tr><th scope="row">macro-F1</th><td class="num">0.856</td><td class="num dim">0.875</td></tr>
-          <tr><th scope="row">Special category present: precision</th><td class="num">0.960</td><td class="num dim">0.955</td></tr>
-          <tr><th scope="row">Special category present: recall</th><td class="num">0.884</td><td class="num dim">0.955</td></tr>
-          <tr><th scope="row">Exact match (all labels correct)</th><td class="num">0.717</td><td class="num dim">0.733</td></tr>
+          <tr><th scope="row">micro-F1</th><td class="num">0.878</td><td class="num">0.902</td><td class="num dim">0.895</td></tr>
+          <tr><th scope="row">macro-F1</th><td class="num">0.863</td><td class="num">0.853</td><td class="num dim">0.876</td></tr>
+          <tr><th scope="row">Special category present: precision</th><td class="num">0.959</td><td class="num">0.926</td><td class="num dim">0.956</td></tr>
+          <tr><th scope="row">Special category present: recall</th><td class="num">0.913</td><td class="num">0.822</td><td class="num dim">0.972</td></tr>
+          <tr><th scope="row">Exact match (all labels correct)</th><td class="num">0.721</td><td class="num">0.656</td><td class="num dim">0.733</td></tr>
         </tbody>
       </table>
     </div>
 
     <p>Micro-F1 is F1 computed over all label decisions pooled together. Macro-F1 is the unweighted mean of the per-label F1 scores.</p>
-    <p>The held-out texts and both label passes were produced with a language model and checked automatically. They were not verified line by line by a person.</p>
+    <p>v1.1 (15 October 2026) keeps the v1 weights and only lowers the thresholds of some special-category labels, again tuned on the dev set only. v1 scored 0.874 micro-F1 and 0.884 special-category recall on the held-out set. I noticed the threshold rule while reading held-out results of an unpublished v2, so do not read the recall gain (0.884 to 0.913) as a fully independent measurement. The v1 thresholds stay available with <code>revision="v1"</code>.</p>
+    <p>The held-out texts and both label passes were produced with a language model and checked automatically. They were not verified line by line by a person. Both labellings of the hard set were made with the same language model and guide, so its 99.1% agreement shows that the guide is applied consistently, not that two independent people agree.</p>
   </section>
 
   <section id="usage" aria-labelledby="usage-title">
@@ -369,7 +410,7 @@ def classify(text):
 
 print(classify("hastanın böbrek yetmezliği ilerlemiş, eşi 0532 111 22 33'ten ulaşılabilir"))</code></pre>
 
-    <p>Per-label thresholds were tuned on the dev set and ship in <code>thresholds.json</code>. For the special categories the threshold never goes above 0.5, which favours recall.</p>
+    <p>Per-label thresholds were tuned on the dev set and ship in <code>thresholds.json</code>. For the special categories the threshold never goes above 0.5, and among thresholds with the same dev F1 the lowest is chosen, which favours recall.</p>
     <p>Measured speed: 22 ms per text at batch size one on an Intel i5-12400F with eight threads, for texts of 126 characters on average.</p>
   </section>
 
@@ -388,15 +429,37 @@ print(classify("hastanın böbrek yetmezliği ilerlemiş, eşi 0532 111 22 33'te
     <ul>
       <li>The training data is synthetic. Measure the model on your own organisation’s text before it goes into a critical pipeline.</li>
       <li>The weakest labels are <code>lokasyon</code> (F1 0.74), <code>musteri_islem</code> (0.75) and <code>gorsel_isitsel</code> (0.79). All three are inferred from context and have no sharp boundary. <code>genetik</code> also scores 0.79.</li>
-      <li>For the question “is there special-category data here?” recall on the held-out set is 0.884, so roughly one such text in nine is missed.</li>
+      <li>For the question “is there special-category data here?” recall on the held-out set is 0.913, so roughly one such text in eleven is missed.</li>
+      <li>On the hard set it often misses sex-life information told implicitly, through a partner or a relationship rather than a stated orientation (recall 0.37), and criminal convictions buried in structured records (0.68).</li>
       <li>The output is a category signal, not a legal assessment. The <span lang="tr">VERBİS</span> inventory and KVKK compliance remain the user’s responsibility.</li>
     </ul>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Questions about KVKK personal-data categories</h2>
+
+    <details>
+      <summary>Which personal-data categories does VERBİS use?</summary>
+      <p>This model uses the 14 general categories of VERBİS, Turkey’s data controller registry: identity, contact, location, personnel, legal transaction, customer transaction, physical space security, transaction security, risk management, finance, professional experience, marketing, audio-visual records, and vehicle data, which VERBİS files under “other”. For the registry’s own list and the duty to register, see the KVKK authority.</p>
+    </details>
+    <details>
+      <summary>What is special-category personal data under KVKK?</summary>
+      <p>Article 6 of KVKK lists data on race, ethnic origin, political opinion, philosophical belief, religion, sect or other beliefs, appearance and dress, membership of associations, foundations or trade unions, health, sex life, criminal convictions and security measures, and biometric and genetic data. The model marks these with 10 labels.</p>
+    </details>
+    <details>
+      <summary>Can a model find which KVKK categories a text contains?</summary>
+      <p>Yes, as a signal. turkish-kvkk-classifier labels a Turkish text with any of 24 categories in about 22 ms on CPU. On 987 independent texts it scores 0.878 micro-F1. For “is there special-category data?” precision is 0.959 and recall 0.913, so about one such text in eleven is missed. Its weakest labels are location (0.74) and customer transaction (0.75).</p>
+    </details>
+    <details>
+      <summary>Does the classifier replace a VERBİS inventory?</summary>
+      <p>No. It tells you which categories a text probably contains. It does not decide whether processing is lawful, which legal basis applies or what must be registered. Use it to find where personal data sits, then let your legal team make the assessment.</p>
+    </details>
   </section>
 
   <section id="turkce" lang="tr" aria-labelledby="turkce-title">
     <h2 id="turkce-title">Türkçe KVKK kategori sınıflandırıcısı</h2>
     <p><code>turkish-kvkk-classifier</code>, Türkçe bir metinde hangi kişisel veri kategorilerinin bulunduğunu belirleyen çok etiketli bir sınıflandırıcıdır: 14 VERBİS kategorisi ve KVKK md. 6’daki 10 özel nitelikli veri kategorisi. Maskeleme modelinden önce çalıştırılır: metin önce sınıflandırılır, sonuca göre maskeleme politikası seçilir, ardından metin maskelenir.</p>
-    <p>Eğitim verisine bakılmadan yazılmış 987 metinlik bağımsız sette micro-F1 0.874, macro-F1 0.856’dır. CPU’da metin başına yaklaşık 22 ms sürer. Çıktı yalnızca bir kategori tahminidir, hukuki nitelendirme değildir.</p>
+    <p>Eğitim verisine bakılmadan yazılmış 987 metinlik bağımsız sette micro-F1 0.878, macro-F1 0.863’tür (v1.1). CPU’da metin başına yaklaşık 22 ms sürer. Çıktı yalnızca bir kategori tahminidir, hukuki nitelendirme değildir.</p>
   </section>
 
   <section id="links" aria-labelledby="links-title">

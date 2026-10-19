@@ -2,12 +2,21 @@
 
 > Halil (halilneed), Istanbul. Open Turkish NLP models for personal data and prompt injection, the benchmarks used to measure them, short interactive guides for business teams adopting AI, and open-source Claude Code plugins. Every page has an English version and a Turkish version under `tr/`. All numbers below are my own measurements and match the Hugging Face model cards.
 
+Last updated: 2026-10-19
+
+## Key findings
+
+- Public prompt-injection guards raise many false alarms on ordinary Turkish task instructions. On 1,000 benign Turkish masking instructions, proventra/mdeberta-v3-base-prompt-injection flags 77.2%, patronus-studio/wolf-defender-prompt-injection-small 60.7% and protectai/deberta-v3-base-prompt-injection-v2 31.5%. Across all 2,875 benign texts of the false-alarm benchmark they flag 27.8%, 23.5% and 17.8%. My turkish-prompt-injection-classifier v2 flags 1.0%, but those texts are in-domain for it.
+- turkish-pii-detection v02 masks Turkish personal data with 0.944 whole-row exact match on 1,000 benchmark rows. Its weakest slices are texts with several people (0.750) and PII with Turkish suffixes (0.803).
+- turkish-kvkk-classifier v1.1 finds KVKK personal-data categories with 0.878 micro-F1 on 987 independent texts. For special-category data its recall is 0.913, so about one such text in eleven is missed.
+- turkish-bseby-classifier v2 finds customer secrets, bank secrets and authentication data in Turkish banking text with 0.960 micro-F1 on 747 held-out texts. Its weakest label is authentication data (F1 0.881).
+
 ## Models
 
 - [Turkish PII detection and masking](https://halilneed.agency/models/turkish-pii-detection/): open 270M-parameter model that replaces names, national ID numbers (TCKN), IBANs, phone numbers and emails in Turkish text with labels, following a Turkish instruction. Runs locally on CPU. v02 scores 0.944 whole-row exact match on the public 1,000-row cagrigungor/turkish-pii-masking-benchmark (0.945 on the 531 rows not used for model selection). It returns masked text, not entity offsets. Turkish: https://halilneed.agency/models/turkish-pii-detection/tr/
-- [Turkish KVKK classifier](https://halilneed.agency/models/turkish-kvkk-classifier/): multi-label classifier for 24 personal data categories in Turkish text (14 VERBİS categories and 10 special categories under Article 6 of KVKK, the Turkish data protection law). 0.874 micro-F1 on 987 held-out texts. About 22 ms per text on CPU. MIT. Turkish: https://halilneed.agency/models/turkish-kvkk-classifier/tr/
+- [Turkish KVKK classifier](https://halilneed.agency/models/turkish-kvkk-classifier/): multi-label classifier for 24 personal data categories in Turkish text (14 VERBİS categories and 10 special categories under Article 6 of KVKK, the Turkish data protection law). v1.1: 0.878 micro-F1 on 987 held-out texts, 0.902 on a 317-text hard set. About 22 ms per text on CPU. MIT. Turkish: https://halilneed.agency/models/turkish-kvkk-classifier/tr/
 - [Turkish BSEBY classifier](https://halilneed.agency/models/turkish-bseby-classifier/): multi-label classifier for bank data inventories and DLP: personal data, special-category data, authentication data, customer secrets and bank secrets under the Turkish Regulation on Banks' Information Systems and Electronic Banking Services (BSEBY). v2: 0.960 micro-F1 on 747 held-out texts. MIT. Turkish: https://halilneed.agency/models/turkish-bseby-classifier/tr/
-- [Turkish prompt injection classifier](https://halilneed.agency/models/turkish-prompt-injection-classifier/): binary BENIGN / INJECTION classifier for Turkish text going into an LLM. v2 catches 96.3% of 107 obfuscated attacks and 97.6% of 42 attacks hidden in invisible Unicode, none seen in training, and flags 2.1% of 750 ordinary Turkish banking texts. Results are reported with each training source held out. MIT. Turkish: https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/
+- [Turkish prompt injection classifier](https://halilneed.agency/models/turkish-prompt-injection-classifier/): binary BENIGN / INJECTION classifier for Turkish text going into an LLM. v2 catches 96.3% of 107 obfuscated attacks and 97.6% of 42 attacks hidden in invisible Unicode, none seen in training, and flags 1.0% of 2,875 benign Turkish texts (2.1% of 750 banking texts, the worst subset). Results are reported with each training source held out. MIT. Turkish: https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/
 - [All models and evaluation sets](https://halilneed.agency/models/)
 
 ## Datasets (Hugging Face)
@@ -23,6 +32,12 @@
 - [A business unit's first AI model](https://halilneed.agency/guides/first-model/): from one task to a pilot you can measure. Turkish: https://halilneed.agency/guides/first-model/tr/
 - [Which model for which process](https://halilneed.agency/guides/model-map/): a map from everyday business tasks to the smallest model that does them. Turkish: https://halilneed.agency/guides/model-map/tr/
 - [Personal data and AI](https://halilneed.agency/guides/personal-data/): what to mask and what to keep in-house before text reaches a model, for teams under KVKK. Not legal advice. Turkish: https://halilneed.agency/guides/personal-data/tr/
+
+## Products (Gumroad)
+
+- [A business unit's first AI model, full guide](https://halilneed.gumroad.com/l/ilk-model?utm_source=halilneed.agency&utm_medium=llms-txt&utm_campaign=first-model): all four steps, from choosing the first task to a shadow-then-assist pilot with a pass threshold written in advance. Turkish and English PDF. Pay what you want.
+- [Which model for which process, full guide](https://halilneed.gumroad.com/l/hangi-model?utm_source=halilneed.agency&utm_medium=llms-txt&utm_campaign=model-map): rule or model, six kinds of model, the four questions that choose between them, and the first three steps for sales, customer service, finance, HR, operations, legal and marketing. Turkish and English PDF. Pay what you want.
+- [Personal data and AI, full guide](https://halilneed.gumroad.com/l/kisisel-veri?utm_source=halilneed.agency&utm_medium=llms-txt&utm_campaign=personal-data): what to send, mask or keep in-house before text reaches a model, for teams under KVKK; includes what a 98% recall means per month at 2,000 texts a day. Turkish and English PDF. Pay what you want. Not legal advice.
 
 ## Tools
 
