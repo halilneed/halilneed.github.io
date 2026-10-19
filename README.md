@@ -33,6 +33,7 @@
 | `<yol>/tr/index.html`, `tr/index.html` | Her sayfanın Türkçesi (aşağıda "İki dil") |
 | `tools/lang-switch.mjs` | Elle yazılan sayfaların hreflang etiketlerini ve TR / EN anahtarını yazar |
 | `tools/audit-tracking.mjs`, `tools/name-clicks.mjs`, `tools/indexnow.mjs` | Ölçüm denetimi, eksik tıklama adlarını ekleme, IndexNow bildirimi (aşağıda "Ölçüm sözleşmesi") |
+| `tools/faq-jsonld.mjs` | Görünür SSS bölümünden FAQPage JSON-LD'yi üretir; `--check` uyuşmazlıkta kırmızı olur (aşağıda "İçerik kuralları") |
 
 ## Tasarım
 
@@ -66,6 +67,12 @@ etiketler, süs amaçlı canvas ve imleç efektleri, uydurma sayaçlar, slogan, 
 - Sitede soyad ve kişisel e-posta geçmez. Herkese açık adres `halil@halilneed.agency`.
 - Her sayfada `canonical`, OG/Twitter etiketleri ve JSON-LD bulunur. Yeni sayfa
   `sitemap.xml`'e `lastmod` ile eklenir.
+- **Cevap motorları için (AEO):** bir bulgu, model adı ve sayısıyla kendi başına anlaşılan bir cümlede
+  durur; yalnız tablo hücresinde kalmaz. Aynı bulgu her sayfada aynı sayıyla geçer. Model sayfalarında
+  `<section id="faq">` içinde gerçek soru cümleleriyle `<details>` bulunur. FAQPage JSON-LD elle yazılmaz:
+  `node tools/faq-jsonld.mjs <sayfa>` görünür metinden üretir. Bilgi kutusundaki "Updated / Güncelleme"
+  satırı JSON-LD `dateModified` ve `sitemap.xml` `lastmod` ile aynı tarihi taşır. Hukuki sorularda kanun
+  metni aktarılır, yorum yapılmaz.
 
 ## İki dil
 

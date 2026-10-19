@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Turkish prompt injection classifier | halilneed</title>
-<meta name="description" content="Open classifier for prompt injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, 98% of hidden Unicode, about 2% false alarms. MIT.">
+<meta name="description" content="Open classifier for prompt injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, 98% of hidden Unicode, 1% false alarms. MIT.">
 <link rel="canonical" href="https://halilneed.agency/models/turkish-prompt-injection-classifier/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-prompt-injection-classifier/">
 <link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/turkish-prompt-injection-classifier/tr/">
@@ -17,14 +17,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
 <meta property="og:title" content="Turkish prompt injection classifier | halilneed">
-<meta property="og:description" content="Open classifier for prompt injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, 98% of hidden Unicode, about 2% false alarms. MIT.">
+<meta property="og:description" content="Open classifier for prompt injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, 98% of hidden Unicode, 1% false alarms. MIT.">
 <meta property="og:url" content="https://halilneed.agency/models/turkish-prompt-injection-classifier/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-prompt-injection-classifier.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Turkish prompt injection classifier | halilneed">
-<meta name="twitter:description" content="Open classifier for prompt injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, 98% of hidden Unicode, about 2% false alarms. MIT.">
+<meta name="twitter:description" content="Open classifier for prompt injection in Turkish text going into an LLM. v2: 13 of 13 encoded attacks, 98% of hidden Unicode, 1% false alarms. MIT.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-prompt-injection-classifier.png">
 <script type="application/ld+json">
 {
@@ -65,7 +65,7 @@
         "tr"
       ],
       "datePublished": "2026-10-14",
-      "dateModified": "2026-10-15",
+      "dateModified": "2026-10-19",
       "image": "https://halilneed.agency/assets/img/og-turkish-prompt-injection-classifier.png",
       "author": {
         "@type": "Person",
@@ -101,6 +101,44 @@
         "alternateName": "halilneed",
         "url": "https://halilneed.agency/"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/models/turkish-prompt-injection-classifier/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do prompt-injection guards raise false alarms on Turkish text?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, on ordinary Turkish task instructions. On 1,000 benign Turkish instructions such as “mask all personal data in the text”, proventra mdeberta-v3 flags 77.2%, patronus wolf-defender small 60.7% and protectai deberta-v3 v2 31.5%. This model flags none of them and 1.0% of all 2,875 benign texts, but those texts are in-domain for it, so measure your own traffic."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there an open prompt-injection detector for Turkish?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes: turkish-prompt-injection-classifier, MIT licensed. v2 is a 307M-parameter mmBERT-base model that labels text BENIGN or INJECTION in about 35 ms per text on CPU. With each training source held out its mean F1 is 0.690. It catches 13 of 13 encoded attacks and 97.6% of 42 attacks hidden in invisible Unicode."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does it fail?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On agentic attacks from a source it has not seen: memory poisoning, data exfiltration and tool abuse are each caught in 0 of 3 rows, system prompt extraction and RAG poisoning in 1 of 3. It reads one text at a time, without the conversation or the system prompt. Use it as one layer next to least-privilege tools."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I measure the false alarms of my own guard on Turkish text?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Run it on halilneed/turkish-prompt-injection-false-alarm-benchmark: 2,875 benign Turkish texts (business texts, banking texts and masking instructions) with a script that reproduces the false-positive table for any model. Then repeat on a sample of your own benign traffic."
+          }
+        }
+      ]
     }
   ]
 }
@@ -137,7 +175,7 @@
   <header class="page-head">
     <h1>Turkish prompt injection classifier</h1>
     <p class="lead"><code>turkish-prompt-injection-classifier</code> labels Turkish text going into an LLM as <code>BENIGN</code> or <code>INJECTION</code>: user messages, and the content an assistant reads, such as emails, documents, retrieved passages and tool output.</p>
-    <p>Version 2 is out. It catches all 13 encoded attacks in a public test set (v1 caught 5) and 98% of instructions hidden in invisible Unicode (v1: 40%), and it scores higher than v1 on every attack set it never saw. On 2,875 benign Turkish texts it flags at most 2.1%; public guards flag up to 77% of the same task instructions. Both versions stay available. Everything is measured on an open benchmark: <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection">halilneed/turkish-prompt-injection-benchmark</a>.</p>
+    <p>Version 2 is out. It catches all 13 encoded attacks in a public test set (v1 caught 5) and 98% of instructions hidden in invisible Unicode (v1: 40%), and it scores higher than v1 on every attack set it never saw. It flags 1.0% of 2,875 benign Turkish texts (2.1% on the worst subset). Public guards flag far more of 1,000 ordinary Turkish masking instructions: proventra mdeberta-v3 77.2%, patronus wolf-defender small 60.7%, protectai deberta-v3 v2 31.5%, this model none. These benign texts come from my own domains, so read it as a warning about public guards, not as a like-for-like race. Both versions stay available. Everything is measured on an open benchmark: <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection">halilneed/turkish-prompt-injection-benchmark</a>.</p>
     <ul class="links">
       <li><a href="https://huggingface.co/halilneed/turkish-prompt-injection-classifier" data-goatcounter-click="pinj-download">Weights on Hugging Face</a></li>
     </ul>
@@ -149,6 +187,7 @@
       <div><dt>Result</dt><dd>mean F1 0.690 with each training source held out (v1: 0.567); false alarms 0 to 2.1% on benign Turkish</dd></div>
       <div><dt>CPU speed</dt><dd>about 35 ms per text (v1: about 23 ms)</dd></div>
       <div><dt>Licence</dt><dd>MIT</dd></div>
+      <div><dt>Updated</dt><dd><time datetime="2026-10-19">19 October 2026</time></dd></div>
     </dl>
 
     <nav class="toc" aria-label="On this page">
@@ -160,6 +199,7 @@
         <li><a href="#usage">Quick start</a></li>
         <li><a href="#training">Training data</a></li>
         <li><a href="#limitations">Limitations</a></li>
+        <li><a href="#faq">Questions</a></li>
         <li><a href="#turkce" lang="tr">Türkçe</a></li>
       </ul>
     </nav>
@@ -349,9 +389,30 @@ is_injection = scores["INJECTION"] &gt;= 0.05
     </ul>
   </section>
 
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Questions about prompt injection in Turkish</h2>
+
+    <details>
+      <summary>Do prompt-injection guards raise false alarms on Turkish text?</summary>
+      <p>Yes, on ordinary Turkish task instructions. On 1,000 benign Turkish instructions such as “mask all personal data in the text”, proventra mdeberta-v3 flags 77.2%, patronus wolf-defender small 60.7% and protectai deberta-v3 v2 31.5%. This model flags none of them and 1.0% of all 2,875 benign texts, but those texts are in-domain for it, so measure your own traffic.</p>
+    </details>
+    <details>
+      <summary>Is there an open prompt-injection detector for Turkish?</summary>
+      <p>Yes: turkish-prompt-injection-classifier, MIT licensed. v2 is a 307M-parameter mmBERT-base model that labels text BENIGN or INJECTION in about 35 ms per text on CPU. With each training source held out its mean F1 is 0.690. It catches 13 of 13 encoded attacks and 97.6% of 42 attacks hidden in invisible Unicode.</p>
+    </details>
+    <details>
+      <summary>Where does it fail?</summary>
+      <p>On agentic attacks from a source it has not seen: memory poisoning, data exfiltration and tool abuse are each caught in 0 of 3 rows, system prompt extraction and RAG poisoning in 1 of 3. It reads one text at a time, without the conversation or the system prompt. Use it as one layer next to least-privilege tools.</p>
+    </details>
+    <details>
+      <summary>How can I measure the false alarms of my own guard on Turkish text?</summary>
+      <p>Run it on <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection-false-alarm-faq">halilneed/turkish-prompt-injection-false-alarm-benchmark</a>: 2,875 benign Turkish texts (business texts, banking texts and masking instructions) with a script that reproduces the false-positive table for any model. Then repeat on a sample of your own benign traffic.</p>
+    </details>
+  </section>
+
   <section id="turkce" lang="tr" aria-labelledby="turkce-title">
     <h2 id="turkce-title">Türkçe prompt injection sınıflandırıcısı</h2>
-    <p><code>turkish-prompt-injection-classifier</code>, bir LLM’e giren Türkçe metni <code>BENIGN</code> (zararsız) ya da <code>INJECTION</code> olarak işaretleyen küçük bir sınıflandırıcıdır. v2, açık bir test setindeki 13 kodlanmış saldırının 13’ünü (v1: 5) ve görünmez Unicode ile gizlenmiş talimatların %95’ini (v1: %40) yakalar. Zararsız Türkçe metinde yanlış alarm oranı en fazla %1,7’dir.</p>
+    <p><code>turkish-prompt-injection-classifier</code>, bir LLM’e giren Türkçe metni <code>BENIGN</code> (zararsız) ya da <code>INJECTION</code> olarak işaretleyen küçük bir sınıflandırıcıdır. v2, açık bir test setindeki 13 kodlanmış saldırının 13’ünü (v1: 5) ve görünmez Unicode ile gizlenmiş talimatların %97,6’sını (v1: %40) yakalar. 2.875 zararsız Türkçe metnin %1,0’ını işaretler (en kötü alt sette %2,1).</p>
     <p>Görmediği bir kaynaktan gelen konuşma ve ajan saldırılarında v1’den zayıftır. Bu sizin için önemliyse <code>revision="v1"</code> ile v1’i kullanın. Tek başına bir savunma değildir.</p>
   </section>
 

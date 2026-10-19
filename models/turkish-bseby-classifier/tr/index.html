@@ -63,7 +63,7 @@
       "description": "Türkçe bankacılık metinlerinde BSEBY veri sınıfları için açık, çok etiketli bir sınıflandırıcı: örnekler, etiketler, sonuçlar, Python ile kullanım, eğitim ve sınırlar.",
       "inLanguage": "tr",
       "datePublished": "2026-10-09",
-      "dateModified": "2026-10-15",
+      "dateModified": "2026-10-19",
       "image": "https://halilneed.agency/assets/img/og-turkish-bseby-classifier.png",
       "author": {
         "@type": "Person",
@@ -99,6 +99,44 @@
         "alternateName": "halilneed",
         "url": "https://halilneed.agency/"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/models/turkish-bseby-classifier/tr/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Müşteri sırrı nedir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bu modelde müşteri sırrı, belirli bir gerçek ya da tüzel kişinin bir bankayla ilişkisinden doğan bilgidir; müşteri olduğunu gösteren her şey dahil (Sır Yönetmeliği md. 4/3-4). IBAN, hesap numarası ya da tam kart numarası, bankacılık bağlamı açık olmasa da müşteri sırrıdır. Bir mağazanın, operatörün ya da sigortacının müşterisi olmak kişisel veridir, müşteri sırrı değil."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Banka sırrı nedir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sır Yönetmeliği yalnızca “sadece bankaya ait bilgi” der (md. 5/5) ve terimi daha fazla tanımlamaz. Bu model onu bankanın açıklanmamış kendi bilgisi olarak okur: denetim bulguları, iç limitler ve politikalar, yayımlanmamış sonuçlar, sistem bilgileri ve servis hesabı parolası, API anahtarı gibi sistem kimlik bilgileri."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "BSEBY bankalardan verileri için ne ister?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (BSEBY), bankalardan verilerinin güvenlik sınıfını üç ölçüte göre belirlemesini ister: kişisel veri, hassas veri ve sır niteliğindeki veri (md. 6/6). Hassas verinin ve sırların dışarı giden trafikte sızmasının önlenmesini de ister (md. 14/9)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Türkçe metinde müşteri sırrı ve banka sırrı bir modelle bulunabilir mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bir sinyal olarak evet. turkish-bseby-classifier v2 beş veri sınıfını CPU’da metin başına yaklaşık 32 ms’de işaretler ve ayrılmış 747 metinde 0.960 micro-F1 alır. “Herhangi bir sır var mı?” sorusunda kesinlik 0.966, duyarlılık 0.979. En zayıf etiketi kimlik doğrulama verisi (F1 0.881); kart numarası, token ve anahtar için kural tabanlı bir kontrolle birlikte kullanın."
+          }
+        }
+      ]
     }
   ]
 }
@@ -148,6 +186,7 @@
       <div><dt>Sonuç</dt><dd>v2: ayrılmış 747 metinde 0.960 micro-F1 (v1: 0.944); 202 metinlik zor sette 0.933 (v1: 0.860)</dd></div>
       <div><dt>CPU hızı</dt><dd>metin başına yaklaşık 32 ms</dd></div>
       <div><dt>Lisans</dt><dd>MIT</dd></div>
+      <div><dt>Güncelleme</dt><dd><time datetime="2026-10-19">19 Ekim 2026</time></dd></div>
     </dl>
 
     <nav class="toc" aria-label="Bu sayfada">
@@ -158,6 +197,7 @@
         <li><a href="#usage">Hızlı başlangıç</a></li>
         <li><a href="#training">Eğitim</a></li>
         <li><a href="#limitations">Sınırlar</a></li>
+        <li><a href="#faq">Sorular</a></li>
         <li><a href="#turkce">Kısa özet</a></li>
       </ul>
     </nav>
@@ -344,6 +384,27 @@ print(classify("Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye ç�
       <li>Model her seferinde tek bir metin parçasına bakar. Müşteri sırrı çoğu zaman alanların birleşiminden doğar (Sır Yönetmeliği md. 4/4). Tablo ya da kayıt sınıflandırırken alanları birlikte verin.</li>
       <li>Etiketler hukuki bir değerlendirme değil, bir sınıflandırma sinyalidir. BSEBY’ye ve sır saklama yükümlülüğüne uyum kullanıcının sorumluluğunda kalır.</li>
     </ul>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Bankacılık veri sınıfları hakkında sorular</h2>
+
+    <details>
+      <summary>Müşteri sırrı nedir?</summary>
+      <p>Bu modelde müşteri sırrı, belirli bir gerçek ya da tüzel kişinin bir bankayla ilişkisinden doğan bilgidir; müşteri olduğunu gösteren her şey dahil (Sır Yönetmeliği md. 4/3-4). IBAN, hesap numarası ya da tam kart numarası, bankacılık bağlamı açık olmasa da müşteri sırrıdır. Bir mağazanın, operatörün ya da sigortacının müşterisi olmak kişisel veridir, müşteri sırrı değil.</p>
+    </details>
+    <details>
+      <summary>Banka sırrı nedir?</summary>
+      <p>Sır Yönetmeliği yalnızca “sadece bankaya ait bilgi” der (md. 5/5) ve terimi daha fazla tanımlamaz. Bu model onu bankanın açıklanmamış kendi bilgisi olarak okur: denetim bulguları, iç limitler ve politikalar, yayımlanmamış sonuçlar, sistem bilgileri ve servis hesabı parolası, API anahtarı gibi sistem kimlik bilgileri.</p>
+    </details>
+    <details>
+      <summary>BSEBY bankalardan verileri için ne ister?</summary>
+      <p>Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (BSEBY), bankalardan verilerinin güvenlik sınıfını üç ölçüte göre belirlemesini ister: kişisel veri, hassas veri ve sır niteliğindeki veri (md. 6/6). Hassas verinin ve sırların dışarı giden trafikte sızmasının önlenmesini de ister (md. 14/9).</p>
+    </details>
+    <details>
+      <summary>Türkçe metinde müşteri sırrı ve banka sırrı bir modelle bulunabilir mi?</summary>
+      <p>Bir sinyal olarak evet. turkish-bseby-classifier v2 beş veri sınıfını CPU’da metin başına yaklaşık 32 ms’de işaretler ve ayrılmış 747 metinde 0.960 micro-F1 alır. “Herhangi bir sır var mı?” sorusunda kesinlik 0.966, duyarlılık 0.979. En zayıf etiketi kimlik doğrulama verisi (F1 0.881); kart numarası, token ve anahtar için kural tabanlı bir kontrolle birlikte kullanın.</p>
+    </details>
   </section>
 
   <section id="turkce" lang="tr" aria-labelledby="turkce-title">
