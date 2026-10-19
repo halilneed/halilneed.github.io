@@ -1,6 +1,9 @@
 {
   "openSteps": 2,
-  "gumroad": "https://halilneed.gumroad.com/l/kisisel-veri",
+  "gumroad": {
+    "tr": "https://halilneed.gumroad.com/l/kisisel-veri",
+    "en": "https://halilneed.gumroad.com/l/personal-data"
+  },
   "js": [
     "workdaysMonth",
     "workdaysYear",
