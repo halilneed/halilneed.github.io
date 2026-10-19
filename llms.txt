@@ -33,6 +33,12 @@ Last updated: 2026-10-19
 - [Which model for which process](https://halilneed.agency/guides/model-map/): a map from everyday business tasks to the smallest model that does them. Turkish: https://halilneed.agency/guides/model-map/tr/
 - [Personal data and AI](https://halilneed.agency/guides/personal-data/): what to mask and what to keep in-house before text reaches a model, for teams under KVKK. Not legal advice. Turkish: https://halilneed.agency/guides/personal-data/tr/
 
+## Products (Gumroad)
+
+- [A business unit's first AI model, full guide](https://halilneed.gumroad.com/l/ilk-model?utm_source=halilneed.agency&utm_medium=llms-txt&utm_campaign=first-model): all four steps, from choosing the first task to a shadow-then-assist pilot with a pass threshold written in advance. Turkish and English PDF. Pay what you want.
+- [Which model for which process, full guide](https://halilneed.gumroad.com/l/hangi-model?utm_source=halilneed.agency&utm_medium=llms-txt&utm_campaign=model-map): rule or model, six kinds of model, the four questions that choose between them, and the first three steps for sales, customer service, finance, HR, operations, legal and marketing. Turkish and English PDF. Pay what you want.
+- [Personal data and AI, full guide](https://halilneed.gumroad.com/l/kisisel-veri?utm_source=halilneed.agency&utm_medium=llms-txt&utm_campaign=personal-data): what to send, mask or keep in-house before text reaches a model, for teams under KVKK; includes what a 98% recall means per month at 2,000 texts a day. Turkish and English PDF. Pay what you want. Not legal advice.
+
 ## Tools
 
 - [Turkish PII masking tool](https://halilneed.agency/masking-tool/): free browser tool that masks Turkish national ID numbers (TCKN, checksum-validated), IBANs (mod 97), phone numbers, emails, card numbers (Luhn) and listed names before text is sent to an AI tool, with reversible labels such as [TCKN_1]. Runs locally; nothing is sent to a server. Turkish: https://halilneed.agency/masking-tool/tr/
