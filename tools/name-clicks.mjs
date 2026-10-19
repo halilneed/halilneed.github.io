@@ -24,7 +24,7 @@ const PREFIX = {
   '/models/turkish-kvkk-classifier/': 'kvkk', '/models/turkish-bseby-classifier/': 'bseby',
   '/models/turkish-prompt-injection-classifier/': 'pinj', '/repos/': 'repos',
   '/agent-blackbox/': 'ab', '/skillbench/': 'sb', '/scar/': 'sc', '/gardener/': 'gd',
-  '/painradar/': 'pr', '/devpersona/': 'dp', '/writing/': 'writing', '/masking-tool/': 'mt',
+  '/painradar/': 'pr', '/devpersona/': 'dp', '/writing/': 'writing', '/masking-tool/': 'mt', '/kits/hukuk-ve-uyum/': 'kit-hukuk',
 };
 
 /* Sahip olunan hedef mi? Üçüncü taraf atıflar (başka modeller, lisans sayfaları) sayılmaz. */
