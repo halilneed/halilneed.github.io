@@ -1,6 +1,9 @@
 {
   "openSteps": 2,
-  "gumroad": "https://halilneed.gumroad.com/l/ilk-model",
+  "gumroad": {
+    "tr": "https://halilneed.gumroad.com/l/ilk-model",
+    "en": "https://halilneed.gumroad.com/l/first-model"
+  },
   "js": [
     "levelN",
     "levels",

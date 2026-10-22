@@ -1,6 +1,9 @@
 {
   "openSteps": 2,
-  "gumroad": "https://halilneed.gumroad.com/l/hangi-model",
+  "gumroad": {
+    "tr": "https://halilneed.gumroad.com/l/hangi-model",
+    "en": "https://halilneed.gumroad.com/l/model-map"
+  },
   "js": [
     "questions",
     "fallbackKind",
