@@ -86,7 +86,10 @@
       }
     },
     {
-      "@type": "SoftwareSourceCode",
+      "@type": [
+        "SoftwareSourceCode",
+        "SoftwareApplication"
+      ],
       "@id": "https://halilneed.agency/models/turkish-prompt-injection-classifier/#model",
       "name": "turkish-prompt-injection-classifier",
       "description": "Binary Turkish text classifier. v2: 307M parameters, based on mmBERT-base; v1: 110M, based on BERTurk. It labels text going into an LLM as BENIGN or INJECTION.",
@@ -100,7 +103,15 @@
         "name": "Halil",
         "alternateName": "halilneed",
         "url": "https://halilneed.agency/"
-      }
+      },
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Cross-platform",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "isAccessibleForFree": true
     },
     {
       "@type": "FAQPage",
@@ -429,7 +440,7 @@ is_injection = scores["INJECTION"] &gt;= 0.05
   </section>
 
   <aside class="cta">
-    <p>Test your own LLM app or agent: <a href="https://halilneed.gumroad.com/l/linqmn?utm_source=halilneed.agency&amp;utm_medium=model_page&amp;utm_campaign=turkish-prompt-injection-classifier&amp;utm_content=cta" data-goatcounter-click="gumroad-linqmn">Prompt Injection Test Pack ($39)</a></p>
+    <p>Test your own LLM app or agent: <a class="btn" href="https://halilneed.gumroad.com/l/linqmn?utm_source=halilneed.agency&amp;utm_medium=model_page&amp;utm_campaign=turkish-prompt-injection-classifier&amp;utm_content=cta" data-goatcounter-click="gumroad-linqmn">Prompt Injection Test Pack ($39)</a></p>
   </aside>
 
   <section id="links" aria-labelledby="links-title">
