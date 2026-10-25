@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Turkish PII Masking Model (270M, runs locally) | halilneed</title>
-<meta name="description" content="Open 270M model for Turkish PII detection and masking. Replaces names, TCKN, IBAN, phone and email with labels by instruction. Runs locally on CPU.">
+<meta name="description" content="Open 270M model for Turkish PII detection and masking: names, TCKN, IBAN, phone and email. Runs locally on CPU, or offline in Ollama via a GGUF build.">
 <link rel="canonical" href="https://halilneed.agency/models/turkish-pii-detection/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-pii-detection/">
 <link rel="alternate" hreflang="tr" href="https://halilneed.agency/models/turkish-pii-detection/tr/">
@@ -17,14 +17,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
 <meta property="og:title" content="Turkish PII Masking Model (270M, runs locally) | halilneed">
-<meta property="og:description" content="Open 270M model for Turkish PII detection and masking. Replaces names, TCKN, IBAN, phone and email with labels by instruction. Runs locally on CPU.">
+<meta property="og:description" content="Open 270M model for Turkish PII detection and masking: names, TCKN, IBAN, phone and email. Runs locally on CPU, or offline in Ollama via a GGUF build.">
 <meta property="og:url" content="https://halilneed.agency/models/turkish-pii-detection/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-pii-detection.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Turkish PII Masking Model (270M, runs locally) | halilneed">
-<meta name="twitter:description" content="Open 270M model for Turkish PII detection and masking. Replaces names, TCKN, IBAN, phone and email with labels by instruction. Runs locally on CPU.">
+<meta name="twitter:description" content="Open 270M model for Turkish PII detection and masking: names, TCKN, IBAN, phone and email. Runs locally on CPU, or offline in Ollama via a GGUF build.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-pii-detection.png">
 <script type="application/ld+json">
 {
@@ -201,7 +201,7 @@
 
   <header class="page-head">
     <h1>Turkish PII detection and masking</h1>
-    <p class="lead"><code>turkish-pii-detection</code> is an open 270M-parameter model for Turkish PII detection and masking: it finds personally identifiable information (PII) in Turkish text and replaces it with labels. You give it the text and a short instruction in Turkish saying what to mask, and it returns the rewritten text. It is small enough to run on a CPU, so the text never has to leave your machine.</p>
+    <p class="lead"><code>turkish-pii-detection</code> is an open 270M-parameter model for Turkish PII detection and masking: it finds personally identifiable information (PII) in Turkish text and replaces it with labels. You give it the text and a short instruction in Turkish saying what to mask, and it returns the rewritten text. It runs locally on a CPU, and a <a href="/models/turkish-pii-detection-GGUF/">GGUF build</a> runs offline in Ollama and llama.cpp, so the text never has to leave your machine.</p>
     <ul class="links">
       <li><a href="https://huggingface.co/halilneed/turkish-pii-detection" data-goatcounter-click="pii-download">Weights on Hugging Face</a></li>
       <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="pii-demo">Try it in the browser</a></li>
@@ -402,7 +402,7 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
     </details>
       <details>
       <summary>Is there an offline version for Ollama?</summary>
-      <p>Yes. halilneed/turkish-pii-detection-GGUF provides Q8_0 (300 MB) and BF16 (551 MB) builds for Ollama and llama.cpp. Q8_0 scores 0.944 on the 1,000-row benchmark.</p>
+      <p>Yes. <a href="/models/turkish-pii-detection-GGUF/">halilneed/turkish-pii-detection-GGUF</a> provides Q8_0 (300 MB) and BF16 (551 MB) builds for Ollama and llama.cpp. Q8_0 scores 0.944 on the 1,000-row benchmark.</p>
     </details>
   </section>
 
@@ -419,7 +419,7 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
   </section>
 
   <aside class="cta">
-    <p>Rolling this out in a company? <a href="https://halilneed.gumroad.com/l/personal-data?utm_source=halilneed.agency&amp;utm_medium=model_page&amp;utm_campaign=turkish-pii-detection&amp;utm_content=cta" data-goatcounter-click="turkish-pii-detection-gumroad-personal-data-cta">Free guide: what to redact before text reaches a model</a> · <a href="https://halilneed.gumroad.com/l/kvkk-legal-kit?utm_source=halilneed.agency&amp;utm_medium=model_page&amp;utm_campaign=turkish-pii-detection&amp;utm_content=cta" data-goatcounter-click="turkish-pii-detection-gumroad-kvkk-legal-kit-cta">AI policy &amp; prompt kit for legal teams ($19)</a></p>
+    <p>Rolling this out in a company? <a href="https://halilneed.gumroad.com/l/personal-data?utm_source=halilneed.agency&amp;utm_medium=model_page&amp;utm_campaign=turkish-pii-detection&amp;utm_content=cta" data-goatcounter-click="gumroad-personal-data">Free guide: what to redact before text reaches a model</a> · <a href="https://halilneed.gumroad.com/l/kvkk-legal-kit?utm_source=halilneed.agency&amp;utm_medium=model_page&amp;utm_campaign=turkish-pii-detection&amp;utm_content=cta" data-goatcounter-click="gumroad-kvkk-legal-kit">AI policy &amp; prompt kit for legal teams ($19)</a></p>
   </aside>
 
   <section id="links" aria-labelledby="links-title">
@@ -427,6 +427,7 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
     <ul>
       <li><a href="https://huggingface.co/halilneed/turkish-pii-detection" data-goatcounter-click="pii-hf-pii-detection-2">Model card and weights</a></li>
       <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="pii-space-pii-detection-3">Browser demo</a></li>
+      <li><a href="/models/turkish-pii-detection-GGUF/">GGUF build for Ollama and llama.cpp</a> (Q8_0 300 MB, BF16 551 MB)</li>
       <li><a href="/masking-tool/">Masking tool</a>: a rule-based companion for TCKN, IBAN, phone and email, with reversible labels</li>
       <li><a href="https://github.com/halilneed/turkish-pii-detection" data-goatcounter-click="pii-gh-pii-detection-2">Code, tutorial and evaluator on GitHub</a></li>
       <li><a href="/models/turkish-kvkk-classifier/">Turkish KVKK classifier</a>, <a href="/models/turkish-bseby-classifier/">Turkish BSEBY classifier</a> and <a href="/models/turkish-prompt-injection-classifier/">Turkish prompt injection classifier</a></li>
