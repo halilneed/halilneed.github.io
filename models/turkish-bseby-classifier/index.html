@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Turkish BSEBY classifier for banking data classes | halilneed</title>
+<title>Turkish Banking Data Classifier for BSEBY / DLP | halilneed</title>
 <meta name="description" content="Open classifier for Turkish banking text: personal, special-category and authentication data, customer and bank secrets under BSEBY. v2: 0.960 micro-F1. MIT.">
 <link rel="canonical" href="https://halilneed.agency/models/turkish-bseby-classifier/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-bseby-classifier/">
@@ -16,14 +16,14 @@
 <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
-<meta property="og:title" content="Turkish BSEBY classifier for banking data classes | halilneed">
+<meta property="og:title" content="Turkish Banking Data Classifier for BSEBY / DLP | halilneed">
 <meta property="og:description" content="Open classifier for Turkish banking text: personal, special-category and authentication data, customer and bank secrets under BSEBY. v2: 0.960 micro-F1. MIT.">
 <meta property="og:url" content="https://halilneed.agency/models/turkish-bseby-classifier/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-bseby-classifier.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Turkish BSEBY classifier for banking data classes | halilneed">
+<meta name="twitter:title" content="Turkish Banking Data Classifier for BSEBY / DLP | halilneed">
 <meta name="twitter:description" content="Open classifier for Turkish banking text: personal, special-category and authentication data, customer and bank secrets under BSEBY. v2: 0.960 micro-F1. MIT.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-bseby-classifier.png">
 <script type="application/ld+json">
@@ -136,6 +136,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "As a signal, yes. turkish-bseby-classifier v2 flags five data classes in about 32 ms per text on CPU and scores 0.960 micro-F1 on 747 held-out texts. For “is any secret present?” precision is 0.966 and recall 0.979. Its weakest label is authentication data (F1 0.881), so pair it with rule-based checks for card numbers, tokens and keys."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the output a legal classification?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is a signal for inventories and DLP rules; the bank's own classification decision remains with its teams."
           }
         }
       ]
@@ -407,6 +415,10 @@ print(classify("Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye ç�
       <summary>Can a model find customer and bank secrets in Turkish text?</summary>
       <p>As a signal, yes. turkish-bseby-classifier v2 flags five data classes in about 32 ms per text on CPU and scores 0.960 micro-F1 on 747 held-out texts. For “is any secret present?” precision is 0.966 and recall 0.979. Its weakest label is authentication data (F1 0.881), so pair it with rule-based checks for card numbers, tokens and keys.</p>
     </details>
+      <details>
+      <summary>Is the output a legal classification?</summary>
+      <p>No. It is a signal for inventories and DLP rules; the bank's own classification decision remains with its teams.</p>
+    </details>
   </section>
 
   <section id="turkce" lang="tr" aria-labelledby="turkce-title">
@@ -414,6 +426,10 @@ print(classify("Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye ç�
     <p><code>turkish-bseby-classifier</code>, Türkçe bir metinde kişisel veri, hassas veri ya da sır kapsamındaki veri (müşteri sırrı, banka sırrı) bulunup bulunmadığını belirleyen çok etiketli bir sınıflandırıcıdır. Bankaların veri envanteri ve veri sızıntısı önleme (DLP) süreçleri için tasarlanmıştır.</p>
     <p>Eğitim verisine bakılmadan yazılmış 747 metinlik bağımsız sette v2’de micro-F1 0.960, macro-F1 0.952’dir (v1: 0.944, 0.939); 202 metinlik zor sette 0.933. CPU’da metin başına yaklaşık 32 ms sürer. Etiketler yalnızca bir sınıflandırma tahminidir, hukuki nitelendirme değildir.</p>
   </section>
+
+  <aside class="cta">
+    <p>Need this in a bank’s DLP or inventory workflow? <a href="mailto:halil@halilneed.agency?subject=BSEBY%20classifier">Write to me</a> · <a href="https://halilneed.gumroad.com/l/hukuk-kiti?utm_source=halilneed.agency&amp;utm_medium=model_page&amp;utm_campaign=turkish-bseby-classifier&amp;utm_content=cta" data-goatcounter-click="turkish-bseby-classifier-gumroad-hukuk-kiti-cta">KVKK kit for compliance teams</a></p>
+  </aside>
 
   <section id="links" aria-labelledby="links-title">
     <h2 id="links-title">Links</h2>
