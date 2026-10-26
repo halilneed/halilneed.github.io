@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>scar: tekrarlayan ajan hataları, kural taslakları ve doğrulama</title>
-<meta name="description" content="scar, kodlama ajanlarının oturum kayıtlarında oturumlar arasında tekrarlayan hataları bulur, her biri için kural ya da test özeti yazar ve dersin tutup tutmadığını ölçer.">
+<meta name="description" content="scar, kodlama ajanı kayıtlarında oturumlar arası tekrarlayan hataları bulur, her biri için kural ya da test özeti yazar ve dersin tutup tutmadığını ölçer.">
 <link rel="canonical" href="https://halilneed.agency/scar/tr/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/scar/">
 <link rel="alternate" hreflang="tr" href="https://halilneed.agency/scar/tr/">
@@ -18,14 +18,14 @@
 <meta property="og:site_name" content="halilneed">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:title" content="scar: tekrarlayan ajan hataları, kural taslakları ve doğrulama">
-<meta property="og:description" content="scar, kodlama ajanlarının oturum kayıtlarında oturumlar arasında tekrarlayan hataları bulur, her biri için kural ya da test özeti yazar ve dersin tutup tutmadığını ölçer.">
+<meta property="og:description" content="scar, kodlama ajanı kayıtlarında oturumlar arası tekrarlayan hataları bulur, her biri için kural ya da test özeti yazar ve dersin tutup tutmadığını ölçer.">
 <meta property="og:url" content="https://halilneed.agency/scar/tr/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-scar.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="scar: tekrarlayan ajan hataları, kural taslakları ve doğrulama">
-<meta name="twitter:description" content="scar, kodlama ajanlarının oturum kayıtlarında oturumlar arasında tekrarlayan hataları bulur, her biri için kural ya da test özeti yazar ve dersin tutup tutmadığını ölçer.">
+<meta name="twitter:description" content="scar, kodlama ajanı kayıtlarında oturumlar arası tekrarlayan hataları bulur, her biri için kural ya da test özeti yazar ve dersin tutup tutmadığını ölçer.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-scar.png">
 <script type="application/ld+json">
 {
@@ -78,6 +78,27 @@
         "alternateName": "halilneed",
         "url": "https://halilneed.agency/"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "scar kayıtlarımı bir yere gönderir mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. scar, Claude Code, Codex CLI ve Gemini CLI’ın diskinizde tuttuğu oturum kayıtlarını okur ve hiçbir ağ isteği yapmaz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "scar repoma bir şey yazar mı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Tekrarlayan her hata için kural, test özeti ya da düzeltme taslağı yazar, ama reponuza kendiliğinden hiçbir şey yazmaz."
+          }
+        }
+      ]
     }
   ]
 }
@@ -112,7 +133,7 @@
 <article class="prose">
 
   <header class="page-head">
-    <h1>scar</h1>
+    <h1>scar: tekrarlayan ajan hataları, kural taslakları ve doğrulama</h1>
     <p class="lead">scar, Claude Code, Codex CLI ve Gemini CLI’ın diskinizde zaten tuttuğu oturum kayıtlarını tarar ve ayrı oturumlarda tekrar eden hataları bulur. Her biri için bir kural, test özeti ya da düzeltme taslağı yazar, sonra dersin tutup tutmadığını ölçer. Hiçbir ağ isteği yapmaz ve reponuza kendiliğinden hiçbir şey yazmaz.</p>
     <ul class="links">
       <li><a href="https://github.com/halilneed/scar" data-goatcounter-click="sc-cta-source-tr">GitHub’da kaynak kod</a></li>
@@ -207,6 +228,18 @@ Source note: 156 sessions scanned (all, 90d) · 305 failure episodes
       <li>İşe başlama özeti: yeni ekip üyeleri için bu repodaki bilinen tuzaklar.</li>
     </ul>
     <p>Hazır olduğunda haberdar olmak için <a href="/writing/tr/#subscribe">yazılar sayfasından</a> abone olun.</p>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Sorular</h2>
+    <details>
+      <summary>scar kayıtlarımı bir yere gönderir mi?</summary>
+      <p>Hayır. scar, Claude Code, Codex CLI ve Gemini CLI’ın diskinizde tuttuğu oturum kayıtlarını okur ve hiçbir ağ isteği yapmaz.</p>
+    </details>
+    <details>
+      <summary>scar repoma bir şey yazar mı?</summary>
+      <p>Hayır. Tekrarlayan her hata için kural, test özeti ya da düzeltme taslağı yazar, ama reponuza kendiliğinden hiçbir şey yazmaz.</p>
+    </details>
   </section>
 
   <section id="related" aria-labelledby="related-title">

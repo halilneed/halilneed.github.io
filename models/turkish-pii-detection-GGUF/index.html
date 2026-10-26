@@ -15,6 +15,7 @@
 <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="Turkish PII Masking Model for Ollama &amp; llama.cpp (GGUF) | halilneed">
 <meta property="og:description" content="GGUF build (Q8_0 300 MB, BF16 551 MB) of the Turkish PII masking model. Runs offline in Ollama and llama.cpp; Q8_0 scores 0.944 exact match on 1,000 rows.">
 <meta property="og:url" content="https://halilneed.agency/models/turkish-pii-detection-GGUF/">
@@ -106,7 +107,15 @@
         "price": "0",
         "priceCurrency": "USD"
       },
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@type": "Collection",
+        "name": "Turkish privacy and safety models",
+        "url": "https://huggingface.co/collections/halilneed/turkish-privacy-and-safety-models-6ade6ec9fb541af26bc42e0d"
+      },
+      "sameAs": [
+        "https://huggingface.co/halilneed/turkish-pii-detection-GGUF"
+      ]
     },
     {
       "@type": "FAQPage",
@@ -264,6 +273,7 @@ Metin: müşteri Ayşe Yılmaz tc 12345678950 tel 0532 111 22 33"
     <h2 id="links-title">Links</h2>
     <ul>
       <li><a href="https://huggingface.co/halilneed/turkish-pii-detection-GGUF" data-goatcounter-click="pii-gguf-hf">GGUF files and Modelfile on Hugging Face</a></li>
+      <li><a href="https://huggingface.co/collections/halilneed/turkish-privacy-and-safety-models-6ade6ec9fb541af26bc42e0d" data-goatcounter-click="turkish-pii-detection-GGUF-hf-collection">All Turkish privacy and safety models on Hugging Face</a></li>
       <li><a href="/models/turkish-pii-detection/">Original model</a>: Python usage, full benchmark and training notes</li>
       <li><a href="/masking-tool/">Masking tool</a>: rule-based TCKN, IBAN, phone and email masking in the browser</li>
       <li><a href="/guides/personal-data/">Personal data and AI</a> guide</li>

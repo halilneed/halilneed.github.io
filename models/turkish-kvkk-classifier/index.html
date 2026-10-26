@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Turkish KVKK Data Category Classifier (24 VERBİS labels) | halilneed</title>
+<title>Turkish KVKK Data Category Classifier (24 labels) | halilneed</title>
 <meta name="description" content="Open multi-label classifier that says which of 24 KVKK and VERBİS personal-data categories a Turkish text contains. 0.878 micro-F1, 22 ms per text on CPU. MIT.">
 <link rel="canonical" href="https://halilneed.agency/models/turkish-kvkk-classifier/">
 <link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-kvkk-classifier/">
@@ -16,14 +16,16 @@
 <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
-<meta property="og:title" content="Turkish KVKK Data Category Classifier (24 VERBİS labels) | halilneed">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="tr_TR">
+<meta property="og:title" content="Turkish KVKK Data Category Classifier (24 labels) | halilneed">
 <meta property="og:description" content="Open multi-label classifier that says which of 24 KVKK and VERBİS personal-data categories a Turkish text contains. 0.878 micro-F1, 22 ms per text on CPU. MIT.">
 <meta property="og:url" content="https://halilneed.agency/models/turkish-kvkk-classifier/">
 <meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Turkish KVKK Data Category Classifier (24 VERBİS labels) | halilneed">
+<meta name="twitter:title" content="Turkish KVKK Data Category Classifier (24 labels) | halilneed">
 <meta name="twitter:description" content="Open multi-label classifier that says which of 24 KVKK and VERBİS personal-data categories a Turkish text contains. 0.878 micro-F1, 22 ms per text on CPU. MIT.">
 <meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-kvkk-classifier.png">
 <script type="application/ld+json">
@@ -111,7 +113,15 @@
         "price": "0",
         "priceCurrency": "USD"
       },
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@type": "Collection",
+        "name": "Turkish privacy and safety models",
+        "url": "https://huggingface.co/collections/halilneed/turkish-privacy-and-safety-models-6ade6ec9fb541af26bc42e0d"
+      },
+      "sameAs": [
+        "https://huggingface.co/halilneed/turkish-kvkk-classifier"
+      ]
     },
     {
       "@type": "FAQPage",
@@ -493,6 +503,8 @@ print(classify("hastanın böbrek yetmezliği ilerlemiş, eşi 0532 111 22 33'te
     <h2 id="links-title">Links</h2>
     <ul>
       <li><a href="https://huggingface.co/halilneed/turkish-kvkk-classifier" data-goatcounter-click="kvkk-hf-kvkk-classifier">Model card and weights</a></li>
+      <li><a href="https://huggingface.co/collections/halilneed/turkish-privacy-and-safety-models-6ade6ec9fb541af26bc42e0d" data-goatcounter-click="turkish-kvkk-classifier-hf-collection">All Turkish privacy and safety models on Hugging Face</a></li>
+      <li><a href="/masking-tool/">Try the browser masking tool</a></li>
       <li><a href="https://huggingface.co/datasets/halilneed/turkish-kvkk-classification-benchmark" data-goatcounter-click="kvkk-hfds-kvkk-classification">Evaluation set</a></li>
       <li><a href="/models/turkish-pii-detection/">Turkish PII detection and masking</a></li>
       <li><a href="/models/turkish-bseby-classifier/">Turkish BSEBY classifier</a></li>
