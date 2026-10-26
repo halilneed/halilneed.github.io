@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turkish PII Masking Model for Ollama &amp; llama.cpp (GGUF) | halilneed</title>
+<meta name="description" content="GGUF build (Q8_0 300 MB, BF16 551 MB) of the Turkish PII masking model. Runs offline in Ollama and llama.cpp; Q8_0 scores 0.944 exact match on 1,000 rows.">
+<link rel="canonical" href="https://halilneed.agency/models/turkish-pii-detection-GGUF/">
+<link rel="alternate" hreflang="en" href="https://halilneed.agency/models/turkish-pii-detection-GGUF/">
+<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/models/turkish-pii-detection-GGUF/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Turkish PII Masking Model for Ollama &amp; llama.cpp (GGUF) | halilneed">
+<meta property="og:description" content="GGUF build (Q8_0 300 MB, BF16 551 MB) of the Turkish PII masking model. Runs offline in Ollama and llama.cpp; Q8_0 scores 0.944 exact match on 1,000 rows.">
+<meta property="og:url" content="https://halilneed.agency/models/turkish-pii-detection-GGUF/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-turkish-pii-detection.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Turkish PII Masking Model for Ollama &amp; llama.cpp (GGUF) | halilneed">
+<meta name="twitter:description" content="GGUF build (Q8_0 300 MB, BF16 551 MB) of the Turkish PII masking model. Runs offline in Ollama and llama.cpp; Q8_0 scores 0.944 exact match on 1,000 rows.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-turkish-pii-detection.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Models",
+          "item": "https://halilneed.agency/models/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Turkish PII detection GGUF",
+          "item": "https://halilneed.agency/models/turkish-pii-detection-GGUF/"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://halilneed.agency/models/turkish-pii-detection-GGUF/#page",
+      "url": "https://halilneed.agency/models/turkish-pii-detection-GGUF/",
+      "mainEntityOfPage": "https://halilneed.agency/models/turkish-pii-detection-GGUF/",
+      "headline": "Turkish PII masking model, GGUF for Ollama and llama.cpp",
+      "description": "GGUF build (Q8_0 300 MB, BF16 551 MB) of the Turkish PII masking model. Runs offline in Ollama and llama.cpp; Q8_0 scores 0.944 exact match on 1,000 rows.",
+      "inLanguage": "en",
+      "datePublished": "2026-10-25",
+      "dateModified": "2026-10-25",
+      "image": "https://halilneed.agency/assets/img/og-turkish-pii-detection.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "about": {
+        "@id": "https://halilneed.agency/models/turkish-pii-detection-GGUF/#model"
+      }
+    },
+    {
+      "@type": [
+        "SoftwareSourceCode",
+        "SoftwareApplication"
+      ],
+      "@id": "https://halilneed.agency/models/turkish-pii-detection-GGUF/#model",
+      "name": "turkish-pii-detection-GGUF",
+      "description": "GGUF (BF16, Q8_0) build of turkish-pii-detection v02 for Ollama and llama.cpp.",
+      "url": "https://huggingface.co/halilneed/turkish-pii-detection-GGUF",
+      "license": "https://ai.google.dev/gemma/terms",
+      "isBasedOn": "https://huggingface.co/halilneed/turkish-pii-detection",
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Cross-platform",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@type": "Collection",
+        "name": "Turkish privacy and safety models",
+        "url": "https://huggingface.co/collections/halilneed/turkish-privacy-and-safety-models-6ade6ec9fb541af26bc42e0d"
+      },
+      "sameAs": [
+        "https://huggingface.co/halilneed/turkish-pii-detection-GGUF"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/models/turkish-pii-detection-GGUF/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which file should I use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Q8_0 (300 MB) scores 0.944 row-level exact match on the 1,000-row benchmark, the same as the original model; BF16 (551 MB) scores 0.943. On the 20-row multi-person slice Q8_0 scores 0.650 against 0.750, so use BF16 for texts that mention several people."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a Q4_K_M build?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. 168M of the 268M parameters are in the embedding table and Q8_0 is already 300 MB. A 4-bit build is not published without measuring its loss."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the prompt format?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An instruction, a blank line, then Metin: followed by the text. The instruction sets the masking policy. Use the Modelfile in the repository for temperature 0 and the right stop token."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it guarantee KVKK or GDPR compliance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It was evaluated on synthetic data; measure it on your own text and validate the labels against the schema. Compliance remains the user's responsibility."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="site-name" href="/">halilneed</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/models/" aria-current="true">Models</a></li>
+      <li><a href="/repos/">Tools</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/writing/">Writing</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">halilneed</a></li>
+    <li><a href="/models/">Models</a></li>
+    <li aria-current="page">Turkish PII detection GGUF</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>Turkish PII masking model for Ollama and llama.cpp</h1>
+    <p class="lead"><code>turkish-pii-detection-GGUF</code> is the GGUF build of <a href="/models/turkish-pii-detection/"><code>turkish-pii-detection</code></a> v02, a 270M model that masks Turkish personal data (names, national ID numbers, IBANs, phone numbers, emails, addresses; 53 labels) following a Turkish instruction. It runs locally and offline with Ollama or llama.cpp, without Python or Transformers.</p>
+    <ul class="links">
+      <li><a href="https://huggingface.co/halilneed/turkish-pii-detection-GGUF" data-goatcounter-click="pii-gguf-download">Files on Hugging Face</a></li>
+      <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="pii-gguf-demo">Try the model in the browser</a></li>
+    </ul>
+
+    <dl class="kv">
+      <div><dt>Files</dt><dd>Q8_0 (300 MB), BF16 (551 MB)</dd></div>
+      <div><dt>Base model</dt><dd><a href="/models/turkish-pii-detection/"><code>halilneed/turkish-pii-detection</code></a> v02</dd></div>
+      <div><dt>Benchmark</dt><dd>Q8_0 0.944, BF16 0.943 exact match on 1,000 rows</dd></div>
+      <div><dt>Runs in</dt><dd>Ollama, llama.cpp</dd></div>
+      <div><dt>Licence</dt><dd><a href="https://ai.google.dev/gemma/terms">Gemma Terms of Use</a></dd></div>
+    </dl>
+  </header>
+
+  <section id="files" aria-labelledby="files-title">
+    <h2 id="files-title">Files and scores</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">File</th><th scope="col">Size</th><th scope="col">Exact match, 1,000 rows</th><th scope="col">Same output as original</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">original model, Transformers BF16</th><td>536 MB</td><td>0.944</td><td>—</td></tr>
+        <tr><th scope="row"><code>turkish-pii-detection-BF16.gguf</code></th><td>551 MB</td><td>0.943</td><td>99.6%</td></tr>
+        <tr><th scope="row"><code>turkish-pii-detection-Q8_0.gguf</code></th><td>300 MB</td><td>0.944</td><td>98.9%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Measured on <a href="https://huggingface.co/datasets/cagrigungor/turkish-pii-masking-benchmark"><code>cagrigungor/turkish-pii-masking-benchmark</code></a> with row-level exact match, the same metric as the original model. The GGUF files were run through Ollama 0.40.7 at temperature 0. Q8_0 has the same weak slices as the original (PII with suffixes 0.803, UPPERCASE text 0.847); the one difference is the 20-row multi-person slice, 0.650 against 0.750. If you mask texts that mention several people, use BF16.</p>
+  </section>
+
+  <section id="ollama" aria-labelledby="ollama-title">
+    <h2 id="ollama-title">Run it in Ollama</h2>
+<pre tabindex="0" aria-label="Ollama pull command"><code>ollama pull hf.co/halilneed/turkish-pii-detection-GGUF:Q8_0</code></pre>
+    <p>For deterministic output and the right stop token, create a named model with the <code>Modelfile</code> from the repository:</p>
+<pre tabindex="0" aria-label="Ollama create and run"><code># Modelfile and .gguf in the same folder
+ollama create turkish-pii -f Modelfile
+ollama run turkish-pii "Metindeki tüm kişisel verileri uygun etiketlerle maskele.
+
+Metin: müşteri Ayşe Yılmaz tc 12345678950 tel 0532 111 22 33"
+# -> müşteri [AD] tc [TCKN] tel [TEL]</code></pre>
+    <p>The prompt is always an instruction, a blank line, then <code>Metin:</code> and the text. The instruction sets the policy, for example “Sadece telefon numaralarını maskele” (mask only phone numbers).</p>
+  </section>
+
+  <section id="llamacpp" aria-labelledby="llamacpp-title">
+    <h2 id="llamacpp-title">Run it in llama.cpp</h2>
+<pre tabindex="0" aria-label="llama.cpp command"><code>llama-cli -hf halilneed/turkish-pii-detection-GGUF:Q8_0 --temp 0 -n 512</code></pre>
+  </section>
+
+  <section id="limitations" aria-labelledby="limitations-title">
+    <h2 id="limitations-title">Limitations</h2>
+    <p>The original model’s limits apply: it was evaluated on synthetic data, so measure it on your own text before production; it can produce labels outside the schema, so validate the output against the label list. There is no Q4_K_M build. KVKK or GDPR compliance remains the user’s responsibility.</p>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Questions</h2>
+    <details>
+      <summary>Which file should I use?</summary>
+      <p>Q8_0 (300 MB) scores 0.944 row-level exact match on the 1,000-row benchmark, the same as the original model; BF16 (551 MB) scores 0.943. On the 20-row multi-person slice Q8_0 scores 0.650 against 0.750, so use BF16 for texts that mention several people.</p>
+    </details>
+    <details>
+      <summary>Is there a Q4_K_M build?</summary>
+      <p>No. 168M of the 268M parameters are in the embedding table and Q8_0 is already 300 MB. A 4-bit build is not published without measuring its loss.</p>
+    </details>
+    <details>
+      <summary>What is the prompt format?</summary>
+      <p>An instruction, a blank line, then Metin: followed by the text. The instruction sets the masking policy. Use the Modelfile in the repository for temperature 0 and the right stop token.</p>
+    </details>
+    <details>
+      <summary>Does it guarantee KVKK or GDPR compliance?</summary>
+      <p>No. It was evaluated on synthetic data; measure it on your own text and validate the labels against the schema. Compliance remains the user's responsibility.</p>
+    </details>
+  </section>
+
+  <section id="turkce" lang="tr" aria-labelledby="turkce-title">
+    <h2 id="turkce-title">Ollama ve llama.cpp için Türkçe kişisel veri maskeleme modeli</h2>
+    <p><code>turkish-pii-detection</code> v02’nin GGUF sürümü: Ollama ve llama.cpp ile yerelde, Python ve transformers olmadan çalışır. Q8_0 (300 MB) 1.000 satırlık benchmark’ta 0.944 tam eşleşme alır; çok kişili metinler için BF16 (551 MB) önerilir.</p>
+  </section>
+
+  <aside class="cta">
+    <p>Rolling this out in a company? <a class="btn" href="https://halilneed.gumroad.com/l/personal-data?utm_source=halilneed.agency&amp;utm_medium=model_page&amp;utm_campaign=turkish-pii-detection-GGUF&amp;utm_content=cta" data-goatcounter-click="pii-gguf-gumroad-personal-data">Free guide: what to redact before text reaches a model</a> · <a class="btn" href="https://halilneed.gumroad.com/l/kvkk-legal-kit?utm_source=halilneed.agency&amp;utm_medium=model_page&amp;utm_campaign=turkish-pii-detection-GGUF&amp;utm_content=cta" data-goatcounter-click="pii-gguf-gumroad-kvkk-legal-kit">AI policy &amp; prompt kit for legal teams ($19)</a></p>
+  </aside>
+
+  <section id="links" aria-labelledby="links-title">
+    <h2 id="links-title">Links</h2>
+    <ul>
+      <li><a href="https://huggingface.co/halilneed/turkish-pii-detection-GGUF" data-goatcounter-click="pii-gguf-hf">GGUF files and Modelfile on Hugging Face</a></li>
+      <li><a href="https://huggingface.co/collections/halilneed/turkish-privacy-and-safety-models-6ade6ec9fb541af26bc42e0d" data-goatcounter-click="pii-gguf-hf-collection">All Turkish privacy and safety models on Hugging Face</a></li>
+      <li><a href="/models/turkish-pii-detection/">Original model</a>: Python usage, full benchmark and training notes</li>
+      <li><a href="/masking-tool/">Masking tool</a>: rule-based TCKN, IBAN, phone and email masking in the browser</li>
+      <li><a href="/guides/personal-data/">Personal data and AI</a> guide</li>
+      <li><a href="/models/">All models</a></li>
+    </ul>
+  </section>
+
+</article>
+</main>
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, Istanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/">Turkish PII detection model</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Source</a></li>
+    </ul>
+    <p class="small">No cookies. Visits are counted in aggregate with GoatCounter.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

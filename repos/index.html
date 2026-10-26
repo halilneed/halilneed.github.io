@@ -16,6 +16,8 @@
 <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="halilneed">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="tr_TR">
 <meta property="og:title" content="Tools for coding agents | halilneed">
 <meta property="og:description" content="Six open-source Claude Code plugins. agent-blackbox, skillbench, scar, gardener and devpersona read local session logs; painradar reads public complaints. MIT.">
 <meta property="og:url" content="https://halilneed.agency/repos/">
@@ -79,38 +81,104 @@
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "agent-blackbox",
-          "url": "https://halilneed.agency/agent-blackbox/"
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "agent-blackbox",
+            "url": "https://halilneed.agency/agent-blackbox/",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Cross-platform",
+            "license": "https://opensource.org/licenses/MIT",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "skillbench",
-          "url": "https://halilneed.agency/skillbench/"
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "skillbench",
+            "url": "https://halilneed.agency/skillbench/",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Cross-platform",
+            "license": "https://opensource.org/licenses/MIT",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "scar",
-          "url": "https://halilneed.agency/scar/"
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "scar",
+            "url": "https://halilneed.agency/scar/",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Cross-platform",
+            "license": "https://opensource.org/licenses/MIT",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
         },
         {
           "@type": "ListItem",
           "position": 4,
-          "name": "gardener",
-          "url": "https://halilneed.agency/gardener/"
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "gardener",
+            "url": "https://halilneed.agency/gardener/",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Cross-platform",
+            "license": "https://opensource.org/licenses/MIT",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
         },
         {
           "@type": "ListItem",
           "position": 5,
-          "name": "painradar",
-          "url": "https://halilneed.agency/painradar/"
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "painradar",
+            "url": "https://halilneed.agency/painradar/",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Cross-platform",
+            "license": "https://opensource.org/licenses/MIT",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
         },
         {
           "@type": "ListItem",
           "position": 6,
-          "name": "devpersona",
-          "url": "https://halilneed.agency/devpersona/"
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "devpersona",
+            "url": "https://halilneed.agency/devpersona/",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Cross-platform",
+            "license": "https://opensource.org/licenses/MIT",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
         }
       ]
     },
@@ -337,6 +405,17 @@
       <summary>Which agents can they read?</summary>
       <p>Claude Code, Codex CLI and Gemini CLI, since all three write their sessions to disk in a readable format. The plugins are packaged for Claude Code. The five log-reading scanners are also plain Node scripts that run without the plugin and read the other two agents as well, for example <code>node scripts/blackbox.mjs</code> in the agent-blackbox repo.</p>
     </details>
+  </section>
+
+  <section id="related-site" aria-labelledby="related-site-title">
+    <h2 id="related-site-title">Related on this site</h2>
+    <ul>
+      <li><a href="/agent-blackbox/">agent-blackbox</a>, <a href="/skillbench/">skillbench</a>, <a href="/scar/">scar</a> (repeated Claude Code failures), <a href="/gardener/">gardener</a>, <a href="/painradar/">painradar</a> and <a href="/devpersona/">devpersona</a>: one page per plugin</li>
+      <li><a href="/models/">Turkish models</a>: PII masking, KVKK and banking data classification, prompt injection detection</li>
+      <li><a href="/models/turkish-prompt-injection-classifier/">Turkish prompt injection classifier</a> for agents that read untrusted text</li>
+      <li><a href="/masking-tool/">Masking tool</a>: mask TCKN, IBAN, phone and email in the browser before text goes to an AI tool</li>
+      <li><a href="/writing/">Writing</a>: what the session logs and benchmarks show</li>
+    </ul>
   </section>
 
   <section id="other" aria-labelledby="other-title">
