@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>araç envanteri · labai</title>
+<meta name="description" content="labai drop'ları. REA, Ollama ve sıradaki araçlar. ücretsiz · açık kaynak." />
+<link rel="canonical" href="https://halilneed.agency/labai/" />
+<link rel="alternate" hreflang="en" href="https://halilneed.agency/labai/" />
+<link rel="alternate" hreflang="tr" href="https://halilneed.agency/labai/" />
+<link rel="alternate" hreflang="x-default" href="https://halilneed.agency/labai/" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #120c28;
+    --panel: #24184e;
+    --ink: #fff8e6;
+    --muted: #aaa0d2;
+    --gold: #ffd63c;
+    --lime: #78ff64;
+    --cyan: #50e6ff;
+    --pink: #ff5ab4;
+    --orange: #ff8c32;
+    --purple: #b46eff;
+    --cream: #fff5dc;
+    --red: #ff4664;
+    --line: #3a2a6a;
+    --max: 760px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: "Pixelify Sans", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.25;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 5px, rgba(0,0,0,.14) 5px, rgba(0,0,0,.14) 6px
+    );
+  }
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 18px 16px 80px;
+    position: relative;
+  }
+  /* corner brackets */
+  .frame {
+    position: fixed; inset: 12px; pointer-events: none; z-index: 5;
+    border: 0;
+  }
+  .frame span {
+    position: absolute; width: 28px; height: 28px;
+    border: 3px solid var(--pink);
+  }
+  .frame .tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+  .frame .tr { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+  .frame .bl { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+  .frame .br { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+  /* HUD */
+  .hud {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 10px;
+    align-items: center;
+    background: #080614;
+    border: 3px solid var(--gold);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 22px;
+  }
+  .lv {
+    font-size: 1.05rem; color: var(--cyan);
+    border: 2px solid var(--cyan); padding: 8px 10px; border-radius: 8px;
+  }
+  .xp label { display: block; font-size: .95rem; color: var(--gold); margin-bottom: 4px; }
+  .xp-bar {
+    height: 16px; background: #281850; border: 2px solid var(--ink);
+    border-radius: 3px; overflow: hidden;
+  }
+  .xp-bar i { display: block; height: 100%; width: 62%; background: var(--lime); }
+  .coins {
+    display: flex; align-items: center; gap: 8px;
+    color: var(--gold); font-size: 1.25rem; font-weight: 700;
+  }
+  .coins b {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--gold); color: #120c28;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: .9rem; border: 2px solid var(--orange);
+  }
+  .brand { color: var(--gold); font-size: 1.15rem; font-weight: 700; text-align: right; }
+  .brand small { display: block; color: var(--muted); font-size: .8rem; font-weight: 500; }
+
+  .badge {
+    display: inline-block;
+    background: var(--pink); color: var(--ink);
+    font-size: 1rem; padding: 10px 14px; border-radius: 8px;
+    border: 3px solid #000; box-shadow: 4px 4px 0 #000;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: clamp(2.4rem, 9vw, 3.4rem);
+    font-weight: 700; line-height: 1.05; margin-bottom: 12px;
+  }
+  h1 span { color: var(--lime); }
+  .lede {
+    color: var(--muted); font-size: 1.2rem; max-width: 22ch; margin-bottom: 16px;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .chip {
+    font-size: .95rem; border: 2px solid var(--line); background: var(--panel);
+    color: var(--muted); padding: 8px 12px; border-radius: 999px;
+  }
+  .chip strong { color: var(--gold); }
+
+  .filters {
+    display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 18px;
+    scrollbar-width: none;
+  }
+  .filters::-webkit-scrollbar { display: none; }
+  .filters button {
+    flex: 0 0 auto; font: inherit; font-size: 1rem;
+    background: transparent; color: var(--muted);
+    border: 2px solid var(--line); padding: 12px 16px; border-radius: 10px; cursor: pointer;
+  }
+  .filters button.active,
+  .filters button:hover {
+    background: var(--gold); color: #120c28; border-color: #000;
+    box-shadow: 3px 3px 0 #000;
+  }
+
+  .grid { display: flex; flex-direction: column; gap: 20px; }
+
+  .card {
+    background: var(--cream); color: #120c28;
+    border-radius: 18px; border: 4px solid #000;
+    box-shadow: 6px 6px 0 var(--cyan); overflow: hidden;
+  }
+  .card.latest { box-shadow: 6px 6px 0 var(--pink); }
+  .card-head {
+    background: var(--orange); padding: 14px 16px;
+    display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  }
+  .card.latest .card-head { background: var(--pink); color: var(--ink); }
+  .ep { font-size: 1.05rem; font-weight: 700; color: #000; }
+  .card.latest .ep { color: var(--ink); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+  .tag {
+    font-size: .85rem; padding: 6px 10px; border-radius: 999px;
+    background: #120c28; color: var(--gold); border: 1px solid #000;
+  }
+  .tag.free { background: #1a3a28; color: var(--lime); }
+  .tag.oss { background: #1a2848; color: var(--cyan); }
+  .tag.ns { background: #2a1840; color: var(--purple); }
+
+  .card-body { padding: 20px 16px 18px; }
+  .card h2 { font-size: clamp(2rem, 7vw, 2.6rem); margin-bottom: 6px; }
+  .rarity { font-size: 1rem; color: #8a6040; margin-bottom: 12px; }
+  .card p {
+    font-size: 1.15rem; color: #3a3020; margin-bottom: 14px; max-width: 28ch;
+  }
+
+  .ethics {
+    font-size: 1.05rem; color: var(--red);
+    background: #ffe8ec; border: 3px solid var(--red);
+    border-radius: 10px; padding: 12px 14px; margin-bottom: 16px;
+  }
+
+  .usecases {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px;
+  }
+  .uc {
+    background: #120c28; color: var(--ink);
+    border-radius: 14px; border: 3px solid var(--line);
+    padding: 14px 12px; text-align: center; min-height: 92px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  }
+  .uc svg { width: 36px; height: 36px; }
+  .uc b { font-size: 1.15rem; font-weight: 700; color: var(--cyan); }
+  .uc.lime { border-color: var(--lime); }
+  .uc.lime b { color: var(--lime); }
+  .uc.gold { border-color: var(--gold); }
+  .uc.gold b { color: var(--gold); }
+  .uc.pink { border-color: var(--pink); }
+  .uc.pink b { color: var(--pink); }
+  .uc.orange { border-color: var(--orange); }
+  .uc.orange b { color: var(--orange); }
+  .uc.purple { border-color: var(--purple); }
+  .uc.purple b { color: var(--purple); }
+
+  .example {
+    background: var(--cream);
+    border: 4px solid var(--purple);
+    border-radius: 16px; overflow: hidden; margin-bottom: 14px;
+  }
+  .example .eh {
+    background: var(--purple); color: var(--ink);
+    padding: 12px 14px; font-size: 1.05rem;
+  }
+  .example .eb { padding: 16px 14px; }
+  .example h3 { font-size: 1.8rem; margin-bottom: 4px; }
+  .example .sub { color: var(--purple); font-size: 1.2rem; margin-bottom: 6px; }
+  .example .meta-line { color: #6a5840; font-size: 1rem; }
+  .example a { color: #3a3020; text-decoration: underline; font-size: .95rem; }
+
+  .hint {
+    background: var(--panel); color: var(--purple);
+    border: 3px solid var(--purple); border-radius: 12px;
+    padding: 12px 14px; font-size: 1.1rem; margin-bottom: 16px; text-align: center;
+  }
+
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px;
+  }
+  .stat {
+    background: #120c28; color: var(--ink);
+    border-radius: 12px; border: 3px solid var(--cyan);
+    padding: 12px 8px; text-align: center;
+  }
+  .stat b { display: block; font-size: 1.25rem; color: var(--gold); }
+  .stat span { font-size: .9rem; color: var(--muted); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    font: inherit; font-size: 1.05rem; text-decoration: none;
+    padding: 14px 16px; border-radius: 12px;
+    border: 3px solid #000; box-shadow: 3px 3px 0 #000;
+  }
+  .btn-primary { background: #120c28; color: var(--gold); }
+  .btn-ghost { background: var(--cream); color: #120c28; }
+  .btn:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 #000; }
+
+  .card.placeholder {
+    background: transparent; color: var(--muted);
+    border: 3px dashed var(--line); box-shadow: none;
+  }
+  .card.placeholder .card-head { background: var(--panel); }
+  .card.placeholder .ep { color: var(--muted); }
+  .card.placeholder h2 { color: var(--muted); font-size: 1.5rem; }
+  .card.placeholder p { color: #6a6090; margin: 0; font-size: 1.05rem; }
+  .card.placeholder .tag { background: var(--panel); color: var(--muted); }
+
+  .legend {
+    margin-top: 28px; padding: 16px; border-radius: 14px;
+    background: var(--panel); border: 3px solid var(--line);
+  }
+  .legend h3 { font-size: 1.05rem; color: var(--gold); margin-bottom: 12px; }
+  .legend-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .swatch { display: inline-flex; align-items: center; gap: 8px; font-size: 1rem; color: var(--muted); }
+  .swatch i {
+    width: 14px; height: 14px; border-radius: 3px; border: 2px solid #000; display: inline-block;
+  }
+
+  footer {
+    margin-top: 32px; padding-top: 18px; border-top: 3px solid var(--line);
+    color: var(--muted); font-size: 1rem;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+  footer .fine { margin-top: 10px; font-size: .9rem; opacity: .9; }
+
+  @media (min-width: 720px) {
+    .wrap { padding: 32px 28px 100px; }
+    .usecases { grid-template-columns: repeat(3, 1fr); }
+    .card-body { padding: 24px 22px 20px; }
+  }
+</style>
+</head>
+<body>
+  <div class="frame" aria-hidden="true">
+    <span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span>
+  </div>
+
+  <div class="wrap">
+    <div class="hud" aria-label="oyun HUD">
+      <div class="lv">LV.02</div>
+      <div class="xp">
+        <label>XP</label>
+        <div class="xp-bar"><i></i></div>
+      </div>
+      <div class="coins"><b>$</b>400K</div>
+      <div class="brand">labai<small>@neya.paysun</small></div>
+    </div>
+
+    <header>
+      <span class="badge">YENİ ARAÇ KAZANILDI</span>
+      <h1>araç <span>envanteri</span></h1>
+      <p class="lede">reel drop'ları. az yazı. büyük loot.</p>
+      <div class="meta">
+        <span class="chip"><strong>2</strong> drop</span>
+        <span class="chip">halilneed.agency/labai</span>
+        <span class="chip">fan-made</span>
+      </div>
+    </header>
+
+    <nav class="filters" aria-label="filtreler">
+      <button class="active" type="button">hepsi</button>
+      <button type="button">ücretsiz</button>
+      <button type="button">açık kaynak</button>
+      <button type="button">sponsor değil</button>
+    </nav>
+
+    <section class="grid" aria-label="envanter">
+      <!-- REA -->
+      <article class="card latest">
+        <div class="card-head">
+          <span class="ep">DROP · BÖLÜM 02</span>
+          <div class="tags">
+            <span class="tag free">ücretsiz</span>
+            <span class="tag oss">açık kaynak</span>
+            <span class="tag ns">sponsor değil</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h2>REA</h2>
+          <div class="rarity">efsanevi · tersine mühendislik ajanı</div>
+          <p>ajanına bakış veren MCP+CLI. binary · app · site.</p>
+
+          <div class="ethics">izinli / kendi yazılım</div>
+
+          <div class="usecases" aria-label="use case">
+            <div class="uc">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#50e6ff" stroke-width="3"><rect x="12" y="6" width="24" height="36" rx="4"/><rect x="18" y="12" width="12" height="16" fill="#50e6ff"/><circle cx="24" cy="36" r="2" fill="#50e6ff"/></svg>
+              <b>kendi app</b>
+            </div>
+            <div class="uc lime">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#78ff64" stroke-width="3"><path d="M24 6 L40 14 V28 L24 42 L8 28 V14 Z"/><path d="M16 24 L22 30 L34 16" stroke-linecap="round"/></svg>
+              <b>güvenlik</b>
+            </div>
+            <div class="uc gold">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#ffd63c" stroke-width="3"><rect x="10" y="10" width="28" height="28"/><rect x="22" y="10" width="12" height="8" fill="#ffd63c"/><rect x="16" y="26" width="16" height="8"/></svg>
+              <b>eski binary</b>
+            </div>
+            <div class="uc pink">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#ff5ab4" stroke-width="3"><path d="M14 8 V40"/><path d="M16 8 L38 18 L16 28" fill="#ff5ab4"/></svg>
+              <b>lab pratik</b>
+            </div>
+            <div class="uc">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#50e6ff" stroke-width="3"><circle cx="14" cy="14" r="6"/><circle cx="34" cy="14" r="6"/><circle cx="24" cy="34" r="6"/><path d="M18 16 L30 16 M16 18 L22 30 M32 18 L26 30"/></svg>
+              <b>API izle</b>
+            </div>
+            <div class="uc orange">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#ff8c32" stroke-width="3"><path d="M12 24 a10 10 0 1 1 12 0"/><path d="M36 24 a10 10 0 1 0 -12 0"/></svg>
+              <b>uyumluluk</b>
+            </div>
+            <div class="uc purple" style="grid-column: 1 / -1;">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#b46eff" stroke-width="3"><rect x="6" y="10" width="24" height="22" rx="3"/><rect x="18" y="16" width="24" height="22" rx="3"/><rect x="24" y="22" width="12" height="6" fill="#b46eff"/></svg>
+              <b>app kopyala</b>
+            </div>
+          </div>
+
+          <div class="example">
+            <div class="eh">ÖRNEK</div>
+            <div class="eb">
+              <h3>PhotoCraft</h3>
+              <div class="sub">photoshop benzeri</div>
+              <div class="meta-line">AI clean-room · ArtCraft</div>
+              <a href="https://github.com/storytold/photocraft" target="_blank" rel="noopener">github.com/storytold/photocraft</a>
+            </div>
+          </div>
+
+          <div class="hint">incele >> benzerini sıfırdan yap</div>
+
+          <div class="stats">
+            <div class="stat"><b>400K+</b><span>GitHub</span></div>
+            <div class="stat"><b>MIT</b><span>lisans</span></div>
+            <div class="stat"><b>0₺</b><span>aylık</span></div>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://github.com/morluto/rea" target="_blank" rel="noopener">GitHub'da aç</a>
+            <a class="btn btn-ghost" href="https://rea.tools" target="_blank" rel="noopener">rea.tools</a>
+            <a class="btn btn-ghost" href="https://instagram.com/neya.paysun" target="_blank" rel="noopener">reeli izle</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ollama -->
+      <article class="card">
+        <div class="card-head">
+          <span class="ep">DROP · BÖLÜM 01</span>
+          <div class="tags">
+            <span class="tag free">ücretsiz</span>
+            <span class="tag oss">açık kaynak</span>
+            <span class="tag ns">sponsor değil</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h2>Ollama</h2>
+          <div class="rarity">efsanevi · yerel AI</div>
+          <p>modeller bilgisayarında. abonelik yok.</p>
+          <div class="stats">
+            <div class="stat"><b>185K+</b><span>GitHub</span></div>
+            <div class="stat"><b>MIT</b><span>lisans</span></div>
+            <div class="stat"><b>0₺</b><span>aylık</span></div>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://github.com/ollama/ollama" target="_blank" rel="noopener">GitHub'da aç</a>
+            <a class="btn btn-ghost" href="https://ollama.com" target="_blank" rel="noopener">siteye git</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card placeholder">
+        <div class="card-head">
+          <span class="ep">BÖLÜM 03</span>
+          <div class="tags"><span class="tag">yakında</span></div>
+        </div>
+        <div class="card-body">
+          <h2>sıradaki drop…</h2>
+          <p>yuvası boş.</p>
+        </div>
+      </article>
+    </section>
+
+    <aside class="legend">
+      <h3>SERİ RENKLERİ</h3>
+      <div class="legend-row">
+        <span class="swatch"><i style="background:var(--gold)"></i> günün aracı</span>
+        <span class="swatch"><i style="background:#3ddc84"></i> hadi deneyelim</span>
+        <span class="swatch"><i style="background:var(--purple)"></i> ya şöyle olsaydı</span>
+        <span class="swatch"><i style="background:var(--orange)"></i> gece mesaisi</span>
+      </div>
+    </aside>
+
+    <footer>
+      <p><strong>labai</strong> · ig <a href="https://instagram.com/neya.paysun">@neya.paysun</a> · halilneed.agency/labai</p>
+      <p class="fine">claude fan-made · anthropic değil. REA yalnızca izinli / kendi yazılım için.</p>
+    </footer>
+  </div>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
