@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IBAN Maskeleme: TR IBAN Regex ve Mod-97 Kontrolü | halilneed</title>
+<meta name="description" content="TR IBAN&#x27;ı metin içinde bulup maskelemek için regex, boşluklu yazımlar, mod-97 doğrulaması ve kısmi maskeleme örnekleri tek sayfada.">
+<link rel="canonical" href="https://halilneed.agency/guides/iban-masking/tr/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="IBAN Maskeleme: TR IBAN Regex ve Mod-97 Kontrolü">
+<meta property="og:description" content="TR IBAN&#x27;ı metin içinde bulup maskelemek için regex, boşluklu yazımlar, mod-97 doğrulaması ve kısmi maskeleme örnekleri tek sayfada.">
+<meta property="og:url" content="https://halilneed.agency/guides/iban-masking/tr/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-guides.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="article:published_time" content="2026-10-28">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IBAN Maskeleme: TR IBAN Regex ve Mod-97 Kontrolü">
+<meta name="twitter:description" content="TR IBAN&#x27;ı metin içinde bulup maskelemek için regex, boşluklu yazımlar, mod-97 doğrulaması ve kısmi maskeleme örnekleri tek sayfada.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-guides.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Rehberler",
+          "item": "https://halilneed.agency/guides/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "IBAN maskeleme",
+          "item": "https://halilneed.agency/guides/iban-masking/tr/"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://halilneed.agency/guides/iban-masking/tr/#page",
+      "url": "https://halilneed.agency/guides/iban-masking/tr/",
+      "mainEntityOfPage": "https://halilneed.agency/guides/iban-masking/tr/",
+      "headline": "IBAN Maskeleme: TR IBAN Regex ve Mod-97 Kontrolü",
+      "description": "TR IBAN'ı metin içinde bulup maskelemek için regex, boşluklu yazımlar, mod-97 doğrulaması ve kısmi maskeleme örnekleri tek sayfada.",
+      "inLanguage": "tr",
+      "datePublished": "2026-10-28",
+      "dateModified": "2026-10-28",
+      "image": "https://halilneed.agency/assets/img/og-guides.png",
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@id": "https://halilneed.agency/#website"
+      },
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "about": {
+        "@id": "https://halilneed.agency/models/turkish-pii-detection/#model"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/guides/iban-masking/tr/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Yalnızca regex yeter mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yapısı belli IBAN için regex + mod-97 yeterlidir. Aynı metindeki ad soyad için model katmanı gerekir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Yabancı IBAN'lar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Uzunluk ülkeye göre değişir (ör. DE 22, GB 22). Bu rehber TR (26) içindir. Başka ülkeler için uzunluk tablosu ve aynı mod-97 kuralı kullanılır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Küçük harf tr33… yakalanır mı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet; örnekteki re.IGNORECASE ve iban_normalize küçük harfi büyük harfe çevirir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mod-97 geçmeyen bir adayı ne yapmalı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Olduğu gibi bırakın. Sağlamadan geçmeyen dizi büyük olasılıkla IBAN değildir; maskelemek metni bozar."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<header class="site-header">
+  <a class="site-name" href="/tr/">halilneed</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="/models/tr/">Modeller</a></li>
+      <li><a href="/repos/tr/">Araçlar</a></li>
+      <li><a href="/guides/tr/" aria-current="true">Rehberler</a></li>
+      <li><a href="/writing/tr/">Yazılar</a></li>
+      <li><a href="/tr/#about">Hakkında</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Dil"><a href="/guides/iban-masking/tr/" hreflang="tr" lang="tr" aria-current="true">TR</a><a href="/guides/" hreflang="en" lang="en">EN</a></div>
+</header>
+
+<nav class="breadcrumb" aria-label="Konum">
+  <ol>
+    <li><a href="/tr/">halilneed</a></li>
+    <li><a href="/guides/tr/">Rehberler</a></li>
+    <li aria-current="page">IBAN maskeleme</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>IBAN Maskeleme: TR IBAN Regex ve Mod-97 Kontrolü</h1>
+    <p class="lead"><strong>Kısa cevap:</strong> Türkiye IBAN'ı "TR" ile başlar ve toplam 26 karakterdir: 2 kontrol hanesi, 5 haneli banka kodu, 1 rezerv hane ve 16 haneli hesap numarası. Metinde boşluklu yazımı da yakalayan bir regex kullanın, mod-97 ile doğrulayın ve yalnızca son dört haneyi bırakarak maskeleyin.</p>
+  </header>
+
+  <section aria-labelledby="yapi">
+    <h2 id="yapi">TR IBAN'ın yapısı (26 karakter)</h2>
+    <p>Uluslararası banka hesap numarası (IBAN) ülkeden ülkeye uzunluk değiştirir. Türkiye'de sabit uzunluk 26'dır:</p>
+    <table>
+      <thead><tr><th scope="col">Parça</th><th scope="col">Uzunluk</th><th scope="col">Örnek</th></tr></thead>
+      <tbody>
+        <tr><td>Ülke kodu</td><td>2</td><td><code>TR</code></td></tr>
+        <tr><td>Kontrol haneleri</td><td>2</td><td><code>33</code></td></tr>
+        <tr><td>Banka kodu</td><td>5</td><td><code>00061</code></td></tr>
+        <tr><td>Rezerv</td><td>1</td><td><code>0</code></td></tr>
+        <tr><td>Hesap numarası</td><td>16</td><td><code>0519786457841326</code></td></tr>
+      </tbody>
+    </table>
+    <p>İnsanlar IBAN'ı çoğu zaman dört hanelik gruplar halinde yazar: <code>TR33 0006 1005 1978 6457 8413 26</code>. Bazen küçük harf (<code>tr33…</code>), bazen hiç boşluksuz yazarlar. Maskeleme kodunuz bu üç biçimi de aynı değere indirgemelidir.</p>
+    <p>IBAN kişisel veri sayılır: belirli bir kişinin veya kurumun hesap bilgisidir. Destek kayıtlarında, fatura PDF'lerinde, e-posta imzalarında ve LLM'e yapıştırılan metinlerde sık görünür. Log'a veya üçüncü taraf modele ham haliyle gitmemelidir.</p>
+  </section>
+
+  <section aria-labelledby="regex">
+    <h2 id="regex">Regex: boşluklu ve boşluksuz yazım</h2>
+    <p>Önce aday yakalayın, sonra doğrulayın. Tek bir regex ile her şeyi çözmeye çalışmak yerine iki adım daha güvenlidir.</p>
+    <pre tabindex="0" aria-label="Python IBAN aday regex"><code>import re
+
+# TR + 24 hane; aralarda isteğe bağlı boşluk
+IBAN_ADAY = re.compile(
+    r&quot;(?&lt;![A-Za-z0-9])TR\s*(?:\d\s*){24}(?!\d)&quot;,
+    re.IGNORECASE,
+)
+
+def iban_normalize(s: str) -&gt; str:
+    return re.sub(r&quot;\s+&quot;, &quot;&quot;, s).upper()</code></pre>
+    <p><code>(?&lt;![A-Za-z0-9])</code> ve <code>(?!\d)</code> sınırları, daha uzun bir alfanümerik dizinin içinden parça koparmayı azaltır. Yine de yanlış pozitifler olur: rastgele <code>TR</code> + 24 rakam içeren takip kodları. Onları elemek için mod-97 gerekir.</p>
+  </section>
+
+  <section aria-labelledby="mod97">
+    <h2 id="mod97">Mod-97 doğrulaması</h2>
+    <p>IBAN standardı (ISO 13616) kontrolü şöyle tanımlar:</p>
+    <ol>
+      <li>İlk dört karakteri (ülke + kontrol) sona taşı.</li>
+      <li>Harfleri sayıya çevir: A=10 … Z=35.</li>
+      <li>Elde edilen büyük sayının 97'ye bölümünden kalan 1 olmalı.</li>
+    </ol>
+    <pre tabindex="0" aria-label="Python mod-97 ve maskeleme"><code>def iban_gecerli(s: str) -&gt; bool:
+    s = iban_normalize(s)
+    if len(s) != 26 or not s.startswith(&quot;TR&quot;) or not s[2:].isdigit():
+        return False
+    rearranged = s[4:] + s[:4]
+    digits = &quot;&quot;.join(str(int(c, 36)) for c in rearranged)
+    return int(digits) % 97 == 1
+
+def iban_maskele(metin: str, son: int = 4) -&gt; str:
+    def replace(m):
+        raw = m.group()
+        if not iban_gecerli(raw):
+            return raw
+        n = iban_normalize(raw)
+        # kısmi: ülke + yıldız + son haneler
+        return n[:2] + (&quot;*&quot; * (24 - son)) + n[-son:]
+    return IBAN_ADAY.sub(replace, metin)</code></pre>
+    <p>Örnek (sentetik, yaygın örnek formatı):</p>
+    <pre tabindex="0" aria-label="IBAN maskeleme örneği"><code>Girdi : Ödeme TR33 0006 1005 1978 6457 8413 26 hesabına yapıldı.
+Çıktı : Ödeme TR********************1326 hesabına yapıldı.</code></pre>
+    <p>Gerçek müşteri IBAN'ı test verisi olarak kullanmayın. Mod-97'yi geçen sentetik numaraları kendi üretecinizle üretin.</p>
+    <p>Python'da <code>int</code> yeterince büyük sayıları tutar. JavaScript'te <code>BigInt</code> kullanın; aksi halde 24+ haneli sayı hassasiyet kaybeder.</p>
+  </section>
+
+  <section aria-labelledby="kismi">
+    <h2 id="kismi">Kısmi maskeleme (son 4 hane)</h2>
+    <p>Kısmi maskeleme, çağrı merkezi veya muhasebe ekranında kullanıcının "kendi hesabını tanıması" gerektiğinde işe yarar. LLM isteklerinde ise genellikle etiket daha iyidir:</p>
+    <table>
+      <thead><tr><th scope="col">Biçim</th><th scope="col">Örnek</th><th scope="col">Ne zaman</th></tr></thead>
+      <tbody>
+        <tr><td>Kısmi</td><td><code>TR********************1326</code></td><td>İnsan ekranı</td></tr>
+        <tr><td>Etiket</td><td><code>[IBAN]</code></td><td>Log, analitik</td></tr>
+        <tr><td>Numaralı etiket</td><td><code>[IBAN_1]</code></td><td>Aynı metinde birden fazla hesap; cevabı geri eşlemek</td></tr>
+      </tbody>
+    </table>
+    <p>Numaralı etiketi kural katmanınız üretir: regex konum verir, siz <code>[IBAN_1]</code> yazarsınız, eşleme tablosu yalnızca sizin tarafınızda kalır. <a href="/models/turkish-pii-detection/tr/">Türkçe PII tespit modeli</a> ise talimatla maskelenmiş metin üretir (<code>[IBAN]</code> gibi); NER span veya offset döndürmez. Geri çevirmek istediğiniz alanlar için kural katmanını kullanın.</p>
+    <p>TCKN için aynı mantık <a href="/guides/tckn-masking/tr/">TCKN maskeleme rehberinde</a> anlatılır.</p>
+  </section>
+
+  <section aria-labelledby="loglar">
+    <h2 id="loglar">Loglarda ve yapay zekâ isteklerinde</h2>
+    <p>Maskelemenin yeri, verinin sisteme girdiği ilk noktadır. Sıra şöyle olmalı:</p>
+    <ol>
+      <li>Metin gelir (form, e-posta, destek kaydı).</li>
+      <li>IBAN (ve TCKN, telefon, e-posta) maskelenir.</li>
+      <li>Ancak ondan sonra log, arama indeksi veya LLM isteği yazılır.</li>
+    </ol>
+    <p>Tersini yapmak — önce log'a yazıp sonra maskelemek — sızıntıyı yalnızca gizler; ham metin zaten diskte kalmıştır.</p>
+    <p>Yapay zekâ isteklerinde modelin IBAN'ın kendisine ihtiyacı yoktur. "Ödeme [IBAN_1] hesabına yapıldı" cümlesi, özet veya sınıflandırma için yeterlidir. Cevabı kullanıcıya gösterirken eşleme tablosuyla gerçek numarayı geri koyarsınız.</p>
+    <p>Kod yazmadan denemek için <a href="/masking-tool/tr/">maskeleme aracı</a>.</p>
+  </section>
+
+  <section aria-labelledby="tuzaklar">
+    <h2 id="tuzaklar">Boşluk, OCR ve yaygın yazım tuzakları</h2>
+    <p>Gerçek metinlerde IBAN nadiren "temiz" gelir:</p>
+    <ul>
+      <li>OCR, <code>O</code> ile <code>0</code>, <code>I</code> ile <code>1</code> karıştırır</li>
+      <li>Kullanıcı <code>TR-33-0006-…</code> gibi tire ekler</li>
+      <li>Kopyala-yapıştır sırasında satır sonu veya çift boşluk kalır</li>
+      <li>Bazı bankalar hesap özetinde IBAN'ı satıra böler</li>
+    </ul>
+    <p>Normalleştirme adımını genişletin: tire ve alt çizgiyi silin, ardından boşlukları kaldırın. OCR şüphesi varsa adayı maskelemeden önce bir insan onayına bırakmak, yanlış maskelemeden iyidir. Sağlamadan geçmeyen adayı zorla maskelemeyin.</p>
+    <pre tabindex="0" aria-label="Genişletilmiş IBAN normalleştirme"><code>def iban_normalize(s: str) -&gt; str:
+    s = s.upper()
+    s = re.sub(r&quot;[\-_.]&quot;, &quot;&quot;, s)
+    return re.sub(r&quot;\s+&quot;, &quot;&quot;, s)</code></pre>
+    <p>Çok satırlı IBAN'lar için önce satır sonlarını boşluğa çevirip tek satırda aramak genelde yeterlidir. Belge ayrıştırıcı (PDF) kullanıyorsanız ham metni birleştirmeden önce sütun sırasını kontrol edin; aksi halde banka kodu ile hesap numarası yer değiştirebilir.</p>
+  </section>
+
+  <section aria-labelledby="katman">
+    <h2 id="katman">Kural katmanı + model katmanı birlikte</h2>
+    <p>IBAN tek başına maskelense bile aynı cümlede ad soyad, telefon ve e-posta kalabilir. Önerilen sıra:</p>
+    <ol>
+      <li>Kural katmanı: IBAN, TCKN, telefon, e-posta (konum üretir, geri çevrilebilir)</li>
+      <li>Model katmanı: kalan metni talimatla maskele (<code>[AD]</code>, adres vb.)</li>
+      <li>Log / LLM: yalnızca maskelenmiş metin</li>
+    </ol>
+    <p>Model katmanı <a href="/models/turkish-pii-detection/tr/">PII tespit modelidir</a>: girdiyi yeniden yazar, span listesi vermez. Bu yüzden "IBAN'ı geri koy" ihtiyacı varsa numaralandırmayı kural katmanında bitirin; modele zaten maskelenmiş metni verin veya "IBAN'ları olduğu gibi koru" politikası kullanın.</p>
+  </section>
+
+  <section aria-labelledby="nezaman">
+    <h2 id="nezaman">Ne zaman kısmi, ne zaman etiket?</h2>
+    <p>Muhasebe ekranında son dört hane, kullanıcının hesabı tanımasına yardım eder. Destek özetini bir LLM'e gönderirken son dört hane de gereksizdir; <code>[IBAN_1]</code> yeter. Analitik ve uzun süreli loglarda geri döndürülemez etiket veya tuzlu hash tercih edin. Eşleme tablosunu maskelenmiş metinle aynı yerde saklamayın — bu, maskelemeyi fiilen geri alır.</p>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">SSS</h2>
+    <details>
+      <summary>Yalnızca regex yeter mi?</summary>
+      <p>Yapısı belli IBAN için regex + mod-97 yeterlidir. Aynı metindeki ad soyad için model katmanı gerekir.</p>
+    </details>
+    <details>
+      <summary>Yabancı IBAN'lar?</summary>
+      <p>Uzunluk ülkeye göre değişir (ör. DE 22, GB 22). Bu rehber TR (26) içindir. Başka ülkeler için uzunluk tablosu ve aynı mod-97 kuralı kullanılır.</p>
+    </details>
+    <details>
+      <summary>Küçük harf tr33… yakalanır mı?</summary>
+      <p>Evet; örnekteki re.IGNORECASE ve iban_normalize küçük harfi büyük harfe çevirir.</p>
+    </details>
+    <details>
+      <summary>Mod-97 geçmeyen bir adayı ne yapmalı?</summary>
+      <p>Olduğu gibi bırakın. Sağlamadan geçmeyen dizi büyük olasılıkla IBAN değildir; maskelemek metni bozar.</p>
+    </details>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, İstanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespit modeli</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Kaynak</a></li>
+    </ul>
+    <p class="small">Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

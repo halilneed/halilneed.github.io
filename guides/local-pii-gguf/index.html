@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run Turkish PII Masking Locally with GGUF | halilneed</title>
+<meta name="description" content="Keep personal data on your machine: run the Turkish PII masking model in GGUF with Ollama or llama.cpp, with no text leaving your network.">
+<link rel="canonical" href="https://halilneed.agency/guides/local-pii-gguf/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Run Turkish PII Masking Locally with GGUF">
+<meta property="og:description" content="Keep personal data on your machine: run the Turkish PII masking model in GGUF with Ollama or llama.cpp, with no text leaving your network.">
+<meta property="og:url" content="https://halilneed.agency/guides/local-pii-gguf/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-guides.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="article:published_time" content="2026-10-28">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Run Turkish PII Masking Locally with GGUF">
+<meta name="twitter:description" content="Keep personal data on your machine: run the Turkish PII masking model in GGUF with Ollama or llama.cpp, with no text leaving your network.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-guides.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guides",
+          "item": "https://halilneed.agency/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Local PII masking with GGUF",
+          "item": "https://halilneed.agency/guides/local-pii-gguf/"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://halilneed.agency/guides/local-pii-gguf/#page",
+      "url": "https://halilneed.agency/guides/local-pii-gguf/",
+      "mainEntityOfPage": "https://halilneed.agency/guides/local-pii-gguf/",
+      "headline": "Run Turkish PII Masking Locally with GGUF",
+      "description": "Keep personal data on your machine: run the Turkish PII masking model in GGUF with Ollama or llama.cpp, with no text leaving your network.",
+      "inLanguage": "en",
+      "datePublished": "2026-10-28",
+      "dateModified": "2026-10-28",
+      "image": "https://halilneed.agency/assets/img/og-guides.png",
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@id": "https://halilneed.agency/#website"
+      },
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "about": {
+        "@id": "https://halilneed.agency/models/turkish-pii-detection-GGUF/#model"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/guides/local-pii-gguf/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this NER?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It generates masked text from a Turkish instruction. It does not return token labels or offsets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Q8_0 or BF16?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Default to Q8_0 (smaller, same overall benchmark score). Use BF16 for multi-person texts (card: 0.650 vs 0.750 on that 20-row slice)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the browser demo or masking tool use these GGUF files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The on-site masking tool is rule-based. The Hugging Face browser demo runs the base model's ONNX conversion, not the GGUF builds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does local masking make me KVKK-compliant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It keeps raw text on your machine and supports data minimization; legal basis, retention and notices are separate. This is not legal advice."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use English instructions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The model expects Turkish instructions and Turkish input text. English documentation does not imply English-language masking capability (main card)."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="site-name" href="/">halilneed</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/models/">Models</a></li>
+      <li><a href="/repos/">Tools</a></li>
+      <li><a href="/guides/" aria-current="true">Guides</a></li>
+      <li><a href="/writing/">Writing</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Language"><a href="/guides/tr/" hreflang="tr" lang="tr">TR</a><a href="/guides/local-pii-gguf/" hreflang="en" lang="en" aria-current="true">EN</a></div>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">halilneed</a></li>
+    <li><a href="/guides/">Guides</a></li>
+    <li aria-current="page">Local PII masking with GGUF</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>Run Turkish PII Masking Locally with GGUF</h1>
+    <p class="lead"><strong>Short answer:</strong> You can mask Turkish personal data without sending text to any cloud service by using the GGUF build of the Turkish PII model with Ollama or llama.cpp on your own CPU. Download the file from Hugging Face, create a local model with the repo Modelfile, and call it from your app.</p>
+  </header>
+
+  <section aria-labelledby="why">
+    <h2 id="why">Why run PII masking locally</h2>
+    <p>Support tickets, HR notes and contract excerpts often contain names, TCKN, IBAN, phone numbers and emails. If your masking step calls a remote API, that text leaves your network before it is cleaned. For many teams that is the opposite of the goal.</p>
+    <p>Local masking keeps the raw text on a laptop or a server you control. The model takes a Turkish instruction plus the text and returns rewritten text with labels such as <code>[AD]</code>, <code>[TCKN]</code> and <code>[TEL]</code>. It is <strong>not</strong> a NER model: it does not return entity spans or character offsets. If you need reversible placeholders (<code>[TCKN_1]</code> with a mapping table), keep a rule layer in front for structured fields and use the model for what rules miss.</p>
+    <p>See the <a href="/models/turkish-pii-detection/">model page</a> for the full schema, policies and limits. The on-site <a href="/masking-tool/">masking tool</a> is rule-based (TCKN, IBAN, phone, email) and is <strong>not</strong> the GGUF build. The <a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="local-pii-gguf-hf-demo-en">Hugging Face browser demo</a> runs an ONNX conversion of the base model, also not these GGUF files.</p>
+  </section>
+
+  <section aria-labelledby="what-gguf">
+    <h2 id="what-gguf">What GGUF is</h2>
+    <p>GGUF is a file format used by llama.cpp and Ollama to run language models without a Python/transformers stack. The companion repo <a href="https://huggingface.co/halilneed/turkish-pii-detection-GGUF" data-goatcounter-click="local-pii-gguf-hf-repo-en"><code>halilneed/turkish-pii-detection-GGUF</code></a> publishes two builds of v02:</p>
+    <table>
+      <thead><tr><th scope="col">File</th><th scope="col">Size (card)</th><th scope="col">Benchmark row-level exact match (1,000 rows)</th><th scope="col">Same output as main model</th></tr></thead>
+      <tbody>
+        <tr><td>Main model (transformers BF16)</td><td>536 MB</td><td>0.944</td><td>—</td></tr>
+        <tr><td><code>turkish-pii-detection-BF16.gguf</code></td><td>551.0 MB</td><td>0.943</td><td>99.6%</td></tr>
+        <tr><td><code>turkish-pii-detection-Q8_0.gguf</code></td><td>299.7 MB</td><td>0.944</td><td>98.9%</td></tr>
+      </tbody>
+    </table>
+    <p>Figures are from the GGUF model card (Ollama 0.40.7, temperature 0, same metric as the main card). There is no Q4_K_M build: the card states that 168M of 268M parameters sit in the embedding table and a 4-bit build was not published without measuring its loss.</p>
+    <p><strong>Which file?</strong> Q8_0 matches the main model's overall 0.944. On the 20-row multi-person slice the card reports Q8_0 at 0.650 vs 0.750 for the main model — so prefer BF16 when you mask texts with several people.</p>
+  </section>
+
+  <section aria-labelledby="hw">
+    <h2 id="hw">Hardware you need</h2>
+    <p>The GGUF card says the builds <strong>run on CPU; no GPU needed</strong> (llama.cpp / Ollama).</p>
+    <p>Published latency and RAM for the <em>main</em> Python model (not the GGUF files): about <strong>600 ms per short sentence</strong> and about <strong>1.6 GB RAM</strong> on an Intel i5-12400F, fp32, eight threads, batch size one (main model card). The GGUF card does not publish separate latency figures; measure on your own CPU before promising an SLA.</p>
+    <p>Disk: plan for roughly 300 MB (Q8_0) or 551 MB (BF16) plus Ollama/llama.cpp overhead.</p>
+  </section>
+
+  <section aria-labelledby="setup">
+    <h2 id="setup">Setup steps (from the GGUF card)</h2>
+    <h3>Option A — Ollama</h3>
+    <p>Pull the quantized build:</p>
+    <pre tabindex="0" aria-label="Ollama pull"><code>ollama pull hf.co/halilneed/turkish-pii-detection-GGUF:Q8_0</code></pre>
+    <p>For deterministic output and the correct stop token, create a named model with the <code>Modelfile</code> from the GGUF repo (keep the Modelfile and <code>.gguf</code> in the same folder):</p>
+    <pre tabindex="0" aria-label="Ollama create and run"><code>ollama create turkish-pii -f Modelfile
+ollama run turkish-pii &quot;Metindeki tüm kişisel verileri uygun etiketlerle maskele.
+
+Metin: müşteri Ayşe Yılmaz tc 12345678950 tel 0532 111 22 33&quot;
+# -&gt; müşteri [AD] tc [TCKN] tel [TEL]</code></pre>
+    <p>Prompt shape from the card: instruction, blank line, then <code>Metin: …</code>. The instruction sets the policy ("mask everything", "only phone numbers", "keep names", and so on). Policies and the 53-label schema live on the <a href="/models/turkish-pii-detection/">main model card / site page</a>.</p>
+    <h3>Option B — llama.cpp</h3>
+    <p>From the GGUF card:</p>
+    <pre tabindex="0" aria-label="llama.cpp command"><code>llama-cli -hf halilneed/turkish-pii-detection-GGUF:Q8_0 --temp 0 -n 512</code></pre>
+    <p>Use temperature 0 for stable masking output.</p>
+  </section>
+
+  <section aria-labelledby="app">
+    <h2 id="app">Calling it from your app</h2>
+    <p>Python against Ollama's local API (example from the GGUF card):</p>
+    <pre tabindex="0" aria-label="Python Ollama API example"><code>import json, urllib.request
+
+def maskele(metin, talimat=&quot;Metindeki tüm kişisel verileri uygun etiketlerle maskele.&quot;):
+    body = {
+        &quot;model&quot;: &quot;turkish-pii&quot;,
+        &quot;prompt&quot;: f&quot;{talimat}\n\nMetin: {metin}&quot;,
+        &quot;stream&quot;: False,
+        &quot;options&quot;: {&quot;temperature&quot;: 0},
+    }
+    req = urllib.request.Request(
+        &quot;http://127.0.0.1:11434/api/generate&quot;,
+        json.dumps(body).encode(),
+        {&quot;Content-Type&quot;: &quot;application/json&quot;},
+    )
+    return json.loads(urllib.request.urlopen(req).read())[&quot;response&quot;].strip()</code></pre>
+    <p>Wire this in <em>before</em> logs, search indexes or any cloud LLM call. Keep <code>return_original</code>-style mapping tables only for your rule layer; the generative model returns masked text, not offsets.</p>
+    <p>If you still want the original transformers path on the same machine, the main card's CPU example uses <code>torch.float32</code> without <code>device_map</code> and pins a revision SHA for reproducibility — see <a href="/models/turkish-pii-detection/">/models/turkish-pii-detection/</a>.</p>
+  </section>
+
+  <section aria-labelledby="accuracy">
+    <h2 id="accuracy">Accuracy vs. the full model</h2>
+    <p>Use the card's numbers; do not invent others:</p>
+    <ul>
+      <li>Q8_0: 0.944 exact match on the 1,000-row benchmark, same headline score as the main model; 98.9% identical outputs on rows the model predicted.</li>
+      <li>BF16 GGUF: 0.943; 99.6% identical outputs.</li>
+      <li>Weak slices (same story as the main model): suffixed PII, uppercase text; multi-person is where Q8_0 lags.</li>
+    </ul>
+    <p>Exact match on a synthetic benchmark is not entity recall and not a guarantee that your real documents are safe to share. Measure on your own Turkish text before production. Masking alone does not establish irreversible anonymization or KVKK/GDPR compliance; that remains your responsibility. License: Gemma Terms of Use (as stated on the cards).</p>
+    <p>For choosing which privacy model fits which job, see the <a href="/guides/first-step/">first-step guide</a> and the model page above.</p>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">FAQ</h2>
+    <details>
+      <summary>Is this NER?</summary>
+      <p>No. It generates masked text from a Turkish instruction. It does not return token labels or offsets.</p>
+    </details>
+    <details>
+      <summary>Q8_0 or BF16?</summary>
+      <p>Default to Q8_0 (smaller, same overall benchmark score). Use BF16 for multi-person texts (card: 0.650 vs 0.750 on that 20-row slice).</p>
+    </details>
+    <details>
+      <summary>Does the browser demo or masking tool use these GGUF files?</summary>
+      <p>No. The on-site masking tool is rule-based. The Hugging Face browser demo runs the base model's ONNX conversion, not the GGUF builds.</p>
+    </details>
+    <details>
+      <summary>Does local masking make me KVKK-compliant?</summary>
+      <p>No. It keeps raw text on your machine and supports data minimization; legal basis, retention and notices are separate. This is not legal advice.</p>
+    </details>
+    <details>
+      <summary>Can I use English instructions?</summary>
+      <p>The model expects Turkish instructions and Turkish input text. English documentation does not imply English-language masking capability (main card).</p>
+    </details>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, Istanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection-GGUF/">Turkish PII detection GGUF</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Source</a></li>
+    </ul>
+    <p class="small">No cookies. Visits are counted in aggregate with GoatCounter.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
