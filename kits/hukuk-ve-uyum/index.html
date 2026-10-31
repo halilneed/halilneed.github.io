@@ -72,7 +72,40 @@
         "url": "https://halilneed.gumroad.com/l/kvkk-legal-kit",
         "price": "19.00",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
+        "availability": "https://schema.org/InStock",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "USD"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "DAY"
+            }
+          },
+          "shippingDestination": [
+            {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            {
+              "@type": "DefinedRegion",
+              "addressCountry": "US"
+            }
+          ]
+        }
       }
     },
     {
