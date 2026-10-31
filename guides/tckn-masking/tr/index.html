@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TC Kimlik Numarası Maskeleme: Regex, Doğrulama, Model | halilneed</title>
+<meta name="description" content="TCKN&#x27;yi loglarda ve yapay zekâ isteklerinde nasıl maskelersiniz? 11 hane kuralı, sağlama algoritması, regex örneği ve model ile tespit, adım adım.">
+<link rel="canonical" href="https://halilneed.agency/guides/tckn-masking/tr/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="author" content="Halil">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="halilneed">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="TC Kimlik Numarası Maskeleme: Regex, Doğrulama, Model">
+<meta property="og:description" content="TCKN&#x27;yi loglarda ve yapay zekâ isteklerinde nasıl maskelersiniz? 11 hane kuralı, sağlama algoritması, regex örneği ve model ile tespit, adım adım.">
+<meta property="og:url" content="https://halilneed.agency/guides/tckn-masking/tr/">
+<meta property="og:image" content="https://halilneed.agency/assets/img/og-guides.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="article:published_time" content="2026-10-27">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TC Kimlik Numarası Maskeleme: Regex, Doğrulama, Model">
+<meta name="twitter:description" content="TCKN&#x27;yi loglarda ve yapay zekâ isteklerinde nasıl maskelersiniz? 11 hane kuralı, sağlama algoritması, regex örneği ve model ile tespit, adım adım.">
+<meta name="twitter:image" content="https://halilneed.agency/assets/img/og-guides.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "halilneed",
+          "item": "https://halilneed.agency/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Rehberler",
+          "item": "https://halilneed.agency/guides/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "TC kimlik numarası maskeleme",
+          "item": "https://halilneed.agency/guides/tckn-masking/tr/"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://halilneed.agency/guides/tckn-masking/tr/#page",
+      "url": "https://halilneed.agency/guides/tckn-masking/tr/",
+      "mainEntityOfPage": "https://halilneed.agency/guides/tckn-masking/tr/",
+      "headline": "TC Kimlik Numarası Maskeleme: Regex, Doğrulama ve Model ile Tespit",
+      "description": "TCKN'yi loglarda ve yapay zekâ isteklerinde nasıl maskelersiniz? 11 hane kuralı, sağlama algoritması, regex örneği ve model ile tespit, adım adım.",
+      "inLanguage": "tr",
+      "datePublished": "2026-10-27",
+      "dateModified": "2026-10-27",
+      "image": "https://halilneed.agency/assets/img/og-guides.png",
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@id": "https://halilneed.agency/#website"
+      },
+      "author": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://halilneed.agency/#halil",
+        "name": "Halil",
+        "alternateName": "halilneed",
+        "url": "https://halilneed.agency/"
+      },
+      "about": {
+        "@id": "https://halilneed.agency/models/turkish-pii-detection/#model"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://halilneed.agency/guides/tckn-masking/tr/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "TCKN maskelemek KVKK'ya uyum için yeterli mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Maskeleme önemli bir teknik tedbirdir ama tek başına uyum sağlamaz; işleme amacı, hukuki dayanak ve saklama süresi gibi konular ayrıca ele alınmalıdır. Metinlerin hangi kişisel veri kategorilerini içerdiğini görmek için KVKK sınıflandırıcısına bakabilirsiniz. Bu rehber hukuki görüş değildir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Regex mi, model mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "İkisi birlikte. TCKN için regex + sağlama hızlı ve açıklanabilirdir; ad soyad ve adres gibi bağlama bağlı veriler için model gerekir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Yabancı uyruklu kimlik numaraları da yakalanır mı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yabancılara verilen kimlik numaraları da 11 hanelidir ve 99 ile başlar; aynı sağlama kuralı genellikle bunlar için de kullanılır. Kendi verinizle test edin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Maskelemeyi tarayıcıda yapabilir miyim?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet, kural katmanı JavaScript'e kolayca taşınır. Model katmanı için yerel çalışan bir sürüm ya da sunucu tarafı daha uygundur."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<header class="site-header">
+  <a class="site-name" href="/tr/">halilneed</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="/models/tr/">Modeller</a></li>
+      <li><a href="/repos/tr/">Araçlar</a></li>
+      <li><a href="/guides/tr/" aria-current="true">Rehberler</a></li>
+      <li><a href="/writing/tr/">Yazılar</a></li>
+      <li><a href="/tr/#about">Hakkında</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" role="group" aria-label="Dil"><a href="/guides/tckn-masking/tr/" hreflang="tr" lang="tr" aria-current="true">TR</a><a href="/guides/" hreflang="en" lang="en">EN</a></div>
+</header>
+
+<nav class="breadcrumb" aria-label="Konum">
+  <ol>
+    <li><a href="/tr/">halilneed</a></li>
+    <li><a href="/guides/tr/">Rehberler</a></li>
+    <li aria-current="page">TC kimlik numarası maskeleme</li>
+  </ol>
+</nav>
+
+<main id="main">
+<article class="prose">
+
+  <header class="page-head">
+    <h1>TC Kimlik Numarası Maskeleme: Regex, Doğrulama ve Model ile Tespit</h1>
+    <p class="lead"><strong>Kısa cevap:</strong> TC kimlik numarası maskelemek için önce 11 haneli ve 0 ile başlamayan sayıları regex ile yakalayın, ardından resmî sağlama kuralıyla (10. ve 11. hane kontrolü) doğrulayın. Geçenleri <code>[TCKN]</code> etiketi ya da <code>123******01</code> biçimiyle değiştirin. Serbest metinde ad, IBAN ve telefonla birlikte bulmak için bir PII modeli kullanın.</p>
+  </header>
+
+  <section aria-labelledby="neden">
+    <h2 id="neden">TC kimlik numarası neden maskelenmeli?</h2>
+    <p>TC kimlik numarası (TCKN), bir kişiyi doğrudan tanımlayan kişisel veridir. Destek kayıtlarında, CRM notlarında, uygulama loglarında ve son zamanlarda en sık olarak yapay zekâ asistanlarına yapıştırılan metinlerde karşımıza çıkar. Bir log dosyası ya da bir LLM isteği bu numarayı tutması gerekmeyen bir sisteme taşıdığında, KVKK'daki veri minimizasyonu ilkesiyle çelişen bir durum ortaya çıkar. Maskeleme, veriyi işin gerektirmediği her yerden çıkarmanın en basit yoludur.</p>
+    <p>Bu rehber geliştiriciler için yazıldı: önce kuralları, sonra kodu, en sonda kuralların yetmediği yeri anlatıyoruz.</p>
+  </section>
+
+  <section aria-labelledby="yapi">
+    <h2 id="yapi">TCKN'nin yapısı ve sağlama kuralı</h2>
+    <p>TCKN 11 hanelidir ve ilk hanesi 0 olamaz. Son iki hane, ilk dokuz haneden hesaplanan kontrol haneleridir:</p>
+    <ul>
+      <li><strong>10. hane:</strong> (1., 3., 5., 7. ve 9. hanelerin toplamı × 7 − 2., 4., 6. ve 8. hanelerin toplamı) mod 10</li>
+      <li><strong>11. hane:</strong> ilk 10 hanenin toplamı mod 10</li>
+    </ul>
+    <p>Bu kural sayesinde rastgele 11 haneli bir sayının (sipariş numarası, telefon numarasının bir parçası, takip kodu) TCKN sanılma olasılığı büyük ölçüde azalır.</p>
+  </section>
+
+  <section aria-labelledby="regex">
+    <h2 id="regex">Regex ile ilk filtre</h2>
+    <p>İlk adım aday yakalamaktır. Öncesinde ve sonrasında rakam olmamasını şart koşarak daha uzun sayıların içinden parça koparmayı önleyin:</p>
+    <pre tabindex="0" aria-label="Python regex örneği"><code>import re
+TCKN_ADAY = re.compile(r&quot;(?&lt;!\d)[1-9]\d{10}(?!\d)&quot;)</code></pre>
+    <p>Bu ifade 11 haneli ve 0 ile başlamayan her sayıyı yakalar. Boşluklu yazımlar ("123 456 789 01") gerçek veride görülür; destekleyecekseniz önce rakamlar arasındaki tekil boşlukları normalleştirin, ama bunun telefon numaralarıyla çakışabileceğini unutmayın.</p>
+  </section>
+
+  <section aria-labelledby="saglama">
+    <h2 id="saglama">Sağlama (checksum) ile yanlış pozitifleri azaltmak</h2>
+    <pre tabindex="0" aria-label="Python sağlama örneği"><code>def tckn_gecerli(s: str) -&gt; bool:
+    if len(s) != 11 or not s.isdigit() or s[0] == &quot;0&quot;:
+        return False
+    d = [int(c) for c in s]
+    h10 = ((sum(d[0:9:2]) * 7) - sum(d[1:8:2])) % 10
+    h11 = sum(d[:10]) % 10
+    return d[9] == h10 and d[10] == h11
+
+def tckn_maskele(metin: str, etiket: str = &quot;[TCKN]&quot;) -&gt; str:
+    return TCKN_ADAY.sub(
+        lambda m: etiket if tckn_gecerli(m.group()) else m.group(), metin
+    )</code></pre>
+    <p><code>d[0:9:2]</code> 1., 3., 5., 7. ve 9. haneleri; <code>d[1:8:2]</code> 2., 4., 6. ve 8. haneleri seçer. Python'da <code>%</code> operatörü negatif sayılarda da 0–9 arası sonuç verdiği için ek düzeltme gerekmez; başka dillerde (JavaScript, Java) negatif sonucu <code>((x % 10) + 10) % 10</code> ile düzeltin.</p>
+    <p>Test ederken gerçek kişilere ait numara kullanmayın. Sağlama kuralına uyan sentetik numaraları kendi kodunuzla üretin.</p>
+  </section>
+
+  <section aria-labelledby="model">
+    <h2 id="model">Metin içinde bağlam: model ne zaman gerekir?</h2>
+    <p>Regex + sağlama, TCKN gibi <strong>yapısı belli</strong> veride iyi çalışır. Ama gerçek metinler bundan ibaret değildir:</p>
+    <ul>
+      <li>"Ahmet Yılmaz, kimlik no 1234…" cümlesinde <strong>ad soyad</strong> da kişisel veridir ve regex ile güvenilir biçimde bulunamaz.</li>
+      <li>Adres, doğum tarihi gibi alanlar serbest biçimde yazılır.</li>
+      <li>OCR'dan gelen metinlerde rakamlar arasına harf veya boşluk karışabilir.</li>
+    </ul>
+    <p>Bu durumlar için bağlamı okuyabilen, Türkçe metinle eğitilmiş bir model gerekir. <a href="/models/turkish-pii-detection/tr/">Türkçe PII tespit modelimiz</a> metni ve neyin maskeleneceğini söyleyen kısa bir talimatı alır; ad, TCKN, IBAN, telefon ve e-posta gibi verileri etiketlerle değiştirilmiş metni geri döndürür. Konum (offset) döndüren bir NER modeli değildir; çıktısı maskelenmiş metindir. En sağlam yaklaşım katmanlıdır: yapısal veriler için kural + sağlama, bağlama bağlı veriler için model. İki katman birbirinin açığını kapatır.</p>
+    <p>Kod yazmadan denemek isterseniz <a href="/masking-tool/tr/">maskeleme aracını</a> kullanabilirsiniz.</p>
+  </section>
+
+  <section aria-labelledby="bicim">
+    <h2 id="bicim">Maskeleme biçimleri: tam, kısmi, etiket</h2>
+    <p>Hangi biçimi seçeceğiniz, maskelenmiş metni kimin ne için kullanacağına bağlıdır:</p>
+    <table>
+      <thead><tr><th scope="col">Biçim</th><th scope="col">Örnek</th><th scope="col">Ne zaman?</th></tr></thead>
+      <tbody>
+        <tr><td>Etiket</td><td><code>[TCKN]</code></td><td>LLM istekleri, analiz; numaranın kendisi gerekmiyorsa</td></tr>
+        <tr><td>Numaralı etiket</td><td><code>[TCKN_1]</code></td><td>Aynı metinde birden fazla kişi varsa, cevabı geri eşlemek için</td></tr>
+        <tr><td>Kısmi</td><td><code>123******01</code></td><td>Çağrı merkezi ekranları; kullanıcının numarayı tanıması gerekiyorsa</td></tr>
+        <tr><td>Hash/token</td><td><code>tk_8f2a…</code></td><td>Kayıtları birleştirmek gerekiyorsa (tuzlu hash, anahtar ayrı saklanır)</td></tr>
+      </tbody>
+    </table>
+    <p>LLM'e gönderirken numaralı etiket en kullanışlısıdır: modelin cevabındaki <code>[TCKN_1]</code> ifadesini, eşleme tablosu yalnızca sizin sisteminizde kalacak şekilde gerçek değere geri çevirebilirsiniz. Numaralandırmayı ve eşleme tablosunu kural katmanınız üretir; PII modeli numarasız etiket (<code>[TCKN]</code> gibi) yazar.</p>
+  </section>
+
+  <section aria-labelledby="hatalar">
+    <h2 id="hatalar">Sık yapılan hatalar</h2>
+    <ol>
+      <li><strong>Yalnızca 11 hane kontrolü:</strong> Sağlama yapmazsanız sipariş ve takip numaraları da maskelenir; metin anlamsızlaşır.</li>
+      <li><strong>Maskelemeyi loglamadan sonra yapmak:</strong> Ham metin bir kez log'a yazıldıysa sorun zaten oluşmuştur. Maskeleme, isteğin sisteme girdiği ilk noktada çalışmalı.</li>
+      <li><strong>Eşleme tablosunu metinle birlikte saklamak:</strong> Geri çevrilebilir maskelemenin anahtarı, maskelenmiş veriyle aynı yerde durmamalı.</li>
+      <li><strong>Sadece TCKN'ye odaklanmak:</strong> Aynı metinde IBAN, telefon, e-posta ve ad da çoğunlukla bulunur. Hangi verilerin maskelenmesi gerektiğini <a href="/guides/personal-data/tr/">Kişisel veri ve yapay zekâ rehberinde</a> anlattık.</li>
+      <li><strong>Test verisi olarak gerçek numara kullanmak:</strong> Sentetik ama sağlamadan geçen numaralar üretin.</li>
+    </ol>
+    <p>Hukuk ve uyum ekipleri için hazırladığımız başlangıç seti: <a href="/kits/hukuk-ve-uyum/tr/">Hukuk ve uyum kiti</a>.</p>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">SSS</h2>
+    <details>
+      <summary>TCKN maskelemek KVKK'ya uyum için yeterli mi?</summary>
+      <p>Hayır. Maskeleme önemli bir teknik tedbirdir ama tek başına uyum sağlamaz; işleme amacı, hukuki dayanak ve saklama süresi gibi konular ayrıca ele alınmalıdır. Metinlerin hangi kişisel veri kategorilerini içerdiğini görmek için <a href="/models/turkish-kvkk-classifier/tr/">KVKK sınıflandırıcısına</a> bakabilirsiniz. Bu rehber hukuki görüş değildir.</p>
+    </details>
+    <details>
+      <summary>Regex mi, model mi?</summary>
+      <p>İkisi birlikte. TCKN için regex + sağlama hızlı ve açıklanabilirdir; ad soyad ve adres gibi bağlama bağlı veriler için model gerekir.</p>
+    </details>
+    <details>
+      <summary>Yabancı uyruklu kimlik numaraları da yakalanır mı?</summary>
+      <p>Yabancılara verilen kimlik numaraları da 11 hanelidir ve 99 ile başlar; aynı sağlama kuralı genellikle bunlar için de kullanılır. Kendi verinizle test edin.</p>
+    </details>
+    <details>
+      <summary>Maskelemeyi tarayıcıda yapabilir miyim?</summary>
+      <p>Evet, kural katmanı JavaScript'e kolayca taşınır. Model katmanı için yerel çalışan bir sürüm ya da sunucu tarafı daha uygundur.</p>
+    </details>
+  </section>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>© 2026 Halil, İstanbul</p>
+    <ul class="links">
+      <li><a href="/models/turkish-pii-detection/tr/">Türkçe kişisel veri tespit modeli</a></li>
+      <li><a href="https://github.com/halilneed/halilneed.github.io">Kaynak</a></li>
+    </ul>
+    <p class="small">Çerez yok. Ziyaretler GoatCounter ile toplu sayılır.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script data-goatcounter="https://hailneed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

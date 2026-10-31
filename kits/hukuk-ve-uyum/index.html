@@ -59,7 +59,7 @@
       "@type": "Product",
       "@id": "https://halilneed.agency/kits/hukuk-ve-uyum/#product-en",
       "name": "AI kit for legal and compliance teams under KVKK (Turkey)",
-      "description": "An English-language kit for legal and compliance teams that want to use AI without leaking personal data: 8 task cards, a send / mask / keep-in-house data rule, 6 ready Turkish prompts, an Excel measurement sheet and an editable Word usage policy, mapped to the KVKK authority's November 2025 guide on generative AI.",
+      "description": "An English-language kit for legal and compliance teams that want to use AI without leaking personal data: 8 task cards, a send / mask / keep-in-house data rule, 6 ready Turkish prompts, an Excel measurement sheet and an editable Word usage policy, mapped to the KVKK authority's November 2025 guide on generative AI. Not legal advice.",
       "image": "https://halilneed.agency/assets/img/og-kit-hukuk-ve-uyum.png",
       "inLanguage": "en",
       "dateModified": "2026-10-19",
@@ -72,7 +72,48 @@
         "url": "https://halilneed.gumroad.com/l/kvkk-legal-kit",
         "price": "19.00",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
+        "availability": "https://schema.org/InStock",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "USD"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "DAY"
+            }
+          },
+          "shippingDestination": [
+            {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            {
+              "@type": "DefinedRegion",
+              "addressCountry": "US"
+            }
+          ]
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": [
+            "TR",
+            "US"
+          ],
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        }
       }
     },
     {

@@ -173,6 +173,14 @@
             "@type": "Answer",
             "text": "Hayır. Maskelenmiş çıktı kendiliğinden anonim olmaz. Uyum, modele değil verinin nasıl işlendiğine bağlıdır. Neyin maskelenip neyin içeride tutulacağına nasıl karar verileceğini Kişisel veri ve yapay zekâ rehberi anlatıyor."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Ollama için çevrimdışı bir sürüm var mı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet. halilneed/turkish-pii-detection-GGUF, Ollama ve llama.cpp için Q8_0 (300 MB) ve BF16 (551 MB) sürümleri sunar. Q8_0, 1.000 satırlık benchmark’ta 0.944 skor alır."
+          }
         }
       ]
     }
@@ -408,6 +416,10 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
     <details>
       <summary>Maskeleme verilerimi KVKK'ya uygun hale getirir mi?</summary>
       <p>Hayır. Maskelenmiş çıktı kendiliğinden anonim olmaz. Uyum, modele değil verinin nasıl işlendiğine bağlıdır. Neyin maskelenip neyin içeride tutulacağına nasıl karar verileceğini <a href="/guides/personal-data/tr/">Kişisel veri ve yapay zekâ rehberi</a> anlatıyor.</p>
+    </details>
+    <details>
+      <summary>Ollama için çevrimdışı bir sürüm var mı?</summary>
+      <p>Evet. <a href="/models/turkish-pii-detection-GGUF/">halilneed/turkish-pii-detection-GGUF</a>, Ollama ve llama.cpp için Q8_0 (300 MB) ve BF16 (551 MB) sürümleri sunar. Q8_0, 1.000 satırlık benchmark’ta 0.944 skor alır.</p>
     </details>
   </section>
 

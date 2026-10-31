@@ -154,6 +154,14 @@
             "@type": "Answer",
             "text": "halilneed/turkish-prompt-injection-false-alarm-benchmark üzerinde çalıştırın: 2.875 zararsız Türkçe metin (iş metinleri, bankacılık metinleri ve maskeleme talimatları) ve yanlış alarm tablosunu herhangi bir model için yeniden üreten bir betik. Ardından kendi zararsız trafiğinizden bir örnekte tekrarlayın."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Sohbet botumu prompt injection’a karşı nasıl test ederim?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sabit bir saldırı seti (doğrudan, belgeler ve araç çıktısı üzerinden dolaylı, kodlanmış, görünmez Unicode ile gizlenmiş) ve zararsız metinler çalıştırın; kaç saldırının geçtiğini ve kaç zararsız metnin işaretlendiğini sayın, düzeltin ve yeniden çalıştırın."
+          }
         }
       ]
     }
@@ -423,6 +431,10 @@ is_injection = scores["INJECTION"] &gt;= 0.05
     <details>
       <summary>Kendi korumamın Türkçedeki yanlış alarm oranını nasıl ölçerim?</summary>
       <p><a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection-false-alarm-faq-tr">halilneed/turkish-prompt-injection-false-alarm-benchmark</a> üzerinde çalıştırın: 2.875 zararsız Türkçe metin (iş metinleri, bankacılık metinleri ve maskeleme talimatları) ve yanlış alarm tablosunu herhangi bir model için yeniden üreten bir betik. Ardından kendi zararsız trafiğinizden bir örnekte tekrarlayın.</p>
+    </details>
+    <details>
+      <summary>Sohbet botumu prompt injection’a karşı nasıl test ederim?</summary>
+      <p>Sabit bir saldırı seti (doğrudan, belgeler ve araç çıktısı üzerinden dolaylı, kodlanmış, görünmez Unicode ile gizlenmiş) ve zararsız metinler çalıştırın; kaç saldırının geçtiğini ve kaç zararsız metnin işaretlendiğini sayın, düzeltin ve yeniden çalıştırın.</p>
     </details>
   </section>
 

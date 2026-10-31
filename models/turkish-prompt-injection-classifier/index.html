@@ -437,7 +437,7 @@ is_injection = scores["INJECTION"] &gt;= 0.05
       <summary>How can I measure the false alarms of my own guard on Turkish text?</summary>
       <p>Run it on <a href="https://huggingface.co/datasets/halilneed/turkish-prompt-injection-false-alarm-benchmark" data-goatcounter-click="pinj-hfds-prompt-injection-false-alarm-faq">halilneed/turkish-prompt-injection-false-alarm-benchmark</a>: 2,875 benign Turkish texts (business texts, banking texts and masking instructions) with a script that reproduces the false-positive table for any model. Then repeat on a sample of your own benign traffic.</p>
     </details>
-      <details>
+    <details>
       <summary>How do I test my chatbot for prompt injection?</summary>
       <p>Run a fixed set of attack prompts (direct, indirect via documents and tool output, encoded, hidden in invisible Unicode) plus benign texts, score how many attacks get through and how many benign texts are flagged, then fix and re-run. The Prompt Injection Test Pack packages such a set with a scoring sheet.</p>
     </details>

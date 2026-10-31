@@ -436,7 +436,7 @@ print(classify("Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye ç�
       <summary>Can a model find customer and bank secrets in Turkish text?</summary>
       <p>As a signal, yes. turkish-bseby-classifier v2 flags five data classes in about 32 ms per text on CPU and scores 0.960 micro-F1 on 747 held-out texts. For “is any secret present?” precision is 0.966 and recall 0.979. Its weakest label is authentication data (F1 0.881), so pair it with rule-based checks for card numbers, tokens and keys.</p>
     </details>
-      <details>
+    <details>
       <summary>Is the output a legal classification?</summary>
       <p>No. It is a signal for inventories and DLP rules; the bank's own classification decision remains with its teams.</p>
     </details>
