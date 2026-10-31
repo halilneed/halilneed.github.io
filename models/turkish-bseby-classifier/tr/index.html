@@ -154,6 +154,14 @@
             "@type": "Answer",
             "text": "Bir sinyal olarak evet. turkish-bseby-classifier v2 beş veri sınıfını CPU’da metin başına yaklaşık 32 ms’de işaretler ve ayrılmış 747 metinde 0.960 micro-F1 alır. “Herhangi bir sır var mı?” sorusunda kesinlik 0.966, duyarlılık 0.979. En zayıf etiketi kimlik doğrulama verisi (F1 0.881); kart numarası, token ve anahtar için kural tabanlı bir kontrolle birlikte kullanın."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Çıktı hukuki bir sınıflandırma mı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Envanterler ve DLP kuralları için bir sinyaldir; sınıflandırma kararı bankanın kendi ekiplerinde kalır."
+          }
         }
       ]
     }
@@ -423,6 +431,10 @@ print(classify("Demirtepe Yapı A.Ş.'nin nakdi kredi limiti 40 milyon TL'ye ç�
     <details>
       <summary>Türkçe metinde müşteri sırrı ve banka sırrı bir modelle bulunabilir mi?</summary>
       <p>Bir sinyal olarak evet. turkish-bseby-classifier v2 beş veri sınıfını CPU’da metin başına yaklaşık 32 ms’de işaretler ve ayrılmış 747 metinde 0.960 micro-F1 alır. “Herhangi bir sır var mı?” sorusunda kesinlik 0.966, duyarlılık 0.979. En zayıf etiketi kimlik doğrulama verisi (F1 0.881); kart numarası, token ve anahtar için kural tabanlı bir kontrolle birlikte kullanın.</p>
+    </details>
+    <details>
+      <summary>Çıktı hukuki bir sınıflandırma mı?</summary>
+      <p>Hayır. Envanterler ve DLP kuralları için bir sinyaldir; sınıflandırma kararı bankanın kendi ekiplerinde kalır.</p>
     </details>
   </section>
 
