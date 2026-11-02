@@ -143,7 +143,7 @@
           "name": "Can I run it without sending text to an API?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Download the weights once and run the model locally with Transformers, on CPU or GPU. The browser demo also runs on your own device."
+            "text": "Yes. This model is for offline / local PII redaction: download the weights once and run them locally with Transformers, on CPU or GPU. The browser demo also runs on your own device."
           }
         },
         {
@@ -222,7 +222,7 @@
 
   <header class="page-head">
     <h1>Turkish PII detection and masking</h1>
-    <p class="lead"><code>turkish-pii-detection</code> is an open 270M-parameter model for Turkish PII detection and masking: it finds personally identifiable information (PII) in Turkish text and replaces it with labels. You give it the text and a short instruction in Turkish saying what to mask, and it returns the rewritten text. It runs locally on a CPU, and a <a href="/models/turkish-pii-detection-GGUF/">GGUF build</a> runs offline in Ollama and llama.cpp, so the text never has to leave your machine.</p>
+    <p class="lead"><code>turkish-pii-detection</code> is an open 270M-parameter model for Turkish PII detection and masking: it finds personally identifiable information (PII) in Turkish text and replaces it with labels. You give it the text and a short instruction in Turkish saying what to mask, and it returns the rewritten text — offline / local PII redaction without an API. It runs locally on a CPU, and a <a href="/models/turkish-pii-detection-GGUF/">GGUF build</a> runs offline in Ollama and llama.cpp, so the text never has to leave your machine.</p>
     <ul class="links">
       <li><a href="https://huggingface.co/halilneed/turkish-pii-detection" data-goatcounter-click="pii-download">Weights on Hugging Face</a></li>
       <li><a href="https://huggingface.co/spaces/halilneed/turkish-pii-detection-demo" data-goatcounter-click="pii-demo">Try it in the browser</a></li>
@@ -409,7 +409,7 @@ print(mask_turkish_pii(text, "Metindeki tüm kişisel verileri uygun etiketlerle
     </details>
     <details>
       <summary>Can I run it without sending text to an API?</summary>
-      <p>Yes. Download the weights once and run the model locally with Transformers, on CPU or GPU. The browser demo also runs on your own device.</p>
+      <p>Yes. This model is for offline / local PII redaction: download the weights once and run them locally with Transformers, on CPU or GPU. The browser demo also runs on your own device.</p>
     </details>
     <details>
       <summary>Which personal data does it cover?</summary>
